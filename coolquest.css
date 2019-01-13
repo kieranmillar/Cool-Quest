@@ -1,0 +1,353 @@
+body {
+	background-color: #FFFFFF;
+	height: 100vh;
+	margin: 0;
+	display: flex;
+	flex-flow: column;
+	max-width: 1000px;
+	min-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 18px;
+	font-family: "Arial";
+	letter-spacing: 0.2px;
+}
+
+button {
+	font-size: 18px;
+	font-family: "Arial";
+}
+
+input {
+	font-size: 18px;
+	font-family: "Arial";
+}
+
+p {
+	margin: 0;
+}
+
+p:not(:last-child){
+    margin-bottom: 10px;
+}
+
+h2 {
+	margin: 0;
+	margin-top: 5px;
+}
+
+h2:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.navbar {
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #444;
+	width: 100%;
+}
+
+.navbar li {
+	float: left;
+	border-right:1px solid #bbb;
+}
+
+.navbar li:last-child {
+    border-right: none;
+}
+
+.navbar li a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	padding: 15px;
+}
+
+.navbar li a:hover:not(.active) {
+	background-color: #111;
+}
+
+.active {
+	background-color: #aaf;
+}
+
+#topbar {
+	min-height: 110px;
+	color: black;
+	text-align: left;
+	padding: 2px;
+	overflow: auto;
+}
+
+#topbar img {
+	vertical-align: middle;
+}
+
+#title {
+	float: left;
+    width: auto;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 100%;
+}
+
+#title::after {
+	clear: both;
+}
+
+#title h1 {
+	font-size: 1.5em;
+}
+
+#title h2 {
+	font-size: 1em;
+}
+
+#quicklinks {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.link {
+	width: 40px;
+	height: 40px;
+	margin: 5px;
+	cursor:pointer;
+}
+
+.hintBar {
+	min-height: 22px;
+	color: black;
+	text-align: center;
+	padding: 2px;
+	overflow: auto;
+	display: block;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 0px none black;
+	border-right: 0px none black;
+	background-color: white;
+	transition-property: background-color;
+	transition-duration:  500ms;
+	transition-timing-function: ease;
+}
+
+.hintBar.w {
+	background-color: white;
+}
+
+.hintBar.g {
+	background-color: #ccc;
+}
+
+.hintBar.r {
+	background-color: #f55;
+}
+
+#characterCreation {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	overflow-y: auto;
+	max-height: calc(100vh - 150px);
+}
+
+.centred
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#jobGrid {
+	display: grid;
+	grid-template-columns: 400px 400px;
+	align-content: center;
+}
+
+.jobCell {
+	border-style: solid;
+	border-width: 1px;
+	margin: 2px;
+	padding: 2px;
+	font-weight: bold;
+}
+
+.jobCell p {
+	margin: 2px;
+	padding: 2px;
+	font-weight: normal;
+}
+
+#mainGame {
+	width: 100%;
+	display: flex;
+}
+
+#mainArea {
+	display: flex;
+	flex-grow: 1;
+}
+
+#characterPanel {
+	min-width: 200px;
+	background-color: #ccc;
+	display: block;
+	padding: 3px;
+	overflow-y: auto;
+	max-height: calc(100vh - 150px);
+}
+
+#characterPanel p {
+	margin: 2px;
+}
+
+#characterPanel progress {
+	width: calc(100% - 5px);
+	height: 10px;
+	margin: 2px;
+}
+
+#stats {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.char_stat {
+	display: inline-block;
+	width: 50px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.buffedStat {
+	font-weight: bold;
+}
+
+#mainScreen {
+	flex-grow: 3;
+	display: block;
+	background-color: #F8F8F8;
+	padding: 3px;
+	overflow-y: auto;
+	max-height: calc(100vh - 150px);
+}
+
+.location {
+	display: block;
+}
+
+.wrappableText {
+	white-space: pre-line;
+}
+
+#combatMonster {
+	flex-flow: column;
+	margin-bottom: 10px;
+}
+
+#combatMonsterTable {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+#combatMonsterStats {
+	flex-flow: column;
+	width: 200px;
+	margin-bottom: 10px;
+}
+
+#combatButtons {
+	flex-flow: column;
+}
+
+.combatRow {
+	flex-flow: row;
+}
+
+#noncombatTitle {
+	font-size: 1.5em;
+}
+
+#noncombatButtons {
+	display: flex;
+	flex-flow: column;
+	align-items: flex-start;
+}
+
+#loc_inventory h2 {
+	margin: 2px;
+}
+
+.inv_container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.item {
+	width: 250px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-shrink: 1;
+}
+
+.item_Image {
+	display: flex;
+	flex-direction: row;
+	cursor: pointer;
+	align-items: center;
+	flex-shrink: 1;
+}
+
+.item_Image img {
+	height: 40px;
+	width: 40px;
+}
+
+.clickable {
+	cursor:pointer;
+}
+
+#loc_equipment h2 {
+	margin: 2px;
+}
+
+#loc_equipment p {
+	margin: 2px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 40px;
+}
+
+.enchantment {
+	font-weight: bold;
+	color: blue;
+}
+
+#infoPanel {
+	min-width: 270px;
+	background-color: #ccc;
+	display: block;
+	padding: 3px;
+	overflow-y: auto;
+	max-height: calc(100vh - 150px);
+}
+
+#dialog img {
+	display: block;
+	margin: auto;
+}

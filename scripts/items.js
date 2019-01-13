@@ -1,0 +1,663 @@
+const HAT = 0;
+const ARMOUR = 1;
+const WEAPON = 2;
+const SHIELD = 3;
+const SHOES = 4;
+const ACC = 5;
+const FOOD = 6;
+const POTION = 7;
+const MISC = 8;
+
+var items = [
+	{
+		id: 0,
+		name: "opened envelope",
+		description: "An opened envelope with the return address to your Grandmother's house.",
+		enchantment: "Will show you the way to your Grandmother's house",
+		icon: "envelope.png",
+		type: "Useable",
+		category: MISC,
+		sell: 0,
+		onUse: function () {
+			hint ("You commit your Grandmother's house's address to memory, then throw away the envelope.", "g");
+			$("#inventory_tutorial_1").hide();
+			$("#inventory_tutorial_2").show();
+			$("#link_house").show();
+			player.questTutorial = 1;
+			return true;
+		}
+	},
+	{
+		id: 1,
+		name: "Grandma's locket",
+		description: "A brass heart on a chain containing a black and white picture of somebody you don't recognise.",
+		enchantment: "+1 Max HP<br />+1 STR<br />+1 MAG",
+		icon: "grandma_locket.png",
+		type: "Accessory",
+		category: ACC,
+		equipStat: "MAG",
+		equipValue: 1,
+		sell: 0,
+		onWear: function () {
+			if (player.questTutorial == 2)
+			{
+				player.questTutorial = 3;
+				$(".equip_tutorial").show();
+				$(".house_tutorial_1").hide();
+				$(".house_tutorial_2").show();
+			}
+			player.effHpMax += 1;
+			player.effStr += 1;
+			player.effMag += 1;
+		}
+	},
+	{
+		id: 2,
+		name: "cookie",
+		description: "You clicked the cookie. Gameplay at its finest!",
+		enchantment: "+1 Fullness<br />+1 Turn to midnight<br />Restores 3 MP",
+		icon: "cookie.png",
+		type: "Food",
+		category: FOOD,
+		cost: 5,
+		sell: 1,
+		onUse: function () {
+			let success = eat (1, 1);
+			if (success == true)
+			{
+				giveMp(3);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	},
+	{
+		id: 3,
+		name: "stick",
+		description: "What's brown and sticky? This.",
+		enchantment: "+1 STR<br />+1 MAG",
+		icon: "stick.png",
+		type: "Weapon",
+		category: WEAPON,
+		equipStat: "STR",
+		equipValue: 1,
+		cost: 20,
+		sell: 10,
+		onWear: function () {
+			player.effStr += 1;
+			player.effMag += 1;
+		}
+	},
+	{
+		id: 4,
+		name: "health potion",
+		description: "This red potion is labelled as being filled with healing medicine. In reality it's just blood to replace all the blood you lost.",
+		enchantment: "Restores 20-25 HP<br />Can be used in combat",
+		icon: "red_potion.png",
+		type: "Potion, Combat Item",
+		category: POTION,
+		cost: 10,
+		sell: 5,
+		onUse: function () {
+			let x = Math.floor(Math.random() * 5) + 20;
+			hint ("You drink the health potion and gain " + x + " HP!", "g");
+			giveHp (x);
+			return true;
+		},
+		onCombat: function () {
+			addCombatText ("You drink the health potion.");
+			addCombatText (giveHp (Math.floor(Math.random() * 5) + 20));
+		}
+	},
+	{
+		id: 5,
+		name: "running shoes",
+		description: "Run. Jump. Swim. Cycle. Die.",
+		enchantment: "+30 SPD<br />-10 Max HP",
+		icon: "running_shoes.png",
+		type: "Shoes",
+		category: SHOES,
+		equipStat: "SPD",
+		equipValue: 5,
+		cost: 100,
+		sell: 50,
+		onWear: function () {
+			player.effSpd += 30;
+			player.effHpMax -= 10;
+		}
+	},
+	{
+		id: 6,
+		name: "straightened paperclip",
+		description: "A paperclip that has been pulled into a straight piece of metal by a bored worker. Perfect for stabbing.",
+		enchantment: "+2 STR<br />Can be used in combat to deal 10 damage",
+		icon: "straight_paperclip.png",
+		type: "Weapon, Combat Item",
+		category: WEAPON,
+		equipStat: "STR",
+		equipValue: 1,
+		sell: 5,
+		onWear: function () {
+			player.effStr += 2;
+		},
+		onCombat: function () {
+			addCombatText ("You hurl it at your enemy like a spear, and it pierces through them.");
+			addCombatText ("It takes 10 damage!");
+			monster.hp -= 10;
+		}
+	},
+	{
+		id: 7,
+		name: "cardboard panel",
+		description: "A dry piece of cardboard box. Provides barely any defense, but also max HP for some reason.",
+		enchantment: "+3 Max HP<br />+1 DEF",
+		icon: "cardboard_panel.png",
+		type: "Shield",
+		category: SHIELD,
+		equipStat: "DEF",
+		equipValue: 1,
+		sell: 10,
+		onWear: function () {
+			player.effHpMax += 3;
+			player.effDef += 1;
+		}
+	},
+	{
+		id: 8,
+		name: "tiny staff",
+		description: "This tiny staff is wrapped in small threads of spider silk.",
+		enchantment: "+1 Max MP<br />+3 MAG",
+		icon: "tiny_staff.png",
+		type: "Weapon",
+		category: WEAPON,
+		equipStat: "MAG",
+		equipValue: 3,
+		sell: 5,
+		onWear: function () {
+			player.effMpMax += 1;
+			player.effMag += 3;
+		}
+	},
+	{
+		id: 9,
+		name: "assembly key",
+		description: "This key unlocks the back area of the Magician's Assembly.",
+		enchantment: "Unlocks more areas of the Assembly",
+		icon: "key.png",
+		type: "Useable",
+		category: MISC,
+		sell: 0,
+		onUse: function () {
+			hint ("You unlock the door and the key vanishes, like all good magical items.", "g");
+			player.questAssmebly = 2;
+			return true;
+		}
+	},
+	{
+		id: 10,
+		name: "dusty ring",
+		description: "The dust has fused to this enchanted ring, dampening its effectiveness.",
+		enchantment: "+3 STR<br />+3 MAG<br />+5 SPD",
+		icon: "dusty_ring.png",
+		type: "Accessory",
+		category: ACC,
+		equipStat: "MAG",
+		equipValue: 3,
+		sell: 0,
+		onWear: function () {
+			player.effStr += 3;
+			player.effMag += 3;
+			player.effSpd += 5;
+		}
+	}
+];
+
+function equip (e)
+{
+	let c = items[e].category;
+	if (c >= 6)
+	{
+		return;
+	}
+	let x = items[e].equipStat;
+	switch (x)
+	{
+		case "STR":
+			if (player.baseStr < items[e].equipValue)
+			{
+				hint ("You don't have enough STR to equip that!", "r");
+				return;
+			}
+			break;
+		case "DEF":
+			if (player.baseDef < items[e].equipValue)
+			{
+				hint ("You don't have enough DEF to equip that!", "r");
+				return;
+			}
+			break;
+		case "MAG":
+			if (player.baseMag < items[e].equipValue)
+			{
+				hint ("You don't have enough MAG to equip that!", "r");
+				return;
+			}
+			break;
+		case "SPD":
+			if (player.baseSpd < items[e].equipValue)
+			{
+				hint ("You don't have enough SPD to equip that!", "r");
+				return;
+			}
+			break;
+		default:
+			return;
+	}
+	let slot = 0;
+	switch (c)
+	{
+		case HAT:
+		case ARMOUR:
+		case WEAPON:
+		case SHIELD:
+		case SHOES:
+			slot = c;
+			break;
+		case ACC:
+			if (player.equipment[5] == -1)
+			{
+				slot = 5;
+			}
+			else if (player.equipment[6] == -1)
+			{
+				slot = 6;
+			}
+			else if (player.job != "Fashion Designer")
+			{
+				slot = 7;
+			}
+			else if (player.equipment[7] == -1)
+			{
+				slot = 7;
+			}
+			else
+			{
+				slot = 8;
+			}
+			break;
+	}
+	if (player.equipment[slot] != -1)
+	{
+		gainItem(player.equipment[slot], 1);
+	}
+	player.equipment[slot] = e;
+	loseItem(e, 1);
+	displayEquipment();
+	calculateStats();
+	hint ("You equipped a " + items[player.equipment[slot]].name + ".", "g");
+	save ();
+}
+
+function unequip (slot)
+{
+	let x = player.equipment[slot];
+	if (x == -1)
+	{
+		return;
+	}
+	gainItem (x, 1);
+	player.equipment[slot] = -1;
+	displayEquipment();
+	calculateStats();
+	hint ("You unequipped a " + items[x].name + ".", "g");
+	save ();
+}
+
+function use (id)
+{
+	if(items[id].hasOwnProperty("onUse") == false)
+	{
+		hint("That's not a useable item!", "r");
+		return;
+	}
+	if (items[id].onUse() == true)
+	{
+		loseItem (id, 1);
+		displayInventory ();
+		save ();
+	}
+}
+
+function checkInInventory (id)
+{
+	let itemPosition = -1;
+	for (var i in player.inventory)
+	{
+		if (player.inventory[i].id == id)
+		{
+			itemPosition = i;
+			break;
+		}
+	}
+	return itemPosition;
+}
+
+function gainItem (id, amount)
+{
+	let itemPosition = checkInInventory (id);
+	if (itemPosition == -1)
+	{
+		player.inventory.push({id: id, amount: amount});
+		player.inventory.sort(function(a,b){
+			let x = items[a.id].name.toLowerCase();
+			let y = items[b.id].name.toLowerCase();
+			if (x < y) {return -1;}
+			if (x > y) {return 1;}
+			return 0;
+		});
+	}
+	else
+		player.inventory[itemPosition].amount += amount;
+}
+
+function loseItem (id, amount)
+{
+	let itemPosition = checkInInventory (id);
+	if (itemPosition == -1)
+	{
+		return false; // don't own the item anyway
+	}
+	else
+	{
+		if (player.inventory[itemPosition].amount > amount)
+		{
+			player.inventory[itemPosition].amount -= amount;
+			return true;
+		}
+		else if (player.inventory[itemPosition].amount == amount)
+		{
+			player.inventory.splice(itemPosition, 1);
+			return true;
+		}
+		else
+			return false; //don't own enough
+	}
+}
+
+function displayInventory()
+{
+	let foodDiv = $("#inv_food");
+	foodDiv.empty();
+	let potionDiv = $("#inv_potion");
+	potionDiv.empty();
+	let miscDiv = $("#inv_misc");
+	miscDiv.empty();
+	let foodTitle = $("#inv_food_title");
+	let potionTitle = $("#inv_potion_title");
+	let miscTitle = $("#inv_misc_title");
+	let foodCount = 0;
+	let potionCount = 0;
+	let miscCount = 0;
+	for (var i in player.inventory)
+	{
+		var newElement = $('<div></div>');
+		newElement.addClass("item");
+		var textImageDiv = $('<span></span>');
+		textImageDiv.addClass("item_Image");
+		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'/><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
+		textImageDiv.attr({
+			"onClick" : "openDialog (ITEM, " + player.inventory[i].id + ");",
+		});
+		newElement.append(textImageDiv);
+		if (items[player.inventory[i].id].hasOwnProperty("onUse") == true)
+		{
+			var useLink = $('<span></span>');
+			useLink.html("<input type='button' value='Use' onClick = 'use(" + player.inventory[i].id + ")'>");
+			newElement.append(useLink);
+		}
+		switch (items[player.inventory[i].id].category)
+		{
+			case FOOD:
+				foodDiv.append(newElement);
+				foodCount ++;
+				break;
+			case POTION:
+				potionDiv.append(newElement);
+				potionCount ++;
+				break;
+			case MISC:
+				miscDiv.append(newElement);
+				miscCount ++;
+				break;
+			default:
+		}
+	}
+	if (foodCount == 0)
+	{
+		foodTitle.hide();
+		foodDiv.hide();
+	}
+	else
+	{
+		foodTitle.show();
+		foodDiv.show();
+	}
+	if (potionCount == 0)
+	{
+		potionTitle.hide();
+		potionDiv.hide();
+	}
+	else
+	{
+		potionTitle.show();
+		potionDiv.show();
+	}
+	if (miscCount == 0)
+	{
+		miscTitle.hide();
+		miscDiv.hide();
+	}
+	else
+	{
+		miscTitle.show();
+		miscDiv.show();
+	}
+	let emptyDiv = $("#inv_empty");
+	if (foodCount + potionCount + miscCount == 0)
+	{
+		emptyDiv.show();
+	}
+	else
+	{
+		emptyDiv.hide();
+	}
+}
+
+function displayEquipment()
+{
+	for (let i = 0; i < 9; i ++)
+	{
+		if (player.equipment[i] != -1)
+		{
+			$(".equip" + i).show()
+			$("#worn_" + i).html("<span class='item_Image'><image src='./images/" + items[player.equipment[i]].icon + "'/><span>" + items[player.equipment[i]].name + " <input type='button' value='Unequip' onclick='unequip(" +i + ")'></span>");
+			$("#worn_" + i).attr({
+				"onClick" : "openDialog (ITEM, " + player.equipment[i] + ");"
+			});
+		}
+		else
+		{
+			$(".equip" + i).hide();
+			$("#worn_" + i).attr({
+				"onClick" : ""
+			});
+		}
+		if (player.job == "Fashion Designer")
+		{
+			$("#accessory4").show();
+		}
+		else
+		{
+			$("#accessory4").hide();
+		}
+	}
+	let hatDiv = $("#equip_hat");
+	hatDiv.empty();
+	let armourDiv = $("#equip_armour");
+	armourDiv.empty();
+	let weaponDiv = $("#equip_weapon");
+	weaponDiv.empty();
+	let shieldDiv = $("#equip_shield");
+	shieldDiv.empty();
+	let shoesDiv = $("#equip_shoes");
+	shoesDiv.empty();
+	let accDiv = $("#equip_acc");
+	accDiv.empty();
+	let hatTitle = $("#equip_hat_title");
+	let armourTitle = $("#equip_armour_title");
+	let weaponTitle = $("#equip_weapon_title");
+	let shieldTitle = $("#equip_shield_title");
+	let shoesTitle = $("#equip_shoes_title");
+	let accTitle = $("#equip_acc_title");
+	let hatCount = 0;
+	let armourCount = 0;
+	let weaponCount = 0;
+	let shieldCount = 0;
+	let shoesCount = 0;
+	let accCount = 0;
+	for (var i in player.inventory)
+	{
+		if (items[player.inventory[i].id].category >= 7)
+		{
+			continue;
+		}
+		var newElement = $('<div></div>');
+		newElement.addClass("item");
+		var textImageDiv = $('<span></span>');
+		textImageDiv.addClass("item_Image");
+		textImageDiv.html("<image src='./images/" + items[player.inventory[i].id].icon + "'/><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
+		textImageDiv.attr({
+			"onClick" : "openDialog (ITEM, " + player.inventory[i].id + ");"
+		});
+		newElement.append(textImageDiv);
+		var equipLink = $('<span></span>');
+		equipLink.html("<input type='button' value='Equip' onClick='equip(" + player.inventory[i].id + ")'>");
+		newElement.append(equipLink);
+		switch (items[player.inventory[i].id].category)
+		{
+			case HAT:
+				hatDiv.append(newElement);
+				hatCount ++;
+				break;
+			case ARMOUR:
+				armourDiv.append(newElement);
+				armourCount ++;
+				break;
+			case WEAPON:
+				weaponDiv.append(newElement);
+				weaponCount ++;
+				break;
+			case SHIELD:
+				shieldDiv.append(newElement);
+				shieldCount ++;
+				break;
+			case SHOES:
+				shoesDiv.append(newElement);
+				shoesCount ++;
+				break;
+			case ACC:
+				accDiv.append(newElement);
+				accCount ++;
+				break;
+		}
+	}
+	if (hatCount == 0)
+	{
+		hatTitle.hide();
+		hatDiv.hide();
+	}
+	else
+	{
+		hatTitle.show();
+		hatDiv.show();
+	}
+	if (armourCount == 0)
+	{
+		armourTitle.hide();
+		armourDiv.hide();
+	}
+	else
+	{
+		armourTitle.show();
+		armourDiv.show();
+	}
+	if (weaponCount == 0)
+	{
+		weaponTitle.hide();
+		weaponDiv.hide();
+	}
+	else
+	{
+		weaponTitle.show();
+		weaponDiv.show();
+	}
+	if (shieldCount == 0)
+	{
+		shieldTitle.hide();
+		shieldDiv.hide();
+	}
+	else
+	{
+		shieldTitle.show();
+		shieldDiv.show();
+	}
+	if (shoesCount == 0)
+	{
+		shoesTitle.hide();
+		shoesDiv.hide();
+	}
+	else
+	{
+		shoesTitle.show();
+		shoesDiv.show();
+	}
+	if (accCount == 0)
+	{
+		accTitle.hide();
+		accDiv.hide();
+	}
+	else
+	{
+		accTitle.show();
+		accDiv.show();
+	}
+	let emptyDiv = $("#equip_empty");
+	if (hatCount + armourCount + weaponCount + shieldCount + shoesCount + accCount == 0)
+	{
+		emptyDiv.show();
+	}
+	else
+	{
+		emptyDiv.hide();
+	}
+}
+
+function buyItem (id, amount)
+{
+	totalCost = items[id].cost * amount;
+	if (player.gold >= totalCost)
+	{
+		player.gold -= totalCost;
+		gainItem (id, amount);
+		redrawCharPane ();
+		hint ("You purchased a " + items[id].name + "!", "g");
+		save ();
+	}
+	else
+	{
+		hint ("You can't afford that!", "r");
+	}
+}

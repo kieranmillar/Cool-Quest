@@ -200,7 +200,11 @@ function constructCombatSkillDropdown ()
 		{
 			let newElement = $('<option></option>');
 			newElement.val(skills[i].id);
-			newElement.text(skills[i].name + " (" + skills[i].cost + ")");
+			let cost = skills[i].cost;
+			if (player.job == "Mystic") {
+				cost = Math.max(cost - 2, 0);
+			}
+			newElement.text(skills[i].name + " (" + cost + ")");
 			e.append(newElement);
 		}
 	}
@@ -349,6 +353,9 @@ function useCombatSkill (x)
 		return false;
 	}
 	let cost = skills[x].cost;
+	if (player.job == "Mystic") {
+		cost = Math.max(cost - 2, 0);
+	}
 	if (cost > player.mp)
 	{
 		hint ("You haven't got enough MP to cast that skill!", "r");

@@ -34,10 +34,10 @@ p:not(:last-child){
 h2 {
 	margin: 0;
 	margin-top: 5px;
-}
 
-h2:not(:last-child){
-    margin-bottom: 10px;
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
 }
 
 .navbar {
@@ -48,27 +48,27 @@ h2:not(:last-child){
 	overflow: hidden;
 	background-color: #444;
 	width: 100%;
-}
 
-.navbar li {
-	float: left;
-	border-right:1px solid #bbb;
-}
+	li {
+		float: left;
+		border-right:1px solid #bbb;
 
-.navbar li:last-child {
-    border-right: none;
-}
+		&:last-child {
+			border-right: none;
+		}
 
-.navbar li a {
-	display: block;
-	color: white;
-	text-decoration: none;
-	text-align: center;
-	padding: 15px;
-}
+		a {
+			display: block;
+			color: white;
+			text-decoration: none;
+			text-align: center;
+			padding: 15px;
 
-.navbar li a:hover:not(.active) {
-	background-color: #111;
+			&:hover:not(.active) {
+				background-color: #111;
+			}
+		}
+	}
 }
 
 .active {
@@ -81,10 +81,10 @@ h2:not(:last-child){
 	text-align: left;
 	padding: 2px;
 	overflow: auto;
-}
 
-#topbar img {
-	vertical-align: middle;
+	img {
+		vertical-align: middle;
+	}
 }
 
 #title {
@@ -95,18 +95,18 @@ h2:not(:last-child){
 	padding-top: 0px;
 	padding-bottom: 0px;
 	height: 100%;
-}
 
-#title::after {
-	clear: both;
-}
+	&::after {
+		clear: both;
+	}
 
-#title h1 {
-	font-size: 1.5em;
-}
+	h1 {
+		font-size: 1.5em;
+	}
 
-#title h2 {
-	font-size: 1em;
+	h2 {
+		font-size: 1em;
+	}
 }
 
 #quicklinks {
@@ -138,18 +138,18 @@ h2:not(:last-child){
 	transition-property: background-color;
 	transition-duration:  500ms;
 	transition-timing-function: ease;
-}
 
-.hintBar.w {
-	background-color: white;
-}
+	.w {
+		background-color: white;
+	}
 
-.hintBar.g {
-	background-color: #ccc;
-}
+	.g {
+		background-color: #ccc;
+	}
 
-.hintBar.r {
-	background-color: #f55;
+	.r {
+		background-color: #f55;
+	}
 }
 
 #characterCreation {
@@ -178,12 +178,12 @@ h2:not(:last-child){
 	margin: 2px;
 	padding: 2px;
 	font-weight: bold;
-}
 
-.jobCell p {
-	margin: 2px;
-	padding: 2px;
-	font-weight: normal;
+	p {
+		margin: 2px;
+		padding: 2px;
+		font-weight: normal;
+	}
 }
 
 #mainGame {
@@ -203,16 +203,16 @@ h2:not(:last-child){
 	padding: 3px;
 	overflow-y: auto;
 	max-height: calc(100vh - 150px);
-}
 
-#characterPanel p {
-	margin: 2px;
-}
+	p {
+		margin: 2px;
+	}
 
-#characterPanel progress {
-	width: calc(100% - 5px);
-	height: 10px;
-	margin: 2px;
+	progress {
+		width: calc(100% - 5px);
+		height: 10px;
+		margin: 2px;
+	}
 }
 
 #stats {
@@ -310,27 +310,29 @@ h2:not(:last-child){
 	cursor: pointer;
 	align-items: center;
 	flex-shrink: 1;
-}
 
-.item_Image img {
-	height: 40px;
-	width: 40px;
+	img {
+		height: 40px;
+		width: 40px;
+	}
 }
 
 .clickable {
 	cursor:pointer;
 }
 
-#loc_equipment h2 {
-	margin: 2px;
-}
+#loc_equipment {
+	h2 {
+		margin: 2px;
+	}
 
-#loc_equipment p {
-	margin: 2px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	height: 40px;
+	p {
+		margin: 2px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: 40px;
+	}
 }
 
 .enchantment {

@@ -128,10 +128,6 @@ function goToLocation (l)
 			$("#loc_house").show();
 			if (player.questTutorial == 1)
 			{
-				if (player.job != "Medium")
-				{
-					$("#house_tutorial_1_medium").hide();
-				}
 				$("#link_equipment").show();
 				$("#inventory_tutorial_2").hide();
 				$("#house_normal").hide();

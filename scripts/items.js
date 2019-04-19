@@ -103,13 +103,13 @@ var items = [
 		sell: 5,
 		onUse: function () {
 			let x = Math.floor(Math.random() * 5) + 20;
-			hint ("You drink the health potion and gain " + x + " HP!", "g");
-			giveHp (x);
+			hint ("You drink the health potion. " + giveHp (x), "g");
 			return true;
 		},
 		onCombat: function () {
+			let x = Math.floor(Math.random() * 5) + 20;
 			addCombatText ("You drink the health potion.");
-			addCombatText (giveHp (Math.floor(Math.random() * 5) + 20));
+			addCombatText (giveHp (x));
 		}
 	},
 	{
@@ -275,7 +275,7 @@ function equip (e)
 			{
 				slot = 6;
 			}
-			else if (player.job != "Fashion Designer")
+			else if (player.job != "Pirate")
 			{
 				slot = 7;
 			}
@@ -495,7 +495,7 @@ function displayEquipment()
 				"onClick" : ""
 			});
 		}
-		if (player.job == "Fashion Designer")
+		if (player.job == "Pirate")
 		{
 			$("#accessory4").show();
 		}

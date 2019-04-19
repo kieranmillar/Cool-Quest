@@ -130,13 +130,13 @@ h2:not(:last-child) {
   transition-duration: 500ms;
   transition-timing-function: ease;
 }
-.hintBar .w {
+.hintBar.w {
   background-color: white;
 }
-.hintBar .g {
+.hintBar.g {
   background-color: #ccc;
 }
-.hintBar .r {
+.hintBar.r {
   background-color: #f55;
 }
 

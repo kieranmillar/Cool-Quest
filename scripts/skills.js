@@ -237,15 +237,15 @@ function displayTrainer()
 	{
 		//x = 8;
 	}
-	else if (player.job == "Fashion Designer")
+	else if (player.job == "Pirate")
 	{
 		//x = 28;
 	}
-	else if (player.job == "Medium")
+	else if (player.job == "Mystic")
 	{
 		//x = 48;
 	}
-	else if (player.job == "Socialite")
+	else if (player.job == "Juggler")
 	{
 		//x = 68;
 	}

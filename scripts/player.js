@@ -116,7 +116,7 @@ function createCharacter()
 				player.skills[1] = 1;
 			}
 			break;
-		case "Fashion Designer":
+		case "Pirate":
 			player.hpGain = 5;
 			player.mpGain = 2;
 			player.strGain = 4;
@@ -132,7 +132,7 @@ function createCharacter()
 				player.skills[3] = 1;
 			}
 			break;
-		case "Medium":
+		case "Mystic":
 			player.hpGain = 4;
 			player.mpGain = 3;
 			player.strGain = 4;
@@ -148,7 +148,7 @@ function createCharacter()
 				player.skills[5] = 1;
 			}
 			break;
-		case "Socialite":
+		case "Juggler":
 			player.hpGain = 6;
 			player.mpGain = 2;
 			player.strGain = 3;
@@ -218,18 +218,6 @@ function calculateStats ()
 	}
 	
 	//apply passives
-	if (player.job == "Wrestler")
-	{
-		player.effHpRegen += 5;
-	}
-	if (player.job == "Medium")
-	{
-		player.effMpRegen += 1;
-	}
-	if (player.job == "Socialite")
-	{
-		player.effGoldBoost += 25;
-	}
 	if (player.skills[2] > 0)
 	{
 		player.effHpMax += 5;
@@ -305,6 +293,9 @@ function giveHp (h)
 	{
 		return;
 	}
+	if (player.job == "Wrestler") {
+		h *= 2;
+	}
 	player.hp += h;
 	if (player.hp > player.effHpMax)
 	{
@@ -355,8 +346,6 @@ function rest ()
 {
 	let hp = Math.floor(Math.random()*10) + 30;
 	let mp = Math.floor(Math.random()*3) + 5;
-	giveHp(hp);
-	giveMp(mp);
-	hint ("You restore " + hp + " HP and " + mp + " MP.", "g");
+	hint (giveHp(hp) + " " + giveMp(mp), "g");
 	endAdventure ();
 }

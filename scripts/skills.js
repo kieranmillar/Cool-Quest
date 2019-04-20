@@ -65,14 +65,16 @@ var skills = [
 		id: 3,
 		name: "Peck",
 		description: "Your pet parrot Crackers pecks the enemy.",
-		enchantment: "A regular attack with +5 STR",
+		enchantment: "Deals 15 physical damage, ignoring enemy defense",
 		icon: "cookie.png",
 		type: "Combat",
 		category: COMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
-			regularAttack (player.effStr + 5 - monster.def, "Crackers flaps over to your opponent and digs his beak into their head.", "Crackers flaps over to your opponent and cracks open their skull with an almighty peck!");
+			addCombatText ("Crackers flaps over to your opponent and digs his beak into their head.");
+			addCombatText ("It takes 15 damage!");
+			monster.hp -= 15;
 		}
 	},
 	{
@@ -137,16 +139,14 @@ var skills = [
 		id: 7,
 		name: "Throw Stone",
 		description: "Who says you can't juggle and throw things at the same time?",
-		enchantment: "Deals 15 physical damage, ignoring enemy defense",
+		enchantment: "A regular attack with +5 STR",
 		icon: "cookie.png",
 		type: "Combat",
 		category: COMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
-			addCombatText ("You pick up a nearby stone and hurl it at your opponent.");
-			addCombatText ("It takes 15 damage!");
-			monster.hp -= 15;
+			regularAttack (player.effStr + 5 - monster.def, "You pick up a nearby stone and hurl it at your opponent.", "You pick up a nearby stone and lob it at incredible speed!");
 		}
 	},
 ];

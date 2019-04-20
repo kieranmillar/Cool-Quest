@@ -232,7 +232,7 @@ var items = [
 		id: 12,
 		name: "tiny shoes",
 		description: "Merely a few dozen sizes too small, it will fit comfortably on your big toe.",
-		enchantment: "+10 SPD",
+		enchantment: "+5 SPD",
 		icon: "tiny_shoes.png",
 		type: "Shoes",
 		category: SHOES,
@@ -240,7 +240,7 @@ var items = [
 		equipValue: 3,
 		sell: 5,
 		onWear: function () {
-			player.effSpd += 10;
+			player.effSpd += 5;
 		}
 	}
 ];

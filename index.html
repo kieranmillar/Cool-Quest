@@ -284,21 +284,21 @@
 						<p class="house_tutorial_1">You sigh. "Well... no, I haven't. But this is my chance! For adventure!"</p>
 						<p class="house_tutorial_1">The elder chuckles. "Hoo hoo hoo well I was a mercenary in my younger years too you know. Once you've settled in, come and see me in the town tomorrow and I'll give you your first job. Oh, and I left you a welcome gift on the table."</p>
 						<p class="house_tutorial_1">He slowly waddles out of the door and down the street. You look over at the table and find a postcard, faintly glowing with mystical energy.</p>
-						<p class="house_tutorial_1 item_Image" onClick="openDialog (ITEM, 1)">You pick up the <img src="./images/mystical_postcard.png">mystical postcard.</p>
+						<p class="house_tutorial_1 item_Image" onClick="openDialog (dialogType.ITEM, 1)">You pick up the <img src="./images/mystical_postcard.png">mystical postcard.</p>
 						<p class="house_tutorial_1">Use the <img src='./images/equipment.png'> icon at the top of the page to go to your equipment and equip the locket. Equippable items you own are displayed on the equipment page instead of your inventory.</p>
 						<p class="house_tutorial_2">You figure you should start early tomorrow to make the best impression, and so consider getting an early night.</p>
 						<p class="house_tutorial_2">But before you go to bed, you should practice your meditation to make sure you're in the best condition.</p>
 						<p class="house_tutorial_2">Use the <img src='./images/mortar_board.png'> icon above to visit the skill menu and cast a skill.</p>
 						<p class="house_tutorial_3">You go to bed, but are too aching from the journey to get a good rest.</p>
 						<p class="house_tutorial_3">The next morning you're starving. You hunt through your backpack but unfrotunately you only have one food item left from your travels, a single cookie.</p>
-						<p class="house_tutorial_3 item_Image" onClick="openDialog (ITEM, 2)">You get a <img src="./images/cookie.png">cookie.</p>
+						<p class="house_tutorial_3 item_Image" onClick="openDialog (dialogType.ITEM, 2)">You get a <img src="./images/cookie.png">cookie.</p>
 						<p class="house_tutorial_3">You know it's best not to work on an empty stomach, you can get more done in the day by eating, but there will be plenty of time to find or buy some food throughout the day.</p>
 						<p class="house_tutorial_3">You head out the door and off to town, where your new adventure awaits!</p>
 						<p class="house_tutorial_3">Use the <img src='./images/fountain.png'> icon above to visit town and pay the elder a visit.</p>
 						<div id="house_normal">
 							<p>This is your house.</p>
 							<button type="button" onclick="rest()">
-								Rest (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+								Rest (Restore HP and MP) (<img src='./images/adventure.png' title='(1 Adventure)'/>)
 							</button>
 							<button type="button" onclick="goToLocation('map')">
 								Back to Map
@@ -331,10 +331,10 @@
 					</div>
 					<div id="loc_shopGeneral" class="location">
 						<p>You visit the local shop.</p>
-						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(ITEM, 2)'><img src="./images/cookie.png">cookie - 5 gold </span><button type="button" onclick="buyItem(2, 1)">Buy</button></span></p>
-						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(ITEM, 4)'><img src="./images/red_potion.png">health potion - 10 gold </span><button type="button" onclick="buyItem(4, 1)">Buy</button></span></p>
-						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(ITEM, 3)'><img src="./images/stick.png">stick - 20 gold </span><button type="button" onclick="buyItem(3, 1)">Buy</button></span></p>
-						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(ITEM, 5)'><img src="./images/running_shoes.png">running shoes - 100 gold </span><button type="button" onclick="buyItem(5, 1)">Buy</button></span></p>
+						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 2)'><img src="./images/cookie.png">cookie - 5 gold </span><button type="button" onclick="buyItem(2, 1)">Buy</button></span></p>
+						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 4)'><img src="./images/red_potion.png">health potion - 10 gold </span><button type="button" onclick="buyItem(4, 1)">Buy</button></span></p>
+						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 3)'><img src="./images/stick.png">stick - 20 gold </span><button type="button" onclick="buyItem(3, 1)">Buy</button></span></p>
+						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 5)'><img src="./images/running_shoes.png">running shoes - 100 gold </span><button type="button" onclick="buyItem(5, 1)">Buy</button></span></p>
 						<button type="button" onclick="goToLocation('town')">
 							Back to Town
 						</button>

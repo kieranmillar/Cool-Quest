@@ -217,7 +217,7 @@ function redrawInfoPane ()
 	let buffCount = 0;
 	for (var i in player.buffs)
 	{
-		buffDiv.append("<div class='item item_Image' onClick='openDialog (BUFF, " + player.buffs[i].id + ");'><img src=./images/" + effects[player.buffs[i].id].icon + ">" + effects[player.buffs[i].id].name + " (" + player.buffs[i].turns + ")</div>");
+		buffDiv.append("<div class='item item_Image' onClick='openDialog (dialogType.BUFF, " + player.buffs[i].id + ");'><img src=./images/" + effects[player.buffs[i].id].icon + ">" + effects[player.buffs[i].id].name + " (" + player.buffs[i].turns + ")</div>");
 		buffCount ++;
 	}
 	if (buffCount == 0)
@@ -253,9 +253,19 @@ function hint(txt, c)
 	}, 100)
 }
 
-const ITEM = 0;
-const SKILL = 1;
-const BUFF = 2;
+function resolveProperty (input) {
+	if (typeof input === 'function'){
+        return input();
+    } else {
+        return input;
+    }
+}
+
+const dialogType = {
+	ITEM: 0,
+	SKILL: 1,
+	BUFF: 2
+}
 
 function openDialog (type, id)
 {
@@ -267,10 +277,10 @@ function openDialog (type, id)
 	d.dialog("open");
 	switch (type)
 	{
-		case ITEM:
+		case dialogType.ITEM:
 			d.dialog( "option", "title", items[id].name );
 			t = "<img src='./images/" + items[id].icon + "'>";
-			t += "<p>" + items[id].description + "</p>";
+			t += "<p>" + resolveProperty (items[id].description) + "</p>";
 			t += "<p>Type: " + items[id].type + "</p>";
 			if(items[id].hasOwnProperty("equipStat") == true)
 			{
@@ -279,16 +289,10 @@ function openDialog (type, id)
 			t += "<p class='enchantment'>" + items[id].enchantment + "</p>";
 			d.html(t);
 			break;
-		case SKILL:
+		case dialogType.dialogType.SKILL:
 			d.dialog( "option", "title", skills[id].name );
 			t = "<img src='./images/" + skills[id].icon + "'>";
-			if (typeof skills[id].description == 'function') {
-				t += "<p>" + skills[id].description() + "</p>";
-			}
-			else
-			{
-				t += "<p>" + skills[id].description + "</p>";
-			}
+			t += "<p>" + resolveProperty (skills[id].description) + "</p>";
 			t += "<p>Type: " + skills[id].type + "</p>";
 			if (skills[id].cost > 0)
 			{
@@ -297,10 +301,10 @@ function openDialog (type, id)
 			t += "<p class='enchantment'>" + skills[id].enchantment + "</p>";
 			d.html(t);
 			break;
-		case BUFF:
+		case dialogType.dialogType.BUFF:
 			d.dialog( "option", "title", effects[id].name );
 			t = "<img src='./images/" + effects[id].icon + "'>";
-			t += "<p>" + effects[id].description + "</p>";
+			t += "<p>" + resolveProperty (effects[id].description) + "</p>";
 			t += "<p class='enchantment'>" + effects[id].enchantment + "</p>";
 			d.html(t);
 			break;

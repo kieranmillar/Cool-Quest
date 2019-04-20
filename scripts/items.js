@@ -1,12 +1,14 @@
-const HAT = 0;
-const ARMOUR = 1;
-const WEAPON = 2;
-const SHIELD = 3;
-const SHOES = 4;
-const ACC = 5;
-const FOOD = 6;
-const POTION = 7;
-const MISC = 8;
+const itemType = {
+	HAT: 0,
+	ARMOUR: 1,
+	WEAPON: 2,
+	SHIELD: 3,
+	SHOES: 4,
+	ACC: 5,
+	FOOD: 6,
+	POTION: 7,
+	MISC: 8
+}
 
 var items = [
 	{
@@ -16,7 +18,7 @@ var items = [
 		enchantment: "Will show you the way to your house",
 		icon: "envelope.png",
 		type: "Useable",
-		category: MISC,
+		category: itemType.MISC,
 		sell: 0,
 		onUse: function () {
 			hint ("You commit your house's address to memory, then throw away the letter.", "g");
@@ -34,7 +36,7 @@ var items = [
 		enchantment: "+1 Max HP<br />+1 STR<br />+1 MAG",
 		icon: "mystical_postcard.png",
 		type: "Accessory",
-		category: ACC,
+		category: itemType.ACC,
 		equipStat: "MAG",
 		equipValue: 1,
 		sell: 0,
@@ -58,7 +60,7 @@ var items = [
 		enchantment: "+1 Fullness<br />+1 Turn to midnight<br />Restores 3 MP",
 		icon: "cookie.png",
 		type: "Food",
-		category: FOOD,
+		category: itemType.FOOD,
 		cost: 5,
 		sell: 1,
 		onUse: function () {
@@ -81,7 +83,7 @@ var items = [
 		enchantment: "+1 STR<br />+1 MAG",
 		icon: "stick.png",
 		type: "Weapon",
-		category: WEAPON,
+		category: itemType.WEAPON,
 		equipStat: "STR",
 		equipValue: 1,
 		cost: 20,
@@ -98,7 +100,7 @@ var items = [
 		enchantment: "Restores 20-25 HP<br />Can be used in combat",
 		icon: "red_potion.png",
 		type: "Potion, Combat Item",
-		category: POTION,
+		category: itemType.POTION,
 		cost: 10,
 		sell: 5,
 		onUse: function () {
@@ -119,7 +121,7 @@ var items = [
 		enchantment: "+30 SPD<br />-10 Max HP",
 		icon: "running_shoes.png",
 		type: "Shoes",
-		category: SHOES,
+		category: itemType.SHOES,
 		equipStat: "SPD",
 		equipValue: 5,
 		cost: 100,
@@ -136,7 +138,7 @@ var items = [
 		enchantment: "+2 STR<br />Can be used in combat to deal 10 damage",
 		icon: "straight_paperclip.png",
 		type: "Weapon, Combat Item",
-		category: WEAPON,
+		category: itemType.WEAPON,
 		equipStat: "STR",
 		equipValue: 1,
 		sell: 5,
@@ -156,7 +158,7 @@ var items = [
 		enchantment: "+3 Max HP<br />+1 DEF",
 		icon: "cardboard_panel.png",
 		type: "Shield",
-		category: SHIELD,
+		category: itemType.SHIELD,
 		equipStat: "DEF",
 		equipValue: 1,
 		sell: 10,
@@ -172,7 +174,7 @@ var items = [
 		enchantment: "+1 Max MP<br />+3 MAG",
 		icon: "tiny_staff.png",
 		type: "Weapon",
-		category: WEAPON,
+		category: itemType.WEAPON,
 		equipStat: "MAG",
 		equipValue: 3,
 		sell: 5,
@@ -188,7 +190,7 @@ var items = [
 		enchantment: "Unlocks the Town Hall",
 		icon: "key.png",
 		type: "Useable",
-		category: MISC,
+		category: itemType.MISC,
 		sell: 0,
 		onUse: function () {
 			hint ("You unlock the door and the key vanishes, like all good video game keys.", "g");
@@ -203,7 +205,7 @@ var items = [
 		enchantment: "+3 STR<br />+3 MAG<br />+5 SPD",
 		icon: "dusty_ring.png",
 		type: "Accessory",
-		category: ACC,
+		category: itemType.ACC,
 		equipStat: "MAG",
 		equipValue: 3,
 		sell: 0,
@@ -220,7 +222,7 @@ var items = [
 		enchantment: "+2 DEF",
 		icon: "tiny_helmet.png",
 		type: "Hat",
-		category: HAT,
+		category: itemType.HAT,
 		equipStat: "DEF",
 		equipValue: 3,
 		sell: 5,
@@ -235,7 +237,7 @@ var items = [
 		enchantment: "+5 SPD",
 		icon: "tiny_shoes.png",
 		type: "Shoes",
-		category: SHOES,
+		category: itemType.SHOES,
 		equipStat: "SPD",
 		equipValue: 3,
 		sell: 5,
@@ -289,14 +291,14 @@ function equip (e)
 	let slot = 0;
 	switch (c)
 	{
-		case HAT:
-		case ARMOUR:
-		case WEAPON:
-		case SHIELD:
-		case SHOES:
+		case itemType.HAT:
+		case itemType.ARMOUR:
+		case itemType.WEAPON:
+		case itemType.SHIELD:
+		case itemType.SHOES:
 			slot = c;
 			break;
-		case ACC:
+		case itemType.ACC:
 			if (player.equipment[5] == -1)
 			{
 				slot = 5;
@@ -439,7 +441,7 @@ function displayInventory()
 		textImageDiv.addClass("item_Image");
 		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'/><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
 		textImageDiv.attr({
-			"onClick" : "openDialog (ITEM, " + player.inventory[i].id + ");",
+			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");",
 		});
 		newElement.append(textImageDiv);
 		if (items[player.inventory[i].id].hasOwnProperty("onUse") == true)
@@ -450,15 +452,15 @@ function displayInventory()
 		}
 		switch (items[player.inventory[i].id].category)
 		{
-			case FOOD:
+			case itemType.FOOD:
 				foodDiv.append(newElement);
 				foodCount ++;
 				break;
-			case POTION:
+			case itemType.POTION:
 				potionDiv.append(newElement);
 				potionCount ++;
 				break;
-			case MISC:
+			case itemType.MISC:
 				miscDiv.append(newElement);
 				miscCount ++;
 				break;
@@ -515,7 +517,7 @@ function displayEquipment()
 			$(".equip" + i).show()
 			$("#worn_" + i).html("<span class='item_Image'><image src='./images/" + items[player.equipment[i]].icon + "'/><span>" + items[player.equipment[i]].name + " <input type='button' value='Unequip' onclick='unequip(" +i + ")'></span>");
 			$("#worn_" + i).attr({
-				"onClick" : "openDialog (ITEM, " + player.equipment[i] + ");"
+				"onClick" : "openDialog (dialogType.ITEM, " + player.equipment[i] + ");"
 			});
 		}
 		else
@@ -570,7 +572,7 @@ function displayEquipment()
 		textImageDiv.addClass("item_Image");
 		textImageDiv.html("<image src='./images/" + items[player.inventory[i].id].icon + "'/><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
 		textImageDiv.attr({
-			"onClick" : "openDialog (ITEM, " + player.inventory[i].id + ");"
+			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");"
 		});
 		newElement.append(textImageDiv);
 		var equipLink = $('<span></span>');
@@ -578,27 +580,27 @@ function displayEquipment()
 		newElement.append(equipLink);
 		switch (items[player.inventory[i].id].category)
 		{
-			case HAT:
+			case itemType.HAT:
 				hatDiv.append(newElement);
 				hatCount ++;
 				break;
-			case ARMOUR:
+			case itemType.ARMOUR:
 				armourDiv.append(newElement);
 				armourCount ++;
 				break;
-			case WEAPON:
+			case itemType.WEAPON:
 				weaponDiv.append(newElement);
 				weaponCount ++;
 				break;
-			case SHIELD:
+			case itemType.SHIELD:
 				shieldDiv.append(newElement);
 				shieldCount ++;
 				break;
-			case SHOES:
+			case itemType.SHOES:
 				shoesDiv.append(newElement);
 				shoesCount ++;
 				break;
-			case ACC:
+			case itemType.ACC:
 				accDiv.append(newElement);
 				accCount ++;
 				break;

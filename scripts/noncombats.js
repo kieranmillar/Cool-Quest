@@ -107,7 +107,7 @@ function getNoncombatItem(id, amount)
 	e.html("You found a <img src='./images/" + items[id].icon + "'> " + items[id].name + "!");
 	e.css("cursor", "pointer");
 	e.attr({
-		"onClick" : "openDialog (ITEM, " + id + ");"
+		"onClick" : "openDialog (dialogType.ITEM, " + id + ");"
 	});
 	$("#noncombatText").append(e);
 }

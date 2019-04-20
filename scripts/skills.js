@@ -1,6 +1,8 @@
-var COMBAT = 0;
-var NONCOMBAT = 1;
-var PASSIVE = 2;
+const skillType = {
+	COMBAT: 0,
+	NONCOMBAT: 1,
+	PASSIVE: 2
+}
 
 var skills = [
 	{
@@ -10,7 +12,7 @@ var skills = [
 		enchantment: "10 turns of:<br />+3 Max MP<br />+5 STR",
 		icon: "wrestle_thought.png",
 		type: "Non-combat",
-		category: NONCOMBAT,
+		category: skillType.NONCOMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
@@ -32,7 +34,7 @@ var skills = [
 		enchantment: "A regular attack that's guaranteed to be critical",
 		icon: "pounce.png",
 		type: "Combat",
-		category: COMBAT,
+		category: skillType.COMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
@@ -46,7 +48,7 @@ var skills = [
 		enchantment: "10 turns of:<br />+2 Max HP<br />+2 Max MP<br />+2 STR<br />+2 DEF",
 		icon: "cookie.png",
 		type: "Non-combat",
-		category: NONCOMBAT,
+		category: skillType.NONCOMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
@@ -68,7 +70,7 @@ var skills = [
 		enchantment: "Deals 15 physical damage, ignoring enemy defense",
 		icon: "cookie.png",
 		type: "Combat",
-		category: COMBAT,
+		category: skillType.COMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
@@ -84,7 +86,7 @@ var skills = [
 		enchantment: "10 turns of:<br />+4 MAG<br />+4 SPD",
 		icon: "ghost_talk.png",
 		type: "Non-combat",
-		category: NONCOMBAT,
+		category: skillType.NONCOMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
@@ -106,7 +108,7 @@ var skills = [
 		enchantment: "A regular attack using MAG instead of STR",
 		icon: "magic_sword.png",
 		type: "Combat",
-		category: COMBAT,
+		category: skillType.COMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
@@ -120,7 +122,7 @@ var skills = [
 		enchantment: "10 turns of:<br />+2 STR<br />+2 DEF<br />+2 MAG<br />+2 SPD",
 		icon: "cookie.png",
 		type: "Non-combat",
-		category: NONCOMBAT,
+		category: skillType.NONCOMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
@@ -142,7 +144,7 @@ var skills = [
 		enchantment: "A regular attack with +5 STR",
 		icon: "cookie.png",
 		type: "Combat",
-		category: COMBAT,
+		category: skillType.COMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
@@ -173,22 +175,22 @@ function displaySkills()
 		var textImageDiv = $('<span></span>');
 		textImageDiv.addClass("item_Image");
 		textImageDiv.html("<image src='./images/" + skills[i].icon + "'/><span>" + skills[i].name + "</span>");
-		textImageDiv.attr({"onClick" : "openDialog (SKILL, " + i + ");"});
+		textImageDiv.attr({"onClick" : "openDialog (dialogType.SKILL, " + i + ");"});
 		newElement.append(textImageDiv);
 		switch (skills[i].category)
 		{
-			case NONCOMBAT:
+			case skillType.NONCOMBAT:
 				var castLink = $('<span></span>');
 				castLink.html("<input type = 'button' value = 'Cast\n(" + skills[i].cost + " MP)' onClick = 'useNoncombatSkill(" + i + ")'>");
 				newElement.append(castLink);
 				noncomDiv.append(newElement);
 				noncomCount ++;
 				break;
-			case COMBAT:
+			case skillType.COMBAT:
 				comDiv.append(newElement);
 				comCount ++;
 				break;
-			case PASSIVE:
+			case skillType.PASSIVE:
 				passiveDiv.append(newElement);
 				passiveCount ++;
 		}
@@ -258,7 +260,7 @@ function displayTrainer()
 			var textImageDiv = $('<span></span>');
 			textImageDiv.addClass("item_Image");
 			textImageDiv.html("<image src='./images/" + skills[i].icon + "'/><span>" + skills[i].name + "</span>");
-			textImageDiv.attr({"onClick" : "openDialog (SKILL, " + i + ");"});
+			textImageDiv.attr({"onClick" : "openDialog (dialogType.SKILL, " + i + ");"});
 			newElement.append(textImageDiv);
 			var buyLink = $('<span></span>');
 			buyLink.html("<input type = 'button' value = 'Train\n(" + skills[i].price + " Gold)' onClick = 'buySkill(" + i + ")'>");

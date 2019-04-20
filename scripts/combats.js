@@ -78,7 +78,7 @@ function constructCombatSkillDropdown ()
 	e.append(newElement);
 	for (let i = 0; i < skills.length; i++)
 	{
-		if (skills[i].category == COMBAT && player.skills[i] > 0)
+		if (skills[i].category == skillType.COMBAT && player.skills[i] > 0)
 		{
 			let newElement = $('<option></option>');
 			newElement.val(skills[i].id);
@@ -184,7 +184,7 @@ function combatRound (action)
 				e.html("You found a <img src='./images/" + items[monster.drops[i].id].icon + "'> " + items[monster.drops[i].id].name + "!");
 				e.css("cursor", "pointer");
 				e.attr({
-					"onClick" : "openDialog (ITEM, " + monster.drops[i].id + ");"
+					"onClick" : "openDialog (dialogType.ITEM, " + monster.drops[i].id + ");"
 				});
 				$("#combatText").append(e);
 			}
@@ -284,7 +284,7 @@ function pressedViewSkillbutton ()
 		hint ("You've got to actually choose a skill to view!", "r");
 		return false;
 	}
-	openDialog (SKILL, value);
+	openDialog (dialogType.SKILL, value);
 }
 
 function pressedViewItembutton ()
@@ -296,7 +296,7 @@ function pressedViewItembutton ()
 		hint ("You've got to actually choose an item to view!", "r");
 		return false;
 	}
-	openDialog (ITEM, value);
+	openDialog (dialogType.ITEM, value);
 }
 
 function regularAttack (value, hitMessage, critMessage)

@@ -13,10 +13,10 @@ var effects = [
 	},
 	{
 		id: 1,
-		name: "Creative Potential",
-		description: "You are abuzz with the endless possibilities your new powers can bring.",
+		name: "Pirate Might",
+		description: "Might makes right.",
 		enchantment: "+2 Max HP<br />+2 Max MP<br />+2 STR<br />+2 DEF",
-		icon: "creative.png",
+		icon: "cookie.png",
 		effect: function()
 		{
 			player.effHpMax += 2;
@@ -40,10 +40,10 @@ var effects = [
 	},
 	{
 		id: 3,
-		name: "Cheered Up",
-		description: "You're feeling a little better at everything after that workout.",
+		name: "Well Balanced",
+		description: "Juggling should be enjoyed as part of a well balanced lifestyle.",
 		enchantment: "+2 STR<br />+2 DEF<br />+2 MAG<br />+2 SPD",
-		icon: "cheerleader.png",
+		icon: "cookie.png",
 		effect: function()
 		{
 			player.effStr += 2;
@@ -102,5 +102,4 @@ function decreaseBuff (id, turns) //turns = -1 means remove entire buff
 			player.buffs.splice(buffPosition, 1);
 		return true;
 	}
-	calculateStats();
 }

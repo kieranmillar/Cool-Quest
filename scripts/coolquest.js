@@ -265,7 +265,13 @@ function openDialog (type, id)
 		case SKILL:
 			d.dialog( "option", "title", skills[id].name );
 			t = "<img src='./images/" + skills[id].icon + "'>";
-			t += "<p>" + skills[id].description + "</p>";
+			if (typeof skills[id].description == 'function') {
+				t += "<p>" + skills[id].description() + "</p>";
+			}
+			else
+			{
+				t += "<p>" + skills[id].description + "</p>";
+			}
 			t += "<p>Type: " + skills[id].type + "</p>";
 			if (skills[id].cost > 0)
 			{

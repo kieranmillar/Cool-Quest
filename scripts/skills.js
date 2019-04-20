@@ -41,10 +41,10 @@ var skills = [
 	},
 	{
 		id: 2,
-		name: "Contemplate Designs",
-		description: "You consider the capability of your new powers, and the potential of magical fashion.",
+		name: "Mighty Pirate",
+		description: function () {return "You're " + player.name + " and you're a mighty pirate!";},
 		enchantment: "10 turns of:<br />+2 Max HP<br />+2 Max MP<br />+2 STR<br />+2 DEF",
-		icon: "creative.png",
+		icon: "cookie.png",
 		type: "Non-combat",
 		category: NONCOMBAT,
 		cost: 1,
@@ -57,22 +57,22 @@ var skills = [
 				$(".house_tutorial_2").hide();
 				$(".house_tutorial_3").show();
 			}
-			hint ("You get creative, gaining 10 turns of Creative Potential!", "g");
+			hint ("You take sight of your might, gaining 10 turns of Pirate Might!", "g");
 			addBuff (1, 10);
 		}
 	},
 	{
 		id: 3,
-		name: "Cut",
-		description: "Cut the enemy as if they were a piece of cloth.",
+		name: "Peck",
+		description: "Your pet parrot Crackers pecks the enemy.",
 		enchantment: "A regular attack with +5 STR",
-		icon: "scissors.png",
+		icon: "cookie.png",
 		type: "Combat",
 		category: COMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
-			regularAttack (player.effStr + 5 - monster.def, "You pull your trusty crafting scissors out of your pocket and cut your opponent.", "You pull your trusty crafting scissors out of your pocket and stab them in the eye! Well, that works too I supposse.");
+			regularAttack (player.effStr + 5 - monster.def, "Crackers flaps over to your opponent and digs his beak into their head.", "Crackers flaps over to your opponent and cracks open their skull with an almighty peck!");
 		}
 	},
 	{
@@ -100,7 +100,7 @@ var skills = [
 	{
 		id: 5,
 		name: "Channel Mystical Energies",
-		description: "Channels your newly-discovered magical powers into your weapon.",
+		description: "Channels your magical powers into your weapon.",
 		enchantment: "A regular attack using MAG instead of STR",
 		icon: "magic_sword.png",
 		type: "Combat",
@@ -113,10 +113,10 @@ var skills = [
 	},
 	{
 		id: 6,
-		name: "Cheerlead At Self",
-		description: "Nobody is around to cheer you on, so you will cheer yourself.",
+		name: "Steady Yourself",
+		description: "Every juggler knows that balance is key to avoiding catastrophe.",
 		enchantment: "10 turns of:<br />+2 STR<br />+2 DEF<br />+2 MAG<br />+2 SPD",
-		icon: "cheerleader.png",
+		icon: "cookie.png",
 		type: "Non-combat",
 		category: NONCOMBAT,
 		cost: 1,
@@ -129,22 +129,22 @@ var skills = [
 				$(".house_tutorial_2").hide();
 				$(".house_tutorial_3").show();
 			}
-			hint ("You dance and chant in the mirror, gaining 10 turns of Cheered Up!", "g");
+			hint ("Your inner ear energises, gaining 10 turns of Well Balanced!", "g");
 			addBuff (3, 10);
 		}
 	},
 	{
 		id: 7,
-		name: "Slap",
-		description: "It's time to throw down the gauntlet.",
+		name: "Throw Stone",
+		description: "Who says you can't juggle and throw things at the same time?",
 		enchantment: "Deals 15 physical damage, ignoring enemy defense",
-		icon: "hand.png",
+		icon: "cookie.png",
 		type: "Combat",
 		category: COMBAT,
 		cost: 1,
 		price: 0,
 		onUse: function () {
-			addCombatText ("You slap the monster around the face or face-equivalent, hurting it both physically and socially.");
+			addCombatText ("You pick up a nearby stone and hurl it at your opponent.");
 			addCombatText ("It takes 15 damage!");
 			monster.hp -= 15;
 		}

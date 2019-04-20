@@ -344,6 +344,13 @@ h2:not(:last-child) {
   overflow-y: auto;
   max-height: calc(100vh - 150px);
 }
+#infoPanel.smallInfoPanel {
+  flex: 0 0 100px;
+  min-width: 100px;
+}
+#infoPanel.smallInfoPanel .item {
+  width: 80px;
+}
 
 #dialog img {
   display: block;

@@ -75,7 +75,7 @@ function addBuff (id, turns)
 	}
 	player.buffs.sort(function(a,b){return a.turns - b.turns;});
 	calculateStats();
-	redrawInfoPane();
+	redrawInfoPanel();
 }
 
 function decreaseBuff (id, turns) //turns = -1 means remove entire buff

@@ -369,6 +369,15 @@ h2 {
 	padding: 3px;
 	overflow-y: auto;
 	max-height: calc(100vh - 150px);
+
+	&.smallInfoPanel {
+		flex: 0 0 100px;
+		min-width: 100px;
+
+		.item {
+			width: 80px;
+		}
+	}
 }
 
 #dialog img {

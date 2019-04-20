@@ -44,6 +44,7 @@ var player = {
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	],
+	optionSmallInfoPanel: 0,
 	questTutorial: 0,
 	questTownHall: 0,
 	zoneCounterBasement: 0
@@ -181,7 +182,7 @@ function createCharacter()
 	player.hp = player.effHpMax;
 	player.mp = player.effMpMax;
 	redrawCharPane();
-	redrawInfoPane();
+	redrawInfoPanel();
 	goToLocation ("intro");
 }
 
@@ -218,10 +219,7 @@ function calculateStats ()
 	}
 	
 	//apply passives
-	if (player.skills[2] > 0)
-	{
-		player.effHpMax += 5;
-	}
+
 	
 	//cap low stats to minimums
 	if (player.effHpMax < 1)

@@ -92,14 +92,19 @@ function displayBuffedStat (baseStat, effStat, baseStatSpan, effStatSpan)
 	}
 }
 
-function redrawInfoPane ()
+function redrawInfoPanel ()
 {
 	let buffDiv = $("#buffList");
 	buffDiv.empty();
 	let buffCount = 0;
 	for (var i in player.buffs)
 	{
-		buffDiv.append("<div class='item item_Image' onClick='openDialog (dialogType.BUFF, " + player.buffs[i].id + ");'><img src=./images/" + effects[player.buffs[i].id].icon + ">" + effects[player.buffs[i].id].name + " (" + player.buffs[i].turns + ")</div>");
+		let t = "<div class='item item_Image' onClick='openDialog (dialogType.BUFF, " + player.buffs[i].id + ");'><img src=./images/" + effects[player.buffs[i].id].icon + ">";
+		if (player.optionSmallInfoPanel == 0) {
+			t += effects[player.buffs[i].id].name + " ";
+		}
+		t += "(" + player.buffs[i].turns + ")</div>";
+		buffDiv.append(t);
 		buffCount ++;
 	}
 	if (buffCount == 0)
@@ -109,6 +114,11 @@ function redrawInfoPane ()
 	else
 	{
 		$("#infoPanel").show();
+	}
+	$("#infoPanel").removeClass();
+	if (player.optionSmallInfoPanel == 1)
+	{
+		$("#infoPanel").addClass("smallInfoPanel");
 	}
 }
 
@@ -171,7 +181,7 @@ function openDialog (type, id)
 			t += "<p class='enchantment'>" + items[id].enchantment + "</p>";
 			d.html(t);
 			break;
-		case dialogType.dialogType.SKILL:
+		case dialogType.SKILL:
 			d.dialog( "option", "title", skills[id].name );
 			t = "<img src='./images/" + skills[id].icon + "'>";
 			t += "<p>" + resolveProperty (skills[id].description) + "</p>";
@@ -183,7 +193,7 @@ function openDialog (type, id)
 			t += "<p class='enchantment'>" + skills[id].enchantment + "</p>";
 			d.html(t);
 			break;
-		case dialogType.dialogType.BUFF:
+		case dialogType.BUFF:
 			d.dialog( "option", "title", effects[id].name );
 			t = "<img src='./images/" + effects[id].icon + "'>";
 			t += "<p>" + resolveProperty (effects[id].description) + "</p>";
@@ -264,7 +274,24 @@ function load()
 	$(".newDay").hide();
 	$("#adventureAgainButton").hide();
 	calculateStats();
-	redrawInfoPane();
+	redrawInfoPanel();
+}
+
+function toggleOption(option) {
+	switch (option)
+	{
+		case 'compactInfoPanel':
+			if (player.optionSmallInfoPanel == 0)
+			{
+				player.optionSmallInfoPanel = 1;
+			}
+			else
+			{
+				player.optionSmallInfoPanel = 0;
+			}
+			redrawInfoPanel();
+			break;
+	}
 }
 
 function wipe() {

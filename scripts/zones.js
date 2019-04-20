@@ -98,6 +98,6 @@ function endAdventure ()
 	}
 	giveHp(player.effHpRegen);
 	giveMp(player.effMpRegen);
-	redrawInfoPane();
+	redrawInfoPanel();
 	save();
 }

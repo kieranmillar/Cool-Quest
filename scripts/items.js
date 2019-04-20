@@ -32,7 +32,7 @@ var items = [
 		name: "mystical postcard",
 		description: "An enchanted postcard. It says 'VISIT DRELLA', and then in small letters it says 'Please, our tourism industry is dying!'",
 		enchantment: "+1 Max HP<br />+1 STR<br />+1 MAG",
-		icon: "cookie.png",
+		icon: "mystical_postcard.png",
 		type: "Accessory",
 		category: ACC,
 		equipStat: "MAG",

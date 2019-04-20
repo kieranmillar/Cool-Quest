@@ -197,6 +197,7 @@ h2 {
 }
 
 #characterPanel {
+	flex: 0 0 200px;
 	min-width: 200px;
 	background-color: #ccc;
 	display: block;
@@ -212,6 +213,26 @@ h2 {
 		width: calc(100% - 5px);
 		height: 10px;
 		margin: 2px;
+	}
+
+	#char_hpProgress {
+		margin-left: 55px;
+		width: calc(100% - 60px);
+
+		&::-webkit-progress-bar,
+		&::-moz-progress-bar {
+			background: red;
+		}
+	}
+
+	#char_mpProgress {
+		margin-left: 55px;
+		width: calc(100% - 60px);
+
+		&::-webkit-progress-bar,
+		&::-moz-progress-bar {
+			background: blue;
+		}
 	}
 }
 
@@ -232,7 +253,7 @@ h2 {
 }
 
 #mainScreen {
-	flex-grow: 3;
+	flex-grow: 1;
 	display: block;
 	background-color: #F8F8F8;
 	padding: 3px;
@@ -341,6 +362,7 @@ h2 {
 }
 
 #infoPanel {
+	flex: 0 0 270px;
 	min-width: 270px;
 	background-color: #ccc;
 	display: block;

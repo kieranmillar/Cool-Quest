@@ -183,6 +183,7 @@ h2:not(:last-child) {
 }
 
 #characterPanel {
+  flex: 0 0 200px;
   min-width: 200px;
   background-color: #ccc;
   display: block;
@@ -197,6 +198,20 @@ h2:not(:last-child) {
   width: calc(100% - 5px);
   height: 10px;
   margin: 2px;
+}
+#characterPanel #char_hpProgress {
+  margin-left: 55px;
+  width: calc(100% - 60px);
+}
+#characterPanel #char_hpProgress::-webkit-progress-bar, #characterPanel #char_hpProgress::-moz-progress-bar {
+  background: red;
+}
+#characterPanel #char_mpProgress {
+  margin-left: 55px;
+  width: calc(100% - 60px);
+}
+#characterPanel #char_mpProgress::-webkit-progress-bar, #characterPanel #char_mpProgress::-moz-progress-bar {
+  background: blue;
 }
 
 #stats {
@@ -216,7 +231,7 @@ h2:not(:last-child) {
 }
 
 #mainScreen {
-  flex-grow: 3;
+  flex-grow: 1;
   display: block;
   background-color: #F8F8F8;
   padding: 3px;
@@ -321,6 +336,7 @@ h2:not(:last-child) {
 }
 
 #infoPanel {
+  flex: 0 0 270px;
   min-width: 270px;
   background-color: #ccc;
   display: block;

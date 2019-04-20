@@ -19,6 +19,10 @@ function redrawCharPane ()
 		$("#char_baseHpMax"),
 		$("#char_effHpMax")
 	);
+	$("#char_hpProgress").attr({
+		"value": player.hp,
+		"max": player.effHpMax
+	});
 	$("#char_mp").text(player.mp);
 	displayBuffedStat (
 		player.baseMpMax,
@@ -26,6 +30,10 @@ function redrawCharPane ()
 		$("#char_baseMpMax"),
 		$("#char_effMpMax")
 	);
+	$("#char_mpProgress").attr({
+		"value": player.mp,
+		"max": player.effMpMax
+	});
 	displayBuffedStat (
 		player.baseStr,
 		player.effStr,

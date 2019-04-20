@@ -314,11 +314,13 @@ function openDialog (type, id)
 function save()
 {
 	localStorage.setItem("playerStored", JSON.stringify(player));
+	localStorage.setItem("nonComHintsStored", JSON.stringify(nonComHints));
 }
 
 function load()
 {
 	$.extend(true, player, JSON.parse(localStorage.getItem("playerStored")));
+	nonComHints = JSON.parse(localStorage.getItem("nonComHintsStored"));
 	$("#characterCreation").hide();
 	$("#inventory_tutorial_2").hide();
 	$(".equip_tutorial").hide();

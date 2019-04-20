@@ -323,7 +323,8 @@
 						</button>
 					</div>
 					<div id="loc_elder" class="location">
-						<p>TODO: Story stuff goes here</p>
+						<div id="elderText">
+						</div>
 						<button type="button" onclick="goToLocation('town')">
 							Back to Town
 						</button>
@@ -348,10 +349,10 @@
 						</button>
 					</div>
 					<div id="loc_dungeon" class="location">
-						<button id="dungeonButton" type="button" onclick="adventure(1)">
-							Adventure in the Assembly Basement (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+						<button id="dungeon_basement" class="dungeonButton" type="button" onclick="adventure(1)">
+							Adventure in the Town Hall Basement (<img src='./images/adventure.png' title='(1 Adventure)'/>)
 						</button>
-						<button id="dungeonButton" type="button" onclick="adventure(0)">
+						<button id="dungeon_taxOffice" class="dungeonButton" type="button" onclick="adventure(0)">
 							Adventure in the Tax Office (<img src='./images/adventure.png' title='(1 Adventure)'/>)
 						</button>
 						<button type="button" onclick="goToLocation('town')">
@@ -394,7 +395,9 @@
 		<div id="dialog" title="Dialog Title"></div>
 		
 		<script src="./scripts/player.js"></script>
+		<script src="./scripts/elder.js"></script>
 		<script src="./scripts/zones.js"></script>
+		<script src="./scripts/enemies.js"></script>
 		<script src="./scripts/combats.js"></script>
 		<script src="./scripts/noncombats.js"></script>
 		<script src="./scripts/items.js"></script>

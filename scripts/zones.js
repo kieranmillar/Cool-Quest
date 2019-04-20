@@ -8,16 +8,16 @@ var zones = [
 	},
 	{
 		id: 1,
-		name: "The Elder's Basement",
+		name: "The Town Hall Basement",
 		combatChance: 90,
 		combats: [2, 3, 4],
 		noncombats: [1],
 		special: function ()
 		{
-			player.questBasement ++;
-			if (player.questBasement == 5)
+			player.zoneCounterBasement ++;
+			if (player.zoneCounterBasement == 5)
 			{
-				player.questBasement = 0;
+				player.zoneCounterBasement = 0;
 				beginNoncombat (noncombats[1]);
 			}
 			else

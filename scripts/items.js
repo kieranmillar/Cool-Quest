@@ -66,7 +66,6 @@ var items = [
 			if (success == true)
 			{
 				hint ("You eat the cookie, delaying midnight by 1 turn and gaining 1 fullness. " + giveMp(3), "g");
-				redrawCharPane();
 				return true;
 			}
 			else
@@ -193,7 +192,7 @@ var items = [
 		sell: 0,
 		onUse: function () {
 			hint ("You unlock the door and the key vanishes, like all good video game keys.", "g");
-			player.questTownHall = 2;
+			player.questTownHall = 3;
 			return true;
 		}
 	},
@@ -212,6 +211,36 @@ var items = [
 			player.effStr += 3;
 			player.effMag += 3;
 			player.effSpd += 5;
+		}
+	},
+	{
+		id: 11,
+		name: "tiny helmet",
+		description: "This helmet is incredibly strong but fails to cover much area. Still, its better than nothing.",
+		enchantment: "+2 DEF",
+		icon: "tiny_helmet.png",
+		type: "Hat",
+		category: HAT,
+		equipStat: "DEF",
+		equipValue: 3,
+		sell: 5,
+		onWear: function () {
+			player.effDef += 2;
+		}
+	},
+	{
+		id: 12,
+		name: "tiny shoes",
+		description: "Merely a few dozen sizes too small, it will fit comfortably on your big toe.",
+		enchantment: "+10 SPD",
+		icon: "tiny_shoes.png",
+		type: "Shoes",
+		category: SHOES,
+		equipStat: "SPD",
+		equipValue: 3,
+		sell: 5,
+		onWear: function () {
+			player.effSpd += 10;
 		}
 	}
 ];

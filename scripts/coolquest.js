@@ -177,6 +177,7 @@ function goToLocation (l)
 			break;
 		case "elder":
 			$("#loc_elder").show();
+			displayElderText();
 			break;
 		case "shopGeneral":
 			$("#loc_shopGeneral").show();
@@ -187,9 +188,25 @@ function goToLocation (l)
 			break;
 		case "dungeon":
 			$("#loc_dungeon").show();
+			if (player.questTownHall == 0)
+			{
+				$("#dungeon_basement").hide();
+				$("#dungeon_taxOffice").hide();
+			}
+			else if (player.questTownHall < 3)
+			{
+				$("#dungeon_basement").show();
+				$("#dungeon_taxOffice").hide();
+			}
+			else
+			{
+				$("#dungeon_basement").show();
+				$("#dungeon_taxOffice").show();
+			}
 			break;
 		case "settings":
 			$("#loc_settings").show();
+			break;
 	}
 }
 

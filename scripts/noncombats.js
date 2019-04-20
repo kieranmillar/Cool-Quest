@@ -43,9 +43,9 @@ var noncombats = [
 				buttonText: "Look on the desk (Once: get town hall key; otherwise: get health potion)",
 				onChoosing: function()
 				{
-					if (player.questTownHall == 0)
+					if (player.questTownHall == 1)
 					{
-						player.questTownHall = 1;
+						player.questTownHall = 2;
 						addNoncombatText ("The desk in the corner of the room contains uninteresting dusty books and potions. The key to unlock the town hall is sitting in clear view in the middle of the desk. You grab it, and pleased with a job well done, turn around and head out of the basement.");
 						getNoncombatItem (9, 1);
 					}

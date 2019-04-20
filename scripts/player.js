@@ -45,8 +45,8 @@ var player = {
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	],
 	questTutorial: 0,
-	questBasement: 0,
 	questTownHall: 0,
+	zoneCounterBasement: 0
 };
 
 var levelDeltas = [

@@ -26,12 +26,6 @@
 		
 	</head>
 	<body>
-		<!--<ul class="navbar">
-			<li><a href="../index.html">Home</a></li>
-			<li><a href="#">Games</a></li>
-			<li><a href="#">Tools</a></li>
-			<li><a href="#">Levels</a></li>
-		</ul>-->
 		<div id="topbar">
 			<div id="title">
 				<h1>
@@ -200,14 +194,16 @@
 						</div>
 					</div>
 					<div id="loc_intro" class="location">
-						<p>You don't remember the last time you heard from your estranged Grandmother who lived on a far away island. Your Mother refused to talk about her so you never brought it up. Therefore you didn't know what to make of it when you received a letter from her with only the words "Come quickly! There isn't much time!" scrawled on it, accompanied with a pre-paid one-way ticket for a boat to the island she lives on. You considered discussing it with your Mother but decided against it.</p>
-						<p>You didn't have much else going on at the time and money hadn't been coming in. You used to get a small but reasonable amount of business as a mini-celebrity in your local town but people no longer seemed interested, and you yearned for the return of easy income. Sensing opportunity for something new, you packed your bags and left to meet your grandmother and see what the deal was. You told your Mother you were going abroad on holiday with friends.</p>
-						<p>A couple of days later the boat arrived at the small island. Your first task was simple, find your Grandmother's house. All you had to go on was the return address on the back of the letter's envelope, which was in your bag.</p>
+						<p>After a long journey, you finally arrive at the remote town of Drella. As an aspiring mercenary, you hope this forgotten town will lack any competition so you can easily find work. Everyone has monsters that they need killing, right?</p>
+						<p>First things first, you rented your own place and need to find it. You have the address wirtten down on your confirmation letter in your backpack.</p>
 						<p>At the top of the screen are icons that will take you to various places. Click on the <img src='./images/backpack.png'> icon to access your inventory. From there you can view and use items you are carrying.</p>
 					</div>
 					<div id="loc_inventory" class="location">
 						<p id="inventory_tutorial_1">Click on an item's name or image to view a description of it. Click on the use button to use it.</p>
-						<p id="inventory_tutorial_2">Great! The grey bar directly above this line gives feedback when you interact with things in the world. Now you can visit your Grandmother's house using the <img src='./images/house.png'> icon above.</p>
+						<div id="inventory_tutorial_2">
+							<p>Great! The grey bar directly above this line gives feedback when you interact with things in the world. Now you can visit your house using the <img src='./images/house.png' onclick="goToLocation('house')" class="clickable"> icon above.</p>
+							<hr>
+						</div>
 						<p id="inv_empty">You currently have no items.</p>
 						<h2 id="inv_food_title">Food</h2>
 						<div id="inv_food" class="inv_container">
@@ -223,7 +219,7 @@
 						<div class="equip_tutorial">
 							This equipment has modified your stats. When your stats are modified, they will appear on the side as blue (if increased) or red (if decreased), with the unmodified values shown in brackets. The unmodified values are still used to determine if you meet the requirements to equip something.<br/>
 							<br/>
-							Now return to your Grandmother.
+							Now return to your house. <img src='./images/house.png' onclick="goToLocation('house')" class="clickable">
 							<hr>
 						</div>
 						<div id="equip_loadout">
@@ -264,7 +260,7 @@
 							<br/>
 							Casting skills inside or outside of combat will cost MP. You cannot cast the skill if you do not have enough MP.<br/>
 							<br/>
-							Now return to your Grandmother.
+							Now return to your house. <img src='./images/house.png' onclick="goToLocation('house')" class="clickable">
 							<hr>
 						</div>
 						<h2 id="skill_noncom_title">Non-Combat Skills</h2>
@@ -278,33 +274,29 @@
 						</div>
 					</div>
 					<div id="loc_map" class="location">
-						<p>This is a map of the island. TODO: Make map.</p>
+						<p>TODO: Make map.</p>
 					</div>
 					<div id="loc_house" class="location">
-						<p class="house_tutorial_1">This must be the house. You knock on the front door and a small while later you hear multiple bolts unlock. The door slowly creaks open and your Grandmother is standing there, looking very frail and hunched over a long walking stick made from a gnarled oaken branch.</p>
-						<p class="house_tutorial_1">"Oh good, you came! I haven't seen you since you were a small baby!" she kisses you on the cheek then turns around and hobbles over to her chair. "Make yourself at home but don't delay, you're needed at the Magician Assembly."</p>
-						<p class="house_tutorial_1">"I'm sorry what?" you reply, confused. "The Magician Assembly? What are you talking about? Could you please explain what is going on?"</p>
-						<p class="house_tutorial_1">"Don't tell me your Mother hasn't told you about our family lineage being the Guardians of the Inner Circle! What an abdication of her responsibilities! Oooh your Mother never behaved! We are required to seal off the gateway when Hades tries to return every 30 years! Only our bloodline can do it! I'm too old and frail and your Mother always refused and ran away! This will be the end of us all!"</p>
-						<p class="house_tutorial_1">You stare blankly, trying to make sense of what you have just heard, and then you start to panic. "But... but I don't know anything about this until now! How can I be expected to do this! I don't know what I'm supposed to do! I'm not a magician!"</p>
-						<p class="house_tutorial_1">"Rubbish! Of course you can! Pick up that locket on my table over there and put it on."</p>
-						<p class="house_tutorial_1 item_Image" onClick="openDialog (ITEM, 1)">You pick up <img src="./images/grandma_locket.png">Grandma's locket.</p>
+						<p class="house_tutorial_1">This must be the house. You knock on the front door and a small while later you hear multiple bolts unlock. The door slowly creaks open and an old man is standing there, looking very frail and hunched over a long walking stick made from a gnarled oaken branch.</p>
+						<p class="house_tutorial_1">"Ah good, you must be the mercenary." He hands you some keys. "We've been waiting for someone like yourself to arrive for a while now. I'm the town elder."</p>
+						<p class="house_tutorial_1">"Well I'm happy to be of assistance," you reply.</p>
+						<p class="house_tutorial_1">The elder looks you up and down. "Well to be honest, I was imagining someone a bit more... ah... how shall I put this... world weary. Have you ever done mercenary work before?"</p>
+						<p class="house_tutorial_1">You sigh. "Well... no, I haven't. But this is my chance! For adventure!"</p>
+						<p class="house_tutorial_1">The elder chuckles. "Hoo hoo hoo well I was a mercenary in my younger years too you know. Once you've settled in, come and see me in the town tomorrow and I'll give you your first job. Oh, and I left you a welcome gift on the table."</p>
+						<p class="house_tutorial_1">He slowly waddles out of the door and down the street. You look over at the table and find a postcard, faintly glowing with mystical energy.</p>
+						<p class="house_tutorial_1 item_Image" onClick="openDialog (ITEM, 1)">You pick up the <img src="./images/cookie.png">mystical postcard.</p>
 						<p class="house_tutorial_1">Use the <img src='./images/equipment.png'> icon at the top of the page to go to your equipment and equip the locket. Equippable items you own are displayed on the equipment page instead of your inventory.</p>
-						<p class="house_tutorial_2">"That surge of power you felt when you wore the locket, that's an enchanted item passed down through generations of our family. Only those with an affinity for magic will feel that power."</p>
-						<p class="house_tutorial_2">"OK, but I still don't know how to use magic in any sort of useful way."</p>
-						<p class="house_tutorial_2">"Well then dear, I will just have to show you, now focus your mind."</p>
+						<p class="house_tutorial_2">You figure you should start early tomorrow to make the best impression, and so consider getting an early night.</p>
+						<p class="house_tutorial_2">But before you go to bed, you should practice your meditation to make sure you're in the best condition.</p>
 						<p class="house_tutorial_2">Use the <img src='./images/mortar_board.png'> icon above to visit the skill menu and cast a skill.</p>
-						<p class="house_tutorial_3">"See how easy that was? The magic has been inside you all along, you just didn't know how to apply it."</p>
-						<p class="house_tutorial_3">"Can you teach me more Grandma?"</p>
-						<p class="house_tutorial_3">"I'm afraid I am not the best person to speak to. But if you go to the personal trainer in town I'm sure he will be able to teach you how to utilise your powers in a way that works best for you."</p>
-						<p class="house_tutorial_3">"So what now?"</p>
-						<p class="house_tutorial_3">"Well dear that's all from me. My house is open to you any time you need to rest and recover. I have a spare room you can use. Feel free to stop by and visit any time. In the meantime, you need to go to the Magician Assembly and help seal off the gateway!"</p>
-						<p class="house_tutorial_3">"OK, thank you for your help Grandma. I will try my best."</p>
-						<p class="house_tutorial_3">"Oh, and one last thing, don't forget to eat! You can't do very much in a day on an empty stomach! The better food you eat, the more time you will have to do things in the day. Please take this, I baked it myself."</p>
+						<p class="house_tutorial_3">You go to bed, but are too aching from the journey to get a good rest.</p>
+						<p class="house_tutorial_3">The next morning you're starving. You hunt through your backpack but unfrotunately you only have one food item left from your travels, a single cookie.</p>
 						<p class="house_tutorial_3 item_Image" onClick="openDialog (ITEM, 2)">You get a <img src="./images/cookie.png">cookie.</p>
-						<p class="house_tutorial_3">You kiss your Grandma goodbye and then step out off the house, and head towards town. Partway there you stop to think deeply about what just happened. You didn't know what to expect when you came here, but this certainly wasn't what you had in mind.</p>
-						<p class="house_tutorial_3">Use the <img src='./images/fountain.png'> icon above to visit town.</p>
+						<p class="house_tutorial_3">You know it's best not to work on an empty stomach, you can get more done in the day by eating, but there will be plenty of time to find or buy some food throughout the day.</p>
+						<p class="house_tutorial_3">You head out the door and off to town, where your new adventure awaits!</p>
+						<p class="house_tutorial_3">Use the <img src='./images/fountain.png'> icon above to visit town and pay the elder a visit.</p>
 						<div id="house_normal">
-							<p>This is your Grandmother's house.</p>
+							<p>This is your house.</p>
 							<button type="button" onclick="rest()">
 								Rest (<img src='./images/adventure.png' title='(1 Adventure)'/>)
 							</button>
@@ -314,8 +306,8 @@
 						</div>
 					</div>
 					<div id="loc_town" class="location">
-						<button type="button" onclick="goToLocation('assembly')">
-							Visit the Magician Assembly
+						<button type="button" onclick="goToLocation('elder')">
+							Visit the Elder
 						</button>
 						<button type="button" onclick="goToLocation('shopGeneral')">
 							Visit the Shop
@@ -330,7 +322,7 @@
 							Back to Map
 						</button>
 					</div>
-					<div id="loc_assembly" class="location">
+					<div id="loc_elder" class="location">
 						<p>TODO: Story stuff goes here</p>
 						<button type="button" onclick="goToLocation('town')">
 							Back to Town
@@ -373,7 +365,7 @@
 						<br />
 						The game also auto-saves every time you:
 						<ul>
-							<li>End an adventure</li>
+							<li>End a turn</li>
 							<li>Equip or unequip an item</li>
 							<li>Use or sell an item</li>
 							<li>Cast a non-combat skill</li>

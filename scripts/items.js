@@ -11,15 +11,15 @@ const MISC = 8;
 var items = [
 	{
 		id: 0,
-		name: "opened envelope",
-		description: "An opened envelope with the return address to your Grandmother's house.",
-		enchantment: "Will show you the way to your Grandmother's house",
+		name: "confirmation letter",
+		description: "A letter containing confirmation details of your house rental in Drella.",
+		enchantment: "Will show you the way to your house",
 		icon: "envelope.png",
 		type: "Useable",
 		category: MISC,
 		sell: 0,
 		onUse: function () {
-			hint ("You commit your Grandmother's house's address to memory, then throw away the envelope.", "g");
+			hint ("You commit your house's address to memory, then throw away the letter.", "g");
 			$("#inventory_tutorial_1").hide();
 			$("#inventory_tutorial_2").show();
 			$("#link_house").show();
@@ -29,10 +29,10 @@ var items = [
 	},
 	{
 		id: 1,
-		name: "Grandma's locket",
-		description: "A brass heart on a chain containing a black and white picture of somebody you don't recognise.",
+		name: "mystical postcard",
+		description: "An enchanted postcard. It says 'VISIT DRELLA', and then in small letters it says 'Please, our tourism industry is dying!'",
 		enchantment: "+1 Max HP<br />+1 STR<br />+1 MAG",
-		icon: "grandma_locket.png",
+		icon: "cookie.png",
 		type: "Accessory",
 		category: ACC,
 		equipStat: "MAG",
@@ -65,7 +65,8 @@ var items = [
 			let success = eat (1, 1);
 			if (success == true)
 			{
-				giveMp(3);
+				hint ("You eat the cookie, delaying midnight by 1 turn and gaining 1 fullness. " + giveMp(3), "g");
+				redrawCharPane();
 				return true;
 			}
 			else
@@ -183,16 +184,16 @@ var items = [
 	},
 	{
 		id: 9,
-		name: "assembly key",
-		description: "This key unlocks the back area of the Magician's Assembly.",
-		enchantment: "Unlocks more areas of the Assembly",
+		name: "town hall key",
+		description: "This key unlocks the front door of the town hall.",
+		enchantment: "Unlocks the Town Hall",
 		icon: "key.png",
 		type: "Useable",
 		category: MISC,
 		sell: 0,
 		onUse: function () {
-			hint ("You unlock the door and the key vanishes, like all good magical items.", "g");
-			player.questAssmebly = 2;
+			hint ("You unlock the door and the key vanishes, like all good video game keys.", "g");
+			player.questTownHall = 2;
 			return true;
 		}
 	},

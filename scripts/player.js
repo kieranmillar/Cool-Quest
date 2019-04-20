@@ -46,7 +46,7 @@ var player = {
 	],
 	questTutorial: 0,
 	questBasement: 0,
-	questAssembly: 0,
+	questTownHall: 0,
 };
 
 var levelDeltas = [
@@ -328,13 +328,6 @@ function eat (turns, fullness)
 	{
 		player.full += fullness;
 		player.turnsToMidnight += turns;
-		let t = "turns";
-		if (turns == 1)
-		{
-			t = "turn";
-		}
-		hint ("You delay midnight by " + turns + " " + t + " and gain " + fullness + " fullness.", "g");
-		redrawCharPane();
 		return true;
 	}
 }

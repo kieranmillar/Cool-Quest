@@ -175,8 +175,8 @@ function goToLocation (l)
 			$("#house_normal").show();
 			player.questTutorial = 7;
 			break;
-		case "assembly":
-			$("#loc_assembly").show();
+		case "elder":
+			$("#loc_elder").show();
 			break;
 		case "shopGeneral":
 			$("#loc_shopGeneral").show();

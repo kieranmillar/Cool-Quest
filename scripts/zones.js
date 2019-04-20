@@ -3,14 +3,14 @@ var zones = [
 		id: 0,
 		name: "Tax Office",
 		combatChance: 70,
-		combats: [0,1],
+		combats: [0, 1],
 		noncombats: [0]
 	},
 	{
 		id: 1,
-		name: "The Assembly Basement",
+		name: "The Elder's Basement",
 		combatChance: 90,
-		combats: [2,3, 4],
+		combats: [2, 3, 4],
 		noncombats: [1],
 		special: function ()
 		{
@@ -32,7 +32,7 @@ function adventure (z)
 {
 	if (player.hp == 0)
 	{
-		hint ("You can't adventure with 0 HP! Go rest at Grandma's house.", "r");
+		hint ("You can't adventure with 0 HP! Go rest at your house.", "r");
 		return;
 	}
 	if (busy == true)

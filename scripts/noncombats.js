@@ -37,16 +37,16 @@ var noncombats = [
 	{
 		id: 1,
 		title: "Debasement of The Basement",
-		description: "You get a rare quiet moment to yourself, and take the opportnity to look at things a little more closely.\n",
+		description: "You get a rare quiet moment to yourself, and take the opportunity to look at things a little more closely.\n",
 		choices: [
 			{
-				buttonText: "Look on the desk (Once: get assembly key; otherwise: get health potion)",
+				buttonText: "Look on the desk (Once: get town hall key; otherwise: get health potion)",
 				onChoosing: function()
 				{
-					if (player.questAssembly == 0)
+					if (player.questTownHall == 0)
 					{
-						player.questAssembly = 1;
-						addNoncombatText ("The desk in the corner of the room contains uninteresting dusty books and potions. The key to unlock the rest of the assmebly is sitting in clear view in the middle of the desk. You grab it, and pleased with a job well done, turn around and head out of the basement.");
+						player.questTownHall = 1;
+						addNoncombatText ("The desk in the corner of the room contains uninteresting dusty books and potions. The key to unlock the town hall is sitting in clear view in the middle of the desk. You grab it, and pleased with a job well done, turn around and head out of the basement.");
 						getNoncombatItem (9, 1);
 					}
 					else

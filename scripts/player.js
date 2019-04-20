@@ -293,9 +293,6 @@ function giveHp (h)
 	{
 		return;
 	}
-	if (player.job == "Wrestler") {
-		h *= 2;
-	}
 	player.hp += h;
 	if (player.hp > player.effHpMax)
 	{

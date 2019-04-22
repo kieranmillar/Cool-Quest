@@ -98,16 +98,19 @@ function goToLocation (l)
 			{
 				$("#dungeon_basement").hide();
 				$("#dungeon_taxOffice").hide();
+				$("#dungeon_canteen").hide();
 			}
 			else if (player.questTownHall < 3)
 			{
 				$("#dungeon_basement").show();
 				$("#dungeon_taxOffice").hide();
+				$("#dungeon_canteen").hide();
 			}
 			else
 			{
 				$("#dungeon_basement").show();
 				$("#dungeon_taxOffice").show();
+				$("#dungeon_canteen").show();
 			}
 			break;
 		case "settings":

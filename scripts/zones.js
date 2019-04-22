@@ -26,6 +26,12 @@ var zones = [
 		combats: [3, 4],
 		noncombats: [1]
 	},
+	{
+		id: 2,
+		name: "The Town Hall Canteen",
+		combatChance: 100,
+		combats: [5, 6, 7],
+	},
 ];
 
 function adventure (z)

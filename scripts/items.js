@@ -215,8 +215,8 @@ var items = [
 		type: "Accessory",
 		category: itemType.ACC,
 		equipStat: "MAG",
-		equipValue: 3,
-		sell: 0,
+		equipValue: 4,
+		sell: 20,
 		onWear: function () {
 			player.effStr += 3;
 			player.effMag += 3;

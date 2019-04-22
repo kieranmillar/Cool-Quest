@@ -6,7 +6,7 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Look on the desk", nonComHintsEnum.TOWNHALLBASEMENT1, "Once: get town hall key; otherwise: get health potion");},
-				onChoosing: function()
+				onChoosing: function ()
 				{
 					nonComHints[nonComHintsEnum.TOWNHALLBASEMENT1] = 1;
 					if (player.questTownHall == 1)
@@ -24,7 +24,7 @@ var noncombats = [
 			},
 			{
 				buttonText: function () {return noncombatButton ("Look on the shelves", nonComHintsEnum.TOWNHALLBASEMENT2, "get dusty ring");},
-				onChoosing: function()
+				onChoosing: function ()
 				{
 					nonComHints[nonComHintsEnum.TOWNHALLBASEMENT2] = 1;
 					addNoncombatText ("You look on the shelves on the wall. There is row after row of dusty books, dusty tools, and all sorts of dusty trinkets. All of them seem useless, but a slightly glowing ring catches your eye.");
@@ -34,7 +34,7 @@ var noncombats = [
 			},
 			{
 				buttonText: function () {return noncombatButton ("Look for trouble", nonComHintsEnum.TOWNHALLBASEMENT3, "fight a monster");},
-				onChoosing: function()
+				onChoosing: function ()
 				{
 					nonComHints[nonComHintsEnum.TOWNHALLBASEMENT3] = 1;
 					let r = Math.random();
@@ -51,7 +51,7 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Open the dull, white box", nonComHintsEnum.TOWNHALLTAXOFFICE1, "30 gold");},
-				onChoosing: function()
+				onChoosing: function ()
 				{
 					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE1] = 1;
 					addNoncombatText ("You open the brown box and find an unmarked envelope. Unable to contain yourself from the excitement of finding another sealed container inside the first one, you tear it open, and gold goes flying everywhere! Looks like somebody tried to pay their taxes with cash.");
@@ -61,7 +61,7 @@ var noncombats = [
 			},
 			{
 				buttonText: function () {return noncombatButton ("Open the dull, grey box", nonComHintsEnum.TOWNHALLTAXOFFICE2, "15 exp, -1 HP");},
-				onChoosing: function()
+				onChoosing: function ()
 				{
 					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE2] = 1;
 					addNoncombatText ("You go to open the grey box, and find it to be sealed shut! Well, this is certainly not going to stop you and you decide to open it with brute force. You struggle to pick up the box, and slowly raise it over your head, before throwing it down again onto the ground, right onto your toe!");
@@ -73,7 +73,7 @@ var noncombats = [
 			},
 			{
 				buttonText: function () {return noncombatButton ("Open the dull, brown box", nonComHintsEnum.TOWNHALLTAXOFFICE3, "get cardboard panel");},
-				onChoosing: function()
+				onChoosing: function ()
 				{
 					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE3] = 1;
 					addNoncombatText ("You try to open the brown box, but it's sealed shut with tape. Given that it's only cardboard, you give it a big tug, and end up ripping a big chunk off of the box.");

@@ -19,6 +19,10 @@ function displayElderText ()
         newElderText("Well done on opening the Town Hall. You are free to explore it if you wish.");
         player.questTownHall = 4;
     }
+    if (player.hp == 0)
+    {
+        newElderText("Out of HP? One way of healing up is to rest in your house! It costs turns, but it is free!");
+    }
     if ($("#elderText").is(':empty')) {
         newElderText("I have nothing for you right now. Please come back later when you are stronger.");
     }

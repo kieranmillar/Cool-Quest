@@ -118,4 +118,69 @@ var combats = [
 			"You slip in the wet puddle the box is sitting in, and twist your ankle."
 		]
 	},
+	{
+		id: 5,
+		name: "The Biscuit Monster",
+		description: "You find a blue furry monster by the baked goods, scoffing down all of the biscuits he can find. He growls at you in a posh English accent 'B IS FOR BISCUIT, THAT'S GOOD ENOUGH FOR ME!'",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 5,
+		spd: 0,
+		exp: 20,
+		gold: 12,
+		drops: [
+			{id: 2, chance: 80},
+			{id: 2, chance: 40},
+			{id: 2, chance: 10}
+		],
+		hitMessages: [
+			"He throws a soggy, limp biscuit at you. It keeps Rollin' Rollin' Rollin' until it smacks into you.",
+			"He growls 'B IS ALSO FOR BEATING!'",
+			"You consider swapping his biscuit for a brisket, decide to risk it, but he hits you with a frisket.",
+			"He angrily throws a trash can at you. What a Grouch."
+		]
+	},
+	{
+		id: 6,
+		name: "canteen enemy 2",
+		description: "TODO Desc",
+		icon: "empty.png",
+		hp: 16,
+		str: 8,
+		def: 0,
+		spd: -50,
+		exp: 15,
+		gold: 4,
+		drops: [
+			{id: 7, chance: 30}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 7,
+		name: "canteen enemy 3",
+		description: "TODO Desc",
+		icon: "empty.png",
+		hp: 16,
+		str: 8,
+		def: 0,
+		spd: -50,
+		exp: 15,
+		gold: 4,
+		drops: [
+			{id: 7, chance: 30}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
 ];

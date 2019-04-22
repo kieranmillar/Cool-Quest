@@ -232,8 +232,11 @@ function combatRound (action)
 			{
 				addCombatText ("CRITICAL! " + monster.hitMessages[0]);
 			}
-			let r = Math.floor(Math.random() * (monster.hitMessages.length - 1)) + 1;
-			addCombatText (monster.hitMessages[r]);
+			else
+			{
+				let r = Math.floor(Math.random() * (monster.hitMessages.length - 1)) + 1;
+				addCombatText (monster.hitMessages[r]);
+			}
 		}
 		if (usingItem == 7)
 		{

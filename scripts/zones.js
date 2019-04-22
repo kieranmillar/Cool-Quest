@@ -1,31 +1,31 @@
 var zones = [
 	{
 		id: 0,
-		name: "Tax Office",
-		combatChance: 70,
-		combats: [0, 1],
-		noncombats: [0]
-	},
-	{
-		id: 1,
 		name: "The Town Hall Basement",
 		combatChance: 90,
-		combats: [2, 3, 4],
-		noncombats: [1],
+		combats: [0, 1, 2],
+		noncombats: [0],
 		special: function ()
 		{
 			player.zoneCounterBasement ++;
 			if (player.zoneCounterBasement == 5)
 			{
 				player.zoneCounterBasement = 0;
-				beginNoncombat (noncombats[1]);
+				beginNoncombat (noncombats[0]);
 			}
 			else
 			{
-				genericAdventure(1);
+				genericAdventure(0);
 			}
 		}
-	}
+	},
+	{
+		id: 1,
+		name: "The Town Hall Tax Office",
+		combatChance: 70,
+		combats: [3, 4],
+		noncombats: [1]
+	},
 ];
 
 function adventure (z)

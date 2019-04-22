@@ -159,9 +159,6 @@
 								<button id="basicAttackButton" type="button" onclick="combatRound(0)">
 									Attack
 								</button>
-								<button id="blockButton" type="button" onclick="combatRound(1)">
-									Block
-								</button>
 							</div>
 							<div class="combatRow">
 								<select id="skillDropdown" >
@@ -169,7 +166,7 @@
 								<button id="viewSkillButton" type="button" onclick="pressedViewSkillbutton()">
 									View
 								</button>
-								<button id="skillButton" type="button" onclick="combatRound(2)">
+								<button id="skillButton" type="button" onclick="combatRound(1)">
 									Use Skill
 								</button>
 							</div>
@@ -179,7 +176,7 @@
 								<button id="viewItemButton" type="button" onclick="pressedViewItembutton()">
 									View
 								</button>
-								<button id="combatItemButton" type="button" onclick="combatRound(3)">
+								<button id="combatItemButton" type="button" onclick="combatRound(2)">
 									Use Item
 								</button>
 							</div>
@@ -349,11 +346,11 @@
 						</button>
 					</div>
 					<div id="loc_dungeon" class="location">
-						<button id="dungeon_basement" class="dungeonButton" type="button" onclick="adventure(1)">
+						<button id="dungeon_basement" class="dungeonButton" type="button" onclick="adventure(0)">
 							Adventure in the Town Hall Basement (<img src='./images/adventure.png' title='(1 Adventure)'/>)
 						</button>
-						<button id="dungeon_taxOffice" class="dungeonButton" type="button" onclick="adventure(0)">
-							Adventure in the Tax Office (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+						<button id="dungeon_taxOffice" class="dungeonButton" type="button" onclick="adventure(1)">
+							Adventure in the Town Hall Tax Office (<img src='./images/adventure.png' title='(1 Adventure)'/>)
 						</button>
 						<button type="button" onclick="goToLocation('town')">
 							Back to Town

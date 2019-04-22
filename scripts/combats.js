@@ -126,13 +126,16 @@ function combatRound (action)
 {
 	resetHint();
 	if (player.hp == 0 || monster.hp == 0 || busy == false)
+	{
 		return;
+	}
 	if (action != -1)
 	{
 		$("#combatText").empty();
 	}
 	let damage = 0;
-	let block = false;
+	let usingSkill = -1;
+	let usingItem = -1;
 	switch (action)
 	{
 		case -1:
@@ -143,24 +146,27 @@ function combatRound (action)
 			regularAttack (player.effStr - monster.def, "You hit the monster.", "You wind up and overhead smash the monster!");
 			break;
 		case 1:
-			//block
-			block = true;
-			addCombatText ("You brace yourself.");
-			break;
-		case 2:
 			//use skill
 			var e = $("#skillDropdown");
-			var value = e.val();
-			if (useCombatSkill (value) == false)
+			var value = parseInt(e.val());
+			if (useCombatSkill (value))
+			{
+				usingSkill = value;
+			}
+			else
 			{
 				return;
 			}
 			break;
-		case 3:
+		case 2:
 			//use item
 			var e = $("#itemDropdown");
-			var value = e.val();
-			if (useCombatItem (value) == false)
+			var value = parseInt(e.val());
+			if (useCombatItem (value))
+			{
+				usingItem = value;
+			}
+			else
 			{
 				return;
 			}
@@ -193,20 +199,49 @@ function combatRound (action)
 	}
 	else
 	{
+		let isCrit = false;
+		let overrideStandardAttack = false;
+		let overrideCrit = false;
 		damage = monster.str - player.effDef;
-		if (damage <= 0)
-			damage = 1;
-		if (block == true)
-			damage = Math.ceil (damage / 2);
 		if (Math.random() * 100 < ((monster.spd - player.effSpd) / 5) + 10)
 		{
-			damage = Math.ceil (damage*1.2);
-			addCombatText ("CRITICAL! " + monster.hitMessages[0]);
+			isCrit = true;
 		}
-		else
+		if (usingSkill != -1) {
+			switch (usingSkill)
+			{
+				default:
+					break;
+			}
+		}
+		if (usingItem != -1) {
+			switch (usingItem)
+			{
+				case 7:
+					damage = Math.floor (damage * 0.2);
+					break;
+			}
+		}
+		if (isCrit == true && overrideCrit == false)
 		{
+			damage = Math.ceil (damage * 1.2);
+		}
+		if (overrideStandardAttack == false)
+		{
+			if (isCrit)
+			{
+				addCombatText ("CRITICAL! " + monster.hitMessages[0]);
+			}
 			let r = Math.floor(Math.random() * (monster.hitMessages.length - 1)) + 1;
 			addCombatText (monster.hitMessages[r]);
+		}
+		if (usingItem == 7)
+		{
+			addCombatText ("The cardboard panel shatters into pieces, but at least it dampened the blow.");
+		}
+		if (damage <= 0)
+		{
+			damage = 1;
 		}
 		addCombatText ("You take " + damage + " damage!");
 		player.hp -= damage;
@@ -223,7 +258,6 @@ function combatRound (action)
 
 function useCombatSkill (x)
 {
-	x = parseInt(x);
 	if (x == -1)
 	{
 		hint ("You've got to actually choose a skill to cast!", "r");
@@ -253,7 +287,6 @@ function useCombatSkill (x)
 
 function useCombatItem (x)
 {
-	x = parseInt(x);
 	if (x == -1)
 	{
 		hint ("You've got to actually choose an item to use!", "r");

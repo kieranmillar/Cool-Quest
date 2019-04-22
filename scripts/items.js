@@ -135,7 +135,7 @@ var items = [
 		id: 6,
 		name: "straightened paperclip",
 		description: "A paperclip that has been pulled into a straight piece of metal by a bored worker. Perfect for stabbing.",
-		enchantment: "+2 STR<br />Can be used in combat to deal 10 damage",
+		enchantment: "+2 STR<br />Can be used in combat to deal 40 physical damage",
 		icon: "straight_paperclip.png",
 		type: "Weapon, Combat Item",
 		category: itemType.WEAPON,
@@ -146,18 +146,23 @@ var items = [
 			player.effStr += 2;
 		},
 		onCombat: function () {
-			addCombatText ("You hurl it at your enemy like a spear, and it pierces through them.");
-			addCombatText ("It takes 10 damage!");
-			monster.hp -= 10;
+			addCombatText ("You hurl the paperclip at your enemy like a spear.");
+			let damage = 40 - monster.def;
+			if (damage <= 0)
+			{
+				damage = 1;
+			}
+			addCombatText ("It takes " + damage + " damage!");
+			monster.hp -= damage;
 		}
 	},
 	{
 		id: 7,
 		name: "cardboard panel",
 		description: "A dry piece of cardboard box. Provides barely any defense, but also max HP for some reason.",
-		enchantment: "+3 Max HP<br />+1 DEF",
+		enchantment: "+3 Max HP<br />+1 DEF<br />Can be used in combat to reduce incoming damage by 80%",
 		icon: "cardboard_panel.png",
-		type: "Shield",
+		type: "Shield, Combat Item",
 		category: itemType.SHIELD,
 		equipStat: "DEF",
 		equipValue: 1,
@@ -165,6 +170,9 @@ var items = [
 		onWear: function () {
 			player.effHpMax += 3;
 			player.effDef += 1;
+		},
+		onCombat: function () {
+			addCombatText ("You hold the cardboard panel out in front of yourself and brace for impact.");
 		}
 	},
 	{

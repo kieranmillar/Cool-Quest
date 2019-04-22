@@ -1,44 +1,6 @@
 var noncombats = [
 	{
 		id: 0,
-		title: "A Taxing Adventure",
-		description: "You manage to sneak into a calm corner of the office. Here you find three sturdy cardboard boxes in front of you, each one oozing terrifying levels of boredom. You figure you have time to loot one of them before the sheer boredom of it all forces you to make a hasty retreat.\n",
-		choices: [
-			{
-				buttonText: function () {return noncombatButton ("Open the dull, brown box", nonComHintsEnum.TOWNHALLTAXOFFICE1, "20 gold");},
-				onChoosing: function()
-				{
-					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE1] = 1;
-					addNoncombatText ("You open the brown box and find an unmarked envelope. Unable to contain yourself from the excitement of finding another sealed container inside the first one, you tear it open, and gold goes flying everywhere! Looks like somebody tried to pay their taxes with cash.");
-					addNoncombatText ("You scramble around to pick up as much gold as you can, and only manage to pick up a small amount before boredom settles back in. You quickly leave before you go mad.");
-					addNoncombatText (giveGold(20, false));
-				}
-			},
-			{
-				buttonText: function () {return noncombatButton ("Open the dull, grey box", nonComHintsEnum.TOWNHALLTAXOFFICE2, "15 exp, -1 HP");},
-				onChoosing: function()
-				{
-					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE2] = 1;
-					addNoncombatText ("You go to open the grey box, and find it to be sealed shut! Well, this is certainly not going to stop you and you decide to open it with brute force. You struggle to pick up the box, and slowly raise it over your head, before throwing it down again onto the ground, right onto your toe!");
-					addNoncombatText ("Muttering under your breath, you hobble out of the room, but at least you got a workout.");
-					addNoncombatText (giveExp(15));
-					addNoncombatText ("You lose 1 HP!");
-					player.hp -= 1;
-				}
-			},
-			{
-				buttonText: function () {return noncombatButton ("Open the dull, white box", nonComHintsEnum.TOWNHALLTAXOFFICE3, "get cookie");},
-				onChoosing: function()
-				{
-					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE3] = 1;
-					addNoncombatText ("You open the white box and it's full of cookies. Confused, you look on the side and it is addressed to the local bakery. You aren't sure why it's here, but you aren't one to miss out on an opportunity for free baked goods. You figure you can take one and nobody will notice.");
-					getNoncombatItem (2, 1);
-				}
-			}
-		],
-	},
-	{
-		id: 1,
 		title: "Debasement of The Basement",
 		description: "You get a rare quiet moment to yourself, and take the opportunity to look at things a little more closely.\n",
 		choices: [
@@ -81,7 +43,46 @@ var noncombats = [
 				}
 			}
 		],
-	}
+	},
+	{
+		id: 1,
+		title: "A Taxing Adventure",
+		description: "You manage to sneak into a calm corner of the office. Here you find three sturdy cardboard boxes in front of you, each one oozing terrifying levels of boredom. You figure you have time to loot one of them before the sheer boredom of it all forces you to make a hasty retreat.\n",
+		choices: [
+			{
+				buttonText: function () {return noncombatButton ("Open the dull, white box", nonComHintsEnum.TOWNHALLTAXOFFICE1, "30 gold");},
+				onChoosing: function()
+				{
+					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE1] = 1;
+					addNoncombatText ("You open the brown box and find an unmarked envelope. Unable to contain yourself from the excitement of finding another sealed container inside the first one, you tear it open, and gold goes flying everywhere! Looks like somebody tried to pay their taxes with cash.");
+					addNoncombatText ("You scramble around to pick up as much gold as you can, and only manage to pick up a small amount before boredom settles back in. You quickly leave before you go mad.");
+					addNoncombatText (giveGold(30, false));
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Open the dull, grey box", nonComHintsEnum.TOWNHALLTAXOFFICE2, "15 exp, -1 HP");},
+				onChoosing: function()
+				{
+					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE2] = 1;
+					addNoncombatText ("You go to open the grey box, and find it to be sealed shut! Well, this is certainly not going to stop you and you decide to open it with brute force. You struggle to pick up the box, and slowly raise it over your head, before throwing it down again onto the ground, right onto your toe!");
+					addNoncombatText ("Muttering under your breath, you hobble out of the room, but at least you got a workout.");
+					addNoncombatText (giveExp(15));
+					addNoncombatText ("You lose 1 HP!");
+					player.hp -= 1;
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Open the dull, brown box", nonComHintsEnum.TOWNHALLTAXOFFICE3, "get cardboard panel");},
+				onChoosing: function()
+				{
+					nonComHints[nonComHintsEnum.TOWNHALLTAXOFFICE3] = 1;
+					addNoncombatText ("You try to open the brown box, but it's sealed shut with tape. Given that it's only cardboard, you give it a big tug, and end up ripping a big chunk off of the box.");
+					addNoncombatText ("Turns out the box was empty, but hey, you got some sweet free cardboard! There's treasure everywhere!");
+					getNoncombatItem (7, 1);
+				}
+			}
+		],
+	},
 ];
 
 function noncombatButton (text, hint, hintText)

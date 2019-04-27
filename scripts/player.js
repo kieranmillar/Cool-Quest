@@ -47,7 +47,8 @@ var player = {
 	optionSmallInfoPanel: 0,
 	questTutorial: 0,
 	questTownHall: 0,
-	zoneCounterBasement: 0
+	zoneCounterBasement: 0,
+	zoneCounterCanteen: 0
 };
 
 var levelDeltas = [
@@ -326,6 +327,7 @@ function eat (turns, fullness)
 	{
 		player.full += fullness;
 		player.turnsToMidnight += turns;
+		redrawCharPane();
 		return true;
 	}
 }

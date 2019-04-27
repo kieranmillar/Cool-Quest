@@ -4,7 +4,7 @@ var noncombats = [
 	{
 		id: 0,
 		title: "Debasement of The Basement",
-		description: "You get a rare quiet moment to yourself, and take the opportunity to look at things a little more closely.\n",
+		description: "You get a rare quiet moment to yourself, and take the opportunity to look at things a little more closely.",
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Look on the desk", 0, "Once: get town hall key; otherwise: get health potion");},
@@ -46,7 +46,7 @@ var noncombats = [
 	{
 		id: 1,
 		title: "A Taxing Adventure",
-		description: "You manage to sneak into a calm corner of the office. Here you find three sturdy cardboard boxes in front of you, each one oozing terrifying levels of boredom. You figure you have time to loot one of them before the sheer boredom of it all forces you to make a hasty retreat.\n",
+		description: "You manage to sneak into a calm corner of the office. Here you find three sturdy cardboard boxes in front of you, each one oozing terrifying levels of boredom. You figure you have time to loot one of them before the sheer boredom of it all forces you to make a hasty retreat.",
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Open the dull, white box", 0, "30 gold");},
@@ -78,6 +78,30 @@ var noncombats = [
 				}
 			}
 		],
+	},
+	{
+		id: 2,
+		title: "The Hour Has Pasty",
+		description: "You walk over to the counter and look to see if anything is being served up today. You don't see anything, but during this rare moment avoiding a fight, you figure you can pop around the other side and take a closer look.",
+		result: function () {
+			if (player.zoneCounterCanteen == 0) {
+				player.zoneCounterCanteen = 1;
+				addNoncombatText ("At first glance all of the food has already been stolen, but then, tucked in the far corner of the counter you find an overlooked item.");
+				addNoncombatText ("It's a pasty. But not just any old pasty. Having sat near, but not on, the hot plate, it has been cooked very slowly. You tear a small bit off the edge, and a waft of steam comes out. A lovely smell of beef, potatoes and swede hits you like a sledgehammer.");
+				addNoncombatText ("Yes, this wasn't just any old pasty. This pasty was unique. This pasty was perfect! You knew that you would never again find another pasty quite like it during your lifetime. This pasty had aged like a fine wine.");
+				addNoncombatText ("What's that? Meat-based food doesn't age well like wine? Who's telling this story, me or you? If I want a pasty to improve with age, by golly I'm going to make it happen!");
+				getNoncombatItem (13, 1);
+				endAdventure();
+			}
+			else
+			{
+				$("#noncombatText").empty();
+				busy = false;
+				let r = Math.random();
+				r = Math.floor (r * zones[2].combats.length);
+				beginCombat (combats[zones[2].combats[r]]);
+			}
+		},
 	},
 ];
 
@@ -136,12 +160,19 @@ function beginNoncombat (obj)
 	busy = true;
 	currentNoncom = obj.id;
 	$("#noncombatText").empty();
-	addNoncombatText (obj.description);
-	let buttomContainer = $("#noncombatButtons");
-	for (let i = 0; i < obj.choices.length; i ++)
-	{
-		buttomContainer.append("<button onClick = 'noncombatChoice(" + i + ")'>" + resolveProperty(obj.choices[i].buttonText) + "</button>");
-	}
 	$("#noncombatTitle").text(obj.title);
+	addNoncombatText (obj.description + "\n");
 	$("#adventureAgainButton").hide();
+	if (obj.hasOwnProperty("result") == true)
+	{
+		obj.result();
+	}
+	else
+	{
+		let buttonContainer = $("#noncombatButtons");
+		for (let i = 0; i < obj.choices.length; i ++)
+		{
+			buttonContainer.append("<button onClick = 'noncombatChoice(" + i + ")'>" + resolveProperty(obj.choices[i].buttonText) + "</button>");
+		}
+	}
 }

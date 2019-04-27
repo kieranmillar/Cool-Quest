@@ -252,7 +252,29 @@ var items = [
 		onWear: function () {
 			player.effSpd += 5;
 		}
-	}
+	},
+	{
+		id: 13,
+		name: "perfect pasty",
+		description: "This pasty is so well made and cooked, you feel certain you'll never see another one like it in your lifetime.",
+		enchantment: "+2 Fullness<br />+12 Turns to midnight",
+		icon: "cookie.png",
+		type: "Food",
+		category: itemType.FOOD,
+		sell: 200,
+		onUse: function () {
+			let success = eat (12, 2);
+			if (success == true)
+			{
+				hint ("You eat the perfect pasty, delaying midnight by 12 turns and gaining 2 fullness.", "g");
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	},
 ];
 
 function equip (e)

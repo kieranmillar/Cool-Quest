@@ -29,8 +29,9 @@ var zones = [
 	{
 		id: 2,
 		name: "The Town Hall Canteen",
-		combatChance: 100,
+		combatChance: 90,
 		combats: [5, 6, 7],
+		noncombats: [2]
 	},
 ];
 

@@ -174,6 +174,7 @@ function juggle (id)
 		player.juggles.push(id);
 		hint ("You start juggling a " + jugglingBalls[id-1].name + ".", "g");
 	}
+	calculateStats();
 	redrawInfoPanel();
 	return true;
 }

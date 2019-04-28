@@ -258,7 +258,7 @@ function load()
 		{
 			$(".buff_tutorial").hide();
 			$("#link_town").show();
-			$("#link_dungeon").show();
+			$("#link_town_hall").show();
 		}
 	}
 	else

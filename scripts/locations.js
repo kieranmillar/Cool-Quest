@@ -64,7 +64,7 @@ function goToLocation (l)
 			{
 				$(".buff_tutorial").hide();
 				$("#link_town").show();
-				$("#link_dungeon").show();
+				$("#link_town_hall").show();
 				gainItem(2, 1);
 				player.questTutorial = 6;
 			}
@@ -92,25 +92,25 @@ function goToLocation (l)
 			$("#loc_trainer").show();
 			displayTrainer();
 			break;
-		case "dungeon":
-			$("#loc_dungeon").show();
+		case "town_hall":
+			$("#loc_town_hall").show();
 			if (player.questTownHall == 0)
 			{
-				$("#dungeon_basement").hide();
-				$("#dungeon_taxOffice").hide();
-				$("#dungeon_canteen").hide();
+				$("#town_hall_basement").hide();
+				$("#town_hall_taxOffice").hide();
+				$("#town_hall_canteen").hide();
 			}
 			else if (player.questTownHall < 3)
 			{
-				$("#dungeon_basement").show();
-				$("#dungeon_taxOffice").hide();
-				$("#dungeon_canteen").hide();
+				$("#town_hall_basement").show();
+				$("#town_hall_taxOffice").hide();
+				$("#town_hall_canteen").hide();
 			}
 			else
 			{
-				$("#dungeon_basement").show();
-				$("#dungeon_taxOffice").show();
-				$("#dungeon_canteen").show();
+				$("#town_hall_basement").show();
+				$("#town_hall_taxOffice").show();
+				$("#town_hall_canteen").show();
 			}
 			break;
 		case "settings":

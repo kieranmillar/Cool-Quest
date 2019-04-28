@@ -6,7 +6,21 @@ function redrawCharPane ()
 	$("#char_full").text(player.full);
 	$("#char_fullMax").text(player.fullMax);
 	$("#char_name").text(player.name);
-	$("#char_job").text(player.job);
+	switch (player.job)
+	{
+		case jobEnum.WRESTLER:
+			$("#char_job").text("Wrestler");
+			break;
+		case jobEnum.PIRATE:
+			$("#char_job").text("Pirate");
+			break;
+		case jobEnum.MYSTIC:
+			$("#char_job").text("Mystic");
+			break;
+		case jobEnum.JUGGLER:
+			$("#char_job").text("Juggler");
+			break;
+	}
 	$("#char_level").text(player.level);
 	$("#char_gold").text(player.gold);
 	$("#char_hp").text(player.hp);

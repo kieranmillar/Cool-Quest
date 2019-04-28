@@ -103,7 +103,7 @@ var noncombats = [
 
 function noncombatButton (text, choice, hintText)
 {
-	if (nonComHints[currentNoncom] == undefined || nonComHints[currentNoncom] == null) {
+	if (nonComHints[currentNoncom] === undefined || nonComHints[currentNoncom] === null) {
 		nonComHints[currentNoncom] = [];
 	}
 	if (nonComHints[currentNoncom][choice] == 1)

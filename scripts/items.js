@@ -396,7 +396,7 @@ function equip (e)
 			{
 				slot = 6;
 			}
-			else if (player.job != "Pirate")
+			else if (player.job != jobEnum.PIRATE)
 			{
 				slot = 7;
 			}
@@ -616,7 +616,7 @@ function displayEquipment()
 				"onClick" : ""
 			});
 		}
-		if (player.job == "Pirate")
+		if (player.job == jobEnum.PIRATE)
 		{
 			$("#accessory4").show();
 		}

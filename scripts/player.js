@@ -1,7 +1,14 @@
+var jobEnum = {
+	WRESTLER: 0,
+	PIRATE: 1,
+	MYSTIC: 2,
+	JUGGLER: 3,
+}
+
 var player = {
 	name: "Kieran",
 	sex: "Male",
-	job: "Wrestler",
+	job: jobEnum.WRESTLER,
 	day: 1,
 	turns: 0,
 	turnsToMidnight: 40,
@@ -108,7 +115,7 @@ function createCharacter()
 	}
 	switch (job)
 	{
-		case "Wrestler":
+		case jobEnum.WRESTLER:
 			player.hpGain = 8;
 			player.mpGain = 1;
 			player.strGain = 5;
@@ -124,7 +131,7 @@ function createCharacter()
 				player.skills[1] = 1;
 			}
 			break;
-		case "Pirate":
+		case jobEnum.PIRATE:
 			player.hpGain = 5;
 			player.mpGain = 2;
 			player.strGain = 4;
@@ -140,7 +147,7 @@ function createCharacter()
 				player.skills[3] = 1;
 			}
 			break;
-		case "Mystic":
+		case jobEnum.MYSTIC:
 			player.hpGain = 4;
 			player.mpGain = 3;
 			player.strGain = 4;
@@ -156,7 +163,7 @@ function createCharacter()
 				player.skills[5] = 1;
 			}
 			break;
-		case "Juggler":
+		case jobEnum.JUGGLER:
 			player.hpGain = 6;
 			player.mpGain = 2;
 			player.strGain = 3;

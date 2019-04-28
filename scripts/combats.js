@@ -91,7 +91,7 @@ function constructCombatSkillDropdown ()
 			let newElement = $('<option></option>');
 			newElement.val(skills[i].id);
 			let cost = skills[i].cost;
-			if (player.job == "Mystic") {
+			if (player.job == jobEnum.MYSTIC) {
 				cost = Math.max(cost - 1, 0);
 			}
 			newElement.text(skills[i].name + " (" + cost + ")");
@@ -302,7 +302,7 @@ function useCombatSkill (x)
 		return false;
 	}
 	let cost = skills[x].cost;
-	if (player.job == "Mystic") {
+	if (player.job == jobEnum.MYSTIC) {
 		cost = Math.max(cost - 1, 0);
 	}
 	if (cost > player.mp)

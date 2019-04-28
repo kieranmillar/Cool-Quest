@@ -97,7 +97,7 @@ function endAdventure ()
 		$(".newDay").show();
 	}
 	calculateStats ();
-	if (player.job == "Wrestler")
+	if (player.job == jobEnum.WRESTLER)
 	{
 		giveHp(Math.ceil(player.effHpMax / 4));
 	}

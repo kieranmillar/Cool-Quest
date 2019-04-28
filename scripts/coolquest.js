@@ -8,6 +8,7 @@ function redrawCharPane ()
 	$("#char_name").text(player.name);
 	$("#char_job").text(player.job);
 	$("#char_level").text(player.level);
+	$("#char_gold").text(player.gold);
 	$("#char_hp").text(player.hp);
 	displayBuffedStat (
 		player.baseHpMax,
@@ -64,7 +65,6 @@ function redrawCharPane ()
 		"value": player.expLev,
 		"max": statLevelDeltas[player.statLev-1]
 	});
-	$("#char_gold").text(player.gold);
 	$("#doctor_hp_input").attr("max", player.effHpMax - player.hp);
 	$("#doctor_hp_input").val(player.effHpMax - player.hp);
 	$("#doctor_hp_input").trigger("change");

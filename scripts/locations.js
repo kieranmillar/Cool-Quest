@@ -80,6 +80,14 @@ function goToLocation (l)
 			$(".house_tutorial_3").hide()
 			$("#house_normal").show();
 			player.questTutorial = 7;
+			if (player.questTownHall >= 1)
+			{
+				$("#town_sub_town_hall").show();
+			}
+			else
+			{
+				$("#town_sub_town_hall").hide();
+			}
 			break;
 		case "elder":
 			$("#loc_elder").show();

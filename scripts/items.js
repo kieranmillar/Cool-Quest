@@ -101,8 +101,8 @@ var items = [
 		icon: "red_potion.png",
 		type: "Potion, Combat Item",
 		category: itemType.POTION,
-		cost: 10,
-		sell: 5,
+		cost: 60,
+		sell: 20,
 		onUse: function () {
 			let x = Math.floor(Math.random() * 5) + 20;
 			hint ("You drink the health potion. " + giveHp (x), "g");

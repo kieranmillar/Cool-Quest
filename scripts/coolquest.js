@@ -133,7 +133,28 @@ function redrawInfoPanel ()
 		buffDiv.append(t);
 		buffCount ++;
 	}
-	if (buffCount == 0)
+	let juggleDiv = $("#juggleList");
+	let juggleTitle = $("#juggleTitle");
+	juggleDiv.empty();
+	let juggleCount = 0;
+	for (var i in player.juggles)
+	{
+		let t = "<div class='item item_Image' onClick='openDialog (dialogType.JUGGLE, " + player.juggles[i] + ");'><img src=./images/" + jugglingBalls[player.juggles[i] - 1].icon + ">";
+		if (player.optionSmallInfoPanel == 0) {
+			t += jugglingBalls[player.juggles[i] - 1].name + " ";
+		}
+		juggleDiv.append(t);
+		juggleCount ++;
+	}
+	if (juggleCount != 0)
+	{
+		juggleTitle.show();
+	}
+	else
+	{
+		juggleTitle.hide();
+	}
+	if (buffCount + juggleCount == 0)
 	{
 		$("#infoPanel").hide();
 	}
@@ -182,7 +203,8 @@ function resolveProperty (input) {
 const dialogType = {
 	ITEM: 0,
 	SKILL: 1,
-	BUFF: 2
+	BUFF: 2,
+	JUGGLE: 3,
 }
 
 function openDialog (type, id)
@@ -224,6 +246,13 @@ function openDialog (type, id)
 			t = "<img src='./images/" + effects[id].icon + "'>";
 			t += "<p>" + resolveProperty (effects[id].description) + "</p>";
 			t += "<p class='enchantment'>" + effects[id].enchantment + "</p>";
+			d.html(t);
+			break;
+		case dialogType.JUGGLE:
+			d.dialog( "option", "title", jugglingBalls[id - 1].name );
+			t = "<img src='./images/" + jugglingBalls[id - 1].icon + "'>";
+			t += "<p>" + resolveProperty (jugglingBalls[id - 1].description) + "</p>";
+			t += "<p class='enchantment'>" + resolveProperty (jugglingBalls[id - 1].enchantment) + "</p>";
 			d.html(t);
 			break;
 	}

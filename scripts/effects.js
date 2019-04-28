@@ -53,7 +53,7 @@ var effects = [
 		}
 	},
 	{
-		id: 3,
+		id: 4,
 		name: "Crème Casing",
 		description: "The safety of the enchanted sugar casing makes you happy, like a cat that's just gotten the crème.",
 		enchantment: "+5 DEF",
@@ -63,7 +63,44 @@ var effects = [
 			player.effDef += 5;
 		}
 	},
+	{
+		id: 5,
+		name: "Greased Up",
+		description: "It's hard to be held in a chokehold when you're this slippery.",
+		enchantment: "+20 SPD",
+		icon: "cookie.png",
+		effect: function()
+		{
+			player.effSPD += 20;
+		}
+	},
 ];
+
+var jugglingBalls = [
+	{
+		id: 1,
+		name: "Fireball",
+		description: "An old classic, loved by fantasy novellists everywhere.",
+		enchantment: function() {
+			let x = 5;
+			if (player.job == jobEnum.JUGGLER)
+			{
+				x *= 2;
+			}
+			return "+" + x + " Fire Damage";
+		},
+		icon: "cookie.png",
+		effect: function()
+		{
+			let x = 5;
+			if (player.job == jobEnum.JUGGLER)
+			{
+				x *= 2;
+			}
+			player.fireDamage += x;
+		}
+	},
+]
 
 function addBuff (id, turns)
 {
@@ -87,6 +124,7 @@ function addBuff (id, turns)
 	player.buffs.sort(function(a,b){return a.turns - b.turns;});
 	calculateStats();
 	redrawInfoPanel();
+	return true;
 }
 
 function decreaseBuff (id, turns) //turns = -1 means remove entire buff
@@ -113,4 +151,29 @@ function decreaseBuff (id, turns) //turns = -1 means remove entire buff
 			player.buffs.splice(buffPosition, 1);
 		return true;
 	}
+}
+
+function juggle (id)
+{
+	for (var i in player.juggles)
+	{
+		if (player.juggles[i] == id)
+		{
+			hint ("You are already juggling one of those.", "r");
+			return false;
+		}
+	}
+	if (player.juggles.length == 3)
+	{
+		let x = player.juggles.shift();
+		player.juggles.push(id);
+		hint ("You drop a " + jugglingBalls[x-1].name + " so you can juggle a " + jugglingBalls[id-1].name + ".", "g");
+	}
+	else
+	{
+		player.juggles.push(id);
+		hint ("You start juggling a " + jugglingBalls[id-1].name + ".", "g");
+	}
+	redrawInfoPanel();
+	return true;
 }

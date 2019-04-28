@@ -31,11 +31,11 @@ p:not(:last-child) {
   margin-bottom: 10px;
 }
 
-h2 {
+h2, h3 {
   margin: 0;
   margin-top: 5px;
 }
-h2:not(:last-child) {
+h2:not(:last-child), h3:not(:last-child) {
   margin-bottom: 10px;
 }
 

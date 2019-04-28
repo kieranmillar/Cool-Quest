@@ -54,8 +54,8 @@ var player = {
 	],
 	buffs: [],
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	],
+	juggles: [],
 	optionSmallInfoPanel: 0,
 	optionQuickHeal: 0,
 	questTutorial: 0,
@@ -99,14 +99,15 @@ function createCharacter()
 		return;
 	}
 	let sex = $("input[type='radio'][name='sex']:checked").val();
-	let job = $("input[type='radio'][name='job']:checked").val();
+	let job = parseInt($("input[type='radio'][name='job']:checked").val());
 	player.name = name;
 	player.sex = sex;
 	player.job = job;
 	player.inventory = [];
 	player.equipment = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
 	player.buffs = [];
-	for (let i = 0; i < player.skills.length; i++)
+	player.juggles = [];
+	for (var i in player.skills)
 	{
 		if (player.skills[i] == 1)
 		{
@@ -122,11 +123,11 @@ function createCharacter()
 			player.defGain = 4;
 			player.magGain = 3;
 			player.spdGain = 4;
-			if (player.skills[0] == 0)
+			if (!player.skills[0])
 			{
 				player.skills[0] = 1;
 			}
-			if (player.skills[1] == 0)
+			if (!player.skills[1])
 			{
 				player.skills[1] = 1;
 			}
@@ -138,11 +139,11 @@ function createCharacter()
 			player.defGain = 5;
 			player.magGain = 4;
 			player.spdGain = 3;
-			if (player.skills[2] == 0)
+			if (!player.skills[2])
 			{
 				player.skills[2] = 1;
 			}
-			if (player.skills[3] == 0)
+			if (!player.skills[3])
 			{
 				player.skills[3] = 1;
 			}
@@ -154,11 +155,11 @@ function createCharacter()
 			player.defGain = 3;
 			player.magGain = 5;
 			player.spdGain = 4;
-			if (player.skills[4] == 0)
+			if (!player.skills[4])
 			{
 				player.skills[4] = 1;
 			}
-			if (player.skills[5] == 0)
+			if (!player.skills[5])
 			{
 				player.skills[5] = 1;
 			}
@@ -170,11 +171,11 @@ function createCharacter()
 			player.defGain = 4;
 			player.magGain = 4;
 			player.spdGain = 5;
-			if (player.skills[6] == 0)
+			if (!player.skills[6])
 			{
 				player.skills[6] = 1;
 			}
-			if (player.skills[7] == 0)
+			if (!player.skills[7])
 			{
 				player.skills[7] = 1;
 			}
@@ -220,7 +221,7 @@ function calculateStats ()
 	player.effMl = 0;
 	
 	//apply equipment
-	for (let i = 0; i < player.equipment.length; i ++)
+	for (var i in player.equipment)
 	{
 		if (player.equipment[i] != -1)
 		{
@@ -232,9 +233,15 @@ function calculateStats ()
 	}
 	
 	//apply buffs
-	for (let i = 0; i < player.buffs.length; i ++)
+	for (var i in player.buffs)
 	{
 		effects[player.buffs[i].id].effect();
+	}
+
+	//apply juggling balls
+	for (var i in player.juggles)
+	{
+		jugglingBalls[player.juggles[i] - 1].effect();
 	}
 	
 	//apply passives

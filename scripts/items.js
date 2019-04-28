@@ -57,7 +57,7 @@ var items = [
 		id: 2,
 		name: "cookie",
 		description: "You clicked the cookie. Gameplay at its finest!",
-		enchantment: "+1 Fullness<br />+1 Turn to midnight<br />Restores 3 MP",
+		enchantment: "+1 Fullness<br />+1 Turn to midnight<br />Restores 5 MP",
 		icon: "cookie.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -67,7 +67,7 @@ var items = [
 			let success = eat (1, 1);
 			if (success == true)
 			{
-				hint ("You eat the cookie, delaying midnight by 1 turn and gaining 1 fullness. " + giveMp(3), "g");
+				hint (eatMessage (2, 1, 1) + " " + giveMp(5), "g");
 				return true;
 			}
 			else
@@ -266,7 +266,29 @@ var items = [
 			let success = eat (12, 2);
 			if (success == true)
 			{
-				hint ("You eat the perfect pasty, delaying midnight by 12 turns and gaining 2 fullness.", "g");
+				hint (eatMessage (13, 12, 2), "g");
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	},
+	{
+		id: 14,
+		name: "overcooked meal",
+		description: "This roast meal has been sitting out on the hot plate for hours. The potatoes are going black, the gravy has evaporated and the chicken is burnt.",
+		enchantment: "+4 Fullness<br />+10 Turns to midnight",
+		icon: "cookie.png",
+		type: "Food",
+		category: itemType.FOOD,
+		sell: 20,
+		onUse: function () {
+			let success = eat (10, 4);
+			if (success == true)
+			{
+				hint (eatMessage (14, 10, 4), "g");
 				return true;
 			}
 			else

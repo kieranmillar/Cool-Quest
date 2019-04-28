@@ -36,9 +36,7 @@ var noncombats = [
 				buttonText: function () {return noncombatButton ("Look for trouble", 2, "fight a monster");},
 				onChoosing: function ()
 				{
-					let r = Math.random();
-					r = Math.floor (r * zones[1].combats.length);
-					beginCombat (combats[zones[1].combats[r]]);
+					pickRandomCombat (0);
 				}
 			}
 		],
@@ -97,9 +95,7 @@ var noncombats = [
 			{
 				$("#noncombatText").empty();
 				busy = false;
-				let r = Math.random();
-				r = Math.floor (r * zones[2].combats.length);
-				beginCombat (combats[zones[2].combats[r]]);
+				pickRandomCombat (2);
 			}
 		},
 	},

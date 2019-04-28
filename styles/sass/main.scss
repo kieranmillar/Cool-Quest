@@ -78,7 +78,7 @@ h2 {
 }
 
 #topbar {
-	min-height: 110px;
+	min-height: 100px;
 	color: black;
 	text-align: left;
 	padding: 2px;
@@ -116,6 +116,36 @@ h2 {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+}
+
+#quickHeal {
+	float: right;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 100%;
+
+	&::after {
+		clear: both;
+	}
+}
+
+.doctor {
+	width: 280px;
+	
+	input {
+		width: 50px;
+	}
+
+	.left {
+		display: inline-block;
+		min-width: 38px;
+	}
+
+	.right {
+		float: right;
+	}
 }
 
 .link {

@@ -82,11 +82,11 @@ function goToLocation (l)
 			player.questTutorial = 7;
 			if (player.questTownHall >= 1)
 			{
-				$("#town_sub_town_hall").show();
+				$("#town_area_town_hall").show();
 			}
 			else
 			{
-				$("#town_sub_town_hall").hide();
+				$("#town_area_town_hall").hide();
 			}
 			break;
 		case "elder":
@@ -99,6 +99,9 @@ function goToLocation (l)
 		case "trainer":
 			$("#loc_trainer").show();
 			displayTrainer();
+			break;
+		case "doctor":
+			$("#loc_doctor").show();
 			break;
 		case "town_hall":
 			$("#loc_town_hall").show();

@@ -65,6 +65,18 @@ function redrawCharPane ()
 		"max": statLevelDeltas[player.statLev-1]
 	});
 	$("#char_gold").text(player.gold);
+	$("#doctor_hp_input").attr("max", player.effHpMax - player.hp);
+	$("#doctor_hp_input").val(player.effHpMax - player.hp);
+	$("#doctor_hp_input").trigger("change");
+	$("#doctor_mp_input").attr("max", player.effMpMax - player.mp);
+	$("#doctor_mp_input").val(player.effMpMax - player.mp);
+	$("#doctor_mp_input").trigger("change");
+	$("#quickHeal_hp_input").attr("max", player.effHpMax - player.hp);
+	$("#quickHeal_hp_input").val(player.effHpMax - player.hp);
+	$("#quickHeal_hp_input").trigger("change");
+	$("#quickHeal_mp_input").attr("max", player.effMpMax - player.mp);
+	$("#quickHeal_mp_input").val(player.effMpMax - player.mp);
+	$("#quickHeal_mp_input").trigger("change");
 }
 
 function displayBuffedStat (baseStat, effStat, baseStatSpan, effStatSpan)
@@ -275,6 +287,14 @@ function load()
 	$("#adventureAgainButton").hide();
 	calculateStats();
 	redrawInfoPanel();
+	if (player.optionQuickHeal)
+	{
+		$("#quickHeal").show();
+	}
+	else
+	{
+		$("#quickHeal").hide();
+	}
 }
 
 function toggleOption(option) {
@@ -291,7 +311,21 @@ function toggleOption(option) {
 			}
 			redrawInfoPanel();
 			break;
+		case 'quickHeal':
+			if (player.optionQuickHeal == 0)
+			{
+				player.optionQuickHeal = 1;
+				$("#quickHeal").show();
+			}
+			else
+			{
+				player.optionQuickHeal = 0;
+				$("#quickHeal").hide();
+			}
+			redrawInfoPanel();
+			break;
 	}
+	save();
 }
 
 function wipe() {
@@ -317,6 +351,19 @@ $(document).ready(function(){
 		$(".buff_tutorial").hide();
 		$(".house_tutorial_2").hide();
 		$(".house_tutorial_3").hide();
+		$("#quickHeal").hide();
 	}
 	hint ("Welcome to Cool Quest!", "g");
+	$("#doctor_hp_input").change(function(){
+		$("#doctor_hp_button").text("Restore (" + parseInt($('#doctor_hp_input').val()) * 2 + " Gold)");
+	});
+	$("#doctor_mp_input").change(function(){
+		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * 5 + " Gold)");
+	});
+	$("#quickHeal_hp_input").change(function(){
+		$("#quickHeal_hp_button").text("Restore (" + parseInt($('#quickHeal_hp_input').val()) * 2 + " Gold)");
+	});
+	$("#quickHeal_mp_input").change(function(){
+		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * 5 + " Gold)");
+	});
 });

@@ -64,9 +64,7 @@ function genericAdventure (z)
 	let r = Math.random();
 	if (r * 100 < zones[z].combatChance)
 	{
-		let r2 = Math.random();
-		r2 = Math.floor (r2 * zones[z].combats.length);
-		beginCombat (combats[zones[z].combats[r2]]);
+		pickRandomCombat (z);
 	}
 	else
 	{
@@ -101,10 +99,17 @@ function endAdventure ()
 	calculateStats ();
 	if (player.job == "Wrestler")
 	{
-		giveHp(Math.ceil(player.effHpMax / 2));
+		giveHp(Math.ceil(player.effHpMax / 4));
 	}
 	giveHp(player.effHpRegen);
 	giveMp(player.effMpRegen);
 	redrawInfoPanel();
 	save();
+}
+
+function pickRandomCombat (zone)
+{
+	let r = Math.random();
+	r = Math.floor (r * zones[zone].combats.length);
+	beginCombat (combats[zones[zone].combats[r]]);
 }

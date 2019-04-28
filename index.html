@@ -35,6 +35,16 @@
 					A game by Kieran Millar
 				</h2>
 			</div>
+			<div id="quickHeal" class="doctor">
+				<form>
+					<span class="left">HP: </span><input type="number" value="0" min="0" id="quickHeal_hp_input">
+					<span class="right"><button type="button" id="quickHeal_hp_button" onclick="buyHP(parseInt($('#quickHeal_hp_input').val()))">Restore (0 Gold)</button></span>
+				</form>
+				<form>
+					<span class="left">MP: </span><input type="number" value="0" min="0" id="quickHeal_mp_input">
+					<span class="right"><button type="button" id="quickHeal_mp_button" onclick="buyMP(parseInt($('#quickHeal_mp_input').val()))">Restore (0 Gold)</button></span>
+				</form>
+			</div>
 			<div id="quicklinks">
 				<div id="link_inventory" class="link"  onclick="goToLocation('inventory')">
 					<img src="./images/backpack.png" alt="Inventory" title="Inventory"/>
@@ -61,9 +71,6 @@
 					<img src="./images/gear.png" alt="Settings" title="Settings"/>
 				</div>
 			</div>
-			<div id="quickHeal">
-
-			</div>
 		</div>
 		<div class="hintBar">
 		</div>
@@ -86,7 +93,7 @@
 							<p>Master of physical attacks.</p>
 							<p>Best Stat: Strength</p>
 							<p>Worst Stat: Magic</p>
-							<p>Intrinsic Ability: 50% HP restore each turn</p>
+							<p>Intrinsic Ability: 25% HP restore each turn</p>
 						</div>
 						<div class="jobCell">
 							<input type="radio" name="job" value="Pirate"> Pirate<br \>
@@ -102,7 +109,7 @@
 							<p>Master of magical attacks.</p>
 							<p>Best Stat: Magic</p>
 							<p>Worst Stat: Defense</p>
-							<p>Intrinsic Ability: -2MP to use all combat skills</p>
+							<p>Intrinsic Ability: -1MP to use all combat skills</p>
 						</div>
 						<div class="jobCell">
 							<input type="radio" name="job" value="Juggler"> Juggler<br \>
@@ -315,7 +322,10 @@
 						<button type="button" onclick="goToLocation('trainer')">
 							Visit the Personal Trainer
 						</button>
-						<button type="button" id="town_sub_town_hall" onclick="goToLocation('town_hall')">
+						<button type="button" onclick="goToLocation('doctor')">
+							Visit the Doctor
+						</button>
+						<button type="button" id="town_area_town_hall" onclick="goToLocation('town_hall')">
 							Visit the Town Hall
 						</button>
 						<button type="button" onclick="goToLocation('map')">
@@ -348,6 +358,22 @@
 							Back to Town
 						</button>
 					</div>
+					<div id="loc_doctor" class="location">
+							<p>You visit the local doctor.</p>
+							<div class="doctor">
+								<form>
+									<span class="left">HP: </span><input type="number" value="0" min="0" id="doctor_hp_input">
+									<span class="right"><button type="button" id="doctor_hp_button" onclick="buyHP(parseInt($('#doctor_hp_input').val()))">Restore (0 Gold)</button></span>
+								</form>
+								<form>
+									<span class="left">MP: </span><input type="number" value="0" min="0" id="doctor_mp_input">
+									<span class="right"><button type="button" id="doctor_mp_button" onclick="buyMP(parseInt($('#doctor_mp_input').val()))">Restore (0 Gold)</button></span>
+								</form>
+							</div>
+							<button type="button" onclick="goToLocation('town')">
+								Back to Town
+							</button>
+						</div>
 					<div id="loc_town_hall" class="location">
 						<button id="town_hall_basement" class="town_hallButton" type="button" onclick="adventure(0)">
 							Adventure in the Town Hall Basement (<img src='./images/adventure.png' title='(1 Adventure)'/>)
@@ -379,6 +405,10 @@
 						<br />
 						<button type="button" onclick="toggleOption('compactInfoPanel')">
 							Toggle Compact Buff List
+						</button>
+						<br />
+						<button type="button" onclick="toggleOption('quickHeal')">
+							Toggle Quick Heal
 						</button>
 						<br />
 						<br />

@@ -45,6 +45,7 @@ var player = {
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	],
 	optionSmallInfoPanel: 0,
+	optionQuickHeal: 0,
 	questTutorial: 0,
 	questTownHall: 0,
 	zoneCounterBasement: 0,
@@ -332,10 +333,82 @@ function eat (turns, fullness)
 	}
 }
 
+function eatMessage (itemId, turns, fullness)
+{
+	let t = "You eat the ";
+	t += items[itemId].name;
+	t += ", delaying midnight by ";
+	t += turns;
+	if (turns > 1)
+	{
+		t += "turns";
+	}
+	else
+	{
+		t += "turn";
+	}
+	t += "and gaining ";
+	t += fullness;
+	t += "fullness.";
+	return t;
+}
+
 function rest ()
 {
 	let hp = Math.floor(Math.random()*10) + 30;
 	let mp = Math.floor(Math.random()*3) + 5;
 	hint (giveHp(hp) + " " + giveMp(mp), "g");
 	endAdventure ();
+}
+
+function buyHP (x)
+{
+	if (x > player.effHpMax - player.hp)
+	{
+		x = player.effHpMax - player.hp;
+	}
+	if (x <= 0)
+	{
+		return;
+	}
+	if (busy == true)
+	{
+		hint ("You're too busy to do that right now'!", "r");
+		return;
+	}
+	let cost = x * 2;
+	if (player.gold < cost)
+	{
+		hint ("You can't afford that!", "r");
+		return;
+	}
+	player.gold -= cost;
+	hint (giveHp(x) + " It cost " + cost + " Gold.", "g");
+	save ();
+}
+
+function buyMP (x)
+{
+	if (x > player.effMpMax - player.mp)
+	{
+		x = player.effMpMax - player.mp;
+	}
+	if (x <= 0)
+	{
+		return;
+	}
+	if (busy == true)
+	{
+		hint ("You're too busy to do that right now'!", "r");
+		return;
+	}
+	let cost = x * 5;
+	if (player.gold < cost)
+	{
+		hint ("You can't afford that!", "r");
+		return;
+	}
+	player.gold -= cost;
+	hint (giveMp(x) + " It cost " + cost + " Gold.", "g");
+	save ();
 }

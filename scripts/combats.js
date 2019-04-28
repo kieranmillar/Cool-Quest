@@ -84,7 +84,7 @@ function constructCombatSkillDropdown ()
 			newElement.val(skills[i].id);
 			let cost = skills[i].cost;
 			if (player.job == "Mystic") {
-				cost = Math.max(cost - 2, 0);
+				cost = Math.max(cost - 1, 0);
 			}
 			newElement.text(skills[i].name + " (" + cost + ")");
 			e.append(newElement);
@@ -273,7 +273,7 @@ function useCombatSkill (x)
 	}
 	let cost = skills[x].cost;
 	if (player.job == "Mystic") {
-		cost = Math.max(cost - 2, 0);
+		cost = Math.max(cost - 1, 0);
 	}
 	if (cost > player.mp)
 	{

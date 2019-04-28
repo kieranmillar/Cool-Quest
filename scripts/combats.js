@@ -3,7 +3,7 @@ var currentRound = 0;
 function addCombatText (txt)
 {
 	let e = $("<p></p>");
-	e.text(txt);
+	e.html(txt);
 	$("#combatText").append(e);
 }
 
@@ -27,6 +27,14 @@ function beginCombat (obj)
 	if (monster.def < 0)
 		monster.def = 0;
 	monster.spd = obj.spd;
+	if (obj.hasOwnProperty("element") == true)
+	{
+		monster.element = obj.element;
+	}
+	else
+	{
+		monster.element = elementEnum.PHYS;
+	}
 	monster.exp = obj.exp;
 	monster.gold = obj.gold;
 	monster.drops = obj.drops;
@@ -202,7 +210,18 @@ function combatRound (action)
 		let isCrit = false;
 		let overrideStandardAttack = false;
 		let overrideCrit = false;
-		damage = monster.str - player.effDef;
+		switch (monster.element)
+		{
+			case elementEnum.PHYS:
+				damage = monster.str - player.effDef;
+				break;
+			case elementEnum.FIRE:
+				damage = monster.str - player.effDef - player.fireRes;
+				break;
+			case elementEnum.ICE:
+				damage = monster.str - player.effDef - player.iceRes;
+				break;
+		}
 		if (Math.random() * 100 < ((monster.spd - player.effSpd) / 5) + 10)
 		{
 			isCrit = true;
@@ -246,7 +265,18 @@ function combatRound (action)
 		{
 			damage = 1;
 		}
-		addCombatText ("You take " + damage + " damage!");
+		switch (monster.element)
+		{
+			case elementEnum.PHYS:
+				addCombatText ("You take " + damage + " damage!");
+				break;
+			case elementEnum.FIRE:
+				addCombatText ("You take <span class='fire'>" + damage + "</span> damage!");
+				break;
+			case elementEnum.ICE:
+				addCombatText ("You take <span class='ice'>" + damage + "</span> damage!");
+				break;
+		}
 		player.hp -= damage;
 		if (player.hp <= 0)
 		{
@@ -342,16 +372,58 @@ function regularAttack (value, hitMessage, critMessage)
 	{
 		value = 1;
 	}
+	let fireDamage = calcFireDamage(player.fireDamage);
+	let iceDamage = calcIceDamage(player.iceDamage);
 	if (hitMessage == "" || Math.random() * 100 < ((player.effSpd - monster.spd) / 4) + 10)
 	{
 		value = Math.ceil (value*1.2);
 		addCombatText ("CRITICAL! " + critMessage);
-		addCombatText ("It takes " + value + " damage!");
 	}
 	else
 	{
 		addCombatText (hitMessage);
-		addCombatText ("It takes " + value + " damage!");
 	}
-	monster.hp -= value;
+	let t = "It takes " + value;
+	if (fireDamage > 0)
+	{
+		t += " <span class='fire'>(+" + fireDamage + ")</span>"
+	}
+	if (iceDamage > 0)
+	{
+		t += " <span class='ice'>(+" + iceDamage + ")</span>"
+	}
+	addCombatText (t + " damage!");
+	monster.hp -= (value + fireDamage + iceDamage);
+}
+
+function calcFireDamage (fireDamage) {
+	if (fireDamage == 0)
+	{
+		return 0;
+	}
+	if (monster.element == elementEnum.FIRE)
+	{
+		fireDamage = 1;
+	}
+	if (monster.element == elementEnum.ICE)
+	{
+		fireDamage *= 2;
+	}
+	return fireDamage;
+}
+
+function calcIceDamage (iceDamage) {
+	if (iceDamage == 0)
+	{
+		return 0;
+	}
+	if (monster.element == elementEnum.FIRE)
+	{
+		iceDamage *= 2;
+	}
+	if (monster.element == elementEnum.ICE)
+	{
+		iceDamage = 1;
+	}
+	return iceDamage;
 }

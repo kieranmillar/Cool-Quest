@@ -68,12 +68,8 @@ var items = [
 			if (success == true)
 			{
 				hint (eatMessage (2, 1, 1) + " " + giveMp(5), "g");
-				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return success;
 		}
 	},
 	{
@@ -267,18 +263,14 @@ var items = [
 			if (success == true)
 			{
 				hint (eatMessage (13, 12, 2), "g");
-				return true;
 			}
-			else
-			{
-				return false;
-			}
+			return success;
 		}
 	},
 	{
 		id: 14,
-		name: "overcooked meal",
-		description: "This roast meal has been sitting out on the hot plate for hours. The potatoes are going black, the gravy has evaporated and the chicken is burnt.",
+		name: "microwave meal",
+		description: "This is a chicken korma and rice, separated into two plastic containers. You conveniently can't tell the meat quality because it's covered in sauce.",
 		enchantment: "+4 Fullness<br />+10 Turns to midnight",
 		icon: "cookie.png",
 		type: "Food",
@@ -289,12 +281,57 @@ var items = [
 			if (success == true)
 			{
 				hint (eatMessage (14, 10, 4), "g");
-				return true;
 			}
-			else
+			return success;
+		}
+	},
+	{
+		id: 15,
+		name: "crème brûlée",
+		description: "This crème brûlée has just been heated and hasn't yet had time to cool. Its caramalised sugar topping is glowing with enchanted magic.",
+		enchantment: "+1 Fullness<br />+2 Turns to midnight<br />10 turns of +5 DEF",
+		icon: "cookie.png",
+		type: "Food",
+		category: itemType.FOOD,
+		sell: 10,
+		onUse: function () {
+			let success = eat (2, 1);
+			if (success == true)
 			{
-				return false;
+				hint (eatMessage (15, 2, 1) + " You gain 10 turns of Crème Casing.", "g");
+				addBuff (4, 10);
 			}
+			return success;
+		}
+	},
+	{
+		id: 16,
+		name: "oven gloves",
+		description: "These gloves will protect your hands from heat, but they're a bit damp so they aren't very good at it.",
+		enchantment: "+5 Fire Resistance",
+		icon: "cookie.png",
+		type: "Accessory",
+		category: itemType.ACC,
+		equipStat: "MAG",
+		equipValue: 8,
+		sell: 15,
+		onWear: function () {
+			player.fireRes += 5;
+		}
+	},
+	{
+		id: 17,
+		name: "crème brûlée torch",
+		description: "This is a tiny blowtorch designed to caramelize the sugar on top of a crème brûlée, but you can use it for all sorts of things, such as a fancy cigarette lighter.",
+		enchantment: "+5 Fire Damage",
+		icon: "cookie.png",
+		type: "Weapon",
+		category: itemType.WEAPON,
+		equipStat: "STR",
+		equipValue: 8,
+		sell: 15,
+		onWear: function () {
+			player.fireDamage += 5;
 		}
 	},
 ];

@@ -1,3 +1,9 @@
+var elementEnum = {
+	PHYS: 0,
+	FIRE: 1,
+	ICE: 2,
+}
+
 var monster = {
 	id: 0,
 	name: "",
@@ -6,6 +12,7 @@ var monster = {
 	str: 0,
 	def: 0,
 	spd: 0,
+	element: elementEnum.PHYS,
 	exp: 0,
 	gold: 0,
 	drops: [],
@@ -124,11 +131,11 @@ var combats = [
 		description: "You find a blue furry monster by the baked goods, scoffing down all of the biscuits he can find. He growls at you in a posh English accent 'B IS FOR BISCUIT, THAT'S GOOD ENOUGH FOR ME!'",
 		icon: "empty.png",
 		hp: 12,
-		str: 12,
+		str: 14,
 		def: 5,
 		spd: 0,
-		exp: 20,
-		gold: 12,
+		exp: 18,
+		gold: 15,
 		drops: [
 			{id: 2, chance: 80},
 			{id: 2, chance: 40},
@@ -143,44 +150,47 @@ var combats = [
 	},
 	{
 		id: 6,
-		name: "canteen enemy 2",
-		description: "TODO Desc",
+		name: "a microwave mimic",
+		description: "You walk over to the microwaves to see if anyone left anything inside of them. As you press the button to open one of them, it dives at you and sprouts teeth. This one was a mimic!",
 		icon: "empty.png",
-		hp: 16,
-		str: 8,
-		def: 0,
-		spd: -50,
-		exp: 15,
-		gold: 4,
+		hp: 8,
+		str: 12,
+		def: 8,
+		spd: 60,
+		exp: 21,
+		gold: 12,
 		drops: [
-			{id: 7, chance: 30}
+			{id: 14, chance: 70}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"It quickly microwaves a cup of hot soup for 40 seconds, and when finished, throws it over you.",
+			"It opens its mouth and fires the spinning plate at you like a frisbee.",
+			"It jumps up and chomps on your head. It's like having your face slammed in a door. Literally.",
+			"It blasts microwaves at you, despite not being a real microwave. Or plugged in. How does that even work?"
 		]
 	},
 	{
 		id: 7,
-		name: "canteen enemy 3",
-		description: "TODO Desc",
+		name: "a crème brûlée pyromaniac",
+		description: "A man wiedling a crème brûlée torch and with a bunch of crème brûlées tied around his waist is standing in the middle of the room. He gives you a weird, spaced out grin, then charges at your flammable self.",
 		icon: "empty.png",
-		hp: 16,
-		str: 8,
-		def: 0,
-		spd: -50,
-		exp: 15,
-		gold: 4,
+		hp: 18,
+		str: 18,
+		def: 2,
+		spd: 10,
+		element: elementEnum.FIRE,
+		exp: 20,
+		gold: 18,
 		drops: [
-			{id: 7, chance: 30}
+			{id: 15, chance: 60},
+			{id: 16, chance: 30},
+			{id: 17, chance: 30}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He tackles you to the ground and sets fire to your clothes. You roll around to put it out.",
+			"He heats up a crème brûlée with his torch and throws it at you. It burns.",
+			"He pulls out an aerosol can and uses his torch to turn it into a flamethrower.",
+			"He uses his torch to light a cigarette, then after a quick smoke, stubs it out on your face."
 		]
 	},
 ];

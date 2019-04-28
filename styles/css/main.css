@@ -299,6 +299,16 @@ h2:not(:last-child) {
   flex-flow: row;
 }
 
+.fire {
+  color: red;
+  font-weight: bold;
+}
+
+.ice {
+  color: blue;
+  font-weight: bold;
+}
+
 #noncombatTitle {
   font-size: 1.5em;
 }

@@ -83,7 +83,7 @@ var skills = [
 		id: 4,
 		name: "Ancestral Pep Talk",
 		description: "Who you gonna call? Ask your dead ancestral relatives for help and advice.",
-		enchantment: "10 turns of:<br />+4 MAG<br />+4 SPD",
+		enchantment: "10 turns of:+1 DEF<br />+3 MAG<br />+4 SPD",
 		icon: "ghost_talk.png",
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,

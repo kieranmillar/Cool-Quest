@@ -51,7 +51,18 @@ var effects = [
 			player.effMag += 2;
 			player.effSpd += 2;
 		}
-	}
+	},
+	{
+		id: 3,
+		name: "Crème Casing",
+		description: "The safety of the enchanted sugar casing makes you happy, like a cat that's just gotten the crème.",
+		enchantment: "+5 DEF",
+		icon: "cookie.png",
+		effect: function()
+		{
+			player.effDef += 5;
+		}
+	},
 ];
 
 function addBuff (id, turns)

@@ -25,8 +25,13 @@ var player = {
 	effDef: 0,
 	effMag: 0,
 	effSpd: 0,
+	fireDamage: 0,
+	iceDamage: 0,
+	fireRes: 0,
+	iceRes: 0,
 	effHpRegen: 0,
 	effMpRegen: 0,
+	effItemBoost: 0,
 	effGoldBoost: 0,
 	effMl: 0,
 	hpGain: 5,
@@ -197,8 +202,13 @@ function calculateStats ()
 	player.effDef = player.baseDef;
 	player.effMag = player.baseMag;
 	player.effSpd = player.baseSpd;
+	player.fireDamage = 0;
+	player.iceDamage = 0;
+	player.fireRes = 0;
+	player.iceRes = 0;
 	player.effHpRegen = 0;
 	player.effMpRegen = 0;
+	player.effItemBoost = 0;
 	player.effGoldBoost = 0;
 	player.effMl = 0;
 	
@@ -373,7 +383,7 @@ function buyHP (x)
 	}
 	if (busy == true)
 	{
-		hint ("You're too busy to do that right now'!", "r");
+		hint ("You're too busy to do that right now!", "r");
 		return;
 	}
 	let cost = x * 2;
@@ -399,7 +409,7 @@ function buyMP (x)
 	}
 	if (busy == true)
 	{
-		hint ("You're too busy to do that right now'!", "r");
+		hint ("You're too busy to do that right now!", "r");
 		return;
 	}
 	let cost = x * 5;

@@ -36,11 +36,11 @@
 				</h2>
 			</div>
 			<div id="quickHeal" class="doctor">
-				<form>
+				<form onsubmit="return false">
 					<span class="left">HP: </span><input type="number" value="0" min="0" id="quickHeal_hp_input">
 					<span class="right"><button type="button" id="quickHeal_hp_button" onclick="buyHP(parseInt($('#quickHeal_hp_input').val()))">Restore (0 Gold)</button></span>
 				</form>
-				<form>
+				<form onsubmit="return false">
 					<span class="left">MP: </span><input type="number" value="0" min="0" id="quickHeal_mp_input">
 					<span class="right"><button type="button" id="quickHeal_mp_button" onclick="buyMP(parseInt($('#quickHeal_mp_input').val()))">Restore (0 Gold)</button></span>
 				</form>
@@ -77,7 +77,7 @@
 		<div id="mainArea">
 			<div id="characterCreation">
 				<h2 class="centred">Create your character</h2>
-				<form class="centred">
+				<form class="centred" onsubmit="return false">
 					Name: <input type="text" id="create_name" value="Brook">
 				</form>
 				<form class="centred">
@@ -281,7 +281,12 @@
 						</div>
 					</div>
 					<div id="loc_map" class="location">
-						<p>TODO: Make map.</p>
+						<button type="button" onclick="goToLocation('house')">
+							Go to Your House
+						</button>
+						<button type="button" onclick="goToLocation('town')">
+							Go to Town
+						</button>
 					</div>
 					<div id="loc_house" class="location">
 						<p class="house_tutorial_1">This must be the house. You knock on the front door and a small while later you hear multiple bolts unlock. The door slowly creaks open and an old man is standing there, looking very frail and hunched over a long walking stick made from a gnarled oaken branch.</p>
@@ -361,12 +366,12 @@
 					<div id="loc_doctor" class="location">
 							<p>You visit the local doctor.</p>
 							<div class="doctor">
-								<form>
-									<span class="left">HP: </span><input type="number" value="0" min="0" id="doctor_hp_input">
+								<form onsubmit="return false">
+									<span class="left">HP: </span><input type="number" value="0" min="0" id="doctor_hp_input" onSubmit="return false;">
 									<span class="right"><button type="button" id="doctor_hp_button" onclick="buyHP(parseInt($('#doctor_hp_input').val()))">Restore (0 Gold)</button></span>
 								</form>
-								<form>
-									<span class="left">MP: </span><input type="number" value="0" min="0" id="doctor_mp_input">
+								<form onsubmit="return false">
+									<span class="left">MP: </span><input type="number" value="0" min="0" id="doctor_mp_input" onSubmit="return false;">
 									<span class="right"><button type="button" id="doctor_mp_button" onclick="buyMP(parseInt($('#doctor_mp_input').val()))">Restore (0 Gold)</button></span>
 								</form>
 							</div>
@@ -408,7 +413,7 @@
 						</button>
 						<br />
 						<button type="button" onclick="toggleOption('quickHeal')">
-							Toggle Quick Heal
+							Toggle Doctor in the Top Pane
 						</button>
 						<br />
 						<br />

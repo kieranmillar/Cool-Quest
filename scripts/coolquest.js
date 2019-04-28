@@ -338,6 +338,18 @@ function wipe() {
 
 $(document).ready(function(){
 	$("#dialog").dialog({ autoOpen: false });
+	$("#doctor_hp_input").change(function(){
+		$("#doctor_hp_button").text("Restore (" + parseInt($('#doctor_hp_input').val()) * 2 + " Gold)");
+	});
+	$("#doctor_mp_input").change(function(){
+		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * 5 + " Gold)");
+	});
+	$("#quickHeal_hp_input").change(function(){
+		$("#quickHeal_hp_button").text("Restore (" + parseInt($('#quickHeal_hp_input').val()) * 2 + " Gold)");
+	});
+	$("#quickHeal_mp_input").change(function(){
+		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * 5 + " Gold)");
+	});
 	if (localStorage.getItem("playerStored") != null)
 	{
 		load();
@@ -354,16 +366,4 @@ $(document).ready(function(){
 		$("#quickHeal").hide();
 	}
 	hint ("Welcome to Cool Quest!", "g");
-	$("#doctor_hp_input").change(function(){
-		$("#doctor_hp_button").text("Restore (" + parseInt($('#doctor_hp_input').val()) * 2 + " Gold)");
-	});
-	$("#doctor_mp_input").change(function(){
-		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * 5 + " Gold)");
-	});
-	$("#quickHeal_hp_input").change(function(){
-		$("#quickHeal_hp_button").text("Restore (" + parseInt($('#quickHeal_hp_input').val()) * 2 + " Gold)");
-	});
-	$("#quickHeal_mp_input").change(function(){
-		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * 5 + " Gold)");
-	});
 });

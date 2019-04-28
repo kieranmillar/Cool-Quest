@@ -341,15 +341,15 @@ function eatMessage (itemId, turns, fullness)
 	t += turns;
 	if (turns > 1)
 	{
-		t += "turns";
+		t += " turns";
 	}
 	else
 	{
-		t += "turn";
+		t += " turn";
 	}
-	t += "and gaining ";
+	t += " and gaining ";
 	t += fullness;
-	t += "fullness.";
+	t += " fullness.";
 	return t;
 }
 

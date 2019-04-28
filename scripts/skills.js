@@ -161,7 +161,7 @@ var skills = [
 		id: 7,
 		name: "Summon Fireball",
 		description: "Everyone knows juggling is pretty hot, but this is ridiculous.",
-		enchantment: "+5 Fire Damage<br />(Enchantment Doubled for Jugglers)",
+		enchantment: "+3 Fire Damage<br />(Enchantment Doubled for Jugglers)",
 		icon: "cookie.png",
 		job: jobEnum.JUGGLER,
 		type: "Juggling Ball",
@@ -170,7 +170,7 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			return juggle (1);
+			return juggle (0);
 		}
 	},
 	{
@@ -197,6 +197,102 @@ var skills = [
 		enchantment: "",
 		icon: "cookie.png",
 		job: jobEnum.WRESTLER,
+		type: "Combat",
+		category: skillType.COMBAT,
+		cost: 1,
+		price: 100,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 10,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 11,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Combat",
+		category: skillType.COMBAT,
+		cost: 1,
+		price: 100,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 12,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 13,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Combat",
+		category: skillType.COMBAT,
+		cost: 1,
+		price: 100,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 14,
+		name: "Summon Medicine Ball",
+		description: "The second best medicine after laughter.",
+		enchantment: "+10 Max HP<br />Restore 2 HP per turn<br />(Enchantment Doubled for Jugglers)",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Juggling Ball",
+		category: skillType.JUGGLE,
+		cost: 5,
+		price: 100,
+		level: 2,
+		onUse: function () {
+			return juggle (1);
+		}
+	},
+	{
+		id: 15,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 1,

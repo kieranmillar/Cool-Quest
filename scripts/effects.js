@@ -78,11 +78,11 @@ var effects = [
 
 var jugglingBalls = [
 	{
-		id: 1,
+		id: 0,
 		name: "Fireball",
 		description: "An old classic, loved by fantasy novellists everywhere.",
 		enchantment: function() {
-			let x = 5;
+			let x = 3;
 			if (player.job == jobEnum.JUGGLER)
 			{
 				x *= 2;
@@ -92,12 +92,40 @@ var jugglingBalls = [
 		icon: "cookie.png",
 		effect: function()
 		{
-			let x = 5;
+			let x = 3;
 			if (player.job == jobEnum.JUGGLER)
 			{
 				x *= 2;
 			}
 			player.fireDamage += x;
+		}
+	},
+	{
+		id: 1,
+		name: "Medicine Ball",
+		description: "A much more reliable way of staying healthy than swallowing pills. Imagine trying to swallow one of these...",
+		enchantment: function() {
+			let x = 10;
+			let y = 2;
+			if (player.job == jobEnum.JUGGLER)
+			{
+				x *= 2;
+				y *= 2;
+			}
+			return "+" + x + " Max HP<br />Restore " + y + " HP per turn";
+		},
+		icon: "cookie.png",
+		effect: function()
+		{
+			let x = 10;
+			let y = 2;
+			if (player.job == jobEnum.JUGGLER)
+			{
+				x *= 2;
+				y *= 2;
+			}
+			player.effHpMax += x;
+			player.effHpRegen += y;
 		}
 	},
 ]
@@ -167,12 +195,12 @@ function juggle (id)
 	{
 		let x = player.juggles.shift();
 		player.juggles.push(id);
-		hint ("You drop a " + jugglingBalls[x-1].name + " so you can juggle a " + jugglingBalls[id-1].name + ".", "g");
+		hint ("You drop a " + jugglingBalls[x].name + " so you can juggle a " + jugglingBalls[id].name + ".", "g");
 	}
 	else
 	{
 		player.juggles.push(id);
-		hint ("You start juggling a " + jugglingBalls[id-1].name + ".", "g");
+		hint ("You start juggling a " + jugglingBalls[id].name + ".", "g");
 	}
 	calculateStats();
 	redrawInfoPanel();

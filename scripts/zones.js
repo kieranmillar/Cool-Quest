@@ -94,6 +94,7 @@ function endAdventure ()
 		player.turnsToMidnight = 40;
 		player.day ++;
 		player.full = 0;
+		player.juggles = [];
 		$(".newDay").show();
 	}
 	calculateStats ();

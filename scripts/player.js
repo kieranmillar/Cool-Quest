@@ -241,7 +241,7 @@ function calculateStats ()
 	//apply juggling balls
 	for (var i in player.juggles)
 	{
-		jugglingBalls[player.juggles[i] - 1].effect();
+		jugglingBalls[player.juggles[i]].effect();
 	}
 	
 	//apply passives

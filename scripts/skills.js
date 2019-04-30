@@ -192,14 +192,13 @@ var skills = [
 	},
 	{
 		id: 9,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Pro Wrestling Magic",
+		description: "You channel your magic into making your wrestling moves look even more stupid.",
+		enchantment: "Every 2 points of MAG increase the Critical Hit damage multiplier by 1%",
 		icon: "cookie.png",
 		job: jobEnum.WRESTLER,
-		type: "Combat",
-		category: skillType.COMBAT,
-		cost: 1,
+		type: "Passive",
+		category: skillType.PASSIVE,
 		price: 100,
 		level: 2,
 		onUse: function () {
@@ -457,6 +456,7 @@ function buySkill (id)
 	{
 		hint ("You can't afford that!", "r");
 	}
+	redrawCharPane();
 }
 
 function useNoncombatSkill (x)

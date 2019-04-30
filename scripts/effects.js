@@ -71,7 +71,7 @@ var effects = [
 		icon: "cookie.png",
 		effect: function()
 		{
-			player.effSPD += 20;
+			player.effSpd += 20;
 		}
 	},
 ];

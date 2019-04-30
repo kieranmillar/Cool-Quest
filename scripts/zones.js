@@ -98,10 +98,6 @@ function endAdventure ()
 		$(".newDay").show();
 	}
 	calculateStats ();
-	if (player.job == jobEnum.WRESTLER)
-	{
-		giveHp(Math.ceil(player.effHpMax / 4));
-	}
 	giveHp(player.effHpRegen);
 	giveMp(player.effMpRegen);
 	redrawInfoPanel();

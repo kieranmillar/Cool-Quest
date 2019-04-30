@@ -249,7 +249,7 @@ function combatRound (action)
 		{
 			if (isCrit)
 			{
-				addCombatText ("CRITICAL! " + monster.hitMessages[0]);
+				addCombatText ("<strong>CRITICAL!</strong> " + monster.hitMessages[0]);
 			}
 			else
 			{
@@ -376,8 +376,13 @@ function regularAttack (value, hitMessage, critMessage)
 	let iceDamage = calcIceDamage(player.iceDamage);
 	if (hitMessage == "" || Math.random() * 100 < ((player.effSpd - monster.spd) / 4) + 10)
 	{
-		value = Math.ceil (value*1.2);
-		addCombatText ("CRITICAL! " + critMessage);
+		let critMultiplier = 1.2;
+		if (player.skills[9])
+		{
+			critMultiplier += Math.floor(player.effMag / 2)/100;
+		}
+		value = Math.ceil (value * critMultiplier);
+		addCombatText ("<strong>CRITICAL!</strong> " + critMessage);
 	}
 	else
 	{

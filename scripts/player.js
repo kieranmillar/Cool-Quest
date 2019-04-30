@@ -7,7 +7,6 @@ var jobEnum = {
 
 var player = {
 	name: "Kieran",
-	sex: "Male",
 	job: jobEnum.WRESTLER,
 	day: 1,
 	turns: 0,
@@ -98,10 +97,8 @@ function createCharacter()
 		hint ("You need to input a name!", "r");
 		return;
 	}
-	let sex = $("input[type='radio'][name='sex']:checked").val();
 	let job = parseInt($("input[type='radio'][name='job']:checked").val());
 	player.name = name;
-	player.sex = sex;
 	player.job = job;
 	player.inventory = [];
 	player.equipment = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
@@ -264,6 +261,11 @@ function calculateStats ()
 		player.effMag = 0;
 	if (player.effSpd < 0)
 		player.effSpd = 0;
+
+	if (player.job == jobEnum.WRESTLER)
+	{
+		player.effHpRegen += Math.floor(player.effHpMax / 4);
+	}
 	redrawCharPane();
 }
 
@@ -284,14 +286,14 @@ function giveExp (e)
 		player.baseDef += player.defGain;
 		player.baseMag += player.magGain;
 		player.baseSpd += player.spdGain;
-		t += "\nYou grew your stats!";
+		t += "\n<strong>You grew your stats!</strong>";
 		calculateStats();
 	}
 	while (player.exp >= levelDeltas[player.level-1])
 	{
 		player.exp -= levelDeltas[player.level-1];
 		player.level++;
-		t += "\nYou levelled up!";
+		t += "\n<strong>You levelled up!</strong>";
 	}
 	return t;
 }

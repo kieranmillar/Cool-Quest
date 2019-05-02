@@ -220,24 +220,33 @@ h2:not(:last-child), h3:not(:last-child) {
 #characterPanel p {
   margin: 2px;
 }
-#characterPanel progress {
+#characterPanel progress[value] {
+  -webkit-appearance: none;
   width: calc(100% - 5px);
   height: 10px;
   margin: 2px;
 }
-#characterPanel #char_hpProgress {
+#characterPanel progress[value].mainProgress {
   margin-left: 55px;
   width: calc(100% - 60px);
 }
-#characterPanel #char_hpProgress::-webkit-progress-bar, #characterPanel #char_hpProgress::-moz-progress-bar {
-  background: red;
+#characterPanel progress[value]::-webkit-progress-value {
+  background-color: green;
 }
-#characterPanel #char_mpProgress {
-  margin-left: 55px;
-  width: calc(100% - 60px);
+#characterPanel progress[value]::-moz-progress-bar {
+  background-color: green;
 }
-#characterPanel #char_mpProgress::-webkit-progress-bar, #characterPanel #char_mpProgress::-moz-progress-bar {
-  background: blue;
+#characterPanel progress[value]#char_hpProgress::-webkit-progress-value {
+  background-color: red;
+}
+#characterPanel progress[value]#char_hpProgress::-moz-progress-bar {
+  background-color: red;
+}
+#characterPanel progress[value]#char_mpProgress::-webkit-progress-value {
+  background-color: blue;
+}
+#characterPanel progress[value]#char_mpProgress::-moz-progress-bar {
+  background-color: blue;
 }
 
 #stats {

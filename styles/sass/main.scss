@@ -241,29 +241,45 @@ h2, h3 {
 		margin: 2px;
 	}
 
-	progress {
+	progress[value] {
+		-webkit-appearance: none;
+
 		width: calc(100% - 5px);
 		height: 10px;
 		margin: 2px;
-	}
 
-	#char_hpProgress {
-		margin-left: 55px;
-		width: calc(100% - 60px);
-
-		&::-webkit-progress-bar,
-		&::-moz-progress-bar {
-			background: red;
+		&.mainProgress {
+			margin-left: 55px;
+			width: calc(100% - 60px);
 		}
-	}
 
-	#char_mpProgress {
-		margin-left: 55px;
-		width: calc(100% - 60px);
+		//have to duplicate code here, Chrome (webkit) won't work if you define two categories and use a comma, it's dumb
+		&::-webkit-progress-value {
+			background-color: green;
+		}
 
-		&::-webkit-progress-bar,
 		&::-moz-progress-bar {
-			background: blue;
+			background-color: green;
+		}
+
+		&#char_hpProgress {
+			&::-webkit-progress-value {
+				background-color: red;
+			}
+	
+			&::-moz-progress-bar {
+				background-color: red;
+			}
+		}
+
+		&#char_mpProgress {
+			&::-webkit-progress-value {
+				background-color: blue;
+			}
+	
+			&::-moz-progress-bar {
+				background-color: blue;
+			}
 		}
 	}
 }

@@ -353,11 +353,11 @@ h2:not(:last-child), h3:not(:last-child) {
   flex-direction: row;
   cursor: pointer;
   align-items: center;
-  flex-shrink: 1;
 }
 .item_Image img {
   height: 40px;
   width: 40px;
+  flex: 0 0 40px;
 }
 
 .clickable {

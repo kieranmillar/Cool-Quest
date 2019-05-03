@@ -428,7 +428,7 @@ function buyMP (x)
 		hint ("You're too busy to do that right now!", "r");
 		return;
 	}
-	let cost = x * 5;
+	let cost = x * 10;
 	if (player.gold < cost)
 	{
 		hint ("You can't afford that!", "r");

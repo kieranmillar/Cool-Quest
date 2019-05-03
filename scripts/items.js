@@ -651,7 +651,7 @@ function displayEquipment()
 	let accCount = 0;
 	for (var i in player.inventory)
 	{
-		if (items[player.inventory[i].id].category >= 7)
+		if (items[player.inventory[i].id].category >= 6)
 		{
 			continue;
 		}

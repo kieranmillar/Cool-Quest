@@ -385,13 +385,13 @@ $(document).ready(function(){
 		$("#doctor_hp_button").text("Restore (" + parseInt($('#doctor_hp_input').val()) * 2 + " Gold)");
 	});
 	$("#doctor_mp_input").change(function(){
-		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * 5 + " Gold)");
+		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * 10 + " Gold)");
 	});
 	$("#quickHeal_hp_input").change(function(){
 		$("#quickHeal_hp_button").text("Restore (" + parseInt($('#quickHeal_hp_input').val()) * 2 + " Gold)");
 	});
 	$("#quickHeal_mp_input").change(function(){
-		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * 5 + " Gold)");
+		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * 10 + " Gold)");
 	});
 	if (localStorage.getItem("playerStored") != null)
 	{

@@ -161,7 +161,7 @@ var skills = [
 		id: 7,
 		name: "Summon Fireball",
 		description: "Everyone knows juggling is pretty hot, but this is ridiculous.",
-		enchantment: "+3 Fire Damage<br />(Enchantment Doubled for Jugglers)",
+		enchantment: "+3 Fire Damage<br />(Enchantment Doubled for Jugglers)<br />(When thrown:<br />Deals 40 Fire Damage)",
 		icon: "cookie.png",
 		job: jobEnum.JUGGLER,
 		type: "Juggling Ball",
@@ -273,7 +273,7 @@ var skills = [
 		id: 14,
 		name: "Summon Medicine Ball",
 		description: "The second best medicine after laughter.",
-		enchantment: "+10 Max HP<br />Restore 2 HP per turn<br />(Enchantment Doubled for Jugglers)",
+		enchantment: "+10 Max HP<br />Restore 2 HP per turn<br />(Enchantment Doubled for Jugglers)<br />(When thrown:<br />Restores 60 HP)",
 		icon: "cookie.png",
 		job: jobEnum.JUGGLER,
 		type: "Juggling Ball",
@@ -287,9 +287,9 @@ var skills = [
 	},
 	{
 		id: 15,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Throw",
+		description: "Waste not, want not. A good juggler knows how to recycle their unneeded balls.",
+		enchantment: "Tosses Your Oldest Currently Juggled Ball for Some Effect Depending on the Ball",
 		icon: "cookie.png",
 		job: jobEnum.JUGGLER,
 		type: "Combat",
@@ -298,7 +298,36 @@ var skills = [
 		price: 100,
 		level: 2,
 		onUse: function () {
-			
+			if (player.juggles.length == 0)
+			{
+				addCombatText ("You aren't juggling anything, so pick up a nearby rock and throw that instead.");
+				let damage = 15 - monster.def;
+				if (damage <= 0)
+				{
+					damage = 1;
+				}
+				addCombatText ("It takes " + damage + " damage!");
+				monster.hp -= damage;
+			}
+			else
+			{
+				let x = player.juggles.shift();
+				switch (x)
+				{
+					case 0:
+						addCombatText ("You throw the fireball and it explodes! Goodness gracious great balls of fire!");
+						let damage = calcFireDamage(40);
+						addCombatText ("It takes <span class='fire'>" + damage + "</span> damage!");
+						monster.hp -= damage;
+						break;
+					case 1:
+						addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
+						addCombatText (giveHp (60));
+						break;
+				}
+				calculateStats();
+				redrawInfoPanel();
+			}
 		}
 	},
 ];
@@ -405,12 +434,20 @@ function displayTrainer()
 {
 	let trainerDiv = $("#trainerList");
 	trainerDiv.empty();
+	let lastLevel = 0;
 	for (var i in skills)
 	{
 		if (!player.skills[i])
 		{
 			if (skills[i].job == player.job)
 			{
+				if (skills[i].level != lastLevel)
+				{
+					lastLevel = skills[i].level;
+					var newElement = $('<h2></h2>');
+					newElement.text("Level " + lastLevel);
+					trainerDiv.append(newElement);
+				}
 				var newElement = $('<div></div>');
 				newElement.addClass("item");
 				var textImageDiv = $('<span></span>');

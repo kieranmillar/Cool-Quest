@@ -87,7 +87,7 @@ var jugglingBalls = [
 			{
 				x *= 2;
 			}
-			return "+" + x + " Fire Damage";
+			return "+" + x + " Fire Damage<br />(When thrown:<br />Deals 40 Fire Damage)";
 		},
 		icon: "cookie.png",
 		effect: function()
@@ -112,7 +112,7 @@ var jugglingBalls = [
 				x *= 2;
 				y *= 2;
 			}
-			return "+" + x + " Max HP<br />Restore " + y + " HP per turn";
+			return "+" + x + " Max HP<br />Restore " + y + " HP per turn<br />(When thrown:<br />Restores 60 HP)";
 		},
 		icon: "cookie.png",
 		effect: function()

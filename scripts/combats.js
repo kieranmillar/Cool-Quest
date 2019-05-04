@@ -377,7 +377,7 @@ function regularAttack (value, hitMessage, critMessage)
 	if (hitMessage == "" || Math.random() * 100 < ((player.effSpd - monster.spd) / 4) + 10)
 	{
 		let critMultiplier = 1.2;
-		if (player.skills[9])
+		if (player.skills[3])
 		{
 			critMultiplier += Math.floor(player.effMag / 2)/100;
 		}

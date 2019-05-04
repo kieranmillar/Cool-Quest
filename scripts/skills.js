@@ -6,6 +6,11 @@ const skillType = {
 }
 
 var skills = [
+
+	/******
+	WRESTLER
+	******/
+
 	{
 		id: 0,
 		name: "Wrestle with your Thoughts",
@@ -48,6 +53,296 @@ var skills = [
 	},
 	{
 		id: 2,
+		name: "Grease Up",
+		description: "When you want to engage in Oil Wrestling but can only afford the nearest alternative...",
+		enchantment: "10 turns of:<br />+20 SPD",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 50,
+		level: 2,
+		onUse: function () {
+			hint ("You summon a big jar of grease from the ether and pour it over yourself, gaining 10 turns of Greased Up!", "g");
+			return addBuff (5, 10);
+		}
+	},
+	{
+		id: 3,
+		name: "Pro Wrestling Magic",
+		description: "You channel your magic into making your wrestling moves look even more stupid.",
+		enchantment: "Every 2 points of MAG increase the Critical Hit damage multiplier by 1%",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Passive",
+		category: skillType.PASSIVE,
+		price: 50,
+		level: 2,
+	},
+	{
+		id: 4,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 5,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 6,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 4,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 7,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 4,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 8,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 5,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 9,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 5,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 10,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 6,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 11,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 6,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 12,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 7,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 13,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 7,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 14,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 8,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 15,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 8,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 16,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 9,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 17,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 9,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 18,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 10,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 19,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.WRESTLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 10,
+		onUse: function () {
+			
+		}
+	},
+
+	/******
+	PIRATE
+	******/
+
+	{
+		id: 20,
 		name: "Mighty Pirate",
 		description: function () {return "You're " + player.name + " and you're a mighty pirate!";},
 		enchantment: "10 turns of:<br />+2 Max HP<br />+2 Max MP<br />+2 STR<br />+2 DEF",
@@ -71,7 +366,7 @@ var skills = [
 		}
 	},
 	{
-		id: 3,
+		id: 21,
 		name: "Peck",
 		description: "Your pet parrot Crackers pecks the enemy.",
 		enchantment: "Deals 25 physical damage",
@@ -94,7 +389,300 @@ var skills = [
 		}
 	},
 	{
-		id: 4,
+		id: 22,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 50,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 23,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 50,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 24,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 25,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 26,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 4,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 27,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 4,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 28,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 5,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 29,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 5,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 30,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 6,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 31,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 6,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 32,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 7,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 33,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 7,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 34,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 8,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 35,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 8,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 36,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 9,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 37,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 9,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 38,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 10,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 39,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.PIRATE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 10,
+		onUse: function () {
+			
+		}
+	},
+	
+	/******
+	MYSTIC
+	******/
+	
+	{
+		id: 40,
 		name: "Ancestral Pep Talk",
 		description: "Who you gonna call? Ask your dead ancestral relatives for help and advice.",
 		enchantment: "10 turns of:+1 DEF<br />+3 MAG<br />+4 SPD",
@@ -118,7 +706,7 @@ var skills = [
 		}
 	},
 	{
-		id: 5,
+		id: 41,
 		name: "Channel Mystical Energies",
 		description: "Channels your magical powers into your weapon.",
 		enchantment: "A regular attack using MAG instead of STR",
@@ -134,7 +722,301 @@ var skills = [
 		}
 	},
 	{
-		id: 6,
+		id: 42,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 50,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 43,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 50,
+		level: 2,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 44,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 45,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 46,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 4,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 47,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 4,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 48,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 5,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 49,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 5,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 50,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 6,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 51,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 6,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 52,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 7,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 53,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 7,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 54,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 8,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 55,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 8,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 56,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 9,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 57,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 9,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 58,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 10,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 59,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.MYSTIC,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 10,
+		onUse: function () {
+			
+		}
+	},
+
+	
+	/******
+	JUGGLER
+	******/
+	
+	{
+		id: 60,
 		name: "Steady Yourself",
 		description: "Every juggler knows that balance is key to avoiding catastrophe.",
 		enchantment: "10 turns of:<br />+2 STR<br />+2 DEF<br />+2 MAG<br />+2 SPD",
@@ -158,7 +1040,7 @@ var skills = [
 		}
 	},
 	{
-		id: 7,
+		id: 61,
 		name: "Summon Fireball",
 		description: "Everyone knows juggling is pretty hot, but this is ridiculous.",
 		enchantment: "+5 Fire Damage<br />(When thrown:<br />Deals 40 Fire Damage)",
@@ -174,119 +1056,7 @@ var skills = [
 		}
 	},
 	{
-		id: 8,
-		name: "Grease Up",
-		description: "When you want to engage in Oil Wrestling but can only afford the nearest alternative...",
-		enchantment: "10 turns of:<br />+20 SPD",
-		icon: "cookie.png",
-		job: jobEnum.WRESTLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 2,
-		onUse: function () {
-			hint ("You summon a big jar of grease from the ether and pour it over yourself, gaining 10 turns of Greased Up!", "g");
-			return addBuff (5, 10);
-		}
-	},
-	{
-		id: 9,
-		name: "Pro Wrestling Magic",
-		description: "You channel your magic into making your wrestling moves look even more stupid.",
-		enchantment: "Every 2 points of MAG increase the Critical Hit damage multiplier by 1%",
-		icon: "cookie.png",
-		job: jobEnum.WRESTLER,
-		type: "Passive",
-		category: skillType.PASSIVE,
-		price: 100,
-		level: 2,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 10,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "cookie.png",
-		job: jobEnum.PIRATE,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 2,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 11,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "cookie.png",
-		job: jobEnum.PIRATE,
-		type: "Combat",
-		category: skillType.COMBAT,
-		cost: 1,
-		price: 100,
-		level: 2,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 12,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 2,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 13,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
-		type: "Combat",
-		category: skillType.COMBAT,
-		cost: 1,
-		price: 100,
-		level: 2,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 14,
-		name: "Summon Medicine Ball",
-		description: "The second best medicine after laughter.",
-		enchantment: "+20 Max HP<br />Restore 5 HP per turn<br />(When thrown:<br />Restores 60 HP)",
-		icon: "cookie.png",
-		job: jobEnum.JUGGLER,
-		type: "Juggling Ball",
-		category: skillType.JUGGLE,
-		cost: 5,
-		price: 100,
-		level: 2,
-		onUse: function () {
-			return juggle (1);
-		}
-	},
-	{
-		id: 15,
+		id: 62,
 		name: "Throw",
 		description: "Waste not, want not. A good juggler knows how to recycle their unneeded balls.",
 		enchantment: "Tosses Your Oldest Currently Juggled Ball for Some Effect Depending on the Ball",
@@ -295,7 +1065,7 @@ var skills = [
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 1,
-		price: 100,
+		price: 50,
 		level: 2,
 		onUse: function () {
 			if (player.juggles.length == 0)
@@ -330,6 +1100,278 @@ var skills = [
 			}
 		}
 	},
+	{
+		id: 63,
+		name: "Summon Medicine Ball",
+		description: "The second best medicine after laughter.",
+		enchantment: "+20 Max HP<br />Restore 5 HP per turn<br />(When thrown:<br />Restores 60 HP)",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Juggling Ball",
+		category: skillType.JUGGLE,
+		cost: 5,
+		price: 50,
+		level: 2,
+		onUse: function () {
+			return juggle (1);
+		}
+	},
+	{
+		id: 64,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 65,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 66,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 4,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 67,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 4,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 68,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 5,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 69,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 5,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 70,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 6,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 71,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 6,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 72,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 7,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 73,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 7,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 74,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 8,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 75,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 8,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 76,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 9,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 77,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 9,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 78,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 10,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 79,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "cookie.png",
+		job: jobEnum.JUGGLER,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		price: 100,
+		level: 10,
+		onUse: function () {
+			
+		}
+	}
 ];
 
 function displaySkills()

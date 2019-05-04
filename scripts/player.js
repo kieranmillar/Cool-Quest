@@ -136,13 +136,13 @@ function createCharacter()
 			player.defGain = 5;
 			player.magGain = 4;
 			player.spdGain = 3;
-			if (!player.skills[2])
+			if (!player.skills[20])
 			{
-				player.skills[2] = 1;
+				player.skills[20] = 1;
 			}
-			if (!player.skills[3])
+			if (!player.skills[21])
 			{
-				player.skills[3] = 1;
+				player.skills[21] = 1;
 			}
 			break;
 		case jobEnum.MYSTIC:
@@ -152,13 +152,13 @@ function createCharacter()
 			player.defGain = 3;
 			player.magGain = 5;
 			player.spdGain = 4;
-			if (!player.skills[4])
+			if (!player.skills[40])
 			{
-				player.skills[4] = 1;
+				player.skills[40] = 1;
 			}
-			if (!player.skills[5])
+			if (!player.skills[41])
 			{
-				player.skills[5] = 1;
+				player.skills[41] = 1;
 			}
 			break;
 		case jobEnum.JUGGLER:
@@ -168,13 +168,13 @@ function createCharacter()
 			player.defGain = 4;
 			player.magGain = 4;
 			player.spdGain = 5;
-			if (!player.skills[6])
+			if (!player.skills[60])
 			{
-				player.skills[6] = 1;
+				player.skills[60] = 1;
 			}
-			if (!player.skills[7])
+			if (!player.skills[61])
 			{
-				player.skills[7] = 1;
+				player.skills[61] = 1;
 			}
 	}
 	player.baseHpMax = player.hpGain;

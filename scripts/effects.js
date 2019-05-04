@@ -74,6 +74,17 @@ var effects = [
 			player.effSpd += 20;
 		}
 	},
+	{
+		id: 6,
+		name: "Orcine Porcine Power",
+		description: "Orc pork comes from only the toughest pigs, fed an endless diet of growth hormones. They're having an effect on you.",
+		enchantment: "+7 STR",
+		icon: "cookie.png",
+		effect: function()
+		{
+			player.effStr += 7;
+		}
+	},
 ];
 
 var jugglingBalls = [

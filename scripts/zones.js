@@ -33,6 +33,34 @@ var zones = [
 		combats: [5, 6, 7],
 		noncombats: [2]
 	},
+	{
+		id: 3,
+		name: "The Orc Camp Mess Hall",
+		combatChance: 100,
+		combats: [8, 9, 10, 11],
+		noncombats: []
+	},
+	{
+		id: 4,
+		name: "The Orc Camp Barracks",
+		combatChance: 75,
+		combats: [8, 12, 13],
+		noncombats: []
+	},
+	{
+		id: 5,
+		name: "The Orc Camp Munitions",
+		combatChance: 100,
+		combats: [14],
+		noncombats: []
+	},
+	{
+		id: 6,
+		name: "The Orc Camp Leader's Tent",
+		combatChance: 100,
+		combats: [16],
+		noncombats: []
+	},
 ];
 
 function adventure (z)

@@ -124,6 +124,10 @@ function goToLocation (l)
 				$("#town_hall_canteen").show();
 			}
 			break;
+		case "outskirts":
+			break;
+		case "orcCamp":
+			break;
 		case "settings":
 			$("#loc_settings").show();
 			break;

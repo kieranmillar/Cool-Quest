@@ -59,6 +59,7 @@ var player = {
 	optionQuickHeal: 0,
 	questTutorial: 0,
 	questTownHall: 0,
+	questOrcCamp: 0,
 	zoneCounterBasement: 0,
 	zoneCounterCanteen: 0
 };

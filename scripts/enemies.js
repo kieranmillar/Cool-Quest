@@ -193,4 +193,221 @@ var combats = [
 			"He uses his torch to light a cigarette, then after a quick smoke, stubs it out on your face."
 		]
 	},
+	{
+		id: 8,
+		name: "an orc Major",
+		description: "This highly decorated orc looks like a high ranking official around here. If anybody can help you get a talk with the leader, then this orc can.",
+		icon: "empty.png",
+		hp: 12,
+		str: 14,
+		def: 4,
+		spd: 10,
+		exp: 17,
+		gold: 12,
+		drops: [],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		],
+		afterCombat: function () {
+			if (player.questOrcCamp < 5)
+			{
+				switch (player.questOrcCamp)
+				{
+					case 2:
+						addCombatText ("");
+						break;
+					case 3:
+						addCombatText ("");
+						break;
+					case 4:
+						addCombatText ("");
+						break;
+				}
+				player.questOrcCamp ++;
+			}	
+			return true;
+		}
+	},
+	{
+		id: 9,
+		name: "an orc chef",
+		description: "",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 1,
+		spd: 0,
+		element: elementEnum.FIRE,
+		exp: 16,
+		gold: 10,
+		drops: [
+			{id: 18, chance: 25},
+			{id: 19, chance: 50}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 10,
+		name: "orc mess hall enemy 2",
+		description: "",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 1,
+		spd: 0,
+		exp: 16,
+		gold: 10,
+		drops: [
+
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 11,
+		name: "orc mess hall enemy 3",
+		description: "",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 1,
+		spd: 0,
+		exp: 16,
+		gold: 10,
+		drops: [
+
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 12,
+		name: "orc barracks enemy 1",
+		description: "",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 1,
+		spd: 0,
+		exp: 16,
+		gold: 10,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 13,
+		name: "orc barracks enemy 2",
+		description: "",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 1,
+		spd: 0,
+		exp: 16,
+		gold: 10,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 14,
+		name: "an orc weaponsmaster",
+		description: "",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 1,
+		spd: 0,
+		exp: 16,
+		gold: 10,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		],
+		afterCombat: function () {
+			return true;
+		}
+	},
+	{
+		id: 15,
+		name: "an orc Major General",
+		description: "",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 1,
+		spd: 0,
+		exp: 16,
+		gold: 10,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		],
+		afterCombat: function () {
+			return true;
+		}
+	},
+	{
+		id: 16,
+		name: "Bjorc",
+		description: "",
+		icon: "empty.png",
+		hp: 12,
+		str: 12,
+		def: 1,
+		spd: 0,
+		exp: 16,
+		gold: 10,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		],
+		afterCombat: function () {
+			return true;
+		}
+	},
 ];

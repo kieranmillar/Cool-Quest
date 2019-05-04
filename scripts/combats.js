@@ -203,7 +203,15 @@ function combatRound (action)
 				$("#combatText").append(e);
 			}
 		}
-		endAdventure();
+		let triggerEnd = true;
+		if (combats[monster.id].hasOwnProperty("afterCombat") == true)
+		{
+			triggerEnd = combats[monster.id].afterCombat();
+		}
+		if (triggerEnd)
+		{
+			endAdventure();
+		}
 	}
 	else
 	{

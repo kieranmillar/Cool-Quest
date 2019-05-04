@@ -1059,7 +1059,7 @@ var skills = [
 		id: 62,
 		name: "Throw",
 		description: "Waste not, want not. A good juggler knows how to recycle their unneeded balls.",
-		enchantment: "Tosses Your Oldest Currently Juggled Ball for Some Effect Depending on the Ball",
+		enchantment: "Throws your oldest currently juggled ball for some effect depending on the ball",
 		icon: "cookie.png",
 		job: jobEnum.JUGGLER,
 		type: "Combat",

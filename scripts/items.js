@@ -334,6 +334,41 @@ var items = [
 			player.fireDamage += 5;
 		}
 	},
+	{
+		id: 18,
+		name: "orc fork",
+		description: "Stick a fork in it, your enemy is done.",
+		enchantment: "+7 STR<br />+7 MAG",
+		icon: "cookie.png",
+		type: "Weapon",
+		category: itemType.WEAPON,
+		equipStat: "STR",
+		equipValue: 6,
+		sell: 15,
+		onWear: function () {
+			player.effStr += 7;
+			player.effMag += 7;
+		}
+	},
+	{
+		id: 19,
+		name: "orc pork",
+		description: "",
+		enchantment: "+3 Fullness<br />+6 Turns to midnight<br />20 turns of +7 STR",
+		icon: "cookie.png",
+		type: "Food",
+		category: itemType.FOOD,
+		sell: 20,
+		onUse: function () {
+			let success = eat (6, 3);
+			if (success == true)
+			{
+				hint (eatMessage (14, 10, 4) + " You gain 20 turns of Orcine Porcine Power.", "g");
+				addBuff (6, 20);
+			}
+			return success;
+		}
+	},
 ];
 
 function equip (e)

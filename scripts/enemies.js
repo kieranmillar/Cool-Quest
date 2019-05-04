@@ -388,7 +388,7 @@ var combats = [
 	},
 	{
 		id: 16,
-		name: "Bjorc",
+		name: "Björc",
 		description: "",
 		icon: "empty.png",
 		hp: 12,

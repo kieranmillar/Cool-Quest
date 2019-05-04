@@ -99,6 +99,22 @@ var noncombats = [
 			}
 		},
 	},
+	{
+		id: 3,
+		title: "TODO",
+		description: "Desc",
+		result: function () {
+
+		},
+	},
+	{
+		id: 4,
+		title: "TODO",
+		description: "Desc",
+		result: function () {
+
+		},
+	},
 ];
 
 function noncombatButton (text, choice, hintText)

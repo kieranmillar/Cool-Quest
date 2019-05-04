@@ -284,8 +284,11 @@
 						<button type="button" onclick="goToLocation('house')">
 							Go to Your House
 						</button>
-						<button type="button" onclick="goToLocation('town')">
+						<button type="button" onclick="goToLocation('town')" id="map_townButton">
 							Go to Town
+						</button>
+						<button type="button" onclick="goToLocation('outskirts')" id="map_outskirtsButton">
+							Go to the Outskirts of Town
 						</button>
 					</div>
 					<div id="loc_house" class="location">
@@ -392,6 +395,31 @@
 							Back to Town
 						</button>
 					</div>
+					<div id="loc_outskirts" class="location">
+						<button type="button" onclick="goToLocation('orcCamp')">
+							Visit the Orc Camp
+						</button>
+						<button type="button" onclick="goToLocation('map')">
+							Back to Map
+						</button>
+					</div>
+					<div id="loc_orcCamp" class="location">
+						<button id="orcCamp_messHall" class="orcCampButton" type="button" onclick="adventure(3)">
+							Adventure in the Orc Camp Mess Hall (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+						</button>
+						<button id="orcCamp_barracks" class="orcCampButton" type="button" onclick="adventure(4)">
+							Adventure in the Orc Camp Barracks (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+						</button>
+						<button id="orcCamp_munitions" class="orcCampButton" type="button" onclick="adventure(5)">
+							Adventure in the Orc Camp Munitions Store (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+						</button>
+						<button id="orcCamp_leadersTent" class="orcCampButton" type="button" onclick="adventure(6)">
+							Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+						</button>
+						<button type="button" onclick="goToLocation('outskirts')">
+							Back to the Outskirts of Town
+						</button>
+					</div>
 					<div id="loc_settings" class="location">
 						<button type="button" onclick="save()">
 							Save game
@@ -420,6 +448,9 @@
 						<p>(You can disable these warnings in the settings)</p>
 						<button type="button" id="recommendedZoneLevelButton" onclick="bypassZoneLevelWarning()">
 							I want to adventure here anyway (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+						</button>
+						<button type="button" onclick="goToLocation('map')">
+							Back to Map
 						</button>
 					</div>
 					<hr>

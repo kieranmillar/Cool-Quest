@@ -37,6 +37,16 @@ function goToLocation (l)
 		default:
 		case "map":
 			$("#loc_map").show();
+			$("#map_townButton").hide();
+			$("#map_outskirtsButton").hide();
+			if (player.questTutorial >= 5)
+			{
+				$("#map_townButton").show();
+			}
+			if (player.questOrcCamp >= 1)
+			{
+				$("#map_outskirtsButton").show();
+			}
 			break;
 		case "house":
 			$("#loc_house").show();
@@ -125,8 +135,10 @@ function goToLocation (l)
 			}
 			break;
 		case "outskirts":
+			$("#loc_outskirts").show();
 			break;
 		case "orcCamp":
+			$("#loc_orcCamp").show();
 			break;
 		case "toughZoneWarning":
 			$("#loc_toughZoneWarning").show();

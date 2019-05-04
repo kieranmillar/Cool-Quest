@@ -286,14 +286,20 @@ function giveExp (e)
 		player.baseDef += player.defGain;
 		player.baseMag += player.magGain;
 		player.baseSpd += player.spdGain;
-		t += "\n<strong>You grew your stats!</strong>";
+		t += "<br /><strong>You grew your stats!</strong>";
 		calculateStats();
+		if (player.job == jobEnum.JUGGLER)
+		{
+			player.mp = player.effMpMax;
+			t += "<br /><strong>Your juggler training causes you to meditate, restoring your MP!</strong>";
+			redrawCharPane();
+		}
 	}
 	while (player.exp >= levelDeltas[player.level-1])
 	{
 		player.exp -= levelDeltas[player.level-1];
 		player.level++;
-		t += "\n<strong>You levelled up!</strong>";
+		t += "<br /><strong>You levelled up!</strong>";
 	}
 	return t;
 }

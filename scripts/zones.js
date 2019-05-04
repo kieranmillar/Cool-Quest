@@ -39,7 +39,7 @@ function adventure (z)
 {
 	if (player.hp == 0)
 	{
-		hint ("You can't adventure with 0 HP! Go rest at your house.", "r");
+		hint ("You can't adventure with 0 HP! Go rest at your house or visit the doctor.", "r");
 		return;
 	}
 	if (busy == true)

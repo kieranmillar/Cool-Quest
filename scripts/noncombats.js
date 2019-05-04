@@ -131,7 +131,7 @@ function noncombatChoice (c)
 function addNoncombatText (txt)
 {
 	let e = $("<p></p>");
-	e.text(txt);
+	e.html(txt);
 	$("#noncombatText").append(e);
 }
 
@@ -157,7 +157,7 @@ function beginNoncombat (obj)
 	currentNoncom = obj.id;
 	$("#noncombatText").empty();
 	$("#noncombatTitle").text(obj.title);
-	addNoncombatText (obj.description + "\n");
+	addNoncombatText (obj.description + "<br />");
 	$("#adventureAgainButton").hide();
 	if (obj.hasOwnProperty("result") == true)
 	{

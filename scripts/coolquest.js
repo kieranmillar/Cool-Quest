@@ -435,6 +435,9 @@ $(document).ready(function(){
 		$(".house_tutorial_2").hide();
 		$(".house_tutorial_3").hide();
 		$("#quickHeal").hide();
+		$("#option_compactInfoPanel").prop("checked", false);
+		$("#option_quickHeal").prop("checked", false);
+		$("#option_zoneWarnings").prop("checked", true);
 	}
 	hint ("Welcome to Cool Quest!", "g");
 });

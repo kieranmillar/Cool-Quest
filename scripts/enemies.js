@@ -207,9 +207,9 @@ var combats = [
 		drops: [],
 		hitMessages: [
 			"He shouts and points at you, and a gang of other orcs run over and beat you up.",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He pulls one of his medals off his lapel, then pokes you with the pin.",
+			"He majorly hits you. Major bummer!",
+			"He angles his medals towards the sun and the reflection dazzles you. While stunned, he punches you."
 		],
 		afterCombat: function () {
 			if (player.questOrcCamp < 5)
@@ -217,13 +217,22 @@ var combats = [
 				switch (player.questOrcCamp)
 				{
 					case 2:
-						addCombatText ("");
+						addCombatText ("You stand over the Major who is lying dazed on the floor.");
+						addCombatText ("\"Hey, I'm looking to speak to your leader, any chance you could let me have a word with him?\" you ask politely.");
+						addCombatText ("\"GET LOST HUMAN! NOBODY IS ALLOWED TO SPEAK TO THE LEADER WITHOUT PERMISSION FROM ÓLAFUR!\"");
+						addCombatText ("You don't know who Ólafur is, could he be one of the other Majors? You walk off to look for another Major. There should be another one around here somewhere...");
 						break;
 					case 3:
-						addCombatText ("");
+						addCombatText ("You try a new ruse on this next Major.");
+						addCombatText ("\"I just spoke to Ólafur and he told me I need to speak to the leader, I need you to take me to him.\"");
+						addCombatText ("\"HAH! HOW IS THAT POSSIBLE? ÓLAFUR IS BACK IN HEADQUARTERS, YOU COULD NOT HAVE SPOKEN TO HIM! YOU CAN'T FOOL ME!\"");
+						addCombatText ("Rats, you'll get it right next time...");
 						break;
 					case 4:
-						addCombatText ("");
+						addCombatText ("You clear your throat and try to sound as annoyed as possible.");
+						addCombatText ("\"Now that you will listen to me instead of fight me, I am a messenger. I have been sent by Ólafur to deliver important news. Please take me to the leader.\"");
+						addCombatText ("\"OH I AM SORRY! MEET ME AT THE TENT AND I WILL LET YOU IN!\"");
+						addCombatText ("Success! Time to talk to the leader.");
 						break;
 				}
 				player.questOrcCamp ++;

@@ -289,7 +289,7 @@ function combatRound (action)
 		if (player.hp <= 0)
 		{
 			player.hp = 0;
-			addCombatText ("You got knocked out! Heal up and try again!");
+			addCombatText ("<strong>You got knocked out! Heal up and try again!</strong>");
 			endAdventure();
 		}
 	}

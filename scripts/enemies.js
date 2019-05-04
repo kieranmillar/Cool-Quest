@@ -93,7 +93,7 @@ var combats = [
 		def: 3,
 		spd: -20,
 		exp: 14,
-		gold: 5,
+		gold: 23,
 		drops: [
 			{id: 6, chance: 70},
 		],
@@ -114,7 +114,7 @@ var combats = [
 		def: 0,
 		spd: -50,
 		exp: 15,
-		gold: 4,
+		gold: 22,
 		drops: [
 			{id: 7, chance: 30}
 		],
@@ -206,7 +206,7 @@ var combats = [
 		gold: 12,
 		drops: [],
 		hitMessages: [
-			"crit",
+			"He shouts and points at you, and a gang of other orcs run over and beat you up.",
 			"hit1",
 			"hit2",
 			"hit3"

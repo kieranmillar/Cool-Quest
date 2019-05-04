@@ -407,17 +407,19 @@
 						</ul>
 						To load your game, just refresh the page
 						<br />
-						<button type="button" onclick="toggleOption('compactInfoPanel')">
-							Toggle Compact Buff List
-						</button>
-						<br />
-						<button type="button" onclick="toggleOption('quickHeal')">
-							Toggle Doctor in the Top Pane
-						</button>
-						<br />
+						<p><input type="checkbox" id="option_compactInfoPanel" onclick="toggleOption('compactInfoPanel')"> Compact buff list</input></p>
+						<p><input type="checkbox" id="option_quickHeal" onclick="toggleOption('quickHeal')"> Doctor in the top pane</input></p>
+						<p><input type="checkbox" id="option_zoneWarnings" onclick="toggleOption('zoneWarnings')" checked> Recommended level warnings for tough zones</input></p>
 						<br />
 						<button type="button" onclick="wipe()">
 							Delete save file and hard reset (Don't press this!)
+						</button>
+					</div>
+					<div id="loc_toughZoneWarning" class="location">
+						<p>Watch out! This area might be tougher than you can comfortably handle. It is recommended that you at least be level <span id="recommendedZoneLevel"></span> before entering this zone.</p>
+						<p>(You can disable these warnings in the settings)</p>
+						<button type="button" id="recommendedZoneLevelButton" onclick="bypassZoneLevelWarning()">
+							I want to adventure here anyway (<img src='./images/adventure.png' title='(1 Adventure)'/>)
 						</button>
 					</div>
 					<hr>

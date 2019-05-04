@@ -2,6 +2,7 @@ var zones = [
 	{
 		id: 0,
 		name: "The Town Hall Basement",
+		level: 1,
 		combatChance: 90,
 		combats: [0, 1, 2],
 		noncombats: [0],
@@ -22,6 +23,7 @@ var zones = [
 	{
 		id: 1,
 		name: "The Town Hall Tax Office",
+		level: 1,
 		combatChance: 70,
 		combats: [3, 4],
 		noncombats: [1]
@@ -29,6 +31,7 @@ var zones = [
 	{
 		id: 2,
 		name: "The Town Hall Canteen",
+		level: 2,
 		combatChance: 90,
 		combats: [5, 6, 7],
 		noncombats: [2]
@@ -36,6 +39,7 @@ var zones = [
 	{
 		id: 3,
 		name: "The Orc Camp Mess Hall",
+		level: 2,
 		combatChance: 100,
 		combats: [8, 9, 10, 11],
 		noncombats: []
@@ -43,13 +47,15 @@ var zones = [
 	{
 		id: 4,
 		name: "The Orc Camp Barracks",
+		level: 2,
 		combatChance: 75,
 		combats: [8, 12, 13],
-		noncombats: []
+		noncombats: [3]
 	},
 	{
 		id: 5,
-		name: "The Orc Camp Munitions",
+		name: "The Orc Camp Munitions Store",
+		level: 3,
 		combatChance: 100,
 		combats: [14],
 		noncombats: []
@@ -57,9 +63,10 @@ var zones = [
 	{
 		id: 6,
 		name: "The Orc Camp Leader's Tent",
-		combatChance: 100,
-		combats: [16],
-		noncombats: []
+		level: 2,
+		combatChance: 0,
+		combats: [],
+		noncombats: [4]
 	},
 ];
 
@@ -77,6 +84,13 @@ function adventure (z)
 	}
 	$(".newDay").hide();
 	lastZone = z;
+	if (zones[z].level > player.level
+		&& player.optionZoneWarnings == 1
+		&& !zoneBypassedWarnings[z])
+	{
+		goToLocation ("toughZoneWarning");
+		return;
+	}
 	if(zones[z].hasOwnProperty("special"))
 	{
 		zones[z].special();
@@ -137,4 +151,12 @@ function pickRandomCombat (zone)
 	let r = Math.random();
 	r = Math.floor (r * zones[zone].combats.length);
 	beginCombat (combats[zones[zone].combats[r]]);
+}
+
+var zoneBypassedWarnings = [];
+
+function bypassZoneLevelWarning()
+{
+	zoneBypassedWarnings[lastZone] = 1;
+	adventure (lastZone);
 }

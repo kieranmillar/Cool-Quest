@@ -35,7 +35,7 @@ function beginCombat (obj)
 	{
 		monster.element = elementEnum.PHYS;
 	}
-	monster.exp = obj.exp;
+	monster.exp = obj.exp + (player.effMl / 2);
 	monster.gold = obj.gold;
 	monster.drops = obj.drops;
 	monster.hitMessages = obj.hitMessages;
@@ -187,10 +187,10 @@ function combatRound (action)
 		monster.hp = 0;
 		addCombatText ("You win the fight!");
 		addCombatText (giveExp (monster.exp));
-		addCombatText (giveGold (monster.gold, true));
+		addCombatText (giveGold (monster.gold * ((100 + player.effGoldBoost) / 100), true));
 		for (let i = 0; i < monster.drops.length; i++)
 		{
-			if (Math.random() * 100 < monster.drops[i].chance)
+			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
 			{
 				gainItem (monster.drops[i].id, 1);
 				let e = $("<p></p>");

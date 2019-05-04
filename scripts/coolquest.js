@@ -126,7 +126,7 @@ function redrawInfoPanel ()
 	for (var i in player.buffs)
 	{
 		let t = "<div class='item item_Image' onClick='openDialog (dialogType.BUFF, " + player.buffs[i].id + ");'><img src=./images/" + effects[player.buffs[i].id].icon + ">";
-		if (player.optionSmallInfoPanel == 0) {
+		if (player.optionCompactInfoPanel == 0) {
 			t += effects[player.buffs[i].id].name + " ";
 		}
 		t += "(" + player.buffs[i].turns + ")</div>";
@@ -140,7 +140,7 @@ function redrawInfoPanel ()
 	for (var i in player.juggles)
 	{
 		let t = "<div class='item item_Image' onClick='openDialog (dialogType.JUGGLE, " + player.juggles[i] + ");'><img src=./images/" + jugglingBalls[player.juggles[i]].icon + ">";
-		if (player.optionSmallInfoPanel == 0) {
+		if (player.optionCompactInfoPanel == 0) {
 			t += jugglingBalls[player.juggles[i]].name + " ";
 		}
 		juggleDiv.append(t);
@@ -163,7 +163,7 @@ function redrawInfoPanel ()
 		$("#infoPanel").show();
 	}
 	$("#infoPanel").removeClass();
-	if (player.optionSmallInfoPanel == 1)
+	if (player.optionCompactInfoPanel == 1)
 	{
 		$("#infoPanel").addClass("smallInfoPanel");
 	}
@@ -330,13 +330,31 @@ function load()
 	$("#adventureAgainButton").hide();
 	calculateStats();
 	redrawInfoPanel();
+	if (player.optionCompactInfoPanel)
+	{
+		$("#option_compactInfoPanel").prop("checked", true);
+	}
+	else
+	{
+		$("#option_compactInfoPanel").prop("checked", false);
+	}
 	if (player.optionQuickHeal)
 	{
 		$("#quickHeal").show();
+		$("#option_quickHeal").prop("checked", true);
 	}
 	else
 	{
 		$("#quickHeal").hide();
+		$("#option_quickHeal").prop("checked", false);
+	}
+	if (player.optionZoneWarnings)
+	{
+		$("#option_zoneWarnings").prop("checked", true);
+	}
+	else
+	{
+		$("#option_zoneWarnings").prop("checked", false);
 	}
 }
 
@@ -344,13 +362,13 @@ function toggleOption(option) {
 	switch (option)
 	{
 		case 'compactInfoPanel':
-			if (player.optionSmallInfoPanel == 0)
+			if (player.optionCompactInfoPanel == 0)
 			{
-				player.optionSmallInfoPanel = 1;
+				player.optionCompactInfoPanel = 1;
 			}
 			else
 			{
-				player.optionSmallInfoPanel = 0;
+				player.optionCompactInfoPanel = 0;
 			}
 			redrawInfoPanel();
 			break;
@@ -366,6 +384,16 @@ function toggleOption(option) {
 				$("#quickHeal").hide();
 			}
 			redrawInfoPanel();
+			break;
+		case 'zoneWarnings':
+			if (player.optionZoneWarnings == 0)
+			{
+				player.optionZoneWarnings = 1;
+			}
+			else
+			{
+				player.optionZoneWarnings = 0;
+			}
 			break;
 	}
 	save();

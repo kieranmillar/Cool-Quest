@@ -363,7 +363,7 @@ var items = [
 			let success = eat (6, 3);
 			if (success == true)
 			{
-				hint (eatMessage (14, 10, 4) + " You gain 20 turns of Orcine Porcine Power.", "g");
+				hint (eatMessage (19, 6, 3) + " You gain 20 turns of Orcine Porcine Power.", "g");
 				addBuff (6, 20);
 			}
 			return success;

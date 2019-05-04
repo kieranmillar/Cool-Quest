@@ -128,6 +128,10 @@ function goToLocation (l)
 			break;
 		case "orcCamp":
 			break;
+		case "toughZoneWarning":
+			$("#loc_toughZoneWarning").show();
+			$("#recommendedZoneLevel").text(zones[lastZone].level);
+			break;
 		case "settings":
 			$("#loc_settings").show();
 			break;

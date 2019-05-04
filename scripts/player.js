@@ -55,8 +55,9 @@ var player = {
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 	],
 	juggles: [],
-	optionSmallInfoPanel: 0,
+	optionCompactInfoPanel: 0,
 	optionQuickHeal: 0,
+	optionZoneWarnings: 1,
 	questTutorial: 0,
 	questTownHall: 0,
 	questOrcCamp: 0,

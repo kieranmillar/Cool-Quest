@@ -185,7 +185,7 @@ function combatRound (action)
 	if (monster.hp <= 0)
 	{
 		monster.hp = 0;
-		addCombatText ("You win the fight!");
+		addCombatText ("<strong>You win the fight!</strong>");
 		addCombatText (giveExp (monster.exp));
 		addCombatText (giveGold (monster.gold * ((100 + player.effGoldBoost) / 100), true));
 		for (let i = 0; i < monster.drops.length; i++)

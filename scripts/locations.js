@@ -139,6 +139,15 @@ function goToLocation (l)
 			break;
 		case "orcCamp":
 			$("#loc_orcCamp").show();
+			if (player.questOrcCamp == 1)
+			{
+				$(".orcCamp_intro").show();
+				player.questOrcCamp = 2;
+			}
+			else
+			{
+				$(".orcCamp_intro").hide();
+			}
 			break;
 		case "toughZoneWarning":
 			$("#loc_toughZoneWarning").show();

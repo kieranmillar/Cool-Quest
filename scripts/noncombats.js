@@ -104,7 +104,7 @@ var noncombats = [
 		title: "TODO",
 		description: "Desc",
 		result: function () {
-
+			endAdventure();
 		},
 	},
 	{
@@ -112,7 +112,7 @@ var noncombats = [
 		title: "TODO",
 		description: "Desc",
 		result: function () {
-
+			endAdventure();
 		},
 	},
 ];

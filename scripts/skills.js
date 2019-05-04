@@ -90,7 +90,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 200,
 		level: 3,
 		onUse: function () {
 			
@@ -106,7 +106,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 200,
 		level: 3,
 		onUse: function () {
 			
@@ -430,7 +430,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 200,
 		level: 3,
 		onUse: function () {
 			
@@ -446,7 +446,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 200,
 		level: 3,
 		onUse: function () {
 			
@@ -739,18 +739,18 @@ var skills = [
 	},
 	{
 		id: 43,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Expose Secrets",
+		description: "You expose your enemy's deepest darkest secrets, shocking them to their core. In reality it's just a generic guess, but it works pretty much all the time.",
+		enchantment: "Stuns the enemy for 2 rounds<br />(Once per combat)<br />(TODO: Implement this skill)",
 		icon: "cookie.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
+		type: "Combat",
+		category: skillType.COMBAT,
 		cost: 3,
 		price: 50,
 		level: 2,
 		onUse: function () {
-			
+			addCombatText ("TODO: Implement");
 		}
 	},
 	{
@@ -763,26 +763,29 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 200,
 		level: 3,
 		onUse: function () {
 			
 		}
 	},
 	{
-		id: 45,
-		name: "",
-		description: "",
-		enchantment: "",
+		id: 43,
+		name: "Spooky Ghost Story",
+		description: "You tell a story so spooky, it chills your opponents to the bone.",
+		enchantment: "Deals 80% of your MAG as Ice Damage",
 		icon: "cookie.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
+		type: "Combat",
+		category: skillType.COMBAT,
+		cost: 5,
+		price: 200,
 		level: 3,
 		onUse: function () {
-			
+			addCombatText ("You tell your opponent about a little girl walking alone in a dark wood that encounters a terrible fate. Your opponent shivers.");
+			let damage = calcIceDamage(Math.floor(player.effMag * 0.80) + player.iceDamage);
+			addCombatText ("It takes <span class='ice'>" + damage + "</span> damage!");
+			monster.hp -= damage;
 		}
 	},
 	{
@@ -1094,6 +1097,10 @@ var skills = [
 						addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
 						addCombatText (giveHp (60));
 						break;
+					case 2:
+						//addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
+						addCombatText ("TODO");
+						break;
 				}
 				calculateStats();
 				redrawInfoPanel();
@@ -1126,7 +1133,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 200,
 		level: 3,
 		onUse: function () {
 			
@@ -1134,18 +1141,18 @@ var skills = [
 	},
 	{
 		id: 65,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Summon Disco Ball",
+		description: "It's impossible not to dance in the presence of the spinning lights of a disco ball. This should help to shake loose some spare change.",
+		enchantment: "+40% Gold from combats<br />(When thrown:<br />TODO)",
 		icon: "cookie.png",
 		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
+		type: "Juggling Ball",
+		category: skillType.JUGGLE,
+		cost: 10,
+		price: 200,
 		level: 3,
 		onUse: function () {
-			
+			return juggle (2);
 		}
 	},
 	{

@@ -111,6 +111,17 @@ var jugglingBalls = [
 			player.effHpRegen += 5;
 		}
 	},
+	{
+		id: 2,
+		name: "Disco Ball",
+		description: "This disco ball puts everyone into a trance, imagining trance music to go with the lights.",
+		enchantment: "+40% Gold from combats<br />(When thrown:<br />TODO)",
+		icon: "cookie.png",
+		effect: function()
+		{
+			player.effGoldBoost += 40;
+		}
+	},
 ]
 
 function addBuff (id, turns)

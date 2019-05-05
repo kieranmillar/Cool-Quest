@@ -214,7 +214,7 @@ var combats = [
 						addCombatText ("Rats, you'll get it right next time...");
 						break;
 					case 4:
-						addCombatText ("You clear your throat and try to sound as annoyed as possible.");
+						addCombatText ("You clear your throat and try to sound as professional as possible.");
 						addCombatText ("\"Now that you will listen to me instead of fight me, I am a messenger. I have been sent by Ólafur to deliver important news. Please take me to the leader.\"");
 						addCombatText ("\"OH I AM SORRY! MEET ME AT THE TENT AND I WILL LET YOU IN!\"");
 						addCombatText ("Success! Time to talk to the leader.");

@@ -390,19 +390,15 @@ var skills = [
 	},
 	{
 		id: 22,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Healthy Eating",
+		description: "Years of pirate experience have left you with the knowledge of how to avoid scurvy.",
+		enchantment: "Eating food fully restores your HP",
 		icon: "cookie.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		type: "Passive",
+		category: skillType.PASSIVE,
 		price: 50,
 		level: 2,
-		onUse: function () {
-			
-		}
 	},
 	{
 		id: 23,
@@ -752,19 +748,15 @@ var skills = [
 	},
 	{
 		id: 44,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Master of Feng Shui",
+		description: "Everywhere you go you rearrange the furniture to maximise the effectiveness your chakras. Or something like that.<br />Look I'll be honest, I don't really understand any of this stuff.",
+		enchantment: "Restore 1 MP each turn",
 		icon: "cookie.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		type: "Passive",
+		category: skillType.PASSIVE,
 		price: 200,
 		level: 3,
-		onUse: function () {
-			
-		}
 	},
 	{
 		id: 43,
@@ -1108,7 +1100,7 @@ var skills = [
 		id: 63,
 		name: "Summon Medicine Ball",
 		description: "The second best medicine after laughter.",
-		enchantment: "+20 Max HP<br />Restore 5 HP per turn<br />(When thrown:<br />Restores 60 HP)",
+		enchantment: "+20 Max HP<br />Restore 5 HP each turn<br />(When thrown:<br />Restores 60 HP)",
 		icon: "cookie.png",
 		job: jobEnum.JUGGLER,
 		type: "Juggling Ball",

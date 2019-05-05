@@ -68,8 +68,8 @@ function endAdventure ()
 		$(".newDay").show();
 	}
 	calculateStats ();
-	giveHp(player.effHpRegen);
-	giveMp(player.effMpRegen);
+	giveHp(player.hpRegen);
+	giveMp(player.mpRegen);
 	redrawInfoPanel();
 	save();
 }

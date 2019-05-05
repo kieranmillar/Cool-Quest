@@ -114,12 +114,12 @@ var jugglingBalls = [
 		id: 1,
 		name: "Medicine Ball",
 		description: "A much more reliable way of staying healthy than swallowing pills. Imagine trying to swallow one of these...",
-		enchantment: "+20 Max HP<br />Restore 5 HP per turn<br />(When thrown:<br />Restores 60 HP)",
+		enchantment: "+20 Max HP<br />Restore 5 HP each turn<br />(When thrown:<br />Restores 60 HP)",
 		icon: "cookie.png",
 		effect: function()
 		{
 			player.effHpMax += 20;
-			player.effHpRegen += 5;
+			player.hpRegen += 5;
 		}
 	},
 	{

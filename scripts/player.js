@@ -35,8 +35,8 @@ var player = {
 	iceDamage: 0,
 	fireRes: 0,
 	iceRes: 0,
-	effHpRegen: 0,
-	effMpRegen: 0,
+	hpRegen: 0,
+	mpRegen: 0,
 	effItemBoost: 0,
 	effGoldBoost: 0,
 	effMl: 0,
@@ -214,8 +214,8 @@ function calculateStats ()
 	player.iceDamage = 0;
 	player.fireRes = 0;
 	player.iceRes = 0;
-	player.effHpRegen = 0;
-	player.effMpRegen = 0;
+	player.hpRegen = 0;
+	player.mpRegen = 0;
 	player.effItemBoost = 0;
 	player.effGoldBoost = 0;
 	player.effMl = 0;
@@ -250,6 +250,10 @@ function calculateStats ()
 	{
 		player.effGoldBoost += 15;
 	}
+	if (player.skills[44])
+	{
+		player.mpRegen += 1;
+	}
 	
 	//cap low stats to minimums
 	if (player.effHpMax < 1)
@@ -271,7 +275,7 @@ function calculateStats ()
 
 	if (player.job == jobEnum.WRESTLER)
 	{
-		player.effHpRegen += Math.floor(player.effHpMax / 4);
+		player.hpRegen += Math.floor(player.effHpMax / 4);
 	}
 	redrawCharPane();
 }
@@ -367,6 +371,10 @@ function eat (turns, fullness)
 	{
 		player.full += fullness;
 		player.turnsToMidnight += turns;
+		if (player.skills[22])
+		{
+			player.hp = player.effHpMax;
+		}
 		redrawCharPane();
 		return true;
 	}

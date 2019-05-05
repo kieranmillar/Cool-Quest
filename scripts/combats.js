@@ -1,3 +1,18 @@
+var monster = {
+	id: 0,
+	name: "",
+	description: "",
+	hp: 0,
+	str: 0,
+	def: 0,
+	spd: 0,
+	element: elementEnum.PHYS,
+	exp: 0,
+	gold: 0,
+	drops: [],
+	hitMessages: [""] //first message is for criticals
+};
+
 var currentRound = 0;
 
 function addCombatText (txt)
@@ -132,6 +147,63 @@ function constructCombatItemDropdown ()
 
 function combatRound (action)
 {
+	function checkEndOfCombat()
+	{
+		if (player.hp <= 0 && monster.hp <= 0)
+		{
+			player.hp = 0;
+			monster.hp = 0;
+			addCombatText ("<strong>It's a tie! You and the enemy both got knocked out at the same time!</strong>");
+			addCombatText ("<strong>Quite frankly it's embarassing. You should both feel ashamed of yourselves.</strong>");
+			addCombatText ("<strong>No rewards for you. We're not going to give you anything for being joint loser. We're going to hold you to a higher standard than that.</strong>");
+			endAdventure();
+			return true;
+		}
+		else if (player.hp <= 0)
+		{
+			player.hp = 0;
+			addCombatText ("<strong>You got knocked out! Heal up and try again!</strong>");
+			endAdventure();
+			return true;
+		}
+		else if (monster.hp <= 0)
+		{
+			monster.hp = 0;
+			addCombatText ("<strong>You win the fight!</strong>");
+			addCombatText (giveExp (monster.exp));
+			addCombatText (giveGold (monster.gold * ((100 + player.effGoldBoost) / 100), true));
+			for (let i = 0; i < monster.drops.length; i++)
+			{
+				if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
+				{
+					gainItem (monster.drops[i].id, 1);
+					let e = $("<p></p>");
+					e.addClass("item_Image");
+					e.html("You found a <img src='./images/" + items[monster.drops[i].id].icon + "'> " + items[monster.drops[i].id].name + "!");
+					e.css("cursor", "pointer");
+					e.attr({
+						"onClick" : "openDialog (dialogType.ITEM, " + monster.drops[i].id + ");"
+					});
+					$("#combatText").append(e);
+				}
+			}
+			let triggerEnd = true;
+			if (combats[monster.id].hasOwnProperty("afterCombat") == true)
+			{
+				triggerEnd = combats[monster.id].afterCombat();
+			}
+			if (triggerEnd)
+			{
+				endAdventure();
+			}
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	resetHint();
 	if (player.hp == 0 || monster.hp == 0 || busy == false)
 	{
@@ -151,7 +223,7 @@ function combatRound (action)
 			break;
 		case 0:
 			//basic attack
-			regularAttack (player.effStr - monster.def, "You hit the monster.", "You wind up and overhead smash the monster!");
+			regularAttack (player.effStr, "You hit the monster.", "You wind up and overhead smash the monster!");
 			break;
 		case 1:
 			//use skill
@@ -182,11 +254,7 @@ function combatRound (action)
 		default:
 			return;
 	}
-	if (monster.hp <= 0)
-	{
-		endFight();
-	}
-	else
+	if (!checkEndOfCombat())
 	{
 		let isCrit = false;
 		let overrideStandardAttack = false;
@@ -259,61 +327,16 @@ function combatRound (action)
 				break;
 		}
 		player.hp -= damage;
-		if (player.stormySeas = 1)
+		if (player.stormySeas == 1)
 		{
 			damage = calcIceDamage(5);
 			addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
 			monster.hp -= damage;
 		}
-		if (monster.hp <= 0)
-		{
-			monster.hp = 0;
-		}
-		if (player.hp <= 0)
-		{
-			player.hp = 0;
-			addCombatText ("<strong>You got knocked out! Heal up and try again!</strong>");
-			endAdventure();
-		}
-		else if (monster.hp <= 0)
-		{
-			endFight();
-		}
+		checkEndOfCombat();
 	}
 	currentRound ++;
 	redrawCombat ();
-}
-
-function endFight()
-{
-	monster.hp = 0;
-	addCombatText ("<strong>You win the fight!</strong>");
-	addCombatText (giveExp (monster.exp));
-	addCombatText (giveGold (monster.gold * ((100 + player.effGoldBoost) / 100), true));
-	for (let i = 0; i < monster.drops.length; i++)
-	{
-		if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
-		{
-			gainItem (monster.drops[i].id, 1);
-			let e = $("<p></p>");
-			e.addClass("item_Image");
-			e.html("You found a <img src='./images/" + items[monster.drops[i].id].icon + "'> " + items[monster.drops[i].id].name + "!");
-			e.css("cursor", "pointer");
-			e.attr({
-				"onClick" : "openDialog (dialogType.ITEM, " + monster.drops[i].id + ");"
-			});
-			$("#combatText").append(e);
-		}
-	}
-	let triggerEnd = true;
-	if (combats[monster.id].hasOwnProperty("afterCombat") == true)
-	{
-		triggerEnd = combats[monster.id].afterCombat();
-	}
-	if (triggerEnd)
-	{
-		endAdventure();
-	}
 }
 
 function useCombatSkill (x)
@@ -395,6 +418,7 @@ function pressedViewItembutton ()
 function regularAttack (value, hitMessage, critMessage)
 {
 	// hitMessage == "" means guaranteed critical
+	value -= monster.def;
 	if (value <= 0)
 	{
 		value = 1;

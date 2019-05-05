@@ -4,21 +4,6 @@ var elementEnum = {
 	ICE: 2,
 }
 
-var monster = {
-	id: 0,
-	name: "",
-	description: "",
-	hp: 0,
-	str: 0,
-	def: 0,
-	spd: 0,
-	element: elementEnum.PHYS,
-	exp: 0,
-	gold: 0,
-	drops: [],
-	hitMessages: [""] //first message is for criticals
-};
-
 var combats = [
 	{
 		id: 0,

@@ -133,7 +133,7 @@ function createCharacter()
 			}
 			break;
 		case jobEnum.PIRATE:
-			player.hpGain = 5;
+			player.hpGain = 6;
 			player.mpGain = 2;
 			player.strGain = 4;
 			player.defGain = 5;

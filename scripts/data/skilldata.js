@@ -90,7 +90,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 200,
+		price: 250,
 		level: 3,
 		onUse: function () {
 			
@@ -106,7 +106,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 200,
+		price: 250,
 		level: 3,
 		onUse: function () {
 			
@@ -427,7 +427,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 200,
+		price: 250,
 		level: 3,
 		onUse: function () {
 			
@@ -443,7 +443,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 200,
+		price: 250,
 		level: 3,
 		onUse: function () {
 			
@@ -755,7 +755,7 @@ var skills = [
 		job: jobEnum.MYSTIC,
 		type: "Passive",
 		category: skillType.PASSIVE,
-		price: 200,
+		price: 250,
 		level: 3,
 	},
 	{
@@ -768,7 +768,7 @@ var skills = [
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 5,
-		price: 200,
+		price: 250,
 		level: 3,
 		onUse: function () {
 			addCombatText ("You tell your opponent about a little girl walking alone in a dark wood that encounters a terrible fate. Your opponent shivers.");
@@ -1122,7 +1122,7 @@ var skills = [
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 200,
+		price: 250,
 		level: 3,
 		onUse: function () {
 			
@@ -1138,7 +1138,7 @@ var skills = [
 		type: "Juggling Ball",
 		category: skillType.JUGGLE,
 		cost: 10,
-		price: 200,
+		price: 250,
 		level: 3,
 		onUse: function () {
 			return juggle (2);

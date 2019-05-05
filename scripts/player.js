@@ -248,7 +248,7 @@ function calculateStats ()
 	//apply passives
 	if (player.skills[42])
 	{
-		player.effGoldBoost += 15;
+		player.effGoldBoost += 20;
 	}
 	if (player.skills[44])
 	{

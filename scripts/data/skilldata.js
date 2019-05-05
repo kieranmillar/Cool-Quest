@@ -722,7 +722,7 @@ var skills = [
 		id: 42,
 		name: "Profiteering",
 		description: "You charge your opponents for your time, and are happy to ramp up the costs. They'll never know.",
-		enchantment: "+15% Gold from combats",
+		enchantment: "+20% Gold from combats",
 		icon: "cookie.png",
 		job: jobEnum.MYSTIC,
 		type: "Passive",

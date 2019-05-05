@@ -10,7 +10,9 @@ var monster = {
 	exp: 0,
 	gold: 0,
 	drops: [],
-	hitMessages: [""] //first message is for criticals
+	hitMessages: [""], //first message is for criticals
+	castExposeSecrets: 0,
+	exposeSecretsRounds: 0,
 };
 
 var currentRound = 0;
@@ -54,6 +56,8 @@ function beginCombat (obj)
 	monster.gold = obj.gold;
 	monster.drops = obj.drops;
 	monster.hitMessages = obj.hitMessages;
+	monster.castExposeSecrets = 0;
+	monster.exposeSecretsRounds = 0;
 	$("#combatText").empty();
 	addCombatText (monster.description);
 	currentRound = 0;
@@ -103,10 +107,14 @@ function constructCombatSkillDropdown ()
 	{
 		if (skills[i].category == skillType.COMBAT && player.skills[i] > 0)
 		{
+			if (i == 43 && monster.castExposeSecrets == 1)
+			{
+				continue;
+			}
 			let newElement = $('<option></option>');
 			newElement.val(skills[i].id);
 			let cost = skills[i].cost;
-			if (player.job == jobEnum.MYSTIC) {
+			if (player.job == jobEnum.MEDIUM) {
 				cost = Math.max(cost - 1, 0);
 			}
 			newElement.text(skills[i].name + " (" + cost + ")");
@@ -256,84 +264,99 @@ function combatRound (action)
 	}
 	if (!checkEndOfCombat())
 	{
-		let isCrit = false;
-		let overrideStandardAttack = false;
-		let overrideCrit = false;
-		switch (monster.element)
+		if (monster.exposeSecretsRounds > 0)
 		{
-			case elementEnum.PHYS:
-				damage = monster.str - player.effDef;
-				break;
-			case elementEnum.FIRE:
-				damage = monster.str - player.effDef - player.fireRes;
-				break;
-			case elementEnum.ICE:
-				damage = monster.str - player.effDef - player.iceRes;
-				break;
-		}
-		if (Math.random() * 100 < ((monster.spd - player.effSpd) / 5) + 10)
-		{
-			isCrit = true;
-		}
-		if (usingSkill != -1) {
-			switch (usingSkill)
+			monster.exposeSecretsRounds --;
+			if (monster.exposeSecretsRounds > 0)
 			{
-				default:
-					break;
-			}
-		}
-		if (usingItem != -1) {
-			switch (usingItem)
-			{
-				case 7:
-					damage = Math.floor (damage * 0.2);
-					break;
-			}
-		}
-		if (isCrit == true && overrideCrit == false)
-		{
-			damage = Math.ceil (damage * 1.2);
-		}
-		if (overrideStandardAttack == false)
-		{
-			if (isCrit)
-			{
-				addCombatText ("<strong>CRITICAL!</strong> " + monster.hitMessages[0]);
+				addCombatText("Your opponent stands there panicing, with a terrified expression on their face.");
 			}
 			else
 			{
-				let r = Math.floor(Math.random() * (monster.hitMessages.length - 1)) + 1;
-				addCombatText (monster.hitMessages[r]);
+				addCombatText("Your opponent shakes its head and blinks. Looks like its gotten over the initial shock.");
 			}
 		}
-		if (usingItem == 7)
+		else
 		{
-			addCombatText ("The cardboard panel shatters into pieces, but at least it dampened the blow.");
+			let isCrit = false;
+			let overrideStandardAttack = false;
+			let overrideCrit = false;
+			switch (monster.element)
+			{
+				case elementEnum.PHYS:
+					damage = monster.str - player.effDef;
+					break;
+				case elementEnum.FIRE:
+					damage = monster.str - player.effDef - player.fireRes;
+					break;
+				case elementEnum.ICE:
+					damage = monster.str - player.effDef - player.iceRes;
+					break;
+			}
+			if (Math.random() * 100 < ((monster.spd - player.effSpd) / 5) + 10)
+			{
+				isCrit = true;
+			}
+			if (usingSkill != -1) {
+				switch (usingSkill)
+				{
+					default:
+						break;
+				}
+			}
+			if (usingItem != -1) {
+				switch (usingItem)
+				{
+					case 7:
+						damage = Math.floor (damage * 0.2);
+						break;
+				}
+			}
+			if (isCrit == true && overrideCrit == false)
+			{
+				damage = Math.ceil (damage * 1.2);
+			}
+			if (overrideStandardAttack == false)
+			{
+				if (isCrit)
+				{
+					addCombatText ("<strong>CRITICAL!</strong> " + monster.hitMessages[0]);
+				}
+				else
+				{
+					let r = Math.floor(Math.random() * (monster.hitMessages.length - 1)) + 1;
+					addCombatText (monster.hitMessages[r]);
+				}
+			}
+			if (usingItem == 7)
+			{
+				addCombatText ("The cardboard panel shatters into pieces, but at least it dampened the blow.");
+			}
+			if (damage <= 0)
+			{
+				damage = 1;
+			}
+			switch (monster.element)
+			{
+				case elementEnum.PHYS:
+					addCombatText ("You take " + damage + " damage!");
+					break;
+				case elementEnum.FIRE:
+					addCombatText ("You take <span class='fire'>" + damage + "</span> damage!");
+					break;
+				case elementEnum.ICE:
+					addCombatText ("You take <span class='ice'>" + damage + "</span> damage!");
+					break;
+			}
+			player.hp -= damage;
+			if (player.stormySeas == 1)
+			{
+				damage = calcIceDamage(5);
+				addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
+				monster.hp -= damage;
+			}
+			checkEndOfCombat();
 		}
-		if (damage <= 0)
-		{
-			damage = 1;
-		}
-		switch (monster.element)
-		{
-			case elementEnum.PHYS:
-				addCombatText ("You take " + damage + " damage!");
-				break;
-			case elementEnum.FIRE:
-				addCombatText ("You take <span class='fire'>" + damage + "</span> damage!");
-				break;
-			case elementEnum.ICE:
-				addCombatText ("You take <span class='ice'>" + damage + "</span> damage!");
-				break;
-		}
-		player.hp -= damage;
-		if (player.stormySeas == 1)
-		{
-			damage = calcIceDamage(5);
-			addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
-			monster.hp -= damage;
-		}
-		checkEndOfCombat();
 	}
 	currentRound ++;
 	redrawCombat ();
@@ -352,7 +375,7 @@ function useCombatSkill (x)
 		return false;
 	}
 	let cost = skills[x].cost;
-	if (player.job == jobEnum.MYSTIC) {
+	if (player.job == jobEnum.MEDIUM) {
 		cost = Math.max(cost - 1, 0);
 	}
 	if (cost > player.mp)
@@ -362,10 +385,16 @@ function useCombatSkill (x)
 	}
 	else
 	{
-		player.mp -= cost;
+		if (skills[x].onUse())
+		{
+			player.mp -= cost;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
-	skills[x].onUse();
-	return true;
 }
 
 function useCombatItem (x)

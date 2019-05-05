@@ -1,7 +1,7 @@
 var jobEnum = {
 	WRESTLER: 0,
 	PIRATE: 1,
-	MYSTIC: 2,
+	MEDIUM: 2,
 	JUGGLER: 3,
 }
 
@@ -148,7 +148,7 @@ function createCharacter()
 				player.skills[21] = 1;
 			}
 			break;
-		case jobEnum.MYSTIC:
+		case jobEnum.MEDIUM:
 			player.hpGain = 4;
 			player.mpGain = 3;
 			player.strGain = 4;

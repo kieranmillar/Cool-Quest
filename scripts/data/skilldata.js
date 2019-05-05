@@ -49,6 +49,7 @@ var skills = [
 		level: 1,
 		onUse: function () {
 			regularAttack (player.effStr, "", "You leap forward at your opponent with sheer ferocity!");
+			return true;
 		}
 	},
 	{
@@ -386,6 +387,7 @@ var skills = [
 			}
 			addCombatText ("It takes " + damage + " damage!");
 			monster.hp -= damage;
+			return true;
 		}
 	},
 	{
@@ -675,7 +677,7 @@ var skills = [
 	},
 	
 	/******
-	MYSTIC
+	MEDIUM
 	******/
 	
 	{
@@ -684,7 +686,7 @@ var skills = [
 		description: "Who you gonna call? Ask your dead ancestral relatives for help and advice.",
 		enchantment: "10 turns of:<br />+1 DEF<br />+3 MAG<br />+4 SPD",
 		icon: "ghost_talk.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 1,
@@ -708,7 +710,7 @@ var skills = [
 		description: "Channels your magical powers into your weapon.",
 		enchantment: "A regular attack using MAG instead of STR",
 		icon: "magic_sword.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 1,
@@ -716,6 +718,7 @@ var skills = [
 		level: 1,
 		onUse: function () {
 			regularAttack (player.effMag, "You channel your magic force and hit your opponent.", "You overload your magic force and clobber your opponent!");
+			return true;
 		}
 	},
 	{
@@ -724,7 +727,7 @@ var skills = [
 		description: "You charge your opponents for your time, and are happy to ramp up the costs. They'll never know.",
 		enchantment: "+20% Gold from combats",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Passive",
 		category: skillType.PASSIVE,
 		price: 50,
@@ -734,16 +737,24 @@ var skills = [
 		id: 43,
 		name: "Expose Secrets",
 		description: "You expose your enemy's deepest darkest secrets, shocking them to their core. In reality it's just a generic guess, but it works pretty much all the time.",
-		enchantment: "Stuns the enemy for 2 rounds<br />(Once per combat)<br />(TODO: Implement this skill)",
+		enchantment: "Stuns the enemy for 2 rounds<br />(Once per combat)",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 3,
 		price: 50,
 		level: 2,
 		onUse: function () {
-			addCombatText ("TODO: Implement");
+			if (monster.castExposeSecrets == 1)
+			{
+				hint ("You've already exposed this monster's secrets!", "r");
+				return false;
+			}
+			addCombatText ("You walk up to your opponent and whisper their darkest secrets into their ear.");
+			monster.castExposeSecrets = 1;
+			monster.exposeSecretsRounds = 2;
+			return true;
 		}
 	},
 	{
@@ -752,7 +763,7 @@ var skills = [
 		description: "Everywhere you go you rearrange the furniture to maximise the effectiveness your chakras. Or something like that.<br />Look I'll be honest, I don't really understand any of this stuff.",
 		enchantment: "Restore 1 MP each turn",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Passive",
 		category: skillType.PASSIVE,
 		price: 250,
@@ -764,7 +775,7 @@ var skills = [
 		description: "You tell a story so spooky, it chills your opponents to the bone.",
 		enchantment: "Deals 80% of your MAG as Ice Damage",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 5,
@@ -775,6 +786,7 @@ var skills = [
 			let damage = calcIceDamage(Math.floor(player.effMag * 0.80) + player.iceDamage);
 			addCombatText ("It takes <span class='ice'>" + damage + "</span> damage!");
 			monster.hp -= damage;
+			return true;
 		}
 	},
 	{
@@ -783,7 +795,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -799,7 +811,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -815,7 +827,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -831,7 +843,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -847,7 +859,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -863,7 +875,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -879,7 +891,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -895,7 +907,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -911,7 +923,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -927,7 +939,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -943,7 +955,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -959,7 +971,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -975,7 +987,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -991,7 +1003,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "cookie.png",
-		job: jobEnum.MYSTIC,
+		job: jobEnum.MEDIUM,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -1062,38 +1074,30 @@ var skills = [
 		onUse: function () {
 			if (player.juggles.length == 0)
 			{
-				addCombatText ("You aren't juggling anything, so pick up a nearby rock and throw that instead.");
-				let damage = 15 - monster.def;
-				if (damage <= 0)
-				{
-					damage = 1;
-				}
-				addCombatText ("It takes " + damage + " damage!");
-				monster.hp -= damage;
+				hint ("You don't have any juggling balls to throw!", "r");
+				return false;
 			}
-			else
+			let x = player.juggles.shift();
+			switch (x)
 			{
-				let x = player.juggles.shift();
-				switch (x)
-				{
-					case 0:
-						addCombatText ("You throw the fireball and it explodes! Goodness gracious great balls of fire!");
-						let damage = calcFireDamage(40);
-						addCombatText ("It takes <span class='fire'>" + damage + "</span> damage!");
-						monster.hp -= damage;
-						break;
-					case 1:
-						addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
-						addCombatText (giveHp (60));
-						break;
-					case 2:
-						//addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
-						addCombatText ("TODO");
-						break;
-				}
-				calculateStats();
-				redrawInfoPanel();
+				case 0:
+					addCombatText ("You throw the fireball and it explodes! Goodness gracious great balls of fire!");
+					let damage = calcFireDamage(40);
+					addCombatText ("It takes <span class='fire'>" + damage + "</span> damage!");
+					monster.hp -= damage;
+					break;
+				case 1:
+					addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
+					addCombatText (giveHp (60));
+					break;
+				case 2:
+					//addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
+					addCombatText ("TODO");
+					break;
 			}
+			calculateStats();
+			redrawInfoPanel();
+			return true;
 		}
 	},
 	{

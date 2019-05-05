@@ -14,8 +14,8 @@ function redrawCharPane ()
 		case jobEnum.PIRATE:
 			$("#char_job").text("Pirate");
 			break;
-		case jobEnum.MYSTIC:
-			$("#char_job").text("Mystic");
+		case jobEnum.MEDIUM:
+			$("#char_job").text("Medium");
 			break;
 		case jobEnum.JUGGLER:
 			$("#char_job").text("Juggler");
@@ -238,7 +238,7 @@ function openDialog (type, id)
 			{
 				t += "<p>Cost: " + skills[id].cost + " MP</p>";
 			}
-			t += "<p class='enchantment'>" + skills[id].enchantment + "</p>";
+			t += "<p class='enchantment'>" + resolveProperty (skills[id].enchantment) + "</p>";
 			d.html(t);
 			break;
 		case dialogType.BUFF:

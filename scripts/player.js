@@ -246,7 +246,10 @@ function calculateStats ()
 	}
 	
 	//apply passives
-
+	if (player.skills[42])
+	{
+		player.effGoldBoost += 15;
+	}
 	
 	//cap low stats to minimums
 	if (player.effHpMax < 1)

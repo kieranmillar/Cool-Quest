@@ -172,18 +172,11 @@ function loseItem (id, amount)
 
 function displayInventory()
 {
-	let foodDiv = $("#inv_food");
-	foodDiv.empty();
-	let potionDiv = $("#inv_potion");
-	potionDiv.empty();
-	let miscDiv = $("#inv_misc");
-	miscDiv.empty();
-	let foodTitle = $("#inv_food_title");
-	let potionTitle = $("#inv_potion_title");
-	let miscTitle = $("#inv_misc_title");
-	let foodCount = 0;
-	let potionCount = 0;
-	let miscCount = 0;
+	for (i = 6; i < 9; i++)
+	{
+		$("#inv_" + i).empty();
+	}
+	
 	for (var i in player.inventory)
 	{
 		var newElement = $('<div></div>');
@@ -201,61 +194,35 @@ function displayInventory()
 			useLink.html("<input type='button' value='Use' onClick = 'useItem(" + player.inventory[i].id + ")'>");
 			newElement.append(useLink);
 		}
-		switch (items[player.inventory[i].id].category)
+		if (items[player.inventory[i].id].category >= 6 && items[player.inventory[i].id].category < 9)
 		{
-			case itemType.FOOD:
-				foodDiv.append(newElement);
-				foodCount ++;
-				break;
-			case itemType.POTION:
-				potionDiv.append(newElement);
-				potionCount ++;
-				break;
-			case itemType.MISC:
-				miscDiv.append(newElement);
-				miscCount ++;
-				break;
-			default:
+			$("#inv_" + items[player.inventory[i].id].category).append(newElement);
 		}
 	}
-	if (foodCount == 0)
+
+	let haveItems = false;
+	for (let i = 6; i < 9; i++)
 	{
-		foodTitle.hide();
-		foodDiv.hide();
+		if ($("#inv_" + i).is(":empty"))
+		{
+			$("#inv_" + i).hide();
+			$("#inv_" + i + "_title").hide();
+		}
+		else
+		{
+			$("#inv_" + i).show();
+			$("#inv_" + i + "_title").show();
+			haveItems = true;
+		}
+	}
+
+	if (haveItems)
+	{
+		$("#inv_empty").hide();
 	}
 	else
 	{
-		foodTitle.show();
-		foodDiv.show();
-	}
-	if (potionCount == 0)
-	{
-		potionTitle.hide();
-		potionDiv.hide();
-	}
-	else
-	{
-		potionTitle.show();
-		potionDiv.show();
-	}
-	if (miscCount == 0)
-	{
-		miscTitle.hide();
-		miscDiv.hide();
-	}
-	else
-	{
-		miscTitle.show();
-		miscDiv.show();
-	}
-	let emptyDiv = $("#inv_empty");
-	if (foodCount + potionCount + miscCount == 0)
-	{
-		emptyDiv.show();
-	}
-	else
-	{
-		emptyDiv.hide();
+		$("#inv_empty").show();
 	}
 }
 
@@ -287,30 +254,12 @@ function displayEquipment()
 			$("#accessory4").hide();
 		}
 	}
-	let hatDiv = $("#equip_hat");
-	hatDiv.empty();
-	let armourDiv = $("#equip_armour");
-	armourDiv.empty();
-	let weaponDiv = $("#equip_weapon");
-	weaponDiv.empty();
-	let shieldDiv = $("#equip_shield");
-	shieldDiv.empty();
-	let shoesDiv = $("#equip_shoes");
-	shoesDiv.empty();
-	let accDiv = $("#equip_acc");
-	accDiv.empty();
-	let hatTitle = $("#equip_hat_title");
-	let armourTitle = $("#equip_armour_title");
-	let weaponTitle = $("#equip_weapon_title");
-	let shieldTitle = $("#equip_shield_title");
-	let shoesTitle = $("#equip_shoes_title");
-	let accTitle = $("#equip_acc_title");
-	let hatCount = 0;
-	let armourCount = 0;
-	let weaponCount = 0;
-	let shieldCount = 0;
-	let shoesCount = 0;
-	let accCount = 0;
+
+	for (let i = 0; i < 6; i++)
+	{
+		$("#equip_" + i).empty();
+	}
+
 	for (var i in player.inventory)
 	{
 		if (items[player.inventory[i].id].category >= 6)
@@ -329,102 +278,35 @@ function displayEquipment()
 		var equipLink = $('<span></span>');
 		equipLink.html("<input type='button' value='Equip' onClick='equip(" + player.inventory[i].id + ")'>");
 		newElement.append(equipLink);
-		switch (items[player.inventory[i].id].category)
+		if (items[player.inventory[i].id].category < 6)
 		{
-			case itemType.HAT:
-				hatDiv.append(newElement);
-				hatCount ++;
-				break;
-			case itemType.ARMOUR:
-				armourDiv.append(newElement);
-				armourCount ++;
-				break;
-			case itemType.WEAPON:
-				weaponDiv.append(newElement);
-				weaponCount ++;
-				break;
-			case itemType.SHIELD:
-				shieldDiv.append(newElement);
-				shieldCount ++;
-				break;
-			case itemType.SHOES:
-				shoesDiv.append(newElement);
-				shoesCount ++;
-				break;
-			case itemType.ACC:
-				accDiv.append(newElement);
-				accCount ++;
-				break;
+			$("#equip_" + items[player.inventory[i].id].category).append(newElement);
 		}
 	}
-	if (hatCount == 0)
+
+	let haveItems = false;
+	for (let i = 0; i < 6; i++)
 	{
-		hatTitle.hide();
-		hatDiv.hide();
+		if ($("#equip_" + i).is(":empty"))
+		{
+			$("#equip_" + i).hide();
+			$("#equip_" + i + "_title").hide();
+		}
+		else
+		{
+			$("#equip_" + i).show();
+			$("#equip_" + i + "_title").show();
+			haveItems = true;
+		}
+	}
+
+	if (haveItems)
+	{
+		$("#equip_empty").hide();
 	}
 	else
 	{
-		hatTitle.show();
-		hatDiv.show();
-	}
-	if (armourCount == 0)
-	{
-		armourTitle.hide();
-		armourDiv.hide();
-	}
-	else
-	{
-		armourTitle.show();
-		armourDiv.show();
-	}
-	if (weaponCount == 0)
-	{
-		weaponTitle.hide();
-		weaponDiv.hide();
-	}
-	else
-	{
-		weaponTitle.show();
-		weaponDiv.show();
-	}
-	if (shieldCount == 0)
-	{
-		shieldTitle.hide();
-		shieldDiv.hide();
-	}
-	else
-	{
-		shieldTitle.show();
-		shieldDiv.show();
-	}
-	if (shoesCount == 0)
-	{
-		shoesTitle.hide();
-		shoesDiv.hide();
-	}
-	else
-	{
-		shoesTitle.show();
-		shoesDiv.show();
-	}
-	if (accCount == 0)
-	{
-		accTitle.hide();
-		accDiv.hide();
-	}
-	else
-	{
-		accTitle.show();
-		accDiv.show();
-	}
-	let emptyDiv = $("#equip_empty");
-	if (hatCount + armourCount + weaponCount + shieldCount + shoesCount + accCount == 0)
-	{
-		emptyDiv.show();
-	}
-	else
-	{
-		emptyDiv.hide();
+		$("#equip_empty").show();
 	}
 }
 

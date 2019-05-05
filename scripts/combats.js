@@ -179,7 +179,7 @@ function combatRound (action)
 			monster.hp = 0;
 			addCombatText ("<strong>You win the fight!</strong>");
 			addCombatText (giveExp (monster.exp));
-			addCombatText (giveGold (monster.gold * ((100 + player.effGoldBoost) / 100), true));
+			addCombatText (giveGold (monster.gold, true));
 			for (let i = 0; i < monster.drops.length; i++)
 			{
 				if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))

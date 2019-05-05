@@ -117,7 +117,7 @@ function createCharacter()
 	switch (job)
 	{
 		case jobEnum.WRESTLER:
-			player.hpGain = 8;
+			player.hpGain = 10;
 			player.mpGain = 1;
 			player.strGain = 5;
 			player.defGain = 4;
@@ -133,7 +133,7 @@ function createCharacter()
 			}
 			break;
 		case jobEnum.PIRATE:
-			player.hpGain = 6;
+			player.hpGain = 7;
 			player.mpGain = 2;
 			player.strGain = 4;
 			player.defGain = 5;
@@ -149,7 +149,7 @@ function createCharacter()
 			}
 			break;
 		case jobEnum.MEDIUM:
-			player.hpGain = 4;
+			player.hpGain = 5;
 			player.mpGain = 3;
 			player.strGain = 4;
 			player.defGain = 3;
@@ -165,7 +165,7 @@ function createCharacter()
 			}
 			break;
 		case jobEnum.JUGGLER:
-			player.hpGain = 6;
+			player.hpGain = 7;
 			player.mpGain = 2;
 			player.strGain = 3;
 			player.defGain = 4;
@@ -324,7 +324,7 @@ function giveGold (g, inCombat)
 		let x = g;
 		x += Math.floor(g * Math.random() * 0.25);
 		x -= Math.floor(g * Math.random() * 0.25);//monster drops between +25% and -25%, weighted heavily to the middle
-		g = Math.floor(x * ((100+player.effGoldBoost) / 100));
+		g = Math.floor(x * ((100 + player.effGoldBoost) / 100));
 	}
 	player.gold += g;
 	return "You gained " + g + " gold!";

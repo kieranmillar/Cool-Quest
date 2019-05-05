@@ -406,18 +406,19 @@ var skills = [
 	},
 	{
 		id: 23,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Storm of the Sea",
+		description: "You summon the cold strong wind of the high sea to follow you around.",
+		enchantment: "10 turns of:<br />Deals +5 Ice Damage whenever an enemy hits you.",
 		icon: "cookie.png",
 		job: jobEnum.PIRATE,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 5,
 		price: 50,
 		level: 2,
 		onUse: function () {
-			
+			hint ("You bellow at the gods of the sea for their help, gaining 10 turns of Stormy Seas!", "g");
+			return addBuff (7, 10);
 		}
 	},
 	{

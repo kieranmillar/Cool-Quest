@@ -197,7 +197,7 @@ var items = [
 		category: itemType.MISC,
 		sell: 0,
 		onUse: function () {
-			hint ("You unlock the door and the key vanishes, like all good video game keys.", "g");
+			hint ("You unlock the town hall's front door and the key vanishes, like all good video game keys.", "g");
 			player.questTownHall = 3;
 			return true;
 		}
@@ -353,7 +353,7 @@ var items = [
 	{
 		id: 19,
 		name: "orc pork",
-		description: "",
+		description: "Orcs love to consume a meat-only diet, believing it is the source of their strength. It's also the source of their heart attcks.",
 		enchantment: "+3 Fullness<br />+6 Turns to midnight<br />20 turns of +7 STR",
 		icon: "cookie.png",
 		type: "Food",
@@ -472,7 +472,7 @@ function unequip (slot)
 	save ();
 }
 
-function use (id)
+function useItem (id)
 {
 	if(items[id].hasOwnProperty("onUse") == false)
 	{
@@ -503,7 +503,7 @@ function checkInInventory (id)
 
 function gainItem (id, amount)
 {
-	let itemPosition = checkInInventory (id);
+	const itemPosition = checkInInventory (id);
 	if (itemPosition == -1)
 	{
 		player.inventory.push({id: id, amount: amount});
@@ -571,7 +571,7 @@ function displayInventory()
 		if (items[player.inventory[i].id].hasOwnProperty("onUse") == true)
 		{
 			var useLink = $('<span></span>');
-			useLink.html("<input type='button' value='Use' onClick = 'use(" + player.inventory[i].id + ")'>");
+			useLink.html("<input type='button' value='Use' onClick = 'useItem(" + player.inventory[i].id + ")'>");
 			newElement.append(useLink);
 		}
 		switch (items[player.inventory[i].id].category)

@@ -46,7 +46,7 @@ var player = {
 	defGain: 4,
 	magGain: 3,
 	spdGain: 4,
-	gold: 0,
+	gold: 20,
 	inventory: [],
 	equipment: [//0 = hat, 1 = armour, 2 = weapon, 3 = shield, 4 = shoes, 5-8 = accs
 		-1, -1, -1, -1, -1, -1, -1, -1, -1
@@ -55,6 +55,7 @@ var player = {
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 	],
 	juggles: [],
+	stormySeas: 0,
 	optionCompactInfoPanel: 0,
 	optionQuickHeal: 0,
 	optionZoneWarnings: 1,
@@ -218,6 +219,7 @@ function calculateStats ()
 	player.effItemBoost = 0;
 	player.effGoldBoost = 0;
 	player.effMl = 0;
+	player.stormySeas = 0;
 	
 	//apply equipment
 	for (var i in player.equipment)

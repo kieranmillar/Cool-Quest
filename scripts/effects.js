@@ -85,6 +85,17 @@ var effects = [
 			player.effStr += 7;
 		}
 	},
+	{
+		id: 7,
+		name: "Stormy Seas",
+		description: "The strong winds of the high seas are following you around, battering anyone who gets close to you.",
+		enchantment: "Deals +5 Ice Damage whenever an enemy hits you.",
+		icon: "cookie.png",
+		effect: function()
+		{
+			player.stormySeas = 1;
+		}
+	},
 ];
 
 var jugglingBalls = [

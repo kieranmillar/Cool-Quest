@@ -184,34 +184,7 @@ function combatRound (action)
 	}
 	if (monster.hp <= 0)
 	{
-		monster.hp = 0;
-		addCombatText ("<strong>You win the fight!</strong>");
-		addCombatText (giveExp (monster.exp));
-		addCombatText (giveGold (monster.gold * ((100 + player.effGoldBoost) / 100), true));
-		for (let i = 0; i < monster.drops.length; i++)
-		{
-			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
-			{
-				gainItem (monster.drops[i].id, 1);
-				let e = $("<p></p>");
-				e.addClass("item_Image");
-				e.html("You found a <img src='./images/" + items[monster.drops[i].id].icon + "'> " + items[monster.drops[i].id].name + "!");
-				e.css("cursor", "pointer");
-				e.attr({
-					"onClick" : "openDialog (dialogType.ITEM, " + monster.drops[i].id + ");"
-				});
-				$("#combatText").append(e);
-			}
-		}
-		let triggerEnd = true;
-		if (combats[monster.id].hasOwnProperty("afterCombat") == true)
-		{
-			triggerEnd = combats[monster.id].afterCombat();
-		}
-		if (triggerEnd)
-		{
-			endAdventure();
-		}
+		endFight();
 	}
 	else
 	{
@@ -286,15 +259,61 @@ function combatRound (action)
 				break;
 		}
 		player.hp -= damage;
+		if (player.stormySeas = 1)
+		{
+			damage = calcIceDamage(5);
+			addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
+			monster.hp -= damage;
+		}
+		if (monster.hp <= 0)
+		{
+			monster.hp = 0;
+		}
 		if (player.hp <= 0)
 		{
 			player.hp = 0;
 			addCombatText ("<strong>You got knocked out! Heal up and try again!</strong>");
 			endAdventure();
 		}
+		else if (monster.hp <= 0)
+		{
+			endFight();
+		}
 	}
 	currentRound ++;
 	redrawCombat ();
+}
+
+function endFight()
+{
+	monster.hp = 0;
+	addCombatText ("<strong>You win the fight!</strong>");
+	addCombatText (giveExp (monster.exp));
+	addCombatText (giveGold (monster.gold * ((100 + player.effGoldBoost) / 100), true));
+	for (let i = 0; i < monster.drops.length; i++)
+	{
+		if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
+		{
+			gainItem (monster.drops[i].id, 1);
+			let e = $("<p></p>");
+			e.addClass("item_Image");
+			e.html("You found a <img src='./images/" + items[monster.drops[i].id].icon + "'> " + items[monster.drops[i].id].name + "!");
+			e.css("cursor", "pointer");
+			e.attr({
+				"onClick" : "openDialog (dialogType.ITEM, " + monster.drops[i].id + ");"
+			});
+			$("#combatText").append(e);
+		}
+	}
+	let triggerEnd = true;
+	if (combats[monster.id].hasOwnProperty("afterCombat") == true)
+	{
+		triggerEnd = combats[monster.id].afterCombat();
+	}
+	if (triggerEnd)
+	{
+		endAdventure();
+	}
 }
 
 function useCombatSkill (x)

@@ -16,7 +16,7 @@ var effects = [
 		name: "Pirate Might",
 		description: "Might makes right.",
 		enchantment: "+2 Max HP<br />+2 Max MP<br />+2 STR<br />+2 DEF",
-		icon: "cookie.png",
+		icon: "pirate_face.png",
 		effect: function()
 		{
 			player.effHpMax += 2;
@@ -90,7 +90,7 @@ var effects = [
 		name: "Stormy Seas",
 		description: "The strong winds of the high seas are following you around, battering anyone who gets close to you.",
 		enchantment: "Deals +5 Ice Damage whenever an enemy hits you.",
-		icon: "cookie.png",
+		icon: "stormy_seas.png",
 		effect: function()
 		{
 			player.stormySeas = 1;

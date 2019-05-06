@@ -47,10 +47,19 @@ function beginCombat (obj)
 	if (obj.hasOwnProperty("element") == true)
 	{
 		monster.element = obj.element;
+		if (obj.element == elementEnum.FIRE)
+		{
+			$("#monsterAttackImage").attr("src", "./images/fire.png");
+		}
+		if (obj.element == elementEnum.ICE)
+		{
+			$("#monsterAttackImage").attr("src", "./images/ice.png");
+		}
 	}
 	else
 	{
 		monster.element = elementEnum.PHYS;
+		$("#monsterAttackImage").attr("src", "./images/sword.png");
 	}
 	monster.exp = obj.exp + (player.effMl / 2);
 	monster.gold = obj.gold;
@@ -287,10 +296,10 @@ function combatRound (action)
 					damage = monster.str - player.effDef;
 					break;
 				case elementEnum.FIRE:
-					damage = monster.str - player.effDef - player.fireRes;
+					damage = monster.str - player.fireRes;
 					break;
 				case elementEnum.ICE:
-					damage = monster.str - player.effDef - player.iceRes;
+					damage = monster.str - player.iceRes;
 					break;
 			}
 			if (Math.random() * 100 < ((monster.spd - player.effSpd) / 5) + 10)

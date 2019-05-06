@@ -59,6 +59,7 @@ var player = {
 	optionCompactInfoPanel: 0,
 	optionQuickHeal: 0,
 	optionZoneWarnings: 1,
+	optionFoodQuality: 0,
 	questTutorial: 0,
 	questTownHall: 0,
 	questOrcCamp: 0,
@@ -360,8 +361,11 @@ function giveMp (m)
 	return "You gained " + m + " MP!";
 }
 
-function eat (turns, fullness)
+function eat (itemId)
 {
+	let turns = items[itemId].turns;
+	let fullness = items[itemId].fullness;
+
 	if (player.full + fullness > player.fullMax)
 	{
 		hint ("You're too full to eat that!", "r");
@@ -380,13 +384,13 @@ function eat (turns, fullness)
 	}
 }
 
-function eatMessage (itemId, turns, fullness)
+function eatMessage (itemId)
 {
 	let t = "You eat the ";
 	t += items[itemId].name;
 	t += ", delaying midnight by ";
-	t += turns;
-	if (turns > 1)
+	t += items[itemId].turns;
+	if (items[itemId].turns > 1)
 	{
 		t += " turns";
 	}
@@ -395,7 +399,7 @@ function eatMessage (itemId, turns, fullness)
 		t += " turn";
 	}
 	t += " and gaining ";
-	t += fullness;
+	t += items[itemId].fullness;
 	t += " fullness.";
 	return t;
 }

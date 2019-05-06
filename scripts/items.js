@@ -191,7 +191,17 @@ function displayInventory()
 		if (items[player.inventory[i].id].hasOwnProperty("onUse") == true)
 		{
 			var useLink = $('<span></span>');
-			useLink.html("<input type='button' value='Use' onClick = 'useItem(" + player.inventory[i].id + ")'>");
+			let buttonText = "Use";
+			if  (items[player.inventory[i].id].category == itemType.FOOD)
+			{
+				buttonText = "Eat";
+				if (player.optionFoodQuality == 1)
+				{
+					var quality = Math.round((items[player.inventory[i].id].turns / items[player.inventory[i].id].fullness) * 100) / 100;
+					buttonText += "\n(" + items[player.inventory[i].id].fullness + "F " + quality + "Q)";
+				}
+			}
+			useLink.html("<input type='button' value='" + buttonText + "' onClick = 'useItem(" + player.inventory[i].id + ")'>");
 			newElement.append(useLink);
 		}
 		if (items[player.inventory[i].id].category >= 6 && items[player.inventory[i].id].category < 9)

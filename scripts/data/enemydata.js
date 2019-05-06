@@ -250,7 +250,7 @@ var combats = [
 	},
 	{
 		id: 10,
-		name: "orc mess hall enemy 2",
+		name: "an orc dork",
 		description: "",
 		icon: "empty.png",
 		hp: 12,

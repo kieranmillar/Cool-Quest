@@ -43,7 +43,7 @@ var effects = [
 		name: "Well Balanced",
 		description: "Juggling should be enjoyed as part of a well balanced lifestyle.",
 		enchantment: "+2 STR<br />+2 DEF<br />+2 MAG<br />+2 SPD",
-		icon: "cookie.png",
+		icon: "tightrope.png",
 		effect: function()
 		{
 			player.effStr += 2;
@@ -57,7 +57,7 @@ var effects = [
 		name: "Crème Casing",
 		description: "The safety of the enchanted sugar casing makes you happy, like a cat that's just gotten the crème.",
 		enchantment: "+5 DEF",
-		icon: "cookie.png",
+		icon: "creme_brulee.png",
 		effect: function()
 		{
 			player.effDef += 5;
@@ -68,7 +68,7 @@ var effects = [
 		name: "Greased Up",
 		description: "It's hard to be held in a chokehold when you're this slippery.",
 		enchantment: "+20 SPD",
-		icon: "cookie.png",
+		icon: "grease.png",
 		effect: function()
 		{
 			player.effSpd += 20;
@@ -104,7 +104,7 @@ var jugglingBalls = [
 		name: "Fireball",
 		description: "An old classic, loved by fantasy novellists everywhere.",
 		enchantment: "+5 Fire Damage<br />(When thrown:<br />Deals 40 Fire Damage)",
-		icon: "cookie.png",
+		icon: "fireball.png",
 		effect: function()
 		{
 			player.fireDamage += 5;
@@ -115,7 +115,7 @@ var jugglingBalls = [
 		name: "Medicine Ball",
 		description: "A much more reliable way of staying healthy than swallowing pills. Imagine trying to swallow one of these...",
 		enchantment: "+20 Max HP<br />Restore 5 HP each turn<br />(When thrown:<br />Restores 60 HP)",
-		icon: "cookie.png",
+		icon: "medicine_ball.png",
 		effect: function()
 		{
 			player.effHpMax += 20;

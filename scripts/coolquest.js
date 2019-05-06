@@ -356,6 +356,14 @@ function load()
 	{
 		$("#option_zoneWarnings").prop("checked", false);
 	}
+	if (player.optionFoodQuality)
+	{
+		$("#option_foodQuality").prop("checked", true);
+	}
+	else
+	{
+		$("#option_foodQuality").prop("checked", false);
+	}
 }
 
 function toggleOption(option) {
@@ -393,6 +401,16 @@ function toggleOption(option) {
 			else
 			{
 				player.optionZoneWarnings = 0;
+			}
+			break;
+		case 'foodQuality':
+			if (player.optionFoodQuality == 0)
+			{
+				player.optionFoodQuality = 1;
+			}
+			else
+			{
+				player.optionFoodQuality = 0;
 			}
 			break;
 	}
@@ -438,6 +456,7 @@ $(document).ready(function(){
 		$("#option_compactInfoPanel").prop("checked", false);
 		$("#option_quickHeal").prop("checked", false);
 		$("#option_zoneWarnings").prop("checked", true);
+		$("#option_foodQuality").prop("checked", false);
 	}
 	hint ("Welcome to Cool Quest!", "g");
 });

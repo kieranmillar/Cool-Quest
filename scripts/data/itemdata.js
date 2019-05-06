@@ -61,13 +61,15 @@ var items = [
 		icon: "cookie.png",
 		type: "Food",
 		category: itemType.FOOD,
+		fullness: 1,
+		turns: 1,
 		cost: 5,
 		sell: 1,
 		onUse: function () {
-			let success = eat (1, 1);
+			let success = eat (2);
 			if (success == true)
 			{
-				hint (eatMessage (2, 1, 1) + " " + giveMp(5), "g");
+				hint (eatMessage (2) + " " + giveMp(5), "g");
 			}
 			return success;
 		}
@@ -257,12 +259,14 @@ var items = [
 		icon: "cookie.png",
 		type: "Food",
 		category: itemType.FOOD,
+		fullness: 2,
+		turns: 12,
 		sell: 200,
 		onUse: function () {
-			let success = eat (12, 2);
+			let success = eat (13);
 			if (success == true)
 			{
-				hint (eatMessage (13, 12, 2), "g");
+				hint (eatMessage (13), "g");
 			}
 			return success;
 		}
@@ -270,17 +274,19 @@ var items = [
 	{
 		id: 14,
 		name: "microwave meal",
-		description: "This is a chicken korma and rice, separated into two plastic containers. You conveniently can't tell the meat quality because it's covered in sauce.",
+		description: "This is a chicken korma and rice, separated into two plastic compartments. You can't tell the quality of the meat because it's conveniently covered in sauce.",
 		enchantment: "+4 Fullness<br />+10 Turns to midnight",
-		icon: "cookie.png",
+		icon: "microwave_meal.png",
 		type: "Food",
 		category: itemType.FOOD,
+		fullness: 4,
+		turns: 10,
 		sell: 20,
 		onUse: function () {
-			let success = eat (10, 4);
+			let success = eat (14);
 			if (success == true)
 			{
-				hint (eatMessage (14, 10, 4), "g");
+				hint (eatMessage (14), "g");
 			}
 			return success;
 		}
@@ -290,15 +296,17 @@ var items = [
 		name: "crème brûlée",
 		description: "This crème brûlée has just been heated and hasn't yet had time to cool. Its caramalised sugar topping is glowing with enchanted magic.",
 		enchantment: "+1 Fullness<br />+2 Turns to midnight<br />10 turns of +5 DEF",
-		icon: "cookie.png",
+		icon: "creme_brulee.png",
 		type: "Food",
 		category: itemType.FOOD,
+		fullness: 1,
+		turns: 2,
 		sell: 10,
 		onUse: function () {
-			let success = eat (2, 1);
+			let success = eat (15);
 			if (success == true)
 			{
-				hint (eatMessage (15, 2, 1) + " You gain 10 turns of Crème Casing.", "g");
+				hint (eatMessage (15) + " You gain 10 turns of Crème Casing.", "g");
 				addBuff (4, 10);
 			}
 			return success;
@@ -358,12 +366,14 @@ var items = [
 		icon: "cookie.png",
 		type: "Food",
 		category: itemType.FOOD,
+		fullness: 3,
+		turns: 6,
 		sell: 20,
 		onUse: function () {
-			let success = eat (6, 3);
+			let success = eat (19);
 			if (success == true)
 			{
-				hint (eatMessage (19, 6, 3) + " You gain 20 turns of Orcine Porcine Power.", "g");
+				hint (eatMessage (19) + " You gain 20 turns of Orcine Porcine Power.", "g");
 				addBuff (6, 20);
 			}
 			return success;

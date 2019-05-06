@@ -179,6 +179,10 @@ function displayInventory()
 	
 	for (var i in player.inventory)
 	{
+		if (items[player.inventory[i].id].category < 6)
+		{
+			continue;
+		}
 		var newElement = $('<div></div>');
 		newElement.addClass("item");
 		var textImageDiv = $('<span></span>');
@@ -204,10 +208,7 @@ function displayInventory()
 			useLink.html("<input type='button' value='" + buttonText + "' onClick = 'useItem(" + player.inventory[i].id + ")'>");
 			newElement.append(useLink);
 		}
-		if (items[player.inventory[i].id].category >= 6 && items[player.inventory[i].id].category < 9)
-		{
-			$("#inv_" + items[player.inventory[i].id].category).append(newElement);
-		}
+		$("#inv_" + items[player.inventory[i].id].category).append(newElement);
 	}
 
 	let haveItems = false;
@@ -288,10 +289,7 @@ function displayEquipment()
 		var equipLink = $('<span></span>');
 		equipLink.html("<input type='button' value='Equip' onClick='equip(" + player.inventory[i].id + ")'>");
 		newElement.append(equipLink);
-		if (items[player.inventory[i].id].category < 6)
-		{
-			$("#equip_" + items[player.inventory[i].id].category).append(newElement);
-		}
+		$("#equip_" + items[player.inventory[i].id].category).append(newElement);
 	}
 
 	let haveItems = false;
@@ -320,6 +318,60 @@ function displayEquipment()
 	}
 }
 
+function displayPawnShop()
+{
+	for (i = 0; i < 9; i++)
+	{
+		$("#pawn_" + i).empty();
+	}
+	
+	for (var i in player.inventory)
+	{
+		if (items[player.inventory[i].id].sell == 0)
+		{
+			continue;
+		}
+		var newElement = $('<div></div>');
+		newElement.addClass("item");
+		var textImageDiv = $('<span></span>');
+		textImageDiv.addClass("item_Image");
+		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'/><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
+		textImageDiv.attr({
+			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");",
+		});
+		newElement.append(textImageDiv);
+		var sellLink = $('<span></span>');
+		sellLink.html("<input type='button' value='Sell\n(" + items[player.inventory[i].id].sell + " Gold)' onClick = 'sellItem(" + player.inventory[i].id + ")'>");
+		newElement.append(sellLink);
+		$("#pawn_" + items[player.inventory[i].id].category).append(newElement);
+	}
+
+	let haveItems = false;
+	for (let i = 0; i < 9; i++)
+	{
+		if ($("#pawn_" + i).is(":empty"))
+		{
+			$("#pawn_" + i).hide();
+			$("#pawn_" + i + "_title").hide();
+		}
+		else
+		{
+			$("#pawn_" + i).show();
+			$("#pawn_" + i + "_title").show();
+			haveItems = true;
+		}
+	}
+
+	if (haveItems)
+	{
+		$("#pawn_empty").hide();
+	}
+	else
+	{
+		$("#pawn_empty").show();
+	}
+}
+
 function buyItem (id, amount)
 {
 	totalCost = items[id].cost * amount;
@@ -334,5 +386,26 @@ function buyItem (id, amount)
 	else
 	{
 		hint ("You can't afford that!", "r");
+	}
+}
+
+function sellItem (id)
+{
+	if (items[id].sell == 0)
+	{
+		hint ("You can't sell that item!", "r");
+		return;
+	}
+	if (!loseItem(id, 1))
+	{
+		hint ("You don't have that item to sell!", "r");
+		return;
+	}
+	else
+	{
+		hint ("You sold a " + items[id].name + ". " + giveGold (items[id].sell, false), "g");
+		save ();
+		redrawCharPane();
+		displayPawnShop();
 	}
 }

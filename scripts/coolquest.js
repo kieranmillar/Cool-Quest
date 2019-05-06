@@ -226,6 +226,14 @@ function openDialog (type, id)
 			{
 				t += "<p>Requirement: " + items[id].equipValue + " " + items[id].equipStat + "</p>";
 			}
+			if(items[id].sell == 0)
+			{
+				t += "<p>Cannot be sold</p>";
+			}
+			else
+			{
+				t += "<p>Sell price: " + items[id].sell +" gold</p>";
+			}
 			t += "<p class='enchantment'>" + items[id].enchantment + "</p>";
 			d.html(t);
 			break;

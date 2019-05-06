@@ -39,7 +39,7 @@ var items = [
 		category: itemType.ACC,
 		equipStat: "MAG",
 		equipValue: 1,
-		sell: 0,
+		sell: 5,
 		onWear: function () {
 			if (player.questTutorial == 2)
 			{
@@ -64,7 +64,7 @@ var items = [
 		fullness: 1,
 		turns: 1,
 		cost: 5,
-		sell: 1,
+		sell: 2,
 		onUse: function () {
 			let success = eat (2);
 			if (success == true)
@@ -164,7 +164,7 @@ var items = [
 		category: itemType.SHIELD,
 		equipStat: "DEF",
 		equipValue: 1,
-		sell: 10,
+		sell: 5,
 		onWear: function () {
 			player.effHpMax += 3;
 			player.effDef += 1;
@@ -281,7 +281,7 @@ var items = [
 		category: itemType.FOOD,
 		fullness: 4,
 		turns: 10,
-		sell: 20,
+		sell: 10,
 		onUse: function () {
 			let success = eat (14);
 			if (success == true)
@@ -352,7 +352,7 @@ var items = [
 		category: itemType.WEAPON,
 		equipStat: "STR",
 		equipValue: 6,
-		sell: 15,
+		sell: 20,
 		onWear: function () {
 			player.effStr += 7;
 			player.effMag += 7;
@@ -368,7 +368,7 @@ var items = [
 		category: itemType.FOOD,
 		fullness: 3,
 		turns: 6,
-		sell: 20,
+		sell: 10,
 		onUse: function () {
 			let success = eat (19);
 			if (success == true)

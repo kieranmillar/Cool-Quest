@@ -314,8 +314,8 @@ var items = [
 	},
 	{
 		id: 16,
-		name: "oven gloves",
-		description: "These gloves will protect your hands from heat, but they're a bit damp so they aren't very good at it.",
+		name: "oven mitt",
+		description: "This mitt will protect your hands from heat. Well, it'll protect one of them.",
 		enchantment: "+5 Fire Resistance",
 		icon: "cookie.png",
 		type: "Accessory",
@@ -377,6 +377,38 @@ var items = [
 				addBuff (6, 20);
 			}
 			return success;
+		}
+	},
+	{
+		id: 20,
+		name: "orc pocket protector",
+		description: "This small leather wallet that fits onto your breast pocket provides incredible defense to a really small area.",
+		enchantment: "+1 DEF<br />+1 Fire Resistance<br />+1 Ice Resistance",
+		icon: "cookie.png",
+		type: "Accessory",
+		category: itemType.ACC,
+		equipStat: "MAG",
+		equipValue: 8,
+		sell: 20,
+		onWear: function () {
+			player.effDef += 1;
+			player.fireRes += 1;
+			player.iceRes += 1;
+		}
+	},
+	{
+		id: 21,
+		name: "orc calculator",
+		description: "An orc discovered that if you put 5318008 into this calculator and turn it upside down, it's hilarious. You can feel the smarts rubbing off on you by association from holding that same calculator.",
+		enchantment: "+3 MAG",
+		icon: "cookie.png",
+		type: "Accessory",
+		category: itemType.ACC,
+		equipStat: "MAG",
+		equipValue: 8,
+		sell: 20,
+		onWear: function () {
+			player.effMag += 3;
 		}
 	},
 ];

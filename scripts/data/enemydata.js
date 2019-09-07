@@ -157,7 +157,7 @@ var combats = [
 	{
 		id: 7,
 		name: "a crème brûlée pyromaniac",
-		description: "A man wiedling a crème brûlée torch and with a bunch of crème brûlées tied around his waist is standing in the middle of the room. He gives you a weird, spaced out grin, then charges at your flammable self.",
+		description: "A man wielding a crème brûlée torch and with a bunch of crème brûlées tied around his waist is standing in the middle of the room. He gives you a weird, spaced out grin, then charges at your flammable self.",
 		icon: "empty.png",
 		hp: 18,
 		str: 8,
@@ -228,7 +228,7 @@ var combats = [
 	{
 		id: 9,
 		name: "an orc chef",
-		description: "",
+		description: "Spending all of your day toiling over producing enormous amounts of disgusting slop for a large orc army is enough to make anybody miserable. It's long, tiring, greuling work to produce enough gruel to feed an entire army, and nobody appreciates it. So when a human walks up to the food and looks at it with a mixture of horror and disgust, it would be the tipping point to make anyone snap. Which is exactly what just happened.",
 		icon: "empty.png",
 		hp: 16,
 		str: 10,
@@ -242,16 +242,16 @@ var combats = [
 			{id: 19, chance: 50}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He takes off his chef's hat, puts it onto your head, then pulls it down over your eyes. In the struggle to pull it off you trip and fall onto the grill.",
+			"He scoops up a large spoonful of hot slop with his ladle and throws it at you! The slop, not the ladle.",
+			"He picks you up and body slams you onto the hot plate.",
+			"He smacks you with his ladle, which is still hot from being in the slop bowl."
 		]
 	},
 	{
 		id: 10,
 		name: "an orc dork",
-		description: "",
+		description: "It's unusual to find an orc that tries to take the less violent path in life, and it's especially unusual to find one in the army. As such this poor orc gets endlessly bullied and therefore is looking for someone lower on the rung to lash out at and pass it on.",
 		icon: "empty.png",
 		hp: 15,
 		str: 14,
@@ -260,13 +260,14 @@ var combats = [
 		exp: 12,
 		gold: 12,
 		drops: [
-
+			{id: 20, chance: 25},
+			{id: 21, chance: 25}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He calculates the optimal place to hit you, which is anywhere but with more force.",
+			"He pulls out a ruler and slaps you with it. The force of the blow causes the ruler to snap. 'Hey! I thought this was meant to be shatterproof!'",
+			"He pulls a pen out of his pocket and pokes you in the eye with it.",
+			"He lashes out at you with the worst fighting technique you've ever seen. One of his flailing arms connects with you by sheer luck."
 		]
 	},
 	{

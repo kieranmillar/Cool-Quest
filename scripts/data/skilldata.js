@@ -770,7 +770,7 @@ var skills = [
 		level: 3,
 	},
 	{
-		id: 43,
+		id: 45,
 		name: "Spooky Ghost Story",
 		description: "You tell a story so spooky, it chills your opponents to the bone.",
 		enchantment: "Deals 80% of your MAG as Ice Damage",

@@ -79,7 +79,7 @@ var effects = [
 		name: "Orcine Porcine Power",
 		description: "Orc pork comes from only the toughest pigs, fed an endless diet of growth hormones. They're having an effect on you.",
 		enchantment: "+7 STR",
-		icon: "cookie.png",
+		icon: "no_image.png",
 		effect: function()
 		{
 			player.effStr += 7;
@@ -127,7 +127,7 @@ var jugglingBalls = [
 		name: "Disco Ball",
 		description: "This disco ball puts everyone into a trance, imagining trance music to go with the lights.",
 		enchantment: "+40% Gold from combats<br />(When thrown:<br />TODO)",
-		icon: "cookie.png",
+		icon: "no_image.png",
 		effect: function()
 		{
 			player.effGoldBoost += 40;

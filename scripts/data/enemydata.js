@@ -272,23 +272,23 @@ var combats = [
 	},
 	{
 		id: 11,
-		name: "orc mess hall enemy 3",
-		description: "",
+		name: "a stalk orc",
+		description: "A weird feeling comes over you, like you're being watched. You suddenly stop and quickly spin around. An orc in a trenchcoat and sunglasses quickly tries to duck behind a table. Looks like you were being followed by a spy! Not a very good one, fortunately.",
 		icon: "empty.png",
-		hp: 12,
+		hp: 22,
 		str: 12,
-		def: 1,
-		spd: 0,
-		exp: 16,
-		gold: 10,
+		def: 0,
+		spd: 15,
+		exp: 14,
+		gold: 13,
 		drops: [
-
+			{id: 22, chance: 25},
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"She pulls out a walkie talkie. 'The buzzard is in the nest!' she whispers down it. A group of orcs in suits suddenly surround you and beat you up.",
+			"She jots down a few notes into her notepad, then clicks the end of her pen. A green gas cloud shouts out, choking you in its dense fog.",
+			"She twists the face of her watch. A small dart shoots out and hits you in the arm.",
+			"She picks up a bottle and throws it to the side. You quickly look at it then turn back. She's gone! Suddenly she trips you up from behind."
 		]
 	},
 	{

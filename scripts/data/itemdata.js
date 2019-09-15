@@ -411,4 +411,20 @@ var items = [
 			player.effMag += 3;
 		}
 	},
+	{
+		id: 22,
+		name: "orc trenchcoat",
+		description: "This overly large trenchcoat is great for covering yourself with, but its size is very unwieldy.",
+		enchantment: "+3 DEF<br />-10 SPD",
+		icon: "no_image.png",
+		type: "Armour",
+		category: itemType.ARMOUR,
+		equipStat: "DEF",
+		equipValue: 8,
+		sell: 20,
+		onWear: function () {
+			player.effDef += 3;
+			player.effSpd -= 10;
+		}
+	}
 ];

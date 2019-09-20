@@ -344,6 +344,27 @@ var items = [
 	},
 	{
 		id: 18,
+		name: "orc pork",
+		description: "Orcs love to consume a meat-only diet, believing it is the source of their strength. It's also the source of their heart attcks.",
+		enchantment: "+3 Fullness<br />+6 Turns to midnight<br />20 turns of +7 STR",
+		icon: "no_image.png",
+		type: "Food",
+		category: itemType.FOOD,
+		fullness: 3,
+		turns: 6,
+		sell: 10,
+		onUse: function () {
+			let success = eat (18);
+			if (success == true)
+			{
+				hint (eatMessage (18) + " You gain 20 turns of Orcine Porcine Power.", "g");
+				addBuff (6, 20);
+			}
+			return success;
+		}
+	},
+	{
+		id: 19,
 		name: "orc fork",
 		description: "Stick a fork in it, your enemy is done.",
 		enchantment: "+7 STR<br />+7 MAG",
@@ -356,27 +377,6 @@ var items = [
 		onWear: function () {
 			player.effStr += 7;
 			player.effMag += 7;
-		}
-	},
-	{
-		id: 19,
-		name: "orc pork",
-		description: "Orcs love to consume a meat-only diet, believing it is the source of their strength. It's also the source of their heart attcks.",
-		enchantment: "+3 Fullness<br />+6 Turns to midnight<br />20 turns of +7 STR",
-		icon: "no_image.png",
-		type: "Food",
-		category: itemType.FOOD,
-		fullness: 3,
-		turns: 6,
-		sell: 10,
-		onUse: function () {
-			let success = eat (19);
-			if (success == true)
-			{
-				hint (eatMessage (19) + " You gain 20 turns of Orcine Porcine Power.", "g");
-				addBuff (6, 20);
-			}
-			return success;
 		}
 	},
 	{

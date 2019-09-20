@@ -99,11 +99,37 @@ var noncombats = [
 	},
 	{
 		id: 3,
-		title: "TODO",
-		description: "Desc",
-		result: function () {
-			endAdventure();
-		},
+		title: "Barrack Oh Bother",
+		description: "You manage to sneak into the barracks unnoticed. Where would you like to explore?",
+		choices: [
+			{
+				buttonText: function () {return noncombatButton ("Enter the dorms", 0, "Fight a drunk orc infantryman");},
+				onChoosing: function ()
+				{
+					beginCombat (combats[12]);
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Enter the armoury", 1, "Get a random piece of orc equipment");},
+				onChoosing: function ()
+				{
+					addNoncombatText ("You enter the armoury and find a whole heap of equipment in a messy pile. These orcs don't seem particularly well organised.");
+					addNoncombatText ("You go to sort through the pile, but hear whistling off in the distance, so decide to quickly grab the first random piece of equipment you get your hands on and run away.");
+					getNoncombatItem (Math.floor(Math.random() * 4) + 19, 1);//random item between ids 19 and 22
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Enter the first aid room", 2, "Get 3 health potions");},
+				onChoosing: function ()
+				{
+					addNoncombatText ("You enter the first aid room, expecting to find bandages, plasters, that sort of thing. Instead you recoil in horror as you open the door to a room filled with all manner of horrible-looking sharp instruments and shelves full of mystery liquids. Serves you right for giving orc science the benefit of the doubt for even a second.");
+					addNoncombatText ("You don't really recognise or feel comfortable around most of the objects available to you, but do find a box filled with some generic health potions. Given its the only thing you recognise, you pocket some of them and quickly head out of the room.");
+					getNoncombatItem (4, 1);
+					getNoncombatItem (4, 1);
+					getNoncombatItem (4, 1);
+				}
+			}
+		]
 	},
 	{
 		id: 4,

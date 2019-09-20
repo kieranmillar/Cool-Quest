@@ -184,7 +184,7 @@ var combats = [
 		description: "This highly decorated orc looks like a high ranking official around here. If anybody can help you get a talk with the leader, then this orc can.",
 		icon: "empty.png",
 		hp: 15,
-		str: 16,
+		str: 18,
 		def: 4,
 		spd: 10,
 		exp: 17,
@@ -235,7 +235,7 @@ var combats = [
 		def: 1,
 		spd: 0,
 		element: elementEnum.FIRE,
-		exp: 17,
+		exp: 15,
 		gold: 15,
 		drops: [
 			{id: 18, chance: 25},
@@ -293,44 +293,40 @@ var combats = [
 	},
 	{
 		id: 12,
-		name: "orc barracks enemy 1",
-		description: "",
+		name: "an drunk orc infantryman",
+		description: "This orc has trained in the art of hand-to-hand combat and would be a deadly opponent one-to-one, if it he handn't just stumbled back to his barracks after a long day of drinking.",
 		icon: "empty.png",
-		hp: 12,
-		str: 12,
-		def: 1,
-		spd: 0,
-		exp: 16,
-		gold: 10,
-		drops: [
-			
-		],
+		hp: 18,
+		str: 20,
+		def: 4,
+		spd: -15,
+		exp: 18,
+		gold: 14,
+		drops: [],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He staggers into a cupboard, knocking it over, right on top of you!",
+			"He thrashes at you wildly in a drunken haze. Like a button masher in a fighting game, his moves are impossible to predict and counter.",
+			"He still has a bottle of beer in his hand, and smashes you round the head with it.",
+			"He tries to snap your neck. His lack of hand-to-eye coordination means he does a poor job of it, but it still hurts."
 		]
 	},
 	{
 		id: 13,
-		name: "orc barracks enemy 2",
-		description: "",
+		name: "an orc parachuter",
+		description: "The orcs aren't technologically advanced eough to have planes. Instead, this orc has been trained to get in a catapult and try to fling himself over walls, and hopefully get a soft landing with the blanket tied around his waist. Orc parachuters are not very common, typically because they don't last long.",
 		icon: "empty.png",
-		hp: 12,
-		str: 12,
-		def: 1,
-		spd: 0,
+		hp: 16,
+		str: 21,
+		def: 5,
+		spd: 20,
 		exp: 16,
-		gold: 10,
-		drops: [
-			
-		],
+		gold: 13,
+		drops: [],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He walks up to the window and whistles and waves off into the distance. 6 seconds later, another orc parachuter crashes through the ceiling right on top of you!",
+			"He unties his blanket, twists it into a rope, and tries to strangle you with it.",
+			"He climbs onto a table, then dives on top of you.",
+			"He picks up a large and heave catapult operator manual from a nearby shelf and drops it on your head."
 		]
 	},
 	{

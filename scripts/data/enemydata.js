@@ -380,17 +380,15 @@ var combats = [
 	{
 		id: 16,
 		name: "Björc",
-		description: "",
+		description: "The orc camp leader. Residing in his Hidden Palace, having a human walk into it was an Alarm Call. Human Behaviour is so rude! He could Play Dead, Possibly Maybe, but this is a chance to be Violently Happy. Time to engage in some Big Time Sensuality!",
 		icon: "empty.png",
-		hp: 12,
-		str: 12,
-		def: 1,
-		spd: 0,
-		exp: 16,
-		gold: 10,
-		drops: [
-			
-		],
+		hp: 40,
+		str: 28,
+		def: 10,
+		spd: 50,
+		exp: 100,
+		gold: 100,
+		drops: [],
 		hitMessages: [
 			"crit",
 			"hit1",
@@ -398,6 +396,13 @@ var combats = [
 			"hit3"
 		],
 		afterCombat: function () {
+			addCombatText ('Björc falls to the ground. "You have beaten me. What did you want from me?"');
+			addCombatText ('"I only came here to ask you what you were doing setting up camp. We are worried you are planning an attack on the town."');
+			addCombatText ('"What?! Hahaha of course not! We don\'t care about your puny town! We have much bigger enemies to fight! Why didn\'t you ask earlier?"');
+			addCombatText ('You sigh. "Well, if you leave us alone, we\'re happy to leave you alone."');
+			addCombatText ('"You have a deal!"');
+			addCombatText ('With that issue resolved, it might be a good idea to retrn to the Elder and relay the news.');
+			player.questOrcCamp = 6;
 			return true;
 		}
 	},

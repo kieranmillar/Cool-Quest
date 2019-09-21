@@ -66,6 +66,18 @@ var zones = [
 		level: 2,
 		combatChance: 0,
 		combats: [],
-		noncombats: [4]
+		noncombats: [],
+		special: function ()
+		{
+			if (player.questOrcCamp < 5) {
+				beginNoncombat (noncombats[4]);
+			}
+			else if (player.questOrcCamp == 5) {
+				beginNoncombat (noncombats[5]);
+			}
+			else {
+				beginNoncombat (noncombats[6]);
+			}
+		}
 	},
 ];

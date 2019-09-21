@@ -133,10 +133,38 @@ var noncombats = [
 	},
 	{
 		id: 4,
-		title: "TODO",
-		description: "Desc",
+		title: "It's Not That Easy",
+		description: "You casually stroll up to the leaders tent. A group of guards immediately pounce on you and give you a beating! Maybe the direct approach isn't going to work. Perhaps you can find a high ranking official somewhere that will help you find a way in.",
 		result: function () {
-			endAdventure();
-		},
+			addNoncombatText("You take 5 damage!");
+			player.hp -= 5;
+			if (player.hp < 0) {
+				player.hp = 0;
+			}
+			busy = false;
+			redrawCharPane();
+		}
+	},
+	{
+		id: 5,
+		title: "Army of Me",
+		description: 'The Major lets you into the tent. In the centre is a large muscular orc looking over a map. He looks up and leaps out of his chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
+		choices: [
+			{
+				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "Fight Björc");},
+				onChoosing: function ()
+				{
+					beginCombat (combats[16]);
+				}
+			}
+		]
+	},
+	{
+		id: 6,
+		title: "Your Work Here is Done",
+		description: "You made a deal with Björc to leave him alone. You'd better hold up your end of the bargain.",
+		result: function () {
+			busy = false;
+		}
 	},
 ];

@@ -383,7 +383,7 @@ var items = [
 		id: 20,
 		name: "orc pocket protector",
 		description: "This small leather wallet that fits onto your breast pocket provides incredible defense to a really small area.",
-		enchantment: "+1 DEF<br />+1 Fire Resistance<br />+1 Ice Resistance",
+		enchantment: "+2 DEF<br />+2 Fire Resistance<br />+2 Ice Resistance",
 		icon: "no_image.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -391,9 +391,9 @@ var items = [
 		equipValue: 8,
 		sell: 20,
 		onWear: function () {
-			player.effDef += 1;
-			player.fireRes += 1;
-			player.iceRes += 1;
+			player.effDef += 2;
+			player.fireRes += 2;
+			player.iceRes += 2;
 		}
 	},
 	{

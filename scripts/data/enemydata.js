@@ -137,7 +137,7 @@ var combats = [
 		id: 6,
 		name: "a microwave mimic",
 		description: "You walk over to the microwaves to see if anyone left anything inside of them. As you press the button to open one of them, it dives at you and sprouts teeth. This one was a mimic!",
-		icon: "empty.png",
+		icon: "microwave_mimic.png",
 		hp: 8,
 		str: 12,
 		def: 8,
@@ -300,7 +300,7 @@ var combats = [
 		str: 24,
 		def: 4,
 		spd: -15,
-		exp: 20,
+		exp: 23,
 		gold: 14,
 		drops: [],
 		hitMessages: [
@@ -319,7 +319,7 @@ var combats = [
 		str: 22,
 		def: 6,
 		spd: 20,
-		exp: 19,
+		exp: 22,
 		gold: 13,
 		drops: [],
 		hitMessages: [
@@ -386,7 +386,7 @@ var combats = [
 		str: 28,
 		def: 10,
 		spd: 30,
-		exp: 100,
+		exp: 125,
 		gold: 100,
 		drops: [],
 		hitMessages: [

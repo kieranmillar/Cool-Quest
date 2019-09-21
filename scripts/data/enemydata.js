@@ -385,15 +385,15 @@ var combats = [
 		hp: 40,
 		str: 28,
 		def: 10,
-		spd: 50,
+		spd: 30,
 		exp: 100,
 		gold: 100,
 		drops: [],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He clicks his fingers, and a group of guards swarm into the tent and beat you up.",
+			"He picks up the table in the middle of the tent and drops it onto your head.",
+			"He gets you into a chokehold and repeatedly punches you in the face.",
+			"He grabs you, raises you above his head, and then throws you onto the ground."
 		],
 		afterCombat: function () {
 			addCombatText ('Björc falls to the ground. "You have beaten me. What did you want from me?"');

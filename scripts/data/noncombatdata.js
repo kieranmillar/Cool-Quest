@@ -136,8 +136,8 @@ var noncombats = [
 		title: "It's Not That Easy",
 		description: "You casually stroll up to the leaders tent. A group of guards immediately pounce on you and give you a beating! Maybe the direct approach isn't going to work. Perhaps you can find a high ranking official somewhere that will help you find a way in.",
 		result: function () {
-			addNoncombatText("You take 5 damage!");
-			player.hp -= 5;
+			addNoncombatText("You take 3 damage!");
+			player.hp -= 3;
 			if (player.hp < 0) {
 				player.hp = 0;
 			}

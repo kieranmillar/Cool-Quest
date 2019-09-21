@@ -3,6 +3,7 @@ const skillType = {
 	NONCOMBAT: 1,
 	PASSIVE: 2,
 	JUGGLE: 3,
+	TOGGLEABLE: 4
 }
 
 var skills = [
@@ -71,13 +72,14 @@ var skills = [
 	},
 	{
 		id: 3,
-		name: "Pro Wrestling Magic",
-		description: "You channel your magic into making your wrestling moves look even more stupid.",
-		enchantment: "Every 2 points of MAG increases the Critical Hit damage multiplier by 1%",
+		name: "Showboating",
+		description: "Giving your wrestling moves more flair makes them deal more damage. It's true!",
+		enchantment: "When an attack crits, automatically spends 1MP to give +5 STR and +5 MAG to that attack",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Passive",
-		category: skillType.PASSIVE,
+		type: "Toggleable",
+		category: skillType.TOGGLEABLE,
+		toggleId: 0,
 		price: 50,
 		level: 2,
 	},
@@ -131,19 +133,15 @@ var skills = [
 	},
 	{
 		id: 7,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Pro Wrestling Magic",
+		description: "You channel your magic into making your wrestling moves look even more stupid.",
+		enchantment: "Every 2 points of MAG increases the Critical Hit damage multiplier by 1%",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		type: "Passive",
+		category: skillType.PASSIVE,
 		price: 100,
 		level: 4,
-		onUse: function () {
-			
-		}
 	},
 	{
 		id: 8,

@@ -43,7 +43,7 @@ function beginCombat (obj)
 	monster.def = obj.def + player.effMl;
 	if (monster.def < 0)
 		monster.def = 0;
-	monster.spd = obj.spd;
+	monster.spd = obj.spd + player.effMl;
 	if (obj.hasOwnProperty("element") == true)
 	{
 		monster.element = obj.element;
@@ -61,7 +61,7 @@ function beginCombat (obj)
 		monster.element = elementEnum.PHYS;
 		$("#monsterAttackImage").attr("src", "./images/sword.png");
 	}
-	monster.exp = obj.exp + (player.effMl / 2);
+	monster.exp = obj.exp + player.effMl;
 	monster.gold = obj.gold;
 	monster.drops = obj.drops;
 	monster.hitMessages = obj.hitMessages;
@@ -394,13 +394,14 @@ function useCombatSkill (x)
 	}
 	else
 	{
+		player.mp -= cost;
 		if (skills[x].onUse())
 		{
-			player.mp -= cost;
 			return true;
 		}
 		else
 		{
+			player.mp += cost; //refund player MP due to failed skill cast
 			return false;
 		}
 	}
@@ -456,22 +457,41 @@ function pressedViewItembutton ()
 function regularAttack (value, hitMessage, critMessage)
 {
 	// hitMessage == "" means guaranteed critical
-	value -= monster.def;
-	if (value <= 0)
-	{
-		value = 1;
-	}
-	let fireDamage = calcFireDamage(player.fireDamage);
-	let iceDamage = calcIceDamage(player.iceDamage);
+	let crit = false;
 	if (hitMessage == "" || Math.random() * 100 < ((player.effSpd - monster.spd) / 4) + 10)
 	{
+		crit = true;
+	}
+	value -= monster.def;
+	let showboating = false;
+	if (crit && player.toggleSkills[0] == 1) { //Showboating wrestler skill
+		if (player.mp > 0) {
+			player.mp -= 1;
+			value += 5;
+			showboating = true;
+		}
+	}
+	console.log("Crit: " + crit);
+	console.log("Showboating: " + showboating);
+	value = Math.max(value, 1);
+	let fireDamage = calcFireDamage(player.fireDamage);
+	let iceDamage = calcIceDamage(player.iceDamage);
+	if (crit)
+	{
 		let critMultiplier = 1.2;
-		if (player.skills[3])
+		if (player.skills[7]) //Pro Wrestling Magic wrestler skill
 		{
-			critMultiplier += Math.floor(player.effMag / 2)/100;
+			let effMag = player.effMag;
+			if (showboating) {
+				effMag += 5;
+			}
+			critMultiplier += Math.floor(effMag / 2)/100;
 		}
 		value = Math.ceil (value * critMultiplier);
 		addCombatText ("<strong>CRITICAL!</strong> " + critMessage);
+		if (showboating) {
+			addCombatText ("You pull some fancy moves to make your critical attack do additional damage!");
+		}
 	}
 	else
 	{

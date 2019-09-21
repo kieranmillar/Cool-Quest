@@ -54,6 +54,7 @@ var player = {
 	buffs: [],
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 	],
+	toggleSkills: [],
 	juggles: [],
 	stormySeas: 0,
 	optionCompactInfoPanel: 0,

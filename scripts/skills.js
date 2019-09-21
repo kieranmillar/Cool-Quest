@@ -1,5 +1,7 @@
 function displaySkills()
 {
+	let toggleDiv = $("#skill_toggle");
+	toggleDiv.empty();
 	let noncomDiv = $("#skill_noncom");
 	noncomDiv.empty();
 	let comDiv = $("#skill_com");
@@ -8,6 +10,7 @@ function displaySkills()
 	juggleDiv.empty();
 	let passiveDiv = $("#skill_passive");
 	passiveDiv.empty();
+	let toggleCount = 0;
 	let noncomCount = 0;
 	let comCount = 0;
 	let passiveCount = 0;
@@ -48,6 +51,29 @@ function displaySkills()
 				newElement.append(castLink);
 				juggleDiv.append(newElement);
 				juggleCount ++;
+				break;
+			case skillType.TOGGLEABLE:
+				var castLink = $('<span></span>');
+				let text = "off";
+				if (player.toggleSkills[skills[i].toggleId] == 1) {
+					text = "on";
+				}
+				castLink.html("<input type = 'button' value = 'Toggle\n(Currently " +  text + ")' onClick = 'toggleSkill(" + i + ")'>");
+				newElement.append(castLink);
+				toggleDiv.append(newElement);
+				toggleCount ++;
+			
+		}
+		let toggleTitle = $("#skill_toggle_title");
+		if (toggleCount == 0)
+		{
+			toggleTitle.hide();
+			toggleDiv.hide();
+		}
+		else
+		{
+			toggleTitle.show();
+			toggleDiv.show();
 		}
 		let noncomTitle = $("#skill_noncom_title");
 		if (noncomCount == 0)
@@ -160,6 +186,24 @@ function buySkill (id)
 		hint ("You can't afford that!", "r");
 	}
 	redrawCharPane();
+}
+
+function toggleSkill (x) {
+	x = parseInt(x);
+	if (x == -1)
+	{
+		hint ("That's not a valid skill!", "r");
+		return false;
+	}
+	if (player.toggleSkills[skills[x].toggleId] == 1) {
+		player.toggleSkills[skills[x].toggleId] = 0;
+	}
+	else {
+		player.toggleSkills[skills[x].toggleId] = 1;
+	}
+	displaySkills();
+	save();
+	return true;
 }
 
 function useNoncombatSkill (x)

@@ -9,7 +9,7 @@ var zones = [
 		special: function ()
 		{
 			player.zoneCounterBasement ++;
-			if (player.zoneCounterBasement == 5)
+			if (player.zoneCounterBasement >= 5)
 			{
 				player.zoneCounterBasement = 0;
 				beginNoncombat (noncombats[0]);
@@ -58,7 +58,19 @@ var zones = [
 		level: 3,
 		combatChance: 100,
 		combats: [14],
-		noncombats: []
+		noncombats: [],
+		special: function ()
+		{
+			if (player.zoneCounterOrcMunitions == 1 && player.questOrcCamp < 6)
+			{
+				player.zoneCounterOrcMunitions = 0;
+				beginCombat (combats[15]);
+			}
+			else
+			{
+				beginCombat (combats[14]);
+			}
+		}
 	},
 	{
 		id: 6,
@@ -69,14 +81,24 @@ var zones = [
 		noncombats: [],
 		special: function ()
 		{
-			if (player.questOrcCamp < 5) {
+			if (player.questOrcCamp >= 6)
+			{
+				beginNoncombat (noncombats[6]);
+			}
+			else if (player.equipment[5] == 25 ||
+				player.equipment[6] == 25 ||
+				player.equipment[7] == 25 ||
+				player.equipment[8] == 25)
+			{
+				beginNoncombat (noncombats[7]);
+			}
+			else if (player.questOrcCamp < 5)
+			{
 				beginNoncombat (noncombats[4]);
 			}
-			else if (player.questOrcCamp == 5) {
+			else if (player.questOrcCamp == 5)
+			{
 				beginNoncombat (noncombats[5]);
-			}
-			else {
-				beginNoncombat (noncombats[6]);
 			}
 		}
 	},

@@ -65,7 +65,8 @@ var player = {
 	questTownHall: 0,
 	questOrcCamp: 0,
 	zoneCounterBasement: 0,
-	zoneCounterCanteen: 0
+	zoneCounterCanteen: 0,
+	zoneCounterOrcMunitions: 0
 };
 
 var levelDeltas = [

@@ -253,8 +253,8 @@ var combats = [
 		name: "an orc dork",
 		description: "It's unusual to find an orc that tries to take the less violent path in life, and it's especially unusual to find one in the army. As such this poor orc gets endlessly bullied and therefore is looking for someone lower on the rung to lash out at and pass it on.",
 		icon: "empty.png",
-		hp: 15,
-		str: 14,
+		hp: 20,
+		str: 16,
 		def: 0,
 		spd: -10,
 		exp: 12,
@@ -275,8 +275,8 @@ var combats = [
 		name: "a stalk orc",
 		description: "A weird feeling comes over you, like you're being watched. You suddenly stop and quickly spin around. An orc in a trenchcoat and sunglasses quickly tries to duck behind a table. Looks like you were being followed by a spy! Not a very good one, fortunately.",
 		icon: "empty.png",
-		hp: 22,
-		str: 12,
+		hp: 18,
+		str: 18,
 		def: 0,
 		spd: 15,
 		exp: 14,
@@ -332,16 +332,17 @@ var combats = [
 	{
 		id: 14,
 		name: "an orc weaponsmaster",
-		description: "",
+		description: "TODO: Description",
 		icon: "empty.png",
-		hp: 12,
-		str: 12,
-		def: 1,
-		spd: 0,
-		exp: 16,
-		gold: 10,
+		hp: 35,
+		str: 35,
+		def: 10,
+		spd: -5,
+		exp: 26,
+		gold: 20,
 		drops: [
-			
+			{id: 23, chance: 30},
+			{id: 24, chance: 30}
 		],
 		hitMessages: [
 			"crit",
@@ -350,22 +351,26 @@ var combats = [
 			"hit3"
 		],
 		afterCombat: function () {
+			if (player.zoneCounterOrcMunitions == 0)
+			{
+				player.zoneCounterOrcMunitions = 1;
+			}
 			return true;
 		}
 	},
 	{
 		id: 15,
 		name: "an orc Major General",
-		description: "",
+		description: "TODO: Description",
 		icon: "empty.png",
-		hp: 12,
-		str: 12,
-		def: 1,
-		spd: 0,
-		exp: 16,
-		gold: 10,
+		hp: 40,
+		str: 45,
+		def: 15,
+		spd: 10,
+		exp: 35,
+		gold: 50,
 		drops: [
-			
+			{id: 25, chance: 100}
 		],
 		hitMessages: [
 			"crit",
@@ -374,6 +379,7 @@ var combats = [
 			"hit3"
 		],
 		afterCombat: function () {
+			player.zoneCounterOrcMunitions = 2;
 			return true;
 		}
 	},
@@ -388,7 +394,9 @@ var combats = [
 		spd: 30,
 		exp: 125,
 		gold: 100,
-		drops: [],
+		drops: [
+			{id: 26, chance: 100}
+		],
 		hitMessages: [
 			"He clicks his fingers, and a group of guards swarm into the tent and beat you up.",
 			"He picks up the table in the middle of the tent and drops it onto your head.",

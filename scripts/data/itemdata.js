@@ -426,5 +426,67 @@ var items = [
 			player.effDef += 3;
 			player.effSpd -= 10;
 		}
+	},
+	{
+		id: 23,
+		name: "orc flamethrower",
+		description: "A wildly popular weapon for orc armies on the move, as it also doubles up as a tool to help cook breakfast. It's heavy though.",
+		enchantment: "+10 Fire Damage<br />-10 SPD",
+		icon: "no_image.png",
+		type: "Weapon",
+		category: itemType.WEAPON,
+		equipStat: "STR",
+		equipValue: 10,
+		sell: 30,
+		onWear: function () {
+			player.fireDamage += 10;
+			player.effSpd -= 10;
+		}
+	},
+	{
+		id: 24,
+		name: "orc riot shield",
+		description: "This shield made from transparent but sturdy plastic offers some protection while still letting you see what your opponent is doing.",
+		enchantment: "+3 DEF<br />+10 SPD",
+		icon: "no_image.png",
+		type: "Shield",
+		category: itemType.SHIELD,
+		equipStat: "DEF",
+		equipValue: 10,
+		sell: 30,
+		onWear: function () {
+			player.effDef += 3;
+			player.effSpd += 10;
+		}
+	},
+	{
+		id: 25,
+		name: "shiny orc medal",
+		description: "This medal makes you look important. So important, that monsters will work extra hard to take you out. But it might also help you get into the orc leader's tent.",
+		enchantment: "+5 Monster Level<br />Makes you look like a high-ranking orc official",
+		icon: "no_image.png",
+		type: "Accessory",
+		category: itemType.ACC,
+		equipStat: "MAG",
+		equipValue: 1,
+		sell: 50,
+		onWear: function () {
+			player.effMl += 5;
+		}
+	},
+	{
+		id: 26,
+		name: "orc field cap",
+		description: "This hat worn by high-ranking orcs isn't magically enchanted, but you think it is, and therefore it gives you MP regen. It's the placebo effect in action.",
+		enchantment: "Restore 1 MP each turn",
+		icon: "no_image.png",
+		type: "Hat",
+		category: itemType.HAT,
+		equipStat: "DEF",
+		equipValue: 5,
+		sell: 50,
+		onWear: function () {
+			player.mpRegen += 1;
+		}
 	}
 ];

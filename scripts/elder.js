@@ -38,6 +38,11 @@ function displayElderText ()
     {
         newElderText("Have you spoken to the leader of the orc camp on the outskirts of town yet? Maybe you can convince one of the majors to let you see the leader.");
     }
+    else if (player.questOrcCamp == 6)
+    {
+        newElderText("So the orcs aren't planning an attack? Well that's good news! I wonder what they are here for? I hope we can trust them.");
+        player.questOrcCamp = 7;
+    }
 
     if ($("#elderText").is(':empty')) {
         newElderText("I have nothing for you right now. Please come back later when you are stronger.");

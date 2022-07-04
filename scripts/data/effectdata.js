@@ -79,7 +79,7 @@ var effects = [
 		name: "Orcine Porcine Power",
 		description: "Orc pork comes from only the toughest pigs, fed an endless diet of growth hormones. They're having an effect on you.",
 		enchantment: "+7 STR",
-		icon: "no_image.png",
+		icon: "pork.png",
 		effect: function()
 		{
 			player.effStr += 7;

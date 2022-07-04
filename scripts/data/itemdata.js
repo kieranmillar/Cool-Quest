@@ -400,15 +400,16 @@ var items = [
 		id: 21,
 		name: "orc calculator",
 		description: "An orc discovered that if you put 5318008 into this calculator and turn it upside down, it's hilarious. You can feel the smarts rubbing off on you by association from holding that same calculator.",
-		enchantment: "+3 MAG",
-		icon: "no_image.png",
+		enchantment: "+3 Max MP<br />+5 MAG",
+		icon: "calculator.png",
 		type: "Accessory",
 		category: itemType.ACC,
 		equipStat: "MAG",
 		equipValue: 8,
 		sell: 20,
 		onWear: function () {
-			player.effMag += 3;
+			player.effMpMax += 3;
+			player.effMag += 5;
 		}
 	},
 	{

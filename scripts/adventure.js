@@ -1,5 +1,10 @@
 function adventure (z)
 {
+	if (player.turnsToMidnight <= 0)
+	{
+		goToLocation ("noAdventuresWarning");
+		return;
+	}
 	if (player.hp == 0)
 	{
 		hint ("You can't adventure with 0 HP! Go rest at your house or visit the doctor.", "r");
@@ -10,7 +15,6 @@ function adventure (z)
 		hint ("You're too busy to leave now!", "r");
 		return;
 	}
-	$(".newDay").hide();
 	lastZone = z;
 	if (zones[z].level > player.level
 		&& player.optionZoneWarnings == 1
@@ -44,7 +48,7 @@ function genericAdventure (z)
 	}
 }
 
-function endAdventure ()
+function endAdventure()
 {
 	busy = false;
 	if (lastZone != -1)
@@ -59,14 +63,6 @@ function endAdventure ()
 	}
 	player.turns ++;
 	player.turnsToMidnight --;
-	if (player.turnsToMidnight <= 0)
-	{
-		player.turnsToMidnight = 40;
-		player.day ++;
-		player.full = 0;
-		player.juggles = [];
-		$(".newDay").show();
-	}
 	calculateStats ();
 	giveHp(player.hpRegen);
 	giveMp(player.mpRegen);

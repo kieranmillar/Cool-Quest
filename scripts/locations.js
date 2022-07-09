@@ -58,17 +58,11 @@ function goToLocation (l)
 				gainItem(1, 1);
 				player.questTutorial = 2;
 			}
-			else if (player.questTutorial == 2)
-			{
-			}
 			else if (player.questTutorial == 3)
 			{
 				$(".equip_tutorial").hide();
 				$("#link_skills").show();
 				player.questTutorial = 4;
-			}
-			else if (player.questTutorial == 4)
-			{
 			}
 			else if (player.questTutorial == 5)
 			{
@@ -78,12 +72,20 @@ function goToLocation (l)
 				gainItem(2, 1);
 				player.questTutorial = 6;
 			}
-			else if (player.questTutorial == 6)
+			if (player.turnsToMidnight <= 0)
 			{
+				$("#house_sleep_button").show();
+				$("#house_rest_button").hide();
 			}
 			else
 			{
+				$("#house_sleep_button").hide();
+				$("#house_rest_button").show();
 			}
+			break;
+		case "sleep":
+			$("#loc_sleep").show();
+			sleep();
 			break;
 		case "town":
 			$("#loc_town").show();
@@ -156,6 +158,9 @@ function goToLocation (l)
 		case "toughZoneWarning":
 			$("#loc_toughZoneWarning").show();
 			$("#recommendedZoneLevel").text(zones[lastZone].level);
+			break;
+		case "noAdventuresWarning":
+			$("#loc_noAdventuresWarning").show();
 			break;
 		case "settings":
 			$("#loc_settings").show();

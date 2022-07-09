@@ -3,7 +3,7 @@ function displayElderText ()
     $("#elderText").empty();
     if (player.hp == 0)
     {
-        newElderText("Out of HP? One way of healing up is to rest in your house! It costs turns, but it is free!");
+        newElderText("Out of HP? One way of healing up is to rest in your house! It costs turns instead of gold.");
     }
 
     // level 1
@@ -23,7 +23,12 @@ function displayElderText ()
     }
     else if (player.questTownHall == 3)
     {
-        newElderText("Well done on opening the Town Hall. You are free to explore it if you wish.");
+		let txt = "Well done on opening the Town Hall. You are free to explore it if you wish.";
+		if (player.level <= 1)
+		{
+			txt += " You aren't strong enough yet for my next task, come back when you reach level 2.";
+		}
+        newElderText(txt);
         player.questTownHall = 4;
     }
 
@@ -40,11 +45,17 @@ function displayElderText ()
     }
     else if (player.questOrcCamp == 6)
     {
-        newElderText("So the orcs aren't planning an attack? Well that's good news! I wonder what they are here for? I hope we can trust them.");
+		let txt = "So the orcs aren't planning an attack? Well that's good news! I wonder what they are here for? I hope we can trust them.";
+		if (player.level <= 2)
+		{
+			txt += " You aren't strong enough yet for my next task, come back when you reach level 3.";
+		}
+        newElderText(txt);
         player.questOrcCamp = 7;
     }
 
-    if ($("#elderText").is(':empty')) {
+    if ($("#elderText").is(':empty'))
+	{
         newElderText("I have nothing for you right now. Please come back later when you are stronger.");
     }
 }

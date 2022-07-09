@@ -334,7 +334,6 @@ function load()
 		$(".equip_tutorial").hide();
 	}
 	goToLocation("map");
-	$(".newDay").hide();
 	$("#adventureAgainButton").hide();
 	calculateStats();
 	redrawInfoPanel();

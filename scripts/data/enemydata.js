@@ -113,7 +113,7 @@ var combats = [
 	{
 		id: 5,
 		name: "The Biscuit Monster",
-		description: "You find a blue furry monster by the baked goods, scoffing down all of the biscuits he can find. He growls at you in a posh English accent 'B IS FOR BISCUIT, THAT'S GOOD ENOUGH FOR ME!'",
+		description: "You find a blue furry monster by the baked goods, scoffing down all of the biscuits he can find. He growls at you in a posh English accent 'B IS FOR BISCUIT, THAT'S GOOD ENOUGH FOR ME!' before flipping you the Big Bird.",
 		icon: "biscuit_monster.png",
 		hp: 12,
 		str: 14,
@@ -148,7 +148,7 @@ var combats = [
 			{id: 14, chance: 70}
 		],
 		hitMessages: [
-			"It quickly microwaves a cup of hot soup for 40 seconds, and when finished, throws it over you.",
+			"It microwaves a cup of hot soup for 40 seconds, and when finished, throws it over you.",
 			"It opens its mouth and fires the spinning plate at you like a frisbee.",
 			"It jumps up and chomps on your head. It's like having your face slammed in a door. Literally.",
 			"It blasts microwaves at you, despite not being a real microwave. Or plugged in. How does that even work?"
@@ -203,13 +203,13 @@ var combats = [
 				{
 					case 2:
 						addCombatText ("You stand over the Major who is lying dazed on the floor.");
-						addCombatText ("\"Hey, I'm looking to speak to your leader, any chance you could let me have a word with him?\" you ask politely.");
+						addCombatText ("\"Hey, I'm looking to speak to your leader, any chance you could let me have a word with them?\" you ask politely.");
 						addCombatText ("\"GET LOST HUMAN! NOBODY IS ALLOWED TO SPEAK TO THE LEADER WITHOUT PERMISSION FROM ÓLAFUR!\"");
 						addCombatText ("You don't know who Ólafur is, could he be one of the other Majors? You walk off to look for another Major. There should be another one around here somewhere...");
 						break;
 					case 3:
 						addCombatText ("You try a new ruse on this next Major.");
-						addCombatText ("\"I just spoke to Ólafur and he told me I need to speak to the leader, I need you to take me to him.\"");
+						addCombatText ("\"I just spoke to Ólafur and he told me I need to speak to the leader, I need you to take me to them.\"");
 						addCombatText ("\"HAH! HOW IS THAT POSSIBLE? ÓLAFUR IS BACK IN HEADQUARTERS, YOU COULD NOT HAVE SPOKEN TO HIM! YOU CAN'T FOOL ME!\"");
 						addCombatText ("Rats, you'll get it right next time...");
 						break;
@@ -386,7 +386,7 @@ var combats = [
 	{
 		id: 16,
 		name: "Björc",
-		description: "The orc camp leader. Residing in his Hidden Palace, having a human walk into it was an Alarm Call. Human Behaviour is so rude! He could Play Dead, Possibly Maybe, but this is a chance to be Violently Happy. Time to engage in some Big Time Sensuality!",
+		description: "The orc camp leader. Residing in her Hidden Palace, having a human walk into it was an Alarm Call. Human Behaviour is so rude! She could Play Dead, Possibly Maybe, but this is a chance to be Violently Happy. Time to engage in some Big Time Sensuality!",
 		icon: "empty.png",
 		hp: 40,
 		str: 28,
@@ -398,10 +398,10 @@ var combats = [
 			{id: 26, chance: 100}
 		],
 		hitMessages: [
-			"He clicks his fingers, and a group of guards swarm into the tent and beat you up.",
-			"He picks up the table in the middle of the tent and drops it onto your head.",
-			"He gets you into a chokehold and repeatedly punches you in the face.",
-			"He grabs you, raises you above his head, and then throws you onto the ground."
+			"She clicks her fingers, and a group of guards swarm into the tent and beat you up.",
+			"She picks up the table in the middle of the tent and drops it onto your head.",
+			"She gets you into a chokehold and repeatedly punches you in the face.",
+			"She grabs you, raises you above her head, and then throws you onto the ground."
 		],
 		afterCombat: function () {
 			addCombatText ('Björc falls to the ground. "You have beaten me. What did you want from me?"');

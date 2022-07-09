@@ -148,7 +148,7 @@ var noncombats = [
 	{
 		id: 5,
 		title: "Army of Me",
-		description: 'The Major lets you into the tent. In the centre is a large muscular orc looking over a map. He looks up and leaps out of his chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
+		description: 'The Major lets you into the tent. In the centre is a large strangely dressed orc looking over a map. She looks up and leaps out of her chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "Fight Björc");},
@@ -162,7 +162,7 @@ var noncombats = [
 	{
 		id: 6,
 		title: "Your Work Here is Done",
-		description: "You made a deal with Björc to leave him alone. You'd better hold up your end of the bargain.",
+		description: "You made a deal with Björc to leave her alone. You'd better hold up your end of the bargain.",
 		result: function () {
 			busy = false;
 		}
@@ -170,7 +170,7 @@ var noncombats = [
 	{
 		id: 7,
 		title: "Army of Me",
-		description: 'You show your medal to the guards, and they let you in. In the centre is a large muscular orc looking over a map. He looks up and leaps out of his chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
+		description: 'You show your medal to the guards, and they let you in. In the centre is a large strangely dressed orc looking over a map. She looks up and leaps out of her chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "Fight Björc");},

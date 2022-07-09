@@ -14,7 +14,7 @@
 		content="Kieran Millar" />
 		
 		<meta name="revised"
-		content="Kieran Millar, 04/05/2019" />
+		content="Kieran Millar, 09/07/2022" />
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
@@ -308,13 +308,25 @@
 						<p class="house_tutorial_3">Use the <img src='./images/fountain.png'> icon above to visit town and pay the elder a visit.</p>
 						<div id="house_normal">
 							<p>This is your house.</p>
-							<button type="button" onclick="rest()">
+							<button id="house_rest_button" type="button" onclick="rest()">
 								Rest (Restore HP and MP) (<img src='./images/adventure.png' title='(1 Adventure)'/>)
+							</button>
+							<button id="house_sleep_button" type="button" onclick="goToLocation('sleep')">
+								Sleep
 							</button>
 							<button type="button" onclick="goToLocation('map')">
 								Back to Map
 							</button>
 						</div>
+					</div>
+					<div id="loc_sleep" class="location">
+						<div id="sleep_text"></div>
+						<button type="button" onclick="goToLocation('house')">
+							Go to Your House
+						</button>
+						<button type="button" onclick="goToLocation('map')">
+							Back to Map
+						</button>
 					</div>
 					<div id="loc_town" class="location">
 						<button type="button" onclick="goToLocation('elder')">
@@ -483,8 +495,16 @@
 							Back to Map
 						</button>
 					</div>
+					<div id="loc_noAdventuresWarning" class="location">
+						<p>It's getting late and you're out of turns for today! Gain more turns by eating food, or if you've reached your limits, head back to your house and go to sleep.</p>
+						<button type="button" onclick="goToLocation('house')">
+							Go to Your House
+						</button>
+						<button type="button" onclick="goToLocation('map')">
+							Back to Map
+						</button>
+					</div>
 					<hr>
-					<h2 class="newDay">A new day has begun!</h2>
 					<button id="adventureAgainButton" type="button" onclick="adventure(lastZone)">
 							Adventure Again at the last place you adventured (<img src='./images/adventure.png' title='(1 Adventure)'/>)
 					</button>
@@ -517,6 +537,7 @@
 		<script src="./scripts/items.js"></script>
 		<script src="./scripts/effects.js"></script>
 		<script src="./scripts/skills.js"></script>
+		<script src="./scripts/sleep.js"></script>
 		<script src="./scripts/coolquest.js"></script>
 	</body>
 </html>

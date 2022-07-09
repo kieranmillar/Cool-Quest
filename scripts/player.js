@@ -406,12 +406,26 @@ function eatMessage (itemId)
 	return t;
 }
 
-function rest ()
+function rest()
+{
+	if (player.turnsToMidnight <= 0)
+	{
+		goToLocation("noAdventuresWarning");
+		return;
+	}
+	restRecovery();
+	endAdventure();
+	if (player.turnsToMidnight <= 0)
+	{
+		goToLocation("house");
+	}
+}
+
+function restRecovery()
 {
 	let hp = Math.floor(Math.random()*10) + 30;
 	let mp = Math.floor(Math.random()*3) + 5;
 	hint (giveHp(hp) + " " + giveMp(mp), "g");
-	endAdventure ();
 }
 
 function buyHP (x)

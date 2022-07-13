@@ -170,7 +170,7 @@ var noncombats = [
 	{
 		id: 7,
 		title: "Army of Me",
-		description: 'You show your medal to the guards, and they let you in. In the centre is a large strangely dressed orc looking over a map. She looks up and leaps out of her chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
+		description: 'You show your medal to the guards, and they let you in without a fight. In the centre is a large strangely dressed orc looking over a map. She looks up and leaps out of her chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "Fight Björc");},

@@ -293,7 +293,7 @@ var combats = [
 	},
 	{
 		id: 12,
-		name: "an drunk orc infantryman",
+		name: "a drunk infantryorc",
 		description: "This orc has trained in the art of hand-to-hand combat and would be a deadly opponent one-to-one, if it he handn't just stumbled back to his barracks after a long day of drinking.",
 		icon: "empty.png",
 		hp: 23,
@@ -332,10 +332,10 @@ var combats = [
 	{
 		id: 14,
 		name: "an orc weaponsmaster",
-		description: "TODO: Description",
+		description: "You walk into the munitions store and find entire shelves full of weapons of all kinds, all neatly categorised by type and weight. As you reach out to grab one, you hear an orc clear their throat behind you. It's one of the orcs that looks after the munitions, and they don't take very kindly to anybody who tries to mess up their carefully organised inventory.",
 		icon: "empty.png",
 		hp: 35,
-		str: 35,
+		str: 38,
 		def: 10,
 		spd: -5,
 		exp: 26,
@@ -345,10 +345,10 @@ var combats = [
 			{id: 24, chance: 30}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He fires a bazooka which hits you directly in the chest, exploding and turning you into a shower of gibs! Fortunately this is a video game, and so you respawn a few seconds later, but it seriously hurt.",
+			"He fires a pistol at you. It misses, but knocks over a box of grenades behind you which all fall on your head.",
+			"He picks up a flamethrower but it's out of gas, so instead he swings the gas canister at you with full force.",
+			"He throws a grenade at you, which lands at your feet. You kick it away, but when it detonates, some shrapnel flies back and hits you in the leg."
 		],
 		afterCombat: function () {
 			if (player.zoneCounterOrcMunitions == 0)
@@ -360,8 +360,8 @@ var combats = [
 	},
 	{
 		id: 15,
-		name: "an orc Major General",
-		description: "TODO: Description",
+		name: "an orc Major-General",
+		description: "Could this be the orc camp leader? The large shiny medal on their lapel implies this is a very high ranking officer, the second-in-command perhaps. He spots you sneaking around the munitions store and runs towards you. As he gets closer, you realise he is the very model of a modern Major-General.",
 		icon: "empty.png",
 		hp: 40,
 		str: 45,
@@ -373,12 +373,13 @@ var combats = [
 			{id: 25, chance: 100}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"The General knows the kings of England, and quotes the fights Historical, and uses this vast array of military history knowledge to apply some serious damage.",
+			"The General is very acquainted with matters Mathematical, and calculates the best angle to swing his fist at you.",
+			"The General can tell at sight a Mauser rifle from a javelin, and throws the correct weapon at you.",
+			"The General knows more of tactics than a novice in a nunnery, and applies a tactical punch to your face."
 		],
 		afterCombat: function () {
+			addCombatText ("The General runs away. Guess you didn't get to ask any questions, but they did drop their medal. If you wear it, you could prove to the guards outside the leader's tent that you mean business.");
 			player.zoneCounterOrcMunitions = 2;
 			return true;
 		}
@@ -398,10 +399,10 @@ var combats = [
 			{id: 26, chance: 100}
 		],
 		hitMessages: [
-			"She clicks her fingers, and a group of guards swarm into the tent and beat you up.",
-			"She picks up the table in the middle of the tent and drops it onto your head.",
-			"She gets you into a chokehold and repeatedly punches you in the face.",
-			"She grabs you, raises you above her head, and then throws you onto the ground."
+			"If you ever imagined what your body would sound like, slamming against rocks, Björc helps you solve that mystery.",
+			"As much as she enjoys solitude, she wants to spend a little more time with you sometimes, sometimes. She decides to start now, and grapples you, throwing you to the floor.",
+			"She's a fountain of blood in the shape of a girl. She spins around for a roundhouse kick, and you're hypnotised by the whirl.",
+			"As the queen of provocation, fighting her makes you mad. You'd complain, but before you she's humble. Besides, she told you that if you complain once more, you'll meet an entire army of her."
 		],
 		afterCombat: function () {
 			addCombatText ('Björc falls to the ground. "You have beaten me. What did you want from me?"');

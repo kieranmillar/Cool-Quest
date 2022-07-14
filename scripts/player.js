@@ -189,6 +189,12 @@ function createCharacter()
 	player.baseDef = player.defGain;
 	player.baseMag = player.magGain;
 	player.baseSpd = player.spdGain;
+	player.questTutorial = 0;
+	player.questTownHall = 0;
+	player.questOrcCamp = 0;
+	player.zoneCounterBasement = 0;
+	player.zoneCounterCanteen = 0;
+	player.zoneCounterOrcMunitions = 0;
 	$("#characterCreation").hide();
 	$("#mainGame").show();
 	$("#link_inventory").show();
@@ -381,7 +387,6 @@ function eat (itemId)
 		{
 			player.hp = player.effHpMax;
 		}
-		redrawCharPane();
 		return true;
 	}
 }

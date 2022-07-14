@@ -489,5 +489,64 @@ var items = [
 		onWear: function () {
 			player.mpRegen += 1;
 		}
-	}
+	},
+	{
+		id: 27,
+		name: "roachburger",
+		description: "The classic roachburger, filled with a prime cut of the toughest meat around. Eating this will build up muscle strength and focus just trying to bite through it.",
+		enchantment: "+3 Fullness<br>+5 Turns to midnight<br>+1 Base STR<br>+1 Base MAG",
+		icon: "no_image.png",
+		type: "Food",
+		category: itemType.FOOD,
+		fullness: 3,
+		turns: 5,
+		sell: 30,
+		onUse: function () {
+			let success = eat(27);
+			if (success == true)
+			{
+				player.baseStr += 1;
+				player.baseMag += 1;
+				hint (eatMessage(27) + " Your STR and MAG increase by 1!", "g");
+			}
+			return success;
+		}
+	},
+	{
+		id: 28,
+		name: "Evil Eye stew",
+		description: "Renowned as one of the foulest tasting foods known to mankind, if you can eat this, you'll build up a stomach of steel that can cope with anything, as well as a strong automatic reaction to run away from the next serving.",
+		enchantment: "+3 Fullness<br>+5 Turns to midnight<br>+1 Base DEF<br>+1 Base SPD",
+		icon: "no_image.png",
+		type: "Food",
+		category: itemType.FOOD,
+		fullness: 3,
+		turns: 5,
+		sell: 30,
+		onUse: function () {
+			let success = eat(28);
+			if (success == true)
+			{
+				player.baseDef += 1;
+				player.baseSpd += 1;
+				hint (eatMessage(28) + " Your DEF and SPD increase by 1!", "g");
+			}
+			return success;
+		}
+	},
+	{
+		id: 29,
+		name: "speed potion",
+		description: "A green potion that makes you move at twice the speed, letting you effortlessly dance around your opponents.",
+		enchantment: "10 turns of +100% SPD",
+		icon: "no_image.png",
+		type: "Potion",
+		category: itemType.POTION,
+		sell: 100,
+		onUse: function () {
+			hint ("You gain 10 turns of Double Speed.", "g");
+			addBuff (8, 10);
+			return true;
+		}
+	},
 ];

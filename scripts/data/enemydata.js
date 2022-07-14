@@ -415,4 +415,86 @@ var combats = [
 			return true;
 		}
 	},
+	{
+		id: 17,
+		name: "Roach Queen",
+		description: "TODO: Desc",
+		icon: "empty.png",
+		hp: 50,
+		str: 42,
+		def: 6,
+		spd: 10,
+		exp: 40,
+		gold: 6,
+		drops: [
+			{id: 27, chance: 40}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 18,
+		name: "Evil Eye",
+		description: "TODO: Desc",
+		icon: "empty.png",
+		hp: 60,
+		str: 32,
+		def: 8,
+		spd: -15,
+		exp: 38,
+		gold: 5,
+		drops: [
+			{id: 28, chance: 40}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 19,
+		name: "Cyan Spider",
+		description: "TODO: Desc",
+		icon: "empty.png",
+		hp: 55,
+		str: 52,
+		def: 12,
+		spd: 15,
+		exp: 45,
+		gold: 8,
+		drops: [],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 20,
+		name: "Mud Baby",
+		description: "TODO: Desc",
+		icon: "empty.png",
+		hp: 130,
+		str: 60,
+		def: 3,
+		spd: 0,
+		exp: 80,
+		gold: 8,
+		drops: [
+			{id: 29, chance: 100}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
 ];

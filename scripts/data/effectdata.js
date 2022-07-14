@@ -96,6 +96,17 @@ var effects = [
 			player.stormySeas = 1;
 		}
 	},
+	{
+		id: 8,
+		name: "Double Speed",
+		description: "You're moving so fast, if this game had voice acting, everyone would be talking in a slow deep voice.",
+		enchantment: "+100% SPD",
+		icon: "no_image.png",
+		effect: function()
+		{
+			player.effSpd += player.baseSpd;
+		}
+	},
 ];
 
 var jugglingBalls = [

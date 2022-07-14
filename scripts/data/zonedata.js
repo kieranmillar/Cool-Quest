@@ -102,4 +102,12 @@ var zones = [
 			}
 		}
 	},
+	{
+		id: 7,
+		name: "Behind the Yellow Block",
+		level: 3,
+		combatChance: 80,
+		combats: [17, 18, 19],
+		noncombats: [3]
+	},
 ];

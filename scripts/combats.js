@@ -24,6 +24,19 @@ function addCombatText (txt)
 	$("#combatText").append(e);
 }
 
+function gainItemDrop (item, amount)
+{
+	gainItem (item.id, amount);
+	let e = $("<p></p>");
+	e.addClass("item_Image");
+	e.html("You found a <img src='./images/" + items[item.id].icon + "'> " + items[item.id].name + "!");
+	e.css("cursor", "pointer");
+	e.attr({
+		"onClick" : "openDialog (dialogType.ITEM, " + item.id + ");"
+	});
+	$("#combatText").append(e);
+}
+
 function beginCombat (obj)
 {
 	if (player.hp == 0 || busy == true)
@@ -193,15 +206,7 @@ function combatRound (action)
 			{
 				if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
 				{
-					gainItem (monster.drops[i].id, 1);
-					let e = $("<p></p>");
-					e.addClass("item_Image");
-					e.html("You found a <img src='./images/" + items[monster.drops[i].id].icon + "'> " + items[monster.drops[i].id].name + "!");
-					e.css("cursor", "pointer");
-					e.attr({
-						"onClick" : "openDialog (dialogType.ITEM, " + monster.drops[i].id + ");"
-					});
-					$("#combatText").append(e);
+					gainItemDrop(monster.drops[i], 1);
 				}
 			}
 			let triggerEnd = true;

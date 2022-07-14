@@ -110,6 +110,7 @@ function useItem (id)
 	{
 		loseItem (id, 1);
 		displayInventory ();
+		calculateStats();
 		save ();
 	}
 }

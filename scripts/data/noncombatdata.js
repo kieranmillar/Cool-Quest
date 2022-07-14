@@ -103,14 +103,14 @@ var noncombats = [
 		description: "You manage to sneak into the barracks unnoticed. Where would you like to explore?",
 		choices: [
 			{
-				buttonText: function () {return noncombatButton ("Enter the dorms", 0, "Fight a drunk orc infantryman");},
+				buttonText: function () {return noncombatButton ("Enter the dorms", 0, "fight a drunk orc infantryman");},
 				onChoosing: function ()
 				{
 					beginCombat (combats[12]);
 				}
 			},
 			{
-				buttonText: function () {return noncombatButton ("Enter the armoury", 1, "Get a random piece of orc equipment");},
+				buttonText: function () {return noncombatButton ("Enter the armoury", 1, "get a random piece of orc equipment");},
 				onChoosing: function ()
 				{
 					addNoncombatText ("You enter the armoury and find a whole heap of equipment in a messy pile. These orcs don't seem particularly well organised.");
@@ -119,7 +119,7 @@ var noncombats = [
 				}
 			},
 			{
-				buttonText: function () {return noncombatButton ("Enter the first aid room", 2, "Get 3 health potions");},
+				buttonText: function () {return noncombatButton ("Enter the first aid room", 2, "get 3 health potions");},
 				onChoosing: function ()
 				{
 					addNoncombatText ("You enter the first aid room, expecting to find bandages, plasters, that sort of thing. Instead you recoil in horror as you open the door to a room filled with all manner of horrible-looking sharp instruments and shelves full of mystery liquids. Serves you right for giving orc science the benefit of the doubt for even a second.");
@@ -151,7 +151,7 @@ var noncombats = [
 		description: 'The Major lets you into the tent. In the centre is a large strangely dressed orc looking over a map. She looks up and leaps out of her chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
 		choices: [
 			{
-				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "Fight Björc");},
+				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "fight Björc");},
 				onChoosing: function ()
 				{
 					beginCombat (combats[16]);
@@ -173,12 +173,33 @@ var noncombats = [
 		description: 'You show your medal to the guards, and they let you in without a fight. In the centre is a large strangely dressed orc looking over a map. She looks up and leaps out of her chair.</p><p>"What are you doing here?! How did you get in?"</p><p>"Well you see I came to-"</p><p>"<strong>SILENCE!</strong> Leave at once or I\'ll force you to leave!"</p><p>Well, so much for diplomacy.',
 		choices: [
 			{
-				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "Fight Björc");},
+				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "fight Björc");},
 				onChoosing: function ()
 				{
 					beginCombat (combats[16]);
 				}
 			}
 		]
-	}
+	},
+	{
+		id: 8,
+		title: "Baby Steps",
+		description: "A Mud Baby sits in front of you. It's sitting perfectly still, so as long as you leave it alone, it'll probably leave you alone.",
+		choices: [
+			{
+				buttonText: function () {return noncombatButton ("Approach the Baby", 0, "fight a Mud Baby");},
+				onChoosing: function ()
+				{
+					beginCombat (combats[20]);
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a monster");},
+				onChoosing: function ()
+				{
+					pickRandomCombat (7);
+				}
+			}
+		]
+	},
 ];

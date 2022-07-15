@@ -64,6 +64,7 @@ var player = {
 	questTutorial: 0,
 	questTownHall: 0,
 	questOrcCamp: 0,
+	questYellowKey: 0,
 	zoneCounterBasement: 0,
 	zoneCounterCanteen: 0,
 	zoneCounterOrcMunitions: 0
@@ -192,6 +193,7 @@ function createCharacter()
 	player.questTutorial = 0;
 	player.questTownHall = 0;
 	player.questOrcCamp = 0;
+	player.questYellowKey = 0;
 	player.zoneCounterBasement = 0;
 	player.zoneCounterCanteen = 0;
 	player.zoneCounterOrcMunitions = 0;
@@ -200,7 +202,6 @@ function createCharacter()
 	$("#link_inventory").show();
 	$("#link_map").show();
 	$("#link_settings").show();
-	$(".newDay").hide();
 	$("#adventureAgainButton").hide();
 	calculateStats();
 	player.hp = player.effHpMax;

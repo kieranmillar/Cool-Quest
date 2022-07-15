@@ -417,7 +417,7 @@ var combats = [
 	},
 	{
 		id: 17,
-		name: "Roach Queen",
+		name: "a Roach Queen",
 		description: "TODO: Desc",
 		icon: "empty.png",
 		hp: 50,
@@ -438,7 +438,7 @@ var combats = [
 	},
 	{
 		id: 18,
-		name: "Evil Eye",
+		name: "an Evil Eye",
 		description: "TODO: Desc",
 		icon: "empty.png",
 		hp: 60,
@@ -459,7 +459,7 @@ var combats = [
 	},
 	{
 		id: 19,
-		name: "Cyan Spider",
+		name: "a Cyan Spider",
 		description: "TODO: Desc",
 		icon: "empty.png",
 		hp: 55,
@@ -478,7 +478,7 @@ var combats = [
 	},
 	{
 		id: 20,
-		name: "Mud Baby",
+		name: "a Mud Baby",
 		description: "TODO: Desc",
 		icon: "empty.png",
 		hp: 130,

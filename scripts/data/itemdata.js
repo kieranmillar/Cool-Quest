@@ -549,4 +549,28 @@ var items = [
 			return true;
 		}
 	},
+	{
+		id: 30,
+		name: "yellow key",
+		description: "This key unlocks the yellow door in the dungeons.",
+		enchantment: "Unlocks the Yellow Door in the Dungeons",
+		icon: "no_image.png",
+		type: "Useable",
+		category: itemType.MISC,
+		cost: 200,
+		sell: 100,
+		onUse: function () {
+			if (player.questYellowKey == 0)
+			{
+				hint ("You unlock the yellow door in the dungeons and the key vanishes, like all good video game keys.", "g");
+				player.questYellowKey = 1;
+				return true;
+			}
+			else
+			{
+				hint ("You've already unlocked this dungeon, you should sell this useless key.", "r");
+				return false;
+			}
+		}
+	},
 ];

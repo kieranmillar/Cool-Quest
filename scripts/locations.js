@@ -140,6 +140,20 @@ function goToLocation (l)
 				$("#town_hall_canteen").show();
 			}
 			break;
+		case "dungeons":
+			$("#loc_dungeons").show();
+			$("#dungeons_closedYellowDoorText").hide();
+			if (player.questYellowKey == 0)
+			{
+				$("#dungeons_closedYellowDoor").show();
+				$("#dungeons_yellowDoor").hide();
+			}
+			else
+			{
+				$("#dungeons_closedYellowDoor").hide();
+				$("#dungeons_yellowDoor").show();
+			}
+			break;
 		case "outskirts":
 			$("#loc_outskirts").show();
 			break;
@@ -166,4 +180,9 @@ function goToLocation (l)
 			$("#loc_settings").show();
 			break;
 	}
+}
+
+function showClosedYellowDoorText()
+{
+	$("#dungeons_closedYellowDoorText").show();
 }

@@ -105,6 +105,10 @@ function goToLocation (l)
 			$("#loc_elder").show();
 			displayElderText();
 			break;
+		case "cid":
+			$("#loc_cid").show();
+			displayCidText();
+			break;
 		case "pawnShop":
 			$("#loc_pawnShop").show();
 			displayPawnShop();

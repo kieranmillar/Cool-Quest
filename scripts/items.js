@@ -129,6 +129,14 @@ function checkInInventory (id)
 	return itemPosition;
 }
 
+function getItemAmount(id) {
+	const itemPosition = checkInInventory(id);
+	if (itemPosition == -1) {
+		return 0;
+	}
+	return player.inventory[itemPosition].amount;
+}
+
 function gainItem (id, amount)
 {
 	const itemPosition = checkInInventory (id);

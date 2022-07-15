@@ -464,7 +464,7 @@ var items = [
 		id: 25,
 		name: "shiny orc medal",
 		description: "This medal makes you look important. So important, that monsters will work extra hard to take you out. But it might also help you get into the orc leader's tent.",
-		enchantment: "+5 Monster Level<br />Makes you look like a high-ranking orc official",
+		enchantment: "+7 Monster Level<br>Makes you look like a high-ranking orc official",
 		icon: "no_image.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -472,7 +472,7 @@ var items = [
 		equipValue: 1,
 		sell: 50,
 		onWear: function () {
-			player.effMl += 5;
+			player.effMl += 7;
 		}
 	},
 	{
@@ -571,6 +571,22 @@ var items = [
 				hint ("You've already unlocked this dungeon, you should sell this useless key.", "r");
 				return false;
 			}
+		}
+	},
+	{
+		id: 31,
+		name: "Badger Badger badge",
+		description: "This badge makes you feel like doing the Badger Badger dance. It annoys everyone around you. Stop living in the nineties!",
+		enchantment: "+8 SPD<br>+3 Monster Level",
+		icon: "no_image.png",
+		type: "Accessory",
+		category: itemType.ACC,
+		equipStat: "MAG",
+		equipValue: 10,
+		sell: 35,
+		onWear: function () {
+			player.effSpd += 8;
+			player.effMl += 3;
 		}
 	},
 ];

@@ -332,6 +332,9 @@
 						<button type="button" onclick="goToLocation('elder')">
 							Visit the Elder
 						</button>
+						<button type="button" onclick="goToLocation('cid')">
+							Visit Cid's Sidequest Shack
+						</button>
 						<button type="button" onclick="goToLocation('pawnShop')">
 							Visit the Pawn Shop
 						</button>
@@ -357,6 +360,12 @@
 					<div id="loc_elder" class="location">
 						<div id="elderText">
 						</div>
+						<button type="button" onclick="goToLocation('town')">
+							Back to Town
+						</button>
+					</div>
+					<div id="loc_cid" class="location">
+						<div id="cidText"></div>
 						<button type="button" onclick="goToLocation('town')">
 							Back to Town
 						</button>
@@ -551,6 +560,7 @@
 		<script src="./scripts/data/zonedata.js"></script>
 		<script src="./scripts/locations.js"></script>
 		<script src="./scripts/elder.js"></script>
+		<script src="./scripts/cid.js"></script>
 		<script src="./scripts/adventure.js"></script>
 		<script src="./scripts/combats.js"></script>
 		<script src="./scripts/noncombats.js"></script>

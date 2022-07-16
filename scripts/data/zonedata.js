@@ -8,10 +8,10 @@ var zones = [
 		noncombats: [0],
 		special: function ()
 		{
-			player.zoneCounterBasement ++;
-			if (player.zoneCounterBasement >= 5)
+			player.zoneCounters[zoneCounterEnum.BASEMENT] ++;
+			if (player.zoneCounters[zoneCounterEnum.BASEMENT] >= 5)
 			{
-				player.zoneCounterBasement = 0;
+				player.zoneCounters[zoneCounterEnum.BASEMENT] = 0;
 				beginNoncombat (noncombats[0]);
 			}
 			else
@@ -61,9 +61,9 @@ var zones = [
 		noncombats: [],
 		special: function ()
 		{
-			if (player.zoneCounterOrcMunitions == 1 && player.questOrcCamp < 6)
+			if (player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] == 1 && player.quests[questEnum.ORCCAMP] < 6)
 			{
-				player.zoneCounterOrcMunitions = 0;
+				player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 0;
 				beginCombat (combats[15]);
 			}
 			else
@@ -81,7 +81,7 @@ var zones = [
 		noncombats: [],
 		special: function ()
 		{
-			if (player.questOrcCamp >= 6)
+			if (player.quests[questEnum.ORCCAMP] >= 6)
 			{
 				beginNoncombat (noncombats[6]);
 			}
@@ -92,11 +92,11 @@ var zones = [
 			{
 				beginNoncombat (noncombats[7]);
 			}
-			else if (player.questOrcCamp < 5)
+			else if (player.quests[questEnum.ORCCAMP] < 5)
 			{
 				beginNoncombat (noncombats[4]);
 			}
-			else if (player.questOrcCamp == 5)
+			else if (player.quests[questEnum.ORCCAMP] == 5)
 			{
 				beginNoncombat (noncombats[5]);
 			}

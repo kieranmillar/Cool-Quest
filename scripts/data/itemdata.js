@@ -25,7 +25,7 @@ var items = [
 			$("#inventory_tutorial_1").hide();
 			$("#inventory_tutorial_2").show();
 			$("#link_house").show();
-			player.questTutorial = 1;
+			player.quests[questEnum.TUTORIAL] = 1;
 			return true;
 		}
 	},
@@ -41,9 +41,9 @@ var items = [
 		equipValue: 1,
 		sell: 5,
 		onWear: function () {
-			if (player.questTutorial == 2)
+			if (player.quests[questEnum.TUTORIAL] == 2)
 			{
-				player.questTutorial = 3;
+				player.quests[questEnum.TUTORIAL] = 3;
 				$(".equip_tutorial").show();
 				$(".house_tutorial_1").hide();
 				$(".house_tutorial_2").show();
@@ -200,7 +200,7 @@ var items = [
 		sell: 0,
 		onUse: function () {
 			hint ("You unlock the town hall's front door and the key vanishes, like all good video game keys.", "g");
-			player.questTownHall = 3;
+			player.quests[questEnum.TOWNHALL] = 3;
 			return true;
 		}
 	},
@@ -560,10 +560,10 @@ var items = [
 		cost: 200,
 		sell: 100,
 		onUse: function () {
-			if (player.questYellowKey == 0)
+			if (!player.quests[questEnum.YELLOWKEY])
 			{
 				hint ("You unlock the yellow door in the dungeons and the key vanishes, like all good video game keys.", "g");
-				player.questYellowKey = 1;
+				player.quests[questEnum.YELLOWKEY] = 1;
 				return true;
 			}
 			else

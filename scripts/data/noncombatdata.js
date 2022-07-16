@@ -8,9 +8,9 @@ var noncombats = [
 				buttonText: function () {return noncombatButton ("Look on the desk", 0, "Once: get town hall key; otherwise: get health potion");},
 				onChoosing: function ()
 				{
-					if (player.questTownHall == 1)
+					if (player.quests[questEnum.TOWNHALL] == 1)
 					{
-						player.questTownHall = 2;
+						player.quests[questEnum.TOWNHALL] = 2;
 						addNoncombatText ("The desk in the corner of the room contains uninteresting dusty books and potions. The key to unlock the town hall is sitting in clear view in the middle of the desk. You grab it, and pleased with a job well done, turn around and head out of the basement.");
 						getNoncombatItem (9, 1);
 					}
@@ -80,8 +80,8 @@ var noncombats = [
 		title: "The Hour Has Pasty",
 		description: "You walk over to the counter and look to see if anything is being served up today. You don't see anything, but during this rare moment avoiding a fight, you figure you can pop around the other side and take a closer look.",
 		result: function () {
-			if (player.zoneCounterCanteen == 0) {
-				player.zoneCounterCanteen = 1;
+			if (!player.zoneCounters[zoneCounterEnum.CANTEEN]) {
+				player.zoneCounters[zoneCounterEnum.CANTEEN] = 1;
 				addNoncombatText ("At first glance all of the food has already been stolen, but then, tucked in the far corner of the counter you find an overlooked item.");
 				addNoncombatText ("It's a pasty. But not just any old pasty. Having sat near, but not on, the hot plate, it has been cooked very slowly. You tear a small bit off the edge, and a waft of steam comes out. A lovely smell of beef, potatoes and swede hits you like a sledgehammer.");
 				addNoncombatText ("Yes, this wasn't just any old pasty. This pasty was unique. This pasty was perfect! You knew that you would never again find another pasty quite like it during your lifetime. This pasty had aged like a fine wine.");

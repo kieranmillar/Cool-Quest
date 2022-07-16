@@ -197,9 +197,9 @@ var combats = [
 			"He angles his medals towards the sun and the reflection dazzles you. While stunned, he punches you."
 		],
 		afterCombat: function () {
-			if (player.questOrcCamp < 5)
+			if (player.quests[questEnum.ORCCAMP] < 5)
 			{
-				switch (player.questOrcCamp)
+				switch (player.quests[questEnum.ORCCAMP])
 				{
 					case 2:
 						addCombatText ("You stand over the Major who is lying dazed on the floor.");
@@ -220,7 +220,7 @@ var combats = [
 						addCombatText ("Success! Time to talk to the leader.");
 						break;
 				}
-				player.questOrcCamp ++;
+				player.quests[questEnum.ORCCAMP] ++;
 			}	
 			return true;
 		}
@@ -351,9 +351,9 @@ var combats = [
 			"He throws a grenade at you, which lands at your feet. You kick it away, but when it detonates, some shrapnel flies back and hits you in the leg."
 		],
 		afterCombat: function () {
-			if (player.zoneCounterOrcMunitions == 0)
+			if (!player.zoneCounters[zoneCounterEnum.ORCMUNITIONS])
 			{
-				player.zoneCounterOrcMunitions = 1;
+				player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 1;
 			}
 			return true;
 		}
@@ -380,7 +380,7 @@ var combats = [
 		],
 		afterCombat: function () {
 			addCombatText ("The General runs away. Guess you didn't get to ask any questions, but they did drop their medal. If you wear it, you could prove to the guards outside the leader's tent that you mean business.");
-			player.zoneCounterOrcMunitions = 2;
+			player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 2;
 			return true;
 		}
 	},
@@ -411,7 +411,7 @@ var combats = [
 			addCombatText ('You sigh. "Well, if you leave us alone, we\'re happy to leave you alone."');
 			addCombatText ('"You have a deal!"');
 			addCombatText ('With that issue resolved, it might be a good idea to retrn to the Elder and relay the news.');
-			player.questOrcCamp = 6;
+			player.quests[questEnum.ORCCAMP] = 6;
 			return true;
 		}
 	},
@@ -424,7 +424,7 @@ var combats = [
 		str: 42,
 		def: 6,
 		spd: 10,
-		exp: 40,
+		exp: 45,
 		gold: 6,
 		drops: [
 			{id: 27, chance: 40}
@@ -459,15 +459,15 @@ var combats = [
 	},
 	{
 		id: 19,
-		name: "a Cyan Spider",
+		name: "a Wraithwing",
 		description: "TODO: Desc",
 		icon: "empty.png",
-		hp: 55,
-		str: 52,
-		def: 12,
-		spd: 15,
-		exp: 45,
-		gold: 8,
+		hp: 35,
+		str: 38,
+		def: 3,
+		spd: 25,
+		exp: 32,
+		gold: 3,
 		drops: [],
 		hitMessages: [
 			"crit",

@@ -17,7 +17,7 @@ function adventure (z)
 	}
 	lastZone = z;
 	if (zones[z].level > player.level
-		&& player.optionZoneWarnings == 1
+		&& player.options[optionEnum.ZONEWARNINGS] == 1
 		&& !zoneBypassedWarnings[z])
 	{
 		goToLocation ("toughZoneWarning");

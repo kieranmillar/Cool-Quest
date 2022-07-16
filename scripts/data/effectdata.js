@@ -136,7 +136,7 @@ var jugglingBalls = [
 	{
 		id: 2,
 		name: "Disco Ball",
-		description: "This disco ball puts everyone into a trance, imagining trance music to go with the lights. A perfect opportunity to pick their pockets.",
+		description: "This disco ball makes all your foes boogie to the flashing lights. This should cause them to drop some loose change from their pockets.",
 		enchantment: "+40% Gold from combats<br>(When thrown:<br>TODO)",
 		icon: "no_image.png",
 		effect: function()

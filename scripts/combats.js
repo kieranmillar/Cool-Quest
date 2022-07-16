@@ -476,8 +476,6 @@ function regularAttack (value, hitMessage, critMessage)
 			showboating = true;
 		}
 	}
-	console.log("Crit: " + crit);
-	console.log("Showboating: " + showboating);
 	value = Math.max(value, 1);
 	let fireDamage = calcFireDamage(player.fireDamage);
 	let iceDamage = calcIceDamage(player.iceDamage);
@@ -490,7 +488,7 @@ function regularAttack (value, hitMessage, critMessage)
 			if (showboating) {
 				effMag += 5;
 			}
-			critMultiplier += Math.floor(effMag / 2)/100;
+			critMultiplier += Math.floor(effMag / 4)/100;
 		}
 		value = Math.ceil (value * critMultiplier);
 		addCombatText ("<strong>CRITICAL!</strong> " + critMessage);

@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>
-			Cool Quest
-		</title>
+		<title>Cool Quest</title>
 	
 		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 		
-		<meta name="description"
-		content="Cool Quest - An RPG">
+		<meta name="description" content="Cool Quest - An RPG">
 		
-		<meta name="author"
-		content="Kieran Millar">
+		<meta name="author" content="Kieran Millar">
 		
-		<meta name="revised"
-		content="Kieran Millar, 16/07/2022">
+		<meta name="revised" content="Kieran Millar, 16/07/2022">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
@@ -77,7 +72,7 @@
 				<form class="centred" onsubmit="return false">
 					Name: <input type="text" id="create_name" value="Brook">
 				</form>
-				<form class="centred">
+				<form id="jobForm" class="centred">
 					<p>Choose your job:</p>
 					<div id="jobGrid">
 						<div class="jobCell">
@@ -114,7 +109,7 @@
 						</div>
 					</div>
 				</form>
-				<input id='createChar' class="centred" type='button' value='Go!' onclick='createCharacter();'>
+				<button class="centred" type='button' onclick='createCharacter();'>Go!</button>
 			</div>
 			<div id="mainGame">
 				<div id="characterPanel">

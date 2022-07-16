@@ -25,9 +25,9 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			if (player.questTutorial == 4)
+			if (player.quests[questEnum.TUTORIAL] == 4)
 			{
-				player.questTutorial = 5;
+				player.quests[questEnum.TUTORIAL] = 5;
 				$(".buff_tutorial").show();
 				$(".house_tutorial_2").hide();
 				$(".house_tutorial_3").show();
@@ -135,7 +135,7 @@ var skills = [
 		id: 7,
 		name: "Pro Wrestling Magic",
 		description: "You channel your magic into making your wrestling moves look even more stupid.",
-		enchantment: "Every 2 points of MAG increases the Critical Hit damage multiplier by 1%",
+		enchantment: "Every 4 points of MAG increases the Critical Hit damage multiplier by 1%",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
 		type: "Passive",
@@ -353,9 +353,9 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			if (player.questTutorial == 4)
+			if (player.quests[questEnum.TUTORIAL] == 4)
 			{
-				player.questTutorial = 5;
+				player.quests[questEnum.TUTORIAL] = 5;
 				$(".buff_tutorial").show();
 				$(".house_tutorial_2").hide();
 				$(".house_tutorial_3").show();
@@ -368,7 +368,7 @@ var skills = [
 		id: 21,
 		name: "Peck",
 		description: "Your pet parrot Crackers pecks the enemy.",
-		enchantment: "Deals 25 physical damage",
+		enchantment: "Deals 35 physical damage",
 		icon: "parrot.png",
 		job: jobEnum.PIRATE,
 		type: "Combat",
@@ -378,7 +378,7 @@ var skills = [
 		level: 1,
 		onUse: function () {
 			addCombatText ("Crackers flaps over to your opponent and digs his beak into their head.");
-			let damage = 25 - monster.def;
+			let damage = 35 - monster.def;
 			if (damage <= 0)
 			{
 				damage = 1;
@@ -691,9 +691,9 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			if (player.questTutorial == 4)
+			if (player.quests[questEnum.TUTORIAL] == 4)
 			{
-				player.questTutorial = 5;
+				player.quests[questEnum.TUTORIAL] = 5;
 				$(".buff_tutorial").show();
 				$(".house_tutorial_2").hide();
 				$(".house_tutorial_3").show();
@@ -1030,9 +1030,9 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			if (player.questTutorial == 4)
+			if (player.quests[questEnum.TUTORIAL] == 4)
 			{
-				player.questTutorial = 5;
+				player.quests[questEnum.TUTORIAL] = 5;
 				$(".buff_tutorial").show();
 				$(".house_tutorial_2").hide();
 				$(".house_tutorial_3").show();

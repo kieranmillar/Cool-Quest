@@ -126,7 +126,7 @@ function redrawInfoPanel ()
 	for (var i in player.buffs)
 	{
 		let t = "<div class='item item_Image' onClick='openDialog (dialogType.BUFF, " + player.buffs[i].id + ");'><img src=./images/" + effects[player.buffs[i].id].icon + ">";
-		if (player.optionCompactInfoPanel == 0) {
+		if (!player.options[optionEnum.COMPACTINFOPANEL]) {
 			t += effects[player.buffs[i].id].name + " ";
 		}
 		t += "(" + player.buffs[i].turns + ")</div>";
@@ -140,7 +140,7 @@ function redrawInfoPanel ()
 	for (var i in player.juggles)
 	{
 		let t = "<div class='item item_Image' onClick='openDialog (dialogType.JUGGLE, " + player.juggles[i] + ");'><img src=./images/" + jugglingBalls[player.juggles[i]].icon + ">";
-		if (player.optionCompactInfoPanel == 0) {
+		if (!player.options[optionEnum.COMPACTINFOPANEL]) {
 			t += jugglingBalls[player.juggles[i]].name + " ";
 		}
 		juggleDiv.append(t);
@@ -163,7 +163,7 @@ function redrawInfoPanel ()
 		$("#infoPanel").show();
 	}
 	$("#infoPanel").removeClass();
-	if (player.optionCompactInfoPanel == 1)
+	if (player.options[optionEnum.COMPACTINFOPANEL] == 1)
 	{
 		$("#infoPanel").addClass("smallInfoPanel");
 	}
@@ -282,42 +282,42 @@ function load()
 	$(".buff_tutorial").hide();
 	$(".house_tutorial_2").hide();
 	$(".house_tutorial_3").hide();
-	if (player.questTutorial < 7)
+	if (player.quests[questEnum.TUTORIAL] < 7)
 	{
 		$(".link").hide();
 		$("#link_inventory").show();
 		$("#link_map").show();
 		$("#link_settings").show();
 		$("#house_normal").hide();
-		if (player.questTutorial > 0)
+		if (player.quests[questEnum.TUTORIAL] > 0)
 		{
 			$("#inventory_tutorial_1").hide();
 			$("#inventory_tutorial_2").show();
 			$("#link_house").show();
 		}
-		if (player.questTutorial > 1)
+		if (player.quests[questEnum.TUTORIAL] > 1)
 		{
 			$("#link_equipment").show();
 			$("#inventory_tutorial_2").hide();
 		}
-		if (player.questTutorial > 2)
+		if (player.quests[questEnum.TUTORIAL] > 2)
 		{
 			$(".equip_tutorial").show();
 			$(".house_tutorial_1").hide();
 			$(".house_tutorial_2").show();
 		}
-		if (player.questTutorial > 3)
+		if (player.quests[questEnum.TUTORIAL] > 3)
 		{
 			$(".equip_tutorial").hide();
 			$("#link_skills").show();
 		}
-		if (player.questTutorial > 4)
+		if (player.quests[questEnum.TUTORIAL] > 4)
 		{
 			$(".buff_tutorial").show();
 			$(".house_tutorial_2").hide();
 			$(".house_tutorial_3").show();
 		}
-		if (player.questTutorial > 5)
+		if (player.quests[questEnum.TUTORIAL] > 5)
 		{
 			$(".buff_tutorial").hide();
 			$("#link_town").show();
@@ -337,7 +337,7 @@ function load()
 	$("#adventureAgainButton").hide();
 	calculateStats();
 	redrawInfoPanel();
-	if (player.optionCompactInfoPanel)
+	if (player.options[optionEnum.COMPACTINFOPANEL])
 	{
 		$("#option_compactInfoPanel").prop("checked", true);
 	}
@@ -345,7 +345,7 @@ function load()
 	{
 		$("#option_compactInfoPanel").prop("checked", false);
 	}
-	if (player.optionQuickHeal)
+	if (player.options[optionEnum.QUICKHEAL])
 	{
 		$("#quickHeal").show();
 		$("#option_quickHeal").prop("checked", true);
@@ -355,7 +355,7 @@ function load()
 		$("#quickHeal").hide();
 		$("#option_quickHeal").prop("checked", false);
 	}
-	if (player.optionZoneWarnings)
+	if (player.options[optionEnum.ZONEWARNINGS])
 	{
 		$("#option_zoneWarnings").prop("checked", true);
 	}
@@ -363,7 +363,7 @@ function load()
 	{
 		$("#option_zoneWarnings").prop("checked", false);
 	}
-	if (player.optionFoodQuality)
+	if (player.options[optionEnum.FOODQUALITY])
 	{
 		$("#option_foodQuality").prop("checked", true);
 	}
@@ -377,47 +377,47 @@ function toggleOption(option) {
 	switch (option)
 	{
 		case 'compactInfoPanel':
-			if (player.optionCompactInfoPanel == 0)
+			if (!player.options[optionEnum.COMPACTINFOPANEL])
 			{
-				player.optionCompactInfoPanel = 1;
+				player.options[optionEnum.COMPACTINFOPANEL] = 1;
 			}
 			else
 			{
-				player.optionCompactInfoPanel = 0;
+				player.options[optionEnum.COMPACTINFOPANEL] = 0;
 			}
 			redrawInfoPanel();
 			break;
 		case 'quickHeal':
-			if (player.optionQuickHeal == 0)
+			if (!player.options[optionEnum.QUICKHEAL])
 			{
-				player.optionQuickHeal = 1;
+				player.options[optionEnum.QUICKHEAL] = 1;
 				$("#quickHeal").show();
 			}
 			else
 			{
-				player.optionQuickHeal = 0;
+				player.options[optionEnum.QUICKHEAL] = 0;
 				$("#quickHeal").hide();
 			}
 			redrawInfoPanel();
 			break;
 		case 'zoneWarnings':
-			if (player.optionZoneWarnings == 0)
+			if (!player.options[optionEnum.ZONEWARNINGS])
 			{
-				player.optionZoneWarnings = 1;
+				player.options[optionEnum.ZONEWARNINGS] = 1;
 			}
 			else
 			{
-				player.optionZoneWarnings = 0;
+				player.options[optionEnum.ZONEWARNINGS] = 0;
 			}
 			break;
 		case 'foodQuality':
-			if (player.optionFoodQuality == 0)
+			if (!player.options[optionEnum.FOODQUALITY])
 			{
-				player.optionFoodQuality = 1;
+				player.options[optionEnum.FOODQUALITY] = 1;
 			}
 			else
 			{
-				player.optionFoodQuality = 0;
+				player.options[optionEnum.FOODQUALITY] = 0;
 			}
 			break;
 	}

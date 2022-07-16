@@ -208,7 +208,7 @@ function displayInventory()
 			if  (items[player.inventory[i].id].category == itemType.FOOD)
 			{
 				buttonText = "Eat";
-				if (player.optionFoodQuality == 1)
+				if (player.options[optionEnum.FOODQUALITY] == 1)
 				{
 					var quality = Math.round((items[player.inventory[i].id].turns / items[player.inventory[i].id].fullness) * 100) / 100;
 					buttonText += "\n(" + items[player.inventory[i].id].fullness + "F " + quality + "Q)";

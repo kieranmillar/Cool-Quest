@@ -39,38 +39,38 @@ function goToLocation (l)
 			$("#loc_map").show();
 			$("#map_townButton").hide();
 			$("#map_outskirtsButton").hide();
-			if (player.questTutorial >= 5)
+			if (player.quests[questEnum.TUTORIAL] >= 5)
 			{
 				$("#map_townButton").show();
 			}
-			if (player.questOrcCamp >= 1)
+			if (player.quests[questEnum.ORCCAMP] >= 1)
 			{
 				$("#map_outskirtsButton").show();
 			}
 			break;
 		case "house":
 			$("#loc_house").show();
-			if (player.questTutorial == 1)
+			if (player.quests[questEnum.TUTORIAL] == 1)
 			{
 				$("#link_equipment").show();
 				$("#inventory_tutorial_2").hide();
 				$("#house_normal").hide();
 				gainItem(1, 1);
-				player.questTutorial = 2;
+				player.quests[questEnum.TUTORIAL] = 2;
 			}
-			else if (player.questTutorial == 3)
+			else if (player.quests[questEnum.TUTORIAL] == 3)
 			{
 				$(".equip_tutorial").hide();
 				$("#link_skills").show();
-				player.questTutorial = 4;
+				player.quests[questEnum.TUTORIAL] = 4;
 			}
-			else if (player.questTutorial == 5)
+			else if (player.quests[questEnum.TUTORIAL] == 5)
 			{
 				$(".buff_tutorial").hide();
 				$("#link_town").show();
 				$("#link_town_hall").show();
 				gainItem(2, 1);
-				player.questTutorial = 6;
+				player.quests[questEnum.TUTORIAL] = 6;
 			}
 			if (player.turnsToMidnight <= 0)
 			{
@@ -91,8 +91,8 @@ function goToLocation (l)
 			$("#loc_town").show();
 			$(".house_tutorial_3").hide()
 			$("#house_normal").show();
-			player.questTutorial = 7;
-			if (player.questTownHall >= 1)
+			player.quests[questEnum.TUTORIAL] = 7;
+			if (player.quests[questEnum.TOWNHALL] >= 1)
 			{
 				$("#town_area_town_hall").show();
 			}
@@ -125,13 +125,13 @@ function goToLocation (l)
 			break;
 		case "town_hall":
 			$("#loc_town_hall").show();
-			if (player.questTownHall == 0)
+			if (!player.quests[questEnum.TOWNHALL])
 			{
 				$("#town_hall_basement").hide();
 				$("#town_hall_taxOffice").hide();
 				$("#town_hall_canteen").hide();
 			}
-			else if (player.questTownHall < 3)
+			else if (player.quests[questEnum.TOWNHALL] < 3)
 			{
 				$("#town_hall_basement").show();
 				$("#town_hall_taxOffice").hide();
@@ -147,7 +147,7 @@ function goToLocation (l)
 		case "dungeons":
 			$("#loc_dungeons").show();
 			$("#dungeons_closedYellowDoorText").hide();
-			if (player.questYellowKey == 0)
+			if (!player.quests[questEnum.YELLOWKEY])
 			{
 				$("#dungeons_closedYellowDoor").show();
 				$("#dungeons_yellowDoor").hide();
@@ -163,10 +163,10 @@ function goToLocation (l)
 			break;
 		case "orcCamp":
 			$("#loc_orcCamp").show();
-			if (player.questOrcCamp == 1)
+			if (player.quests[questEnum.ORCCAMP] == 1)
 			{
 				$(".orcCamp_intro").show();
-				player.questOrcCamp = 2;
+				player.quests[questEnum.ORCCAMP] = 2;
 			}
 			else
 			{

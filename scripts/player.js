@@ -1,3 +1,6 @@
+var createNameInput = document.getElementById("create_name");
+var jobForm = document.getElementById("jobForm");
+
 var jobEnum = {
 	WRESTLER: 0,
 	PIRATE: 1,
@@ -5,7 +8,29 @@ var jobEnum = {
 	JUGGLER: 3,
 }
 
+var optionEnum = {
+	COMPACTINFOPANEL: 0,
+	QUICKHEAL: 1,
+	ZONEWARNINGS: 2,
+	FOODQUALITY: 3,
+}
+
+var questEnum = {
+	TUTORIAL: 0,
+	TOWNHALL: 1,
+	ORCCAMP: 2,
+	YELLOWKEY: 3,
+	BADGER: 4,
+}
+
+var zoneCounterEnum = {
+	BASEMENT: 0,
+	CANTEEN: 1,
+	ORCMUNITIONS: 2,
+}
+
 var player = {
+	version: 1, // game version, in case we need to make changes on load
 	name: "Kieran",
 	job: jobEnum.WRESTLER,
 	day: 1,
@@ -57,18 +82,9 @@ var player = {
 	toggleSkills: [],
 	juggles: [],
 	stormySeas: 0,
-	optionCompactInfoPanel: 0,
-	optionQuickHeal: 0,
-	optionZoneWarnings: 1,
-	optionFoodQuality: 0,
-	questTutorial: 0,
-	questTownHall: 0,
-	questOrcCamp: 0,
-	questYellowKey: 0,
-	questBadger: 0,
-	zoneCounterBasement: 0,
-	zoneCounterCanteen: 0,
-	zoneCounterOrcMunitions: 0
+	options: [0, 0, 1, 0],
+	quests: [],
+	zoneCounters: [],
 };
 
 var levelDeltas = [
@@ -97,15 +113,13 @@ var statLevelDeltas = [
 	4600, 4700, 4800, 4900, 5000, 5100, 5200, 5300, 5400, 5500
 ];
 
-function createCharacter()
-{
-	let name = $("#create_name").val();
-	if (name == "")
-	{
+function createCharacter() {
+	let name = createNameInput.value.trim();
+	if (name == "") {
 		hint ("You need to input a name!", "r");
 		return;
 	}
-	let job = parseInt($("input[type='radio'][name='job']:checked").val());
+	let job = parseInt(jobForm.job.value);
 	player.name = name;
 	player.job = job;
 	player.inventory = [];
@@ -191,14 +205,8 @@ function createCharacter()
 	player.baseDef = player.defGain;
 	player.baseMag = player.magGain;
 	player.baseSpd = player.spdGain;
-	player.questTutorial = 0;
-	player.questTownHall = 0;
-	player.questOrcCamp = 0;
-	player.questYellowKey = 0;
-	player.questBadger = 0;
-	player.zoneCounterBasement = 0;
-	player.zoneCounterCanteen = 0;
-	player.zoneCounterOrcMunitions = 0;
+	player.quests = [];
+	player.zoneCounters = [];
 	$("#characterCreation").hide();
 	$("#mainGame").show();
 	$("#link_inventory").show();

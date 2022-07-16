@@ -3,7 +3,7 @@ var effects = [
 		id: 0,
 		name: "Wrestling With Your Thoughts",
 		description: "You are at peace with wrestling.",
-		enchantment: "+3 Max MP<br />+5 STR",
+		enchantment: "+3 Max MP<br>+5 STR",
 		icon: "wrestle_thought.png",
 		effect: function()
 		{
@@ -15,7 +15,7 @@ var effects = [
 		id: 1,
 		name: "Pirate Might",
 		description: "Might makes right.",
-		enchantment: "+2 Max HP<br />+2 Max MP<br />+2 STR<br />+2 DEF",
+		enchantment: "+2 Max HP<br>+2 Max MP<br>+2 STR<br>+2 DEF",
 		icon: "pirate_face.png",
 		effect: function()
 		{
@@ -29,7 +29,7 @@ var effects = [
 		id: 2,
 		name: "Ancestral Motivation",
 		description: "You've received reassurances from your ancestors and are feeling motivated.",
-		enchantment: "+1 DEF<br />+3 MAG<br />+4 SPD",
+		enchantment: "+1 DEF<br>+3 MAG<br>+4 SPD",
 		icon: "ghost_talk.png",
 		effect: function()
 		{
@@ -42,7 +42,7 @@ var effects = [
 		id: 3,
 		name: "Well Balanced",
 		description: "Juggling should be enjoyed as part of a well balanced lifestyle.",
-		enchantment: "+2 STR<br />+2 DEF<br />+2 MAG<br />+2 SPD",
+		enchantment: "+2 STR<br>+2 DEF<br>+2 MAG<br>+2 SPD",
 		icon: "tightrope.png",
 		effect: function()
 		{
@@ -114,7 +114,7 @@ var jugglingBalls = [
 		id: 0,
 		name: "Fireball",
 		description: "An old classic, loved by fantasy novellists everywhere.",
-		enchantment: "+5 Fire Damage<br />(When thrown:<br />Deals 40 Fire Damage)",
+		enchantment: "+5 Fire Damage<br>(When thrown:<br>Deals 40 Fire Damage)",
 		icon: "fireball.png",
 		effect: function()
 		{
@@ -125,7 +125,7 @@ var jugglingBalls = [
 		id: 1,
 		name: "Medicine Ball",
 		description: "A much more reliable way of staying healthy than swallowing pills. Imagine trying to swallow one of these...",
-		enchantment: "+20 Max HP<br />Restore 5 HP each turn<br />(When thrown:<br />Restores 60 HP)",
+		enchantment: "+20 Max HP<br>Restore 5 HP each turn<br>(When thrown:<br>Restores 60 HP)",
 		icon: "medicine_ball.png",
 		effect: function()
 		{
@@ -136,8 +136,8 @@ var jugglingBalls = [
 	{
 		id: 2,
 		name: "Disco Ball",
-		description: "This disco ball puts everyone into a trance, imagining trance music to go with the lights.",
-		enchantment: "+40% Gold from combats<br />(When thrown:<br />TODO)",
+		description: "This disco ball puts everyone into a trance, imagining trance music to go with the lights. A perfect opportunity to pick their pockets.",
+		enchantment: "+40% Gold from combats<br>(When thrown:<br>TODO)",
 		icon: "no_image.png",
 		effect: function()
 		{

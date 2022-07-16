@@ -196,7 +196,7 @@ function displayInventory()
 		newElement.addClass("item");
 		var textImageDiv = $('<span></span>');
 		textImageDiv.addClass("item_Image");
-		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'/><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
+		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
 		textImageDiv.attr({
 			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");",
 		});
@@ -253,7 +253,7 @@ function displayEquipment()
 		if (player.equipment[i] != -1)
 		{
 			$(".equip" + i).show()
-			$("#worn_" + i).html("<span class='item_Image'><image src='./images/" + items[player.equipment[i]].icon + "'/><span>" + items[player.equipment[i]].name + " <input type='button' value='Unequip' onclick='unequip(" +i + ")'></span>");
+			$("#worn_" + i).html("<span class='item_Image'><image src='./images/" + items[player.equipment[i]].icon + "'><span>" + items[player.equipment[i]].name + " <input type='button' value='Unequip' onclick='unequip(" +i + ")'></span>");
 			$("#worn_" + i).attr({
 				"onClick" : "openDialog (dialogType.ITEM, " + player.equipment[i] + ");"
 			});
@@ -290,7 +290,7 @@ function displayEquipment()
 		newElement.addClass("item");
 		var textImageDiv = $('<span></span>');
 		textImageDiv.addClass("item_Image");
-		textImageDiv.html("<image src='./images/" + items[player.inventory[i].id].icon + "'/><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
+		textImageDiv.html("<image src='./images/" + items[player.inventory[i].id].icon + "'><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
 		textImageDiv.attr({
 			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");"
 		});
@@ -344,7 +344,7 @@ function displayPawnShop()
 		newElement.addClass("item");
 		var textImageDiv = $('<span></span>');
 		textImageDiv.addClass("item_Image");
-		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'/><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
+		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
 		textImageDiv.attr({
 			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");",
 		});

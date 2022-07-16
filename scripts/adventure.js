@@ -55,7 +55,7 @@ function endAdventure()
 	{
 		let adventureAgainButton = $("#adventureAgainButton");
 		adventureAgainButton.show();
-		adventureAgainButton.html("Adventure Again at the " + zones[lastZone].name + " (<img src='./images/adventure.png' title='(1 Adventure)'/>)");
+		adventureAgainButton.html("Adventure Again at the " + zones[lastZone].name + " (<img src='./images/adventure.png' title='(1 Adventure)'>)");
 	}
 	for (let i = player.buffs.length - 1; i >= 0; i --)
 	{

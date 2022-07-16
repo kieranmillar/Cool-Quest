@@ -33,7 +33,7 @@ var items = [
 		id: 1,
 		name: "mystical postcard",
 		description: "An enchanted postcard. It says 'VISIT DRELLA', and then in small letters it says 'Please, our tourism industry is dying!'",
-		enchantment: "+1 Max HP<br />+1 STR<br />+1 MAG",
+		enchantment: "+1 Max HP<br>+1 STR<br>+1 MAG",
 		icon: "mystical_postcard.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -57,7 +57,7 @@ var items = [
 		id: 2,
 		name: "cookie",
 		description: "You clicked the cookie. Gameplay at its finest!",
-		enchantment: "+1 Fullness<br />+1 Turn to midnight<br />Restores 5 MP",
+		enchantment: "+1 Fullness<br>+1 Turn to midnight<br>Restores 5 MP",
 		icon: "cookie.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -78,7 +78,7 @@ var items = [
 		id: 3,
 		name: "stick",
 		description: "What's brown and sticky? This.",
-		enchantment: "+1 STR<br />+1 MAG",
+		enchantment: "+1 STR<br>+1 MAG",
 		icon: "stick.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
@@ -95,7 +95,7 @@ var items = [
 		id: 4,
 		name: "health potion",
 		description: "This red potion is labelled as being filled with healing medicine. In reality it's just blood to replace all the blood you lost.",
-		enchantment: "Restores 20-25 HP<br />Can be used in combat",
+		enchantment: "Restores 20-25 HP<br>Can be used in combat",
 		icon: "red_potion.png",
 		type: "Potion, Combat Item",
 		category: itemType.POTION,
@@ -116,7 +116,7 @@ var items = [
 		id: 5,
 		name: "running shoes",
 		description: "Run. Jump. Swim. Cycle. Die.",
-		enchantment: "+30 SPD<br />-10 Max HP",
+		enchantment: "+30 SPD<br>-10 Max HP",
 		icon: "running_shoes.png",
 		type: "Shoes",
 		category: itemType.SHOES,
@@ -133,7 +133,7 @@ var items = [
 		id: 6,
 		name: "straightened paperclip",
 		description: "A paperclip that has been pulled into a straight piece of metal by a bored worker. Perfect for stabbing.",
-		enchantment: "+2 STR<br />Can be used in combat to deal 40 physical damage",
+		enchantment: "+2 STR<br>Can be used in combat to deal 40 physical damage",
 		icon: "straight_paperclip.png",
 		type: "Weapon, Combat Item",
 		category: itemType.WEAPON,
@@ -158,7 +158,7 @@ var items = [
 		id: 7,
 		name: "cardboard panel",
 		description: "A dry piece of cardboard box. Provides barely any defense, but also max HP for some reason.",
-		enchantment: "+3 Max HP<br />+1 DEF<br />Can be used in combat to reduce incoming damage by 80%",
+		enchantment: "+3 Max HP<br>+1 DEF<br>Can be used in combat to reduce incoming damage by 80%",
 		icon: "cardboard_panel.png",
 		type: "Shield, Combat Item",
 		category: itemType.SHIELD,
@@ -177,7 +177,7 @@ var items = [
 		id: 8,
 		name: "tiny staff",
 		description: "This tiny staff is wrapped in small threads of spider silk.",
-		enchantment: "+1 Max MP<br />+3 MAG",
+		enchantment: "+1 Max MP<br>+3 MAG",
 		icon: "tiny_staff.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
@@ -208,7 +208,7 @@ var items = [
 		id: 10,
 		name: "dusty ring",
 		description: "The dust has fused to this enchanted ring, dampening its effectiveness.",
-		enchantment: "+3 STR<br />+3 MAG<br />+5 SPD",
+		enchantment: "+3 STR<br>+3 MAG<br>+5 SPD",
 		icon: "dusty_ring.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -255,7 +255,7 @@ var items = [
 		id: 13,
 		name: "perfect pasty",
 		description: "This pasty is so well made and cooked, you feel certain you'll never see another one like it in your lifetime.",
-		enchantment: "+2 Fullness<br />+12 Turns to midnight",
+		enchantment: "+2 Fullness<br>+12 Turns to midnight",
 		icon: "no_image.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -275,7 +275,7 @@ var items = [
 		id: 14,
 		name: "microwave meal",
 		description: "This is a chicken korma and rice, separated into two plastic compartments. You can't tell the quality of the meat because it's conveniently covered in sauce.",
-		enchantment: "+4 Fullness<br />+10 Turns to midnight",
+		enchantment: "+4 Fullness<br>+10 Turns to midnight",
 		icon: "microwave_meal.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -295,7 +295,7 @@ var items = [
 		id: 15,
 		name: "crème brûlée",
 		description: "This crème brûlée has just been heated and hasn't yet had time to cool. Its caramalised sugar topping is glowing with enchanted magic.",
-		enchantment: "+1 Fullness<br />+2 Turns to midnight<br />10 turns of +5 DEF",
+		enchantment: "+1 Fullness<br>+2 Turns to midnight<br>10 turns of +5 DEF",
 		icon: "creme_brulee.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -346,7 +346,7 @@ var items = [
 		id: 18,
 		name: "orc pork",
 		description: "Orcs love to consume a meat-only diet, believing it is the source of their strength. It's also the source of their heart attcks.",
-		enchantment: "+3 Fullness<br />+6 Turns to midnight<br />20 turns of +7 STR",
+		enchantment: "+3 Fullness<br>+6 Turns to midnight<br>20 turns of +7 STR",
 		icon: "pork.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -367,7 +367,7 @@ var items = [
 		id: 19,
 		name: "orc fork",
 		description: "Stick a fork in it, your enemy is done.",
-		enchantment: "+7 STR<br />+7 MAG",
+		enchantment: "+6 STR<br>+6 MAG",
 		icon: "fork.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
@@ -375,15 +375,15 @@ var items = [
 		equipValue: 6,
 		sell: 20,
 		onWear: function () {
-			player.effStr += 7;
-			player.effMag += 7;
+			player.effStr += 6;
+			player.effMag += 6;
 		}
 	},
 	{
 		id: 20,
 		name: "orc pocket protector",
 		description: "This small leather wallet that fits onto your breast pocket provides incredible defense to a really small area.",
-		enchantment: "+2 DEF<br />+2 Fire Resistance<br />+2 Ice Resistance",
+		enchantment: "+2 DEF<br>+2 Fire Resistance<br>+2 Ice Resistance",
 		icon: "no_image.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -400,7 +400,7 @@ var items = [
 		id: 21,
 		name: "orc calculator",
 		description: "An orc discovered that if you put 5318008 into this calculator and turn it upside down, it's hilarious. You can feel the smarts rubbing off on you by association from holding that same calculator.",
-		enchantment: "+3 Max MP<br />+5 MAG",
+		enchantment: "+3 Max MP<br>+5 MAG",
 		icon: "calculator.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -416,7 +416,7 @@ var items = [
 		id: 22,
 		name: "orc trenchcoat",
 		description: "This overly large trenchcoat is great for covering yourself with, but its size is very unwieldy.",
-		enchantment: "+3 DEF<br />-10 SPD",
+		enchantment: "+4 DEF<br>-8 SPD",
 		icon: "no_image.png",
 		type: "Armour",
 		category: itemType.ARMOUR,
@@ -424,15 +424,15 @@ var items = [
 		equipValue: 8,
 		sell: 20,
 		onWear: function () {
-			player.effDef += 3;
-			player.effSpd -= 10;
+			player.effDef += 4;
+			player.effSpd -= 8;
 		}
 	},
 	{
 		id: 23,
 		name: "orc flamethrower",
 		description: "A wildly popular weapon for orc armies on the move, as it also doubles up as a tool to help cook breakfast. It's heavy though.",
-		enchantment: "+10 Fire Damage<br />-10 SPD",
+		enchantment: "+10 Fire Damage<br>-10 SPD",
 		icon: "no_image.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
@@ -448,7 +448,7 @@ var items = [
 		id: 24,
 		name: "orc riot shield",
 		description: "This shield made from transparent but sturdy plastic offers some protection while still letting you see what your opponent is doing.",
-		enchantment: "+3 DEF<br />+10 SPD",
+		enchantment: "+3 DEF<br>+10 SPD",
 		icon: "no_image.png",
 		type: "Shield",
 		category: itemType.SHIELD,
@@ -576,17 +576,17 @@ var items = [
 	{
 		id: 31,
 		name: "Badger Badger badge",
-		description: "This badge makes you feel like doing the Badger Badger dance. It annoys everyone around you. Stop living in the nineties!",
-		enchantment: "+8 SPD<br>+3 Monster Level",
+		description: "This badge makes you feel like doing the Badger Badger dance. It annoys everyone around you. Stop living in the Nineties!",
+		enchantment: "+7 SPD<br>+2 Monster Level",
 		icon: "no_image.png",
 		type: "Accessory",
 		category: itemType.ACC,
 		equipStat: "MAG",
-		equipValue: 10,
+		equipValue: 5,
 		sell: 35,
 		onWear: function () {
-			player.effSpd += 8;
-			player.effMl += 3;
+			player.effSpd += 7;
+			player.effMl += 2;
 		}
 	},
 ];

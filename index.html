@@ -5,20 +5,20 @@
 			Cool Quest
 		</title>
 	
-		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 		
 		<meta name="description"
-		content="Cool Quest - An RPG" />
+		content="Cool Quest - An RPG">
 		
 		<meta name="author"
-		content="Kieran Millar" />
+		content="Kieran Millar">
 		
 		<meta name="revised"
-		content="Kieran Millar, 09/07/2022" />
+		content="Kieran Millar, 16/07/2022">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
-		<link rel="icon" type="image/png" href="../favicon.png" />
+		<link rel="icon" type="image/png" href="../favicon.png">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -28,14 +28,8 @@
 	<body>
 		<div id="topbar">
 			<div id="title">
-				<h1>
-					Cool Quest
-				</h1>
-				<h2>
-					A game by
-					<br>
-					Kieran Millar
-				</h2>
+				<h1>Cool Quest</h1>
+				<h2>A game by<br>Kieran Millar</h2>
 			</div>
 			<div id="quickHeal" class="doctor">
 				<form onsubmit="return false">
@@ -49,28 +43,28 @@
 			</div>
 			<div id="quicklinks">
 				<div id="link_inventory" class="link"  onclick="goToLocation('inventory')">
-					<img src="./images/backpack.png" alt="Inventory" title="Inventory"/>
+					<img src="./images/backpack.png" alt="Inventory" title="Inventory">
 				</div>
 				<div id="link_equipment" class="link"  onclick="goToLocation('equipment')">
-					<img src="./images/equipment.png" alt="Equipment" title="Equipment"/>
+					<img src="./images/equipment.png" alt="Equipment" title="Equipment">
 				</div>
 				<div id="link_skills" class="link"  onclick="goToLocation('skills')">
-					<img src="./images/mortar_board.png" alt="Skills" title="Skills"/>
+					<img src="./images/mortar_board.png" alt="Skills" title="Skills">
 				</div>
 				<div id="link_map" class="link"  onclick="goToLocation('map')">
-					<img src="./images/map.png" alt="Map" title="Map"/>
+					<img src="./images/map.png" alt="Map" title="Map">
 				</div>
 				<div id="link_house" class="link"  onclick="goToLocation('house')">
-					<img src="./images/house.png" alt="House" title="House"/>
+					<img src="./images/house.png" alt="House" title="House">
 				</div>
 				<div id="link_town" class="link"  onclick="goToLocation('town')">
-					<img src="./images/fountain.png" alt="Town" title="Town"/>
+					<img src="./images/fountain.png" alt="Town" title="Town">
 				</div>
 				<div id="link_town_hall" class="link"  onclick="goToLocation('dungeons')">
-					<img src="./images/dungeon.png" alt="Dungeon" title="Dungeon"/>
+					<img src="./images/dungeon.png" alt="Dungeon" title="Dungeon">
 				</div>
 				<div id="link_settings" class="link"  onclick="goToLocation('settings')">
-					<img src="./images/gear.png" alt="Settings" title="Settings"/>
+					<img src="./images/gear.png" alt="Settings" title="Settings">
 				</div>
 				<p style="font-size: 12px">This game is currently in early development. Large, breaking changes may happen at any time. Going to the options and deleting your save file is recommended if you haven't played in a while.</p>
 			</div>
@@ -87,7 +81,7 @@
 					<p>Choose your job:</p>
 					<div id="jobGrid">
 						<div class="jobCell">
-							<input type="radio" name="job" value=0 checked> Wrestler<br \>
+							<input type="radio" name="job" value=0 checked> Wrestler<br>
 							<p>Knows how to take a beating.</p>
 							<p>Master of physical attacks.</p>
 							<p>Best Stat: Strength</p>
@@ -95,7 +89,7 @@
 							<p>Intrinsic Ability: Restore 25% HP each turn</p>
 						</div>
 						<div class="jobCell">
-							<input type="radio" name="job" value=1> Pirate<br \>
+							<input type="radio" name="job" value=1> Pirate<br>
 							<p>The friendly Hollywood type.</p>
 							<p>Has a trusty parrot.</p>
 							<p>Best Stat: Defense</p>
@@ -103,7 +97,7 @@
 							<p>Intrinsic Ability: Can equip a 4th accessory</p>
 						</div>
 						<div class="jobCell">
-							<input type="radio" name="job" value=2> Medium<br \>
+							<input type="radio" name="job" value=2> Medium<br>
 							<p>Will inaccurately read your fortune.</p>
 							<p>Master of magical attacks.</p>
 							<p>Best Stat: Magic</p>
@@ -111,7 +105,7 @@
 							<p>Intrinsic Ability: -1MP to use all combat skills</p>
 						</div>
 						<div class="jobCell">
-							<input type="radio" name="job" value=3> Juggler<br \>
+							<input type="radio" name="job" value=3> Juggler<br>
 							<p>Not to be confused with a Juggalo.</p>
 							<p>Everything is safe in their hands.</p>
 							<p>Best Stat: Speed</p>
@@ -153,11 +147,11 @@
 							<p>You're fighting <span id="monsterName"></span>!</p>
 							<div id="combatMonsterTable">
 								<span id="combatMonsterStats">
-									<p><img src="./images/heart.png"/>HP: <span id="monsterHP"></span></p>
-									<p><img id="monsterAttackImage" src="./images/sword.png"/>Str: <span id="monsterStr"></span></p>
-									<p><img src="./images/shield.png"/>Def: <span id="monsterDef"></span></p>
+									<p><img src="./images/heart.png">HP: <span id="monsterHP"></span></p>
+									<p><img id="monsterAttackImage" src="./images/sword.png">STR: <span id="monsterStr"></span></p>
+									<p><img src="./images/shield.png">DEF: <span id="monsterDef"></span></p>
 								</span>
-								<img id="monsterImg" src="./images/big/empty.png"/>
+								<img id="monsterImg" src="./images/big/empty.png">
 							</div>
 							<p>Round <span id="combatRound"></span></p>
 						</div>
@@ -165,39 +159,24 @@
 						</div>
 						<div id="combatButtons">
 							<div class="combatRow">
-								<button id="basicAttackButton" type="button" onclick="combatRound(0)">
-									Attack
-								</button>
+								<button id="basicAttackButton" type="button" onclick="combatRound(0)">Attack</button>
 							</div>
 							<div class="combatRow">
-								<select id="skillDropdown" >
-								</select>
-								<button id="viewSkillButton" type="button" onclick="pressedViewSkillbutton()">
-									View
-								</button>
-								<button id="skillButton" type="button" onclick="combatRound(1)">
-									Use Skill
-								</button>
+								<select id="skillDropdown"></select>
+								<button id="viewSkillButton" type="button" onclick="pressedViewSkillbutton()">View</button>
+								<button id="skillButton" type="button" onclick="combatRound(1)">Use Skill</button>
 							</div>
 							<div id="combatItemRow" class="combatRow">
-								<select id="itemDropdown" >
-								</select>
-								<button id="viewItemButton" type="button" onclick="pressedViewItembutton()">
-									View
-								</button>
-								<button id="combatItemButton" type="button" onclick="combatRound(2)">
-									Use Item
-								</button>
+								<select id="itemDropdown" ></select>
+								<button id="viewItemButton" type="button" onclick="pressedViewItembutton()">View</button>
+								<button id="combatItemButton" type="button" onclick="combatRound(2)">Use Item</button>
 							</div>
 						</div>
 					</div>
 					<div id="loc_noncombat" class="location">
-						<h2 id="noncombatTitle">
-						</h2>
-						<div id="noncombatText" class="wrappableText">
-						</div>
-						<div id="noncombatButtons">
-						</div>
+						<h2 id="noncombatTitle"></h2>
+						<div id="noncombatText" class="wrappableText"></div>
+						<div id="noncombatButtons"></div>
 					</div>
 					<div id="loc_intro" class="location">
 						<p>After a long journey, you finally arrive at the remote town of Drella. As an aspiring mercenary, you hope this forgotten town will lack any competition so you can easily find work. Everyone has monsters that they need killing, right?</p>
@@ -220,9 +199,8 @@
 					</div>
 					<div id="loc_equipment" class="location">
 						<div class="equip_tutorial">
-							This equipment has modified your stats. When your stats are modified, they will appear on the side as blue (if increased) or red (if decreased), with the unmodified values shown in brackets. The unmodified values are still used to determine if you meet the requirements to equip something.<br/>
-							<br/>
-							Now return to your house. <img src='./images/house.png' onclick="goToLocation('house')" class="clickable">
+							<p>This equipment has modified your stats. When your stats are modified, they will appear on the side as blue (if increased) or red (if decreased), with the unmodified values shown in brackets. The unmodified values are still used to determine if you meet the requirements to equip something.</p>
+							<p>Now return to your house. <img src='./images/house.png' onclick="goToLocation('house')" class="clickable"></p>
 							<hr>
 						</div>
 						<div id="equip_loadout">
@@ -253,39 +231,26 @@
 					</div>
 					<div id="loc_skills" class="location">
 						<div class="buff_tutorial">
-							Effects can modify your stats amongst other things, just like equipment. You can see your current effects in the pane to the right. Like items, you can click on their name or image for more detail. Effects are time limited, lasting only a number of turns. Remaining turns are indicated in the brackets following the name.<br/>
-							<br/>
-							Casting skills inside or outside of combat will cost MP. You cannot cast the skill if you do not have enough MP.<br/>
-							<br/>
-							Now return to your house. <img src='./images/house.png' onclick="goToLocation('house')" class="clickable">
+							<p>Effects can modify your stats amongst other things, just like equipment. You can see your current effects in the pane to the right. Like items, you can click on their name or image for more detail. Effects are time limited, lasting only a number of turns. Remaining turns are indicated in the brackets following the name.</p>
+							<p>Casting skills inside or outside of combat will cost MP. You cannot cast the skill if you do not have enough MP.</p>
+							<p>Now return to your house. <img src='./images/house.png' onclick="goToLocation('house')" class="clickable"></p>
 							<hr>
 						</div>
 						<h2 id="skill_toggle_title">Toggleable Skills</h2>
-						<div id="skill_toggle" class="inv_container">
-						</div>
+						<div id="skill_toggle" class="inv_container"></div>
 						<h2 id="skill_noncom_title">Non-Combat Skills</h2>
-						<div id="skill_noncom" class="inv_container">
-						</div>
+						<div id="skill_noncom" class="inv_container"></div>
 						<h2 id="skill_com_title">Combat Skills</h2>
-						<div id="skill_com" class="inv_container">
-						</div>
+						<div id="skill_com" class="inv_container"></div>
 						<h2 id="skill_juggle_title">Juggling Balls</h2>
-						<div id="skill_juggle" class="inv_container">
-						</div>
+						<div id="skill_juggle" class="inv_container"></div>
 						<h2 id="skill_passive_title">Passive Skills</h2>
-						<div id="skill_passive" class="inv_container">
-						</div>
+						<div id="skill_passive" class="inv_container"></div>
 					</div>
 					<div id="loc_map" class="location">
-						<button type="button" onclick="goToLocation('house')">
-							Go to Your House
-						</button>
-						<button type="button" onclick="goToLocation('town')" id="map_townButton">
-							Go to Town
-						</button>
-						<button type="button" onclick="goToLocation('outskirts')" id="map_outskirtsButton">
-							Go to the Outskirts of Town
-						</button>
+						<button type="button" onclick="goToLocation('house')">Go to Your House</button>
+						<button type="button" onclick="goToLocation('town')" id="map_townButton">Go to Town</button>
+						<button type="button" onclick="goToLocation('outskirts')" id="map_outskirtsButton">Go to the Outskirts of Town</button>
 					</div>
 					<div id="loc_house" class="location">
 						<p class="house_tutorial_1">This must be the house. You knock on the front door and a small while later you hear multiple bolts unlock. The door slowly creaks open and an old man is standing there, looking very frail and hunched over a long walking stick made from a gnarled oaken branch.</p>
@@ -308,67 +273,34 @@
 						<p class="house_tutorial_3">Use the <img src='./images/fountain.png'> icon above to visit town and pay the elder a visit.</p>
 						<div id="house_normal">
 							<p>This is your house.</p>
-							<button id="house_rest_button" type="button" onclick="rest()">
-								Rest (Restore HP and MP) (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-							</button>
-							<button id="house_sleep_button" type="button" onclick="goToLocation('sleep')">
-								Sleep
-							</button>
-							<button type="button" onclick="goToLocation('map')">
-								Back to Map
-							</button>
+							<button id="house_rest_button" type="button" onclick="rest()">Rest (Restore HP and MP) (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+							<button id="house_sleep_button" type="button" onclick="goToLocation('sleep')">Sleep</button>
+							<button type="button" onclick="goToLocation('map')">Back to Map</button>
 						</div>
 					</div>
 					<div id="loc_sleep" class="location">
 						<div id="sleep_text"></div>
-						<button type="button" onclick="goToLocation('house')">
-							Go to Your House
-						</button>
-						<button type="button" onclick="goToLocation('map')">
-							Back to Map
-						</button>
+						<button type="button" onclick="goToLocation('house')">Go to Your House</button>
+						<button type="button" onclick="goToLocation('map')">Back to Map</button>
 					</div>
 					<div id="loc_town" class="location">
-						<button type="button" onclick="goToLocation('elder')">
-							Visit the Elder
-						</button>
-						<button type="button" onclick="goToLocation('cid')">
-							Visit Cid's Sidequest Shack
-						</button>
-						<button type="button" onclick="goToLocation('pawnShop')">
-							Visit the Pawn Shop
-						</button>
-						<button type="button" onclick="goToLocation('shopGeneral')">
-							Visit the General Store
-						</button>
-						<button type="button" onclick="goToLocation('trainer')">
-							Visit the Personal Trainer
-						</button>
-						<button type="button" onclick="goToLocation('doctor')">
-							Visit the Doctor
-						</button>
-						<button type="button" id="town_area_town_hall" onclick="goToLocation('town_hall')">
-							Visit the Town Hall
-						</button>
-						<button type="button" onclick="goToLocation('dungeons')">
-							Visit the Dungeons
-						</button>
-						<button type="button" onclick="goToLocation('map')">
-							Back to Map
-						</button>
+						<button type="button" onclick="goToLocation('elder')">Visit the Elder</button>
+						<button type="button" onclick="goToLocation('cid')">Visit Cid's Sidequest Shack</button>
+						<button type="button" onclick="goToLocation('pawnShop')">Visit the Pawn Shop</button>
+						<button type="button" onclick="goToLocation('shopGeneral')">Visit the General Store</button>
+						<button type="button" onclick="goToLocation('trainer')">Visit the Personal Trainer</button>
+						<button type="button" onclick="goToLocation('doctor')">Visit the Doctor</button>
+						<button type="button" id="town_area_town_hall" onclick="goToLocation('town_hall')">Visit the Town Hall</button>
+						<button type="button" onclick="goToLocation('dungeons')">Visit the Dungeons</button>
+						<button type="button" onclick="goToLocation('map')">Back to Map</button>
 					</div>
 					<div id="loc_elder" class="location">
-						<div id="elderText">
-						</div>
-						<button type="button" onclick="goToLocation('town')">
-							Back to Town
-						</button>
+						<div id="elderText"></div>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_cid" class="location">
 						<div id="cidText"></div>
-						<button type="button" onclick="goToLocation('town')">
-							Back to Town
-						</button>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_pawnShop" class="location">
 						<p>You look to sell your unwanted junk.</p>
@@ -391,9 +323,7 @@
 						<div id="pawn_7" class="inv_container"></div>
 						<h2 id="pawn_8_title">Misc</h2>
 						<div id="pawn_8" class="inv_container"></div>
-						<button type="button" onclick="goToLocation('town')">
-							Back to Town
-						</button>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_shopGeneral" class="location">
 						<p>You visit the local shop.</p>
@@ -406,17 +336,12 @@
 						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 5)'><img src="./images/running_shoes.png">running shoes - 100 gold </span><button type="button" onclick="buyItem(5, 1)">Buy</button></span></p>
 						<h2>Dungeon Keys</h2>
 						<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 30)'><img src="./images/no_image.png">yellow key - 200 gold </span><button type="button" onclick="buyItem(30, 1)">Buy</button></span></p>
-						<button type="button" onclick="goToLocation('town')">
-							Back to Town
-						</button>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_trainer" class="location">
 						<p>You visit the personal trainer.</p>
-						<div id="trainerList">
-						</div>
-						<button type="button" onclick="goToLocation('town')">
-							Back to Town
-						</button>
+						<div id="trainerList"></div>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_doctor" class="location">
 						<p>You visit the local doctor.</p>
@@ -431,120 +356,72 @@
 							</form>
 						</div>
 						<p>Coming here often? You can put the doctor on the top pane in the settings menu.</p>
-						<button type="button" onclick="goToLocation('town')">
-							Back to Town
-						</button>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_town_hall" class="location">
-						<button id="town_hall_basement" type="button" onclick="adventure(0)">
-							Adventure in the Town Hall Basement (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button id="town_hall_taxOffice" type="button" onclick="adventure(1)">
-							Adventure in the Town Hall Tax Office (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button id="town_hall_canteen" type="button" onclick="adventure(2)">
-							Adventure in the Town Hall Canteen (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button type="button" onclick="goToLocation('town')">
-							Back to Town
-						</button>
+						<button id="town_hall_basement" type="button" onclick="adventure(0)">Adventure in the Town Hall Basement (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button id="town_hall_taxOffice" type="button" onclick="adventure(1)">Adventure in the Town Hall Tax Office (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button id="town_hall_canteen" type="button" onclick="adventure(2)">Adventure in the Town Hall Canteen (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_dungeons" class="location">
 						<p id="dungeons_closedYellowDoorText">This is a locked yellow door. There's a note on the door, which says: "In partnership with General Store Inc, come visit us for access. Not suitable for adventurers below level 3."</p>
-						<button id="dungeons_closedYellowDoor" type="button" onclick="showClosedYellowDoorText()">
-							Investigate the Locked Yellow Door
-						</button>
-						<button id="dungeons_yellowDoor" type="button" onclick="adventure(7)">
-							Adventure behind the Yellow Door (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button type="button" onclick="goToLocation('town')">
-							Back to Town
-						</button>
+						<button id="dungeons_closedYellowDoor" type="button" onclick="showClosedYellowDoorText()">Investigate the Locked Yellow Door</button>
+						<button id="dungeons_yellowDoor" type="button" onclick="adventure(7)">Adventure behind the Yellow Door (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_outskirts" class="location">
-						<button type="button" onclick="goToLocation('orcCamp')">
-							Visit the Orc Camp
-						</button>
-						<button type="button" onclick="goToLocation('map')">
-							Back to Map
-						</button>
+						<button type="button" onclick="goToLocation('orcCamp')">Visit the Orc Camp</button>
+						<button type="button" onclick="goToLocation('map')">Back to Map</button>
 					</div>
 					<div id="loc_orcCamp" class="location">
 						<p class="orcCamp_intro">You walk up to the orc camp. Nobody comes to chase you off so figure everybody must be busy. It certainly doesn't look busy, maybe most of the troops have yet to arrive?</p>
 						<p class="orcCamp_intro">The leader's tent in the centre of the camp seems well guarded. It might be worth trying to find a high ranking officer to talk to to see if they can give you an audience.</p>
-						<button id="orcCamp_messHall" class="orcCampButton" type="button" onclick="adventure(3)">
-							Adventure in the Orc Camp Mess Hall (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button id="orcCamp_barracks" class="orcCampButton" type="button" onclick="adventure(4)">
-							Adventure in the Orc Camp Barracks (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button id="orcCamp_munitions" class="orcCampButton" type="button" onclick="adventure(5)">
-							Adventure in the Orc Camp Munitions Store (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button id="orcCamp_leadersTent" class="orcCampButton" type="button" onclick="adventure(6)">
-							Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button type="button" onclick="goToLocation('outskirts')">
-							Back to the Outskirts of Town
-						</button>
+						<button id="orcCamp_messHall" class="orcCampButton" type="button" onclick="adventure(3)">Adventure in the Orc Camp Mess Hall (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button id="orcCamp_barracks" class="orcCampButton" type="button" onclick="adventure(4)">Adventure in the Orc Camp Barracks (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button id="orcCamp_munitions" class="orcCampButton" type="button" onclick="adventure(5)">Adventure in the Orc Camp Munitions Store (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button id="orcCamp_leadersTent" class="orcCampButton" type="button" onclick="adventure(6)">Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button type="button" onclick="goToLocation('outskirts')">Back to the Outskirts of Town</button>
 					</div>
 					<div id="loc_settings" class="location">
-						<button type="button" onclick="save()">
-							Save game
-						</button>
-						<br />
-						The game also auto-saves every time you:
-						<ul>
-							<li>End a turn</li>
-							<li>Equip or unequip an item</li>
-							<li>Use or sell an item</li>
-							<li>Cast a non-combat skill</li>
-							<li>Buy something</li>
-						</ul>
-						To load your game, just refresh the page
-						<br />
+						<button type="button" onclick="save()">Save game</button>
+						<p>The game also auto-saves every time you:
+							<ul>
+								<li>End a turn</li>
+								<li>Equip or unequip an item</li>
+								<li>Use or sell an item</li>
+								<li>Cast a non-combat skill</li>
+								<li>Buy something</li>
+							</ul>
+						</p>
+						<p>To load your game, just refresh the page</p>
 						<p><input type="checkbox" id="option_compactInfoPanel" onclick="toggleOption('compactInfoPanel')"> Compact buff list</input></p>
 						<p><input type="checkbox" id="option_quickHeal" onclick="toggleOption('quickHeal')"> Doctor in the top pane</input></p>
 						<p><input type="checkbox" id="option_zoneWarnings" onclick="toggleOption('zoneWarnings')" checked="checked"> Recommended level warnings for tough zones</input></p>
 						<p><input type="checkbox" id="option_foodQuality" onclick="toggleOption('foodQuality')"> Show food fullness and turns per fullness (quality) on Eat buttons</input></p>
-						<br />
-						<br />
-						<br />
-						<button type="button" onclick="wipe()">
-							Delete save file and hard reset (Don't press this!)
-						</button>
+						<br>
+						<br>
+						<br>
+						<button type="button" onclick="wipe()">Delete save file and hard reset (Don't press this!)</button>
 					</div>
 					<div id="loc_toughZoneWarning" class="location">
 						<p>Watch out! This area might be tougher than you can comfortably handle. It is recommended that you at least be level <span id="recommendedZoneLevel"></span> before entering this zone.</p>
 						<p>(You can disable these warnings in the settings)</p>
-						<button type="button" id="recommendedZoneLevelButton" onclick="bypassZoneLevelWarning()">
-							I want to adventure here anyway (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-						</button>
-						<button type="button" onclick="goToLocation('map')">
-							Back to Map
-						</button>
+						<button type="button" id="recommendedZoneLevelButton" onclick="bypassZoneLevelWarning()">I want to adventure here anyway (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button type="button" onclick="goToLocation('map')">Back to Map</button>
 					</div>
 					<div id="loc_noAdventuresWarning" class="location">
 						<p>It's getting late and you're out of turns for today! Gain more turns by eating food, or if you've reached your limits, head back to your house and go to sleep.</p>
-						<button type="button" onclick="goToLocation('house')">
-							Go to Your House
-						</button>
-						<button type="button" onclick="goToLocation('map')">
-							Back to Map
-						</button>
+						<button type="button" onclick="goToLocation('house')">Go to Your House</button>
+						<button type="button" onclick="goToLocation('map')">Back to Map</button>
 					</div>
 					<hr>
-					<button id="adventureAgainButton" type="button" onclick="adventure(lastZone)">
-							Adventure Again at the last place you adventured (<img src='./images/adventure.png' title='(1 Adventure)'/>)
-					</button>
+					<button id="adventureAgainButton" type="button" onclick="adventure(lastZone)">Adventure Again at the last place you adventured (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 				</div>
 				<div id="infoPanel">
-					<div id="buffList">
-					</div>
+					<div id="buffList"></div>
 					<h3 id="juggleTitle">Juggling Balls</h3>
-					<div id="juggleList">
-
-					</div>
+					<div id="juggleList"></div>
 				</div>
 			</div>
 		</div>

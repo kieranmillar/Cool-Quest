@@ -25,7 +25,7 @@ function displaySkills()
 		newElement.addClass("item");
 		var textImageDiv = $('<span></span>');
 		textImageDiv.addClass("item_Image");
-		textImageDiv.html("<image src='./images/" + skills[i].icon + "'/><span>" + skills[i].name + "</span>");
+		textImageDiv.html("<image src='./images/" + skills[i].icon + "'><span>" + skills[i].name + "</span>");
 		textImageDiv.attr({"onClick" : "openDialog (dialogType.SKILL, " + i + ");"});
 		newElement.append(textImageDiv);
 		switch (skills[i].category)
@@ -144,7 +144,7 @@ function displayTrainer()
 				newElement.addClass("item");
 				var textImageDiv = $('<span></span>');
 				textImageDiv.addClass("item_Image");
-				textImageDiv.html("<image src='./images/" + skills[i].icon + "'/><span>" + skills[i].name + "</span>");
+				textImageDiv.html("<image src='./images/" + skills[i].icon + "'><span>" + skills[i].name + "</span>");
 				textImageDiv.attr({"onClick" : "openDialog (dialogType.SKILL, " + i + ");"});
 				newElement.append(textImageDiv);
 				var buyLink = $('<span></span>');

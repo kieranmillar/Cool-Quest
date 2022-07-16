@@ -56,7 +56,7 @@ function beginNoncombat (obj)
 	currentNoncom = obj.id;
 	$("#noncombatText").empty();
 	$("#noncombatTitle").text(obj.title);
-	addNoncombatText (obj.description + "<br />");
+	addNoncombatText (obj.description + "<br>");
 	$("#adventureAgainButton").hide();
 	if (obj.hasOwnProperty("result") == true)
 	{

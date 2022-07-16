@@ -367,7 +367,8 @@ h2:not(:last-child), h3:not(:last-child) {
 #loc_equipment h2 {
   margin: 2px;
 }
-#loc_equipment p {
+
+#equip_loadout p {
   margin: 2px;
   display: flex;
   flex-direction: row;
@@ -400,6 +401,10 @@ h2:not(:last-child), h3:not(:last-child) {
 #dialog img {
   display: block;
   margin: auto;
+}
+
+.hide {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */

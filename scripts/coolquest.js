@@ -266,157 +266,131 @@ function openDialog (type, id)
 	}
 }
 
-function save()
-{
+// Save the game
+function save() {
 	localStorage.setItem("playerStored", JSON.stringify(player));
 	localStorage.setItem("nonComHintsStored", JSON.stringify(nonComHints));
 }
 
-function load()
-{
+// Load the game
+function load() {
 	$.extend(true, player, JSON.parse(localStorage.getItem("playerStored")));
 	nonComHints = JSON.parse(localStorage.getItem("nonComHintsStored"));
 	$("#characterCreation").hide();
-	$("#inventory_tutorial_2").hide();
-	$(".equip_tutorial").hide();
-	$(".buff_tutorial").hide();
-	$(".house_tutorial_2").hide();
-	$(".house_tutorial_3").hide();
-	if (player.quests[questEnum.TUTORIAL] < 7)
-	{
-		$(".link").hide();
-		$("#link_inventory").show();
-		$("#link_map").show();
-		$("#link_settings").show();
-		$("#house_normal").hide();
-		if (player.quests[questEnum.TUTORIAL] > 0)
-		{
-			$("#inventory_tutorial_1").hide();
-			$("#inventory_tutorial_2").show();
-			$("#link_house").show();
+	inventory_tutorial2.classList.add("hide");
+	equip_tutorial.classList.add("hide");
+	buff_tutorial.classList.add("hide");
+	house_tutorial2.classList.add("hide");
+	house_tutorial3.classList.add("hide");
+	if (player.quests[questEnum.TUTORIAL] < 7) {
+		linkElements.forEach(link => link.classList.add("hide"));
+		link_inventory.classList.remove("hide");
+		link_map.classList.remove("hide");
+		link_settings.classList.remove("hide");
+		house_normal.classList.add("hide");
+		if (player.quests[questEnum.TUTORIAL] > 0) {
+			inventory_tutorial1.classList.add("hide");
+			inventory_tutorial2.classList.remove("hide");
+			link_house.classList.remove("hide");
 		}
-		if (player.quests[questEnum.TUTORIAL] > 1)
-		{
-			$("#link_equipment").show();
-			$("#inventory_tutorial_2").hide();
+		if (player.quests[questEnum.TUTORIAL] > 1) {
+			link_equipment.classList.remove("hide");
+			inventory_tutorial2.classList.add("hide");
 		}
-		if (player.quests[questEnum.TUTORIAL] > 2)
-		{
-			$(".equip_tutorial").show();
-			$(".house_tutorial_1").hide();
-			$(".house_tutorial_2").show();
+		if (player.quests[questEnum.TUTORIAL] > 2) {
+			equip_tutorial.classList.remove("hide");
+			house_tutorial1.classList.add("hide");
+			house_tutorial2.classList.remove("hide");
 		}
-		if (player.quests[questEnum.TUTORIAL] > 3)
-		{
-			$(".equip_tutorial").hide();
-			$("#link_skills").show();
+		if (player.quests[questEnum.TUTORIAL] > 3) {
+			equip_tutorial.classList.add("hide");
+			link_skills.classList.remove("hide");
 		}
-		if (player.quests[questEnum.TUTORIAL] > 4)
-		{
-			$(".buff_tutorial").show();
-			$(".house_tutorial_2").hide();
-			$(".house_tutorial_3").show();
+		if (player.quests[questEnum.TUTORIAL] > 4) {
+			buff_tutorial.classList.remove("hide");
+			house_tutorial2.classList.add("hide");
+			house_tutorial3.classList.remove("hide");
 		}
-		if (player.quests[questEnum.TUTORIAL] > 5)
-		{
-			$(".buff_tutorial").hide();
-			$("#link_town").show();
-			$("#link_town_hall").show();
+		if (player.quests[questEnum.TUTORIAL] > 5) {
+			buff_tutorial.classList.add("hide");
+			link_town.classList.remove("hide");
 		}
 	}
-	else
-	{
-		$("#inventory_tutorial_1").hide();
-		$(".house_tutorial_1").hide();
-		$(".house_tutorial_2").hide();
-		$(".house_tutorial_3").hide();
-		$(".buff_tutorial").hide();
-		$(".equip_tutorial").hide();
+	else {
+		inventory_tutorial1.classList.add("hide");
+		house_tutorial1.classList.add("hide");
+		house_tutorial2.classList.add("hide");
+		house_tutorial3.classList.add("hide");
+		buff_tutorial.classList.add("hide");
+		equip_tutorial.classList.add("hide");
 	}
 	goToLocation("map");
 	$("#adventureAgainButton").hide();
 	calculateStats();
 	redrawInfoPanel();
-	if (player.options[optionEnum.COMPACTINFOPANEL])
-	{
+	if (player.options[optionEnum.COMPACTINFOPANEL]) {
 		$("#option_compactInfoPanel").prop("checked", true);
 	}
-	else
-	{
+	else {
 		$("#option_compactInfoPanel").prop("checked", false);
 	}
-	if (player.options[optionEnum.QUICKHEAL])
-	{
+	if (player.options[optionEnum.QUICKHEAL]) {
 		$("#quickHeal").show();
 		$("#option_quickHeal").prop("checked", true);
 	}
-	else
-	{
+	else {
 		$("#quickHeal").hide();
 		$("#option_quickHeal").prop("checked", false);
 	}
-	if (player.options[optionEnum.ZONEWARNINGS])
-	{
+	if (player.options[optionEnum.ZONEWARNINGS]) {
 		$("#option_zoneWarnings").prop("checked", true);
 	}
-	else
-	{
+	else {
 		$("#option_zoneWarnings").prop("checked", false);
 	}
-	if (player.options[optionEnum.FOODQUALITY])
-	{
+	if (player.options[optionEnum.FOODQUALITY]) {
 		$("#option_foodQuality").prop("checked", true);
 	}
-	else
-	{
+	else {
 		$("#option_foodQuality").prop("checked", false);
 	}
 }
 
 function toggleOption(option) {
-	switch (option)
-	{
+	switch (option)	{
 		case 'compactInfoPanel':
-			if (!player.options[optionEnum.COMPACTINFOPANEL])
-			{
+			if (!player.options[optionEnum.COMPACTINFOPANEL]) {
 				player.options[optionEnum.COMPACTINFOPANEL] = 1;
 			}
-			else
-			{
+			else {
 				player.options[optionEnum.COMPACTINFOPANEL] = 0;
 			}
 			redrawInfoPanel();
 			break;
 		case 'quickHeal':
-			if (!player.options[optionEnum.QUICKHEAL])
-			{
+			if (!player.options[optionEnum.QUICKHEAL]) {
 				player.options[optionEnum.QUICKHEAL] = 1;
 				$("#quickHeal").show();
 			}
-			else
-			{
+			else {
 				player.options[optionEnum.QUICKHEAL] = 0;
 				$("#quickHeal").hide();
 			}
 			redrawInfoPanel();
 			break;
 		case 'zoneWarnings':
-			if (!player.options[optionEnum.ZONEWARNINGS])
-			{
+			if (!player.options[optionEnum.ZONEWARNINGS]) {
 				player.options[optionEnum.ZONEWARNINGS] = 1;
 			}
-			else
-			{
+			else {
 				player.options[optionEnum.ZONEWARNINGS] = 0;
 			}
 			break;
 		case 'foodQuality':
-			if (!player.options[optionEnum.FOODQUALITY])
-			{
+			if (!player.options[optionEnum.FOODQUALITY]) {
 				player.options[optionEnum.FOODQUALITY] = 1;
 			}
-			else
-			{
+			else {
 				player.options[optionEnum.FOODQUALITY] = 0;
 			}
 			break;
@@ -426,13 +400,13 @@ function toggleOption(option) {
 
 function wipe() {
 	var confirmation = confirm("Are you sure you want to permanently erase your savefile?");
-	if(confirmation === true){
+	if (confirmation === true) {
 		localStorage.clear();
 		location.reload(); 
 	}
 }
 
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', function() {
 	$("#dialog").dialog({ autoOpen: false });
 	$("#doctor_hp_input").change(function(){
 		$("#doctor_hp_button").text("Restore (" + parseInt($('#doctor_hp_input').val()) * 2 + " Gold)");
@@ -446,19 +420,17 @@ $(document).ready(function(){
 	$("#quickHeal_mp_input").change(function(){
 		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * 10 + " Gold)");
 	});
-	if (localStorage.getItem("playerStored") != null)
-	{
+	if (localStorage.getItem("playerStored") != null) {
 		load();
 	}
-	else
-	{
+	else {
 		$("#mainGame").hide();
-		$(".link").hide();
-		$("#inventory_tutorial_2").hide();
-		$(".equip_tutorial").hide();
-		$(".buff_tutorial").hide();
-		$(".house_tutorial_2").hide();
-		$(".house_tutorial_3").hide();
+		linkElements.forEach(link => link.classList.add("hide"));
+		inventory_tutorial2.classList.add("hide");
+		equip_tutorial.classList.add("hide");
+		buff_tutorial.classList.add("hide");
+		house_tutorial2.classList.add("hide");
+		house_tutorial3.classList.add("hide");
 		$("#quickHeal").hide();
 		$("#option_compactInfoPanel").prop("checked", false);
 		$("#option_quickHeal").prop("checked", false);

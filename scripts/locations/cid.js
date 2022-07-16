@@ -23,7 +23,7 @@ function displayCidText () {
     if (player.quests[questEnum.BADGER] == 1 && getItemAmount(31) >= 3) {
 		newCidText("Hey, good job on getting three Badger Badger badges. Want to trade them in for 400 Gold?");
         let badgerButton = document.createElement("button");
-	    badgerButton.innerHTML = "Trade 3 Badger Badger badges for 400 Gold";
+	    badgerButton.textContent = "Trade 3 Badger Badger badges for 400 Gold";
 	    cidTextDiv.appendChild(badgerButton);
 	    badgerButton.addEventListener ("click", function() {
 		    loseItem (31, 3);
@@ -36,7 +36,7 @@ function displayCidText () {
 	    });
     }
 
-    if (cidTextDiv.innerHTML === "") {
+    if (cidTextDiv.textContent === "") {
         newCidText("Sorry buddy, the only jobs I have left require you to be stronger. Come back when you've levelled up.");
     }
 }
@@ -44,6 +44,6 @@ function displayCidText () {
 // Adds a new paragraph of text on Cid's screen
 function newCidText(t) {
     let newElement = document.createElement("p");
-    newElement.innerHTML = t;
+    newElement.textContent = t;
 	cidTextDiv.appendChild(newElement);
 }

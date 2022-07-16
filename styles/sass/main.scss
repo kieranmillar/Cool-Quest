@@ -404,7 +404,9 @@ h2, h3 {
 	h2 {
 		margin: 2px;
 	}
+}
 
+#equip_loadout {
 	p {
 		margin: 2px;
 		display: flex;
@@ -441,4 +443,8 @@ h2, h3 {
 #dialog img {
 	display: block;
 	margin: auto;
+}
+
+.hide { // putting this last means it takes precendence.
+	display: none;
 }

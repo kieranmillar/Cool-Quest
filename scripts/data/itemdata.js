@@ -22,9 +22,10 @@ var items = [
 		sell: 0,
 		onUse: function () {
 			hint ("You commit your house's address to memory, then throw away the letter.", "g");
-			$("#inventory_tutorial_1").hide();
-			$("#inventory_tutorial_2").show();
-			$("#link_house").show();
+			inventory_tutorial1.classList.add("hide");
+			inventory_tutorial2.classList.remove("hide");
+			link_map.classList.remove("hide");
+			link_house.classList.remove("hide");
 			player.quests[questEnum.TUTORIAL] = 1;
 			return true;
 		}
@@ -44,9 +45,9 @@ var items = [
 			if (player.quests[questEnum.TUTORIAL] == 2)
 			{
 				player.quests[questEnum.TUTORIAL] = 3;
-				$(".equip_tutorial").show();
-				$(".house_tutorial_1").hide();
-				$(".house_tutorial_2").show();
+				equip_tutorial.classList.remove("hide");
+				house_tutorial1.classList.add("hide");
+				house_tutorial2.classList.remove("hide");
 			}
 			player.effHpMax += 1;
 			player.effStr += 1;

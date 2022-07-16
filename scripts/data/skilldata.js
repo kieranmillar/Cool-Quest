@@ -25,13 +25,7 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			if (player.quests[questEnum.TUTORIAL] == 4)
-			{
-				player.quests[questEnum.TUTORIAL] = 5;
-				$(".buff_tutorial").show();
-				$(".house_tutorial_2").hide();
-				$(".house_tutorial_3").show();
-			}
+			castTutorialSkill();
 			hint ("You think deeply about wrestling, gaining 10 turns of Wrestling Your Thoughts!", "g");
 			return addBuff (0, 10);
 		}
@@ -353,13 +347,7 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			if (player.quests[questEnum.TUTORIAL] == 4)
-			{
-				player.quests[questEnum.TUTORIAL] = 5;
-				$(".buff_tutorial").show();
-				$(".house_tutorial_2").hide();
-				$(".house_tutorial_3").show();
-			}
+			castTutorialSkill();
 			hint ("You take sight of your might, gaining 10 turns of Pirate Might!", "g");
 			return addBuff (1, 10);
 		}
@@ -691,13 +679,7 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			if (player.quests[questEnum.TUTORIAL] == 4)
-			{
-				player.quests[questEnum.TUTORIAL] = 5;
-				$(".buff_tutorial").show();
-				$(".house_tutorial_2").hide();
-				$(".house_tutorial_3").show();
-			}
+			castTutorialSkill();
 			hint ("You talk to your ancestors, gaining 10 turns of Ancestral Motivation!", "g");
 			return addBuff (2, 10);
 		}
@@ -1030,13 +1012,7 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			if (player.quests[questEnum.TUTORIAL] == 4)
-			{
-				player.quests[questEnum.TUTORIAL] = 5;
-				$(".buff_tutorial").show();
-				$(".house_tutorial_2").hide();
-				$(".house_tutorial_3").show();
-			}
+			castTutorialSkill();
 			hint ("Your inner ear energises, gaining 10 turns of Well Balanced!", "g");
 			return addBuff (3, 10);
 		}
@@ -1371,3 +1347,14 @@ var skills = [
 		}
 	}
 ];
+
+// Casting your class basic buff skill is part of the tutorial
+function castTutorialSkill() {
+	if (player.quests[questEnum.TUTORIAL] != 4)	{
+		return;
+	}
+	player.quests[questEnum.TUTORIAL] = 5;
+	buff_tutorial.classList.remove("hide");
+	house_tutorial2.classList.add("hide");
+	house_tutorial3.classList.remove("hide");
+}

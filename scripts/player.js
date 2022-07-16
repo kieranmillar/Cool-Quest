@@ -209,9 +209,8 @@ function createCharacter() {
 	player.zoneCounters = [];
 	$("#characterCreation").hide();
 	$("#mainGame").show();
-	$("#link_inventory").show();
-	$("#link_map").show();
-	$("#link_settings").show();
+	link_inventory.classList.remove("hide");
+	link_settings.classList.remove("hide");
 	$("#adventureAgainButton").hide();
 	calculateStats();
 	player.hp = player.effHpMax;

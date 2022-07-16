@@ -8,6 +8,9 @@ var zones = [
 		noncombats: [0],
 		special: function ()
 		{
+			if (!player.zoneCounters[zoneCounterEnum.BASEMENT]) {
+				player.zoneCounters[zoneCounterEnum.BASEMENT] = 0;
+			}
 			player.zoneCounters[zoneCounterEnum.BASEMENT] ++;
 			if (player.zoneCounters[zoneCounterEnum.BASEMENT] >= 5)
 			{

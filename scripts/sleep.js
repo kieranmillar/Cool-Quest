@@ -12,7 +12,7 @@ function sleep() {
 	}
 	
 	let newElement = document.createElement("h2");
-	newElement.innerHTML = "A new day has begun!";
+	newElement.textContent = "A new day has begun!";
 	sleepTextDiv.appendChild(newElement);
 	
 	restRecovery();
@@ -27,6 +27,6 @@ function sleep() {
 // Adds a new paragraph of text onto the sleep screen
 function newSleepText(t) {
 	let newElement = document.createElement("p");
-	newElement.innerHTML = t;
+	newElement.textContent = t;
 	sleepTextDiv.appendChild(newElement);
 }

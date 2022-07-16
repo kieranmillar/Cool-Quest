@@ -427,7 +427,7 @@ var combats = [
 		exp: 45,
 		gold: 6,
 		drops: [
-			{id: 27, chance: 40}
+			{id: 27, chance: 50}
 		],
 		hitMessages: [
 			"crit",
@@ -448,7 +448,7 @@ var combats = [
 		exp: 38,
 		gold: 5,
 		drops: [
-			{id: 28, chance: 40}
+			{id: 28, chance: 50}
 		],
 		hitMessages: [
 			"crit",

@@ -590,4 +590,20 @@ var items = [
 			player.effMl += 2;
 		}
 	},
+	{
+		id: 32,
+		name: "sweet lemonade",
+		description: "Like all food products, finding out this is made would ruin the magic. Enjoy it in ignorance.",
+		enchantment: "Restores 4-7 MP<br>10 turns of Restore 1MP per turn",
+		icon: "no_image.png",
+		type: "Potion",
+		category: itemType.POTION,
+		sell: 10,
+		onUse: function () {
+			let x = Math.floor(Math.random() * 3) + 4;
+			hint ("You drink the lemonade. " + giveMp(x) + " You gain 10 turns of Lemony Fizz.", "g");
+			addBuff (9, 10);
+			return true;
+		}
+	},
 ];

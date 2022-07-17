@@ -497,4 +497,85 @@ var combats = [
 			"hit3"
 		]
 	},
+	{
+		id: 21,
+		name: "a Badger Badger",
+		description: "A Badger Badger jumps at you from behind a bush and starts flapping his arms wildly. Does this mean it's angry? Better kill it quick before all its friends join in.",
+		icon: "empty.png",
+		hp: 33,
+		str: 27,
+		def: 5,
+		spd: 30,
+		exp: 28,
+		gold: 18,
+		drops: [
+			{id: 31, chance: 40}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 22,
+		name: "a Mushroom Mushroom",
+		description: "You come across a large mushroom. There's not mushroom underneath its cap. Still, it seems like fungi to hang around.",
+		icon: "empty.png",
+		hp: 42,
+		str: 28,
+		def: 2,
+		spd: -20,
+		exp: 26,
+		gold: 19,
+		drops: [],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 23,
+		name: "a snake",
+		description: "Snake? Snake?! SNAAAAAAAKE!!!!!! Ohhh it's a snake!",
+		icon: "empty.png",
+		hp: 30,
+		str: 25,
+		def: 8,
+		spd: 75,
+		exp: 29,
+		gold: 16,
+		drops: [],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 24,
+		name: "an amazing horse",
+		description: "Look at this horse. It's amazing. If you tug on its mane, it turns into a plane. You don't want to know how to turn it back though.",
+		icon: "empty.png",
+		hp: 45,
+		str: 25,
+		def: 0,
+		spd: 75,
+		exp: 29,
+		gold: 16,
+		drops: [
+			{id: 32, chance: 60},
+			{id: 32, chance: 30}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
 ];

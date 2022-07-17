@@ -202,4 +202,46 @@ var noncombats = [
 			}
 		]
 	},
+	{
+		id: 9,
+		title: "(Magic Trevor or Narwhals reference?))",
+		description: "TODO",
+		choices: [
+			{
+				buttonText: function () {return noncombatButton ("Approach the Baby", 0, "fight a Mud Baby");},
+				onChoosing: function ()
+				{
+					beginCombat (combats[20]);
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a monster");},
+				onChoosing: function ()
+				{
+					pickRandomCombat (8);
+				}
+			}
+		]
+	},
+	{
+		id: 10,
+		title: "Back from the Conference",
+		description: "TODO",
+		choices: [
+			{
+				buttonText: function () {return noncombatButton ("Approach the Baby", 0, "fight a Mud Baby");},
+				onChoosing: function ()
+				{
+					beginCombat (combats[20]);
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a monster");},
+				onChoosing: function ()
+				{
+					pickRandomCombat (8);
+				}
+			}
+		]
+	},
 ];

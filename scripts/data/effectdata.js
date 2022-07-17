@@ -107,6 +107,17 @@ var effects = [
 			player.effSpd += player.baseSpd;
 		}
 	},
+	{
+		id: 9,
+		name: "Lemony Fizz",
+		description: "You're enchanted by the lemony fizz. You feel like your mind is free to wander the universe, and all the other places too.",
+		enchantment: "Restore 1MP per turn",
+		icon: "no_image.png",
+		effect: function()
+		{
+			player.mpRegen += 1;
+		}
+	},
 ];
 
 var jugglingBalls = [

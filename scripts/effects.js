@@ -48,29 +48,3 @@ function decreaseBuff (id, turns) //turns = -1 means remove entire buff
 		return true;
 	}
 }
-
-function juggle (id)
-{
-	for (var i in player.juggles)
-	{
-		if (player.juggles[i] == id)
-		{
-			hint ("You are already juggling one of those.", "r");
-			return false;
-		}
-	}
-	if (player.juggles.length == 3)
-	{
-		let x = player.juggles.shift();
-		player.juggles.push(id);
-		hint ("You drop a " + jugglingBalls[x].name + " so you can juggle a " + jugglingBalls[id].name + ".", "g");
-	}
-	else
-	{
-		player.juggles.push(id);
-		hint ("You start juggling a " + jugglingBalls[id].name + ".", "g");
-	}
-	calculateStats();
-	redrawInfoPanel();
-	return true;
-}

@@ -181,7 +181,7 @@ h2:not(:last-child), h3:not(:last-child) {
 
 #jobGrid {
   display: grid;
-  grid-template-columns: 400px 400px;
+  grid-template-columns: 800px;
   align-content: center;
 }
 
@@ -221,7 +221,6 @@ h2:not(:last-child), h3:not(:last-child) {
   margin: 2px;
 }
 #characterPanel progress[value] {
-  -webkit-appearance: none;
   width: calc(100% - 5px);
   height: 10px;
   margin: 2px;
@@ -315,6 +314,16 @@ h2:not(:last-child), h3:not(:last-child) {
 
 .ice {
   color: blue;
+  font-weight: bold;
+}
+
+.psychic {
+  color: darkgreen;
+  font-weight: bold;
+}
+
+.emotional {
+  color: plum;
   font-weight: bold;
 }
 

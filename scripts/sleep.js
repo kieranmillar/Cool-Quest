@@ -6,11 +6,6 @@ function sleep() {
 	
 	newSleepText("You lie down on your bed and get some well needed rest, so you're ready for the day ahead.");
 	
-	if (player.juggles.length > 0)
-	{
-		newSleepText("You can't juggle while sleeping, so you drop all your juggling balls.");
-	}
-	
 	let newElement = document.createElement("h2");
 	newElement.textContent = "A new day has begun!";
 	sleepTextDiv.appendChild(newElement);
@@ -19,7 +14,6 @@ function sleep() {
 	player.turnsToMidnight = 40;
 	player.day++;
 	player.full = 0;
-	player.juggles = [];
 	redrawCharPane();
 	redrawInfoPanel();
 }

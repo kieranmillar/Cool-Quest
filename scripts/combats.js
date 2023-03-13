@@ -3,19 +3,21 @@ var monster = {
 	name: "",
 	description: "",
 	hp: 0,
-	str: 0,
+	pow: 0,
 	def: 0,
-	spd: 0,
-	element: elementEnum.PHYS,
+	init: 0,
+	element: elementEnum.PHYSICAL,
 	exp: 0,
 	gold: 0,
 	drops: [],
 	hitMessages: [""], //first message is for criticals
+	castPounce: 0,
 	castExposeSecrets: 0,
 	exposeSecretsRounds: 0,
 };
 
 var currentRound = 0;
+var lastUsedCombatSkill = -1;
 
 function addCombatText (txt)
 {
@@ -39,10 +41,17 @@ function gainItemDrop (item, amount)
 
 function beginCombat (obj)
 {
-	if (player.hp == 0 || busy == true)
+	if (player.hp == 0 || busy == true) {
 		return;
-	goToLocation ("combat");
+	}
+	if (!goToLocation ("combat")) {
+		return;
+	}
 	busy = true;
+	if (player.combatQueue.length >= 5) {
+		player.combatQueue.shift();
+	}
+	player.combatQueue.push(obj.id);
 	monster.id = obj.id;
 	monster.name = obj.name;
 	monster.description = obj.description;
@@ -50,13 +59,13 @@ function beginCombat (obj)
 	monster.hp = obj.hp + player.effMl;
 	if (monster.hp < 1)
 		monster.hp = 1;
-	monster.str = obj.str + player.effMl;
-	if (monster.str < 1)
-		monster.str = 1;
+	monster.pow = obj.pow + player.effMl;
+	if (monster.pow < 1)
+		monster.pow = 1;
 	monster.def = obj.def + player.effMl;
 	if (monster.def < 0)
 		monster.def = 0;
-	monster.spd = obj.spd + player.effMl;
+	monster.init = obj.init + player.effMl;
 	if (obj.hasOwnProperty("element") == true)
 	{
 		monster.element = obj.element;
@@ -71,13 +80,14 @@ function beginCombat (obj)
 	}
 	else
 	{
-		monster.element = elementEnum.PHYS;
+		monster.element = elementEnum.PHYSICAL;
 		$("#monsterAttackImage").attr("src", "./images/sword.png");
 	}
 	monster.exp = obj.exp + player.effMl;
 	monster.gold = obj.gold;
 	monster.drops = obj.drops;
 	monster.hitMessages = obj.hitMessages;
+	monster.castPounce = 0;
 	monster.castExposeSecrets = 0;
 	monster.exposeSecretsRounds = 0;
 	$("#combatText").empty();
@@ -87,7 +97,7 @@ function beginCombat (obj)
 	$("#combatButtons").show();
 	$("#adventureAgainButton").hide();
 	//calculate who goes first
-	if (Math.random() * 100 > player.effSpd - monster.spd + 50)
+	if (Math.random() * 100 > player.effInit - monster.init + 50)
 	{
 		//monster went first
 		addCombatText ("The monster's speed gives it the edge!");
@@ -104,7 +114,7 @@ function redrawCombat ()
 	$("#combatRound").text(currentRound);
 	$("#monsterName").text(monster.name);
 	$("#monsterHP").text(monster.hp);
-	$("#monsterStr").text(monster.str);
+	$("#monsterPow").text(monster.pow);
 	$("#monsterDef").text(monster.def);
 	if (busy == false)
 	{
@@ -129,6 +139,10 @@ function constructCombatSkillDropdown ()
 	{
 		if (skills[i].category == skillType.COMBAT && player.skills[i] > 0)
 		{
+			if (i == 1 && monster.castPounce == 1)
+			{
+				continue;
+			}
 			if (i == 43 && monster.castExposeSecrets == 1)
 			{
 				continue;
@@ -136,10 +150,14 @@ function constructCombatSkillDropdown ()
 			let newElement = $('<option></option>');
 			newElement.val(skills[i].id);
 			let cost = skills[i].cost;
-			if (player.job == jobEnum.MEDIUM) {
+			if (player.job == jobEnum.MYSTIC) {
 				cost = Math.max(cost - 1, 0);
 			}
 			newElement.text(skills[i].name + " (" + cost + ")");
+			if (lastUsedCombatSkill == i) {
+				newElement.attr("selected", "selected");
+			}
+			
 			e.append(newElement);
 		}
 	}
@@ -245,7 +263,7 @@ function combatRound (action)
 			break;
 		case 0:
 			//basic attack
-			regularAttack (player.effStr, "You hit the monster.", "You wind up and overhead smash the monster!");
+			regularAttack (player.effPow, "You hit the monster.", "You deliver a critical blow!");
 			break;
 		case 1:
 			//use skill
@@ -297,17 +315,23 @@ function combatRound (action)
 			let overrideCrit = false;
 			switch (monster.element)
 			{
-				case elementEnum.PHYS:
-					damage = monster.str - player.effDef;
+				case elementEnum.PHYSICAL:
+					damage = monster.pow - player.effDef;
 					break;
 				case elementEnum.FIRE:
-					damage = monster.str - player.fireRes;
+					damage = monster.pow - player.fireRes;
 					break;
 				case elementEnum.ICE:
-					damage = monster.str - player.iceRes;
+					damage = monster.pow - player.iceRes;
+					break;
+				case elementEnum.PSYCHIC:
+					damage = monster.pow - player.psychicRes;
+					break;
+				case elementEnum.EMOTIONAL:
+					damage = monster.pow - player.emotionalRes;
 					break;
 			}
-			if (Math.random() * 100 < ((monster.spd - player.effSpd) / 5) + 10)
+			if (Math.random() * 100 < 10)
 			{
 				isCrit = true;
 			}
@@ -352,18 +376,24 @@ function combatRound (action)
 			}
 			switch (monster.element)
 			{
-				case elementEnum.PHYS:
+				case elementEnum.PHYSICAL:
 					addCombatText ("You take " + damage + " damage!");
 					break;
 				case elementEnum.FIRE:
-					addCombatText ("You take <span class='fire'>" + damage + "</span> damage!");
+					addCombatText ("You take <span class='fire'>" + damage + "</span> fire damage!");
 					break;
 				case elementEnum.ICE:
-					addCombatText ("You take <span class='ice'>" + damage + "</span> damage!");
+					addCombatText ("You take <span class='ice'>" + damage + "</span> ice damage!");
+					break;
+				case elementEnum.PSYCHIC:
+					addCombatText ("You take <span class='psychic'>" + damage + "</span> psychic damage!");
+					break;
+				case elementEnum.EMOTIONAL:
+					addCombatText ("You take <span class='emotional'>" + damage + "</span> emotional damage!");
 					break;
 			}
 			player.hp -= damage;
-			if (player.stormySeas == 1)
+			if (player.buffs.find(x => x.id == 7) != undefined)
 			{
 				damage = calcIceDamage(5);
 				addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
@@ -389,7 +419,7 @@ function useCombatSkill (x)
 		return false;
 	}
 	let cost = skills[x].cost;
-	if (player.job == jobEnum.MEDIUM) {
+	if (player.job == jobEnum.MYSTIC) {
 		cost = Math.max(cost - 1, 0);
 	}
 	if (cost > player.mp)
@@ -400,6 +430,7 @@ function useCombatSkill (x)
 	else
 	{
 		player.mp -= cost;
+		lastUsedCombatSkill = x;
 		if (skills[x].onUse())
 		{
 			return true;
@@ -463,38 +494,20 @@ function regularAttack (value, hitMessage, critMessage)
 {
 	// hitMessage == "" means guaranteed critical
 	let crit = false;
-	if (hitMessage == "" || Math.random() * 100 < ((player.effSpd - monster.spd) / 4) + 10)
+	if (hitMessage == "" || Math.random() * 100 < 10)
 	{
 		crit = true;
 	}
 	value -= monster.def;
-	let showboating = false;
-	if (crit && player.toggleSkills[0] == 1) { //Showboating wrestler skill
-		if (player.mp > 0) {
-			player.mp -= 1;
-			value += 5;
-			showboating = true;
-		}
-	}
 	value = Math.max(value, 1);
 	let fireDamage = calcFireDamage(player.fireDamage);
 	let iceDamage = calcIceDamage(player.iceDamage);
+	let psychicDamage = calcPsychicDamage(player.psychicDamage);
+	let emotionalDamage = calcIceDamage(player.emotionalDamage);
 	if (crit)
 	{
-		let critMultiplier = 1.2;
-		if (player.skills[7]) //Pro Wrestling Magic wrestler skill
-		{
-			let effMag = player.effMag;
-			if (showboating) {
-				effMag += 5;
-			}
-			critMultiplier += Math.floor(effMag / 4)/100;
-		}
-		value = Math.ceil (value * critMultiplier);
+		value = Math.ceil (value * player.effCritMultiplier);
 		addCombatText ("<strong>CRITICAL!</strong> " + critMessage);
-		if (showboating) {
-			addCombatText ("You pull some fancy moves to make your critical attack do additional damage!");
-		}
 	}
 	else
 	{
@@ -503,14 +516,22 @@ function regularAttack (value, hitMessage, critMessage)
 	let t = "It takes " + value;
 	if (fireDamage > 0)
 	{
-		t += " <span class='fire'>(+" + fireDamage + ")</span>"
+		t += " <span class='fire'>+" + fireDamage + "</span>"
 	}
 	if (iceDamage > 0)
 	{
-		t += " <span class='ice'>(+" + iceDamage + ")</span>"
+		t += " <span class='ice'>+" + iceDamage + "</span>"
+	}
+	if (psychicDamage > 0)
+	{
+		t += " <span class='psychic'>+" + psychicDamage + "</span>"
+	}
+	if (iceDamage > 0)
+	{
+		t += " <span class='emotional'>+" + emotionalDamage + "</span>"
 	}
 	addCombatText (t + " damage!");
-	monster.hp -= (value + fireDamage + iceDamage);
+	monster.hp -= (value + fireDamage + iceDamage + psychicDamage + emotionalDamage);
 }
 
 function calcFireDamage (fireDamage) {
@@ -543,4 +564,36 @@ function calcIceDamage (iceDamage) {
 		iceDamage = 1;
 	}
 	return iceDamage;
+}
+
+function calcPsychicDamage (psychicDamage) {
+	if (psychicDamage == 0)
+	{
+		return 0;
+	}
+	if (monster.element == elementEnum.PSYCHIC)
+	{
+		psychicDamage = 1;
+	}
+	if (monster.element == elementEnum.EMOTIONAL)
+	{
+		psychicDamage *= 2;
+	}
+	return psychicDamage;
+}
+
+function calcEmotionalDamage (emotionalDamage) {
+	if (emotionalDamage == 0)
+	{
+		return 0;
+	}
+	if (monster.element == elementEnum.PSYCHIC)
+	{
+		emotionalDamage *= 2;
+	}
+	if (monster.element == elementEnum.EMOTIONAL)
+	{
+		emotionalDamage = 1;
+	}
+	return emotionalDamage;
 }

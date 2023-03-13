@@ -11,14 +11,11 @@ function redrawCharPane ()
 		case jobEnum.WRESTLER:
 			$("#char_job").text("Wrestler");
 			break;
+		case jobEnum.MYSTIC:
+			$("#char_job").text("Mystic");
+			break;
 		case jobEnum.PIRATE:
 			$("#char_job").text("Pirate");
-			break;
-		case jobEnum.MEDIUM:
-			$("#char_job").text("Medium");
-			break;
-		case jobEnum.JUGGLER:
-			$("#char_job").text("Juggler");
 			break;
 	}
 	$("#char_level").text(player.level);
@@ -46,10 +43,10 @@ function redrawCharPane ()
 		"max": player.effMpMax
 	});
 	displayBuffedStat (
-		player.baseStr,
-		player.effStr,
-		$("#char_baseStr"),
-		$("#char_effStr")
+		player.basePow,
+		player.effPow,
+		$("#char_basePow"),
+		$("#char_effPow")
 	);
 	displayBuffedStat (
 		player.baseDef,
@@ -58,16 +55,10 @@ function redrawCharPane ()
 		$("#char_effDef")
 	);
 	displayBuffedStat (
-		player.baseMag,
-		player.effMag,
-		$("#char_baseMag"),
-		$("#char_effMag")
-	);
-	displayBuffedStat (
-		player.baseSpd,
-		player.effSpd,
-		$("#char_baseSpd"),
-		$("#char_effSpd")
+		player.baseInit,
+		player.effInit,
+		$("#char_baseInit"),
+		$("#char_effInit")
 	);
 	$("#char_exp").text(player.exp + "/" + levelDeltas[player.level-1]);
 	$("#char_expProgress").attr({
@@ -203,8 +194,7 @@ function resolveProperty (input) {
 const dialogType = {
 	ITEM: 0,
 	SKILL: 1,
-	BUFF: 2,
-	JUGGLE: 3,
+	BUFF: 2
 }
 
 function openDialog (type, id)
@@ -222,10 +212,6 @@ function openDialog (type, id)
 			t = "<img src='./images/" + items[id].icon + "'>";
 			t += "<p>" + resolveProperty (items[id].description) + "</p>";
 			t += "<p>Type: " + items[id].type + "</p>";
-			if(items[id].hasOwnProperty("equipStat") == true)
-			{
-				t += "<p>Requirement: " + items[id].equipValue + " " + items[id].equipStat + "</p>";
-			}
 			if(items[id].sell == 0)
 			{
 				t += "<p>Cannot be sold</p>";
@@ -254,13 +240,6 @@ function openDialog (type, id)
 			t = "<img src='./images/" + effects[id].icon + "'>";
 			t += "<p>" + resolveProperty (effects[id].description) + "</p>";
 			t += "<p class='enchantment'>" + effects[id].enchantment + "</p>";
-			d.html(t);
-			break;
-		case dialogType.JUGGLE:
-			d.dialog( "option", "title", jugglingBalls[id].name );
-			t = "<img src='./images/" + jugglingBalls[id].icon + "'>";
-			t += "<p>" + resolveProperty (jugglingBalls[id].description) + "</p>";
-			t += "<p class='enchantment'>" + resolveProperty (jugglingBalls[id].enchantment) + "</p>";
 			d.html(t);
 			break;
 	}

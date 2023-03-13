@@ -9,7 +9,7 @@
 		
 		<meta name="author" content="Kieran Millar">
 		
-		<meta name="revised" content="Kieran Millar, 16/07/2022">
+		<meta name="revised" content="Kieran Millar, 13/03/2023">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
@@ -76,33 +76,22 @@
 							<input type="radio" name="job" value=0 checked> Wrestler<br>
 							<p>Knows how to take a beating.</p>
 							<p>Master of physical attacks.</p>
-							<p>Best Stat: Strength</p>
-							<p>Worst Stat: Magic</p>
-							<p>Intrinsic Ability: Restore 25% HP each turn</p>
+							<p>High Power, low Defense</p>
+							<p>Intrinsic Ability: Restore 20% HP each turn</p>
 						</div>
 						<div class="jobCell">
-							<input type="radio" name="job" value=1> Pirate<br>
-							<p>The friendly Hollywood type.</p>
-							<p>Has a trusty parrot.</p>
-							<p>Best Stat: Defense</p>
-							<p>Worst Stat: Speed</p>
-							<p>Intrinsic Ability: Can equip a 4th accessory</p>
-						</div>
-						<div class="jobCell">
-							<input type="radio" name="job" value=2> Medium<br>
+							<input type="radio" name="job" value=1> Mystic<br>
 							<p>Will inaccurately read your fortune.</p>
-							<p>Master of magical attacks.</p>
-							<p>Best Stat: Magic</p>
-							<p>Worst Stat: Defense</p>
+							<p>Master of elements.</p>
+							<p>Balanced stats</p>
 							<p>Intrinsic Ability: -1MP to use all combat skills</p>
 						</div>
 						<div class="jobCell">
-							<input type="radio" name="job" value=3> Juggler<br>
-							<p>Not to be confused with a Juggalo.</p>
-							<p>Everything is safe in their hands.</p>
-							<p>Best Stat: Speed</p>
-							<p>Worst Stat: Strength</p>
-							<p>Intrinsic Ability: Stat growth fully restores MP</p>
+							<input type="radio" name="job" value=2> Pirate<br>
+							<p>The friendly Hollywood kind.</p>
+							<p>Master of fashion.</p>
+							<p>High Defense, low Power</p>
+							<p>Intrinsic Ability: Can equip an extra accessory</p>
 						</div>
 					</div>
 				</form>
@@ -123,10 +112,9 @@
 						<progress id="char_hpProgress" class="mainProgress" value="1" max="1"></progress>
 						<p><span class="char_stat">MP:</span> <span id="char_mp"></span> / <span id="char_effMpMax" class="buffedStat"></span><span id="char_baseMpMax"></span></p>
 						<progress id="char_mpProgress" class="mainProgress" value="1" max="1"></progress>
-						<p><span class="char_stat">STR:</span> <span id="char_effStr" class="buffedStat"></span><span id="char_baseStr"></span></p>
+						<p><span class="char_stat">POW:</span> <span id="char_effPow" class="buffedStat"></span><span id="char_basePow"></span></p>
 						<p><span class="char_stat">DEF:</span> <span id="char_effDef" class="buffedStat"></span><span id="char_baseDef"></span></p>
-						<p><span class="char_stat">MAG:</span> <span id="char_effMag" class="buffedStat"></span><span id="char_baseMag"></span></p>
-						<p><span class="char_stat">SPD:</span> <span id="char_effSpd" class="buffedStat"></span><span id="char_baseSpd"></span></p>
+						<p><span class="char_stat">INIT:</span> <span id="char_effInit" class="buffedStat"></span><span id="char_baseInit">%</span></p>
 					</div>
 					<p>Exp: <span id="char_exp"></span></p>
 					<progress id="char_expProgress" value="0" max="100"></progress>
@@ -140,7 +128,7 @@
 							<div id="combatMonsterTable">
 								<span id="combatMonsterStats">
 									<p><img src="./images/heart.png">HP: <span id="monsterHP"></span></p>
-									<p><img id="monsterAttackImage" src="./images/sword.png">STR: <span id="monsterStr"></span></p>
+									<p><img id="monsterAttackImage" src="./images/sword.png">POW: <span id="monsterPow"></span></p>
 									<p><img src="./images/shield.png">DEF: <span id="monsterDef"></span></p>
 								</span>
 								<img id="monsterImg" src="./images/big/empty.png">
@@ -182,12 +170,12 @@
 							<hr>
 						</div>
 						<p id="inv_empty">You currently have no items.</p>
-						<h2 id="inv_6_title">Food</h2>
+						<h2 id="inv_5_title">Food</h2>
+						<div id="inv_5" class="inv_container"></div>
+						<h2 id="inv_6_title">Potions</h2>
 						<div id="inv_6" class="inv_container"></div>
-						<h2 id="inv_7_title">Potions</h2>
+						<h2 id="inv_7_title">Misc</h2>
 						<div id="inv_7" class="inv_container"></div>
-						<h2 id="inv_8_title">Misc</h2>
-						<div id="inv_8" class="inv_container"></div>
 					</div>
 					<div id="loc_equipment" class="location">
 						<div id="equip_tutorial">
@@ -200,11 +188,10 @@
 							<p>Armour: <span id="worn_1" class="equip1 clickable"></span></p>
 							<p>Weapon: <span id="worn_2" class="equip2 clickable"></span></p>
 							<p>Shield: <span id="worn_3" class="equip3 clickable"></span></p>
-							<p>Shoes: <span id="worn_4" class="equip4 clickable"></span></p>
-							<p>Accessory 1: <span id="worn_5" class="equip5 clickable"></span></p>
-							<p>Accessory 2: <span id="worn_6" class="equip6 clickable"></span></p>
-							<p>Accessory 3: <span id="worn_7" class="equip7 clickable"></span></p>
-							<p id="accessory4">Accessory 4: <span id="worn_8" class="equip8 clickable"></span></p>
+							<p>Accessory 1: <span id="worn_4" class="equip4 clickable"></span></p>
+							<p>Accessory 2: <span id="worn_5" class="equip5 clickable"></span></p>
+							<p>Accessory 3: <span id="worn_6" class="equip6 clickable"></span></p>
+							<p id="accessory4">Accessory 4: <span id="worn_7" class="equip7 clickable"></span></p>
 						</div>
 						<hr>
 						<p id="equip_empty">You currently have no equipment items.</p>
@@ -216,10 +203,8 @@
 						<div id="equip_2" class="inv_container"></div>
 						<h2 id="equip_3_title">Shield</h2>
 						<div id="equip_3" class="inv_container"></div>
-						<h2 id="equip_4_title">Shoes</h2>
+						<h2 id="equip_4_title">Accessory</h2>
 						<div id="equip_4" class="inv_container"></div>
-						<h2 id="equip_5_title">Accessory</h2>
-						<div id="equip_5" class="inv_container"></div>
 					</div>
 					<div id="loc_skills" class="location">
 						<div id="buff_tutorial">
@@ -234,8 +219,6 @@
 						<div id="skill_noncom" class="inv_container"></div>
 						<h2 id="skill_com_title">Combat Skills</h2>
 						<div id="skill_com" class="inv_container"></div>
-						<h2 id="skill_juggle_title">Juggling Balls</h2>
-						<div id="skill_juggle" class="inv_container"></div>
 						<h2 id="skill_passive_title">Passive Skills</h2>
 						<div id="skill_passive" class="inv_container"></div>
 					</div>
@@ -311,16 +294,14 @@
 						<div id="pawn_2" class="inv_container"></div>
 						<h2 id="pawn_3_title">Shield</h2>
 						<div id="pawn_3" class="inv_container"></div>
-						<h2 id="pawn_4_title">Shoes</h2>
+						<h2 id="pawn_4_title">Accessory</h2>
 						<div id="pawn_4" class="inv_container"></div>
-						<h2 id="pawn_5_title">Accessory</h2>
+						<h2 id="pawn_5_title">Food</h2>
 						<div id="pawn_5" class="inv_container"></div>
-						<h2 id="pawn_6_title">Food</h2>
+						<h2 id="pawn_6_title">Potions</h2>
 						<div id="pawn_6" class="inv_container"></div>
-						<h2 id="pawn_7_title">Potions</h2>
+						<h2 id="pawn_7_title">Misc</h2>
 						<div id="pawn_7" class="inv_container"></div>
-						<h2 id="pawn_8_title">Misc</h2>
-						<div id="pawn_8" class="inv_container"></div>
 						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_shopGeneral" class="location">
@@ -381,7 +362,7 @@
 						<button type="button" onclick="adventure(3)">Adventure in the Orc Camp Mess Hall (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 						<button type="button" onclick="adventure(4)">Adventure in the Orc Camp Barracks (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 						<button type="button" onclick="adventure(5)">Adventure in the Orc Camp Munitions Store (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
-						<button type="button" onclick="adventure(6)">Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+						<button id="orcCamp_leaderTentButton" type="button" onclick="adventure(6)">Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 						<button type="button" onclick="goToLocation('outskirts')">Back to the Outskirts of Town</button>
 					</div>
 					<div id="loc_settings" class="location">

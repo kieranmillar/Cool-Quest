@@ -45,6 +45,7 @@ var townHall_taxOfficeButton = document.getElementById("townHall_taxOfficeButton
 var townHall_canteenButton = document.getElementById("townHall_canteenButton");
 var dungeons_closedYellowDoorButton = document.getElementById("dungeons_closedYellowDoorButton");
 var dungeons_yellowDoorButton = document.getElementById("dungeons_yellowDoorButton");
+var orcCamp_leaderTentButton = document.getElementById("orcCamp_leaderTentButton");
 
 // Introduction and tutorial texts
 var location_intro = document.getElementById("loc_intro");
@@ -67,10 +68,11 @@ var currentNoncom = 0;
 var lastZone = -1;
 
 // Changes location i.e. the "page" you are looking at
+// Returns if successful
 function goToLocation (l) {
 	if (busy == true) {
 		hint ("You're too busy to leave now!", "r");
-		return;
+		return false;
 	}
 	resetHint();
 	locationElements.forEach(location => location.classList.add("hide"));
@@ -211,6 +213,12 @@ function goToLocation (l) {
 			else {
 				orcCamp_intro.classList.add("hide");
 			}
+			if (player.quests[questEnum.ORCCAMP] < 6) {
+				orcCamp_leaderTentButton.innerHTML = "Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'>)";
+			}
+			else {
+				orcCamp_leaderTentButton.innerHTML = "Visit the Orc Camp Leader's Tent";
+			}
 			break;
 		case "toughZoneWarning":
 			location_toughZoneWarning.classList.remove("hide");
@@ -223,6 +231,7 @@ function goToLocation (l) {
 			location_settings.classList.remove("hide");
 			break;
 	}
+	return true;
 }
 
 // Show some text when you click on the closed yellow door in the dungeons

@@ -2,8 +2,7 @@ const skillType = {
 	COMBAT: 0,
 	NONCOMBAT: 1,
 	PASSIVE: 2,
-	JUGGLE: 3,
-	TOGGLEABLE: 4
+	TOGGLEABLE: 3
 }
 
 var skills = [
@@ -16,7 +15,7 @@ var skills = [
 		id: 0,
 		name: "Wrestle with your Thoughts",
 		description: "You meditate over the deep energies of wrestling, putting you into a trance.",
-		enchantment: "10 turns of:<br>+3 Max MP<br>+5 STR",
+		enchantment: "10 turns of:<br>+10 Max HP<br>+3 POW",
 		icon: "wrestle_thought.png",
 		job: jobEnum.WRESTLER,
 		type: "Non-combat",
@@ -34,7 +33,7 @@ var skills = [
 		id: 1,
 		name: "Pounce",
 		description: "Leap at your foe for an extra hard hit.",
-		enchantment: "A regular attack that's guaranteed to be critical",
+		enchantment: "A regular attack that's guaranteed to be critical<br>(Once per combat)",
 		icon: "pounce.png",
 		job: jobEnum.WRESTLER,
 		type: "Combat",
@@ -43,7 +42,7 @@ var skills = [
 		price: 0,
 		level: 1,
 		onUse: function () {
-			regularAttack (player.effStr, "", "You leap forward at your opponent with sheer ferocity!");
+			regularAttack (player.effPow, "", "You leap forward at your opponent with sheer ferocity!");
 			return true;
 		}
 	},
@@ -51,7 +50,7 @@ var skills = [
 		id: 2,
 		name: "Grease Up",
 		description: "When you want to engage in Oil Wrestling but can only afford the nearest alternative...",
-		enchantment: "10 turns of:<br>+20 SPD",
+		enchantment: "10 turns of:<br>+20 INIT",
 		icon: "grease.png",
 		job: jobEnum.WRESTLER,
 		type: "Non-combat",
@@ -68,14 +67,18 @@ var skills = [
 		id: 3,
 		name: "Showboating",
 		description: "Giving your wrestling moves more flair makes them deal more damage. It's true!",
-		enchantment: "When an attack crits, automatically spends 1MP to give +5 STR and +5 MAG to that attack",
+		enchantment: "10 turns of:<br>Critical hit damage multiplier +30%",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
 		type: "Toggleable",
-		category: skillType.TOGGLEABLE,
-		toggleId: 0,
+		category: skillType.NONCOMBAT,
+		cost: 4,
 		price: 50,
 		level: 2,
+		onUse: function () {
+			hint ("You strut your stuff, gaining 10 turns of Showing Off!", "g");
+			return addBuff (3, 10);
+		}
 	},
 	{
 		id: 4,
@@ -127,15 +130,18 @@ var skills = [
 	},
 	{
 		id: 7,
-		name: "Pro Wrestling Magic",
-		description: "You channel your magic into making your wrestling moves look even more stupid.",
-		enchantment: "Every 4 points of MAG increases the Critical Hit damage multiplier by 1%",
+		name: "",
+		description: "",
+		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Passive",
-		category: skillType.PASSIVE,
+		type: "Non-combat",
+		category: skillType.NONCOMBAT,
 		price: 100,
 		level: 4,
+		onUse: function () {
+			
+		}
 	},
 	{
 		id: 8,
@@ -338,7 +344,7 @@ var skills = [
 		id: 20,
 		name: "Mighty Pirate",
 		description: function () {return "You're " + player.name + " and you're a mighty pirate!";},
-		enchantment: "10 turns of:<br>+2 Max HP<br>+2 Max MP<br>+2 STR<br>+2 DEF",
+		enchantment: "10 turns of:<br>+2 Max MP<br>+3 POW",
 		icon: "pirate_face.png",
 		job: jobEnum.PIRATE,
 		type: "Non-combat",
@@ -378,7 +384,7 @@ var skills = [
 	},
 	{
 		id: 22,
-		name: "Healthy Eating",
+		name: "Hearrrrty Meal",
 		description: "Years of pirate experience have left you with the knowledge of how to avoid scurvy.",
 		enchantment: "Eating food fully restores your HP",
 		icon: "healthy_eating.png",
@@ -663,16 +669,16 @@ var skills = [
 	},
 	
 	/******
-	MEDIUM
+	MYSTIC
 	******/
 	
 	{
 		id: 40,
 		name: "Ancestral Pep Talk",
 		description: "Who you gonna call? Ask your dead ancestral relatives for help and advice.",
-		enchantment: "10 turns of:<br>+1 DEF<br>+3 MAG<br>+4 SPD",
+		enchantment: "10 turns of:<br>+3 POW<br>+10 INIT",
 		icon: "ghost_talk.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 1,
@@ -686,18 +692,29 @@ var skills = [
 	},
 	{
 		id: 41,
-		name: "Channel Mystical Energies",
-		description: "Channels your magical powers into your weapon.",
-		enchantment: "A regular attack using MAG instead of STR",
-		icon: "magic_sword.png",
-		job: jobEnum.MEDIUM,
+		name: "Deliver Prophecy",
+		description: "Tell your opponent about an unfortunate event in their near future.",
+		enchantment: "Deals 15 Emotional Damage. Can be increased by Emotional Damage bonuses.",
+		icon: "no_image.png",
+		job: jobEnum.MYSTIC,
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 1,
 		price: 0,
 		level: 1,
 		onUse: function () {
-			regularAttack (player.effMag, "You channel your magic force and hit your opponent.", "You overload your magic force and clobber your opponent!");
+			let prophecies = [
+				"the next food they eat will give them indegestion",
+				"they will stub their toe tomorrow morning",
+				"they will pass gas at an important social gathering",
+				"they will get stuck in a queue the next time they go shopping",
+				"the next joke they tell will cause offense"
+			];
+			let chosenProphecy = Math.floor(Math.random() * prophecies.length);
+			addCombatText ("You warn your opponent that " + prophecies[chosenProphecy] + ". They are stressed out by this information.");
+			let damage = calcEmotionalDamage(15 + player.emotionalDamage);
+			addCombatText ("It takes <span class='emotional'>" + damage + "</span> emotional damage!");
+			monster.hp -= damage;
 			return true;
 		}
 	},
@@ -707,7 +724,7 @@ var skills = [
 		description: "You charge your opponents for your time, and are happy to ramp up the costs. They'll never know.",
 		enchantment: "+20% Gold from combats",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Passive",
 		category: skillType.PASSIVE,
 		price: 50,
@@ -719,7 +736,7 @@ var skills = [
 		description: "You expose your enemy's deepest darkest secrets, shocking them to their core. In reality it's just a generic guess, but it works pretty much all the time.",
 		enchantment: "Stuns the enemy for 2 rounds<br>(Once per combat)",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 3,
@@ -743,7 +760,7 @@ var skills = [
 		description: "Everywhere you go you rearrange the furniture to maximise the effectiveness your chakras. Or something like that.<br>Look I'll be honest, I don't really understand any of this stuff.",
 		enchantment: "Restore 1 MP each turn",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Passive",
 		category: skillType.PASSIVE,
 		price: 250,
@@ -753,9 +770,9 @@ var skills = [
 		id: 45,
 		name: "Spooky Ghost Story",
 		description: "You tell a story so spooky, it chills your opponents to the bone.",
-		enchantment: "Deals 80% of your MAG as Ice Damage",
+		enchantment: "Deals 80% of your POW as Ice Damage",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 5,
@@ -763,7 +780,7 @@ var skills = [
 		level: 3,
 		onUse: function () {
 			addCombatText ("You tell your opponent about a little girl walking alone in a dark wood that encounters a terrible fate. Your opponent shivers.");
-			let damage = calcIceDamage(Math.floor(player.effMag * 0.80) + player.iceDamage);
+			let damage = calcIceDamage(Math.floor(player.effPow * 0.80) + player.iceDamage);
 			addCombatText ("It takes <span class='ice'>" + damage + "</span> damage!");
 			monster.hp -= damage;
 			return true;
@@ -775,7 +792,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -791,7 +808,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -807,7 +824,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -823,7 +840,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -839,7 +856,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -855,7 +872,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -871,7 +888,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -887,7 +904,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -903,7 +920,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -919,7 +936,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -935,7 +952,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -951,7 +968,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -967,7 +984,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
@@ -983,360 +1000,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MEDIUM,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 10,
-		onUse: function () {
-			
-		}
-	},
-
-	
-	/******
-	JUGGLER
-	******/
-	
-	{
-		id: 60,
-		name: "Steady Yourself",
-		description: "Every juggler knows that balance is key to avoiding catastrophe.",
-		enchantment: "10 turns of:<br>+2 STR<br>+2 DEF<br>+2 MAG<br>+2 SPD",
-		icon: "tightrope.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 1,
-		price: 0,
-		level: 1,
-		onUse: function () {
-			castTutorialSkill();
-			hint ("Your inner ear energises, gaining 10 turns of Well Balanced!", "g");
-			return addBuff (3, 10);
-		}
-	},
-	{
-		id: 61,
-		name: "Summon Fireball",
-		description: "Everyone knows juggling is pretty hot, but this is ridiculous.",
-		enchantment: "+5 Fire Damage<br>(When thrown:<br>Deals 40 Fire Damage)",
-		icon: "fireball.png",
-		job: jobEnum.JUGGLER,
-		type: "Juggling Ball",
-		category: skillType.JUGGLE,
-		cost: 3,
-		price: 0,
-		level: 1,
-		onUse: function () {
-			return juggle (0);
-		}
-	},
-	{
-		id: 62,
-		name: "Throw",
-		description: "Waste not, want not. A good juggler knows how to recycle their unneeded balls.",
-		enchantment: "Throws your oldest currently juggled ball for some effect depending on the ball",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Combat",
-		category: skillType.COMBAT,
-		cost: 1,
-		price: 50,
-		level: 2,
-		onUse: function () {
-			if (player.juggles.length == 0)
-			{
-				hint ("You don't have any juggling balls to throw!", "r");
-				return false;
-			}
-			let x = player.juggles.shift();
-			switch (x)
-			{
-				case 0:
-					addCombatText ("You throw the fireball and it explodes! Goodness gracious great balls of fire!");
-					let damage = calcFireDamage(40);
-					addCombatText ("It takes <span class='fire'>" + damage + "</span> damage!");
-					monster.hp -= damage;
-					break;
-				case 1:
-					addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
-					addCombatText (giveHp (60));
-					break;
-				case 2:
-					//addCombatText ("You throw the medicine ball at the ground. It ruptures, splashing a large amount of healing medicine over you.");
-					addCombatText ("TODO");
-					break;
-			}
-			calculateStats();
-			redrawInfoPanel();
-			return true;
-		}
-	},
-	{
-		id: 63,
-		name: "Summon Medicine Ball",
-		description: "The second best medicine after laughter.",
-		enchantment: "+20 Max HP<br>Restore 5 HP each turn<br>(When thrown:<br>Restores 60 HP)",
-		icon: "medicine_ball.png",
-		job: jobEnum.JUGGLER,
-		type: "Juggling Ball",
-		category: skillType.JUGGLE,
-		cost: 5,
-		price: 50,
-		level: 2,
-		onUse: function () {
-			return juggle (1);
-		}
-	},
-	{
-		id: 64,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 250,
-		level: 3,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 65,
-		name: "Summon Disco Ball",
-		description: "It's impossible not to dance in the presence of the spinning lights of a disco ball. This should help to shake loose some spare change.",
-		enchantment: "+40% Gold from combats<br>(When thrown:<br>TODO)",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Juggling Ball",
-		category: skillType.JUGGLE,
-		cost: 10,
-		price: 250,
-		level: 3,
-		onUse: function () {
-			return juggle (2);
-		}
-	},
-	{
-		id: 66,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 4,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 67,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 4,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 68,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 5,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 69,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 5,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 70,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 6,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 71,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 6,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 72,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 7,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 73,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 7,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 74,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 8,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 75,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 8,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 76,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 9,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 77,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 9,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 78,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
-		type: "Non-combat",
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
-		level: 10,
-		onUse: function () {
-			
-		}
-	},
-	{
-		id: 79,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
-		job: jobEnum.JUGGLER,
+		job: jobEnum.MYSTIC,
 		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,

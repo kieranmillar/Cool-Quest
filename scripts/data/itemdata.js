@@ -3,11 +3,10 @@ const itemType = {
 	ARMOUR: 1,
 	WEAPON: 2,
 	SHIELD: 3,
-	SHOES: 4,
-	ACC: 5,
-	FOOD: 6,
-	POTION: 7,
-	MISC: 8
+	ACC: 4,
+	FOOD: 5,
+	POTION: 6,
+	MISC: 7
 }
 
 var items = [
@@ -34,12 +33,10 @@ var items = [
 		id: 1,
 		name: "mystical postcard",
 		description: "An enchanted postcard. It says 'VISIT DRELLA', and then in small letters it says 'Please, our tourism industry is dying!'",
-		enchantment: "+1 Max HP<br>+1 STR<br>+1 MAG",
+		enchantment: "+3 Max HP<br>+1 POW",
 		icon: "mystical_postcard.png",
 		type: "Accessory",
 		category: itemType.ACC,
-		equipStat: "MAG",
-		equipValue: 1,
 		sell: 5,
 		onWear: function () {
 			if (player.quests[questEnum.TUTORIAL] == 2)
@@ -49,9 +46,8 @@ var items = [
 				house_tutorial1.classList.add("hide");
 				house_tutorial2.classList.remove("hide");
 			}
-			player.effHpMax += 1;
-			player.effStr += 1;
-			player.effMag += 1;
+			player.effHpMax += 3;
+			player.effPow += 1;
 		}
 	},
 	{
@@ -79,17 +75,14 @@ var items = [
 		id: 3,
 		name: "stick",
 		description: "What's brown and sticky? This.",
-		enchantment: "+1 STR<br>+1 MAG",
+		enchantment: "+3 POW",
 		icon: "stick.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
-		equipStat: "STR",
-		equipValue: 1,
 		cost: 20,
 		sell: 10,
 		onWear: function () {
-			player.effStr += 1;
-			player.effMag += 1;
+			player.effPow += 3;
 		}
 	},
 	{
@@ -117,16 +110,14 @@ var items = [
 		id: 5,
 		name: "running shoes",
 		description: "Run. Jump. Swim. Cycle. Die.",
-		enchantment: "+30 SPD<br>-10 Max HP",
+		enchantment: "+30 INIT<br>-10 Max HP",
 		icon: "running_shoes.png",
 		type: "Shoes",
-		category: itemType.SHOES,
-		equipStat: "SPD",
-		equipValue: 5,
+		category: itemType.ACC,
 		cost: 100,
 		sell: 50,
 		onWear: function () {
-			player.effSpd += 30;
+			player.effInit += 30;
 			player.effHpMax -= 10;
 		}
 	},
@@ -134,15 +125,13 @@ var items = [
 		id: 6,
 		name: "straightened paperclip",
 		description: "A paperclip that has been pulled into a straight piece of metal by a bored worker. Perfect for stabbing.",
-		enchantment: "+2 STR<br>Can be used in combat to deal 40 physical damage",
+		enchantment: "+2 POW<br>Can be used in combat to deal 40 physical damage",
 		icon: "straight_paperclip.png",
 		type: "Weapon, Combat Item",
 		category: itemType.WEAPON,
-		equipStat: "STR",
-		equipValue: 1,
 		sell: 5,
 		onWear: function () {
-			player.effStr += 2;
+			player.effPow += 2;
 		},
 		onCombat: function () {
 			addCombatText ("You hurl the paperclip at your enemy like a spear.");
@@ -163,8 +152,6 @@ var items = [
 		icon: "cardboard_panel.png",
 		type: "Shield, Combat Item",
 		category: itemType.SHIELD,
-		equipStat: "DEF",
-		equipValue: 1,
 		sell: 5,
 		onWear: function () {
 			player.effHpMax += 3;
@@ -178,16 +165,13 @@ var items = [
 		id: 8,
 		name: "tiny staff",
 		description: "This tiny staff is wrapped in small threads of spider silk.",
-		enchantment: "+1 Max MP<br>+3 MAG",
+		enchantment: "+2 Psychic Damage",
 		icon: "tiny_staff.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
-		equipStat: "MAG",
-		equipValue: 3,
 		sell: 5,
 		onWear: function () {
-			player.effMpMax += 1;
-			player.effMag += 3;
+			player.psychicDamage += 2;
 		}
 	},
 	{
@@ -209,17 +193,14 @@ var items = [
 		id: 10,
 		name: "dusty ring",
 		description: "The dust has fused to this enchanted ring, dampening its effectiveness.",
-		enchantment: "+3 STR<br>+3 MAG<br>+5 SPD",
+		enchantment: "+3 POW<br>+5 INIT",
 		icon: "dusty_ring.png",
 		type: "Accessory",
 		category: itemType.ACC,
-		equipStat: "MAG",
-		equipValue: 4,
 		sell: 20,
 		onWear: function () {
-			player.effStr += 3;
-			player.effMag += 3;
-			player.effSpd += 5;
+			player.effPow += 3;
+			player.effInit += 5;
 		}
 	},
 	{
@@ -230,8 +211,6 @@ var items = [
 		icon: "tiny_helmet.png",
 		type: "Hat",
 		category: itemType.HAT,
-		equipStat: "DEF",
-		equipValue: 3,
 		sell: 5,
 		onWear: function () {
 			player.effDef += 2;
@@ -241,15 +220,13 @@ var items = [
 		id: 12,
 		name: "tiny shoes",
 		description: "Merely a few dozen sizes too small, it will fit comfortably on your big toe.",
-		enchantment: "+5 SPD",
+		enchantment: "+5 Init",
 		icon: "tiny_shoes.png",
 		type: "Shoes",
-		category: itemType.SHOES,
-		equipStat: "SPD",
-		equipValue: 3,
+		category: itemType.ACC,
 		sell: 5,
 		onWear: function () {
-			player.effSpd += 5;
+			player.effInit += 5;
 		}
 	},
 	{
@@ -321,8 +298,6 @@ var items = [
 		icon: "oven_mitt.png",
 		type: "Accessory",
 		category: itemType.ACC,
-		equipStat: "MAG",
-		equipValue: 8,
 		sell: 15,
 		onWear: function () {
 			player.fireRes += 5;
@@ -336,8 +311,6 @@ var items = [
 		icon: "no_image.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
-		equipStat: "STR",
-		equipValue: 8,
 		sell: 15,
 		onWear: function () {
 			player.fireDamage += 5;
@@ -347,7 +320,7 @@ var items = [
 		id: 18,
 		name: "orc pork",
 		description: "Orcs love to consume a meat-only diet, believing it is the source of their strength. It's also the source of their heart attcks.",
-		enchantment: "+3 Fullness<br>+6 Turns to midnight<br>20 turns of +7 STR",
+		enchantment: "+3 Fullness<br>+6 Turns to midnight<br>20 turns of +7 POW",
 		icon: "pork.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -368,97 +341,86 @@ var items = [
 		id: 19,
 		name: "orc fork",
 		description: "Stick a fork in it, your enemy is done.",
-		enchantment: "+6 STR<br>+6 MAG",
+		enchantment: "+5 POW",
 		icon: "fork.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
-		equipStat: "STR",
-		equipValue: 6,
 		sell: 20,
 		onWear: function () {
-			player.effStr += 6;
-			player.effMag += 6;
+			player.effPow += 5;
 		}
 	},
 	{
 		id: 20,
 		name: "orc pocket protector",
 		description: "This small leather wallet that fits onto your breast pocket provides incredible defense to a really small area.",
-		enchantment: "+2 DEF<br>+2 Fire Resistance<br>+2 Ice Resistance",
+		enchantment: "+2 DEF<br>+2 Fire Resistance<br>+2 Ice Resistance<br>+2 Psychic Resistance<br>+2 Emotional Resistance",
 		icon: "no_image.png",
 		type: "Accessory",
 		category: itemType.ACC,
-		equipStat: "MAG",
-		equipValue: 8,
 		sell: 20,
 		onWear: function () {
 			player.effDef += 2;
 			player.fireRes += 2;
 			player.iceRes += 2;
+			player.psychicRes += 2;
+			player.emotionalRes += 2;
 		}
 	},
 	{
 		id: 21,
 		name: "orc calculator",
 		description: "An orc discovered that if you put 5318008 into this calculator and turn it upside down, it's hilarious. You can feel the smarts rubbing off on you by association from holding that same calculator.",
-		enchantment: "+3 Max MP<br>+5 MAG",
+		enchantment: "+3 Max MP<br>+5 Psychic Damage",
 		icon: "calculator.png",
 		type: "Accessory",
 		category: itemType.ACC,
-		equipStat: "MAG",
-		equipValue: 8,
 		sell: 20,
 		onWear: function () {
 			player.effMpMax += 3;
-			player.effMag += 5;
+			player.psychicDamage += 5;
 		}
 	},
 	{
 		id: 22,
 		name: "orc trenchcoat",
 		description: "This overly large trenchcoat is great for covering yourself with, but its size is very unwieldy.",
-		enchantment: "+4 DEF<br>-8 SPD",
+		enchantment: "+4 DEF<br>-8 INIT",
 		icon: "no_image.png",
 		type: "Armour",
 		category: itemType.ARMOUR,
-		equipStat: "DEF",
-		equipValue: 8,
 		sell: 20,
 		onWear: function () {
 			player.effDef += 4;
-			player.effSpd -= 8;
+			player.effInit -= 8;
 		}
 	},
 	{
 		id: 23,
 		name: "orc flamethrower",
 		description: "A wildly popular weapon for orc armies on the move, as it also doubles up as a tool to help cook breakfast. It's heavy though.",
-		enchantment: "+10 Fire Damage<br>-10 SPD",
+		enchantment: "+10 Fire Damage<br>-10 INIT",
 		icon: "no_image.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
-		equipStat: "STR",
-		equipValue: 10,
 		sell: 30,
 		onWear: function () {
 			player.fireDamage += 10;
-			player.effSpd -= 10;
+			player.effInit -= 10;
 		}
 	},
 	{
 		id: 24,
 		name: "orc riot shield",
 		description: "This shield made from transparent but sturdy plastic offers some protection while still letting you see what your opponent is doing.",
-		enchantment: "+3 DEF<br>+10 SPD",
+		enchantment: "+3 DEF<br>+10 INIT",
 		icon: "no_image.png",
 		type: "Shield",
 		category: itemType.SHIELD,
-		equipStat: "DEF",
-		equipValue: 10,
 		sell: 30,
 		onWear: function () {
 			player.effDef += 3;
-			player.effSpd += 10;
+			player.effInit += 10;
 		}
 	},
 	{
@@ -469,8 +431,6 @@ var items = [
 		icon: "no_image.png",
 		type: "Accessory",
 		category: itemType.ACC,
-		equipStat: "MAG",
-		equipValue: 1,
 		sell: 50,
 		onWear: function () {
 			player.effMl += 7;
@@ -484,8 +444,6 @@ var items = [
 		icon: "no_image.png",
 		type: "Hat",
 		category: itemType.HAT,
-		equipStat: "DEF",
-		equipValue: 5,
 		sell: 50,
 		onWear: function () {
 			player.mpRegen += 1;
@@ -495,7 +453,7 @@ var items = [
 		id: 27,
 		name: "roachburger",
 		description: "The classic roachburger, filled with a prime cut of the toughest meat around. Eating this will build up muscle strength and focus just trying to bite through it.",
-		enchantment: "+3 Fullness<br>+5 Turns to midnight<br>+1 Base STR<br>+1 Base MAG",
+		enchantment: "+3 Fullness<br>+5 Turns to midnight<br>+1 Base POW",
 		icon: "no_image.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -506,9 +464,8 @@ var items = [
 			let success = eat(27);
 			if (success == true)
 			{
-				player.baseStr += 1;
-				player.baseMag += 1;
-				hint (eatMessage(27) + " Your STR and MAG increase by 1!", "g");
+				player.basePow += 1;
+				hint (eatMessage(27) + " Your POW increased by 1!", "g");
 			}
 			return success;
 		}
@@ -516,8 +473,8 @@ var items = [
 	{
 		id: 28,
 		name: "Evil Eye stew",
-		description: "Renowned as one of the foulest tasting foods known to mankind, if you can eat this, you'll build up a stomach of steel that can cope with anything, as well as a strong automatic reaction to run away from the next serving.",
-		enchantment: "+3 Fullness<br>+5 Turns to midnight<br>+1 Base DEF<br>+1 Base SPD",
+		description: "Renowned as one of the foulest tasting foods known to mankind, if you can eat this, you'll build up a stomach of steel that can cope with anything.",
+		enchantment: "+3 Fullness<br>+5 Turns to midnight<br>+1 Base DEF",
 		icon: "no_image.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -529,8 +486,7 @@ var items = [
 			if (success == true)
 			{
 				player.baseDef += 1;
-				player.baseSpd += 1;
-				hint (eatMessage(28) + " Your DEF and SPD increase by 1!", "g");
+				hint (eatMessage(28) + " Your DEF increased by 1!", "g");
 			}
 			return success;
 		}
@@ -539,7 +495,7 @@ var items = [
 		id: 29,
 		name: "speed potion",
 		description: "A green potion that makes you move at twice the speed, letting you effortlessly dance around your opponents.",
-		enchantment: "10 turns of +100% SPD",
+		enchantment: "10 turns of +100% INIT",
 		icon: "no_image.png",
 		type: "Potion",
 		category: itemType.POTION,
@@ -578,22 +534,20 @@ var items = [
 		id: 31,
 		name: "Badger Badger badge",
 		description: "This badge makes you feel like doing the Badger Badger dance. It annoys everyone around you. Stop living in the Nineties!",
-		enchantment: "+7 SPD<br>+2 Monster Level",
+		enchantment: "+7 INIT<br>+2 Monster Level",
 		icon: "no_image.png",
 		type: "Accessory",
 		category: itemType.ACC,
-		equipStat: "MAG",
-		equipValue: 5,
 		sell: 35,
 		onWear: function () {
-			player.effSpd += 7;
+			player.effInit += 7;
 			player.effMl += 2;
 		}
 	},
 	{
 		id: 32,
 		name: "sweet lemonade",
-		description: "Like all food products, finding out this is made would ruin the magic. Enjoy it in ignorance.",
+		description: "Like all food products, finding out how this is made would ruin the magic. Enjoy it in ignorance.",
 		enchantment: "Restores 4-7 MP<br>10 turns of Restore 1MP per turn",
 		icon: "no_image.png",
 		type: "Potion",

@@ -1,43 +1,9 @@
 function equip (e)
 {
 	let c = items[e].category;
-	if (c >= 6)
+	if (c >= 5)
 	{
 		return;
-	}
-	let x = items[e].equipStat;
-	switch (x)
-	{
-		case "STR":
-			if (player.baseStr < items[e].equipValue)
-			{
-				hint ("You don't have enough STR to equip that!", "r");
-				return;
-			}
-			break;
-		case "DEF":
-			if (player.baseDef < items[e].equipValue)
-			{
-				hint ("You don't have enough DEF to equip that!", "r");
-				return;
-			}
-			break;
-		case "MAG":
-			if (player.baseMag < items[e].equipValue)
-			{
-				hint ("You don't have enough MAG to equip that!", "r");
-				return;
-			}
-			break;
-		case "SPD":
-			if (player.baseSpd < items[e].equipValue)
-			{
-				hint ("You don't have enough SPD to equip that!", "r");
-				return;
-			}
-			break;
-		default:
-			return;
 	}
 	let slot = 0;
 	switch (c)
@@ -46,29 +12,28 @@ function equip (e)
 		case itemType.ARMOUR:
 		case itemType.WEAPON:
 		case itemType.SHIELD:
-		case itemType.SHOES:
 			slot = c;
 			break;
 		case itemType.ACC:
-			if (player.equipment[5] == -1)
+			if (player.equipment[4] == -1)
+			{
+				slot = 4;
+			}
+			else if (player.equipment[5] == -1)
 			{
 				slot = 5;
+			}
+			else if (player.job != jobEnum.PIRATE)
+			{
+				slot = 6;
 			}
 			else if (player.equipment[6] == -1)
 			{
 				slot = 6;
 			}
-			else if (player.job != jobEnum.PIRATE)
-			{
-				slot = 7;
-			}
-			else if (player.equipment[7] == -1)
-			{
-				slot = 7;
-			}
 			else
 			{
-				slot = 8;
+				slot = 7;
 			}
 			break;
 	}
@@ -181,14 +146,14 @@ function loseItem (id, amount)
 
 function displayInventory()
 {
-	for (i = 6; i < 9; i++)
+	for (i = 5; i < 8; i++)
 	{
 		$("#inv_" + i).empty();
 	}
 	
 	for (var i in player.inventory)
 	{
-		if (items[player.inventory[i].id].category < 6)
+		if (items[player.inventory[i].id].category < 5)
 		{
 			continue;
 		}
@@ -221,7 +186,7 @@ function displayInventory()
 	}
 
 	let haveItems = false;
-	for (let i = 6; i < 9; i++)
+	for (let i = 5; i < 8; i++)
 	{
 		if ($("#inv_" + i).is(":empty"))
 		{
@@ -248,7 +213,7 @@ function displayInventory()
 
 function displayEquipment()
 {
-	for (let i = 0; i < 9; i ++)
+	for (let i = 0; i < 8; i ++)
 	{
 		if (player.equipment[i] != -1)
 		{
@@ -275,14 +240,14 @@ function displayEquipment()
 		}
 	}
 
-	for (let i = 0; i < 6; i++)
+	for (let i = 0; i < 5; i++)
 	{
 		$("#equip_" + i).empty();
 	}
 
 	for (var i in player.inventory)
 	{
-		if (items[player.inventory[i].id].category >= 6)
+		if (items[player.inventory[i].id].category >= 5)
 		{
 			continue;
 		}
@@ -302,7 +267,7 @@ function displayEquipment()
 	}
 
 	let haveItems = false;
-	for (let i = 0; i < 6; i++)
+	for (let i = 0; i < 5; i++)
 	{
 		if ($("#equip_" + i).is(":empty"))
 		{
@@ -329,7 +294,7 @@ function displayEquipment()
 
 function displayPawnShop()
 {
-	for (i = 0; i < 9; i++)
+	for (i = 0; i < 8; i++)
 	{
 		$("#pawn_" + i).empty();
 	}
@@ -356,7 +321,7 @@ function displayPawnShop()
 	}
 
 	let haveItems = false;
-	for (let i = 0; i < 9; i++)
+	for (let i = 0; i < 8; i++)
 	{
 		if ($("#pawn_" + i).is(":empty"))
 		{

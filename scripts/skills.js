@@ -6,15 +6,12 @@ function displaySkills()
 	noncomDiv.empty();
 	let comDiv = $("#skill_com");
 	comDiv.empty();
-	let juggleDiv = $("#skill_juggle");
-	juggleDiv.empty();
 	let passiveDiv = $("#skill_passive");
 	passiveDiv.empty();
 	let toggleCount = 0;
 	let noncomCount = 0;
 	let comCount = 0;
 	let passiveCount = 0;
-	let juggleCount = 0;
 	for (var i in skills)
 	{
 		if (!player.skills[i])
@@ -44,13 +41,6 @@ function displaySkills()
 			case skillType.PASSIVE:
 				passiveDiv.append(newElement);
 				passiveCount ++;
-				break;
-			case skillType.JUGGLE:
-				var castLink = $('<span></span>');
-				castLink.html("<input type = 'button' value = 'Summon\n(" + skills[i].cost + " MP)' onClick = 'useNoncombatSkill(" + i + ")'>");
-				newElement.append(castLink);
-				juggleDiv.append(newElement);
-				juggleCount ++;
 				break;
 			case skillType.TOGGLEABLE:
 				var castLink = $('<span></span>');
@@ -96,17 +86,6 @@ function displaySkills()
 		{
 			comTitle.show();
 			comDiv.show();
-		}
-		let juggleTitle = $("#skill_juggle_title");
-		if (juggleCount == 0)
-		{
-			juggleTitle.hide();
-			juggleDiv.hide();
-		}
-		else
-		{
-			juggleTitle.show();
-			juggleDiv.show();
 		}
 		let passiveTitle = $("#skill_passive_title");
 		if (passiveCount == 0)

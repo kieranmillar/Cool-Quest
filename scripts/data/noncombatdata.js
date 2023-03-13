@@ -162,7 +162,7 @@ var noncombats = [
 	{
 		id: 6,
 		title: "Your Work Here is Done",
-		description: "You made a deal with Björc to leave her alone. You'd better hold up your end of the bargain.",
+		description: "You made a deal with Björc to leave her alone. You'd better hold up your end of the bargain.</p><button onClick=\"goToLocation('orcCamp')\">Return to the Orc Camp</button><p>",
 		result: function () {
 			busy = false;
 		}

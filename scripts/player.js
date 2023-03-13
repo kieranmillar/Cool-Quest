@@ -3,9 +3,8 @@ var jobForm = document.getElementById("jobForm");
 
 var jobEnum = {
 	WRESTLER: 0,
-	PIRATE: 1,
-	MEDIUM: 2,
-	JUGGLER: 3,
+	MYSTIC: 1,
+	PIRATE: 2
 }
 
 var optionEnum = {
@@ -42,49 +41,47 @@ var player = {
 	statLev: 1,
 	exp: 0,
 	expLev: 0,
-	hp: 5,
-	mp: 1,
-	baseHpMax: 5,
-	baseMpMax: 1,
-	baseStr: 5,
+	hp: 10,
+	mp: 3,
+	baseHpMax: 10,
+	baseMpMax: 3,
+	basePow: 5,
 	baseDef: 4,
-	baseMag: 3,
-	baseSpd: 4,
+	baseInit: 0,
 	effHpMax: 0,
 	effMpMax: 0,
-	effStr: 0,
+	effPow: 0,
 	effDef: 0,
-	effMag: 0,
-	effSpd: 0,
+	effInit: 0,
+	effCritMultiplier: 1.2,
 	fireDamage: 0,
 	iceDamage: 0,
+	psychicDamage: 0,
+	emotionalDamage: 0,
 	fireRes: 0,
 	iceRes: 0,
+	psychicRes: 0,
+	emotionalRes: 0,
 	hpRegen: 0,
 	mpRegen: 0,
 	effItemBoost: 0,
 	effGoldBoost: 0,
 	effMl: 0,
-	hpGain: 5,
-	mpGain: 1,
-	strGain: 5,
+	powGain: 4,
 	defGain: 4,
-	magGain: 3,
-	spdGain: 4,
-	gold: 20,
+	gold: 50,
 	inventory: [],
-	equipment: [//0 = hat, 1 = armour, 2 = weapon, 3 = shield, 4 = shoes, 5-8 = accs
-		-1, -1, -1, -1, -1, -1, -1, -1, -1
+	equipment: [//0 = hat, 1 = armour, 2 = weapon, 3 = shield, 4-7 = accs
+		-1, -1, -1, -1, -1, -1, -1, -1
 	],
 	buffs: [],
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 	],
 	toggleSkills: [],
-	juggles: [],
-	stormySeas: 0,
 	options: [0, 0, 1, 0],
 	quests: [],
 	zoneCounters: [],
+	combatQueue: [],
 };
 
 var levelDeltas = [
@@ -123,9 +120,8 @@ function createCharacter() {
 	player.name = name;
 	player.job = job;
 	player.inventory = [];
-	player.equipment = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
+	player.equipment = [-1, -1, -1, -1, -1, -1, -1, -1];
 	player.buffs = [];
-	player.juggles = [];
 	for (var i in player.skills)
 	{
 		if (player.skills[i] == 1)
@@ -136,12 +132,8 @@ function createCharacter() {
 	switch (job)
 	{
 		case jobEnum.WRESTLER:
-			player.hpGain = 10;
-			player.mpGain = 1;
-			player.strGain = 5;
-			player.defGain = 4;
-			player.magGain = 3;
-			player.spdGain = 4;
+			player.powGain = 5;
+			player.defGain = 3;
 			if (!player.skills[0])
 			{
 				player.skills[0] = 1;
@@ -151,29 +143,9 @@ function createCharacter() {
 				player.skills[1] = 1;
 			}
 			break;
-		case jobEnum.PIRATE:
-			player.hpGain = 7;
-			player.mpGain = 2;
-			player.strGain = 4;
-			player.defGain = 5;
-			player.magGain = 4;
-			player.spdGain = 3;
-			if (!player.skills[20])
-			{
-				player.skills[20] = 1;
-			}
-			if (!player.skills[21])
-			{
-				player.skills[21] = 1;
-			}
-			break;
-		case jobEnum.MEDIUM:
-			player.hpGain = 5;
-			player.mpGain = 3;
-			player.strGain = 4;
-			player.defGain = 3;
-			player.magGain = 5;
-			player.spdGain = 4;
+		case jobEnum.MYSTIC:
+			player.powGain = 4;
+			player.defGain = 4;
 			if (!player.skills[40])
 			{
 				player.skills[40] = 1;
@@ -183,30 +155,27 @@ function createCharacter() {
 				player.skills[41] = 1;
 			}
 			break;
-		case jobEnum.JUGGLER:
-			player.hpGain = 7;
-			player.mpGain = 2;
-			player.strGain = 3;
-			player.defGain = 4;
-			player.magGain = 4;
-			player.spdGain = 5;
-			if (!player.skills[60])
+		case jobEnum.PIRATE:
+			player.powGain = 3;
+			player.defGain = 5;
+			if (!player.skills[20])
 			{
-				player.skills[60] = 1;
+				player.skills[20] = 1;
 			}
-			if (!player.skills[61])
+			if (!player.skills[21])
 			{
-				player.skills[61] = 1;
+				player.skills[21] = 1;
 			}
+			break;
 	}
-	player.baseHpMax = player.hpGain;
-	player.baseMpMax = player.mpGain;
-	player.baseStr = player.strGain;
+	player.baseHpMax = 10;
+	player.baseMpMax = 3;
+	player.basePow = player.powGain;
 	player.baseDef = player.defGain;
-	player.baseMag = player.magGain;
-	player.baseSpd = player.spdGain;
+	player.baseInit = 0;
 	player.quests = [];
 	player.zoneCounters = [];
+	player.combatQueue = [];
 	$("#characterCreation").hide();
 	$("#mainGame").show();
 	link_inventory.classList.remove("hide");
@@ -215,6 +184,7 @@ function createCharacter() {
 	calculateStats();
 	player.hp = player.effHpMax;
 	player.mp = player.effMpMax;
+	player.gold = 50;
 	redrawCharPane();
 	redrawInfoPanel();
 	goToLocation ("intro");
@@ -225,20 +195,23 @@ function calculateStats ()
 	player.fullMax = 10;
 	player.effHpMax = player.baseHpMax;
 	player.effMpMax = player.baseMpMax;
-	player.effStr = player.baseStr;
+	player.effPow = player.basePow;
 	player.effDef = player.baseDef;
-	player.effMag = player.baseMag;
-	player.effSpd = player.baseSpd;
+	player.effInit = player.baseInit;
+	player.effCritMultiplier = 1.2;
 	player.fireDamage = 0;
 	player.iceDamage = 0;
+	player.psychicDamage = 0;
+	player.emotionalDamage = 0;
 	player.fireRes = 0;
 	player.iceRes = 0;
+	player.psychicRes = 0;
+	player.emotionalRes = 0;
 	player.hpRegen = 0;
 	player.mpRegen = 0;
 	player.effItemBoost = 0;
 	player.effGoldBoost = 0;
 	player.effMl = 0;
-	player.stormySeas = 0;
 	
 	//apply equipment
 	for (var i in player.equipment)
@@ -256,12 +229,6 @@ function calculateStats ()
 	for (var i in player.buffs)
 	{
 		effects[player.buffs[i].id].effect();
-	}
-
-	//apply juggling balls
-	for (var i in player.juggles)
-	{
-		jugglingBalls[player.juggles[i]].effect();
 	}
 	
 	//apply passives
@@ -283,18 +250,14 @@ function calculateStats ()
 		player.effMpMax = 0;
 	if (player.mp > player.effMpMax)
 		player.mp = player.effMpMax;
-	if (player.effStr < 0)
-		player.effStr = 0;
+	if (player.effPow < 0)
+		player.effPow = 0;
 	if (player.effDef < 0)
 		player.effDef = 0;
-	if (player.effMag < 0)
-		player.effMag = 0;
-	if (player.effSpd < 0)
-		player.effSpd = 0;
 
 	if (player.job == jobEnum.WRESTLER)
 	{
-		player.hpRegen += Math.floor(player.effHpMax / 4);
+		player.hpRegen += Math.floor(player.effHpMax / 5);
 	}
 	redrawCharPane();
 }
@@ -310,20 +273,13 @@ function giveExp (e)
 	{
 		player.expLev -= statLevelDeltas[player.statLev-1];
 		player.statLev++;
-		player.baseHpMax += player.hpGain;
-		player.baseMpMax += player.mpGain;
-		player.baseStr += player.strGain;
+		player.baseHpMax += 5;
+		player.baseMpMax += 1;
+		player.basePow += player.powGain;
 		player.baseDef += player.defGain;
-		player.baseMag += player.magGain;
-		player.baseSpd += player.spdGain;
+		player.baseInit += 2;
 		t += "<br><strong>You grew your stats!</strong>";
 		calculateStats();
-		if (player.job == jobEnum.JUGGLER)
-		{
-			player.mp = player.effMpMax;
-			t += "<br><strong>Your juggler training causes you to meditate, restoring your MP!</strong>";
-			redrawCharPane();
-		}
 	}
 	while (player.exp >= levelDeltas[player.level-1])
 	{

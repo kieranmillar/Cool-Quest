@@ -88,10 +88,10 @@ var zones = [
 			{
 				beginNoncombat (noncombats[6]);
 			}
-			else if (player.equipment[5] == 25 ||
+			else if (player.equipment[4] == 25 ||
+				player.equipment[5] == 25 ||
 				player.equipment[6] == 25 ||
-				player.equipment[7] == 25 ||
-				player.equipment[8] == 25)
+				player.equipment[7] == 25)
 			{
 				beginNoncombat (noncombats[7]);
 			}

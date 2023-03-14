@@ -180,7 +180,7 @@ var combats = [
 		id: 7,
 		name: "a crème brûlée pyromaniac",
 		description: "A man wielding a crème brûlée torch and with a bunch of crème brûlées tied around his waist is standing in the middle of the room. He gives you a weird, spaced out grin, then charges at your flammable self.",
-		icon: "empty.png",
+		icon: "creme_brulee_pyro.png",
 		hp: 18,
 		pow: 8,
 		def: 2,

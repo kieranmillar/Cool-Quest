@@ -308,7 +308,7 @@ var items = [
 		name: "crème brûlée torch",
 		description: "This is a tiny blowtorch designed to caramelize the sugar on top of a crème brûlée, but you can use it for all sorts of things, such as a fancy cigarette lighter.",
 		enchantment: "+5 Fire Damage",
-		icon: "no_image.png",
+		icon: "creme_brulee_torch.png",
 		type: "Weapon",
 		category: itemType.WEAPON,
 		sell: 15,

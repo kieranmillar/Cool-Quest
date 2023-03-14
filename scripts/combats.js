@@ -86,13 +86,19 @@ function beginCombat (obj)
 	if ("element" in obj)
 	{
 		monster.element = obj.element;
-		if (obj.element == elementEnum.FIRE)
-		{
-			$("#monsterAttackImage").attr("src", "./images/fire.png");
-		}
-		if (obj.element == elementEnum.ICE)
-		{
-			$("#monsterAttackImage").attr("src", "./images/ice.png");
+		switch (obj.element) {
+			case elementEnum.FIRE:
+				$("#monsterAttackImage").attr("src", "./images/fire.png");
+				break;
+			case elementEnum.ICE:
+				$("#monsterAttackImage").attr("src", "./images/ice.png");
+				break;
+			case elementEnum.PSYCHIC:
+				$("#monsterAttackImage").attr("src", "./images/psychic_brain.png");
+				break;
+			case elementEnum.EMOTIONAL:
+				$("#monsterAttackImage").attr("src", "./images/emotional.png");
+				break;
 		}
 	}
 	else

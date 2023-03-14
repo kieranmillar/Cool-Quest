@@ -108,30 +108,32 @@ function displayTrainer()
 	let lastLevel = 0;
 	for (var i in skills)
 	{
-		if (!player.skills[i])
+		if (player.skills[i])
 		{
-			if (skills[i].job == player.job)
-			{
-				if (skills[i].level != lastLevel)
-				{
-					lastLevel = skills[i].level;
-					var newElement = $('<h2></h2>');
-					newElement.text("Level " + lastLevel);
-					trainerDiv.append(newElement);
-				}
-				var newElement = $('<div></div>');
-				newElement.addClass("item");
-				var textImageDiv = $('<span></span>');
-				textImageDiv.addClass("item_Image");
-				textImageDiv.html("<image src='./images/" + skills[i].icon + "'><span>" + skills[i].name + "</span>");
-				textImageDiv.attr({"onClick" : "openDialog (dialogType.SKILL, " + i + ");"});
-				newElement.append(textImageDiv);
-				var buyLink = $('<span></span>');
-				buyLink.html("<input type = 'button' value = 'Train\n(" + skills[i].price + " Gold)' onClick = 'buySkill(" + i + ")'>");
-				newElement.append(buyLink);
-				trainerDiv.append(newElement);
-			}
+			continue; // already owned
 		}
+		if (!"job" in skills[i] || skills[i].job != player.job)
+		{
+			continue; // not a purchaseable skill for this class
+		}
+		if (skills[i].level != lastLevel)
+		{
+			lastLevel = skills[i].level;
+			var newElement = $('<h2></h2>');
+			newElement.text("Level " + lastLevel);
+			trainerDiv.append(newElement);
+		}
+		var newElement = $('<div></div>');
+		newElement.addClass("item");
+		var textImageDiv = $('<span></span>');
+		textImageDiv.addClass("item_Image");
+		textImageDiv.html("<image src='./images/" + skills[i].icon + "'><span>" + skills[i].name + "</span>");
+		textImageDiv.attr({"onClick" : "openDialog (dialogType.SKILL, " + i + ");"});
+		newElement.append(textImageDiv);
+		var buyLink = $('<span></span>');
+		buyLink.html("<input type = 'button' value = 'Train\n(" + skills[i].price + " Gold)' onClick = 'buySkill(" + i + ")'>");
+		newElement.append(buyLink);
+		trainerDiv.append(newElement);
 	}
 }
 
@@ -193,7 +195,7 @@ function useNoncombatSkill (x)
 		hint ("That's not a valid skill!", "r");
 		return false;
 	}
-	if(skills[x].hasOwnProperty("onUse") == false)
+	if(!"onUse" in skills[x])
 	{
 		hint ("That's not a useable skill!", "r");
 		return false;

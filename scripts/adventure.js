@@ -23,7 +23,7 @@ function adventure (z)
 		goToLocation ("toughZoneWarning");
 		return;
 	}
-	if(zones[z].hasOwnProperty("special"))
+	if("special" in zones[z])
 	{
 		zones[z].special();
 	}
@@ -71,24 +71,19 @@ function endAdventure()
 }
 
 // Pick a random combat from a zone. Rejects and rerolls if that combat is in the queue
-function pickRandomCombat (zone)
-{
-	console.log("picking a combat");
+function pickRandomCombat (zone) {
 	let queueCopy = player.combatQueue.map(x => x);
 	let working = true;
 	let combatId = 0;
-	console.log(queueCopy);
 	while (working) {
 		let r = Math.floor(Math.random() * zones[zone].combats.length);
 		combatId = zones[zone].combats[r];
-		console.log(combatId);
 		let indexInQueueCopy = queueCopy.findIndex(x => x == combatId);
 		if (indexInQueueCopy == -1){
 			working = false;
 		}
 		else {
 			queueCopy.splice(indexInQueueCopy, 1);
-			console.log(queueCopy);
 		}
 	}
 	beginCombat (combats[combatId]);

@@ -66,7 +66,7 @@ function beginCombat (obj)
 	if (monster.def < 0)
 		monster.def = 0;
 	monster.init = obj.init + player.effMl;
-	if (obj.hasOwnProperty("element") == true)
+	if ("element" in obj)
 	{
 		monster.element = obj.element;
 		if (obj.element == elementEnum.FIRE)
@@ -174,7 +174,7 @@ function constructCombatItemDropdown ()
 	let itemCount = 0;
 	for (let i = 0; i < player.inventory.length; i++)
 	{
-		if (items[player.inventory[i].id].hasOwnProperty("onCombat") == true)
+		if ("onCombat" in items[player.inventory[i].id])
 		{
 			let newElement = $('<option></option>');
 			newElement.val(player.inventory[i].id);
@@ -228,7 +228,7 @@ function combatRound (action)
 				}
 			}
 			let triggerEnd = true;
-			if (combats[monster.id].hasOwnProperty("afterCombat") == true)
+			if ("afterCombat" in combats[monster.id])
 			{
 				triggerEnd = combats[monster.id].afterCombat();
 			}
@@ -316,7 +316,7 @@ function combatRound (action)
 			switch (monster.element)
 			{
 				case elementEnum.PHYSICAL:
-					damage = monster.pow - player.effDef;
+					damage = Math.floor((monster.pow - player.effDef) * (1 - player.effDamageReduction));
 					break;
 				case elementEnum.FIRE:
 					damage = monster.pow - player.fireRes;
@@ -399,7 +399,19 @@ function combatRound (action)
 				addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
 				monster.hp -= damage;
 			}
-			checkEndOfCombat();
+			if (!checkEndOfCombat()) {
+				if (currentRound == 8) {
+					addCombatText("Your opponent is growing impatient, they're about to get very mad. You should look to end this fight quickly.");
+				}
+				if (currentRound == 9) {
+					addCombatText("Your opponent is tired of this combat, and completely flips out.");
+				}
+				if (currentRound >= 9) {
+					let powIncrease = Math.max(5, Math.floor(monster.pow * 0.1));
+					addCombatText(`Your opponent's attack grows by ${powIncrease} due to their rage.`);
+					monster.pow += powIncrease;
+				}
+			}
 		}
 	}
 	currentRound ++;
@@ -413,7 +425,7 @@ function useCombatSkill (x)
 		hint ("You've got to actually choose a skill to cast!", "r");
 		return false;
 	}
-	if(skills[x].hasOwnProperty("onUse") == false)
+	if(!"onUse" in skills[x])
 	{
 		hint ("That's not a useable skill!", "r");
 		return false;
@@ -450,7 +462,7 @@ function useCombatItem (x)
 		hint ("You've got to actually choose an item to use!", "r");
 		return false;
 	}
-	if(items[x].hasOwnProperty("onCombat") == false)
+	if(!"onCombat" in items[x])
 	{
 		hint ("That item can't be used in combat!", "r");
 		return false;
@@ -513,7 +525,7 @@ function regularAttack (value, hitMessage, critMessage)
 	{
 		addCombatText (hitMessage);
 	}
-	let t = "It takes " + value;
+	let t = "Your opponent takes " + value;
 	if (fireDamage > 0)
 	{
 		t += " <span class='fire'>+" + fireDamage + "</span>"

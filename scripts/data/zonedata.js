@@ -118,7 +118,7 @@ var zones = [
 		name: "Badger Badger Sett",
 		level: 2,
 		combatChance: 75,
-		combats: [21, 21, 22, 23, 24],
+		combats: [21, 21, 21, 22, 23, 24],
 		noncombats: [9, 10]
 	},
 ];

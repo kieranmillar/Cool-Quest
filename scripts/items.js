@@ -66,7 +66,7 @@ function unequip (slot)
 
 function useItem (id)
 {
-	if(items[id].hasOwnProperty("onUse") == false)
+	if(!"onUse" in items[id])
 	{
 		hint("That's not a useable item!", "r");
 		return;
@@ -166,7 +166,7 @@ function displayInventory()
 			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");",
 		});
 		newElement.append(textImageDiv);
-		if (items[player.inventory[i].id].hasOwnProperty("onUse") == true)
+		if ("onUse" in items[player.inventory[i].id])
 		{
 			var useLink = $('<span></span>');
 			let buttonText = "Use";

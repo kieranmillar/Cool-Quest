@@ -140,7 +140,7 @@ var items = [
 			{
 				damage = 1;
 			}
-			addCombatText ("It takes " + damage + " damage!");
+			addCombatText ("Your opponent takes " + damage + " damage!");
 			monster.hp -= damage;
 		}
 	},
@@ -385,14 +385,14 @@ var items = [
 		id: 22,
 		name: "orc trenchcoat",
 		description: "This overly large trenchcoat is great for covering yourself with, but its size is very unwieldy.",
-		enchantment: "+4 DEF<br>-8 INIT",
+		enchantment: "+10% Damage Reduction<br>-10 INIT",
 		icon: "no_image.png",
 		type: "Armour",
 		category: itemType.ARMOUR,
 		sell: 20,
 		onWear: function () {
-			player.effDef += 4;
-			player.effInit -= 8;
+			player.effDamageReduction += 0.1;
+			player.effInit -= 10;
 		}
 	},
 	{
@@ -452,20 +452,20 @@ var items = [
 	{
 		id: 27,
 		name: "roachburger",
-		description: "The classic roachburger, filled with a prime cut of the toughest meat around. Eating this will build up muscle strength and focus just trying to bite through it.",
-		enchantment: "+3 Fullness<br>+5 Turns to midnight<br>+1 Base POW",
+		description: "The classic roachburger, filled with a prime cut of the toughest meat around. Eating this will build up muscle strength just trying to bite through it.",
+		enchantment: "+2 Fullness<br>+3 Turns to midnight<br>+2 Base POW",
 		icon: "no_image.png",
 		type: "Food",
 		category: itemType.FOOD,
-		fullness: 3,
-		turns: 5,
+		fullness: 2,
+		turns: 3,
 		sell: 30,
 		onUse: function () {
 			let success = eat(27);
 			if (success == true)
 			{
-				player.basePow += 1;
-				hint (eatMessage(27) + " Your POW increased by 1!", "g");
+				player.basePow += 2;
+				hint (eatMessage(27) + " Your POW increased by 2!", "g");
 			}
 			return success;
 		}
@@ -474,34 +474,34 @@ var items = [
 		id: 28,
 		name: "Evil Eye stew",
 		description: "Renowned as one of the foulest tasting foods known to mankind, if you can eat this, you'll build up a stomach of steel that can cope with anything.",
-		enchantment: "+3 Fullness<br>+5 Turns to midnight<br>+1 Base DEF",
+		enchantment: "+2 Fullness<br>+3 Turns to midnight<br>+2 Base DEF",
 		icon: "no_image.png",
 		type: "Food",
 		category: itemType.FOOD,
-		fullness: 3,
-		turns: 5,
+		fullness: 2,
+		turns: 3,
 		sell: 30,
 		onUse: function () {
 			let success = eat(28);
 			if (success == true)
 			{
-				player.baseDef += 1;
-				hint (eatMessage(28) + " Your DEF increased by 1!", "g");
+				player.baseDef += 2;
+				hint (eatMessage(28) + " Your DEF increased by 2!", "g");
 			}
 			return success;
 		}
 	},
 	{
 		id: 29,
-		name: "speed potion",
-		description: "A green potion that makes you move at twice the speed, letting you effortlessly dance around your opponents.",
-		enchantment: "10 turns of +100% INIT",
+		name: "invisibility potion",
+		description: "A pink potion that allows you to easily sneak up on your opponents.",
+		enchantment: "10 turns of +100 INIT",
 		icon: "no_image.png",
 		type: "Potion",
 		category: itemType.POTION,
 		sell: 100,
 		onUse: function () {
-			hint ("You gain 10 turns of Double Speed.", "g");
+			hint ("You gain 10 turns of Your Invisible Now.", "g");
 			addBuff (8, 10);
 			return true;
 		}
@@ -533,7 +533,7 @@ var items = [
 	{
 		id: 31,
 		name: "Badger Badger badge",
-		description: "This badge makes you feel like doing the Badger Badger dance. It annoys everyone around you. Stop living in the Nineties!",
+		description: "This badge makes you feel like doing the Badger Badger dance. It annoys everyone around you. Stop living in the Noughties!",
 		enchantment: "+7 INIT<br>+2 Monster Level",
 		icon: "no_image.png",
 		type: "Accessory",
@@ -558,6 +558,27 @@ var items = [
 			hint ("You drink the lemonade. " + giveMp(x) + " You gain 10 turns of Lemony Fizz.", "g");
 			addBuff (9, 10);
 			return true;
+		}
+	},
+	{
+		id: 33,
+		name: "Wraithwing hot wing",
+		description: "The taste of this hot wing is so bad, you'll learn to move very quickly, so you can avoid a situation where you'd be offered another one.",
+		enchantment: "+2 Fullness<br>+3 Turns to midnight<br>+2 Base INIT",
+		icon: "no_image.png",
+		type: "Food",
+		category: itemType.FOOD,
+		fullness: 2,
+		turns: 3,
+		sell: 30,
+		onUse: function () {
+			let success = eat(33);
+			if (success == true)
+			{
+				player.baseInit += 2;
+				hint (eatMessage(33) + " Your INIT increased by 2!", "g");
+			}
+			return success;
 		}
 	},
 ];

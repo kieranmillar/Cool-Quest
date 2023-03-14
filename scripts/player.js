@@ -54,6 +54,7 @@ var player = {
 	effDef: 0,
 	effInit: 0,
 	effCritMultiplier: 1.2,
+	effDamageReduction: 0,
 	fireDamage: 0,
 	iceDamage: 0,
 	psychicDamage: 0,
@@ -199,6 +200,7 @@ function calculateStats ()
 	player.effDef = player.baseDef;
 	player.effInit = player.baseInit;
 	player.effCritMultiplier = 1.2;
+	player.effDamageReduction = 0;
 	player.fireDamage = 0;
 	player.iceDamage = 0;
 	player.psychicDamage = 0;
@@ -218,7 +220,7 @@ function calculateStats ()
 	{
 		if (player.equipment[i] != -1)
 		{
-			if(items[player.equipment[i]].hasOwnProperty("onWear"))
+			if("onWear" in items[player.equipment[i]])
 			{
 				items[player.equipment[i]].onWear();
 			}

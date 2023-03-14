@@ -472,7 +472,7 @@ var combats = [
 		init: 25,
 		exp: 32,
 		gold: 3,
-		drops: [],
+		drops: [{id: 33, chance: 50}],
 		hitMessages: [
 			"crit",
 			"hit1",
@@ -513,9 +513,9 @@ var combats = [
 		exp: 28,
 		gold: 18,
 		drops: [
-			{id: 31, chance: 40},
-			{id: 31, chance: 15},
-			{id: 31, chance: 5}
+			{id: 31, chance: 50},
+			{id: 31, chance: 20},
+			{id: 31, chance: 10}
 		],
 		hitMessages: [
 			"Other Badger Badgers suddenly appear from all directions, and they all dance on top of you.",

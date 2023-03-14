@@ -5,6 +5,20 @@ const skillType = {
 	TOGGLEABLE: 3
 }
 
+/*
+0-19 are Wrestler class skills, 20-39 Pirate, 40-59 Mystic
+id: Same number as position in the array
+name: Displayed name of the skill
+description: Flavour text when clcicked on
+enchantment: Bold blue text when clicked on describing mechanics
+icon: filename of image, relative to images folder
+job: (optional) If this is a purchasable class skill, which class it belongs to
+category: type of skill, one of the skillType enum values
+cost: (optional) MP Cost to use
+price: (optional) If this is a purchasable class skill, how much Gold it costs to buy
+level: (optional) If this is a purchasable class skill, what level you have to be to buy it
+onUse: (optional) if a combat or non-combat skill, what happens when you use it. (Passives are applied in calculateStats() or where otherwise applicable)
+*/
 var skills = [
 
 	/******
@@ -17,12 +31,8 @@ var skills = [
 		description: "You meditate over the deep energies of wrestling, putting you into a trance.",
 		enchantment: "10 turns of:<br>+10 Max HP<br>+3 POW",
 		icon: "wrestle_thought.png",
-		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 1,
-		price: 0,
-		level: 1,
 		onUse: function () {
 			castTutorialSkill();
 			hint ("You think deeply about wrestling, gaining 10 turns of Wrestling Your Thoughts!", "g");
@@ -35,12 +45,8 @@ var skills = [
 		description: "Leap at your foe for an extra hard hit.",
 		enchantment: "A regular attack that's guaranteed to be critical<br>(Once per combat)",
 		icon: "pounce.png",
-		job: jobEnum.WRESTLER,
-		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 1,
-		price: 0,
-		level: 1,
 		onUse: function () {
 			regularAttack (player.effPow, "", "You leap forward at your opponent with sheer ferocity!");
 			return true;
@@ -53,7 +59,6 @@ var skills = [
 		enchantment: "10 turns of:<br>+20 INIT",
 		icon: "grease.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 50,
@@ -70,7 +75,6 @@ var skills = [
 		enchantment: "10 turns of:<br>Critical hit damage multiplier +30%",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Toggleable",
 		category: skillType.NONCOMBAT,
 		cost: 4,
 		price: 50,
@@ -87,7 +91,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 250,
@@ -103,7 +106,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 250,
@@ -119,7 +121,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -135,7 +136,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		price: 100,
 		level: 4,
@@ -150,7 +150,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -166,7 +165,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -182,7 +180,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -198,7 +195,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -214,7 +210,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -230,7 +225,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -246,7 +240,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -262,7 +255,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -278,7 +270,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -294,7 +285,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -310,7 +300,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -326,7 +315,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.WRESTLER,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -346,12 +334,8 @@ var skills = [
 		description: function () {return "You're " + player.name + " and you're a mighty pirate!";},
 		enchantment: "10 turns of:<br>+2 Max MP<br>+3 POW",
 		icon: "pirate_face.png",
-		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 1,
-		price: 0,
-		level: 1,
 		onUse: function () {
 			castTutorialSkill();
 			hint ("You take sight of your might, gaining 10 turns of Pirate Might!", "g");
@@ -364,12 +348,8 @@ var skills = [
 		description: "Your pet parrot Crackers pecks the enemy.",
 		enchantment: "Deals 35 physical damage",
 		icon: "parrot.png",
-		job: jobEnum.PIRATE,
-		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 1,
-		price: 0,
-		level: 1,
 		onUse: function () {
 			addCombatText ("Crackers flaps over to your opponent and digs his beak into their head.");
 			let damage = 35 - monster.def;
@@ -377,7 +357,7 @@ var skills = [
 			{
 				damage = 1;
 			}
-			addCombatText ("It takes " + damage + " damage!");
+			addCombatText ("Your opponent takes " + damage + " damage!");
 			monster.hp -= damage;
 			return true;
 		}
@@ -389,7 +369,6 @@ var skills = [
 		enchantment: "Eating food fully restores your HP",
 		icon: "healthy_eating.png",
 		job: jobEnum.PIRATE,
-		type: "Passive",
 		category: skillType.PASSIVE,
 		price: 50,
 		level: 2,
@@ -398,10 +377,9 @@ var skills = [
 		id: 23,
 		name: "Storm of the Sea",
 		description: "You summon the cold strong wind of the high sea to follow you around.",
-		enchantment: "10 turns of:<br>Deals +5 Ice Damage whenever an enemy hits you.",
+		enchantment: "10 turns of:<br>Deals 5 Ice Damage whenever an enemy hits you",
 		icon: "stormy_seas.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 5,
 		price: 50,
@@ -418,7 +396,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 250,
@@ -434,7 +411,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 250,
@@ -450,7 +426,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -466,7 +441,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -482,7 +456,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -498,7 +471,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -514,7 +486,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -530,7 +501,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -546,7 +516,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -562,7 +531,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -578,7 +546,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -594,7 +561,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -610,7 +576,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -626,7 +591,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -642,7 +606,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -658,7 +621,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.PIRATE,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -678,12 +640,8 @@ var skills = [
 		description: "Who you gonna call? Ask your dead ancestral relatives for help and advice.",
 		enchantment: "10 turns of:<br>+3 POW<br>+10 INIT",
 		icon: "ghost_talk.png",
-		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 1,
-		price: 0,
-		level: 1,
 		onUse: function () {
 			castTutorialSkill();
 			hint ("You talk to your ancestors, gaining 10 turns of Ancestral Motivation!", "g");
@@ -694,14 +652,10 @@ var skills = [
 		id: 41,
 		name: "Deliver Prophecy",
 		description: "Tell your opponent about an unfortunate event in their near future.",
-		enchantment: "Deals 15 Emotional Damage. Can be increased by Emotional Damage bonuses.",
+		enchantment: "Deals 15 Emotional Damage",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
-		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 1,
-		price: 0,
-		level: 1,
 		onUse: function () {
 			let prophecies = [
 				"the next food they eat will give them indegestion",
@@ -713,7 +667,7 @@ var skills = [
 			let chosenProphecy = Math.floor(Math.random() * prophecies.length);
 			addCombatText ("You warn your opponent that " + prophecies[chosenProphecy] + ". They are stressed out by this information.");
 			let damage = calcEmotionalDamage(15 + player.emotionalDamage);
-			addCombatText ("It takes <span class='emotional'>" + damage + "</span> emotional damage!");
+			addCombatText ("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
 			monster.hp -= damage;
 			return true;
 		}
@@ -725,7 +679,6 @@ var skills = [
 		enchantment: "+20% Gold from combats",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Passive",
 		category: skillType.PASSIVE,
 		price: 50,
 		level: 2,
@@ -737,7 +690,6 @@ var skills = [
 		enchantment: "Stuns the enemy for 2 rounds<br>(Once per combat)",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 3,
 		price: 50,
@@ -761,7 +713,6 @@ var skills = [
 		enchantment: "Restore 1 MP each turn",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Passive",
 		category: skillType.PASSIVE,
 		price: 250,
 		level: 3,
@@ -769,19 +720,73 @@ var skills = [
 	{
 		id: 45,
 		name: "Spooky Ghost Story",
-		description: "You tell a story so spooky, it chills your opponents to the bone.",
-		enchantment: "Deals 80% of your POW as Ice Damage",
+		description: "You come up with an impromptu spooky story. Who knows how your opponent will feel about it.",
+		enchantment: "Deals damage equal to your POW in a random element",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Combat",
 		category: skillType.COMBAT,
 		cost: 5,
 		price: 250,
 		level: 3,
 		onUse: function () {
-			addCombatText ("You tell your opponent about a little girl walking alone in a dark wood that encounters a terrible fate. Your opponent shivers.");
-			let damage = calcIceDamage(Math.floor(player.effPow * 0.80) + player.iceDamage);
-			addCombatText ("It takes <span class='ice'>" + damage + "</span> damage!");
+			let element = Math.floor(Math.random() * 4) + 1;
+			let stories = [];
+			let chosenStory = 0;
+			let damage = 0;
+			switch (element) {
+				case elementEnum.FIRE:
+					stories = [
+						"a ghost pepper that haunts a mexican restaurant",
+						"a demon from the underworld",
+						"a gingerbread man that gains sentience",
+						"a poltergeist in a candle shop",
+						"the ghost of an arsonist"
+					];
+					chosenStory = Math.floor(Math.random() * stories.length);
+					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They sweat with horror.");
+					damage = calcFireDamage(player.effPow + player.fireDamage);
+					addCombatText ("Your opponent takes <span class='fire'>" + damage + "</span> fire damage!");
+					break;
+				case elementEnum.ICE:
+					stories = [
+						"the evil santa, Dyslexic Satan",
+						"an abandoned refrigerator that destroys the ozone layer, causing the apocolypse",
+						"somebody getting the cold shoulder from their dead spouse during a seance",
+						"a yeti that terrorises a remote mountain village",
+						"the abominable snowman"
+					];
+					chosenStory = Math.floor(Math.random() * stories.length);
+					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They shiver with horror.");
+					damage = calcIceDamage(player.effPow + player.iceDamage);
+					addCombatText ("Your opponent takes <span class='ice'>" + damage + "</span> ice damage!");
+					break;
+				case elementEnum.PSYCHIC:
+					stories = [
+						"an eldritch horror",
+						"a group of dumb teenagers acting carelessly while being hunted by a serial killer",
+						"a lame story you read on the internet about Lavender Town",
+						"deep FNAF lore",
+						"a possessed pistol that fires mind bullets"
+					];
+					chosenStory = Math.floor(Math.random() * stories.length);
+					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They cover their ears with horror.");
+					damage = calcPsychicDamage(player.effPow + player.psychicDamage);
+					addCombatText ("Your opponent takes <span class='psychic'>" + damage + "</span> psychic damage!");
+					break;
+				case elementEnum.EMOTIONAL:
+					stories = [
+						"a collapsing orphanage",
+						"a lost puppy",
+						"the plot of the film Ghost",
+						"the bad opinions expressed on social media by their favourite horror author",
+						"a love story between two ghosts who are unable to hold hands"
+					];
+					chosenStory = Math.floor(Math.random() * stories.length);
+					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They weep with horror.");
+					damage = calcEmotionalDamage(player.effPow + player.emotionalDamage);
+					addCombatText ("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
+					break;
+			}
 			monster.hp -= damage;
 			return true;
 		}
@@ -793,7 +798,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -809,7 +813,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -825,7 +828,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -841,7 +843,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -857,7 +858,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -873,7 +873,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -889,7 +888,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -905,7 +903,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -921,7 +918,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -937,7 +933,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -953,7 +948,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -969,7 +963,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -985,7 +978,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -1001,7 +993,6 @@ var skills = [
 		enchantment: "",
 		icon: "no_image.png",
 		job: jobEnum.MYSTIC,
-		type: "Non-combat",
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,

@@ -83,20 +83,20 @@ var effects = [
 		id: 7,
 		name: "Stormy Seas",
 		description: "The strong winds of the high seas are following you around, battering anyone who gets close to you.",
-		enchantment: "Deals +5 Ice Damage whenever an enemy hits you.",
+		enchantment: "Deals 5 Ice Damage whenever an enemy hits you.",
 		icon: "stormy_seas.png",
 		effect: function()
 		{}
 	},
 	{
 		id: 8,
-		name: "Double Speed",
-		description: "You're moving so fast, if this game had voice acting, everyone would be talking in a slow deep voice.",
-		enchantment: "+100% INIT",
+		name: "Your Invisible Now",
+		description: "It's like riding to work in 2025.",
+		enchantment: "+100 INIT",
 		icon: "no_image.png",
 		effect: function()
 		{
-			player.effInit += player.baseInit;
+			player.effInit += 100;
 		}
 	},
 	{

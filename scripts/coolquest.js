@@ -227,8 +227,23 @@ function openDialog (type, id)
 			d.dialog( "option", "title", skills[id].name );
 			t = "<img src='./images/" + skills[id].icon + "'>";
 			t += "<p>" + resolveProperty (skills[id].description) + "</p>";
-			t += "<p>Type: " + skills[id].type + "</p>";
-			if (skills[id].cost > 0)
+			let typeText = "";
+			switch (skills[id].category) {
+				case skillType.COMBAT:
+					typeText = "Combat";
+					break;
+				case skillType.NONCOMBAT:
+					typeText = "Non-combat";
+					break;
+				case skillType.PASSIVE:
+					typeText = "Passive";
+					break;
+				case skillType.TOGGLEABLE:
+					typeText = "Toggleable passive";
+					break;
+			}
+			t += "<p>Type: " + typeText + "</p>";
+			if ("cost" in skills[id] && skills[id].cost > 0)
 			{
 				t += "<p>Cost: " + skills[id].cost + " MP</p>";
 			}

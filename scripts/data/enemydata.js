@@ -16,6 +16,7 @@ pow: Monster POW
 def: Monster DEF
 init: Monster INIT
 element: (optional) one of elementEnum, will be PHYSICAL if not present. Elemental enemies deal damage exclusively in that element and have approriate elemental weakness and strength
+fixedStats: (optional) should be true if present, defaults to false if not. Prevents random stat variation. Intended for unique entities such as bosses
 exp: Base experience gain if you win combat
 gold: Base Gold gain if you win combat
 drops: Array of item drops, each iten is an object with two properties:
@@ -71,7 +72,7 @@ var combats = [
 	{
 		id: 2,
 		name: "a spider rogue",
-		description: "Hiding in the shadows, this shifty spider will steal your precious belongings if you're not careful. Your really small precious belongings.",
+		description: "Hiding in the shadows, this shifty spider will sneakily descend from his silk thread and pick your pocket for your precious lint.",
 		icon: "spider_rogue.png",
 		hp: 7,
 		pow: 7,
@@ -440,43 +441,45 @@ var combats = [
 	{
 		id: 17,
 		name: "a Roach Queen",
-		description: "TODO: Desc",
-		icon: "empty.png",
+		description: "The common dungeon Roach. Not really much of a threat normally, but the big issue is that they come in large groups. Very large groups. You spot a Roach Queen nearby, laying some eggs. Unfortunately, she also spots you, and starts to run away. You'd better chase her down, or soon this place will be overrun!",
+		icon: "roach_queen.png",
 		hp: 50,
 		pow: 42,
 		def: 6,
 		init: 10,
+		fixedStats: true,
 		exp: 45,
 		gold: 6,
 		drops: [
 			{id: 27, chance: 50}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"A set of eggs behind you suddenly hatch into a group of Roaches, all of which waste no time feasting on a nearby snack. It's you. You're the snack.",
+			"The Queen runs past some holes in the floor. As you chase after her, a set of giant spikes rise from the holes and stab you in the legs.",
+			"The Queen runs over a pressure plate, and a giant door rises out of the floor right where you're standing, crushing you against the ceiling.",
+			"As you give chase, the floor gives way beneath you. A trapdoor! You leap to safety, grazing yourself as you land on the floor."
 		]
 	},
 	{
 		id: 18,
 		name: "an Evil Eye",
-		description: "TODO: Desc",
-		icon: "empty.png",
+		description: "These deadly rooms are filled with these creepy eyes. They all sit still, staring in one direction, it seems as long as you don't step in their line of sight, they'll leave you alone.</p><p>Unfortunately, as you step forward, you hear a loud HMMMMM behind you, and one of the Evil Eyes is charging towards you. Oops.",
+		icon: "evil_eye.png",
 		hp: 60,
 		pow: 32,
 		def: 8,
 		init: -25,
+		fixedStats: true,
 		exp: 38,
 		gold: 5,
 		drops: [
 			{id: 28, chance: 50}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"It rolls over you. Being crushed was bad enough, but the acid layer it's coated in really stings.",
+			"It takes a bite out of you. Wait, how did it do that? It's just an eye?",
+			"It won't stop staring at you. You feel so creeped out you strain a muscle while shivering.",
+			"It headbutts you. Eyebutts. Whatever."
 		]
 	},
 	{
@@ -488,6 +491,7 @@ var combats = [
 		pow: 38,
 		def: 3,
 		init: 25,
+		fixedStats: true,
 		exp: 32,
 		gold: 3,
 		drops: [{id: 33, chance: 50}],
@@ -507,6 +511,7 @@ var combats = [
 		pow: 60,
 		def: 3,
 		init: 0,
+		fixedStats: true,
 		exp: 80,
 		gold: 8,
 		drops: [

@@ -183,18 +183,18 @@ var noncombats = [
 	},
 	{
 		id: 8,
-		title: "Baby Steps",
-		description: "A Mud Baby sits in front of you. It's sitting perfectly still, so as long as you leave it alone, it'll probably leave you alone.",
+		title: "Mud for the Mud God",
+		description: "One of the walls of this room is a made of a strange red substance. Most of it seems solid, but a large section is bulging out that seems quite gooey and could be separated off from the rest of the wall.</p><p>You get the feeling that might be a very dangerous idea though. This stuff feels like... it's almost alive...",
 		choices: [
 			{
-				buttonText: function () {return noncombatButton ("Approach the Baby", 0, "fight a Mud Baby");},
+				buttonText: function () {return noncombatButton ("Cut the mud", 0, "fight a Mud Baby");},
 				onChoosing: function ()
 				{
 					beginCombat (combats[20]);
 				}
 			},
 			{
-				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a monster");},
+				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a random monster");},
 				onChoosing: function ()
 				{
 					pickRandomCombat (7);

@@ -57,15 +57,32 @@ function beginCombat (obj)
 	monster.description = obj.description;
 	$("#monsterImg").attr("src", "./images/big/" + obj.icon);
 	monster.hp = obj.hp + player.effMl;
+	if (!"fixedStats" in obj || !obj.fixedStats) {
+		// Stats can vary by 10%, with triangular distrbution
+		monster.hp += Math.floor(monster.hp * Math.random() * 0.1);
+		monster.hp -= Math.floor(monster.hp * Math.random() * 0.1);
+	}
 	if (monster.hp < 1)
 		monster.hp = 1;
 	monster.pow = obj.pow + player.effMl;
+	if (!"fixedStats" in obj || !obj.fixedStats) {
+		monster.pow += Math.floor(monster.pow * Math.random() * 0.1);
+		monster.pow -= Math.floor(monster.pow * Math.random() * 0.1);
+	}
 	if (monster.pow < 1)
 		monster.pow = 1;
 	monster.def = obj.def + player.effMl;
+	if (!"fixedStats" in obj || !obj.fixedStats) {
+		monster.def += Math.floor(monster.def * Math.random() * 0.1);
+		monster.def -= Math.floor(monster.def * Math.random() * 0.1);
+	}
 	if (monster.def < 0)
 		monster.def = 0;
 	monster.init = obj.init + player.effMl;
+	if (!"fixedStats" in obj || !obj.fixedStats) {
+		monster.init += Math.floor(monster.init * Math.random() * 0.1);
+		monster.init -= Math.floor(monster.init * Math.random() * 0.1);
+	}
 	if ("element" in obj)
 	{
 		monster.element = obj.element;

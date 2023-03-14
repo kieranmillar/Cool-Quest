@@ -6,6 +6,24 @@ var elementEnum = {
 	EMOTIONAL: 4,
 }
 
+/*
+id: Same number as its position in the array
+name: Name of monster displayed during combat
+description: Flavour text when you enter the combat
+icon: Filepath of image, relative to images/big folder
+hp: Monster HP
+pow: Monster POW
+def: Monster DEF
+init: Monster INIT
+element: (optional) one of elementEnum, will be PHYSICAL if not present. Elemental enemies deal damage exclusively in that element and have approriate elemental weakness and strength
+exp: Base experience gain if you win combat
+gold: Base Gold gain if you win combat
+drops: Array of item drops, each iten is an object with two properties:
+--- id: The id of the item
+--- chance: The base drop chance of the item, as a whole percentage (between 1 and 100)
+hitMessages: Array of 4 strings, first one is critical hit flavour text, other three are normal hit flavour texts
+afterCombat: (optional) function to run custom code at the end of combat if you win
+*/
 var combats = [
 	{
 		id: 0,
@@ -270,8 +288,8 @@ var combats = [
 		hitMessages: [
 			"He calculates the optimal place to hit you, which is anywhere but with more force.",
 			"He pulls out a ruler and slaps you with it. The force of the blow causes the ruler to snap. 'Hey! I thought this was meant to be shatterproof!'",
-			"He pulls a pen out of his pocket and pokes you in the eye with it.",
-			"He lashes out at you with the worst fighting technique you've ever seen. One of his flailing arms connects with you by sheer luck."
+			"He pats you on the back. You reach around and find a KICK ME sign. Another orc runs over and kicks you in the butt.",
+			"He lashes out at you with the worst fighting technique you've ever seen. You cringe while watching it."
 		]
 	},
 	{

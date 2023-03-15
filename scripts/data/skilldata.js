@@ -1108,7 +1108,7 @@ var skills = [
 	},
 	{
 		id: 65,
-		name: "",
+		name: "+20 monster stat buff",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1121,7 +1121,7 @@ var skills = [
 	},
 	{
 		id: 66,
-		name: "",
+		name: "Once per day extend all active effects by 5",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1134,7 +1134,7 @@ var skills = [
 	},
 	{
 		id: 67,
-		name: "",
+		name: "monster copy some number of times per day",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1360,7 +1360,7 @@ var skills = [
 	},
 	{
 		id: 84,
-		name: "",
+		name: "Passive +10 POW",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1373,7 +1373,7 @@ var skills = [
 	},
 	{
 		id: 85,
-		name: "",
+		name: "3 free rests per day",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",

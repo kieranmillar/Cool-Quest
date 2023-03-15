@@ -1069,7 +1069,7 @@ var skills = [
 	},
 	{
 		id: 62,
-		name: "",
+		name: "50% Doctor Discount",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1082,7 +1082,7 @@ var skills = [
 	},
 	{
 		id: 63,
-		name: "",
+		name: "Another 2 turn stun skill",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1095,7 +1095,7 @@ var skills = [
 	},
 	{
 		id: 64,
-		name: "",
+		name: "Big healing skill?",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1347,7 +1347,7 @@ var skills = [
 	},
 	{
 		id: 83,
-		name: "",
+		name: "Passive +20 init",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",

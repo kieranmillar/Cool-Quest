@@ -234,15 +234,18 @@ function calculateStats ()
 	}
 	
 	//apply passives
-	if (player.skills[42])
-	{
-		player.effGoldBoost += 20;
+	for (var i in player.skills) {
+		if (!player.skills[i]) {
+			continue;
+		}
+		if (skills[i].category != skillType.PASSIVE) {
+			continue;
+		}
+		if ("onUse" in skills[i]) {
+			skills[i].onUse();
+		}
 	}
-	if (player.skills[44])
-	{
-		player.mpRegen += 1;
-	}
-	
+
 	//cap low stats to minimums
 	if (player.effHpMax < 1)
 		player.effHpMax = 1;

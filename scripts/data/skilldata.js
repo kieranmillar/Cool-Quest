@@ -25,7 +25,7 @@ category: type of skill, one of the skillType enum values
 cost: (optional) MP Cost to use
 price: (optional) If this is a purchasable class skill, how much Gold it costs to buy
 level: (optional) If this is a purchasable class skill, what level you have to be to buy it
-onUse: (optional) if a combat or non-combat skill, what happens when you use it. (Passives are applied in calculateStats() or where otherwise applicable)
+onUse: (optional) What happens when you use it. (Some passive skill effects are coded in areas where they are applicable)
 */
 var skills = [
 
@@ -717,6 +717,9 @@ var skills = [
 		category: skillType.PASSIVE,
 		price: 50,
 		level: 2,
+		onUse: function () {
+			player.effGoldBoost += 20;
+		}
 	},
 	{
 		id: 43,
@@ -751,6 +754,9 @@ var skills = [
 		category: skillType.PASSIVE,
 		price: 250,
 		level: 3,
+		onUse: function () {
+			player.mpRegen += 1;
+		}
 	},
 	{
 		id: 45,
@@ -1193,13 +1199,12 @@ var skills = [
 		id: 71,
 		name: "Passive +20% Gold",
 		description: "",
-		enchantment: "",
+		enchantment: "+20% Gold from combats",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effGoldBoost += 20;
 		}
 	},
 	{
@@ -1297,13 +1302,12 @@ var skills = [
 		id: 79,
 		name: "Passive 1MP regen",
 		description: "",
-		enchantment: "",
+		enchantment: "Restore 1 MP each turn",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.mpRegen += 1;
 		}
 	},
 	{
@@ -1323,11 +1327,10 @@ var skills = [
 		id: 81,
 		name: "Passive +1 fullness",
 		description: "",
-		enchantment: "",
+		enchantment: "+1 Max Fullness",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
 			
 		}

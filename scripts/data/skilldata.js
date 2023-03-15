@@ -5,14 +5,22 @@ const skillType = {
 	TOGGLEABLE: 3
 }
 
+const skillSource = {
+	WRESTLER: 0,
+	MYSTIC: 1,
+	PIRATE: 2, // first three values match jobEnum, used for personal trainer
+	STARTER: 3,
+	DRELLAUBIG: 4,
+	DRELLAUSMALL: 5
+}
+
 /*
-0-19 are Wrestler class skills, 20-39 Pirate, 40-59 Mystic
 id: Same number as position in the array
 name: Displayed name of the skill
 description: Flavour text when clcicked on
 enchantment: Bold blue text when clicked on describing mechanics
 icon: filename of image, relative to images folder
-job: (optional) If this is a purchasable class skill, which class it belongs to
+source: Where the skill is obtained, one of the skillSource enum values, used for filtering for various lists
 category: type of skill, one of the skillType enum values
 cost: (optional) MP Cost to use
 price: (optional) If this is a purchasable class skill, how much Gold it costs to buy
@@ -31,6 +39,7 @@ var skills = [
 		description: "You meditate over the deep energies of wrestling, putting you into a trance.",
 		enchantment: "10 turns of:<br>+10 Max HP<br>+3 POW",
 		icon: "wrestle_thought.png",
+		source: skillSource.STARTER,
 		category: skillType.NONCOMBAT,
 		cost: 1,
 		onUse: function () {
@@ -45,10 +54,16 @@ var skills = [
 		description: "Leap at your foe for an extra hard hit.",
 		enchantment: "A regular attack that's guaranteed to be critical<br>(Once per combat)",
 		icon: "pounce.png",
+		source: skillSource.STARTER,
 		category: skillType.COMBAT,
 		cost: 1,
 		onUse: function () {
+			if (monster.castPounce == 1) {
+				hint ("You've already pounced this combat!", "r");
+				return false;
+			}
 			regularAttack (player.effPow, "", "You leap forward at your opponent with sheer ferocity!");
+			monster.castPounce = 1;
 			return true;
 		}
 	},
@@ -58,7 +73,7 @@ var skills = [
 		description: "When you want to engage in Oil Wrestling but can only afford the nearest alternative...",
 		enchantment: "10 turns of:<br>+20 INIT",
 		icon: "grease.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 50,
@@ -74,7 +89,7 @@ var skills = [
 		description: "Giving your wrestling moves more flair makes them deal more damage. It's true!",
 		enchantment: "10 turns of:<br>Critical hit damage multiplier +30%",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 4,
 		price: 50,
@@ -90,7 +105,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 250,
@@ -105,7 +120,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 250,
@@ -120,7 +135,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -135,7 +150,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		price: 100,
 		level: 4,
@@ -149,7 +164,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -164,7 +179,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -179,7 +194,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -194,7 +209,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -209,7 +224,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -224,7 +239,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -239,7 +254,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -254,7 +269,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -269,7 +284,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -284,7 +299,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -299,7 +314,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -314,7 +329,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.WRESTLER,
+		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -334,6 +349,7 @@ var skills = [
 		description: function () {return "You're " + player.name + " and you're a mighty pirate!";},
 		enchantment: "10 turns of:<br>+2 Max MP<br>+3 POW",
 		icon: "pirate_face.png",
+		source: skillSource.STARTER,
 		category: skillType.NONCOMBAT,
 		cost: 1,
 		onUse: function () {
@@ -348,6 +364,7 @@ var skills = [
 		description: "Your pet parrot Crackers pecks the enemy.",
 		enchantment: "Deals 35 physical damage",
 		icon: "parrot.png",
+		source: skillSource.STARTER,
 		category: skillType.COMBAT,
 		cost: 1,
 		onUse: function () {
@@ -368,7 +385,7 @@ var skills = [
 		description: "Years of pirate experience have left you with the knowledge of how to avoid scurvy.",
 		enchantment: "Eating food fully restores your HP",
 		icon: "healthy_eating.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.PASSIVE,
 		price: 50,
 		level: 2,
@@ -379,7 +396,7 @@ var skills = [
 		description: "You summon the cold strong wind of the high sea to follow you around.",
 		enchantment: "10 turns of:<br>Deals 5 Ice Damage whenever an enemy hits you",
 		icon: "stormy_seas.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 5,
 		price: 50,
@@ -391,17 +408,33 @@ var skills = [
 	},
 	{
 		id: 24,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Special Delivery",
+		description: "Crackers will deliver a special \"gift\" the next time you get close to your opponent.",
+		enchantment: "A regular attack that also weakens your opponent's POW by 10%<br>(Once per combat)",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		source: skillSource.PIRATE,
+		category: skillType.COMBAT,
+		cost: 2,
 		price: 250,
 		level: 3,
 		onUse: function () {
-			
+			if (monster.castSpecialDelivery == 1)
+			{
+				hint ("I think your enemy has been delivered enough gifts this fight!", "r");
+				return false;
+			}
+			regularAttack(
+				player.effPow,
+				"You run up to your opponent and smack them, while Crackers flies above them and drops a special treat on top of them.",
+				"You deliver a critical blow while your opponent is distracted by the gifts delivered by Crackers overhead!");
+			var amount = Math.ceil(monster.pow * 0.1);
+			addCombatText(`Your opponent is grossed out by Crackers' gifts. Their POW drops by ${amount}!`);
+			monster.pow -= amount;
+			if (monster.pow < 1) {
+				monster.pow = 1;
+			}
+			monster.castSpecialDelivery = 1;
+			return true;
 		}
 	},
 	{
@@ -410,7 +443,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 250,
@@ -425,7 +458,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -440,7 +473,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -455,7 +488,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -470,7 +503,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -485,7 +518,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -500,7 +533,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -515,7 +548,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -530,7 +563,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -545,7 +578,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -560,7 +593,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -575,7 +608,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -590,7 +623,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -605,7 +638,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -620,7 +653,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.PIRATE,
+		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -640,6 +673,7 @@ var skills = [
 		description: "Who you gonna call? Ask your dead ancestral relatives for help and advice.",
 		enchantment: "10 turns of:<br>+3 POW<br>+10 INIT",
 		icon: "ghost_talk.png",
+		source: skillSource.STARTER,
 		category: skillType.NONCOMBAT,
 		cost: 1,
 		onUse: function () {
@@ -654,6 +688,7 @@ var skills = [
 		description: "Tell your opponent about an unfortunate event in their near future.",
 		enchantment: "Deals 15 Emotional Damage",
 		icon: "no_image.png",
+		source: skillSource.STARTER,
 		category: skillType.COMBAT,
 		cost: 1,
 		onUse: function () {
@@ -678,7 +713,7 @@ var skills = [
 		description: "You charge your opponents for your time, and are happy to ramp up the costs. They'll never know.",
 		enchantment: "+20% Gold from combats",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.PASSIVE,
 		price: 50,
 		level: 2,
@@ -689,7 +724,7 @@ var skills = [
 		description: "You expose your enemy's deepest darkest secrets, shocking them to their core. In reality it's just a generic guess, but it works pretty much all the time.",
 		enchantment: "Stuns the enemy for 2 rounds<br>(Once per combat)",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.COMBAT,
 		cost: 3,
 		price: 50,
@@ -712,7 +747,7 @@ var skills = [
 		description: "Everywhere you go you rearrange the furniture to maximise the effectiveness your chakras. Or something like that.<br>Look I'll be honest, I don't really understand any of this stuff.",
 		enchantment: "Restore 1 MP each turn",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.PASSIVE,
 		price: 250,
 		level: 3,
@@ -723,7 +758,7 @@ var skills = [
 		description: "You come up with an impromptu spooky story. Who knows how your opponent will feel about it.",
 		enchantment: "Deals damage equal to your POW in a random element",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.COMBAT,
 		cost: 5,
 		price: 250,
@@ -797,7 +832,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -812,7 +847,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -827,7 +862,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -842,7 +877,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -857,7 +892,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -872,7 +907,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -887,7 +922,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -902,7 +937,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -917,7 +952,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -932,7 +967,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -947,7 +982,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -962,7 +997,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -977,7 +1012,7 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
@@ -992,11 +1027,411 @@ var skills = [
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
-		job: jobEnum.MYSTIC,
+		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		price: 100,
 		level: 10,
+		onUse: function () {
+			
+		}
+	},
+
+	/******
+	DRELLA U BIG
+	******/
+
+	{
+		id: 60,
+		name: "Once per day monster banish (free combat, no rewards, not bosses)",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 61,
+		name: "Once per day yellow ray (wins fight, gets all drops, not bosses)",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 62,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 63,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 64,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 65,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 66,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 67,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 68,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 69,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUBIG,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+
+	/******
+	DRELLA U SMALL
+	******/
+
+	{
+		id: 70,
+		name: "Passive +10% item drops",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 71,
+		name: "Passive +20% Gold",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 72,
+		name: "+5% non-com buff",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 73,
+		name: "+5% com buff",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 74,
+		name: "Passive +10 Fire Res",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 75,
+		name: "Passive +10 Ice res",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 76,
+		name: "Passive +10 Psychic res",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 77,
+		name: "Passive +10 Emotional res",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 78,
+		name: "Passive +25 max HP and +5 max MP",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 79,
+		name: "Passive 1MP regen",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 80,
+		name: "+10 Monster stats buff",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 81,
+		name: "Passive +1 fullness",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 82,
+		name: "Basic noncombat healing skill?",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 83,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 84,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 85,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 86,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 87,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 88,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
+		onUse: function () {
+			
+		}
+	},
+	{
+		id: 89,
+		name: "",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
+		source: skillSource.DRELLAUSMALL,
+		category: skillType.NONCOMBAT,
+		cost: 3,
 		onUse: function () {
 			
 		}

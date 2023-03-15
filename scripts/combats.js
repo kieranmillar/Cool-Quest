@@ -12,6 +12,7 @@ var monster = {
 	drops: [],
 	hitMessages: [""], //first message is for criticals
 	castPounce: 0,
+	castSpecialDelivery: 0,
 	castExposeSecrets: 0,
 	exposeSecretsRounds: 0,
 };
@@ -111,6 +112,7 @@ function beginCombat (obj)
 	monster.drops = obj.drops;
 	monster.hitMessages = obj.hitMessages;
 	monster.castPounce = 0;
+	monster.castSpecialDelivery = 0;
 	monster.castExposeSecrets = 0;
 	monster.exposeSecretsRounds = 0;
 	$("#combatText").empty();
@@ -162,12 +164,13 @@ function constructCombatSkillDropdown ()
 	{
 		if (skills[i].category == skillType.COMBAT && player.skills[i] > 0)
 		{
-			if (i == 1 && monster.castPounce == 1)
-			{
+			if (i == 1 && monster.castPounce == 1) {
 				continue;
 			}
-			if (i == 43 && monster.castExposeSecrets == 1)
-			{
+			if (i == 24 && monster.castSpecialDelivery == 1) {
+				continue;
+			}
+			if (i == 43 && monster.castExposeSecrets == 1) {
 				continue;
 			}
 			let newElement = $('<option></option>');

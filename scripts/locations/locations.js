@@ -26,6 +26,7 @@ var location_cid = document.getElementById("loc_cid");
 var location_pawnShop = document.getElementById("loc_pawnShop");
 var location_shopGeneral = document.getElementById("loc_shopGeneral");
 var location_trainer = document.getElementById("loc_trainer");
+var location_drellaU = document.getElementById("loc_drellaU");
 var location_doctor = document.getElementById("loc_doctor");
 var location_townHall = document.getElementById("loc_townHall");
 var location_dungeons = document.getElementById("loc_dungeons");
@@ -174,6 +175,10 @@ function goToLocation (l) {
 		case "trainer":
 			location_trainer.classList.remove("hide");
 			displayTrainer();
+			break;
+		case "drellaU":
+			location_drellaU.classList.remove("hide");
+			//displayDrellaU();
 			break;
 		case "doctor":
 			location_doctor.classList.remove("hide");

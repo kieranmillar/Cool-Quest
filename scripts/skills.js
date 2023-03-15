@@ -112,7 +112,7 @@ function displayTrainer()
 		{
 			continue; // already owned
 		}
-		if (!"job" in skills[i] || skills[i].job != player.job)
+		if (skills[i].source != player.job)
 		{
 			continue; // not a purchaseable skill for this class
 		}
@@ -144,9 +144,9 @@ function buySkill (id)
 		hint ("You already own that skill!", "r");
 		return;
 	}
-	if (player.job != skills[id].job)
+	if (player.job != skills[id].source)
 	{
-		hint ("You haare the wrong job to learn that!", "r");
+		hint ("You are the wrong job to learn that!", "r");
 		return;
 	}
 	if (player.level < skills[id].level)

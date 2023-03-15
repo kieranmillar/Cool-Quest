@@ -9,7 +9,7 @@
 		
 		<meta name="author" content="Kieran Millar">
 		
-		<meta name="revised" content="Kieran Millar, 14/03/2023">
+		<meta name="revised" content="Kieran Millar, 15/03/2023">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
@@ -270,6 +270,7 @@
 						<button type="button" onclick="goToLocation('pawnShop')">Visit the Pawn Shop</button>
 						<button type="button" onclick="goToLocation('shopGeneral')">Visit the General Store</button>
 						<button type="button" onclick="goToLocation('trainer')">Visit the Personal Trainer</button>
+						<button type="button" onclick="goToLocation('drellaU')">Visit Drella U</button>
 						<button type="button" onclick="goToLocation('doctor')">Visit the Doctor</button>
 						<button type="button" id="town_townHallButton" onclick="goToLocation('townHall')">Visit the Town Hall</button>
 						<button type="button" onclick="goToLocation('dungeons')">Visit the Dungeons</button>
@@ -320,6 +321,12 @@
 					<div id="loc_trainer" class="location">
 						<p>You visit the personal trainer.</p>
 						<div id="trainerList"></div>
+						<button type="button" onclick="goToLocation('town')">Back to Town</button>
+					</div>
+					<div id="loc_drellaU" class="location">
+						<p>You visit Drella U, the town's University.</p>
+						<p>TODO: This location</p>
+						<div id="drellaUList"></div>
 						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_doctor" class="location">

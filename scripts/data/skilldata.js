@@ -1153,7 +1153,7 @@ var skills = [
 	},
 	{
 		id: 68,
-		name: "",
+		name: "-1 MP to cast combat skills",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1384,7 +1384,7 @@ var skills = [
 	},
 	{
 		id: 86,
-		name: "",
+		name: "passive +10% critical hit chance",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",

@@ -1186,13 +1186,12 @@ var skills = [
 		id: 70,
 		name: "Passive +10% item drops",
 		description: "",
-		enchantment: "",
+		enchantment: "+10% Item drop chance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effItemBoost += 10;
 		}
 	},
 	{
@@ -1237,52 +1236,48 @@ var skills = [
 		id: 74,
 		name: "Passive +10 Fire Res",
 		description: "",
-		enchantment: "",
+		enchantment: "+10 Fire Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.fireRes += 10;
 		}
 	},
 	{
 		id: 75,
 		name: "Passive +10 Ice res",
 		description: "",
-		enchantment: "",
+		enchantment: "+10 Ice Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.iceRes += 10;
 		}
 	},
 	{
 		id: 76,
 		name: "Passive +10 Psychic res",
 		description: "",
-		enchantment: "",
+		enchantment: "+10 Psychic Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.psychicRes += 10;
 		}
 	},
 	{
 		id: 77,
 		name: "Passive +10 Emotional res",
 		description: "",
-		enchantment: "",
+		enchantment: "+10 Emotional Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.emotionalRes += 10;
 		}
 	},
 	{

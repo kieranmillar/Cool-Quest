@@ -101,13 +101,13 @@ var skills = [
 	},
 	{
 		id: 4,
-		name: "",
+		name: "Dramatic Entrance",
 		description: "",
-		enchantment: "",
+		enchantment: "10 turns of Deal 25 Fire Damage at the start of combat",
 		icon: "no_image.png",
 		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 5,
 		price: 250,
 		level: 3,
 		onUse: function () {
@@ -116,17 +116,16 @@ var skills = [
 	},
 	{
 		id: 5,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Faceroll",
+		description: "Your preferred gaming technique has built up resistance in your face so you can take more of a beating.",
+		enchantment: "+50% Max HP",
 		icon: "no_image.png",
 		source: skillSource.WRESTLER,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		price: 250,
 		level: 3,
 		onUse: function () {
-			
+			player.effHpMax += Math.floor(player.baseHpMax * 1.5);
 		}
 	},
 	{

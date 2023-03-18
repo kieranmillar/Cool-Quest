@@ -440,7 +440,7 @@ var combats = [
 	},
 	{
 		id: 17,
-		name: "a Roach Queen",
+		name: "a roach Queen",
 		description: "The common dungeon Roach. Not really much of a threat normally, but the big issue is that they come in large groups. Very large groups. You spot a Roach Queen nearby, laying some eggs. Unfortunately, she also spots you, and starts to run away. You'd better chase her down, or soon this place will be overrun!",
 		icon: "roach_queen.png",
 		hp: 50,
@@ -484,8 +484,8 @@ var combats = [
 	},
 	{
 		id: 19,
-		name: "a Wraithwing",
-		description: "TODO: Desc",
+		name: "a wraithwing",
+		description: "Wraithwings are more inquisitive than dangerous on their own, but get two together in a room and... well to be honest the threat level doesn't exactly go up much.",
 		icon: "empty.png",
 		hp: 35,
 		pow: 38,
@@ -496,10 +496,10 @@ var combats = [
 		gold: 3,
 		drops: [{id: 33, chance: 50}],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"Another wraithwing appears directly behind you, the one place where something dangerous will actually happen.",
+			"You jump up while trying to strike the wraithwing and land awkwardly, spraining your ankle.",
+			"The wraithwing flaps its wings, causing some debris to strike you.",
+			"You research how wraithwings behave in groups and end up with a thumping headache."
 		]
 	},
 	{

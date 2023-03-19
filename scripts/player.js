@@ -80,6 +80,8 @@ var player = {
 	],
 	toggleSkills: [],
 	options: [0, 0, 1, 0],
+	drellaUDailyBigSkill: -1,
+	drellaUDailySmallSkills: [],
 	quests: [],
 	zoneCounters: [],
 	combatQueue: [],
@@ -188,6 +190,7 @@ function createCharacter() {
 	player.gold = 50;
 	redrawCharPane();
 	redrawInfoPanel();
+	randomiseDrellaUSkills();
 	goToLocation ("intro");
 }
 

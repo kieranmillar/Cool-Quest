@@ -122,7 +122,7 @@ function gainItem (id, amount)
 
 function loseItem (id, amount)
 {
-	let itemPosition = checkInInventory (id);
+	let itemPosition = checkInInventory(id);
 	if (itemPosition == -1)
 	{
 		return false; // don't own the item anyway

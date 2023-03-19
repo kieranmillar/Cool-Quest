@@ -558,7 +558,10 @@ var combats = [
 		init: -20,
 		exp: 26,
 		gold: 19,
-		drops: [],
+		drops: [
+			{id: 34, chance: 40},
+			{id: 34, chance: 10}
+		],
 		hitMessages: [
 			"crit",
 			"hit1",

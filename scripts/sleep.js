@@ -14,8 +14,10 @@ function sleep() {
 	player.turnsToMidnight = 40;
 	player.day++;
 	player.full = 0;
+	randomiseDrellaUSkills();
 	redrawCharPane();
 	redrawInfoPanel();
+	save();
 }
 
 // Adds a new paragraph of text onto the sleep screen

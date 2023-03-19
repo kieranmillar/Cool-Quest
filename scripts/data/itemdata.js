@@ -9,6 +9,22 @@ const itemType = {
 	MISC: 7
 }
 
+/*
+id: Same number as its position in the array
+name: Display name of item
+description: Flavour text when clicked on
+enchantment: Bold blue text when clicked on describing mechanics
+icon: Filepath of image, relative to images folder
+type: string that displays when clicked on describing what categories it belongs to
+category: value from itemType enum that determines how it is filtered in inventory etc.
+fullness: (optional) only for food, how much fullness it uses when eaten,
+turns: (optional) only for food, how many turns it gives,
+cost: (optional) if purchaseable in a store, how much it costs,
+sell: how much you can sell it for in the pawn shop, value of zero makes it unsellable,
+onUse: (optional) a function that, if present, is the code for what happens when used (or eaten) from inventory
+onWear: (optional) a function that, if present, is the code for what happens when you equip it
+onCombat: (optional) a function that, if present, is the code for what happens when used in combat
+*/
 var items = [
 	{
 		id: 0,
@@ -581,4 +597,30 @@ var items = [
 			return success;
 		}
 	},
+	{
+		id: 34,
+		name: "mushroom spores",
+		description: "You're not sure if these are the fun kind of mushroom or the dangerous kind, but you do know that throwing them hard enough at your enemy will produce a cloud that, at the very least, should distract them.",
+		enchantment: "Reduces enemy DEF to 0<br>Stuns the enemy this round",
+		icon: "no_image.png",
+		type: "Combat Item",
+		category: itemType.MISC,
+		sell: 20,
+		onCombat: function () {
+			addCombatText ("You throw the spores at the enemy. They get distracted trying to figure out if these are poisonous or not.");
+			monster.def = 0;
+			addCombatText ("Their DEF drops to 0.");
+			monster.stunThisRound = true;
+		}
+	},
+	{
+		id: 35,
+		name: "Drella U course voucher",
+		description: "Like all university towns, Drella is entitled to subsidies for university courses from the governemnt. Drella decided to distribute these subsidies via a voucher system. This is a chance to learn a new skill, or you could fob it off to someone else for a tidy sum.",
+		enchantment: "Entitles you to a free course at Drella U",
+		icon: "no_image.png",
+		type: "Miscellaneous",
+		category: itemType.MISC,
+		sell: 1000
+	}
 ];

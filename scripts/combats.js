@@ -14,6 +14,7 @@ var monster = {
 	castPounce: 0,
 	castSpecialDelivery: 0,
 	castExposeSecrets: 0,
+	stunThisRound: false,
 	exposeSecretsRounds: 0,
 };
 
@@ -114,6 +115,7 @@ function beginCombat (obj)
 	monster.castPounce = 0;
 	monster.castSpecialDelivery = 0;
 	monster.castExposeSecrets = 0;
+	monster.stunThisRound = false;
 	monster.exposeSecretsRounds = 0;
 	$("#combatText").empty();
 	addCombatText (monster.description);
@@ -282,8 +284,8 @@ function combatRound (action)
 	let damage = 0;
 	let usingSkill = -1;
 	let usingItem = -1;
-	switch (action)
-	{
+	monster.stunThisRound = false;
+	switch (action) {
 		case -1:
 			//monster went first
 			break;
@@ -320,22 +322,20 @@ function combatRound (action)
 		default:
 			return;
 	}
-	if (!checkEndOfCombat())
-	{
-		if (monster.exposeSecretsRounds > 0)
-		{
+	if (!checkEndOfCombat()) {
+		if (monster.stunThisRound) {
+			// It is the responsibility of the stun source to provide the combat text
+		}
+		else if (monster.exposeSecretsRounds > 0) {
 			monster.exposeSecretsRounds --;
-			if (monster.exposeSecretsRounds > 0)
-			{
+			if (monster.exposeSecretsRounds > 0) {
 				addCombatText("Your opponent stands there panicing, with a terrified expression on their face.");
 			}
-			else
-			{
+			else {
 				addCombatText("Your opponent shakes its head and blinks. Looks like its gotten over the initial shock.");
 			}
 		}
-		else
-		{
+		else {
 			let isCrit = false;
 			let overrideStandardAttack = false;
 			let overrideCrit = false;

@@ -178,7 +178,7 @@ function goToLocation (l) {
 			break;
 		case "drellaU":
 			location_drellaU.classList.remove("hide");
-			//displayDrellaU();
+			displayDrellaU();
 			break;
 		case "doctor":
 			location_doctor.classList.remove("hide");

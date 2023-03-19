@@ -17,7 +17,7 @@ const skillSource = {
 /*
 id: Same number as position in the array
 name: Displayed name of the skill
-description: Flavour text when clcicked on
+description: Flavour text when clicked on
 enchantment: Bold blue text when clicked on describing mechanics
 icon: filename of image, relative to images folder
 source: Where the skill is obtained, one of the skillSource enum values, used for filtering for various lists
@@ -1165,7 +1165,7 @@ var skills = [
 	},
 	{
 		id: 69,
-		name: "",
+		name: "TODO: Large skill 69",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1283,13 +1283,13 @@ var skills = [
 		id: 78,
 		name: "Passive +25 max HP and +5 max MP",
 		description: "",
-		enchantment: "",
+		enchantment: "+25 Max HP<br>+5 Max MP",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effHpMax += 25;
+			player.effMpMax += 5;
 		}
 	},
 	{
@@ -1326,7 +1326,7 @@ var skills = [
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.fullMax += 1;
 		}
 	},
 	{
@@ -1396,7 +1396,7 @@ var skills = [
 	},
 	{
 		id: 87,
-		name: "",
+		name: "TODO: Small skill 87",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1409,7 +1409,7 @@ var skills = [
 	},
 	{
 		id: 88,
-		name: "",
+		name: "TODO: Small skill 88",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1422,7 +1422,7 @@ var skills = [
 	},
 	{
 		id: 89,
-		name: "",
+		name: "TODO: Small skill 89",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",

@@ -9,7 +9,7 @@
 		
 		<meta name="author" content="Kieran Millar">
 		
-		<meta name="revised" content="Kieran Millar, 15/03/2023">
+		<meta name="revised" content="Kieran Millar, 19/03/2023">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
@@ -324,9 +324,15 @@
 						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_drellaU" class="location">
-						<p>You visit Drella U, the town's University.</p>
-						<p>TODO: This location</p>
-						<div id="drellaUList"></div>
+						<p>You visit Drella U, the town's university. A receptionist is sitting behind a desk, chewing on some gum.</p>
+						<p>"Welcome to Drella U. We offer a range of courses to teach you new skills. With over 200 years of experience, we've refined our courses to teach you all you need to know in only 20 minutes!"</p>
+						<p>"All of our paid spaces are full, I'm afraid we can only offer spaces to those with government vouchers."</p>
+						<p>"Here's the courses we still have avaialble today. If you don't think any are suitable, feel free to come back tomorrow, and we'll see if we can find you another one."</p>
+						<p>You have <span id="drellaU_voucherCount"></span> to spend.</p>
+						<h2>Large Course</h2>
+						<div id="drellaU_bigList"></div>
+						<h2>Small Courses</h2>
+						<div id="drellaU_smallList"></div>
 						<button type="button" onclick="goToLocation('town')">Back to Town</button>
 					</div>
 					<div id="loc_doctor" class="location">
@@ -427,6 +433,7 @@
 		<script src="./scripts/locations/locations.js"></script>
 		<script src="./scripts/locations/elder.js"></script>
 		<script src="./scripts/locations/cid.js"></script>
+		<script src="./scripts/locations/drellaU.js"></script>
 		<script src="./scripts/adventure.js"></script>
 		<script src="./scripts/combats.js"></script>
 		<script src="./scripts/noncombats.js"></script>

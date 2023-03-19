@@ -616,7 +616,7 @@ var items = [
 	{
 		id: 35,
 		name: "Drella U course voucher",
-		description: "Like all university towns, Drella is entitled to subsidies for university courses from the governemnt. Drella decided to distribute these subsidies via a voucher system. This is a chance to learn a new skill, or you could fob it off to someone else for a tidy sum.",
+		description: "Like all university towns, Drella is entitled to subsidies for university courses from the governemnt. Drella decided to distribute these subsidies via a voucher system. This is a chance to learn a new skill, or you could sell it off to someone else for a tidy sum, which is kind of like taking the Economics course.",
 		enchantment: "Entitles you to a free course at Drella U",
 		icon: "no_image.png",
 		type: "Miscellaneous",

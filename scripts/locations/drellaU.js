@@ -112,6 +112,7 @@ function learnDrellaUSkill(id) {
         return false;
     }
     player.skills[id] = 1;
+    calculateStats();
     goToLocation("drellaU");
     if (largeSkill) {
         hint("You spent 2 vouchers to go on a course and learned a new skill!", "g");

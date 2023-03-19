@@ -233,7 +233,9 @@ function calculateStats ()
 	//apply buffs
 	for (var i in player.buffs)
 	{
-		effects[player.buffs[i].id].effect();
+		if ("effect" in effects[player.buffs[i].id]) {
+			effects[player.buffs[i].id].effect();
+		}
 	}
 	
 	//apply passives

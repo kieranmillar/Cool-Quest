@@ -137,36 +137,30 @@ function displayTrainer()
 	}
 }
 
-function buySkill (id)
-{
-	if (player.skills[id] > 0)
-	{
-		hint ("You already own that skill!", "r");
+function buySkill (id) {
+	if (player.skills[id] > 0) {
+		hint("You already own that skill!", "r");
 		return;
 	}
-	if (player.job != skills[id].source)
-	{
-		hint ("You are the wrong job to learn that!", "r");
+	if (player.job != skills[id].source) {
+		hint("You are the wrong job to learn that!", "r");
 		return;
 	}
-	if (player.level < skills[id].level)
-	{
-		hint ("You aren't a high enough level to learn that!", "r");
+	if (player.level < skills[id].level) {
+		hint("You aren't a high enough level to learn that!", "r");
 		return;
 	}
-	if (player.gold >= skills[id].price)
-	{
+	if (player.gold >= skills[id].price) {
 		player.gold -= skills[id].price;
 		player.skills[id] = 1;
 		displayTrainer();
-		hint ("You learned the skill " + skills[id].name + "!", "g");
-		save ();
+		hint("You learned the skill " + skills[id].name + "!", "g");
+		save();
 	}
-	else
-	{
-		hint ("You can't afford that!", "r");
+	else {
+		hint("You can't afford that!", "r");
 	}
-	redrawCharPane();
+	calculateStats();
 }
 
 function toggleSkill (x) {

@@ -125,7 +125,7 @@ var skills = [
 		price: 250,
 		level: 3,
 		onUse: function () {
-			player.effHpMax += Math.floor(player.baseHpMax * 1.5);
+			player.effHpMax += Math.floor(player.baseHpMax * 0.5);
 		}
 	},
 	{
@@ -1195,10 +1195,10 @@ var skills = [
 	},
 	{
 		id: 71,
-		name: "Passive +20% Gold",
-		description: "",
+		name: "Statistics",
+		description: "This course teaches you important statistical concepts, such as p-values being stored in the lottery balls, which you can use to earn more money.",
 		enchantment: "+20% Gold from combats",
-		icon: "no_image.png",
+		icon: "graph_up.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1294,10 +1294,10 @@ var skills = [
 	},
 	{
 		id: 79,
-		name: "Passive 1MP regen",
-		description: "",
+		name: "Meditation",
+		description: "This course teaches you mindfullness so you can focus your energy on other things, like filling your mind with deadly energy balls that blast your enemies to smithereens.",
 		enchantment: "Restore 1 MP each turn",
-		icon: "no_image.png",
+		icon: "meditate.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {

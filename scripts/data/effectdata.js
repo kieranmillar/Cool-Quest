@@ -1,3 +1,11 @@
+/*
+id: Same number as position in the array
+name: Displayed name of the effect
+description: Flavour text when clicked on
+enchantment: Bold blue text when clicked on describing mechanics
+icon: filename of image, relative to images folder
+effect: (optional) Function with code for what it does. (Some effects are coded in areas where they are applicable)
+*/
 var effects = [
 	{
 		id: 0,
@@ -5,8 +13,7 @@ var effects = [
 		description: "You are at peace with wrestling.",
 		enchantment: "+10 Max HP<br>+3 POW",
 		icon: "wrestle_thought.png",
-		effect: function()
-		{
+		effect: function() {
 			player.effHpMax += 10;
 			player.effPow += 3;
 		}
@@ -17,8 +24,7 @@ var effects = [
 		description: "Might makes right.",
 		enchantment: "+2 Max MP<br>+3 POW",
 		icon: "pirate_face.png",
-		effect: function()
-		{
+		effect: function() {
 			player.effMpMax += 2;
 			player.effPow += 2;
 		}
@@ -29,8 +35,7 @@ var effects = [
 		description: "You've received reassurances from your ancestors and are feeling motivated.",
 		enchantment: "+3 POW<br>+10 INIT",
 		icon: "ghost_talk.png",
-		effect: function()
-		{
+		effect: function() {
 			player.effPow += 3;
 			player.effInit += 10;
 		}
@@ -40,9 +45,8 @@ var effects = [
 		name: "Showing off",
 		description: "Wrestling isn't about fighting skill, it's all about how it looks to the audience.",
 		enchantment: "Critical hit damage multiplier +30%",
-		icon: "no_image.png",
-		effect: function()
-		{
+		icon: "showboating.png",
+		effect: function() {
 			player.effCritMultiplier += 0.3;
 		}
 	},
@@ -52,8 +56,7 @@ var effects = [
 		description: "The safety of the enchanted sugar casing makes you happy, like a cat that's just gotten the crème.",
 		enchantment: "+5 DEF",
 		icon: "creme_brulee.png",
-		effect: function()
-		{
+		effect: function() {
 			player.effDef += 5;
 		}
 	},
@@ -63,8 +66,7 @@ var effects = [
 		description: "It's hard to be held in a chokehold when you're this slippery.",
 		enchantment: "+20 INIT",
 		icon: "grease.png",
-		effect: function()
-		{
+		effect: function() {
 			player.effInit += 20;
 		}
 	},
@@ -74,8 +76,7 @@ var effects = [
 		description: "Orc pork comes from only the toughest pigs, fed an endless diet of growth hormones. They're having an effect on you.",
 		enchantment: "+7 POW",
 		icon: "pork.png",
-		effect: function()
-		{
+		effect: function() {
 			player.effPow += 7;
 		}
 	},
@@ -83,10 +84,8 @@ var effects = [
 		id: 7,
 		name: "Stormy Seas",
 		description: "The strong winds of the high seas are following you around, battering anyone who gets close to you.",
-		enchantment: "Deals 5 Ice Damage whenever an enemy hits you.",
-		icon: "stormy_seas.png",
-		effect: function()
-		{}
+		enchantment: "Deals 5 Ice Damage whenever an enemy hits you",
+		icon: "stormy_seas.png"
 	},
 	{
 		id: 8,
@@ -94,8 +93,7 @@ var effects = [
 		description: "It's like riding to work in 2025.",
 		enchantment: "+100 INIT",
 		icon: "no_image.png",
-		effect: function()
-		{
+		effect: function() {
 			player.effInit += 100;
 		}
 	},
@@ -105,9 +103,15 @@ var effects = [
 		description: "You're enchanted by the lemony fizz. You feel like your mind is free to wander the universe, and all the other places too.",
 		enchantment: "Restore 1MP per turn",
 		icon: "no_image.png",
-		effect: function()
-		{
+		effect: function() {
 			player.mpRegen += 1;
 		}
+	},
+	{
+		id: 10,
+		name: "Opening Ceremony",
+		description: "Your grand entrance is all set up. You forgot to also summon a health and safety team, oh well, I'm sure it won't be a problem.",
+		enchantment: "Deal 25 Fire Damage at the start of combat",
+		icon: "dramatic_entrance.png"
 	},
 ];

@@ -88,7 +88,7 @@ var skills = [
 		name: "Showboating",
 		description: "Giving your wrestling moves more flair makes them deal more damage. It's true!",
 		enchantment: "10 turns of:<br>Critical hit damage multiplier +30%",
-		icon: "no_image.png",
+		icon: "showboating.png",
 		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 4,
@@ -102,16 +102,17 @@ var skills = [
 	{
 		id: 4,
 		name: "Dramatic Entrance",
-		description: "",
+		description: "It's a crime for a wrestler to enter a fight without an extravagant display.</p><p>Watch out for stray fireworks!",
 		enchantment: "10 turns of Deal 25 Fire Damage at the start of combat",
-		icon: "no_image.png",
+		icon: "dramatic_entrance.png",
 		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 5,
 		price: 250,
 		level: 3,
 		onUse: function () {
-			
+			hint ("You summon a pyrotecnics team, gaining 10 turns of Opening Ceremony!", "g");
+			return addBuff (10, 10);
 		}
 	},
 	{
@@ -119,7 +120,7 @@ var skills = [
 		name: "Faceroll",
 		description: "Your preferred gaming technique has built up resistance in your face so you can take more of a beating.",
 		enchantment: "+50% Max HP",
-		icon: "no_image.png",
+		icon: "faceroll.png",
 		source: skillSource.WRESTLER,
 		category: skillType.PASSIVE,
 		price: 250,
@@ -746,7 +747,7 @@ var skills = [
 	{
 		id: 44,
 		name: "Master of Feng Shui",
-		description: "Everywhere you go you rearrange the furniture to maximise the effectiveness your chakras. Or something like that.<br>Look I'll be honest, I don't really understand any of this stuff.",
+		description: "Everywhere you go you rearrange the furniture to maximise the effectiveness your chakras. Or something like that.</p><p>Look I'll be honest, I don't really understand any of this stuff.",
 		enchantment: "Restore 1 MP each turn",
 		icon: "no_image.png",
 		source: skillSource.MYSTIC,

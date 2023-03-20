@@ -123,16 +123,26 @@ function beginCombat (obj)
 	$("#concentrationParagraph").show();
 	$("#combatButtons").show();
 	$("#adventureAgainButton").hide();
-	//calculate who goes first
-	if (Math.random() * 100 > player.effInit - monster.init + 50)
-	{
-		//monster went first
-		addCombatText ("The monster's speed gives it the edge!");
-		combatRound (-1);
+
+	if (player.buffs.find(x=> x.id == 10)) {
+		addCombatText ("As you strut into combat, a camera crew surrounds you and bunches of fireworks set off. One of the fireworks falls over and heads straight for your opponent!");
+		let dramaticEntranceDamage = calcFireDamage(25 + player.fireDamage);
+		addCombatText ("Your opponent takes <span class='fire'>" + dramaticEntranceDamage + "</span> fire damage!");
+		monster.hp -= dramaticEntranceDamage;
 	}
-	else
-		currentRound ++;
-		redrawCombat ();
+	if (!checkEndOfCombat()) {
+		//calculate who goes first
+		if (Math.random() * 100 > player.effInit - monster.init + 50)
+		{
+			//monster went first
+			addCombatText ("The monster's speed gives it the edge!");
+			combatRound (-1);
+		}
+		else {
+			currentRound ++;
+		}
+	}
+	redrawCombat();
 }
 
 function redrawCombat ()
@@ -221,57 +231,55 @@ function constructCombatItemDropdown ()
 	}
 }
 
-function combatRound (action)
-{
-	function checkEndOfCombat()
-	{
-		if (player.hp <= 0 && monster.hp <= 0)
-		{
-			player.hp = 0;
-			monster.hp = 0;
-			addCombatText ("<strong>It's a tie! You and the enemy both got knocked out at the same time!</strong>");
-			addCombatText ("<strong>Quite frankly it's embarassing. You should both feel ashamed of yourselves.</strong>");
-			addCombatText ("<strong>No rewards for you. We're not going to give you anything for being joint loser. We're going to hold you to a higher standard than that.</strong>");
-			endAdventure();
-			return true;
-		}
-		else if (player.hp <= 0)
-		{
-			player.hp = 0;
-			addCombatText ("<strong>You got knocked out! Heal up and try again!</strong>");
-			endAdventure();
-			return true;
-		}
-		else if (monster.hp <= 0)
-		{
-			monster.hp = 0;
-			addCombatText ("<strong>You win the fight!</strong>");
-			addCombatText (giveExp (monster.exp));
-			addCombatText (giveGold (monster.gold, true));
-			for (let i = 0; i < monster.drops.length; i++)
-			{
-				if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
-				{
-					gainItemDrop(monster.drops[i], 1);
-				}
-			}
-			let triggerEnd = true;
-			if ("afterCombat" in combats[monster.id])
-			{
-				triggerEnd = combats[monster.id].afterCombat();
-			}
-			if (triggerEnd)
-			{
-				endAdventure();
-			}
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+// returns if combat is over or not
+function checkEndOfCombat() {
+	if (player.hp <= 0 && monster.hp <= 0) {
+		player.hp = 0;
+		monster.hp = 0;
+		addCombatText ("<strong>It's a tie! You and the enemy both got knocked out at the same time!</strong>");
+		addCombatText ("<strong>Quite frankly it's embarassing. You should both feel ashamed of yourselves.</strong>");
+		addCombatText ("<strong>No rewards for you. We're not going to give you anything for being joint loser. We're going to hold you to a higher standard than that.</strong>");
+		endAdventure();
+		return true;
 	}
+	else if (player.hp <= 0)
+	{
+		player.hp = 0;
+		addCombatText ("<strong>You got knocked out! Heal up and try again!</strong>");
+		endAdventure();
+		return true;
+	}
+	else if (monster.hp <= 0)
+	{
+		monster.hp = 0;
+		addCombatText ("<strong>You win the fight!</strong>");
+		addCombatText (giveExp (monster.exp));
+		addCombatText (giveGold (monster.gold, true));
+		for (let i = 0; i < monster.drops.length; i++)
+		{
+			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
+			{
+				gainItemDrop(monster.drops[i], 1);
+			}
+		}
+		let triggerEnd = true;
+		if ("afterCombat" in combats[monster.id])
+		{
+			triggerEnd = combats[monster.id].afterCombat();
+		}
+		if (triggerEnd)
+		{
+			endAdventure();
+		}
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
+function combatRound (action) {
 	resetHint();
 	if (player.hp == 0 || monster.hp == 0 || busy == false)
 	{

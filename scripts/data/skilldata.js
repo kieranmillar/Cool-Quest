@@ -1381,15 +1381,14 @@ var skills = [
 	},
 	{
 		id: 86,
-		name: "passive +10% critical hit chance",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Probability",
+		description: "This course teaches you to be so good at calculating the odds that you'll be able to deliver more lucky blows and get banned from every casino.",
+		enchantment: "+10% chance to critical hit",
+		icon: "dice.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effCritChance += 0.1;
 		}
 	},
 	{

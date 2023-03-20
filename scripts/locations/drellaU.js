@@ -70,7 +70,8 @@ function displayDrellaU() {
         for (let i = 0; i < player.drellaUDailySmallSkills.length; i ++) {
             if (player.skills[player.drellaUDailySmallSkills[i]]) {
                 let newElement = document.createElement("p");
-                newElement.textContent = "You've already been on this course today.";
+                newElement.className = "item";
+                newElement.textContent = "You've already taken this course.";
 	            drellaUSmallSkillContainerDiv.appendChild(newElement);
             }
             else {

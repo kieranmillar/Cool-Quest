@@ -532,7 +532,7 @@ function regularAttack (value, hitMessage, critMessage)
 {
 	// hitMessage == "" means guaranteed critical
 	let crit = false;
-	if (hitMessage == "" || Math.random() * 100 < 10)
+	if (hitMessage == "" || Math.random() < player.effCritChance)
 	{
 		crit = true;
 	}

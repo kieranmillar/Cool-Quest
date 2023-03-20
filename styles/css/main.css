@@ -13,6 +13,24 @@ body {
   letter-spacing: 0.2px;
 }
 
+#loading {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  width: 1000px;
+}
+
+.game {
+  flex-flow: column;
+  height: 100%;
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
 button {
   font-size: 16px;
   font-family: "Arial";

@@ -1,5 +1,9 @@
 // Some elements are always present, just hidden, so save them into a variable on startup to avoid navigating the DOM each time
 
+// Loading
+var loadingDiv = document.getElementById("loading");
+var gameDiv = document.getElementById("game");
+
 // Links are the top pane icons
 var linkElements = document.querySelectorAll(".link");
 var link_inventory = document.getElementById("link_inventory");

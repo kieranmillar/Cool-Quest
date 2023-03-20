@@ -41,7 +41,7 @@ function displayDrellaU() {
     }
     else if (player.skills[player.drellaUDailyBigSkill]) {
         let newElement = document.createElement("p");
-        newElement.textContent = "You've already been on this course today.";
+        newElement.textContent = "You've already taken this course.";
 	    drellaUBigSkillContainerDiv.appendChild(newElement);
     }
     else {

@@ -411,54 +411,50 @@ function restRecovery()
 	hint (giveHp(hp) + " " + giveMp(mp), "g");
 }
 
-function buyHP (x)
-{
-	if (x > player.effHpMax - player.hp)
-	{
+function buyHP (x) {
+	if (x > player.effHpMax - player.hp) {
 		x = player.effHpMax - player.hp;
 	}
-	if (x <= 0)
-	{
+	if (x <= 0) {
 		return;
 	}
-	if (busy == true)
-	{
-		hint ("You're too busy to do that right now!", "r");
+	if (busy == true) {
+		hint("You're too busy to do that right now!", "r");
 		return;
 	}
 	let cost = x * 2;
-	if (player.gold < cost)
-	{
-		hint ("You can't afford that!", "r");
+	if (player.skills[62]) {
+		cost = x;
+	}
+	if (player.gold < cost) {
+		hint("You can't afford that!", "r");
 		return;
 	}
 	player.gold -= cost;
-	hint (giveHp(x) + " It cost " + cost + " Gold.", "g");
-	save ();
+	hint(giveHp(x) + " It cost " + cost + " Gold.", "g");
+	save();
 }
 
-function buyMP (x)
-{
-	if (x > player.effMpMax - player.mp)
-	{
+function buyMP (x) {
+	if (x > player.effMpMax - player.mp) {
 		x = player.effMpMax - player.mp;
 	}
-	if (x <= 0)
-	{
+	if (x <= 0) {
 		return;
 	}
-	if (busy == true)
-	{
-		hint ("You're too busy to do that right now!", "r");
+	if (busy == true) {
+		hint("You're too busy to do that right now!", "r");
 		return;
 	}
 	let cost = x * 10;
-	if (player.gold < cost)
-	{
-		hint ("You can't afford that!", "r");
+	if (player.skills[62]) {
+		cost = x * 5;
+	}
+	if (player.gold < cost) {
+		hint("You can't afford that!", "r");
 		return;
 	}
 	player.gold -= cost;
-	hint (giveMp(x) + " It cost " + cost + " Gold.", "g");
-	save ();
+	hint(giveMp(x) + " It cost " + cost + " Gold.", "g");
+	save();
 }

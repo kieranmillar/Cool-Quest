@@ -1074,16 +1074,12 @@ var skills = [
 	},
 	{
 		id: 62,
-		name: "50% Doctor Discount",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Insurance Brokering",
+		description: "This course teaches you how to strike fear into the hearts of all doctors by arming you with the knowledge to go elsewhere for a better price.",
+		enchantment: "50% discount at the doctor",
+		icon: "handshake.png",
 		source: skillSource.DRELLAUBIG,
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		onUse: function () {
-			
-		}
+		category: skillType.PASSIVE
 	},
 	{
 		id: 63,
@@ -1344,15 +1340,14 @@ var skills = [
 	},
 	{
 		id: 83,
-		name: "Passive +20 init",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Gymnastics",
+		description: "This course teaches you a faster and more efficient way of travelling around, cartwheeling.",
+		enchantment: "+20 INIT",
+		icon: "cartwheel.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effInit += 20;
 		}
 	},
 	{

@@ -124,28 +124,7 @@ function redrawInfoPanel ()
 		buffDiv.append(t);
 		buffCount ++;
 	}
-	let juggleDiv = $("#juggleList");
-	let juggleTitle = $("#juggleTitle");
-	juggleDiv.empty();
-	let juggleCount = 0;
-	for (var i in player.juggles)
-	{
-		let t = "<div class='item item_Image' onClick='openDialog (dialogType.JUGGLE, " + player.juggles[i] + ");'><img src=./images/" + jugglingBalls[player.juggles[i]].icon + ">";
-		if (!player.options[optionEnum.COMPACTINFOPANEL]) {
-			t += jugglingBalls[player.juggles[i]].name + " ";
-		}
-		juggleDiv.append(t);
-		juggleCount ++;
-	}
-	if (juggleCount != 0)
-	{
-		juggleTitle.show();
-	}
-	else
-	{
-		juggleTitle.hide();
-	}
-	if (buffCount + juggleCount == 0)
+	if (buffCount == 0)
 	{
 		$("#infoPanel").hide();
 	}
@@ -403,16 +382,32 @@ function wipe() {
 document.addEventListener('DOMContentLoaded', function() {
 	$("#dialog").dialog({ autoOpen: false });
 	$("#doctor_hp_input").change(function(){
-		$("#doctor_hp_button").text("Restore (" + parseInt($('#doctor_hp_input').val()) * 2 + " Gold)");
+		let hpCost = 2;
+		if (player.skills[62]) {
+			hpCost = 1;
+		}
+		$("#doctor_hp_button").text("Restore (" + parseInt($('#doctor_hp_input').val()) * hpCost + " Gold)");
 	});
 	$("#doctor_mp_input").change(function(){
-		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * 10 + " Gold)");
+		let mpCost = 10;
+		if (player.skills[62]) {
+			mpCost = 5;
+		}
+		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * mpCost + " Gold)");
 	});
 	$("#quickHeal_hp_input").change(function(){
-		$("#quickHeal_hp_button").text("Restore (" + parseInt($('#quickHeal_hp_input').val()) * 2 + " Gold)");
+		let hpCost = 2;
+		if (player.skills[62]) {
+			hpCost = 1;
+		}
+		$("#quickHeal_hp_button").text("Restore (" + parseInt($('#quickHeal_hp_input').val()) * hpCost + " Gold)");
 	});
 	$("#quickHeal_mp_input").change(function(){
-		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * 10 + " Gold)");
+		let mpCost = 10;
+		if (player.skills[62]) {
+			mpCost = 5;
+		}
+		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * mpCost + " Gold)");
 	});
 	if (localStorage.getItem("playerStored") != null) {
 		load();
@@ -431,5 +426,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		$("#option_zoneWarnings").prop("checked", true);
 		$("#option_foodQuality").prop("checked", false);
 	}
+	loadingDiv.classList.add("hide");
+	gameDiv.classList.add("flex");
+
 	hint ("Welcome to Cool Quest!", "g");
 });

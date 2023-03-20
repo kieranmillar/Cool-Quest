@@ -16,7 +16,7 @@ function randomiseDrellaUSkills() {
         if (unownedSmallSkills.length > 0) {
             let randomSkillPosition = Math.floor(Math.random() * unownedSmallSkills.length);
             player.drellaUDailySmallSkills.push(unownedSmallSkills[randomSkillPosition].id);
-            unownedSmallSkills.splice(randomSkillPosition);
+            unownedSmallSkills.splice(randomSkillPosition, 1);
         }
     }
 }
@@ -67,7 +67,7 @@ function displayDrellaU() {
 	    drellaUSmallSkillContainerDiv.appendChild(newElement);
     }
     else {
-        for (let i = 0; i < 2; i ++) {
+        for (let i = 0; i < player.drellaUDailySmallSkills.length; i ++) {
             if (player.skills[player.drellaUDailySmallSkills[i]]) {
                 let newElement = document.createElement("p");
                 newElement.textContent = "You've already been on this course today.";
@@ -120,5 +120,5 @@ function learnDrellaUSkill(id) {
     else {
         hint("You spent a voucher to go on a course and learned a new skill!", "g");
     }
-    
+    save();
 }

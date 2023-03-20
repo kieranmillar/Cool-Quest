@@ -1319,10 +1319,10 @@ var skills = [
 	},
 	{
 		id: 81,
-		name: "Passive +1 fullness",
-		description: "",
+		name: "Wine Tasting",
+		description: "This course teaches you how to enjoy the full flavour of the things you eat and drink without completely eating them, and how to do so in the most snobbish way possible.",
 		enchantment: "+1 Max Fullness",
-		icon: "no_image.png",
+		icon: "wine_glass.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1357,26 +1357,24 @@ var skills = [
 	},
 	{
 		id: 84,
-		name: "Passive +10 POW",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Weightlifting",
+		description: "This course teaches you how to throw heavy things at your opponent... wait that's not what it's for?",
+		enchantment: "+10 POW",
+		icon: "dumbell.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effPow += 10;
 		}
 	},
 	{
 		id: 85,
 		name: "3 free rests per day",
 		description: "",
-		enchantment: "",
+		enchantment: "3 free rests each day",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
 			
 		}

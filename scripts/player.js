@@ -84,6 +84,7 @@ var player = {
 	drellaUDailyBigSkill: -1,
 	drellaUDailySmallSkills: [],
 	quests: [],
+	mayorQuestsCompleted: 0,
 	zoneCounters: [],
 	combatQueue: [],
 };
@@ -177,7 +178,8 @@ function createCharacter() {
 	player.basePow = player.powGain;
 	player.baseDef = player.defGain;
 	player.baseInit = 0;
-	player.quests = [];
+	player.quests = [0, 0];
+	player.mayorQuestsCompleted = 0;
 	player.zoneCounters = [];
 	player.combatQueue = [];
 	$("#characterCreation").hide();

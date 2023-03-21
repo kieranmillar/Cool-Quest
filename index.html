@@ -181,7 +181,7 @@
 						</div>
 						<div id="loc_equipment" class="location">
 							<div id="equip_tutorial">
-								<p>This equipment has modified your stats. When your stats are modified, they will appear on the side as blue (if increased) or red (if decreased), with the unmodified values shown in brackets. The unmodified values are still used to determine if you meet the requirements to equip something.</p>
+								<p>This equipment has modified your stats. When your stats are modified, they will appear on the side as blue (if increased) or red (if decreased), with the unmodified values shown in brackets.</p>
 								<p>Now return to your house. <img src='./images/house.png' onclick="goToLocation('house')" class="clickable"></p>
 								<hr>
 							</div>
@@ -231,18 +231,14 @@
 						</div>
 						<div id="loc_house" class="location">
 							<div id="house_tutorial1">
-								<p>This must be the house. You knock on the front door and a small while later you hear multiple bolts unlock. The door slowly creaks open and an old man is standing there, looking very frail and hunched over a long walking stick made from a gnarled oaken branch.</p>
-								<p>"Ah good, you must be the mercenary." He hands you some keys. "We've been waiting for someone like yourself to arrive for a while now. I'm the town elder."</p>
-								<p>"Well I'm happy to be of assistance," you reply.</p>
-								<p>The elder looks you up and down. "Well to be honest, I was imagining someone a bit more... ah... how shall I put this... world weary. Have you ever done mercenary work before?"</p>
-								<p>You sigh. "Well... no, I haven't. But this is my chance! For adventure!"</p>
-								<p>The elder chuckles. "Hoo hoo hoo well I was a mercenary in my younger years too you know. Once you've settled in, come and see me in the town tomorrow and I'll give you your first job. Oh, and I left you a welcome gift on the table."</p>
-								<p>He slowly waddles out of the door and down the street. You look over at the table and find a postcard, faintly glowing with mystical energy.</p>
+								<p>This must be the house. You pull the keys out of your pocket and turn it in the lock. The door creaks open. You hear a scurrying as some mice run out view.</p>
+								<p>It's not the fanciest place but it was all you could afford the rent for.</p>
+								<p>You look over at the table and find a postcard, faintly glowing with mystical energy.</p>
 								<p class="item_Image" onClick="openDialog (dialogType.ITEM, 1)">You pick up the <img src="./images/mystical_postcard.png">mystical postcard.</p>
 								<p>Use the <img src='./images/equipment.png'> icon at the top of the page to go to your equipment and equip the postcard. Equippable items you own are displayed on the equipment page instead of your inventory.</p>
 							</div>
 							<div id="house_tutorial2">
-								<p>You figure you should start early tomorrow to make the best impression, and so consider getting an early night.</p>
+								<p>You figure you should start early tomorrow, and so consider getting an early night.</p>
 								<p>But before you go to bed, you should practice your meditation to make sure you're in the best condition.</p>
 								<p>Use the <img src='./images/mortar_board.png'> icon above to visit the skill menu and cast a skill.</p>
 							</div>
@@ -252,7 +248,7 @@
 								<p class="item_Image" onClick="openDialog (dialogType.ITEM, 2)">You get a <img src="./images/cookie.png">cookie.</p>
 								<p>You know it's best not to work on an empty stomach, you can get more done in the day by eating, but there will be plenty of time to find or buy some food throughout the day.</p>
 								<p>You head out the door and off to town, where your new adventure awaits!</p>
-								<p>Use the <img src='./images/fountain.png'> icon above to visit town and pay the elder a visit.</p>
+								<p>Use the <img src='./images/fountain.png'> icon above to visit town and see if anybody has any jobs for you. The town Mayor might have some ideas.</p>
 							</div>
 							<div id="house_normal">
 								<p>This is your house.</p>
@@ -267,20 +263,15 @@
 							<button type="button" onclick="goToLocation('map')">Back to Map</button>
 						</div>
 						<div id="loc_town" class="location">
-							<button type="button" onclick="goToLocation('elder')">Visit the Elder</button>
+							<button type="button" id="town_townHallButton" onclick="goToLocation('townHall')">Visit the Town Hall</button>
 							<button type="button" onclick="goToLocation('cid')">Visit Cid's Sidequest Shack</button>
+							<button type="button" onclick="goToLocation('doctor')">Visit the Doctor</button>
 							<button type="button" onclick="goToLocation('pawnShop')">Visit the Pawn Shop</button>
 							<button type="button" onclick="goToLocation('shopGeneral')">Visit the General Store</button>
 							<button type="button" onclick="goToLocation('trainer')">Visit the Personal Trainer</button>
-							<button type="button" onclick="goToLocation('drellaU')">Visit Drella U</button>
-							<button type="button" onclick="goToLocation('doctor')">Visit the Doctor</button>
-							<button type="button" id="town_townHallButton" onclick="goToLocation('townHall')">Visit the Town Hall</button>
+							<button type="button" onclick="goToLocation('drellaU')">Visit Drella U</button>						
 							<button type="button" onclick="goToLocation('dungeons')">Visit the Dungeons</button>
 							<button type="button" onclick="goToLocation('map')">Back to Map</button>
-						</div>
-						<div id="loc_elder" class="location">
-							<div id="elderText"></div>
-							<button type="button" onclick="goToLocation('town')">Back to Town</button>
 						</div>
 						<div id="loc_cid" class="location">
 							<div id="cidText"></div>
@@ -353,10 +344,15 @@
 							<button type="button" onclick="goToLocation('town')">Back to Town</button>
 						</div>
 						<div id="loc_townHall" class="location">
-							<button type="button" onclick="adventure(0)">Adventure in the Town Hall Basement (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+							<button type="button" onclick="goToLocation('mayor')">Visit the Mayor's office</button>
+							<button id="townHall_basementButton" type="button" onclick="adventure(0)">Adventure in the Town Hall Basement (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button id="townHall_taxOfficeButton" type="button" onclick="adventure(1)">Adventure in the Town Hall Tax Office (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button id="townHall_canteenButton" type="button" onclick="adventure(2)">Adventure in the Town Hall Canteen (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button type="button" onclick="goToLocation('town')">Back to Town</button>
+						</div>
+						<div id="loc_mayor" class="location">
+							<div id="mayorText"></div>
+							<button type="button" onclick="goToLocation('townHall')">Back to the Town Hall</button>
 						</div>
 						<div id="loc_dungeons" class="location">
 							<p id="dungeons_closedYellowDoorText">This is a locked yellow door. There's a note on the door, which says: "In partnership with General Store Inc, come visit us for access. Not suitable for adventurers below level 3."</p>
@@ -431,7 +427,7 @@
 		<script src="./scripts/data/skilldata.js"></script>
 		<script src="./scripts/data/zonedata.js"></script>
 		<script src="./scripts/locations/locations.js"></script>
-		<script src="./scripts/locations/elder.js"></script>
+		<script src="./scripts/locations/mayor.js"></script>
 		<script src="./scripts/locations/cid.js"></script>
 		<script src="./scripts/locations/drellaU.js"></script>
 		<script src="./scripts/adventure.js"></script>

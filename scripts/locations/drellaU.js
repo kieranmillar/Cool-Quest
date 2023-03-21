@@ -27,7 +27,9 @@ function displayDrellaU() {
         if (voucherCount == 1) {
             drellaUVoucherCountSpan.textContent = "1 voucher";
         }
-        drellaUVoucherCountSpan.textContent = voucherCount + " vouchers";
+        else {
+            drellaUVoucherCountSpan.textContent = voucherCount + " vouchers";
+        }
     }
     else {
         drellaUVoucherCountSpan.textContent = "no vouchers";

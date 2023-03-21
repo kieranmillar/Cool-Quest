@@ -433,7 +433,7 @@ var combats = [
 			addCombatText ('"What?! Hahaha of course not! We don\'t care about your puny town! We have much bigger enemies to fight! Why didn\'t you ask earlier?"');
 			addCombatText ('You sigh. "Well, if you leave us alone, we\'re happy to leave you alone."');
 			addCombatText ('"You have a deal!"');
-			addCombatText ('With that issue resolved, it might be a good idea to retrn to the Elder and relay the news.');
+			addCombatText ('With that issue resolved, it might be a good idea to retrn to the Mayor and relay the news.');
 			player.quests[questEnum.ORCCAMP] = 6;
 			return true;
 		}

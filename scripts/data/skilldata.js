@@ -778,7 +778,7 @@ var skills = [
 				case elementEnum.FIRE:
 					stories = [
 						"a ghost pepper that haunts a mexican restaurant",
-						"a demon from the underworld",
+						"a man who was pushed into a volcano",
 						"a gingerbread man that gains sentience",
 						"a poltergeist in a candle shop",
 						"the ghost of an arsonist"
@@ -790,7 +790,7 @@ var skills = [
 					break;
 				case elementEnum.ICE:
 					stories = [
-						"the evil santa, Dyslexic Satan",
+						"the demon king of the underworld, Santa",
 						"an abandoned refrigerator that destroys the ozone layer, causing the apocolypse",
 						"somebody getting the cold shoulder from their dead spouse during a seance",
 						"a yeti that terrorises a remote mountain village",

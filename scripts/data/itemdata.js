@@ -193,14 +193,14 @@ var items = [
 	{
 		id: 9,
 		name: "town hall key",
-		description: "This key unlocks the front door of the town hall.",
-		enchantment: "Unlocks the Town Hall",
+		description: "This key unlocks various rooms in the town hall.",
+		enchantment: "Unlocks the rest of the Town Hall",
 		icon: "key.png",
 		type: "Useable",
 		category: itemType.MISC,
 		sell: 0,
 		onUse: function () {
-			hint ("You unlock the town hall's front door and the key vanishes, like all good video game keys.", "g");
+			hint ("You unlock various town hall doors and the key vanishes, like all good video game keys.", "g");
 			player.quests[questEnum.TOWNHALL] = 3;
 			return true;
 		}

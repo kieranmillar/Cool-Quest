@@ -25,7 +25,7 @@ var location_map = document.getElementById("loc_map");
 var location_house = document.getElementById("loc_house");
 var location_sleep = document.getElementById("loc_sleep");
 var location_town = document.getElementById("loc_town");
-var location_elder = document.getElementById("loc_elder");
+var location_mayor = document.getElementById("loc_mayor");
 var location_cid = document.getElementById("loc_cid");
 var location_pawnShop = document.getElementById("loc_pawnShop");
 var location_shopGeneral = document.getElementById("loc_shopGeneral");
@@ -46,6 +46,7 @@ var map_outskirtsButton = document.getElementById("map_outskirtsButton");
 var house_sleepButton = document.getElementById("house_sleepButton");
 var house_restButton = document.getElementById("house_restButton");
 var town_townHallButton = document.getElementById("town_townHallButton");
+var townHall_basementButton = document.getElementById("townHall_basementButton");
 var townHall_taxOfficeButton = document.getElementById("townHall_taxOfficeButton");
 var townHall_canteenButton = document.getElementById("townHall_canteenButton");
 var dungeons_closedYellowDoorButton = document.getElementById("dungeons_closedYellowDoorButton");
@@ -102,6 +103,9 @@ function goToLocation (l) {
 			break;
 		case "skills":
 			location_skills.classList.remove("hide");
+			if (player.quests[questEnum.TUTORIAL] > 6) {
+				buff_tutorial.classList.add("hide");
+			}
 			displaySkills();
 			break;
 		default:
@@ -154,16 +158,10 @@ function goToLocation (l) {
 			house_tutorial3.classList.add("hide");
 			house_normal.classList.remove("hide");
 			player.quests[questEnum.TUTORIAL] = 7;
-			if (player.quests[questEnum.TOWNHALL] >= 1) {
-				town_townHallButton.classList.remove("hide");
-			}
-			else {
-				town_townHallButton.classList.add("hide");
-			}
 			break;
-		case "elder":
-			location_elder.classList.remove("hide");
-			displayElderText();
+		case "mayor":
+			location_mayor.classList.remove("hide");
+			displayMayorText();
 			break;
 		case "cid":
 			location_cid.classList.remove("hide");
@@ -189,6 +187,12 @@ function goToLocation (l) {
 			break;
 		case "townHall":
 			location_townHall.classList.remove("hide");
+			if (player.quests[questEnum.TOWNHALL] >= 1) {
+				townHall_basementButton.classList.remove("hide");
+			}
+			else {
+				townHall_basementButton.classList.add("hide");
+			}
 			if (player.quests[questEnum.TOWNHALL] < 3) {
 				townHall_taxOfficeButton.classList.add("hide");
 				townHall_canteenButton.classList.add("hide");

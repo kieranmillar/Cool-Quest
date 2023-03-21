@@ -6,7 +6,7 @@ function displayCidText () {
 
     // level 1
     if (player.level == 1) {
-        newCidText("Hey are you the new mercenary the Elder hired? While his tasks are the most important, if you're ever looking for more things to do, I'll have some odd jobs others would like you to do. I don't have anything for you yet though, come back when you've reached level 2.");
+        newCidText("Hey are you the new mercenary? While the Mayor's tasks are the most important, if you're ever looking for more things to do, I'll have some odd jobs others would like you to do. I don't have anything for you yet though, come back when you've reached level 2.");
     }
 
     //level 2
@@ -14,7 +14,7 @@ function displayCidText () {
         newCidText("A new job has come in, the client's offering 400 Gold if you're interested. On the outskirts of the town is the Badger Badger Sett, where the Badger Badgers live. My client is looking for somebody to get three Badger Badger badges for them.");
         player.quests[questEnum.BADGER] = 1;
         if (!player.quests[questEnum.ORCCAMP]) {
-            newCidText("Oh, you don't know about the outskirts of town yet? I'm honored you came to visit me first, but in the future after you level up visiting the Elder should be your first priority.");
+            newCidText("Oh, you don't know about the outskirts of town yet? I'm honored you came to visit me first, but in the future after you level up visiting the Mayor should be your first priority.");
         }
     }
     else if (player.quests[questEnum.BADGER] == 1 && getItemAmount(31) < 3) {

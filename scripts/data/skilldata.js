@@ -131,17 +131,29 @@ var skills = [
 	},
 	{
 		id: 6,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Pro Wrestling Magic",
+		description: "Channel your magical wrestling energies into your fist to become one with the elements.",
+		enchantment: "A regular attack that has elemental damage bonuses doubled",
 		icon: "no_image.png",
 		source: skillSource.WRESTLER,
-		category: skillType.NONCOMBAT,
+		category: skillType.COMBAT,
 		cost: 3,
-		price: 100,
+		price: 500,
 		level: 4,
 		onUse: function () {
-			
+			player.fireDamage *= 2;
+			player.iceDamage *= 2;
+			player.psychicDamage *= 2;
+			player.emotionalDamage *= 2;
+			regularAttack(
+				player.effPow,
+				"You funnel your magical wrestling energies into your fist and punch your opponent. Colourful magical sparks fly everywhere.",
+				"You overload on magical wrestling energies and let loose a blow brimming with colourful magic!");
+			player.fireDamage /= 2;
+			player.iceDamage /= 2;
+			player.psychicDamage /= 2;
+			player.emotionalDamage /= 2;
+			return true;
 		}
 	},
 	{

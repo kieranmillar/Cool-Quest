@@ -521,10 +521,10 @@ var combats = [
 			{id: 29, chance: 100}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"As you back up against the wall, the red mud grows and restricts your movement. The mud baby pounces on you.",
+			"It spits a mud glob at you. It stings.",
+			"The mud baby spins around, slapping you round the face with a large sloppy wad of mud.",
+			"The mud baby clamps it mouth down on your hand. It has no teeth, but the weight of the mud still crushes your hand."
 		]
 	},
 	{

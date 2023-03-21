@@ -113,7 +113,7 @@ function goToLocation (l) {
 			location_map.classList.remove("hide");
 			map_townButton.classList.add("hide");
 			map_outskirtsButton.classList.add("hide");
-			if (player.quests[questEnum.TUTORIAL] >= 5) {
+			if (player.quests[questEnum.TUTORIAL] >= 6) {
 				map_townButton.classList.remove("hide");
 			}
 			if (player.quests[questEnum.ORCCAMP] >= 1) {

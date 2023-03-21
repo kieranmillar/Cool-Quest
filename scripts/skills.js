@@ -28,9 +28,15 @@ function displaySkills()
 		switch (skills[i].category)
 		{
 			case skillType.NONCOMBAT:
-				var castLink = $('<span></span>');
-				castLink.html("<input type = 'button' value = 'Cast\n(" + skills[i].cost + " MP)' onClick = 'useNoncombatSkill(" + i + ")'>");
-				newElement.append(castLink);
+				let addButton = true;
+				if (skills[i].id == 66 && player.castTimeManagement) {
+					addButton = false;
+				}
+				if (addButton) {
+					var castLink = $('<span></span>');
+					castLink.html("<input type='button' value='Cast\n(" + skills[i].cost + " MP)' onClick = 'useNoncombatSkill(" + i + ")'>");
+					newElement.append(castLink);
+				}
 				noncomDiv.append(newElement);
 				noncomCount ++;
 				break;

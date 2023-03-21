@@ -80,6 +80,7 @@ var player = {
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 	],
 	toggleSkills: [],
+	castTimeManagement: false,
 	options: [0, 0, 1, 0],
 	drellaUDailyBigSkill: -1,
 	drellaUDailySmallSkills: [],
@@ -134,6 +135,7 @@ function createCharacter() {
 			player.skills[i] = 0;
 		}
 	}
+	player.castTimeManagement = false;
 	switch (job)
 	{
 		case jobEnum.WRESTLER:

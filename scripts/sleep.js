@@ -14,6 +14,7 @@ function sleep() {
 	player.turnsToMidnight = 40;
 	player.day++;
 	player.full = 0;
+	player.castTimeManagement = false;
 	randomiseDrellaUSkills();
 	redrawCharPane();
 	redrawInfoPanel();

@@ -25,7 +25,7 @@ category: type of skill, one of the skillType enum values
 cost: (optional) MP Cost to use
 price: (optional) If this is a purchasable class skill, how much Gold it costs to buy
 level: (optional) If this is a purchasable class skill, what level you have to be to buy it
-onUse: (optional) What happens when you use it. (Some passive skill effects are coded in areas where they are applicable)
+onUse: (optional) What happens when you use it. Return if successful. (Some passive skill effects are coded in areas where they are applicable)
 */
 var skills = [
 
@@ -1123,15 +1123,30 @@ var skills = [
 	},
 	{
 		id: 66,
-		name: "Once per day extend all active effects by 5",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Effective Time Management",
+		description: "This course teaches you how to speed through small tasks so you have more time to spend when it really matters.",
+		enchantment: "Extend all active effects by 10 turns<br>(Once per day)",
+		icon: "stopwatch.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 10,
 		onUse: function () {
-			
+			if (player.castTimeManagement) {
+				hint("You've already used that skill today.", "r");
+				return false;
+			}
+			if (player.buffs.length == 0) {
+				hint("You don't have any active effects. Did you intend to use this?.", "r");
+				return false;
+			}
+			for (let i =0; i < player.buffs.length; i++) {
+				player.buffs[i].turns += 10;
+			}
+			redrawInfoPanel();
+			player.castTimeManagement = true;
+			goToLocation("skills");
+			hint("You manage your time well, extending the length of all your effects by 10 turns!", "g");
+			return true;
 		}
 	},
 	{

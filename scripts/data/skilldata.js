@@ -411,7 +411,7 @@ var skills = [
 		name: "Special Delivery",
 		description: "Crackers will deliver a special \"gift\" the next time you get close to your opponent.",
 		enchantment: "A regular attack that also weakens your opponent's POW by 10%<br>(Once per combat)",
-		icon: "no_image.png",
+		icon: "parrot_fly.png",
 		source: skillSource.PIRATE,
 		category: skillType.COMBAT,
 		cost: 2,
@@ -427,7 +427,7 @@ var skills = [
 				player.effPow,
 				"You run up to your opponent and smack them, while Crackers flies above them and drops a special treat on top of them.",
 				"You deliver a critical blow while your opponent is distracted by the gifts delivered by Crackers overhead!");
-			var amount = Math.ceil(monster.pow * 0.1);
+			let amount = Math.ceil(monster.pow * 0.1);
 			addCombatText(`Your opponent is grossed out by Crackers' gifts. Their POW drops by ${amount}!`);
 			monster.pow -= amount;
 			if (monster.pow < 1) {

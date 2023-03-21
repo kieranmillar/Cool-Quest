@@ -250,7 +250,7 @@ var items = [
 		name: "perfect pasty",
 		description: "This pasty is so well made and cooked, you feel certain you'll never see another one like it in your lifetime.",
 		enchantment: "+2 Fullness<br>+12 Turns to midnight",
-		icon: "no_image.png",
+		icon: "perfect_pasty.png",
 		type: "Food",
 		category: itemType.FOOD,
 		fullness: 2,

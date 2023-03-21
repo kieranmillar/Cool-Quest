@@ -17,6 +17,7 @@ def: Monster DEF
 init: Monster INIT
 element: (optional) one of elementEnum, will be PHYSICAL if not present. Elemental enemies deal damage exclusively in that element and have approriate elemental weakness and strength
 fixedStats: (optional) should be true if present, defaults to false if not. Prevents random stat variation. Intended for unique entities such as bosses
+boss: (optional) should be true if present, defaults to false if not. Marks the monster as a boss
 exp: Base experience gain if you win combat
 gold: Base Gold gain if you win combat
 drops: Array of item drops, each iten is an object with two properties:
@@ -416,6 +417,8 @@ var combats = [
 		pow: 28,
 		def: 10,
 		init: 30,
+		fixedStats: true,
+		boss: true,
 		exp: 125,
 		gold: 100,
 		drops: [
@@ -505,7 +508,7 @@ var combats = [
 	{
 		id: 20,
 		name: "a Mud Baby",
-		description: "TODO: Desc",
+		description: "You chop the corner of the red mud, and a large section falls off to the floor. It shakes and squirms, forming into a shapely blob, before sprouting eyes and a large mouth.</p><p>It would be cute if it wasn't so horrifying.",
 		icon: "empty.png",
 		hp: 130,
 		pow: 60,
@@ -542,9 +545,9 @@ var combats = [
 		],
 		hitMessages: [
 			"Other Badger Badgers suddenly appear from all directions, and they all dance on top of you.",
-			"hit1",
-			"hit2",
-			"hit3"
+			"You get too close to the Badger Badger and get hit by his arms.",
+			"You get distracted by other Badger Badgers appearing nearby, and the Badger Badger strikes!",
+			"You are mesmerized by the catchy nature of the dancing, and join in. You sprain your muscles."
 		]
 	},
 	{
@@ -572,7 +575,7 @@ var combats = [
 	{
 		id: 23,
 		name: "a snake",
-		description: "Snake? Snake?! SNAAAAAAAKE!!!!!! Ohhh it's a snake!",
+		description: "Something solid slithers out from beneath a nearby cardboard box. Snake? Snake?! SNAAAAAAAKE!!!!!! Ohhh it's a snake!",
 		icon: "empty.png",
 		hp: 30,
 		pow: 25,

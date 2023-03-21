@@ -7,6 +7,7 @@ var monster = {
 	def: 0,
 	init: 0,
 	element: elementEnum.PHYSICAL,
+	boss: false,
 	exp: 0,
 	gold: 0,
 	drops: [],
@@ -107,6 +108,12 @@ function beginCombat (obj)
 	{
 		monster.element = elementEnum.PHYSICAL;
 		$("#monsterAttackImage").attr("src", "./images/sword.png");
+	}
+	if ("boss" in obj && obj.boss) {
+		monster.boss = true;
+	}
+	else {
+		monster.boss = false;
 	}
 	monster.exp = obj.exp + player.effMl;
 	monster.gold = obj.gold;

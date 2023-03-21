@@ -371,7 +371,7 @@ var items = [
 		name: "orc pocket protector",
 		description: "This small leather wallet that fits onto your breast pocket provides incredible defense to a really small area.",
 		enchantment: "+2 DEF<br>+2 Fire Resistance<br>+2 Ice Resistance<br>+2 Psychic Resistance<br>+2 Emotional Resistance",
-		icon: "no_image.png",
+		icon: "pocket_protector.png",
 		type: "Accessory",
 		category: itemType.ACC,
 		sell: 20,

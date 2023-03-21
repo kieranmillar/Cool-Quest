@@ -299,6 +299,7 @@ function load() {
 	}
 	goToLocation("map");
 	$("#adventureAgainButton").hide();
+	$("#returnToContainerButton").hide();
 	calculateStats();
 	redrawInfoPanel();
 	if (player.options[optionEnum.COMPACTINFOPANEL]) {

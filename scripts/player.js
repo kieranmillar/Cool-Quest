@@ -189,6 +189,7 @@ function createCharacter() {
 	link_inventory.classList.remove("hide");
 	link_settings.classList.remove("hide");
 	$("#adventureAgainButton").hide();
+	$("#returnToContainerButton").hide();
 	calculateStats();
 	player.hp = player.effHpMax;
 	player.mp = player.effMpMax;

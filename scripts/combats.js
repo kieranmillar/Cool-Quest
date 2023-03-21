@@ -130,6 +130,7 @@ function beginCombat (obj)
 	$("#concentrationParagraph").show();
 	$("#combatButtons").show();
 	$("#adventureAgainButton").hide();
+	$("#returnToContainerButton").hide();
 
 	if (player.buffs.find(x=> x.id == 10)) {
 		addCombatText ("As you strut into combat, a camera crew surrounds you and bunches of fireworks set off. One of the fireworks falls over and heads straight for your opponent!");
@@ -198,7 +199,7 @@ function constructCombatSkillDropdown ()
 			if (player.job == jobEnum.MYSTIC) {
 				cost = Math.max(cost - 1, 0);
 			}
-			newElement.text(skills[i].name + " (" + cost + ")");
+			newElement.text(skills[i].name + " (" + cost + " MP)");
 			if (lastUsedCombatSkill == i) {
 				newElement.attr("selected", "selected");
 			}

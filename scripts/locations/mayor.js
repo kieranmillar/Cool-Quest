@@ -70,7 +70,7 @@ function finishMayorQuest() {
             newMayorText("He ponders for a moment. \"Ah, I know just the thing.\" The Mayor pulls out a draw in his desk and hands you a voucher.");
             gainMayorVoucher()
             newMayorText("\"What's this?\" you ask.");
-            newMayorText("\"It's a voucher for a course at the town's university, Drella U. While I can;t offer you money, I have plenty of these going spare, a whole drawer full of them.\"");
+            newMayorText("\"It's a voucher for a course at the town's university, Drella U. While I can't offer you money, I have plenty of these going spare, a whole drawer full of them.\"");
             newMayorText("It's not really the sort of thing you were looking for, but you suppose it will have to do.");
             break;
         case 2:

@@ -69,6 +69,7 @@ var player = {
 	effItemBoost: 0,
 	effGoldBoost: 0,
 	effMl: 0,
+	combatRate: 0,
 	powGain: 4,
 	defGain: 4,
 	gold: 50,
@@ -224,6 +225,7 @@ function calculateStats ()
 	player.effItemBoost = 0;
 	player.effGoldBoost = 0;
 	player.effMl = 0;
+	player.combatRate = 0;
 	
 	//apply equipment
 	for (var i in player.equipment)

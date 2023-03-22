@@ -114,4 +114,14 @@ var effects = [
 		enchantment: "Deal 25 Fire Damage at the start of combat",
 		icon: "dramatic_entrance.png"
 	},
+	{
+		id: 11,
+		name: "Wrestlemania",
+		description: "In your crazed, manic state you went off-script and now everybody is watching you.",
+		enchantment: "+5% chance for a combat",
+		icon: "no_image.png",
+		effect: function() {
+			player.combatRate += 5;
+		}
+	},
 ];

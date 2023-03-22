@@ -158,16 +158,18 @@ var skills = [
 	},
 	{
 		id: 7,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Wrestlemania",
+		description: "Wrestling's orderly nature can sometimes be disrupted by going off-script. It's messy, but also a little more exciting, and attracts quite the audience.",
+		enchantment: "10 turns of +5% chance for a combat",
 		icon: "no_image.png",
 		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
-		price: 100,
+		cost: 10,
+		price: 500,
 		level: 4,
 		onUse: function () {
-			
+			hint ("You throw away the script, gaining 10 turns of Wrestlemania!", "g");
+			return addBuff (11, 10);
 		}
 	},
 	{

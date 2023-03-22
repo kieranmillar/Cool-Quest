@@ -35,13 +35,15 @@ function adventure (z)
 
 function genericAdventure (z)
 {
+	let combatRate = zones[z].combatChance;
+	if (combatRate != 0 && != 100) {
+		combatRate += player.combatRate;
+	}
 	let r = Math.random();
-	if (r * 100 < zones[z].combatChance)
-	{
+	if (r * 100 < combatRate) {
 		pickRandomCombat (z);
 	}
-	else
-	{
+	else {
 		let r2 = Math.random();
 		r2 = Math.floor (r2 * zones[z].noncombats.length);
 		beginNoncombat (noncombats[zones[z].noncombats[r2]]);

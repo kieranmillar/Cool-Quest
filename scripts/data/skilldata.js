@@ -1418,15 +1418,14 @@ var skills = [
 	},
 	{
 		id: 87,
-		name: "TODO: Small skill 87",
-		description: "",
-		enchantment: "",
+		name: "Sewing",
+		description: "This course teaches you how to sew repair patches onto your armour, so it can remain effective for longer. Even the metal armour. Try not to think too hard about it.",
+		enchantment: "+10% physical damage reduction",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effDamageReduction += 0.1;
 		}
 	},
 	{

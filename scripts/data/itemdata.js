@@ -401,14 +401,14 @@ var items = [
 		id: 22,
 		name: "orc trenchcoat",
 		description: "This overly large trenchcoat is great for covering yourself with, but its size is very unwieldy.",
-		enchantment: "+10% Damage Reduction<br>-10 INIT",
+		enchantment: "+10% physical damage reduction<br>-20 INIT",
 		icon: "no_image.png",
 		type: "Armour",
 		category: itemType.ARMOUR,
 		sell: 20,
 		onWear: function () {
 			player.effDamageReduction += 0.1;
-			player.effInit -= 10;
+			player.effInit -= 20;
 		}
 	},
 	{

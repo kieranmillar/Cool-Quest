@@ -1209,9 +1209,9 @@ var skills = [
 
 	{
 		id: 70,
-		name: "Passive +10% item drops",
-		description: "",
-		enchantment: "+10% Item drop chance",
+		name: "Investigation",
+		description: "This course teaches you how to carefully investigate the scene of a crime to find more things. Including your crime scenes. Especially your crime scenes.",
+		enchantment: "+10% item drop chance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
@@ -1233,26 +1233,26 @@ var skills = [
 	},
 	{
 		id: 72,
-		name: "+5% non-com buff",
-		description: "",
-		enchantment: "",
+		name: "Bird Watching",
+		description: "This course teaches you how to spy on animals without being seen, particularly the dangerous Drella local wildlife such as the giant eagles that will rip off your head.</p><p>You knew about those, right?",
+		enchantment: "10 turns of -5% chance for a combat",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 15,
 		onUse: function () {
 			
 		}
 	},
 	{
 		id: 73,
-		name: "+5% com buff",
-		description: "",
-		enchantment: "",
+		name: "Yodelling",
+		description: "This course teaches you how to sing at the top of your lungs to be heard for miles around you. Being a good singer is entirely optional.",
+		enchantment: "10 turns of +5% chance for a combat",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 15,
 		onUse: function () {
 			
 		}
@@ -1295,7 +1295,7 @@ var skills = [
 	},
 	{
 		id: 77,
-		name: "Passive +10 Emotional res",
+		name: "Business Studies",
 		description: "",
 		enchantment: "+10 Emotional Resistance",
 		icon: "no_image.png",
@@ -1394,8 +1394,8 @@ var skills = [
 	},
 	{
 		id: 85,
-		name: "3 free rests per day",
-		description: "",
+		name: "Napping",
+		description: "OK, this course isn't actually about napping, it's about the history of Drella's sock-making industry, but for all practical purposes it teaches you how to catch up on some well needed sleep.",
 		enchantment: "3 free rests each day",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,

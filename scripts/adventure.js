@@ -36,7 +36,7 @@ function adventure (z)
 function genericAdventure (z)
 {
 	let combatRate = zones[z].combatChance;
-	if (combatRate != 0 && != 100) {
+	if (combatRate != 0 && combatRate != 100) {
 		combatRate += player.combatRate;
 	}
 	let r = Math.random();

@@ -124,4 +124,24 @@ var effects = [
 			player.combatRate += 5;
 		}
 	},
+	{
+		id: 12,
+		name: "Bird Watching",
+		description: "You're sitting in silence and watching the world go by.",
+		enchantment: "-5% chance for a combat",
+		icon: "no_image.png",
+		effect: function() {
+			player.combatRate -= 5;
+		}
+	},
+	{
+		id: 13,
+		name: "Yodelling",
+		description: "Everyone can hear you for miles around and are all heading to your location to do something about it.",
+		enchantment: "+5% chance for a combat",
+		icon: "no_image.png",
+		effect: function() {
+			player.combatRate += 5;
+		}
+	},
 ];

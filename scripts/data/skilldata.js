@@ -1241,7 +1241,8 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 15,
 		onUse: function () {
-			
+			hint ("You dive into a nearby bush, gaining 10 turns of Bird Watching!", "g");
+			return addBuff (12, 10);
 		}
 	},
 	{
@@ -1254,7 +1255,8 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 15,
 		onUse: function () {
-			
+			hint ("You put on a dirndl, gaining 10 turns of Yodelling!", "g");
+			return addBuff (13, 10);
 		}
 	},
 	{
@@ -1296,7 +1298,7 @@ var skills = [
 	{
 		id: 77,
 		name: "Business Studies",
-		description: "",
+		description: "This course teaches you how to get into the mindset of a cold, calculated, ruthless manager. Also there's a bit about accounting.",
 		enchantment: "+10 Emotional Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
@@ -1394,8 +1396,8 @@ var skills = [
 	},
 	{
 		id: 85,
-		name: "Napping",
-		description: "OK, this course isn't actually about napping, it's about the history of Drella's sock-making industry, but for all practical purposes it teaches you how to catch up on some well needed sleep.",
+		name: "History of Socks in the 3rd Century",
+		description: "This course teaches you all about the history of Drella's sock-making industry, but for all practical purposes it teaches you how to catch up on some well needed sleep.",
 		enchantment: "3 free rests each day",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,

@@ -408,7 +408,7 @@ var skills = [
 		id: 23,
 		name: "Storm of the Sea",
 		description: "You summon the cold strong wind of the high sea to follow you around.",
-		enchantment: "10 turns of:<br>Deals 5 Ice Damage whenever an enemy hits you",
+		enchantment: "10 turns of Deal 10 Ice Damage whenever an enemy hits you",
 		icon: "stormy_seas.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
@@ -416,7 +416,7 @@ var skills = [
 		price: 50,
 		level: 2,
 		onUse: function () {
-			hint ("You bellow at the gods of the sea for their help, gaining 10 turns of Stormy Seas!", "g");
+			hint ("You bellow at the gods of the sea for their help, gaining 10 turns of Storm of the Sea!", "g");
 			return addBuff (7, 10);
 		}
 	},
@@ -453,32 +453,34 @@ var skills = [
 	},
 	{
 		id: 25,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Learning the Ropes",
+		description: "The best way to learn is through hands on experience, at least, that's your justification for making your minions do all the chores around the house.",
+		enchantment: "10 turns of +6 minion experience from combats",
 		icon: "no_image.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 8,
 		price: 250,
 		level: 3,
 		onUse: function () {
-			
+			hint ("You put your minions to work, gaining 10 turns of Learning the Ropes!", "g");
+			return addBuff (14, 10);
 		}
 	},
 	{
 		id: 26,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Crewmates",
+		description: "All good pirates know how to keep up morale with their fellow crewmates, if only to prevent a mutiny.",
+		enchantment: "10 turns of +5 minion level",
 		icon: "no_image.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
+		cost: 10,
+		price: 500,
 		level: 4,
 		onUse: function () {
-			
+			hint ("You pour out some grog for your minions, gaining 10 turns of Crewmates!", "g");
+			return addBuff (15, 10);
 		}
 	},
 	{

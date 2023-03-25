@@ -81,6 +81,11 @@ var player = {
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 	],
 	toggleSkills: [],
+	minions: [],
+	minionNames: [],
+	equippedMinions: [-1, -1],
+	effMinionLevelBonus: 0,
+	effMinionExpBonus: 0,
 	castTimeManagement: false,
 	options: [0, 0, 1, 0],
 	drellaUDailyBigSkill: -1,
@@ -88,7 +93,7 @@ var player = {
 	quests: [],
 	mayorQuestsCompleted: 0,
 	zoneCounters: [],
-	combatQueue: [],
+	combatQueue: []
 };
 
 var levelDeltas = [
@@ -129,49 +134,40 @@ function createCharacter() {
 	player.inventory = [];
 	player.equipment = [-1, -1, -1, -1, -1, -1, -1, -1];
 	player.buffs = [];
-	for (var i in player.skills)
-	{
-		if (player.skills[i] == 1)
-		{
+	for (var i in player.skills) {
+		if (player.skills[i] == 1) {
 			player.skills[i] = 0;
 		}
 	}
 	player.castTimeManagement = false;
-	switch (job)
-	{
+	switch (job) {
 		case jobEnum.WRESTLER:
 			player.powGain = 5;
 			player.defGain = 3;
-			if (!player.skills[0])
-			{
+			if (!player.skills[0]) {
 				player.skills[0] = 1;
 			}
-			if (!player.skills[1])
-			{
+			if (!player.skills[1]) {
 				player.skills[1] = 1;
 			}
 			break;
 		case jobEnum.MYSTIC:
 			player.powGain = 4;
 			player.defGain = 4;
-			if (!player.skills[40])
-			{
+			if (!player.skills[40]) {
 				player.skills[40] = 1;
 			}
-			if (!player.skills[41])
-			{
+			if (!player.skills[41]) {
 				player.skills[41] = 1;
 			}
 			break;
 		case jobEnum.PIRATE:
 			player.powGain = 3;
 			player.defGain = 5;
-			if (!player.skills[20])
-			{
+			if (!player.skills[20]) {
 				player.skills[20] = 1;
 			}
-			if (!player.skills[21])
-			{
+			if (!player.skills[21]) {
 				player.skills[21] = 1;
 			}
 			break;
@@ -181,7 +177,14 @@ function createCharacter() {
 	player.basePow = player.powGain;
 	player.baseDef = player.defGain;
 	player.baseInit = 0;
-	player.quests = [0, 0];
+	for (var i in player.minions) {
+		if (player.minions[i] != undefined && player.minions[i] != null) {
+			player.minions[i] = 0;
+		}
+	}
+	player.minionNames = [];
+	player.equippedMinions = [-1, -1];
+	player.quests = [0, 0, 0, 0, 0];
 	player.mayorQuestsCompleted = 0;
 	player.zoneCounters = [];
 	player.combatQueue = [];
@@ -226,6 +229,8 @@ function calculateStats ()
 	player.effGoldBoost = 0;
 	player.effMl = 0;
 	player.combatRate = 0;
+	player.effMinionLevelBonus = 0;
+	player.effMinionExpBonus = 0;
 	
 	//apply equipment
 	for (var i in player.equipment)
@@ -257,6 +262,16 @@ function calculateStats ()
 		}
 		if ("onUse" in skills[i]) {
 			skills[i].onUse();
+		}
+	}
+
+	//apply minion passives
+	for (var i in player.equippedMinions) {
+		if (player.equippedMinions[i] == -1) {
+			continue;
+		}
+		if ("onPassive" in minions[player.equippedMinions[i]]) {
+			minions[player.equippedMinions[i]].onPassive();
 		}
 	}
 

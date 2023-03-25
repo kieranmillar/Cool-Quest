@@ -82,9 +82,9 @@ var effects = [
 	},
 	{
 		id: 7,
-		name: "Stormy Seas",
+		name: "Storm of the Sea",
 		description: "The strong winds of the high seas are following you around, battering anyone who gets close to you.",
-		enchantment: "Deals 5 Ice Damage whenever an enemy hits you",
+		enchantment: "Deal 10 Ice Damage whenever an enemy hits you",
 		icon: "stormy_seas.png"
 	},
 	{
@@ -142,6 +142,26 @@ var effects = [
 		icon: "no_image.png",
 		effect: function() {
 			player.combatRate += 5;
+		}
+	},
+	{
+		id: 14,
+		name: "Learning the Ropes",
+		description: "You set your minion to mop the mizzenmast, batten down the hatches, and many other tasks that sound pirate-y.",
+		enchantment: "+6 minion experience from combats",
+		icon: "no_image.png",
+		effect: function() {
+			player.effMinionExpBonus += 6;
+		}
+	},
+	{
+		id: 15,
+		name: "Crewmates",
+		description: "You give your minions access to all the grog they could ever want. It makes them more productive.",
+		enchantment: "+5 minion level",
+		icon: "no_image.png",
+		effect: function() {
+			player.effMinionLevelBonus += 5;
 		}
 	},
 ];

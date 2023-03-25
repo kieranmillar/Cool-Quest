@@ -250,39 +250,33 @@ function checkEndOfCombat() {
 		endAdventure();
 		return true;
 	}
-	else if (player.hp <= 0)
-	{
+	else if (player.hp <= 0) {
 		player.hp = 0;
 		addCombatText ("<strong>You got knocked out! Heal up and try again!</strong>");
 		endAdventure();
 		return true;
 	}
-	else if (monster.hp <= 0)
-	{
+	else if (monster.hp <= 0) {
 		monster.hp = 0;
 		addCombatText ("<strong>You win the fight!</strong>");
+		minionCombatWin();
 		addCombatText (giveExp (monster.exp));
 		addCombatText (giveGold (monster.gold, true));
-		for (let i = 0; i < monster.drops.length; i++)
-		{
-			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100))
-			{
+		for (let i = 0; i < monster.drops.length; i++) {
+			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100)) {
 				gainItemDrop(monster.drops[i], 1);
 			}
 		}
 		let triggerEnd = true;
-		if ("afterCombat" in combats[monster.id])
-		{
+		if ("afterCombat" in combats[monster.id]) {
 			triggerEnd = combats[monster.id].afterCombat();
 		}
-		if (triggerEnd)
-		{
+		if (triggerEnd) {
 			endAdventure();
 		}
 		return true;
 	}
-	else
-	{
+	else {
 		return false;
 	}
 }
@@ -437,7 +431,7 @@ function combatRound (action) {
 			player.hp -= damage;
 			if (player.buffs.find(x => x.id == 7) != undefined)
 			{
-				damage = calcIceDamage(5);
+				damage = calcIceDamage(10 + player.iceDamage);
 				addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
 				monster.hp -= damage;
 			}

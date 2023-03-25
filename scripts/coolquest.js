@@ -1,13 +1,13 @@
-function redrawCharPane ()
-{
+var charPaneMinionContainerDiv = document.getElementById("char_minionContainer");
+
+function redrawCharPane() {
 	$("#char_day").text(player.day);
 	$("#char_turnsToMidnight").text(player.turnsToMidnight);
 	$("#char_turns").text(player.turns);
 	$("#char_full").text(player.full);
 	$("#char_fullMax").text(player.fullMax);
 	$("#char_name").text(player.name);
-	switch (player.job)
-	{
+	switch (player.job) {
 		case jobEnum.WRESTLER:
 			$("#char_job").text("Wrestler");
 			break;
@@ -82,6 +82,37 @@ function redrawCharPane ()
 	$("#quickHeal_mp_input").attr("max", player.effMpMax - player.mp);
 	$("#quickHeal_mp_input").val(player.effMpMax - player.mp);
 	$("#quickHeal_mp_input").trigger("change");
+
+	charPaneMinionContainerDiv.replaceChildren();
+	numberOfEquippedMinions = player.equippedMinions.filter(x => x != -1).length;
+	if (numberOfEquippedMinions > 0) {
+	    charPaneMinionContainerDiv.appendChild(document.createElement("hr"));
+		for (let i = 0; i < 2; i++) {
+			let thisMinion = player.equippedMinions[i];
+			if (thisMinion == -1) {
+				continue;
+			}
+			let newElement = document.createElement("p");
+			newElement.classList.add("item_Image");
+			newElement.innerHTML = `<img src="./images/${minions[thisMinion].icon}"><span>${player.minionNames[thisMinion]} the ${minions[thisMinion].name}</span>`;
+			newElement.addEventListener("click", function() {
+				openDialog(dialogType.MINION, thisMinion);
+			});
+			charPaneMinionContainerDiv.appendChild(newElement);
+			newElement = document.createElement("p");
+			newElement.textContent = `Level: ${getMinionLevel(thisMinion)}`;
+			charPaneMinionContainerDiv.appendChild(newElement);
+			if (getMinionBaseLevel(thisMinion) < 20) {
+				newElement = document.createElement("p");
+				newElement.textContent = `Exp: ${player.minionExp[thisMinion]} / ${getMinionBaseLevel(thisMinion) * 10}`;
+				charPaneMinionContainerDiv.appendChild(newElement);
+				newElement = document.createElement("progress");
+				newElement.setAttribute("value", player.minionExp[thisMinion]);
+				newElement.setAttribute("max", getMinionBaseLevel(thisMinion) * 10);
+				charPaneMinionContainerDiv.appendChild(newElement);
+			}
+		}
+	}
 }
 
 function displayBuffedStat (baseStat, effStat, baseStatSpan, effStatSpan)
@@ -173,7 +204,8 @@ function resolveProperty (input) {
 const dialogType = {
 	ITEM: 0,
 	SKILL: 1,
-	BUFF: 2
+	BUFF: 2,
+	MINION: 3
 }
 
 function openDialog (type, id)
@@ -234,6 +266,13 @@ function openDialog (type, id)
 			t = "<img src='./images/" + effects[id].icon + "'>";
 			t += "<p>" + resolveProperty (effects[id].description) + "</p>";
 			t += "<p class='enchantment'>" + effects[id].enchantment + "</p>";
+			d.html(t);
+			break;
+		case dialogType.MINION:
+			d.dialog( "option", "title", player.minionNames[id] + " the " + minions[id].name );
+			t = "<img src='./images/" + minions[id].icon + "'>";
+			t += "<p>" + resolveProperty (minions[id].description) + "</p>";
+			t += "<p class='enchantment'>" + minions[id].enchantment + "</p>";
 			d.html(t);
 			break;
 	}

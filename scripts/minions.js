@@ -1,18 +1,11 @@
 // Returns minion's current base level calculated from its exp
 // Returns 0 if you don't own the minion yet
 function getMinionBaseLevel(id) {
-    let exp = player.minions[id];
-    if (exp == null || player.exp == undefined) {
+    let minionLevel = player.minionLevels[id];
+    if (minionLevel == null || minionLevel == undefined) {
         return 0;
     }
-    let level = 1;
-    let expToNextLevel = 10;
-    while (exp >= expToNextLevel) {
-        level++;
-        exp -= expToNextLevel;
-        expToNextLevel += 10;
-    }
-    return level;
+    return minionLevel;
 }
 
 // Returns minion's current level + level boosts from buffs
@@ -24,21 +17,25 @@ function getMinionLevel(id) {
 // Give a minion exp
 // Returns boolean of if this caused it to level up
 function gainMinionExp(id, amount) {
-    if (player.minions[id] == undefined || player.minions[id] == null) {
+    if (player.minionExp[id] == undefined || player.minionExp[id] == null) {
         return false;
     }
     let baseLevel = getMinionBaseLevel(id);
     if (baseLevel >= 20) {
         return false;
     }
-    player.minions[id] += amount;
-    if (player.minions[id] > 1900) {
-        player.minions[id] = 1900; // exp for base level 20
+    player.minionExp[id] += amount;
+    let levelledUp = false;
+    while (player.minionExp[id] >= player.minionLevels[id] * 10) {
+        levelledUp = true;
+        player.minionExp[id] -= player.minionLevels[id] * 10;
+        player.minionLevels[id]++;
     }
-    if (getMinionBaseLevel(id) > baseLevel) {
-        return true;
+    if (player.minionLevels[id] >= 20) {
+        player.minionLevels[id] = 20;
+        player.minionExp[id] = 0;
     }
-    return false;
+    return levelledUp;
 }
 
 // called when winning combat, deals with all things minion related
@@ -53,7 +50,7 @@ function minionCombatWin() {
             minions[thisMinion].onCombatWin();
         }
         let exp = (2 + player.effMinionExpBonus) / numberOfEquippedMinions;
-        if (player.minions[thisMinion] < 1900) {
+        if (player.minionLevels[thisMinion] <= 20) {
             addCombatText(`${player.minionNames[thisMinion]} gained ${exp} experience.`);
             if (gainMinionExp(thisMinion, exp)) {
                 addCombatText(`<strong>${player.minionNames[thisMinion]} levelled up!</strong>`);
@@ -64,10 +61,11 @@ function minionCombatWin() {
 
 // Collect a new minion
 function gainMinion(id) {
-    if (player.minions[id] !== null && player.minions[id] !== undefined) {
+    if (player.minionExp[id] !== null && player.minionExp[id] !== undefined) {
         return;
     }
-    player.minions[id] = 0;
+    player.minionExp[id] = 0;
+    player.minionLevels[id] = 1;
     let defaultNameList = [
         "Harry",
         "Barry",
@@ -91,7 +89,7 @@ function gainMinion(id) {
         "Johnny",
         "Ronnie"
     ];
-    let defaultName = Math.floor(Math.random() * defaultNameList.length);
+    let defaultName = defaultNameList[Math.floor(Math.random() * defaultNameList.length)];
     player.minionNames[id] = defaultName;
     hint(`You add ${defaultName} the ${minions[id].name} to your pen!`, "g");
 }

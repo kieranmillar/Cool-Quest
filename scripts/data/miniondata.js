@@ -1,7 +1,7 @@
 /*
 id: Same number as its position in the array
 name: Display name of minion
-description: Flavour text when clicked on
+description: Flavour text when clicked on, can be a string or a function
 enchantment: Bold blue text when clicked on describing mechanics
 icon: Filepath of image, relative to images folder
 onPassive: (optional) a function that, if present, is the code for what having the minion equipped provides passively

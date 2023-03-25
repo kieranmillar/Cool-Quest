@@ -81,7 +81,8 @@ var player = {
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 	],
 	toggleSkills: [],
-	minions: [],
+	minionExp: [],
+	minionLevels: [],
 	minionNames: [],
 	equippedMinions: [-1, -1],
 	effMinionLevelBonus: 0,
@@ -177,9 +178,10 @@ function createCharacter() {
 	player.basePow = player.powGain;
 	player.baseDef = player.defGain;
 	player.baseInit = 0;
-	for (var i in player.minions) {
-		if (player.minions[i] != undefined && player.minions[i] != null) {
-			player.minions[i] = 0;
+	for (var i in player.minionExp) {
+		if (player.minionExp[i] != undefined && player.minionExp[i] != null) {
+			player.minionExp[i] = 0;
+			player.minionLevels = 1;
 		}
 	}
 	player.minionNames = [];

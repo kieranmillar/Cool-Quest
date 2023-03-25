@@ -1261,8 +1261,8 @@ var skills = [
 	},
 	{
 		id: 74,
-		name: "Passive +10 Fire Res",
-		description: "",
+		name: "Glass Blowing",
+		description: "This course teaches you how to make your own vases and beakers, and as an extra bonus, how to get used to burning yourself.",
 		enchantment: "+10 Fire Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
@@ -1285,8 +1285,8 @@ var skills = [
 	},
 	{
 		id: 76,
-		name: "Passive +10 Psychic res",
-		description: "",
+		name: "Philosophy",
+		description: "This course teaches you how to prepare your mind for listening to all kinds of nonsense after learning about the Oedipus complex.",
 		enchantment: "+10 Psychic Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
@@ -1309,8 +1309,8 @@ var skills = [
 	},
 	{
 		id: 78,
-		name: "Passive +25 max HP and +5 max MP",
-		description: "",
+		name: "Cooking",
+		description: "This course teaches you how to make delicious food. You can't help but sample your products, and it really bulks you up.",
 		enchantment: "+25 Max HP<br>+5 Max MP",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,

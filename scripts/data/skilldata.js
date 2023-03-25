@@ -1285,7 +1285,7 @@ var skills = [
 	},
 	{
 		id: 76,
-		name: "Philosophy",
+		name: "Psychoanalysis",
 		description: "This course teaches you how to prepare your mind for listening to all kinds of nonsense after learning about the Oedipus complex.",
 		enchantment: "+10 Psychic Resistance",
 		icon: "no_image.png",

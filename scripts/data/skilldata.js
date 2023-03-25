@@ -402,7 +402,7 @@ var skills = [
 		source: skillSource.PIRATE,
 		category: skillType.PASSIVE,
 		price: 50,
-		level: 2,
+		level: 2
 	},
 	{
 		id: 23,
@@ -485,17 +485,20 @@ var skills = [
 	},
 	{
 		id: 27,
-		name: "",
-		description: "",
-		enchantment: "",
+		name: "Johnny Two Hats",
+		description: "The epitome of style is to wear the same hat twice. What if you come across someone wearing three hats you say? Don't be ridiculous, you've never even seen anyone wear two hats before.",
+		enchantment: "Doubles the bonuses on your hat",
 		icon: "no_image.png",
 		source: skillSource.PIRATE,
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		price: 100,
+		category: skillType.PASSIVE,
+		price: 500,
 		level: 4,
-		onUse: function () {
-			
+		onUse: function() {
+			if (player.equipment[0] != -1) {
+				if("onWear" in items[player.equipment[0]]) {
+					items[player.equipment[0]].onWear();
+				}
+			}
 		}
 	},
 	{
@@ -1361,15 +1364,14 @@ var skills = [
 	},
 	{
 		id: 82,
-		name: "Basic noncombat healing skill?",
-		description: "",
-		enchantment: "",
+		name: "Relationship Advice",
+		description: "This course supposedly teaches you how to obtain and maintain relationshps, but they bought in a guest speaker from an internet podcast and the advice was completely terrible. It did teach you what not to do, so it wasn't all for nothing.",
+		enchantment: "+2 minion level",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effMinionLevelBonus += 2;
 		}
 	},
 	{
@@ -1434,15 +1436,14 @@ var skills = [
 	},
 	{
 		id: 88,
-		name: "TODO: Small skill 88",
-		description: "",
-		enchantment: "",
+		name: "Teaching",
+		description: "This course teaches you how to teach others. It's like a pyrmaid scheme for learning.",
+		enchantment: "+2 minion experience from combats",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effMinionExpBonus += 2;
 		}
 	},
 	{

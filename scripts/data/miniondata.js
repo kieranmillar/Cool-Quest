@@ -14,7 +14,7 @@ var minions = [
 		name: "nurse leech",
 		description: "This little leech has been helping to cure your ailments since the Middle Ages.",
 		enchantment: "If you win combat, restores HP equal to its level",
-		icon: "no_image.png",
+		icon: "nurse_leech.png",
 		onCombatWin: function () {
 			let r = Math.floor(Math.random() * 5);
             let texts = [

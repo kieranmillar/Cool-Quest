@@ -1216,7 +1216,7 @@ var skills = [
 		name: "Investigation",
 		description: "This course teaches you how to carefully investigate the scene of a crime to find more things. Including your crime scenes. Especially your crime scenes.",
 		enchantment: "+10% item drop chance",
-		icon: "no_image.png",
+		icon: "magnifying_glass.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1240,7 +1240,7 @@ var skills = [
 		name: "Bird Watching",
 		description: "This course teaches you how to spy on animals without being seen, particularly the dangerous Drella local wildlife such as the giant eagles that will rip off your head.</p><p>You knew about those, right?",
 		enchantment: "10 turns of -5% chance for a combat",
-		icon: "no_image.png",
+		icon: "bird_watching.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.NONCOMBAT,
 		cost: 15,
@@ -1267,48 +1267,48 @@ var skills = [
 		id: 74,
 		name: "Glass Blowing",
 		description: "This course teaches you how to make your own vases and beakers, and as an extra bonus, how to get used to burning yourself.",
-		enchantment: "+10 Fire Resistance",
+		enchantment: "+15 Fire Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			player.fireRes += 10;
+			player.fireRes += 15;
 		}
 	},
 	{
 		id: 75,
-		name: "Passive +10 Ice res",
-		description: "",
-		enchantment: "+10 Ice Resistance",
+		name: "Outdoor Survival",
+		description: "This course teaches you how to survive in harsh conditions in the great outdoors. The course consists of a single advertising pamphlet for tents on sale at the local camping store.",
+		enchantment: "+15 Ice Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			player.iceRes += 10;
+			player.iceRes += 15;
 		}
 	},
 	{
 		id: 76,
 		name: "Psychoanalysis",
 		description: "This course teaches you how to prepare your mind for listening to all kinds of nonsense after learning about the Oedipus complex.",
-		enchantment: "+10 Psychic Resistance",
+		enchantment: "+15 Psychic Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			player.psychicRes += 10;
+			player.psychicRes += 15;
 		}
 	},
 	{
 		id: 77,
 		name: "Business Studies",
 		description: "This course teaches you how to get into the mindset of a cold, calculated, ruthless manager. Also there's a bit about accounting.",
-		enchantment: "+10 Emotional Resistance",
+		enchantment: "+15 Emotional Resistance",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			player.emotionalRes += 10;
+			player.emotionalRes += 15;
 		}
 	},
 	{

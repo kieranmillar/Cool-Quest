@@ -129,7 +129,7 @@ var effects = [
 		name: "Bird Watching",
 		description: "You're sitting in silence and watching the world go by.",
 		enchantment: "-5% chance for a combat",
-		icon: "no_image.png",
+		icon: "bird_watching.png",
 		effect: function() {
 			player.combatRate -= 5;
 		}

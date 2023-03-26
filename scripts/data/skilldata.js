@@ -95,7 +95,7 @@ var skills = [
 		price: 50,
 		level: 2,
 		onUse: function () {
-			hint ("You strut your stuff, gaining 10 turns of Showing Off!", "g");
+			hint ("You strut your stuff, gaining 10 turns of Showboating!", "g");
 			return addBuff (3, 10);
 		}
 	},
@@ -111,7 +111,7 @@ var skills = [
 		price: 250,
 		level: 3,
 		onUse: function () {
-			hint ("You summon a pyrotecnics team, gaining 10 turns of Opening Ceremony!", "g");
+			hint ("You summon a pyrotecnics team, gaining 10 turns of Dramatic Entrance!", "g");
 			return addBuff (10, 10);
 		}
 	},
@@ -161,7 +161,7 @@ var skills = [
 		name: "Wrestlemania",
 		description: "Wrestling's orderly nature can sometimes be disrupted by going off-script. It's messy, but also a little more exciting, and attracts quite the audience.",
 		enchantment: "10 turns of +5% chance for a combat",
-		icon: "no_image.png",
+		icon: "wrestlemania.png",
 		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 10,
@@ -453,17 +453,17 @@ var skills = [
 	},
 	{
 		id: 25,
-		name: "Learning the Ropes",
-		description: "The best way to learn is through hands on experience, at least, that's your justification for making your minions do all the chores around the house.",
+		name: "Hands-on Experience",
+		description: "The best way to learn is through hands-on experience, at least, that's your justification for making your minions do all the chores around the house.",
 		enchantment: "10 turns of +6 minion experience from combats",
-		icon: "no_image.png",
+		icon: "mop.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 8,
 		price: 250,
 		level: 3,
 		onUse: function () {
-			hint ("You put your minions to work, gaining 10 turns of Learning the Ropes!", "g");
+			hint ("You put your minions to work, gaining 10 turns of Hands-on Experience!", "g");
 			return addBuff (14, 10);
 		}
 	},
@@ -472,7 +472,7 @@ var skills = [
 		name: "Crewmates",
 		description: "All good pirates know how to keep up morale with their fellow crewmates, if only to prevent a mutiny.",
 		enchantment: "10 turns of +5 minion level",
-		icon: "no_image.png",
+		icon: "beer_mug.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
 		cost: 10,
@@ -488,7 +488,7 @@ var skills = [
 		name: "Johnny Two Hats",
 		description: "The epitome of style is to wear the same hat twice. What if you come across someone wearing three hats you say? Don't be ridiculous, you've never even seen anyone wear two hats before.",
 		enchantment: "Doubles the bonuses on your hat",
-		icon: "no_image.png",
+		icon: "johnny_two_hats.png",
 		source: skillSource.PIRATE,
 		category: skillType.PASSIVE,
 		price: 500,
@@ -780,11 +780,11 @@ var skills = [
 		id: 45,
 		name: "Spooky Ghost Story",
 		description: "You come up with an impromptu spooky story. Who knows how your opponent will feel about it.",
-		enchantment: "Deals damage equal to your POW in a random element",
+		enchantment: "Deals damage equal to 120% of your POW in a random element",
 		icon: "ghost_story.png",
 		source: skillSource.MYSTIC,
 		category: skillType.COMBAT,
-		cost: 5,
+		cost: 4,
 		price: 250,
 		level: 3,
 		onUse: function () {
@@ -803,7 +803,7 @@ var skills = [
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
 					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They sweat with horror.");
-					damage = calcFireDamage(player.effPow + player.fireDamage);
+					damage = calcFireDamage(Math.floor(player.effPow * 1.2) + player.fireDamage);
 					addCombatText ("Your opponent takes <span class='fire'>" + damage + "</span> fire damage!");
 					break;
 				case elementEnum.ICE:
@@ -816,7 +816,7 @@ var skills = [
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
 					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They shiver with horror.");
-					damage = calcIceDamage(player.effPow + player.iceDamage);
+					damage = calcIceDamage(Math.floor(player.effPow * 1.2) + player.iceDamage);
 					addCombatText ("Your opponent takes <span class='ice'>" + damage + "</span> ice damage!");
 					break;
 				case elementEnum.PSYCHIC:
@@ -829,7 +829,7 @@ var skills = [
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
 					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They cover their ears with horror.");
-					damage = calcPsychicDamage(player.effPow + player.psychicDamage);
+					damage = calcPsychicDamage(Math.floor(player.effPow * 1.2) + player.psychicDamage);
 					addCombatText ("Your opponent takes <span class='psychic'>" + damage + "</span> psychic damage!");
 					break;
 				case elementEnum.EMOTIONAL:
@@ -842,7 +842,7 @@ var skills = [
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
 					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They weep with horror.");
-					damage = calcEmotionalDamage(player.effPow + player.emotionalDamage);
+					damage = calcEmotionalDamage(Math.floor(player.effPow * 1.2) + player.emotionalDamage);
 					addCombatText ("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
 					break;
 			}
@@ -1436,7 +1436,7 @@ var skills = [
 	{
 		id: 88,
 		name: "Teaching",
-		description: "This course teaches you how to teach others. It's like a pyrmaid scheme for learning.",
+		description: "This course teaches you how to teach others. It's like a pyramid scheme for learning.",
 		enchantment: "+2 minion experience from combats",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUSMALL,

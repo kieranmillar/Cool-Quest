@@ -42,7 +42,7 @@ var effects = [
 	},
 	{
 		id: 3,
-		name: "Showing off",
+		name: "Showboating",
 		description: "Wrestling isn't about fighting skill, it's all about how it looks to the audience.",
 		enchantment: "Critical hit damage multiplier +30%",
 		icon: "showboating.png",
@@ -109,7 +109,7 @@ var effects = [
 	},
 	{
 		id: 10,
-		name: "Opening Ceremony",
+		name: "Dramatic Entrance",
 		description: "Your grand entrance is all set up. You forgot to also summon a health and safety team, oh well, I'm sure it won't be a problem.",
 		enchantment: "Deal 25 Fire Damage at the start of combat",
 		icon: "dramatic_entrance.png"
@@ -119,7 +119,7 @@ var effects = [
 		name: "Wrestlemania",
 		description: "In your crazed, manic state you went off-script and now everybody is watching you.",
 		enchantment: "+5% chance for a combat",
-		icon: "no_image.png",
+		icon: "wrestlemania.png",
 		effect: function() {
 			player.combatRate += 5;
 		}
@@ -146,10 +146,10 @@ var effects = [
 	},
 	{
 		id: 14,
-		name: "Learning the Ropes",
+		name: "Hands-on Experience",
 		description: "You set your minion to mop the mizzenmast, batten down the hatches, and many other tasks that sound pirate-y.",
 		enchantment: "+6 minion experience from combats",
-		icon: "no_image.png",
+		icon: "mop.png",
 		effect: function() {
 			player.effMinionExpBonus += 6;
 		}
@@ -159,7 +159,7 @@ var effects = [
 		name: "Crewmates",
 		description: "You give your minions access to all the grog they could ever want. It makes them more productive.",
 		enchantment: "+5 minion level",
-		icon: "no_image.png",
+		icon: "beer_mug.png",
 		effect: function() {
 			player.effMinionLevelBonus += 5;
 		}

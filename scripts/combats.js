@@ -266,7 +266,11 @@ function checkEndOfCombat() {
 		addCombatText (giveExp (monster.exp));
 		addCombatText (giveGold (monster.gold, true));
 		for (let i = 0; i < monster.drops.length; i++) {
-			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + player.effItemBoost) / 100)) {
+			let totalItemBoost = player.effItemBoost;
+			if (items[monster.drops[i].id].category == itemType.FOOD) {
+				totalItemBoost += player.effItemBoostFood;
+			}
+			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + totalItemBoost) / 100)) {
 				gainItemDrop(monster.drops[i], 1);
 			}
 		}

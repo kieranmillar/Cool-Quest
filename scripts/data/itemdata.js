@@ -240,7 +240,7 @@ var items = [
 		id: 12,
 		name: "tiny shoes",
 		description: "Merely a few dozen sizes too small, it will fit comfortably on your big toe.",
-		enchantment: "+5 Init",
+		enchantment: "+5 INIT",
 		icon: "tiny_shoes.png",
 		type: "Shoes",
 		category: itemType.ACC,
@@ -537,14 +537,16 @@ var items = [
 		cost: 200,
 		sell: 100,
 		onUse: function () {
-			if (!player.quests[questEnum.YELLOWKEY])
-			{
+			if (!player.quests[questEnum.HAPPYVILLE]) {
+				hint ("You don't have access to the dungeons currently.", "r");
+				return false;
+			}
+			if (!player.quests[questEnum.YELLOWKEY]) {
 				hint ("You unlock the yellow door in the dungeons and the key vanishes, like all good video game keys.", "g");
 				player.quests[questEnum.YELLOWKEY] = 1;
 				return true;
 			}
-			else
-			{
+			else {
 				hint ("You've already unlocked this dungeon, you should sell this useless key.", "r");
 				return false;
 			}

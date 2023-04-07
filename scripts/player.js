@@ -28,6 +28,7 @@ var zoneCounterEnum = {
 	BASEMENT: 0,
 	CANTEEN: 1,
 	ORCMUNITIONS: 2,
+	BADGERBADGERSETT: 3
 }
 
 var player = {
@@ -69,6 +70,7 @@ var player = {
 	hpRegen: 0,
 	mpRegen: 0,
 	effItemBoost: 0,
+	effItemBoostFood: 0,
 	effGoldBoost: 0,
 	effMl: 0,
 	combatRate: 0,
@@ -232,6 +234,7 @@ function calculateStats ()
 	player.hpRegen = 0;
 	player.mpRegen = 0;
 	player.effItemBoost = 0;
+	player.effItemBoostFood = 0;
 	player.effGoldBoost = 0;
 	player.effMl = 0;
 	player.combatRate = 0;

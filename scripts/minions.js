@@ -73,31 +73,33 @@ function gainMinion(id) {
     }
     player.minionExp[id] = 0;
     player.minionLevels[id] = 1;
-    let defaultNameList = [
-        "Harry",
-        "Barry",
-        "Larry",
-        "Gary",
-        "Carrie",
-        "Kenny",
-        "Benny",
-        "Lennie",
-        "Denny",
-        "Jenny",
-        "Penny",
-        "Holly",
-        "Dolly",
-        "Molly",
-        "Ollie",
-        "Wally",
-        "Bonnie",
-        "Connie",
-        "Donny",
-        "Johnny",
-        "Ronnie"
-    ];
-    let defaultName = defaultNameList[Math.floor(Math.random() * defaultNameList.length)];
-    player.minionNames[id] = defaultName;
+    if (player.minionNames[id] == null || player.minionNames[id] == undefined) {
+        let defaultNameList = [
+            "Harry",
+            "Barry",
+            "Larry",
+            "Gary",
+            "Carrie",
+            "Kenny",
+            "Benny",
+            "Lennie",
+            "Denny",
+            "Jenny",
+            "Penny",
+            "Holly",
+            "Dolly",
+            "Molly",
+            "Ollie",
+            "Wally",
+            "Bonnie",
+            "Connie",
+            "Donny",
+            "Johnny",
+            "Ronnie"
+        ];
+        let defaultName = defaultNameList[Math.floor(Math.random() * defaultNameList.length)];
+        player.minionNames[id] = defaultName;
+    }
     hint(`You add ${defaultName} the ${minions[id].name} to your pen!`, "g");
 }
 

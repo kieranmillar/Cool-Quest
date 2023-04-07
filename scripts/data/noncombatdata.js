@@ -1,3 +1,13 @@
+/*
+id: Same number as its position in the array
+title: Title of the noncombat
+description: Paragraph of description text. Use paragraph breaks if you need to add more and it's a choice nonombat
+result: (optional) a function that, if present, means this is not a choice noncombat. If not meant to take a turn, use "busy = false;" otherwise "endAdventure()"
+choices: (optional) an array of objects, which means this is a choice noncobat. Objects have these properties:
+--- buttonText: A function returning the noncombatButton method
+--- onChoosing: A function with code for what to do if you press this button. Returns a boolean of if it is to take a turn (but this is ignored if something sets busy to true)
+*/
+
 var noncombats = [
 	{
 		id: 0,
@@ -6,35 +16,33 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Look on the desk", 0, "Once: get town hall key; otherwise: get health potion");},
-				onChoosing: function ()
-				{
-					if (player.quests[questEnum.TOWNHALL] == 1)
-					{
+				onChoosing: function () {
+					if (player.quests[questEnum.TOWNHALL] == 1) {
 						player.quests[questEnum.TOWNHALL] = 2;
 						addNoncombatText ("The desk in the corner of the room contains uninteresting dusty books and potions. The key to unlock the town hall is sitting in clear view in the middle of the desk. You grab it, and pleased with a job well done, turn around and head out of the basement.");
 						getNoncombatItem (9, 1);
 					}
-					else
-					{
+					else {
 						addNoncombatText ("You snag a red potion from the desk. This will come in handy!");
 						getNoncombatItem (4, 1);
 					}
+					return true;
 				}
 			},
 			{
 				buttonText: function () {return noncombatButton ("Look on the shelves", 1, "get dusty ring");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					addNoncombatText ("You look on the shelves on the wall. There is row after row of dusty books, dusty tools, and all sorts of dusty trinkets. All of them seem useless, but a slightly glowing ring catches your eye.");
 					addNoncombatText ("It appears to be an enchanted ring, but the layers of dust that have accumulated over the years have magically fused to the ring, and become part of it. Still, it might have some use left in it.");
 					getNoncombatItem (10, 1);
+					return true;
 				}
 			},
 			{
 				buttonText: function () {return noncombatButton ("Look for trouble", 2, "fight a monster");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					pickRandomCombat (0);
+					return true;
 				}
 			}
 		],
@@ -46,31 +54,31 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Open the dull, white box", 0, "30 gold");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					addNoncombatText ("You open the brown box and find an unmarked envelope. Unable to contain yourself from the excitement of finding another sealed container inside the first one, you tear it open, and gold goes flying everywhere! Looks like somebody tried to pay their taxes with cash.");
 					addNoncombatText ("You scramble around to pick up as much gold as you can, and only manage to pick up a small amount before boredom settles back in. You quickly leave before you go mad.");
 					addNoncombatText (giveGold(30, false));
+					return true;
 				}
 			},
 			{
 				buttonText: function () {return noncombatButton ("Open the dull, grey box", 1, "15 exp, -1 HP");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					addNoncombatText ("You go to open the grey box, and find it to be sealed shut! Well, this is certainly not going to stop you and you decide to open it with brute force. You struggle to pick up the box, and slowly raise it over your head, before throwing it down again onto the ground, right onto your toe!");
 					addNoncombatText ("Muttering under your breath, you hobble out of the room, but at least you got a workout.");
 					addNoncombatText (giveExp(15));
 					addNoncombatText ("You lose 1 HP!");
 					player.hp -= 1;
+					return true;
 				}
 			},
 			{
 				buttonText: function () {return noncombatButton ("Open the dull, brown box", 2, "get cardboard panel");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					addNoncombatText ("You try to open the brown box, but it's sealed shut with tape. Given that it's only cardboard, you give it a big tug, and end up ripping a big chunk off of the box.");
 					addNoncombatText ("Turns out the box was empty, but hey, you got some sweet free cardboard! There's treasure everywhere!");
 					getNoncombatItem (7, 1);
+					return true;
 				}
 			}
 		],
@@ -89,8 +97,7 @@ var noncombats = [
 				getNoncombatItem (13, 1);
 				endAdventure();
 			}
-			else
-			{
+			else {
 				$("#noncombatText").empty();
 				busy = false;
 				pickRandomCombat (2);
@@ -104,29 +111,29 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Enter the dorms", 0, "fight a drunk orc infantryman");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					beginCombat (combats[12]);
+					return true;
 				}
 			},
 			{
 				buttonText: function () {return noncombatButton ("Enter the armoury", 1, "get a random piece of orc equipment");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					addNoncombatText ("You enter the armoury and find a whole heap of equipment in a messy pile. These orcs don't seem particularly well organised.");
 					addNoncombatText ("You go to sort through the pile, but hear whistling off in the distance, so decide to quickly grab the first random piece of equipment you get your hands on and run away.");
 					getNoncombatItem (Math.floor(Math.random() * 4) + 19, 1);//random item between ids 19 and 22
+					return true;
 				}
 			},
 			{
 				buttonText: function () {return noncombatButton ("Enter the first aid room", 2, "get 3 health potions");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					addNoncombatText ("You enter the first aid room, expecting to find bandages, plasters, that sort of thing. Instead you recoil in horror as you open the door to a room filled with all manner of horrible-looking sharp instruments and shelves full of mystery liquids. Serves you right for giving orc science the benefit of the doubt for even a second.");
 					addNoncombatText ("You don't really recognise or feel comfortable around most of the objects available to you, but do find a box filled with some generic health potions. Given its the only thing you recognise, you pocket some of them and quickly head out of the room.");
 					getNoncombatItem (4, 1);
 					getNoncombatItem (4, 1);
 					getNoncombatItem (4, 1);
+					return true;
 				}
 			}
 		]
@@ -152,9 +159,9 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "fight Björc");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					beginCombat (combats[16]);
+					return true;
 				}
 			}
 		]
@@ -174,9 +181,9 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Lay the smackdown", 0, "fight Björc");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					beginCombat (combats[16]);
+					return true;
 				}
 			}
 		]
@@ -188,16 +195,16 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Cut the mud", 0, "fight a Mud Baby");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					beginCombat (combats[20]);
+					return true;
 				}
 			},
 			{
 				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a random monster");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					pickRandomCombat (7);
+					return true;
 				}
 			}
 		]
@@ -209,16 +216,16 @@ var noncombats = [
 		choices: [
 			{
 				buttonText: function () {return noncombatButton ("Approach the Baby", 0, "fight a Mud Baby");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					beginCombat (combats[20]);
+					return true;
 				}
 			},
 			{
 				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a monster");},
-				onChoosing: function ()
-				{
+				onChoosing: function () {
 					pickRandomCombat (8);
+					return true;
 				}
 			}
 		]
@@ -226,20 +233,49 @@ var noncombats = [
 	{
 		id: 10,
 		title: "Back from the Conference",
-		description: "TODO",
+		description: "As you roam the sett, a cat with a tie pattern on his fur walks up to you, with a man in a business suit following behind him.</p><p>\"Meow meow meow\" the cat says, holding out his paw.</p><p>\"Ah\", the man says, \"This is Business Cat, and he has a wonderful business opportunity for you, investing in other kinds of business pet. He currently needs 100 gold.\"</p><p>Sounds like an opportunity for some investing.",
 		choices: [
 			{
-				buttonText: function () {return noncombatButton ("Approach the Baby", 0, "fight a Mud Baby");},
-				onChoosing: function ()
-				{
-					beginCombat (combats[20]);
+				buttonText: function () {return noncombatButton ("Invest (100 gold)", 0, "every 3rd time get a reward, else lose 100 gold");},
+				onChoosing: function () {
+					if (!player.zoneCounters[zoneCounterEnum.BADGERBADGERSETT]) {
+						player.zoneCounters[zoneCounterEnum.BADGERBADGERSETT] = 0;
+					}
+					if (player.zoneCounters[zoneCounterEnum.BADGERBADGERSETT] >= 2) {
+						player.zoneCounters[zoneCounterEnum.BADGERBADGERSETT] = 0;
+						addNoncombatText("\"Meow meow meow!\"");
+						addNoncombatText("\"What he's trying to say is that he's just realised you're our frequent investor!\"");
+						addNoncombatText("\"Meow meow meow meow!\"");
+						addNoncombatText("\"Thank you for your help, we've seen great returns on your investment!\"");
+						addNoncombatText("The cat hands you your returns.");
+						if (getMinionOwned(2)) {
+							addNoncombatText("<strong>You gain 500 gold!</strong>");
+							player.gold += 500;
+						}
+						else {
+							addNoncombatText("It's an egg with eyes, wobbling back and forth. It mumbles to you about pie.");
+							gainMinion(2);
+							addNoncombatText(`<strong>You add ${player.minionNames[2]} the wobbling egg to your pen!</strong>`);
+						}
+					}
+					else {
+						if (player.gold < 100) {
+							addNoncombatText("You realise you don't have enough gold, and walk away feeling very embarassed.");
+							return false;
+						}
+						addNoncombatText("You hand over 100 gold to the cat. He shakes your hand, then walks off, with his associate following closely behind.");
+						addNoncombatText("You hope this will eventually be worth it.");
+						player.gold -= 100;
+						player.zoneCounters[zoneCounterEnum.BADGERBADGERSETT] ++;
+					}
+					return true;
 				}
 			},
 			{
-				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a monster");},
-				onChoosing: function ()
-				{
-					pickRandomCombat (8);
+				buttonText: function () {return noncombatButton ("Decline", 1, "leave (does not spend a turn)");},
+				onChoosing: function () {
+					addNoncombatText ("You decide to keep your money and walk away.");
+					return false;
 				}
 			}
 		]

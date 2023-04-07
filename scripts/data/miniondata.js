@@ -26,7 +26,6 @@ var minions = [
             ];
 			addCombatText(texts[r]);
 			addCombatText(giveHp(getMinionLevel(0)));
-			return true;
 		}
 	},
 	{
@@ -46,7 +45,30 @@ var minions = [
             ];
 			addCombatText(texts[r]);
 			gainItemDrop(items[36], Math.ceil(getMinionLevel(1) / 2));
-			return true;
+		}
+	},
+	{
+		id: 2,
+		name: "wobbling egg",
+		description: "This small egg with eyes wobbles around mumbling about pie.",
+		enchantment: "+5% food item drop chance per level",
+		icon: "no_image.png",
+		onPassive: function () {
+			player.effItemBoostFood += getMinionLevel(2) * 5;
+		},
+		onCombatWin: function () {
+			if (!monster.drops.some(x => items[x.id].category == itemType.FOOD)) {
+				return;
+			}
+			let r = Math.floor(Math.random() * 5);
+            let texts = [
+                `${player.minionNames[2]} eyes widen and he mumbles excitedly.`,
+                `${player.minionNames[2]} wobbles faster than usual.`,
+                `${player.minionNames[2]} starts mumbling. You think you make out "I like pie".`,
+                `${player.minionNames[2]} starts rummaging through the opponent's pockets.`,
+                `${player.minionNames[2]} sniffs around the battlefield.`
+            ];
+			addCombatText(texts[r]);
 		}
 	}
 ];

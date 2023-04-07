@@ -19,12 +19,12 @@ function noncombatChoice (c)
 		return;
 	$("#noncombatText").empty();
 	busy = false;
-	noncombats[currentNoncom].choices[c].onChoosing();
+	let costsTurn = noncombats[currentNoncom].choices[c].onChoosing();
 	nonComHints[currentNoncom][c] = 1;
 	$("#noncombatButtons").empty();
 	if (busy == true)
 		return;
-	endAdventure();
+	endAdventure(costsTurn);
 }
 
 function addNoncombatText (txt)

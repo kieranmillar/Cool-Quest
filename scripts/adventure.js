@@ -50,8 +50,7 @@ function genericAdventure (z)
 	}
 }
 
-function endAdventure()
-{
+function endAdventure(costsTurn = true) {
 	busy = false;
 	if (lastZone != -1)
 	{
@@ -62,16 +61,17 @@ function endAdventure()
 		returnToContainerButton.show();
 		returnToContainerButton.html(`Return to ${zones[lastZone].parentName}`);
 	}
-	for (let i = player.buffs.length - 1; i >= 0; i --)
-	{
-		decreaseBuff (player.buffs[i].id, 1);
+	if (costsTurn) {
+		for (let i = player.buffs.length - 1; i >= 0; i --) {
+			decreaseBuff (player.buffs[i].id, 1);
+		}
+		player.turns ++;
+		player.turnsToMidnight --;
+		calculateStats();
+		giveHp(player.hpRegen);
+		giveMp(player.mpRegen);
+		redrawInfoPanel();
 	}
-	player.turns ++;
-	player.turnsToMidnight --;
-	calculateStats ();
-	giveHp(player.hpRegen);
-	giveMp(player.mpRegen);
-	redrawInfoPanel();
 	save();
 }
 

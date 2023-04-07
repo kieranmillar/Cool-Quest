@@ -32,7 +32,7 @@ var minions = [
 	{
 		id: 1,
 		name: "rapping wrapping robot",
-		description: "This little robot prints wrapping paper while dropping sick beats.",
+		description: "This little robot drops both wrapping paper and sick beats.",
 		enchantment: "If you win combat, drops wrapping paper equal to its level / 2 (rounded up)",
 		icon: "no_image.png",
 		onCombatWin: function () {

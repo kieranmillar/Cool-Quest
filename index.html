@@ -9,7 +9,7 @@
 		
 		<meta name="author" content="Kieran Millar">
 		
-		<meta name="revised" content="Kieran Millar, 25/03/2023">
+		<meta name="revised" content="Kieran Millar, 07/04/2023">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
@@ -255,6 +255,7 @@
 								<p>This is your house.</p>
 								<button id="house_restButton" type="button" onclick="rest()">Rest (Restore HP and MP) (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 								<button id="house_sleepButton" type="button" onclick="goToLocation('sleep')">Sleep</button>
+								<button id="house_penButton" type="button" onclick="goToLocation('pen')">Go to the Pen</button>
 								<button type="button" onclick="goToLocation('map')">Back to Map</button>
 							</div>
 						</div>
@@ -262,6 +263,11 @@
 							<div id="sleep_text"></div>
 							<button type="button" onclick="goToLocation('house')">Go to Your House</button>
 							<button type="button" onclick="goToLocation('map')">Back to Map</button>
+						</div>
+						<div id="loc_pen" class="location">
+							<p>You visit your minions, playing around in the pens.</p>
+							<div id="pen_container" class="inv_container"></div>
+							<button type="button" onclick="goToLocation('house')">Back to Your House</button>
 						</div>
 						<div id="loc_town" class="location">
 							<button type="button" id="town_townHallButton" onclick="goToLocation('townHall')">Visit the Town Hall</button>

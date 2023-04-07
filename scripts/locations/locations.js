@@ -24,6 +24,7 @@ var location_skills = document.getElementById("loc_skills");
 var location_map = document.getElementById("loc_map");
 var location_house = document.getElementById("loc_house");
 var location_sleep = document.getElementById("loc_sleep");
+var location_pen = document.getElementById("loc_pen");
 var location_town = document.getElementById("loc_town");
 var location_mayor = document.getElementById("loc_mayor");
 var location_cid = document.getElementById("loc_cid");
@@ -152,6 +153,10 @@ function goToLocation (l) {
 		case "sleep":
 			location_sleep.classList.remove("hide");
 			sleep();
+			break;
+		case "pen":
+			location_pen.classList.remove("hide");
+			displayPen();
 			break;
 		case "town":
 			location_town.classList.remove("hide");

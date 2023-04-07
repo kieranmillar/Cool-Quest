@@ -1,3 +1,5 @@
+var penContainerDiv = document.getElementById("pen_container");
+
 // Returns minion's current base level calculated from its exp
 // Returns 0 if you don't own the minion yet
 function getMinionBaseLevel(id) {
@@ -92,4 +94,105 @@ function gainMinion(id) {
     let defaultName = defaultNameList[Math.floor(Math.random() * defaultNameList.length)];
     player.minionNames[id] = defaultName;
     hint(`You add ${defaultName} the ${minions[id].name} to your pen!`, "g");
+}
+
+// Unequips a minion
+function unequipMinion(id) {
+    let index = player.equippedMinions.findIndex(x => x == id);
+    if (index == -1) {
+        hint("You don't have that minion with you!", "r");
+        return;
+    }
+    player.equippedMinions[index] = -1;
+    hint(`You returned ${player.minionNames[id]} the ${minions[id].name} to your pen`, "g");
+    calculateStats();
+    save();
+    displayPen();
+}
+
+// Equips a minion, unequipping if necessary
+function equipMinion(id) {
+    if (player.skills[29]) { // Extra Crew skill
+        if (player.equippedMinions[0] == -1) {
+            player.equippedMinions[0] = id;
+        } else {
+            player.equippedMinions[1] = id;
+        }
+    }
+    else {
+        player.equippedMinions[0] = id;
+    }
+    hint(`You took ${player.minionNames[id]} the ${minions[id].name} with you!`, "g");
+    calculateStats();
+    save();
+    displayPen();
+}
+
+// Pops up a dialog to rename a minion
+function renameMinion(id) {
+    let newName = prompt(`Rename ${player.minionNames[id]} the ${minions[id].name}`, player.minionNames[id]);
+    if (!newName) {
+        return;
+    }
+    newName = newName.trim();
+    newName = newName.substring(0, 30);
+    player.minionNames[id] = newName;
+    redrawCharPane();
+    save();
+    displayPen();
+}
+
+// display the minion pen in your house
+function displayPen() {
+    penContainerDiv.replaceChildren();
+    let minionCount = 0;
+
+    for (let i = 0; i < player.minionLevels.length; i++) {
+        if (!player.minionLevels) {
+            continue;
+        }
+
+        let minionWrapper = document.createElement("div");
+        minionWrapper.classList.add("minion");
+        let innerWrapper = document.createElement("span");
+        let newElement = document.createElement("span");
+        newElement.classList.add("item_Image");
+        newElement.innerHTML = `<img src="./images/${minions[i].icon}"><span class="wrappableText">${player.minionNames[i]} the ${minions[i].name}</span>`;
+        newElement.addEventListener("click", function() {
+            openDialog(dialogType.MINION, i);
+        });
+        innerWrapper.appendChild(newElement);
+        newElement = document.createElement("p");
+        newElement.textContent = `Level: ${getMinionLevel(i)}`;
+        innerWrapper.appendChild(newElement);
+        if (getMinionBaseLevel(i) < 20) {
+            newElement = document.createElement("p");
+            newElement.textContent = `Exp: ${player.minionExp[i]} / ${getMinionBaseLevel(i) * 10}`;
+            innerWrapper.appendChild(newElement);
+        }
+        minionWrapper.appendChild(innerWrapper);
+        if (player.equippedMinions.includes(i)) {
+            let unequipButton = document.createElement("span");
+            unequipButton.innerHTML = `<input type = 'button' value = 'Put back' onClick = 'unequipMinion(${i})'>`;
+            minionWrapper.appendChild(unequipButton);
+        }
+        else {
+            let equipButton = document.createElement("span");
+            equipButton.innerHTML = `<input type = 'button' value = 'Take with you' onClick = 'equipMinion(${i})'>`;
+            minionWrapper.appendChild(equipButton);
+        }
+
+        let renameButton = document.createElement("span");
+            renameButton.innerHTML = `<input type = 'button' value = 'Rename' onClick = 'renameMinion(${i})'>`;
+            minionWrapper.appendChild(renameButton);
+
+        penContainerDiv.appendChild(minionWrapper);
+        minionCount ++;
+    }
+
+    if (minionCount == 0) {
+        let newElement = document.createElement("p");
+        newElement.textContent = "You don't have any minions.";
+	    penContainerDiv.appendChild(newElement);
+    }
 }

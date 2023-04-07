@@ -331,6 +331,7 @@ h2, h3 {
 
 .wrappableText {
 	white-space: pre-line;
+	word-break: break-word;
 }
 
 #combatMonster {
@@ -420,6 +421,14 @@ h2, h3 {
 		width: 40px;
 		flex: 0 0 40px;
 	}
+}
+
+.minion {
+	width: 500px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-shrink: 1;
 }
 
 .clickable {

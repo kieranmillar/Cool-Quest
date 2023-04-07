@@ -93,8 +93,8 @@ function redrawCharPane() {
 				continue;
 			}
 			let newElement = document.createElement("p");
-			newElement.classList.add("item_Image");
-			newElement.innerHTML = `<img src="./images/${minions[thisMinion].icon}"><span>${player.minionNames[thisMinion]} the ${minions[thisMinion].name}</span>`;
+			newElement.classList.add("item_Image");	
+			newElement.innerHTML = `<img src="./images/${minions[thisMinion].icon}"><span class="wrappableText">${player.minionNames[thisMinion]} the ${minions[thisMinion].name}</span>`;
 			newElement.addEventListener("click", function() {
 				openDialog(dialogType.MINION, thisMinion);
 			});

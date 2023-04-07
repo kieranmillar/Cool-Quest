@@ -518,17 +518,14 @@ var skills = [
 	},
 	{
 		id: 29,
-		name: "TODO: Less Than Three",
+		name: "TODO: Extra Crew",
 		description: "",
 		enchantment: "Can use two minions but experience gain is split between them",
 		icon: "no_image.png",
 		source: skillSource.PIRATE,
 		category: skillType.PASSIVE,
 		price: 100,
-		level: 5,
-		onUse: function () {
-			
-		}
+		level: 5
 	},
 	{
 		id: 30,

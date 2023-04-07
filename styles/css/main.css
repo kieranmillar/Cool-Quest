@@ -297,6 +297,7 @@ h2:not(:last-child), h3:not(:last-child) {
 
 .wrappableText {
   white-space: pre-line;
+  word-break: break-word;
 }
 
 #combatMonster {
@@ -385,6 +386,14 @@ h2:not(:last-child), h3:not(:last-child) {
   height: 40px;
   width: 40px;
   flex: 0 0 40px;
+}
+
+.minion {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 1;
 }
 
 .clickable {

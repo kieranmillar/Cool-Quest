@@ -178,6 +178,7 @@ function goToLocation (l) {
 			break;
 		case "shopGeneral":
 			location_shopGeneral.classList.remove("hide");
+			displayGeneralShop();
 			break;
 		case "trainer":
 			location_trainer.classList.remove("hide");

@@ -124,7 +124,7 @@ var items = [
 	},
 	{
 		id: 5,
-		name: "running shoes",
+		name: "nihilistic running shoes",
 		description: "Run. Jump. Swim. Cycle. Die.",
 		enchantment: "+30 INIT<br>-10 Max HP",
 		icon: "running_shoes.png",

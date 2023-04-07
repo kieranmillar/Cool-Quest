@@ -269,7 +269,14 @@ function openDialog (type, id)
 			d.html(t);
 			break;
 		case dialogType.MINION:
-			d.dialog( "option", "title", player.minionNames[id] + " the " + minions[id].name );
+			let title = "";
+			if (getMinionOwned(id)) {
+				title = player.minionNames[id] + " the " + minions[id].name;
+			}
+			else {
+				title = minions[id].name;
+			}
+			d.dialog( "option", "title", title);
 			t = "<img src='./images/" + minions[id].icon + "'>";
 			t += "<p>" + resolveProperty (minions[id].description) + "</p>";
 			t += "<p class='enchantment'>" + minions[id].enchantment + "</p>";

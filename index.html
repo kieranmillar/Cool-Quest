@@ -307,15 +307,7 @@
 						</div>
 						<div id="loc_shopGeneral" class="location">
 							<p>You visit the local shop.</p>
-							<h2>Food</h2>
-							<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 2)'><img src="./images/cookie.png">cookie - 5 gold </span><button type="button" onclick="buyItem(2, 1)">Buy</button></span></p>
-							<h2>Potions</h2>
-							<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 4)'><img src="./images/red_potion.png">health potion - 60 gold </span><button type="button" onclick="buyItem(4, 1)">Buy</button></span></p>
-							<h2>Equipment</h2>
-							<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 3)'><img src="./images/stick.png">stick - 20 gold </span><button type="button" onclick="buyItem(3, 1)">Buy</button></span></p>
-							<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 5)'><img src="./images/running_shoes.png">running shoes - 100 gold </span><button type="button" onclick="buyItem(5, 1)">Buy</button></span></p>
-							<h2>Dungeon Keys</h2>
-							<p><span class="item_Image"><span class="clickable item_Image" onclick = 'openDialog(dialogType.ITEM, 30)'><img src="./images/no_image.png">yellow key - 200 gold </span><button type="button" onclick="buyItem(30, 1)">Buy</button></span></p>
+							<div id="generalShop_container"></div>
 							<button type="button" onclick="goToLocation('town')">Back to Town</button>
 						</div>
 						<div id="loc_trainer" class="location">
@@ -439,6 +431,7 @@
 		<script src="./scripts/locations/mayor.js"></script>
 		<script src="./scripts/locations/cid.js"></script>
 		<script src="./scripts/locations/drellaU.js"></script>
+		<script src="./scripts/locations/generalShop.js"></script>
 		<script src="./scripts/adventure.js"></script>
 		<script src="./scripts/combats.js"></script>
 		<script src="./scripts/minions.js"></script>

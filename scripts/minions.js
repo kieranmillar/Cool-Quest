@@ -1,5 +1,10 @@
 var penContainerDiv = document.getElementById("pen_container");
 
+// Returns true or false if you own the minion or not
+function getMinionOwned(id) {
+    return !(player.minionLevels[id] === null || player.minionLevels[id] === undefined);
+}
+
 // Returns minion's current base level calculated from its exp
 // Returns 0 if you don't own the minion yet
 function getMinionBaseLevel(id) {
@@ -19,7 +24,7 @@ function getMinionLevel(id) {
 // Give a minion exp
 // Returns boolean of if this caused it to level up
 function gainMinionExp(id, amount) {
-    if (player.minionExp[id] == undefined || player.minionExp[id] == null) {
+    if (!getMinionOwned(id)) {
         return false;
     }
     let baseLevel = getMinionBaseLevel(id);
@@ -63,7 +68,7 @@ function minionCombatWin() {
 
 // Collect a new minion
 function gainMinion(id) {
-    if (player.minionExp[id] !== null && player.minionExp[id] !== undefined) {
+    if (getMinionOwned(id)) {
         return;
     }
     player.minionExp[id] = 0;
@@ -112,6 +117,10 @@ function unequipMinion(id) {
 
 // Equips a minion, unequipping if necessary
 function equipMinion(id) {
+    if (!getMinionOwned(id)) {
+        hint(`You don't own that minion!`, "r");
+        return;
+    }
     if (player.skills[29]) { // Extra Crew skill
         if (player.equippedMinions[0] == -1) {
             player.equippedMinions[0] = id;
@@ -163,7 +172,7 @@ function displayPen() {
         });
         innerWrapper.appendChild(newElement);
         newElement = document.createElement("p");
-        newElement.textContent = `Level: ${getMinionLevel(i)}`;
+        newElement.textContent = `Level: ${getMinionBaseLevel(i)}`;
         innerWrapper.appendChild(newElement);
         if (getMinionBaseLevel(i) < 20) {
             newElement = document.createElement("p");

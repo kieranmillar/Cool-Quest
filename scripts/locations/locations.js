@@ -34,9 +34,12 @@ var location_trainer = document.getElementById("loc_trainer");
 var location_drellaU = document.getElementById("loc_drellaU");
 var location_doctor = document.getElementById("loc_doctor");
 var location_townHall = document.getElementById("loc_townHall");
-var location_dungeons = document.getElementById("loc_dungeons");
 var location_outskirts = document.getElementById("loc_outskirts");
 var location_orcCamp = document.getElementById("loc_orcCamp");
+var location_mountains = document.getElementById("loc_mountains");
+var location_happyville = document.getElementById("loc_happyville");
+var location_happyvilleShop = document.getElementById("loc_happyvilleShop");
+var location_dungeons = document.getElementById("loc_dungeons");
 var location_toughZoneWarning = document.getElementById("loc_toughZoneWarning");
 var location_noAdventuresWarning = document.getElementById("loc_noAdventuresWarning");
 var location_settings = document.getElementById("loc_settings");
@@ -44,15 +47,16 @@ var location_settings = document.getElementById("loc_settings");
 // Various misc buttons
 var map_townButton = document.getElementById("map_townButton");
 var map_outskirtsButton = document.getElementById("map_outskirtsButton");
+var map_mountainsButton = document.getElementById("map_mountainsButton");
 var house_sleepButton = document.getElementById("house_sleepButton");
 var house_restButton = document.getElementById("house_restButton");
 var town_townHallButton = document.getElementById("town_townHallButton");
 var townHall_basementButton = document.getElementById("townHall_basementButton");
 var townHall_taxOfficeButton = document.getElementById("townHall_taxOfficeButton");
 var townHall_canteenButton = document.getElementById("townHall_canteenButton");
+var orcCamp_leaderTentButton = document.getElementById("orcCamp_leaderTentButton");
 var dungeons_closedYellowDoorButton = document.getElementById("dungeons_closedYellowDoorButton");
 var dungeons_yellowDoorButton = document.getElementById("dungeons_yellowDoorButton");
-var orcCamp_leaderTentButton = document.getElementById("orcCamp_leaderTentButton");
 
 // Introduction and tutorial texts
 var location_intro = document.getElementById("loc_intro");
@@ -65,6 +69,7 @@ var house_tutorial2 = document.getElementById("house_tutorial2");
 var house_tutorial3 = document.getElementById("house_tutorial3");
 var house_normal = document.getElementById("house_normal");
 var orcCamp_intro = document.getElementById("orcCamp_intro");
+var happyville_intro = document.getElementById("happyville_intro");
 
 // Other misc things
 var dungeons_closedYellowDoorText = document.getElementById("dungeons_closedYellowDoorText");
@@ -114,11 +119,15 @@ function goToLocation (l) {
 			location_map.classList.remove("hide");
 			map_townButton.classList.add("hide");
 			map_outskirtsButton.classList.add("hide");
+			map_mountainsButton.classList.add("hide");
 			if (player.quests[questEnum.TUTORIAL] >= 6) {
 				map_townButton.classList.remove("hide");
 			}
 			if (player.quests[questEnum.ORCCAMP] >= 1) {
 				map_outskirtsButton.classList.remove("hide");
+			}
+			if (player.quests[questEnum.HAPPYVILLE] >= 1) {
+				map_mountainsButton.classList.remove("hide");
 			}
 			break;
 		case "house":
@@ -208,18 +217,6 @@ function goToLocation (l) {
 				townHall_canteenButton.classList.remove("hide");
 			}
 			break;
-		case "dungeons":
-			location_dungeons.classList.remove("hide");
-			dungeons_closedYellowDoorText.classList.add("hide");
-			if (!player.quests[questEnum.YELLOWKEY]) {
-				dungeons_closedYellowDoorButton.classList.remove("hide");
-				dungeons_yellowDoorButton.classList.add("hide");
-			}
-			else {
-				dungeons_closedYellowDoorButton.classList.add("hide");
-				dungeons_yellowDoorButton.classList.remove("hide");
-			}
-			break;
 		case "outskirts":
 			location_outskirts.classList.remove("hide");
 			break;
@@ -237,6 +234,35 @@ function goToLocation (l) {
 			}
 			else {
 				orcCamp_leaderTentButton.innerHTML = "Visit the Orc Camp Leader's Tent";
+			}
+			break;
+		case "mountains":
+			location_mountains.classList.remove("hide");
+			break;
+		case "happyville":
+			location_happyville.classList.remove("hide");
+			if (player.quests[questEnum.HAPPYVILLE] == 1) {
+				happyville_intro.classList.remove("hide");
+				player.quests[questEnum.HAPPYVILLE] = 2;
+			}
+			else {
+				happyville_intro.classList.add("hide");
+			}
+			break;
+		case "happyvilleShop":
+			location_happyvilleShop.classList.remove("hide");
+			displayHappyvilleShop();
+			break;
+		case "dungeons":
+			location_dungeons.classList.remove("hide");
+			dungeons_closedYellowDoorText.classList.add("hide");
+			if (!player.quests[questEnum.YELLOWKEY]) {
+				dungeons_closedYellowDoorButton.classList.remove("hide");
+				dungeons_yellowDoorButton.classList.add("hide");
+			}
+			else {
+				dungeons_closedYellowDoorButton.classList.add("hide");
+				dungeons_yellowDoorButton.classList.remove("hide");
 			}
 			break;
 		case "toughZoneWarning":

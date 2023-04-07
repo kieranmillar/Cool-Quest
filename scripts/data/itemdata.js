@@ -17,10 +17,10 @@ enchantment: Bold blue text when clicked on describing mechanics
 icon: Filepath of image, relative to images folder
 type: string that displays when clicked on describing what categories it belongs to
 category: value from itemType enum that determines how it is filtered in inventory etc.
-fullness: (optional) only for food, how much fullness it uses when eaten,
-turns: (optional) only for food, how many turns it gives,
-cost: (optional) if purchaseable in a store, how much it costs,
-sell: how much you can sell it for in the pawn shop, value of zero makes it unsellable,
+fullness: (optional) only for food, how much fullness it uses when eaten
+turns: (optional) only for food, how many turns it gives
+cost: (optional) if purchaseable in a store, how much it costs of its respective currency
+sell: how much Gold you can sell it for in the pawn shop, value of zero makes it unsellable
 onUse: (optional) a function that, if present, is the code for what happens when used (or eaten) from inventory
 onWear: (optional) a function that, if present, is the code for what happens when you equip it
 onCombat: (optional) a function that, if present, is the code for what happens when used in combat
@@ -36,6 +36,10 @@ var items = [
 		category: itemType.MISC,
 		sell: 0,
 		onUse: function () {
+			if (player.quests[questEnum.TUTORIAL]) {
+				hint("You remind yourself of the location of your house, then throw away the letter.", "g");
+				return true;
+			}
 			hint ("You commit your house's address to memory, then throw away the letter.", "g");
 			inventory_tutorial1.classList.add("hide");
 			inventory_tutorial2.classList.remove("hide");
@@ -622,5 +626,54 @@ var items = [
 		type: "Miscellaneous",
 		category: itemType.MISC,
 		sell: 1000
-	}
+	},
+	{
+		id: 36,
+		name: "wrapping paper",
+		description: "This Happyville branded wrapping paper is adorned with images of a lot of happy smiling faces. It gives you the creeps.",
+		enchantment: "Can be traded in at the Happyville gift store",
+		icon: "no_image.png",
+		type: "Miscellaneous",
+		category: itemType.MISC,
+		sell: 1
+	},
+	{
+		id: 37,
+		name: "present",
+		description: "This Happyville branded wrapping paper is adorned with images of a lot of happy smiling faces. It gives you the creeps.",
+		enchantment: "Contains a random gift<br>The citizens of Happyville really like collecting these",
+		icon: "no_image.png",
+		type: "Miscellaneous",
+		category: itemType.MISC,
+		cost: 10,
+		sell: 10,
+		onUse: function () {
+			let gifts = [
+				38, //lump of coal
+				4 // health potion
+				// TODO more gifts
+			];
+			let choice = Math.floor(Math.random() * gifts.length);
+			let gift = gifts[choice];
+			gainItem(gift, 1);
+			hint (`The present contained a ${items[gift].name}!`, "g");
+			return true;
+		}
+	},
+	{
+		id: 38,
+		name: "lump of coal",
+		description: "Completely deserved.",
+		enchantment: "Deals 50 fire damage",
+		icon: "no_image.png",
+		type: "Combat Item",
+		category: itemType.MISC,
+		sell: 1,
+		onCombat: function () {
+			let damage = calcFireDamage(50);
+			addCombatText ("You set fire to the lump of coal and throw it at your opponent. It burns really well.");
+			addCombatText ("Your opponent takes <span class='fire'>" + damage + "</span> fire damage!");
+			monster.hp -= damage;
+		}
+	},
 ];

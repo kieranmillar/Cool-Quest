@@ -29,12 +29,15 @@ function addCombatText (txt)
 	$("#combatText").append(e);
 }
 
-function gainItemDrop (item, amount)
-{
+function gainItemDrop(item, amount) {
 	gainItem (item.id, amount);
 	let e = $("<p></p>");
 	e.addClass("item_Image");
-	e.html("You found a <img src='./images/" + items[item.id].icon + "'> " + items[item.id].name + "!");
+	let amountText = "a";
+	if (amount > 1) {
+		amountText = amount;
+	}
+	e.html("You found " + amountText + " <img src='./images/" + items[item.id].icon + "'> " + items[item.id].name + "!");
 	e.css("cursor", "pointer");
 	e.attr({
 		"onClick" : "openDialog (dialogType.ITEM, " + item.id + ");"

@@ -244,4 +244,13 @@ var noncombats = [
 			}
 		]
 	},
+	{
+		id: 11,
+		title: "No Time Like the Present",
+		description: "TODO",
+		result: function () {
+			getNoncombatItem (37, 3);
+			endAdventure();
+		}
+	},
 ];

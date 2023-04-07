@@ -28,5 +28,25 @@ var minions = [
 			addCombatText(giveHp(getMinionLevel(0)));
 			return true;
 		}
+	},
+	{
+		id: 1,
+		name: "rapping wrapping robot",
+		description: "This little robot prints wrapping paper while dropping sick beats.",
+		enchantment: "If you win combat, drops wrapping paper equal to its level / 2 (rounded up)",
+		icon: "no_image.png",
+		onCombatWin: function () {
+			let r = Math.floor(Math.random() * 5);
+            let texts = [
+                `${player.minionNames[1]} raps "Hey boy take the hint while I make this sweet print."`,
+                `${player.minionNames[1]} raps "My rhymes totally slap while I print this wrap."`,
+                `${player.minionNames[1]} raps "At the end of this caper imma print out some paper."`,
+                `${player.minionNames[1]} raps "This paper be chill that comes from Happyville."`,
+                `${player.minionNames[1]} raps "If you're feeling crappy this paper makes you happy."`
+            ];
+			addCombatText(texts[r]);
+			gainItemDrop(items[36], Math.ceil(getMinionLevel(1) / 2));
+			return true;
+		}
 	}
 ];

@@ -109,6 +109,9 @@ function gainItem (id, amount)
 	{
 		player.inventory.push({id: id, amount: amount});
 		player.inventory.sort(function(a,b){
+			if (a === null || a === undefined || b === null || b === undefined) {
+				return 0;
+			}
 			let x = items[a.id].name.toLowerCase();
 			let y = items[b.id].name.toLowerCase();
 			if (x < y) {return -1;}
@@ -120,6 +123,7 @@ function gainItem (id, amount)
 		player.inventory[itemPosition].amount += amount;
 }
 
+// lose quantities of an item from your inventory. Returns if successful
 function loseItem (id, amount)
 {
 	let itemPosition = checkInInventory(id);

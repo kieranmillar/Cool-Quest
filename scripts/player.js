@@ -14,12 +14,14 @@ var optionEnum = {
 	FOODQUALITY: 3,
 }
 
+var questEnumSize = 6;
 var questEnum = {
 	TUTORIAL: 0,
 	TOWNHALL: 1,
 	ORCCAMP: 2,
 	YELLOWKEY: 3,
 	BADGER: 4,
+	HAPPYVILLE: 5
 }
 
 var zoneCounterEnum = {
@@ -188,7 +190,7 @@ function createCharacter() {
 	}
 	player.minionNames = [];
 	player.equippedMinions = [-1, -1];
-	player.quests = [0, 0, 0, 0, 0];
+	player.quests.fill(0, 0, questEnumSize);
 	player.mayorQuestsCompleted = 0;
 	player.zoneCounters = [];
 	player.combatQueue = [];

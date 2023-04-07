@@ -229,6 +229,7 @@
 							<button type="button" onclick="goToLocation('house')">Go to Your House</button>
 							<button id="map_townButton" type="button" onclick="goToLocation('town')">Go to Town</button>
 							<button id="map_outskirtsButton" type="button" onclick="goToLocation('outskirts')">Go to the Outskirts of Town</button>
+							<button id="map_mountainsButton" type="button" onclick="goToLocation('mountains')">Go to the Mountains</button>
 						</div>
 						<div id="loc_house" class="location">
 							<div id="house_tutorial1">
@@ -277,7 +278,6 @@
 							<button type="button" onclick="goToLocation('shopGeneral')">Visit the General Store</button>
 							<button type="button" onclick="goToLocation('trainer')">Visit the Personal Trainer</button>
 							<button type="button" onclick="goToLocation('drellaU')">Visit Drella U</button>						
-							<button type="button" onclick="goToLocation('dungeons')">Visit the Dungeons</button>
 							<button type="button" onclick="goToLocation('map')">Back to Map</button>
 						</div>
 						<div id="loc_cid" class="location">
@@ -353,12 +353,6 @@
 							<div id="mayorText"></div>
 							<button type="button" onclick="goToLocation('townHall')">Back to the Town Hall</button>
 						</div>
-						<div id="loc_dungeons" class="location">
-							<p id="dungeons_closedYellowDoorText">This is a locked yellow door. There's a note on the door, which says: "In partnership with General Store Inc, come visit us for access. Not suitable for adventurers below level 3."</p>
-							<button id="dungeons_closedYellowDoorButton" type="button" onclick="showClosedYellowDoorText()">Investigate the Locked Yellow Door</button>
-							<button id="dungeons_yellowDoorButton" type="button" onclick="adventure(7)">Adventure behind the Yellow Door (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
-							<button type="button" onclick="goToLocation('town')">Back to Town</button>
-						</div>
 						<div id="loc_outskirts" class="location">
 							<button type="button" onclick="goToLocation('orcCamp')">Visit the Orc Camp</button>
 							<button type="button" onclick="adventure(8)">Adventure in the Badger Badger Sett (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
@@ -374,6 +368,34 @@
 							<button type="button" onclick="adventure(5)">Adventure in the Orc Camp Munitions Store (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button id="orcCamp_leaderTentButton" type="button" onclick="adventure(6)">Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button type="button" onclick="goToLocation('outskirts')">Back to the Outskirts of Town</button>
+						</div>
+						<div id="loc_mountains" class="location">
+							<button type="button" onclick="goToLocation('happyville')">Visit Happyville</button>
+							<button type="button" onclick="goToLocation('dungeons')">Visit the Dungeons</button>
+							<button type="button" onclick="goToLocation('map')">Back to Map</button>
+						</div>
+						<div id="loc_happyville" class="location">
+							<div id="happyville_intro">
+								<p>The first thing that strikes you as you arrive is that everyone is just so miserable. So much for Happyville.</p>
+								<p>There's a congregation of people by a large confier tree in the middle of the village square. Perhaps somebody there can let you know what's going on.</p>
+							</div>
+							<button id="happyville_bigTreeButton" type="button" onclick="goToLocation('happyvilleTree')">Visit the Large Tree</button>
+							<button type="button" onclick="goToLocation('happyvilleShop')">Visit the Gift Shop</button>
+							<button type="button" onclick="adventure(9)">Adventure in the Happyville Present Factory (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+							<button type="button" onclick="adventure(10)">Adventure in the Reindeer Forest (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+							<button type="button" onclick="goToLocation('mountains')">Back to the Mountains</button>
+						</div>
+						<div id="loc_happyvilleShop" class="location">
+							<p>You visit the Happyville gift shop. It looks like they will trade wrapping paper for an assortment of goodies. Wierd that they don't take Gold.</p>
+							<p>You have <span id="happyvilleShop_paperCount"></span> wrapping paper to spend.</p>
+							<div id="happyvilleShop_container"></div>
+							<button type="button" onclick="goToLocation('happyville')">Back to Happyville</button>
+						</div>
+						<div id="loc_dungeons" class="location">
+							<p id="dungeons_closedYellowDoorText">This is a locked yellow door. There's a note on the door, which says: "In partnership with General Store Inc, come visit us for access. Not suitable for adventurers below level 3."</p>
+							<button id="dungeons_closedYellowDoorButton" type="button" onclick="showClosedYellowDoorText()">Investigate the Locked Yellow Door</button>
+							<button id="dungeons_yellowDoorButton" type="button" onclick="adventure(7)">Adventure behind the Yellow Door (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+							<button type="button" onclick="goToLocation('mountains')">Back to the Mountains</button>
 						</div>
 						<div id="loc_settings" class="location">
 							<button type="button" onclick="save()">Save game</button>
@@ -432,6 +454,7 @@
 		<script src="./scripts/locations/cid.js"></script>
 		<script src="./scripts/locations/drellaU.js"></script>
 		<script src="./scripts/locations/generalShop.js"></script>
+		<script src="./scripts/locations/happyville.js"></script>
 		<script src="./scripts/adventure.js"></script>
 		<script src="./scripts/combats.js"></script>
 		<script src="./scripts/minions.js"></script>

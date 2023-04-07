@@ -139,4 +139,24 @@ var zones = [
 		combats: [21, 21, 21, 22, 23, 24],
 		noncombats: [9, 10]
 	},
+	{
+		id: 9,
+		name: "Happyville Present Factory",
+		level: 3,
+		parent: "happyville",
+		parentName: "Happyville",
+		combatChance: 75,
+		combats: [0],
+		noncombats: [11]
+	},
+	{
+		id: 10,
+		name: "Reindeer Forest",
+		level: 3,
+		parent: "happyville",
+		parentName: "Happyville",
+		combatChance: 100,
+		combats: [0],
+		noncombats: []
+	},
 ];

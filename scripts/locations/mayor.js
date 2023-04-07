@@ -49,6 +49,20 @@ function displayMayorText() {
 		}
     }
 
+    //level 3
+    if (player.level >= 3 && !player.quests[questEnum.HAPPYVILLE]) {
+        newMayorText("\"I've had a distress call from a village far off in the mountains to the West called Happyville.\"");
+        newMayorText("\"They sound like a friendly bunch.\" you reply.");
+        newMayorText("\"Ugh. You'd think so, but they're all so weird. The endless smiling, it's creepy. I think they're part of a strange demon-summoning cult.\"");
+        newMayorText("You take a step back. \"Wow, OK, this went a direction I wasn't expecting. I take it you want me to help them? Are you sure they should be helped?\"");
+        newMayorText("\"Well I'm certainly not going myself. If you could get them to do whatever you need to do to get them to stop calling me I'd be grateful.\"");
+        player.quests[questEnum.HAPPYVILLE] = 1;
+        save();
+    }
+    else if (player.quests[questEnum.HAPPYVILLE] >= 1) {
+        newMayorText("\"Hey get a move on solving the problem those crazy Happyville people in the mountains are having! I really don't want them to phone me again, they give me the creeps!\"");
+    }
+
     if (mayorTextDiv.textContent === "") {
         newMayorText("\"I have nothing for you right now. Please come back later when you are stronger.\"");
     }

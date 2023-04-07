@@ -34,12 +34,15 @@ function addNoncombatText (txt)
 	$("#noncombatText").append(e);
 }
 
-function getNoncombatItem(id, amount)
-{
+function getNoncombatItem(id, amount) {
 	gainItem (id, amount);
 	let e = $("<p></p>");
 	e.addClass("item_Image");
-	e.html("You found a <img src='./images/" + items[id].icon + "'> " + items[id].name + "!");
+	let amountText = "a";
+	if (amount > 1) {
+		amountText = amount;
+	}
+	e.html("You found " + amountText + " <img src='./images/" + items[id].icon + "'> " + items[id].name + "!");
 	e.css("cursor", "pointer");
 	e.attr({
 		"onClick" : "openDialog (dialogType.ITEM, " + id + ");"

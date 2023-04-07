@@ -130,6 +130,8 @@ function createCharacter() {
 		return;
 	}
 	let job = parseInt(jobForm.job.value);
+	name = name.trim();
+	name = name.substring(0, 30);
 	player.name = name;
 	player.job = job;
 	player.inventory = [];

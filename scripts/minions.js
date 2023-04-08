@@ -100,7 +100,7 @@ function gainMinion(id) {
         let defaultName = defaultNameList[Math.floor(Math.random() * defaultNameList.length)];
         player.minionNames[id] = defaultName;
     }
-    hint(`You add ${defaultName} the ${minions[id].name} to your pen!`, "g");
+    hint(`You add ${player.minionNames[id]} the ${minions[id].name} to your pen!`, "g");
 }
 
 // Unequips a minion

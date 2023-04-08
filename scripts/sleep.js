@@ -10,11 +10,12 @@ function sleep() {
 	newElement.textContent = "A new day has begun!";
 	sleepTextDiv.appendChild(newElement);
 	
-	restRecovery();
+	hint(restRecovery(), "g");
 	player.turnsToMidnight = 40;
 	player.day++;
 	player.full = 0;
 	player.castTimeManagement = false;
+	player.freeRestsUsed = 0;
 	randomiseDrellaUSkills();
 	redrawCharPane();
 	redrawInfoPanel();
@@ -26,4 +27,31 @@ function newSleepText(t) {
 	let newElement = document.createElement("p");
 	newElement.textContent = t;
 	sleepTextDiv.appendChild(newElement);
+}
+
+// Rest at your house
+function rest() {
+	let hintText = "";
+	if (player.freeRestsUsed < player.effFreeRests) {
+		hintText = restRecovery();
+		player.freeRestsUsed ++;
+		save();
+	}
+	else {
+		if (player.turnsToMidnight <= 0) {
+			goToLocation("noAdventuresWarning");
+			return;
+		}
+		hintText = restRecovery();
+		endAdventure();
+	}
+	goToLocation("house");
+	hint(hintText, "g");
+}
+
+// Recovery granted by resting and sleeping. Returns the hint text
+function restRecovery() {
+	let hp = Math.floor(Math.random()*10) + 30;
+	let mp = Math.floor(Math.random()*3) + 5;
+	return giveHp(hp) + " " + giveMp(mp);
 }

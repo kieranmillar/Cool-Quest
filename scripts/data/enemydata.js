@@ -868,7 +868,7 @@ var combats = [
 		description: "TODO",
 		icon: "empty.png",
 		hp: 150,
-		pow: 15,
+		pow: 16,
 		def: 15,
 		init: 40,
 		element: elementEnum.ICE,

@@ -161,6 +161,12 @@ function goToLocation (l) {
 				house_sleepButton.classList.add("hide");
 				house_restButton.classList.remove("hide");
 			}
+			if (player.freeRestsUsed < player.effFreeRests) {
+				house_restButton.innerHTML = `Rest (${player.effFreeRests - player.freeRestsUsed} free rests remaining)`;
+			}
+			else {
+				house_restButton.innerHTML = "Rest (<img src='./images/adventure.png' title='(1 Adventure)'>)";
+			}
 			break;
 		case "sleep":
 			location_sleep.classList.remove("hide");

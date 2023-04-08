@@ -96,6 +96,8 @@ var player = {
 	effMinionExpBonus: 0,
 	effClotheslineBonus: 0,
 	castTimeManagement: false,
+	effFreeRests: 0,
+	freeRestsUsed: 0,
 	options: [0, 0, 1, 0],
 	drellaUDailyBigSkill: -1,
 	drellaUDailySmallSkills: [],
@@ -246,22 +248,19 @@ function calculateStats() {
 	player.effMinionLevelBonus = 0;
 	player.effMinionExpBonus = 0;
 	player.effClotheslineBonus = 0;
+	player.effFreeRests = 0;
 	
 	//apply equipment
-	for (var i in player.equipment)
-	{
-		if (player.equipment[i] != -1)
-		{
-			if("onWear" in items[player.equipment[i]])
-			{
+	for (var i in player.equipment) {
+		if (player.equipment[i] != -1) {
+			if("onWear" in items[player.equipment[i]]) {
 				items[player.equipment[i]].onWear();
 			}
 		}
 	}
 	
 	//apply buffs
-	for (var i in player.buffs)
-	{
+	for (var i in player.buffs) {
 		if ("effect" in effects[player.buffs[i].id]) {
 			effects[player.buffs[i].id].effect();
 		}
@@ -426,28 +425,6 @@ function eatMessage (itemId)
 	t += items[itemId].fullness;
 	t += " fullness.";
 	return t;
-}
-
-function rest()
-{
-	if (player.turnsToMidnight <= 0)
-	{
-		goToLocation("noAdventuresWarning");
-		return;
-	}
-	restRecovery();
-	endAdventure();
-	if (player.turnsToMidnight <= 0)
-	{
-		goToLocation("house");
-	}
-}
-
-function restRecovery()
-{
-	let hp = Math.floor(Math.random()*10) + 30;
-	let mp = Math.floor(Math.random()*3) + 5;
-	hint (giveHp(hp) + " " + giveMp(mp), "g");
 }
 
 function buyHP (x) {

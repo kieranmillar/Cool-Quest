@@ -1413,7 +1413,7 @@ var skills = [
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effFreeRests += 3;
 		}
 	},
 	{

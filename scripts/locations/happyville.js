@@ -28,7 +28,7 @@ function displayHappyvilleShop() {
         let minionContainer = document.createElement("div");
         minionContainer.classList.add("inv_container");
         if (!getMinionOwned(1)) {
-            minionContainer.appendChild(createHappyvilleShopMinion(0, 30)); // rapping wrapping robot
+            minionContainer.appendChild(createHappyvilleShopMinion(1, 30)); // rapping wrapping robot
         }
         happyvilleShopContainerDiv.appendChild(minionContainer);
     }

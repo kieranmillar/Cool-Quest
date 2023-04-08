@@ -1,3 +1,15 @@
+/*
+id: same number as its position in the array
+name: the name of the zone as will appear on the adventure again button
+level: recommended minimum level, a warning will be displayed when trying to adventure here at a level lower than this
+parent: the location string of the parent container
+parentName: the string to display for the parent container on the return to parent button
+combatChance: chance of a combat as a full percentage. 100 means all combats and cannot be lowered. 0 means all noncombats and cannot be raised
+combats: array of all the available combats to pick randomly from. All have even chance before modifiers and the queue, repeat entries that you want to be more likely.
+noncombats: array of all the available noncombats to pick randomly from. All have even chance, repeat entries that you want to be more likely.
+special: (optional) a function, that if present, will overwrite the normal procedure for determining an adventure. Should always result in a call to pickRandomCombat, beginCombat, beginNoncombat or genericAdventure
+*/
+
 var zones = [
 	{
 		id: 0,
@@ -8,19 +20,16 @@ var zones = [
 		combatChance: 90,
 		combats: [0, 1, 2],
 		noncombats: [0],
-		special: function ()
-		{
+		special: function () {
 			if (!player.zoneCounters[zoneCounterEnum.BASEMENT]) {
 				player.zoneCounters[zoneCounterEnum.BASEMENT] = 0;
 			}
 			player.zoneCounters[zoneCounterEnum.BASEMENT] ++;
-			if (player.zoneCounters[zoneCounterEnum.BASEMENT] >= 5)
-			{
+			if (player.zoneCounters[zoneCounterEnum.BASEMENT] >= 5) {
 				player.zoneCounters[zoneCounterEnum.BASEMENT] = 0;
 				beginNoncombat (noncombats[0]);
 			}
-			else
-			{
+			else {
 				genericAdventure(0);
 			}
 		}
@@ -76,13 +85,11 @@ var zones = [
 		noncombats: [],
 		special: function ()
 		{
-			if (player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] == 1 && player.quests[questEnum.ORCCAMP] < 6)
-			{
+			if (player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] == 1 && player.quests[questEnum.ORCCAMP] < 6) {
 				player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 0;
 				beginCombat (combats[15]);
 			}
-			else
-			{
+			else {
 				beginCombat (combats[14]);
 			}
 		}
@@ -98,23 +105,19 @@ var zones = [
 		noncombats: [],
 		special: function ()
 		{
-			if (player.quests[questEnum.ORCCAMP] >= 6)
-			{
+			if (player.quests[questEnum.ORCCAMP] >= 6) {
 				beginNoncombat (noncombats[6]);
 			}
 			else if (player.equipment[4] == 25 ||
 				player.equipment[5] == 25 ||
 				player.equipment[6] == 25 ||
-				player.equipment[7] == 25)
-			{
+				player.equipment[7] == 25) {
 				beginNoncombat (noncombats[7]);
 			}
-			else if (player.quests[questEnum.ORCCAMP] < 5)
-			{
+			else if (player.quests[questEnum.ORCCAMP] < 5) {
 				beginNoncombat (noncombats[4]);
 			}
-			else if (player.quests[questEnum.ORCCAMP] == 5)
-			{
+			else if (player.quests[questEnum.ORCCAMP] == 5) {
 				beginNoncombat (noncombats[5]);
 			}
 		}
@@ -145,8 +148,8 @@ var zones = [
 		level: 3,
 		parent: "happyville",
 		parentName: "Happyville",
-		combatChance: 75,
-		combats: [0],
+		combatChance: 80,
+		combats: [25, 26, 27],
 		noncombats: [11]
 	},
 	{
@@ -156,7 +159,34 @@ var zones = [
 		parent: "happyville",
 		parentName: "Happyville",
 		combatChance: 100,
-		combats: [0],
+		combats: [28, 29, 29, 29, 29, 30, 30, 30, 30, 30, 31, 31, 31, 31],
 		noncombats: []
+	},
+	{
+		id: 11,
+		name: "Santa's Workshop",
+		level: 3,
+		parent: "happyville",
+		parentName: "Happyville",
+		combatChance: 90,
+		combats: [32, 33, 34],
+		noncombats: [12],
+		special: function () {
+			if (player.quests[questEnum.HAPPYVILLE] >= 5) {
+				beginNoncombat (noncombats[13]);
+				return;
+			}
+			if (!player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP]) {
+				player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] = 0;
+			}
+			player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] ++;
+			if (player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] >= 8) {
+				player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] = 0;
+				beginNoncombat (noncombats[12]);
+			}
+			else {
+				genericAdventure(11);
+			}
+		}
 	},
 ];

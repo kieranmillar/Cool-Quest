@@ -59,8 +59,16 @@ function displayMayorText() {
         player.quests[questEnum.HAPPYVILLE] = 1;
         save();
     }
-    else if (player.quests[questEnum.HAPPYVILLE] >= 1) {
+    else if (player.quests[questEnum.HAPPYVILLE] >= 1  && player.quests[questEnum.HAPPYVILLE] <= 4) {
         newMayorText("\"Hey get a move on solving the problem those crazy Happyville people in the mountains are having! I really don't want them to phone me again, they give me the creeps!\"");
+    }
+    else if (player.quests[questEnum.HAPPYVILLE] == 5) {
+		newMayorText("\"So they were a bunch of demon-summoning cultists after all, and you helped them summon the demon but defeated it anyway? Nice going, that should shut them up for a while.\"");
+        player.quests[questEnum.HAPPYVILLE] = 6;
+        finishMayorQuest();
+		if (player.level <= 3) {
+			newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 4.\"");
+		}
     }
 
     if (mayorTextDiv.textContent === "") {
@@ -93,6 +101,13 @@ function finishMayorQuest() {
             newMayorText("\"Yes, well, bureaucracy, you know how it is.\" He hands you another voucher.");
             gainMayorVoucher()
             newMayorText("Well, maybe another one won't hurt.");
+            break;
+        case 3:
+            newMayorText("\"So... when it comes to a reward, are you planning on giving me another voucher?\" you ask.");
+            newMayorText("\"Oh, that's what you want is it? I wasn't going to but if that's what you want then sure, have another one.\" The mayor opens his drawer.");
+            newMayorText("\"No wait, that's not what...\"");
+            gainMayorVoucher()
+            newMayorText("\"I'm glad I could provide you with the reward that you really wanted. Here's hoping the next work I have for you will go this well!\"");
             break;
     }
     save();

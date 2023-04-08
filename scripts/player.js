@@ -28,7 +28,8 @@ var zoneCounterEnum = {
 	BASEMENT: 0,
 	CANTEEN: 1,
 	ORCMUNITIONS: 2,
-	BADGERBADGERSETT: 3
+	BADGERBADGERSETT: 3,
+	SANTASWORKSHOP: 4
 }
 
 var player = {

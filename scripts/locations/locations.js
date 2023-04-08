@@ -38,6 +38,7 @@ var location_outskirts = document.getElementById("loc_outskirts");
 var location_orcCamp = document.getElementById("loc_orcCamp");
 var location_mountains = document.getElementById("loc_mountains");
 var location_happyville = document.getElementById("loc_happyville");
+var location_happyvilleTree = document.getElementById("loc_happyvilleTree");
 var location_happyvilleShop = document.getElementById("loc_happyvilleShop");
 var location_dungeons = document.getElementById("loc_dungeons");
 var location_toughZoneWarning = document.getElementById("loc_toughZoneWarning");
@@ -55,6 +56,8 @@ var townHall_basementButton = document.getElementById("townHall_basementButton")
 var townHall_taxOfficeButton = document.getElementById("townHall_taxOfficeButton");
 var townHall_canteenButton = document.getElementById("townHall_canteenButton");
 var orcCamp_leaderTentButton = document.getElementById("orcCamp_leaderTentButton");
+var happyville_bigTreeButton = document.getElementById("happyville_bigTreeButton");
+var happyville_santasWorkshopButton = document.getElementById("happyville_santasWorkshopButton");
 var dungeons_closedYellowDoorButton = document.getElementById("dungeons_closedYellowDoorButton");
 var dungeons_yellowDoorButton = document.getElementById("dungeons_yellowDoorButton");
 
@@ -248,6 +251,24 @@ function goToLocation (l) {
 			else {
 				happyville_intro.classList.add("hide");
 			}
+			if (player.quests[questEnum.HAPPYVILLE] < 4) {
+				happyville_bigTreeButton.classList.remove("hide");
+				happyville_santasWorkshopButton.classList.add("hide");
+			}
+			else {
+				happyville_bigTreeButton.classList.add("hide");
+				happyville_santasWorkshopButton.classList.remove("hide");
+			}
+			if (player.quests[questEnum.HAPPYVILLE] < 5) {
+				happyville_santasWorkshopButton.innerHTML = "Adventure in Santa's Workshop (<img src='./images/adventure.png' title='(1 Adventure)'>)";
+			}
+			else {
+				happyville_santasWorkshopButton.innerHTML = "Visit Santa's Workshop";
+			}
+			break;
+		case "happyvilleTree":
+			location_happyvilleTree.classList.remove("hide");
+			displayHappyvilleTree();
 			break;
 		case "happyvilleShop":
 			location_happyvilleShop.classList.remove("hide");

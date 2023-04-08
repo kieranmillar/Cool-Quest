@@ -78,7 +78,7 @@ function beginCombat (obj)
 	if (monster.pow < 1)
 		monster.pow = 1;
 	monster.def = obj.def + player.effMl;
-	if (!"fixedStats" in obj || !obj.fixedStats) {
+	if ((!"fixedStats" in obj || !obj.fixedStats) && obj.def != 999) {
 		monster.def += Math.floor(monster.def * Math.random() * 0.1);
 		monster.def -= Math.floor(monster.def * Math.random() * 0.1);
 	}

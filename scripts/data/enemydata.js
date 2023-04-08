@@ -613,4 +613,270 @@ var combats = [
 			"hit3"
 		]
 	},
+	{
+		id: 25,
+		name: "a present mimic",
+		description: "You find a present sitting out in the open. You go to pick it up, but the present is a mimic! Time to turn this guy into a past mimic.",
+		icon: "empty.png",
+		hp: 40,
+		pow: 34,
+		def: 8,
+		init: 75,
+		exp: 41,
+		gold: 28,
+		drops: [
+			{id: 36, chance: 100},
+			{id: 36, chance: 80},
+			{id: 36, chance: 60},
+			{id: 36, chance: 40},
+			{id: 36, chance: 20}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 26,
+		name: "the ghost of Christmas presents",
+		description: "This factory is haunted by a ghost that tries to teach you moral lessons. Ugh, the worst kind of ghost. It's non-corporeal form makes it hard to deal damage with physical attacks.",
+		icon: "empty.png",
+		hp: 15,
+		pow: 30,
+		def: 999,
+		init: 0,
+		fixedStats: true,
+		exp: 42,
+		gold: 30,
+		drops: [
+			{id: 36, chance: 100},
+			{id: 36, chance: 66},
+			{id: 36, chance: 33}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 27,
+		name: "an underpaid factory worker",
+		description: "A factory worker spots you prowling around the factory, and shrugs their shoulders. They're contractually obligated to fight you, but don't get paid enough to care.",
+		icon: "empty.png",
+		hp: 55,
+		pow: 31,
+		def: 2,
+		init: 30,
+		exp: 40,
+		gold: 12,
+		drops: [
+			{id: 36, chance: 100},
+			{id: 36, chance: 75},
+			{id: 36, chance: 50},
+			{id: 36, chance: 25}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 28,
+		name: "The Pinch",
+		description: "There he is, the thief that's stealing all the presents! He must have them all in the giant swag bag!",
+		icon: "empty.png",
+		hp: 80,
+		pow: 43,
+		def: 6,
+		init: 60,
+		fixedStats: true,
+		exp: 60,
+		gold: 45,
+		drops: [
+			{id: 37, chance: 100},
+			{id: 37, chance: 100},
+			{id: 37, chance: 100},
+			{id: 37, chance: 80},
+			{id: 37, chance: 60},
+			{id: 37, chance: 40},
+			{id: 37, chance: 20}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		],
+		afterCombat: function () {
+			addCombatText ('Hey, a bunch of presents spilled out from his swag bag!');
+			return true;
+		}
+	},
+	{
+		id: 29,
+		name: "Mr. Dolph",
+		description: "You hear somebody shout behind you, \"Hey butthole!\" It turns out to be a reindeer with a really red and shiny nose. Wow, this guy is so rude!",
+		icon: "empty.png",
+		hp: 45,
+		pow: 12,
+		def: 12,
+		init: 40,
+		element: elementEnum.EMOTIONAL,
+		fixedStats: true,
+		exp: 50,
+		gold: 35,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"\"You'd have been able to dodge this hit if you weren't so fat!\" Ouch, right in the feels.",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 30,
+		name: "Reindeer enemy 2",
+		description: "TODO",
+		icon: "empty.png",
+		hp: 65,
+		pow: 39,
+		def: 0,
+		init: 20,
+		exp: 48,
+		gold: 32,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 31,
+		name: "Reindeer enemy 3",
+		description: "TODO",
+		icon: "empty.png",
+		hp: 40,
+		pow: 37,
+		def: 15,
+		init: 30,
+		exp: 47,
+		gold: 38,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 32,
+		name: "a stealth elf",
+		description: "TODO",
+		icon: "empty.png",
+		hp: 40,
+		pow: 11,
+		def: 15,
+		init: 30,
+		element: elementEnum.ICE,
+		exp: 47,
+		gold: 38,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 33,
+		name: "a wealth elf",
+		description: "TODO",
+		icon: "empty.png",
+		hp: 40,
+		pow: 10,
+		def: 15,
+		init: 30,
+		element: elementEnum.ICE,
+		exp: 47,
+		gold: 120,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 34,
+		name: "a health elf",
+		description: "TODO",
+		icon: "empty.png",
+		hp: 40,
+		pow: 12,
+		def: 15,
+		init: 30,
+		element: elementEnum.ICE,
+		exp: 47,
+		gold: 38,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 35,
+		name: "the demon king of the underworld, Santa",
+		description: "TODO",
+		icon: "empty.png",
+		hp: 150,
+		pow: 20,
+		def: 15,
+		init: 40,
+		element: elementEnum.ICE,
+		fixedStats: true,
+		boss: true,
+		exp: 250,
+		gold: 180,
+		drops: [
+			
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		],
+		afterCombat: function () {
+			addCombatText ('TODO: After combat text');
+			addCombatText ("Looks like Happyville's problems are all solved now, best to return the Mayor for your reward.");
+			player.quests[questEnum.HAPPYVILLE] = 5;
+			return true;
+		}
+	},
 ];

@@ -141,9 +141,8 @@ var noncombats = [
 	{
 		id: 4,
 		title: "It's Not That Easy",
-		description: "You casually stroll up to the leaders tent. A group of guards immediately pounce on you and give you a beating! Maybe the direct approach isn't going to work. Perhaps you can find a high ranking official somewhere that will help you find a way in.",
+		description: "You casually stroll up to the leaders tent. A group of guards immediately pounce on you and give you a beating! Maybe the direct approach isn't going to work. Perhaps you can find a high ranking official somewhere that will help you find a way in.</p><p>You take 3 damage!</p><button onClick=\"goToLocation('orcCamp')\">Return to the Orc Camp</button><p>",
 		result: function () {
-			addNoncombatText("You take 3 damage!");
 			player.hp -= 3;
 			if (player.hp < 0) {
 				player.hp = 0;
@@ -283,10 +282,40 @@ var noncombats = [
 	{
 		id: 11,
 		title: "No Time Like the Present",
-		description: "TODO",
+		description: "You manage to explore the factory without encountering anybody, and find a stash of presents. Score!",
 		result: function () {
-			getNoncombatItem (37, 3);
+			let r = 3 + Math.floor(Math.random() * 2);
+			getNoncombatItem (37, r);
 			endAdventure();
+		}
+	},
+	{
+		id: 12,
+		title: "Get Your Claus Out",
+		description: "You find the door to Santa's office. You ready yourself / chicken out (delete as appropriate).",
+		choices: [
+			{
+				buttonText: function () {return noncombatButton ("Enter the office", 0, "fight Santa");},
+				onChoosing: function () {
+					beginCombat (combats[35]);
+					return true;
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a random monster");},
+				onChoosing: function () {
+					pickRandomCombat (11);
+					return true;
+				}
+			}
+		]
+	},
+	{
+		id: 13,
+		title: "Cromwell Would be Proud",
+		description: "With Santa defeated, his workshop lays still and silent.</p><button onClick=\"goToLocation('happyville')\">Return to Happyville</button><p>",
+		result: function () {
+			busy = false;
 		}
 	},
 ];

@@ -9,7 +9,7 @@
 		
 		<meta name="author" content="Kieran Millar">
 		
-		<meta name="revised" content="Kieran Millar, 07/04/2023">
+		<meta name="revised" content="Kieran Millar, 08/04/2023">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
@@ -383,7 +383,12 @@
 							<button type="button" onclick="goToLocation('happyvilleShop')">Visit the Gift Shop</button>
 							<button type="button" onclick="adventure(9)">Adventure in the Happyville Present Factory (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button type="button" onclick="adventure(10)">Adventure in the Reindeer Forest (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+							<button id="happyville_santasWorkshopButton" type="button" onclick="adventure(11)">Adventure in Santa's Workshop (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button type="button" onclick="goToLocation('mountains')">Back to the Mountains</button>
+						</div>
+						<div id="loc_happyvilleTree" class="location">
+							<div id="happyvilleTree_container"></div>
+							<button type="button" onclick="goToLocation('happyville')">Back to Happyville</button>
 						</div>
 						<div id="loc_happyvilleShop" class="location">
 							<p>You visit the Happyville gift shop. It looks like they will trade wrapping paper for an assortment of goodies. Wierd that they don't take Gold.</p>

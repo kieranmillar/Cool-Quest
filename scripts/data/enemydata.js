@@ -24,6 +24,7 @@ drops: Array of item drops, each iten is an object with two properties:
 --- id: The id of the item
 --- chance: The base drop chance of the item, as a whole percentage (between 1 and 100)
 hitMessages: Array of 4 strings, first one is critical hit flavour text, other three are normal hit flavour texts
+special: (optional) function to modify combat behaviour. Returns true or false if it wants to completely override standard behaviour or not
 afterCombat: (optional) function to run custom code at the end of combat if you win
 */
 var combats = [
@@ -803,7 +804,11 @@ var combats = [
 			"hit1",
 			"hit2",
 			"hit3"
-		]
+		],
+		special: function () {
+			santasWorkshopAura();
+			return false;
+		}
 	},
 	{
 		id: 33,
@@ -825,7 +830,11 @@ var combats = [
 			"hit1",
 			"hit2",
 			"hit3"
-		]
+		],
+		special: function () {
+			santasWorkshopAura();
+			return false;
+		}
 	},
 	{
 		id: 34,
@@ -847,7 +856,11 @@ var combats = [
 			"hit1",
 			"hit2",
 			"hit3"
-		]
+		],
+		special: function () {
+			santasWorkshopAura();
+			return false;
+		}
 	},
 	{
 		id: 35,
@@ -855,7 +868,7 @@ var combats = [
 		description: "TODO",
 		icon: "empty.png",
 		hp: 150,
-		pow: 20,
+		pow: 15,
 		def: 15,
 		init: 40,
 		element: elementEnum.ICE,
@@ -872,6 +885,10 @@ var combats = [
 			"hit2",
 			"hit3"
 		],
+		special: function () {
+			santasWorkshopAura();
+			return false;
+		},
 		afterCombat: function () {
 			addCombatText ('TODO: After combat text');
 			addCombatText ("Looks like Happyville's problems are all solved now, best to return the Mayor for your reward.");
@@ -880,3 +897,15 @@ var combats = [
 		}
 	},
 ];
+
+function santasWorkshopAura() {
+	if (player.iceRes >= 5) {
+		addCombatText("Your ice resistance shields you completely from the chilling aura given off by this demon.");
+	}
+	else {
+		addCombatText("This demon radiates a chilling aura. Brrrr!");
+		let damage = 5 - player.iceRes;
+		addCombatText("You take <span class='ice'>" + damage + "</span> ice damage!");
+		player.hp -= damage;
+	}
+}

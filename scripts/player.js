@@ -74,6 +74,7 @@ var player = {
 	effItemBoostFood: 0,
 	effGoldBoost: 0,
 	effMl: 0,
+	effCombatCostReduction: 0,
 	combatRate: 0,
 	powGain: 4,
 	defGain: 4,
@@ -215,8 +216,8 @@ function createCharacter() {
 	goToLocation ("intro");
 }
 
-function calculateStats ()
-{
+// recalculates the player's stats based off all equipment/skills/buffs etc.
+function calculateStats() {
 	player.fullMax = 10;
 	player.effHpMax = player.baseHpMax;
 	player.effMpMax = player.baseMpMax;
@@ -240,6 +241,7 @@ function calculateStats ()
 	player.effItemBoostFood = 0;
 	player.effGoldBoost = 0;
 	player.effMl = 0;
+	player.effCombatCostReduction = 0;
 	player.combatRate = 0;
 	player.effMinionLevelBonus = 0;
 	player.effMinionExpBonus = 0;
@@ -302,9 +304,11 @@ function calculateStats ()
 	if (player.effDef < 0)
 		player.effDef = 0;
 
-	if (player.job == jobEnum.WRESTLER)
-	{
+	if (player.job == jobEnum.WRESTLER) {
 		player.hpRegen += Math.floor(player.effHpMax / 5);
+	}
+	if (player.job == jobEnum.MYSTIC) {
+		player.effCombatCostReduction += 1;
 	}
 	redrawCharPane();
 }

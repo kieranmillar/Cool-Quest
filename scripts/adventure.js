@@ -56,7 +56,7 @@ function endAdventure(costsTurn = true) {
 	{
 		let adventureAgainButton = $("#adventureAgainButton");
 		adventureAgainButton.show();
-		adventureAgainButton.html("Adventure Again at the " + zones[lastZone].name + " (<img src='./images/adventure.png' title='(1 Adventure)'>)");
+		adventureAgainButton.html(`Adventure Again at ${zones[lastZone].name} (<img src='./images/adventure.png' title='(1 Adventure)'>)`);
 		let returnToContainerButton = $("#returnToContainerButton");
 		returnToContainerButton.show();
 		returnToContainerButton.html(`Return to ${zones[lastZone].parentName}`);

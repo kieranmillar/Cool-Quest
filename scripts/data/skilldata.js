@@ -452,7 +452,7 @@ var skills = [
 				player.effPow,
 				"You run up to your opponent and smack them, while Crackers flies above them and drops a special treat on top of them.",
 				"You deliver a critical blow while your opponent is distracted by the gifts delivered by Crackers overhead!");
-			let amount = Math.ceil(monster.pow * 0.1);
+			let amount = Math.max(Math.round(monster.pow * 0.1), 1);
 			addCombatText(`Your opponent is grossed out by Crackers' gifts. Their POW drops by ${amount}!`);
 			monster.pow -= amount;
 			if (monster.pow < 1) {
@@ -1190,15 +1190,14 @@ var skills = [
 	},
 	{
 		id: 68,
-		name: "-1 MP to cast combat skills",
-		description: "",
-		enchantment: "",
+		name: "Pilates",
+		description: "This course makes you more flexible so it takes less effort to perform special moves in combat. The course is frequented by many pirates with reading difficulties.",
+		enchantment: "-1 MP to cast combat skills",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-			
+			player.effCombatCostReduction += 1;
 		}
 	},
 	{

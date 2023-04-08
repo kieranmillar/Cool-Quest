@@ -22,15 +22,16 @@ var monster = {
 var currentRound = 0;
 var lastUsedCombatSkill = -1;
 
-function addCombatText (txt)
-{
+// Adds a paragraph of text to the combat screen
+function addCombatText(txt) {
 	let e = $("<p></p>");
 	e.html(txt);
 	$("#combatText").append(e);
 }
 
+// Gain an item dropped from a combat
 function gainItemDrop(item, amount) {
-	gainItem (item.id, amount);
+	gainItem(item.id, amount);
 	let e = $("<p></p>");
 	e.addClass("item_Image");
 	let amountText = "a";
@@ -45,12 +46,12 @@ function gainItemDrop(item, amount) {
 	$("#combatText").append(e);
 }
 
-function beginCombat (obj)
-{
+// Starts a new combat
+function beginCombat(obj) {
 	if (player.hp == 0 || busy == true) {
 		return;
 	}
-	if (!goToLocation ("combat")) {
+	if (!goToLocation("combat")) {
 		return;
 	}
 	busy = true;
@@ -89,8 +90,7 @@ function beginCombat (obj)
 		monster.init += Math.floor(monster.init * Math.random() * 0.1);
 		monster.init -= Math.floor(monster.init * Math.random() * 0.1);
 	}
-	if ("element" in obj)
-	{
+	if ("element" in obj) {
 		monster.element = obj.element;
 		switch (obj.element) {
 			case elementEnum.FIRE:
@@ -107,8 +107,7 @@ function beginCombat (obj)
 				break;
 		}
 	}
-	else
-	{
+	else {
 		monster.element = elementEnum.PHYSICAL;
 		$("#monsterAttackImage").attr("src", "./images/sword.png");
 	}
@@ -128,7 +127,7 @@ function beginCombat (obj)
 	monster.stunThisRound = false;
 	monster.exposeSecretsRounds = 0;
 	$("#combatText").empty();
-	addCombatText (monster.description);
+	addCombatText(monster.description);
 	currentRound = 0;
 	$("#concentrationParagraph").show();
 	$("#combatButtons").show();
@@ -136,18 +135,17 @@ function beginCombat (obj)
 	$("#returnToContainerButton").hide();
 
 	if (player.buffs.find(x=> x.id == 10)) {
-		addCombatText ("As you strut into combat, a camera crew surrounds you and bunches of fireworks set off. One of the fireworks falls over and heads straight for your opponent!");
+		addCombatText("As you strut into combat, a camera crew surrounds you and bunches of fireworks set off. One of the fireworks falls over and heads straight for your opponent!");
 		let dramaticEntranceDamage = calcFireDamage(25 + player.fireDamage);
-		addCombatText ("Your opponent takes <span class='fire'>" + dramaticEntranceDamage + "</span> fire damage!");
+		addCombatText("Your opponent takes <span class='fire'>" + dramaticEntranceDamage + "</span> fire damage!");
 		monster.hp -= dramaticEntranceDamage;
 	}
 	if (!checkEndOfCombat()) {
 		//calculate who goes first
-		if (Math.random() * 100 > player.effInit - monster.init + 50)
-		{
+		if (Math.random() * 100 > player.effInit - monster.init + 50) {
 			//monster went first
-			addCombatText ("The monster's speed gives it the edge!");
-			combatRound (-1);
+			addCombatText("The monster's speed gives it the edge!");
+			combatRound(-1);
 		}
 		else {
 			currentRound ++;
@@ -156,37 +154,33 @@ function beginCombat (obj)
 	redrawCombat();
 }
 
-function redrawCombat ()
-{
-	redrawCharPane ();
+// redraw the combat screen ui
+function redrawCombat() {
+	redrawCharPane();
 	$("#combatRound").text(currentRound);
 	$("#monsterName").text(monster.name);
 	$("#monsterHP").text(monster.hp);
 	$("#monsterPow").text(monster.pow);
 	$("#monsterDef").text(monster.def);
-	if (busy == false)
-	{
+	if (busy == false) {
 		$("#combatButtons").hide();
 	}
-	else
-	{
+	else {
 		constructCombatSkillDropdown();
 		constructCombatItemDropdown();
 	}
 }
 
-function constructCombatSkillDropdown ()
-{
+// Constructs the skill picker used in combat
+function constructCombatSkillDropdown() {
 	let e = $("#skillDropdown");
 	e.empty();
 	let newElement = $('<option></option>');
 	newElement.val(-1);
 	newElement.text("- Choose a skill -");
 	e.append(newElement);
-	for (let i = 0; i < skills.length; i++)
-	{
-		if (skills[i].category == skillType.COMBAT && player.skills[i] > 0)
-		{
+	for (let i = 0; i < skills.length; i++) {
+		if (skills[i].category == skillType.COMBAT && player.skills[i] > 0) {
 			if (i == 1 && monster.castPounce == 1) {
 				continue;
 			}
@@ -198,10 +192,7 @@ function constructCombatSkillDropdown ()
 			}
 			let newElement = $('<option></option>');
 			newElement.val(skills[i].id);
-			let cost = skills[i].cost;
-			if (player.job == jobEnum.MYSTIC) {
-				cost = Math.max(cost - 1, 0);
-			}
+			let cost = Math.max(skills[i].cost - player.effCombatCostReduction, 0);
 			newElement.text(skills[i].name + " (" + cost + " MP)");
 			if (lastUsedCombatSkill == i) {
 				newElement.attr("selected", "selected");
@@ -288,14 +279,13 @@ function checkEndOfCombat() {
 	}
 }
 
-function combatRound (action) {
+// Triggers a round of combat
+function combatRound(action) {
 	resetHint();
-	if (player.hp == 0 || monster.hp == 0 || busy == false)
-	{
+	if (player.hp == 0 || monster.hp == 0 || busy == false) {
 		return;
 	}
-	if (action != -1)
-	{
+	if (action != -1) {
 		$("#combatText").empty();
 	}
 	let damage = 0;
@@ -314,12 +304,10 @@ function combatRound (action) {
 			//use skill
 			var e = $("#skillDropdown");
 			var value = parseInt(e.val());
-			if (useCombatSkill (value))
-			{
+			if (useCombatSkill(value)) {
 				usingSkill = value;
 			}
-			else
-			{
+			else {
 				return;
 			}
 			break;
@@ -327,12 +315,10 @@ function combatRound (action) {
 			//use item
 			var e = $("#itemDropdown");
 			var value = parseInt(e.val());
-			if (useCombatItem (value))
-			{
+			if (useCombatItem(value)) {
 				usingItem = value;
 			}
-			else
-			{
+			else {
 				return;
 			}
 			break;
@@ -356,8 +342,7 @@ function combatRound (action) {
 			let isCrit = false;
 			let overrideStandardAttack = false;
 			let overrideCrit = false;
-			switch (monster.element)
-			{
+			switch (monster.element) {
 				case elementEnum.PHYSICAL:
 					damage = Math.floor((monster.pow - player.effDef) * (1 - player.effDamageReduction));
 					break;
@@ -374,51 +359,45 @@ function combatRound (action) {
 					damage = monster.pow - player.emotionalRes;
 					break;
 			}
-			if (Math.random() * 100 < 10)
-			{
+			if (Math.random() * 100 < 10) {
 				isCrit = true;
 			}
 			if (usingSkill != -1) {
-				switch (usingSkill)
-				{
+				switch (usingSkill) {
+					// placeholder for special overrides when using a skill, if needed
 					default:
 						break;
 				}
 			}
 			if (usingItem != -1) {
-				switch (usingItem)
-				{
+				switch (usingItem) {
 					case 7:
-						damage = Math.floor (damage * 0.2);
+						damage = Math.floor(damage * 0.2);
 						break;
 				}
 			}
-			if (isCrit == true && overrideCrit == false)
-			{
-				damage = Math.ceil (damage * 1.2);
+			if (isCrit == true && overrideCrit == false) {
+				damage = Math.ceil(damage * 1.2);
 			}
-			if (overrideStandardAttack == false)
-			{
-				if (isCrit)
-				{
-					addCombatText ("<strong>CRITICAL!</strong> " + monster.hitMessages[0]);
+			if ("special" in combats[monster.id]) {
+				overrideStandardAttack = combats[monster.id].special();
+			}
+			if (!overrideStandardAttack) {
+				if (isCrit) {
+					addCombatText("<strong>CRITICAL!</strong> " + monster.hitMessages[0]);
 				}
-				else
-				{
+				else {
 					let r = Math.floor(Math.random() * (monster.hitMessages.length - 1)) + 1;
-					addCombatText (monster.hitMessages[r]);
+					addCombatText(monster.hitMessages[r]);
 				}
 			}
-			if (usingItem == 7)
-			{
+			if (usingItem == 7) {
 				addCombatText ("The cardboard panel shatters into pieces, but at least it dampened the blow.");
 			}
-			if (damage <= 0)
-			{
+			if (damage <= 0) {
 				damage = 1;
 			}
-			switch (monster.element)
-			{
+			switch (monster.element) {
 				case elementEnum.PHYSICAL:
 					addCombatText ("You take " + damage + " damage!");
 					break;
@@ -436,8 +415,7 @@ function combatRound (action) {
 					break;
 			}
 			player.hp -= damage;
-			if (player.buffs.find(x => x.id == 7) != undefined)
-			{
+			if (player.buffs.find(x => x.id == 7) != undefined) {
 				damage = calcIceDamage(10 + player.iceDamage);
 				addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
 				monster.hp -= damage;
@@ -458,40 +436,31 @@ function combatRound (action) {
 		}
 	}
 	currentRound ++;
-	redrawCombat ();
+	redrawCombat();
 }
 
-function useCombatSkill (x)
-{
-	if (x == -1)
-	{
+// Cast a combat skill in combat. Returns if successful
+function useCombatSkill(id) {
+	if (id == -1) {
 		hint ("You've got to actually choose a skill to cast!", "r");
 		return false;
 	}
-	if(!"onUse" in skills[x])
-	{
+	if(!"onUse" in skills[id]) {
 		hint ("That's not a useable skill!", "r");
 		return false;
 	}
-	let cost = skills[x].cost;
-	if (player.job == jobEnum.MYSTIC) {
-		cost = Math.max(cost - 1, 0);
-	}
-	if (cost > player.mp)
-	{
+	let cost = Math.max(skills[id].cost - player.effCombatCostReduction, 0);
+	if (cost > player.mp) {
 		hint ("You haven't got enough MP to cast that skill!", "r");
 		return false;
 	}
-	else
-	{
+	else {
 		player.mp -= cost;
-		lastUsedCombatSkill = x;
-		if (skills[x].onUse())
-		{
+		lastUsedCombatSkill = id;
+		if (skills[id].onUse()) {
 			return true;
 		}
-		else
-		{
+		else {
 			player.mp += cost; //refund player MP due to failed skill cast
 			return false;
 		}

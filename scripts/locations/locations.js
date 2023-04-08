@@ -165,7 +165,7 @@ function goToLocation (l) {
 				house_restButton.innerHTML = `Rest (${player.effFreeRests - player.freeRestsUsed} free rests remaining)`;
 			}
 			else {
-				house_restButton.innerHTML = "Rest (<img src='./images/adventure.png' title='(1 Adventure)'>)";
+				house_restButton.innerHTML = "Rest (Restore HP and MP) (<img src='./images/adventure.png' title='(1 Adventure)'>)";
 			}
 			break;
 		case "sleep":

@@ -79,6 +79,7 @@ var player = {
 	defGain: 4,
 	gold: 50,
 	inventory: [],
+	ownedItems: [],
 	equipment: [//0 = hat, 1 = armour, 2 = weapon, 3 = shield, 4-7 = accs
 		-1, -1, -1, -1, -1, -1, -1, -1
 	],
@@ -92,6 +93,7 @@ var player = {
 	equippedMinions: [-1, -1],
 	effMinionLevelBonus: 0,
 	effMinionExpBonus: 0,
+	effClotheslineBonus: 0,
 	castTimeManagement: false,
 	options: [0, 0, 1, 0],
 	drellaUDailyBigSkill: -1,
@@ -241,6 +243,7 @@ function calculateStats ()
 	player.combatRate = 0;
 	player.effMinionLevelBonus = 0;
 	player.effMinionExpBonus = 0;
+	player.effClotheslineBonus = 0;
 	
 	//apply equipment
 	for (var i in player.equipment)

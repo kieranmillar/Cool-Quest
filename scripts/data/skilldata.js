@@ -174,17 +174,28 @@ var skills = [
 	},
 	{
 		id: 8,
-		name: "",
+		name: "TODO: Clothesline",
 		description: "",
-		enchantment: "",
+		enchantment: "A regular attack with a % boost to your POW equal to the % physical damage reduction of your armour",
 		icon: "no_image.png",
 		source: skillSource.WRESTLER,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.COMBAT,
+		cost: 5,
 		price: 100,
 		level: 5,
 		onUse: function () {
-			
+			if (player.equipment[itemType.ARMOUR] == -1) {
+				regularAttack(
+					player.effPow,
+					"Unequipped Normal hit message",
+					"Unequipped Critical hit message");
+			}
+			else {
+				regularAttack(
+					player.effPow + Math.ceil(player.basePow * (1 + player.effClotheslineBonus)),
+					"Normal hit message",
+					"Critical hit message");
+			}
 		}
 	},
 	{

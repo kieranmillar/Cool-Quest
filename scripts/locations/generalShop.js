@@ -20,14 +20,33 @@ function displayGeneralShop() {
     potionsContainer.appendChild(createGeneralShopItem(4)); // health potion
     generalShopContainerDiv.appendChild(potionsContainer);
 
-    let equipmentHeader = document.createElement("h2");
-    equipmentHeader.textContent = "Equipment";
-    generalShopContainerDiv.appendChild(equipmentHeader);
-    let equipmentContainer = document.createElement("div");
-    equipmentContainer.classList.add("inv_container");
-    equipmentContainer.appendChild(createGeneralShopItem(3)); // stick
-    equipmentContainer.appendChild(createGeneralShopItem(5)); // nihilistic running shoes
-    generalShopContainerDiv.appendChild(equipmentContainer);
+    let armourHeader = document.createElement("h2");
+    armourHeader.textContent = "Armour";
+    generalShopContainerDiv.appendChild(armourHeader);
+    let armourContainer = document.createElement("div");
+    armourContainer.classList.add("inv_container");
+    armourContainer.appendChild(createGeneralShopItem(39)); // "lousy t-shirt" t-shirt
+    armourContainer.appendChild(createGeneralShopItem(40)); // gaudy tropical shirt
+    armourContainer.appendChild(createGeneralShopItem(41)); // fleecing fleece
+    armourContainer.appendChild(createGeneralShopItem(42)); // tinfoil-lined jacket
+    armourContainer.appendChild(createGeneralShopItem(43)); // business suit
+    generalShopContainerDiv.appendChild(armourContainer);
+
+    let weaponsHeader = document.createElement("h2");
+    weaponsHeader.textContent = "Weapons";
+    generalShopContainerDiv.appendChild(weaponsHeader);
+    let weaponsContainer = document.createElement("div");
+    weaponsContainer.classList.add("inv_container");
+    weaponsContainer.appendChild(createGeneralShopItem(3)); // stick
+    generalShopContainerDiv.appendChild(weaponsContainer);
+
+    let accessoryHeader = document.createElement("h2");
+    accessoryHeader.textContent = "Accessories";
+    generalShopContainerDiv.appendChild(accessoryHeader);
+    let accessoryContainer = document.createElement("div");
+    accessoryContainer.classList.add("inv_container");
+    accessoryContainer.appendChild(createGeneralShopItem(5)); // nihilistic running shoes
+    generalShopContainerDiv.appendChild(accessoryContainer);
 
     if (!player.quests[questEnum.YELLOWKEY]) {
         let dungeonKeysHeader = document.createElement("h2");

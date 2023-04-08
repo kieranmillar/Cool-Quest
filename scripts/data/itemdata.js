@@ -412,6 +412,7 @@ var items = [
 		sell: 20,
 		onWear: function () {
 			player.effDamageReduction += 0.1;
+			player.effClotheslineBonus += 0.1;
 			player.effInit -= 20;
 		}
 	},
@@ -676,6 +677,85 @@ var items = [
 			addCombatText ("You set fire to the lump of coal and throw it at your opponent. It burns really well.");
 			addCombatText ("Your opponent takes <span class='fire'>" + damage + "</span> fire damage!");
 			monster.hp -= damage;
+		}
+	},
+	{
+		id: 39,
+		name: "\"lousy t-shirt\" t-shirt",
+		description: "A shirt that says \"I visited Drella and all I got was this lousy t-shirt\".",
+		enchantment: "+10% physical damage reduction",
+		icon: "no_image.png",
+		type: "Armour",
+		category: itemType.ARMOUR,
+		cost: 200,
+		sell: 50,
+		onWear: function () {
+			player.effDamageReduction += 0.1;
+			player.effClotheslineBonus += 0.1;
+		}
+	},
+	{
+		id: 40,
+		name: "gaudy tropical shirt",
+		description: "This brightly coloured shirt with a palm tree pattern is magically enchanted so you can't feel the heat, both from the environment and radiating from your embarassment.",
+		enchantment: "+10% physical damage reduction<br>+10 Fire Resistance",
+		icon: "no_image.png",
+		type: "Armour",
+		category: itemType.ARMOUR,
+		cost: 500,
+		sell: 200,
+		onWear: function () {
+			player.effDamageReduction += 0.1;
+			player.effClotheslineBonus += 0.1;
+			player.fireRes += 10;
+		}
+	},
+	{
+		id: 41,
+		name: "fleecing fleece",
+		description: "This shoddily crafted coat may be warm, but you can't help but feel like you're being ripped off.",
+		enchantment: "+10% physical damage reduction<br>+10 Ice Resistance",
+		icon: "no_image.png",
+		type: "Armour",
+		category: itemType.ARMOUR,
+		cost: 500,
+		sell: 200,
+		onWear: function () {
+			player.effDamageReduction += 0.1;
+			player.effClotheslineBonus += 0.1;
+			player.iceRes += 10;
+		}
+	},
+	{
+		id: 42,
+		name: "tinfoil-lined jacket",
+		description: "Lining this jacket with tinfoil helps prtect you from those secret government mind control rays. If you want to know more, I know this guy who does these internet videos ... wait, come back!",
+		enchantment: "+10% physical damage reduction<br>+10 Psychic Resistance",
+		icon: "no_image.png",
+		type: "Armour",
+		category: itemType.ARMOUR,
+		cost: 500,
+		sell: 200,
+		onWear: function () {
+			player.effDamageReduction += 0.1;
+			player.effClotheslineBonus += 0.1;
+			player.psychicRes += 10;
+		}
+	},
+	{
+		id: 43,
+		name: "business suit",
+		description: "Wearing this suit makes you feel like you're a real manager and more able to fire people with no remorse.",
+		enchantment: "+10% physical damage reduction<br>+10 Emotional Resistance",
+		icon: "no_image.png",
+		type: "Armour",
+		category: itemType.ARMOUR,
+		cost: 500,
+		sell: 200,
+		onWear: function () {
+			player.effDamageReduction += 0.1;
+			player.effClotheslineBonus += 0.1;
+			player.emotionalRes += 10;
 		}
 	},
 ];

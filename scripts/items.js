@@ -80,13 +80,11 @@ function useItem (id)
 	}
 }
 
-function checkInInventory (id)
-{
+// Gets the position of an item in your inventory. Returns its index in the inventory array, or -1 if not found
+function checkInInventory (id) {
 	let itemPosition = -1;
-	for (var i in player.inventory)
-	{
-		if (player.inventory[i].id == id)
-		{
+	for (var i in player.inventory) {
+		if (player.inventory[i].id == id) {
 			itemPosition = i;
 			break;
 		}
@@ -102,11 +100,11 @@ function getItemAmount(id) {
 	return player.inventory[itemPosition].amount;
 }
 
-function gainItem (id, amount)
-{
+// Adds an item to your inventory, sorts your inventory if new, and marks it as having been owned at some point
+function gainItem (id, amount) {
+	player.ownedItems[id] = 1;
 	const itemPosition = checkInInventory (id);
-	if (itemPosition == -1)
-	{
+	if (itemPosition == -1) {
 		player.inventory.push({id: id, amount: amount});
 		player.inventory.sort(function(a,b){
 			if (a === null || a === undefined || b === null || b === undefined) {
@@ -119,8 +117,9 @@ function gainItem (id, amount)
 			return 0;
 		});
 	}
-	else
+	else {
 		player.inventory[itemPosition].amount += amount;
+	}
 }
 
 // lose quantities of an item from your inventory. Returns if successful

@@ -175,7 +175,7 @@ var skills = [
 	{
 		id: 8,
 		name: "Clothesline",
-		description: "",
+		description: "As a wrestler, everything is a makeshift weapon, even the clothes you are wearing.",
 		enchantment: "A regular attack with a % boost to your POW equal to the % physical damage reduction of your armour",
 		icon: "clothesline.png",
 		source: skillSource.WRESTLER,
@@ -192,7 +192,7 @@ var skills = [
 			}
 			else {
 				regularAttack(
-					player.effPow + Math.ceil(player.basePow * (1 + player.effClotheslineBonus)),
+					player.effPow + Math.floor(player.basePow * (1 + player.effClotheslineBonus)),
 					"Normal hit message",
 					"Critical hit message");
 			}

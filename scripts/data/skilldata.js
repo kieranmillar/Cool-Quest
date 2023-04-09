@@ -174,14 +174,14 @@ var skills = [
 	},
 	{
 		id: 8,
-		name: "TODO: Clothesline",
+		name: "Clothesline",
 		description: "",
 		enchantment: "A regular attack with a % boost to your POW equal to the % physical damage reduction of your armour",
-		icon: "no_image.png",
+		icon: "clothesline.png",
 		source: skillSource.WRESTLER,
 		category: skillType.COMBAT,
 		cost: 5,
-		price: 100,
+		price: 1000,
 		level: 5,
 		onUse: function () {
 			if (player.equipment[itemType.ARMOUR] == -1) {
@@ -482,7 +482,7 @@ var skills = [
 		id: 26,
 		name: "Crewmates",
 		description: "All good pirates know how to keep up morale with their fellow crewmates, if only to prevent a mutiny.",
-		enchantment: "10 turns of +5 minion level",
+		enchantment: "10 turns of +4 minion level",
 		icon: "beer_mug.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
@@ -521,7 +521,7 @@ var skills = [
 		source: skillSource.PIRATE,
 		category: skillType.COMBAT,
 		cost: 4,
-		price: 100,
+		price: 1000,
 		level: 5,
 		onUse: function () {
 			
@@ -529,13 +529,13 @@ var skills = [
 	},
 	{
 		id: 29,
-		name: "TODO: Extra Crew",
-		description: "",
+		name: "Extra Crew",
+		description: "A good pirate knows that a motley crew is an essential part of pirating.",
 		enchantment: "Can use two minions but experience gain is split between them",
 		icon: "no_image.png",
 		source: skillSource.PIRATE,
 		category: skillType.PASSIVE,
-		price: 100,
+		price: 1000,
 		level: 5
 	},
 	{

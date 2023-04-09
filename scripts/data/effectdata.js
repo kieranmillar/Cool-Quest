@@ -102,7 +102,7 @@ var effects = [
 		name: "Lemony Fizz",
 		description: "You're enchanted by the lemony fizz. You feel like your mind is free to wander the universe, and all the other places too.",
 		enchantment: "Restore 1MP per turn",
-		icon: "no_image.png",
+		icon: "lemony_fizz.png",
 		effect: function() {
 			player.mpRegen += 1;
 		}
@@ -158,10 +158,10 @@ var effects = [
 		id: 15,
 		name: "Crewmates",
 		description: "You give your minions access to all the grog they could ever want. It makes them more productive.",
-		enchantment: "+5 minion level",
+		enchantment: "+4 minion level",
 		icon: "beer_mug.png",
 		effect: function() {
-			player.effMinionLevelBonus += 5;
+			player.effMinionLevelBonus += 4;
 		}
 	},
 ];

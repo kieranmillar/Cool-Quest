@@ -173,7 +173,7 @@ function displayPen() {
     let minionCount = 0;
 
     for (let i = 0; i < player.minionLevels.length; i++) {
-        if (!player.minionLevels) {
+        if (!player.minionLevels[i]) {
             continue;
         }
 

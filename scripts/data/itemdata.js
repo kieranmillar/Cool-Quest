@@ -132,7 +132,7 @@ var items = [
 		description: "Run. Jump. Swim. Cycle. Die.",
 		enchantment: "+30 INIT<br>-10 Max HP",
 		icon: "running_shoes.png",
-		type: "Shoes",
+		type: "Accessory",
 		category: itemType.ACC,
 		cost: 100,
 		sell: 50,
@@ -242,7 +242,7 @@ var items = [
 		description: "Merely a few dozen sizes too small, it will fit comfortably on your big toe.",
 		enchantment: "+5 INIT",
 		icon: "tiny_shoes.png",
-		type: "Shoes",
+		type: "Accessory",
 		category: itemType.ACC,
 		sell: 5,
 		onWear: function () {
@@ -635,7 +635,7 @@ var items = [
 		name: "wrapping paper",
 		description: "This Happyville branded wrapping paper is adorned with images of a lot of happy smiling faces. It gives you the creeps.",
 		enchantment: "Can be traded in at the Happyville gift store",
-		icon: "no_image.png",
+		icon: "wrapping_paper.png",
 		type: "Miscellaneous",
 		category: itemType.MISC,
 		sell: 1
@@ -643,9 +643,9 @@ var items = [
 	{
 		id: 37,
 		name: "present",
-		description: "This Happyville branded wrapping paper is adorned with images of a lot of happy smiling faces. It gives you the creeps.",
+		description: "A friendly gift, but for who? It's missing a nametag, so finders-keepers.",
 		enchantment: "Contains a random gift<br>The citizens of Happyville really like collecting these",
-		icon: "no_image.png",
+		icon: "present.png",
 		type: "Miscellaneous",
 		category: itemType.MISC,
 		cost: 10,
@@ -756,6 +756,45 @@ var items = [
 			player.effDamageReduction += 0.1;
 			player.effClotheslineBonus += 0.1;
 			player.emotionalRes += 10;
+		}
+	},
+	{
+		id: 44,
+		name: "Santa's beard",
+		description: "This beard is proof of you defeating the demon king of the underworld. Defeating such a powerful demon so early in your adventuring career makes you feel one step ahead.",
+		enchantment: "+5 Max HP<br>+1 Max MP<br>+4 POW<br>+4 DEF<br>+2 INIT",
+		icon: "santa_beard.png",
+		type: "Accessory",
+		category: itemType.ACC,
+		sell: 100,
+		onWear: function () {
+			player.effHpMax += 5;
+			player.effMpMax += 1;
+			player.effPow += 4;
+			player.effDef += 4;
+			player.effInit += 2;
+		}
+	},
+	{
+		id: 45,
+		name: "candy cane",
+		description: "This tasty treat is shaped like an ancient symbol used to ward off icy demons. Scholars are unable to tell if this is a coincidence, but you can't argue with results.",
+		enchantment: "+1 Fullness<br>+2 Turns to midnight<br>10 turns of +5 Ice Resistance",
+		icon: "candy_cane.png",
+		type: "Food",
+		category: itemType.FOOD,
+		fullness: 1,
+		turns: 2,
+		cost: 5,
+		sell: 5,
+		onUse: function () {
+			let success = eat(45);
+			if (success == true)
+			{
+				hint(eatMessage(45) + " You gain 10 turns of Candy Casing.", "g");
+				addBuff(16, 10);
+			}
+			return success;
 		}
 	},
 ];

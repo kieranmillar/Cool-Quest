@@ -60,7 +60,7 @@ function displayGeneralShop() {
         generalShopContainerDiv.appendChild(dungeonKeysContainer);
     }
 
-    if (!getMinionOwned(0)) {
+    if (!getMinionOwned(0) || !getMinionOwned(3)) {
         let minionHeader = document.createElement("h2");
         minionHeader.textContent = "Minions";
         generalShopContainerDiv.appendChild(minionHeader);
@@ -68,6 +68,9 @@ function displayGeneralShop() {
         minionContainer.classList.add("inv_container");
         if (!getMinionOwned(0)) {
             minionContainer.appendChild(createGeneralShopMinion(0, 10)); // nurse leech
+        }
+        if (!getMinionOwned(3)) {
+            minionContainer.appendChild(createGeneralShopMinion(3, 500)); // fluffy kitten
         }
         generalShopContainerDiv.appendChild(minionContainer);
     }

@@ -164,4 +164,14 @@ var effects = [
 			player.effMinionLevelBonus += 4;
 		}
 	},
+	{
+		id: 16,
+		name: "Candy Casing",
+		description: "The sugary shell of this stripy sweet shields you from snowy strikes.",
+		enchantment: "+5 Ice Resistance",
+		icon: "candy_cane.png",
+		effect: function() {
+			player.iceRes += 5;
+		}
+	},
 ];

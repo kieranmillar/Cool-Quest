@@ -207,7 +207,7 @@ var skills = [
 		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 1000,
 		level: 5,
 		onUse: function () {
 			
@@ -867,7 +867,7 @@ var skills = [
 		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 500,
 		level: 4,
 		onUse: function () {
 			
@@ -882,7 +882,7 @@ var skills = [
 		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 500,
 		level: 4,
 		onUse: function () {
 			
@@ -897,7 +897,7 @@ var skills = [
 		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 1000,
 		level: 5,
 		onUse: function () {
 			
@@ -912,7 +912,7 @@ var skills = [
 		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
 		cost: 3,
-		price: 100,
+		price: 1000,
 		level: 5,
 		onUse: function () {
 			
@@ -1409,7 +1409,7 @@ var skills = [
 		name: "History of Socks in the 3rd Century",
 		description: "This course teaches you all about the history of Drella's sock-making industry, but for all practical purposes it teaches you how to catch up on some well needed sleep.",
 		enchantment: "3 free rests each day",
-		icon: "no_image.png",
+		icon: "socks.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {

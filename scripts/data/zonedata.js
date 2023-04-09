@@ -159,7 +159,7 @@ var zones = [
 		parent: "happyville",
 		parentName: "Happyville",
 		combatChance: 100,
-		combats: [28, 29, 29, 29, 29, 30, 30, 30, 30, 30, 31, 31, 31, 31],
+		combats: [28, 29, 29, 29, 30, 30, 30, 31, 31, 31],
 		noncombats: []
 	},
 	{
@@ -180,7 +180,7 @@ var zones = [
 				player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] = 0;
 			}
 			player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] ++;
-			if (player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] >= 8) {
+			if (player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] >= 6) {
 				player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] = 0;
 				beginNoncombat (noncombats[12]);
 			}

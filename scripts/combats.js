@@ -38,7 +38,7 @@ function gainItemDrop(item, amount) {
 	if (amount > 1) {
 		amountText = amount;
 	}
-	e.html("You found " + amountText + " <img src='./images/" + items[item.id].icon + "'> " + items[item.id].name + "!");
+	e.html("You found " + amountText + " <img src='./images/" + items[item.id].icon + "'> " + items[item.id].name);
 	e.css("cursor", "pointer");
 	e.attr({
 		"onClick" : "openDialog (dialogType.ITEM, " + item.id + ");"
@@ -325,6 +325,7 @@ function combatRound(action) {
 		default:
 			return;
 	}
+	minionCombatRound();
 	if (!checkEndOfCombat()) {
 		if (monster.stunThisRound) {
 			// It is the responsibility of the stun source to provide the combat text

@@ -13,6 +13,14 @@ function displayHappyvilleShop() {
     }
     happyvilleShopContainerDiv.replaceChildren();
 
+    let foodHeader = document.createElement("h2");
+    foodHeader.textContent = "Food";
+    happyvilleShopContainerDiv.appendChild(foodHeader);
+    let foodContainer = document.createElement("div");
+    foodContainer.classList.add("inv_container");
+    foodContainer.appendChild(createHappyvilleShopItem(45)); // candy cane
+    happyvilleShopContainerDiv.appendChild(foodContainer);
+
     let miscHeader = document.createElement("h2");
     miscHeader.textContent = "Miscellaneous";
     happyvilleShopContainerDiv.appendChild(miscHeader);

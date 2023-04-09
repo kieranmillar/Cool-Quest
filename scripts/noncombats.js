@@ -42,7 +42,7 @@ function getNoncombatItem(id, amount) {
 	if (amount > 1) {
 		amountText = amount;
 	}
-	e.html("You found " + amountText + " <img src='./images/" + items[id].icon + "'> " + items[id].name + "!");
+	e.html("You found " + amountText + " <img src='./images/" + items[id].icon + "'> " + items[id].name);
 	e.css("cursor", "pointer");
 	e.attr({
 		"onClick" : "openDialog (dialogType.ITEM, " + id + ");"

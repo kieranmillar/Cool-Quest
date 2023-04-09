@@ -744,8 +744,8 @@ var combats = [
 	},
 	{
 		id: 30,
-		name: "Reindeer enemy 2",
-		description: "TODO",
+		name: "a reindeer weatherman",
+		description: "As this enemy charges towards you, you know what the weather forcast will be. It look like rain, dear.",
 		icon: "empty.png",
 		hp: 65,
 		pow: 39,
@@ -789,13 +789,13 @@ var combats = [
 		name: "a stealth elf",
 		description: "TODO",
 		icon: "empty.png",
-		hp: 40,
-		pow: 11,
-		def: 15,
-		init: 30,
+		hp: 45,
+		pow: 12,
+		def: 10,
+		init: 80,
 		element: elementEnum.ICE,
-		exp: 47,
-		gold: 38,
+		exp: 54,
+		gold: 45,
 		drops: [
 			
 		],
@@ -815,16 +815,14 @@ var combats = [
 		name: "a wealth elf",
 		description: "TODO",
 		icon: "empty.png",
-		hp: 40,
-		pow: 10,
-		def: 15,
-		init: 30,
+		hp: 55,
+		pow: 11,
+		def: 5,
+		init: 10,
 		element: elementEnum.ICE,
 		exp: 47,
-		gold: 120,
-		drops: [
-			
-		],
+		gold: 100,
+		drops: [],
 		hitMessages: [
 			"crit",
 			"hit1",
@@ -841,15 +839,15 @@ var combats = [
 		name: "a health elf",
 		description: "TODO",
 		icon: "empty.png",
-		hp: 40,
-		pow: 12,
-		def: 15,
-		init: 30,
+		hp: 80,
+		pow: 13,
+		def: 0,
+		init: 20,
 		element: elementEnum.ICE,
-		exp: 47,
-		gold: 38,
+		exp: 51,
+		gold: 43,
 		drops: [
-			
+			{id: 4, chance: 60}
 		],
 		hitMessages: [
 			"crit",
@@ -868,7 +866,7 @@ var combats = [
 		description: "TODO",
 		icon: "empty.png",
 		hp: 150,
-		pow: 16,
+		pow: 20,
 		def: 15,
 		init: 40,
 		element: elementEnum.ICE,
@@ -877,7 +875,7 @@ var combats = [
 		exp: 250,
 		gold: 180,
 		drops: [
-			
+			{id: 44, chance: 100}
 		],
 		hitMessages: [
 			"crit",

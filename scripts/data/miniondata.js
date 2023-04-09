@@ -18,13 +18,13 @@ var minions = [
 		onCombatWin: function () {
 			let r = Math.floor(Math.random() * 5);
             let texts = [
-                `${player.minionNames[0]} leaps onto your arm and sucks out the bad blood. This is how medicine works.`,
-                `${player.minionNames[0]} gets a tiny bandage out of their medicine bag and sticks it onto your wounds. Thanks!`,
-                `${player.minionNames[0]} spits some fluid into your mouth. Yuck. I hope it's medicine.`,
-                `${player.minionNames[0]} leaps onto your wound and rolls around all over it. This is supposed to help somehow.`,
-                `${player.minionNames[0]} mops up your bleeding wound with their nurse hat.`
+                `leaps onto your arm and sucks out the bad blood. This is how medicine works.`,
+                `gets a tiny bandage out of their medicine bag and sticks it onto your wounds. Thanks!`,
+                `spits some fluid into your mouth. Yuck. I hope it's medicine.`,
+                `leaps onto your wound and rolls around all over it. This is supposed to help somehow.`,
+                `mops up your bleeding wound with their nurse hat.`
             ];
-			addCombatText(texts[r]);
+			addCombatText(`${player.minionNames[0]} ${texts[r]}`);
 			addCombatText(giveHp(getMinionLevel(0)));
 		}
 	},
@@ -37,13 +37,13 @@ var minions = [
 		onCombatWin: function () {
 			let r = Math.floor(Math.random() * 5);
             let texts = [
-                `${player.minionNames[1]} raps "Hey boy take the hint while I make this sweet print."`,
-                `${player.minionNames[1]} raps "My rhymes totally slap while I print this wrap."`,
-                `${player.minionNames[1]} raps "At the end of this caper imma print out some paper."`,
-                `${player.minionNames[1]} raps "This paper be chill that comes from Happyville."`,
-                `${player.minionNames[1]} raps "If you're feeling crappy this paper makes you happy."`
+                `raps "Hey boy take the hint while I make this sweet print."`,
+                `raps "My rhymes totally slap while I print this wrap."`,
+                `raps "At the end of this caper imma print out some paper."`,
+                `raps "This paper be chill that comes from Happyville."`,
+                `raps "If you're feeling crappy this paper makes you happy."`
             ];
-			addCombatText(texts[r]);
+			addCombatText(`${player.minionNames[1]} ${texts[r]}`);
 			gainItemDrop(items[36], Math.ceil(getMinionLevel(1) / 2));
 		}
 	},
@@ -62,13 +62,34 @@ var minions = [
 			}
 			let r = Math.floor(Math.random() * 5);
             let texts = [
-                `${player.minionNames[2]} eyes widen and he mumbles excitedly.`,
-                `${player.minionNames[2]} wobbles faster than usual.`,
-                `${player.minionNames[2]} starts mumbling. You think you make out "I like pie".`,
-                `${player.minionNames[2]} starts rummaging through the opponent's pockets.`,
-                `${player.minionNames[2]} sniffs around the battlefield.`
+                `eyes widen and he mumbles excitedly.`,
+                `wobbles faster than usual.`,
+                `starts mumbling. You think you make out "I like pie".`,
+                `starts rummaging through the opponent's pockets.`,
+                `sniffs around the battlefield.`
             ];
-			addCombatText(texts[r]);
+			addCombatText(`${player.minionNames[2]} ${texts[r]}`);
 		}
-	}
+	},
+	{
+		id: 3,
+		name: "fluffy kitten",
+		description: "This adorable kitten is a tiny loveable ball of fluff. It's dangerously cute.",
+		enchantment: "Each combat round deals 3 + (2 * level) emotional damage",
+		icon: "no_image.png",
+		onCombatRound: function () {
+			let r = Math.floor(Math.random() * 5);
+            let texts = [
+                `runs up to your opponent and rubs against it while purring. It's way too cute!`,
+                `looks at your opponent with big sad eyes. Your opponent cries.`,
+                `gets near a wire and the static charge makes all their fluffy hair stand up. It's so adorable!`,
+                `licks their paws and cleans their whiskers. Your opponent's heart strings are tugged.`,
+                `lets out a tiny high-pitched mew. Your opponent's heart melts.`
+            ];
+			addCombatText(`${player.minionNames[3]} ${texts[r]}`);
+			let damage = calcEmotionalDamage(3 + (getMinionLevel(3) * 2));
+			addCombatText ("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
+			monster.hp -= damage;
+		}
+	},
 ];

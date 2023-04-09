@@ -45,6 +45,20 @@ function gainMinionExp(id, amount) {
     return levelledUp;
 }
 
+// called each round in combat, deals with all things minion related
+function minionCombatRound() {
+    numberOfEquippedMinions = player.equippedMinions.filter(x => x != -1).length;
+    for (let i = 0; i < 2; i++) {
+        let thisMinion = player.equippedMinions[i];
+        if (thisMinion == -1) {
+            continue;
+        }
+        if ("onCombatRound" in minions[thisMinion]) {
+            minions[thisMinion].onCombatRound();
+        }
+    }
+}
+
 // called when winning combat, deals with all things minion related
 function minionCombatWin() {
     numberOfEquippedMinions = player.equippedMinions.filter(x => x != -1).length;

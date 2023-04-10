@@ -33,7 +33,7 @@ var minions = [
 		name: "rapping wrapping robot",
 		description: "This little robot drops both wrapping paper and sick beats.",
 		enchantment: "If you win combat, drops wrapping paper equal to its level / 2 (rounded up)",
-		icon: "no_image.png",
+		icon: "rapping_robot.png",
 		onCombatWin: function () {
 			let r = Math.floor(Math.random() * 5);
             let texts = [
@@ -52,7 +52,7 @@ var minions = [
 		name: "wobbling egg",
 		description: "This small egg with eyes wobbles around mumbling about pie.",
 		enchantment: "+5% food item drop chance per level",
-		icon: "no_image.png",
+		icon: "wobbling_egg.png",
 		onPassive: function () {
 			player.effItemBoostFood += getMinionLevel(2) * 5;
 		},
@@ -76,13 +76,13 @@ var minions = [
 		name: "fluffy kitten",
 		description: "This adorable kitten is a tiny loveable ball of fluff. It's dangerously cute.",
 		enchantment: "Each combat round deals 3 + (2 * level) emotional damage",
-		icon: "no_image.png",
+		icon: "kitten.png",
 		onCombatRound: function () {
 			let r = Math.floor(Math.random() * 5);
             let texts = [
                 `runs up to your opponent and rubs against it while purring. It's way too cute!`,
                 `looks at your opponent with big sad eyes. Your opponent cries.`,
-                `gets near a wire and the static charge makes all their fluffy hair stand up. It's so adorable!`,
+                `rubs up against your opponent and the static charge makes all their fluffy hair stand up. It's so adorable!`,
                 `licks their paws and cleans their whiskers. Your opponent's heart strings are tugged.`,
                 `lets out a tiny high-pitched mew. Your opponent's heart melts.`
             ];

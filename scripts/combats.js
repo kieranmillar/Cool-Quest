@@ -334,7 +334,9 @@ function combatRound(action) {
 		default:
 			return;
 	}
-	minionCombatRound();
+	if (action != -1) {
+		minionCombatRound();
+	}
 	if (!checkEndOfCombat()) {
 		if (monster.stunThisRound) {
 			// It is the responsibility of the stun source to provide the combat text

@@ -192,10 +192,11 @@ var skills = [
 			}
 			else {
 				regularAttack(
-					player.effPow + Math.floor(player.basePow * (1 + player.effClotheslineBonus)),
+					player.effPow + Math.floor(player.basePow * player.effClotheslineBonus),
 					"Normal hit message",
 					"Critical hit message");
 			}
+			return true;
 		}
 	},
 	{

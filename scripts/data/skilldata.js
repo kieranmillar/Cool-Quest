@@ -188,7 +188,7 @@ var skills = [
 				regularAttack(
 					player.effPow + Math.floor(player.basePow * player.effDamageReduction),
 					"You hold out your bare arm and run towards your opponent. This would be more effective if you were wearing some armour.",
-					"You slam into your opponent with your arm stretched out, but without wearing any armour, it's less effective than it could have been.");
+					"You slam into your opponent with your arm stretched out, but without wearing any armour it's less effective than it could have been.");
 			}
 			else {
 				regularAttack(

@@ -562,7 +562,7 @@ function regularAttack (value, hitMessage, critMessage)
 	{
 		t += " <span class='psychic'>+" + psychicDamage + "</span>"
 	}
-	if (iceDamage > 0)
+	if (emotionalDamage > 0)
 	{
 		t += " <span class='emotional'>+" + emotionalDamage + "</span>"
 	}

@@ -22,12 +22,20 @@ function displayHappyvilleShop() {
     happyvilleShopContainerDiv.appendChild(foodContainer);
 
     let miscHeader = document.createElement("h2");
-    miscHeader.textContent = "Miscellaneous";
+    miscHeader.textContent = "Misc";
     happyvilleShopContainerDiv.appendChild(miscHeader);
     let miscContainer = document.createElement("div");
     miscContainer.classList.add("inv_container");
     miscContainer.appendChild(createHappyvilleShopItem(37)); // present
     happyvilleShopContainerDiv.appendChild(miscContainer);
+
+    let weaponsHeader = document.createElement("h2");
+    weaponsHeader.textContent = "Weapons";
+    happyvilleShopContainerDiv.appendChild(weaponsHeader);
+    let weaponsContainer = document.createElement("div");
+    weaponsContainer.classList.add("inv_container");
+    weaponsContainer.appendChild(createHappyvilleShopItem(46)); // icicle
+    happyvilleShopContainerDiv.appendChild(weaponsContainer);
 
     if (!getMinionOwned(1)) {
         let minionHeader = document.createElement("h2");

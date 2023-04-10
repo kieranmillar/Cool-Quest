@@ -174,4 +174,14 @@ var effects = [
 			player.iceRes += 5;
 		}
 	},
+	{
+		id: 17,
+		name: "Box Disguise",
+		description: "This cunning disguise will fool your enemies into thinking you're just a cardboard box, at least for a little while.",
+		enchantment: "-5% chance for a combat",
+		icon: "upsidedown_cardboard_box.png",
+		effect: function() {
+			player.combatRate -= 5;
+		}
+	},
 ];

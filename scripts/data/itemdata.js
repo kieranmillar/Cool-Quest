@@ -458,10 +458,10 @@ var items = [
 	},
 	{
 		id: 26,
-		name: "orc field cap",
+		name: "orc military hat",
 		description: "This hat worn by high-ranking orcs isn't magically enchanted, but you think it is, and therefore it gives you MP regen. It's the placebo effect in action.",
 		enchantment: "Restore 1 MP each turn",
-		icon: "no_image.png",
+		icon: "military_hat.png",
 		type: "Hat",
 		category: itemType.HAT,
 		sell: 50,
@@ -571,7 +571,7 @@ var items = [
 		name: "sweet lemonade",
 		description: "Like all food products, finding out how this is made would ruin the magic. Enjoy it in ignorance.",
 		enchantment: "Restores 4-7 MP<br>10 turns of Restore 1MP per turn",
-		icon: "no_image.png",
+		icon: "lemonade.png",
 		type: "Potion",
 		category: itemType.POTION,
 		sell: 10,
@@ -789,6 +789,35 @@ var items = [
 				addBuff(16, 10);
 			}
 			return success;
+		}
+	},
+	{
+		id: 46,
+		name: "icicle",
+		description: "This large sharp chunk of ice that clearly broke off of a roof is labelled as being made from \"all natural organic Happyville spring water\" and sold to gullible tourists such as yourself.",
+		enchantment: "+10 Ice Damage",
+		icon: "icicle.png",
+		type: "Weapon",
+		category: itemType.WEAPON,
+		cost: 12,
+		sell: 12,
+		onWear: function () {
+			player.iceDamage += 10;
+		}
+	},
+	{
+		id: 47,
+		name: "stealthy cardboard box",
+		description: "This might look like a standard cardboard box, but it's actually a high-tech box disguise kit. You enter it from underneath, so it's totally different.",
+		enchantment: "10 turns of -5% chance for a combat",
+		icon: "upsidedown_cardboard_box.png",
+		type: "Potion",
+		category: itemType.POTION,
+		sell: 50,
+		onUse: function () {
+			hint ("You crawl under the box and gain 10 turns of Box Disguise.", "g");
+			addBuff (17, 10);
+			return true;
 		}
 	},
 ];

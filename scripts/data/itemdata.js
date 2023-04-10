@@ -412,7 +412,6 @@ var items = [
 		sell: 20,
 		onWear: function () {
 			player.effDamageReduction += 0.1;
-			player.effClotheslineBonus += 0.1;
 			player.effInit -= 20;
 		}
 	},
@@ -691,7 +690,6 @@ var items = [
 		sell: 50,
 		onWear: function () {
 			player.effDamageReduction += 0.1;
-			player.effClotheslineBonus += 0.1;
 		}
 	},
 	{
@@ -705,8 +703,7 @@ var items = [
 		cost: 500,
 		sell: 200,
 		onWear: function () {
-			player.effDamageReduction += 0.1;
-			player.effClotheslineBonus += 0.1;
+			player.effDamageReduction += 0.1
 			player.fireRes += 10;
 		}
 	},
@@ -722,7 +719,6 @@ var items = [
 		sell: 200,
 		onWear: function () {
 			player.effDamageReduction += 0.1;
-			player.effClotheslineBonus += 0.1;
 			player.iceRes += 10;
 		}
 	},
@@ -738,7 +734,6 @@ var items = [
 		sell: 200,
 		onWear: function () {
 			player.effDamageReduction += 0.1;
-			player.effClotheslineBonus += 0.1;
 			player.psychicRes += 10;
 		}
 	},
@@ -754,7 +749,6 @@ var items = [
 		sell: 200,
 		onWear: function () {
 			player.effDamageReduction += 0.1;
-			player.effClotheslineBonus += 0.1;
 			player.emotionalRes += 10;
 		}
 	},

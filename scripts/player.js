@@ -95,7 +95,6 @@ var player = {
 	equippedMinions: [-1, -1],
 	effMinionLevelBonus: 0,
 	effMinionExpBonus: 0,
-	effClotheslineBonus: 0,
 	castTimeManagement: false,
 	effFreeRests: 0,
 	freeRestsUsed: 0,
@@ -248,7 +247,6 @@ function calculateStats() {
 	player.combatRate = 0;
 	player.effMinionLevelBonus = 0;
 	player.effMinionExpBonus = 0;
-	player.effClotheslineBonus = 0;
 	player.effFreeRests = 0;
 	
 	//apply equipment

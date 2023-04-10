@@ -176,7 +176,7 @@ var skills = [
 		id: 8,
 		name: "Clothesline",
 		description: "As a wrestler, everything is a makeshift weapon, even the clothes you are wearing.",
-		enchantment: "A regular attack with a % boost to your POW equal to the % physical damage reduction of your armour",
+		enchantment: "A regular attack with a % boost to your POW equal to any % physical damage reduction bonuses you have",
 		icon: "clothesline.png",
 		source: skillSource.WRESTLER,
 		category: skillType.COMBAT,
@@ -186,15 +186,15 @@ var skills = [
 		onUse: function () {
 			if (player.equipment[itemType.ARMOUR] == -1) {
 				regularAttack(
-					player.effPow,
-					"Unequipped Normal hit message",
-					"Unequipped Critical hit message");
+					player.effPow + Math.floor(player.basePow * player.effDamageReduction),
+					"You hold out your bare arm and run towards your opponent. This would be more effective if you were wearing some armour.",
+					"You slam into your opponent with your arm stretched out, but without wearing any armour, it's less effective than it could have been.");
 			}
 			else {
 				regularAttack(
-					player.effPow + Math.floor(player.basePow * player.effClotheslineBonus),
-					"Normal hit message",
-					"Critical hit message");
+					player.effPow + Math.floor(player.basePow * player.effDamageReduction),
+					"You hold out your bare arm and run towards your opponent.",
+					"You slam into your opponent with your arm stretched out.");
 			}
 			return true;
 		}

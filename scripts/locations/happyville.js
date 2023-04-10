@@ -138,6 +138,9 @@ function displayHappyvilleTree() {
         addHappyvilleTreeText(`"We still need enough presents to go under the tree. You currently have ${presentText}. Please could you bring us 20 of them."`);
         addHappyvilleTreeText("\"You should be able to find plenty of presents in the present factory, or by trading in wrapping paper at the gift shop. There are reports of a thief who hides in the nearby forest who has been stealing presents too.\"");
     }
+
+    displayQuestLog();
+    save();
 }
 
 // adds a paragraph of text to the happyville tree location

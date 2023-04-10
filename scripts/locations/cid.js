@@ -39,6 +39,8 @@ function displayCidText () {
     if (cidTextDiv.textContent === "") {
         newCidText("Sorry buddy, the only jobs I have left require you to be stronger. Come back when you've levelled up.");
     }
+
+    displayQuestLog();
 }
 
 // Adds a new paragraph of text on Cid's screen

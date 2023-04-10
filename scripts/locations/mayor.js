@@ -74,6 +74,8 @@ function displayMayorText() {
     if (mayorTextDiv.textContent === "") {
         newMayorText("\"I have nothing for you right now. Please come back later when you are stronger.\"");
     }
+
+    displayQuestLog();
 }
 
 // Adds a new paragraph of text on the Mayor screen

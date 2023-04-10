@@ -113,6 +113,8 @@ function redrawCharPane() {
 			}
 		}
 	}
+
+	displayQuestLog();
 }
 
 function displayBuffedStat (baseStat, effStat, baseStatSpan, effStatSpan)
@@ -374,6 +376,12 @@ function load() {
 	else {
 		$("#option_foodQuality").prop("checked", false);
 	}
+	if (player.options[optionEnum.CIDQUESTLOG]) {
+		$("#option_cidQuestLog").prop("checked", true);
+	}
+	else {
+		$("#option_cidQuestLog").prop("checked", false);
+	}
 }
 
 function toggleOption(option) {
@@ -413,6 +421,15 @@ function toggleOption(option) {
 			else {
 				player.options[optionEnum.FOODQUALITY] = 0;
 			}
+			break;
+		case 'cidQuestLog':
+			if (!player.options[optionEnum.CIDQUESTLOG]) {
+				player.options[optionEnum.CIDQUESTLOG] = 1;
+			}
+			else {
+				player.options[optionEnum.CIDQUESTLOG] = 0;
+			}
+			displayQuestLog();
 			break;
 	}
 	save();

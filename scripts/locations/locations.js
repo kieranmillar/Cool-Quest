@@ -180,7 +180,11 @@ function goToLocation (l) {
 			location_town.classList.remove("hide");
 			house_tutorial3.classList.add("hide");
 			house_normal.classList.remove("hide");
-			player.quests[questEnum.TUTORIAL] = 7;
+			if (player.quests[questEnum.TUTORIAL] == 6) {
+				player.quests[questEnum.TUTORIAL] = 7;
+				displayQuestLog();
+				save();
+			}
 			break;
 		case "mayor":
 			location_mayor.classList.remove("hide");
@@ -217,7 +221,7 @@ function goToLocation (l) {
 			else {
 				townHall_basementButton.classList.add("hide");
 			}
-			if (player.quests[questEnum.TOWNHALL] < 3) {
+			if (!player.quests[questEnum.TOWNHALL] || player.quests[questEnum.TOWNHALL] < 3) {
 				townHall_taxOfficeButton.classList.add("hide");
 				townHall_canteenButton.classList.add("hide");
 			}

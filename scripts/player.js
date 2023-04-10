@@ -12,6 +12,7 @@ var optionEnum = {
 	QUICKHEAL: 1,
 	ZONEWARNINGS: 2,
 	FOODQUALITY: 3,
+	CIDQUESTLOG: 4,
 }
 
 var questEnumSize = 6;
@@ -98,7 +99,7 @@ var player = {
 	castTimeManagement: false,
 	effFreeRests: 0,
 	freeRestsUsed: 0,
-	options: [0, 0, 1, 0],
+	options: [0, 0, 1, 0, 1],
 	drellaUDailyBigSkill: -1,
 	drellaUDailySmallSkills: [],
 	quests: [],

@@ -567,10 +567,10 @@ var combats = [
 			{id: 34, chance: 10}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"A wild boar runs over thinking you are going to steal its food, and headbutts you.",
+			"You lick the mushroom and get a serious headache.",
+			"A nearby mushroom releases a toxic cloud. You choke.",
+			"You touch the mushroom and a sharp pain courses through your arm."
 		]
 	},
 	{
@@ -588,10 +588,10 @@ var combats = [
 			{id: 47, chance: 20}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"The snake sneaks up on you and knocks you off your feet.",
+			"The snake coils itself around your neck and squeezes.",
+			"The snake delivers a solid hit on you.",
+			"The snake spits venom at you."
 		]
 	},
 	{
@@ -610,10 +610,10 @@ var combats = [
 			{id: 32, chance: 25}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"It slaps you around the face. You don't see what it hit you with, but it leaves a purple stain on your face.",
+			"It strikes you with its bullet-proof hooves.",
+			"You try to sneak up behind the horse but it kicks you in the head.",
+			"A short man with a big mustache and top hat walks over and punches you."
 		]
 	},
 	{
@@ -746,8 +746,8 @@ var combats = [
 	},
 	{
 		id: 30,
-		name: "a reindeer weatherman",
-		description: "As this enemy charges towards you, you know what the weather forcast will be. It look like rain, dear.",
+		name: "a reindeer meteorologist",
+		description: "As she charges towards you, you know what the weather forcast will be. It looks like rain, dear.",
 		icon: "empty.png",
 		hp: 65,
 		pow: 41,
@@ -759,16 +759,16 @@ var combats = [
 			
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"You ask her if there's a hurricane on the way. She says there isn't, then the wind suddenly picks up and a large fish hits you.",
+			"You're bewitched by her movements and she hits you while dsitracted. You blame it on yourself, no, you blame it on the weatherman.",
+			"She tells you today is going to be a bright and sunny day. Suddenly you're struck by lightning.",
+			"Her movements are too unpredictable and she gets the upper hand, punching you right in the jaw."
 		]
 	},
 	{
 		id: 31,
-		name: "Reindeer enemy 3",
-		description: "TODO",
+		name: "a reindeer huntsman",
+		description: "This deer sits in a fold-out chair drinking beer, aiming a rifle at any nearby humans. You contemplate the irony of how the tables have turned, while he turns his sights towards you.",
 		icon: "empty.png",
 		hp: 40,
 		pow: 40,
@@ -780,10 +780,10 @@ var combats = [
 			
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"You get sniped in the head. Boom! Headshot!",
+			"He runs you over with a large 4x4 truck.",
+			"He smashes a beer bottle on your head.",
+			"He gives your ass such a whoopin'."
 		]
 	},
 	{

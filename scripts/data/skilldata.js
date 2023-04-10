@@ -87,7 +87,7 @@ var skills = [
 		id: 3,
 		name: "Showboating",
 		description: "Giving your wrestling moves more flair makes them deal more damage. It's true!",
-		enchantment: "10 turns of:<br>Critical hit damage multiplier +30%",
+		enchantment: "10 turns of:<br>Critical hit damage multiplier +15%",
 		icon: "showboating.png",
 		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,
@@ -1104,7 +1104,7 @@ var skills = [
 		id: 62,
 		name: "Insurance Brokering",
 		description: "This course teaches you how to strike fear into the hearts of all doctors by arming you with the knowledge to go elsewhere for a better price.",
-		enchantment: "50% discount at the doctor",
+		enchantment: "50% discount on HP restore and 20% discount on MP restore at the doctor",
 		icon: "handshake.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.PASSIVE
@@ -1124,7 +1124,7 @@ var skills = [
 	},
 	{
 		id: 64,
-		name: "Big healing skill?",
+		name: "Summon a non-boss enemy once per day",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1163,7 +1163,7 @@ var skills = [
 				return false;
 			}
 			if (player.buffs.length == 0) {
-				hint("You don't have any active effects. Did you intend to use this?.", "r");
+				hint("You don't have any active effects. Did you intend to use this?", "r");
 				return false;
 			}
 			for (let i =0; i < player.buffs.length; i++) {
@@ -1421,12 +1421,12 @@ var skills = [
 		id: 86,
 		name: "Probability",
 		description: "This course teaches you to be so good at calculating the odds that you'll be able to deliver more lucky blows and get banned from every casino.",
-		enchantment: "+10% chance to critical hit",
+		enchantment: "+20% chance to critical hit",
 		icon: "dice.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			player.effCritChance += 0.1;
+			player.effCritChance += 0.2;
 		}
 	},
 	{

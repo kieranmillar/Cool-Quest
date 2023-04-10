@@ -463,7 +463,7 @@ function buyMP (x) {
 	}
 	let cost = x * 10;
 	if (player.skills[62]) {
-		cost = x * 5;
+		cost = x * 8;
 	}
 	if (player.gold < cost) {
 		hint("You can't afford that!", "r");

@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	$("#doctor_mp_input").change(function(){
 		let mpCost = 10;
 		if (player.skills[62]) {
-			mpCost = 5;
+			mpCost = 8;
 		}
 		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * mpCost + " Gold)");
 	});
@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	$("#quickHeal_mp_input").change(function(){
 		let mpCost = 10;
 		if (player.skills[62]) {
-			mpCost = 5;
+			mpCost = 8;
 		}
 		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * mpCost + " Gold)");
 	});

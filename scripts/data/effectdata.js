@@ -42,12 +42,12 @@ var effects = [
 	},
 	{
 		id: 3,
-		name: "Showboating",
-		description: "Wrestling isn't about fighting skill, it's all about how it looks to the audience.",
-		enchantment: "Critical hit damage multiplier +15%",
-		icon: "showboating.png",
+		name: "TO REPLACE",
+		description: "",
+		enchantment: "",
+		icon: "no_image.png",
 		effect: function() {
-			player.effCritMultiplier += 0.15;
+			
 		}
 	},
 	{

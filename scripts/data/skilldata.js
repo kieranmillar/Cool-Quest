@@ -87,16 +87,14 @@ var skills = [
 		id: 3,
 		name: "Showboating",
 		description: "Giving your wrestling moves more flair makes them deal more damage. It's true!",
-		enchantment: "10 turns of:<br>Critical hit damage multiplier +15%",
+		enchantment: "Critical hit damage multiplier +15%",
 		icon: "showboating.png",
 		source: skillSource.WRESTLER,
-		category: skillType.NONCOMBAT,
-		cost: 4,
+		category: skillType.PASSIVE,
 		price: 50,
 		level: 2,
 		onUse: function () {
-			hint ("You strut your stuff, gaining 10 turns of Showboating!", "g");
-			return addBuff (3, 10);
+			player.effCritMultiplier += 0.15;
 		}
 	},
 	{

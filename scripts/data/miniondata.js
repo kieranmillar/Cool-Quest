@@ -24,8 +24,8 @@ var minions = [
                 `leaps onto your wound and rolls around all over it. This is supposed to help somehow.`,
                 `mops up your bleeding wound with their nurse hat.`
             ];
-			addCombatText(`${player.minionNames[0]} ${texts[r]}`);
-			addCombatText(giveHp(getMinionLevel(0)));
+			addMinionCombatText(`${player.minionNames[0]} ${texts[r]}`, 0);
+			addCombatText(giveHp(getMinionLevel(0)), 0);
 		}
 	},
 	{
@@ -43,7 +43,7 @@ var minions = [
                 `raps "This paper be chill that comes from Happyville."`,
                 `raps "If you're feeling crappy this paper makes you happy."`
             ];
-			addCombatText(`${player.minionNames[1]} ${texts[r]}`);
+			addMinionCombatText(`${player.minionNames[1]} ${texts[r]}`, 1);
 			gainItemDrop(items[36], Math.ceil(getMinionLevel(1) / 2));
 		}
 	},
@@ -68,7 +68,7 @@ var minions = [
                 `starts rummaging through the opponent's pockets.`,
                 `sniffs around the battlefield.`
             ];
-			addCombatText(`${player.minionNames[2]} ${texts[r]}`);
+			addMinionCombatText(`${player.minionNames[2]} ${texts[r]}`, 2);
 		}
 	},
 	{
@@ -86,7 +86,7 @@ var minions = [
                 `licks their paws and cleans their whiskers. Your opponent's heart strings are tugged.`,
                 `lets out a tiny high-pitched mew. Your opponent's heart melts.`
             ];
-			addCombatText(`${player.minionNames[3]} ${texts[r]}`);
+			addMinionCombatText(`${player.minionNames[3]} ${texts[r]}`, 3);
 			let damage = calcEmotionalDamage(3 + (getMinionLevel(3) * 2));
 			addCombatText ("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
 			monster.hp -= damage;

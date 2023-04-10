@@ -1,3 +1,5 @@
+var combatTextDiv = document.getElementById("combatText");
+
 var monster = {
 	id: 0,
 	name: "",
@@ -23,10 +25,17 @@ var currentRound = 0;
 var lastUsedCombatSkill = -1;
 
 // Adds a paragraph of text to the combat screen
-function addCombatText(txt) {
-	let e = $("<p></p>");
-	e.html(txt);
-	$("#combatText").append(e);
+function addCombatText(text) {
+	let e = document.createElement("p");
+	e.innerHTML = text;
+	combatTextDiv.appendChild(e);
+}
+
+// Adds a paragraph of text to the combat screen alongside a minion image
+function addMinionCombatText(text, id) {
+	let e = document.createElement("p");
+	e.innerHTML = `<img src="./images/${minions[id].icon}"><span class="wrappableText">${text}</span>`;
+	combatTextDiv.appendChild(e);
 }
 
 // Gain an item dropped from a combat

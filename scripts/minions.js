@@ -72,9 +72,9 @@ function minionCombatWin() {
         }
         let exp = (2 + player.effMinionExpBonus) / numberOfEquippedMinions;
         if (player.minionLevels[thisMinion] < 20) {
-            addCombatText(`${player.minionNames[thisMinion]} gained ${exp} experience.`);
+            addMinionCombatText(`${player.minionNames[thisMinion]} gained ${exp} experience.`, thisMinion);
             if (gainMinionExp(thisMinion, exp)) {
-                addCombatText(`<strong>${player.minionNames[thisMinion]} levelled up!</strong>`);
+                addMinionCombatText(`<strong>${player.minionNames[thisMinion]} levelled up!</strong>`, thisMinion);
             }
         }
     }

@@ -114,6 +114,10 @@ function createGeneralShopMinion(id, cost) {
 
 // buy an item from the general shop
 function buyGeneralShopItem (id) {
+    if (player.quests[questEnum.TUTORIAL] < 8) {
+        hint("Buy a minion first, wouldn't want to run out of money!", "r");
+        return;
+    }
     buyItem(id, 1);
     displayGeneralShop();
 }

@@ -1,4 +1,5 @@
 var penContainerDiv = document.getElementById("pen_container");
+let showMinionTutorialOneOff = false;
 
 // Returns true or false if you own the minion or not
 function getMinionOwned(id) {
@@ -133,6 +134,10 @@ function unequipMinion(id) {
 
 // Equips a minion, unequipping if necessary
 function equipMinion(id) {
+    if (player.quests[questEnum.TUTORIAL] == 7) {
+        player.quests[questEnum.TUTORIAL] = 8;
+        showMinionTutorialOneOff = true;
+    }
     if (!getMinionOwned(id)) {
         hint(`You don't own that minion!`, "r");
         return;
@@ -170,6 +175,16 @@ function renameMinion(id) {
 // display the minion pen in your house
 function displayPen() {
     penContainerDiv.replaceChildren();
+    let introParagraph = document.createElement("p");
+    if (showMinionTutorialOneOff) {
+        introParagraph.textContent = "With a minion at the ready, you now feel confident enough to do some real adventuring. Time to return to the mayor and get started, for real this time."
+        showMinionTutorialOneOff = false;
+    }
+    else {
+        introParagraph.textContent = "You visit your minions, playing around in the pen.";
+    }
+    penContainerDiv.appendChild(introParagraph);
+
     let minionCount = 0;
 
     for (let i = 0; i < player.minionLevels.length; i++) {

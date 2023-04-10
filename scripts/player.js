@@ -102,7 +102,7 @@ var player = {
 	options: [0, 0, 1, 0, 1],
 	drellaUDailyBigSkill: -1,
 	drellaUDailySmallSkills: [],
-	quests: [],
+	quests: [0],
 	mayorQuestsCompleted: 0,
 	zoneCounters: [],
 	combatQueue: []

@@ -186,6 +186,23 @@ function goToLocation (l) {
 				save();
 			}
 			break;
+		case "townHall":
+			location_townHall.classList.remove("hide");
+			if (player.quests[questEnum.TOWNHALL] >= 1) {
+				townHall_basementButton.classList.remove("hide");
+			}
+			else {
+				townHall_basementButton.classList.add("hide");
+			}
+			if (!player.quests[questEnum.TOWNHALL] || player.quests[questEnum.TOWNHALL] < 3) {
+				townHall_taxOfficeButton.classList.add("hide");
+				townHall_canteenButton.classList.add("hide");
+			}
+			else {
+				townHall_taxOfficeButton.classList.remove("hide");
+				townHall_canteenButton.classList.remove("hide");
+			}
+			break;
 		case "mayor":
 			location_mayor.classList.remove("hide");
 			displayMayorText();
@@ -212,23 +229,6 @@ function goToLocation (l) {
 			break;
 		case "doctor":
 			location_doctor.classList.remove("hide");
-			break;
-		case "townHall":
-			location_townHall.classList.remove("hide");
-			if (player.quests[questEnum.TOWNHALL] >= 1) {
-				townHall_basementButton.classList.remove("hide");
-			}
-			else {
-				townHall_basementButton.classList.add("hide");
-			}
-			if (!player.quests[questEnum.TOWNHALL] || player.quests[questEnum.TOWNHALL] < 3) {
-				townHall_taxOfficeButton.classList.add("hide");
-				townHall_canteenButton.classList.add("hide");
-			}
-			else {
-				townHall_taxOfficeButton.classList.remove("hide");
-				townHall_canteenButton.classList.remove("hide");
-			}
 			break;
 		case "outskirts":
 			location_outskirts.classList.remove("hide");

@@ -103,7 +103,7 @@ var skills = [
 		id: 4,
 		name: "Dramatic Entrance",
 		description: "It's a crime for a wrestler to enter a fight without an extravagant display.</p><p>Watch out for stray fireworks!",
-		enchantment: "10 turns of Deal 25 Fire Damage at the start of combat",
+		enchantment: "10 turns of Deal 20 Fire Damage at the start of combat",
 		icon: "dramatic_entrance.png",
 		source: skillSource.WRESTLER,
 		category: skillType.NONCOMBAT,

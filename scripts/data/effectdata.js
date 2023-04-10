@@ -111,7 +111,7 @@ var effects = [
 		id: 10,
 		name: "Dramatic Entrance",
 		description: "Your grand entrance is all set up. You forgot to also summon a health and safety team, oh well, I'm sure it won't be a problem.",
-		enchantment: "Deal 25 Fire Damage at the start of combat",
+		enchantment: "Deal 20 Fire Damage at the start of combat",
 		icon: "dramatic_entrance.png"
 	},
 	{

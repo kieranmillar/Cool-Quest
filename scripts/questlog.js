@@ -3,7 +3,7 @@ var questLogContainer = document.getElementById("char_questLogContainer");
 // displays the quest log
 function displayQuestLog() {
     questLogContainer.replaceChildren();
-    if (player.quests[questEnum.TUTORIAL] < 7) {
+    if (player.quests[questEnum.TUTORIAL] < 8) {
         addQuestLogEntry("Complete the tutorial");
         return;
     }

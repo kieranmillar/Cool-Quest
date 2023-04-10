@@ -623,7 +623,7 @@ var combats = [
 		pow: 34,
 		def: 8,
 		init: 75,
-		exp: 41,
+		exp: 32,
 		gold: 28,
 		drops: [
 			{id: 36, chance: 100},
@@ -649,7 +649,7 @@ var combats = [
 		def: 999,
 		init: 0,
 		fixedStats: true,
-		exp: 42,
+		exp: 34,
 		gold: 30,
 		drops: [
 			{id: 36, chance: 100},
@@ -672,7 +672,7 @@ var combats = [
 		pow: 31,
 		def: 2,
 		init: 30,
-		exp: 40,
+		exp: 36,
 		gold: 12,
 		drops: [
 			{id: 36, chance: 100},
@@ -693,7 +693,7 @@ var combats = [
 		description: "There he is, the thief that's stealing all the presents! He must have them all in the giant swag bag!",
 		icon: "empty.png",
 		hp: 80,
-		pow: 43,
+		pow: 45,
 		def: 6,
 		init: 60,
 		fixedStats: true,
@@ -725,12 +725,12 @@ var combats = [
 		description: "You hear somebody shout behind you, \"Hey butthole!\" It turns out to be a reindeer with a really red and shiny nose. Wow, this guy is so rude!",
 		icon: "empty.png",
 		hp: 45,
-		pow: 12,
+		pow: 14,
 		def: 12,
 		init: 40,
 		element: elementEnum.EMOTIONAL,
 		fixedStats: true,
-		exp: 50,
+		exp: 40,
 		gold: 35,
 		drops: [
 			
@@ -748,10 +748,10 @@ var combats = [
 		description: "As this enemy charges towards you, you know what the weather forcast will be. It look like rain, dear.",
 		icon: "empty.png",
 		hp: 65,
-		pow: 39,
+		pow: 41,
 		def: 0,
 		init: 20,
-		exp: 48,
+		exp: 41,
 		gold: 32,
 		drops: [
 			
@@ -769,10 +769,10 @@ var combats = [
 		description: "TODO",
 		icon: "empty.png",
 		hp: 40,
-		pow: 37,
+		pow: 40,
 		def: 15,
 		init: 30,
-		exp: 47,
+		exp: 39,
 		gold: 38,
 		drops: [
 			
@@ -794,7 +794,7 @@ var combats = [
 		def: 10,
 		init: 80,
 		element: elementEnum.ICE,
-		exp: 54,
+		exp: 45,
 		gold: 45,
 		drops: [
 			
@@ -820,7 +820,7 @@ var combats = [
 		def: 5,
 		init: 10,
 		element: elementEnum.ICE,
-		exp: 47,
+		exp: 42,
 		gold: 100,
 		drops: [],
 		hitMessages: [
@@ -844,7 +844,7 @@ var combats = [
 		def: 0,
 		init: 20,
 		element: elementEnum.ICE,
-		exp: 51,
+		exp: 44,
 		gold: 43,
 		drops: [
 			{id: 4, chance: 60}

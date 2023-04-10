@@ -7,9 +7,21 @@ function displayMayorText() {
         newMayorText("Out of HP? One way of healing up is to rest in your house! It costs turns instead of the gold you would pay at the doctor.");
     }
 
+    // tutorial
+    if (player.quests[questEnum.TUTORIAL] < 8) {
+        newMayorText("\"Ah hello, new to this town and looking for work are you? Are you on your own? Where is your sidekick?\"");
+        newMayorText("\"Excuse me?\", you reply. \"I work on my own.\"");
+        newMayorText("\"You're an adventurer right? You can't work on your own, every adventurer has someone with them. Sidekick, minion, familiar, companion, buddy, whatever you want to call it. I take it you're new to this whole adventuring business?\"");
+        newMayorText("\"Well... uh... I was just on my way to get one now actually\", you lie.");
+        newMayorText("\"Well I hear the general store in town has some bargains right now on minions. That might be a good place to go.\"");
+        newMayorText("You thank the mayor, and set out with a new action plan: 1) Buy a minion from the general store. 2) Head to the pen at your house. 3) Select that minion to travel with you.");
+        save();
+        return;
+    }
+
     // level 1
-    if (!player.quests[questEnum.TOWNHALL]) {
-        newMayorText("\"Ah hello, new to this town and looking for work are you? Well, as luck would have it, I have lost the Town Hall's master key. I know I have a spare in the Town Hall basement, which you can reach through the hatch round the back. I'd go get it myself, but the basement has unfortunately been taken over by a band of marauding spider adventurers!\"");
+    if (!player.quests[questEnum.TOWNHALL] && player.quests[questEnum.TUTORIAL] == 8) {
+        newMayorText("\"Perfect timing, I have some work for you. I have lost the Town Hall's master key. I know I have a spare in the Town Hall basement, which you can reach through the hatch round the back. I'd go get it myself, but the basement has unfortunately been taken over by a band of marauding spider adventurers!\"");
         newMayorText("\"Sounds scary\", you reply. \"How big and dangerous are these spiders? 1 foot tall? 3 feet? Worse?\"");
         newMayorText("\"Oh, ahem, well, actually they are just normal house spiders, but I have a serious case of arachnophobia.\"");
         newMayorText("That doesn't sound to bad, this quest should be a piece of cake!");

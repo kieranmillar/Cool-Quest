@@ -126,7 +126,7 @@ function beginCombat(obj) {
 	else {
 		monster.boss = false;
 	}
-	monster.exp = obj.exp + player.effMl;
+	monster.exp = obj.exp + (player.effMl * 2);
 	monster.gold = obj.gold;
 	monster.drops = obj.drops;
 	monster.hitMessages = obj.hitMessages;
@@ -145,7 +145,7 @@ function beginCombat(obj) {
 
 	if (player.buffs.find(x=> x.id == 10)) {
 		addCombatText("As you strut into combat, a camera crew surrounds you and bunches of fireworks set off. One of the fireworks falls over and heads straight for your opponent!");
-		let dramaticEntranceDamage = calcFireDamage(25 + player.fireDamage);
+		let dramaticEntranceDamage = calcFireDamage(20 + player.fireDamage);
 		addCombatText("Your opponent takes <span class='fire'>" + dramaticEntranceDamage + "</span> fire damage!");
 		monster.hp -= dramaticEntranceDamage;
 	}

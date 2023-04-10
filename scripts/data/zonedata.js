@@ -148,7 +148,7 @@ var zones = [
 		level: 3,
 		parent: "happyville",
 		parentName: "Happyville",
-		combatChance: 80,
+		combatChance: 75,
 		combats: [25, 26, 27],
 		noncombats: [11]
 	},

@@ -495,3 +495,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	hint ("Welcome to Cool Quest!", "g");
 });
+
+function debug_giveAllItems() {
+	for (let i = 0; i < items.length; i++) {
+		gainItem(i, 1);
+	}
+}
+
+function debug_giveAllSkills() {
+	for (let i = 0; i < skills.length; i++) {
+		if (!player.skills[i]) {
+			player.skills[i] = 1;
+		}
+	}
+}
+
+function debug_giveAllEffects() {
+	for (let i = 0; i < effects.length; i++) {
+		addBuff(i, 10);
+	}
+}

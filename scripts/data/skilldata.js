@@ -1432,7 +1432,7 @@ var skills = [
 		name: "Sewing",
 		description: "This course teaches you how to sew repair patches onto your armour, so it can remain effective for longer. Even the metal armour. Try not to think too hard about it.",
 		enchantment: "+10% physical damage reduction",
-		icon: "no_image.png",
+		icon: "sewing.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {

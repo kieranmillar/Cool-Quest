@@ -90,9 +90,9 @@ var effects = [
 	{
 		id: 8,
 		name: "Your Invisible Now",
-		description: "It's like riding to work in 2025.",
+		description: "The spicy liquid you drank gave you flamin' lips. It's like riding to work in 2025.",
 		enchantment: "+100 INIT",
-		icon: "no_image.png",
+		icon: "invisible.png",
 		effect: function() {
 			player.effInit += 100;
 		}

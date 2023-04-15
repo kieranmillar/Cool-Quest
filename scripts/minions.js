@@ -1,3 +1,4 @@
+var penIntroContainerParagraph = document.getElementById("pen_introContainer");
 var penContainerDiv = document.getElementById("pen_container");
 let showMinionTutorialOneOff = false;
 
@@ -174,18 +175,16 @@ function renameMinion(id) {
 
 // display the minion pen in your house
 function displayPen() {
-    penContainerDiv.replaceChildren();
-    let introParagraph = document.createElement("p");
     if (showMinionTutorialOneOff) {
-        introParagraph.textContent = "With a minion at the ready, you now feel confident enough to do some real adventuring. Time to return to the mayor and get started, for real this time."
+        penIntroContainerParagraph.textContent = "With a minion at the ready, you now feel confident enough to do some real adventuring. Time to return to the mayor and get started, for real this time."
         showMinionTutorialOneOff = false;
     }
     else {
-        introParagraph.textContent = "You visit your minions, playing around in the pen.";
+        penIntroContainerParagraph.textContent = "You visit your minions, playing around in the pen.";
     }
-    penContainerDiv.appendChild(introParagraph);
 
     let minionCount = 0;
+    penContainerDiv.replaceChildren();
 
     for (let i = 0; i < player.minionLevels.length; i++) {
         if (!player.minionLevels[i]) {

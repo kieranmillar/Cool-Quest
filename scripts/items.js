@@ -221,7 +221,7 @@ function displayEquipment()
 		if (player.equipment[i] != -1)
 		{
 			$(".equip" + i).show()
-			$("#worn_" + i).html("<span class='item_Image'><image src='./images/" + items[player.equipment[i]].icon + "'><span>" + items[player.equipment[i]].name + " <input type='button' value='Unequip' onclick='unequip(" +i + ")'></span>");
+			$("#worn_" + i).html("<span class='item_Image'><image src='./images/" + items[player.equipment[i]].icon + "'>" + items[player.equipment[i]].name + "</span><input type='button' value='Unequip' onclick='unequip(" +i + ")'>");
 			$("#worn_" + i).attr({
 				"onClick" : "openDialog (dialogType.ITEM, " + player.equipment[i] + ");"
 			});

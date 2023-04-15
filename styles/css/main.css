@@ -380,6 +380,7 @@ h2:not(:last-child), h3:not(:last-child) {
   flex-direction: row;
   cursor: pointer;
   align-items: center;
+  flex-grow: 1;
 }
 .item_Image img {
   height: 40px;

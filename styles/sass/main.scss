@@ -414,6 +414,7 @@ h2, h3 {
 	flex-direction: row;
 	cursor: pointer;
 	align-items: center;
+	flex-grow: 1;
 
 	img {
 		height: 40px;

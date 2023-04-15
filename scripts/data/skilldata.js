@@ -1274,7 +1274,7 @@ var skills = [
 		name: "Glass Blowing",
 		description: "This course teaches you how to make your own vases and beakers, and as an extra bonus, how to get used to burning yourself.",
 		enchantment: "+15 Fire Resistance",
-		icon: "no_image.png",
+		icon: "glass_blowing.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1286,7 +1286,7 @@ var skills = [
 		name: "Outdoor Survival",
 		description: "This course teaches you how to survive in harsh conditions in the great outdoors. The course consists of a single advertising pamphlet for tents on sale at the local camping store.",
 		enchantment: "+15 Ice Resistance",
-		icon: "no_image.png",
+		icon: "tent.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1310,7 +1310,7 @@ var skills = [
 		name: "Business Studies",
 		description: "This course teaches you how to get into the mindset of a cold, calculated, ruthless manager. Also there's a bit about accounting.",
 		enchantment: "+15 Emotional Resistance",
-		icon: "no_image.png",
+		icon: "briefcase.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1322,7 +1322,7 @@ var skills = [
 		name: "Cooking",
 		description: "This course teaches you how to make delicious food. You can't help but sample your products, and it really bulks you up.",
 		enchantment: "+25 Max HP<br>+5 Max MP",
-		icon: "no_image.png",
+		icon: "cooking.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1372,7 +1372,7 @@ var skills = [
 		name: "Relationship Advice",
 		description: "This course supposedly teaches you how to obtain and maintain relationshps, but they bought in a guest speaker from an internet podcast and the advice was completely terrible. It did teach you what not to do, so it wasn't all for nothing.",
 		enchantment: "+2 minion level",
-		icon: "no_image.png",
+		icon: "hearts.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1444,7 +1444,7 @@ var skills = [
 		name: "Teaching",
 		description: "This course teaches you how to teach others. It's like a pyramid scheme for learning.",
 		enchantment: "+2 minion experience from combats",
-		icon: "no_image.png",
+		icon: "teaching.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {

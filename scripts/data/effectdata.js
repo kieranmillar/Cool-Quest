@@ -42,12 +42,12 @@ var effects = [
 	},
 	{
 		id: 3,
-		name: "TO REPLACE",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Writing",
+		description: "Your latest terrible opinion column on how the latest generation can't afford a house because they eat too many avocados has directed a lot of justifiable anger in your direction.",
+		enchantment: "+10 Monster Level<br>+20 Experience from combats",
+		icon: "writing.png",
 		effect: function() {
-			
+			player.effMl += 10;
 		}
 	},
 	{
@@ -182,6 +182,16 @@ var effects = [
 		icon: "upsidedown_cardboard_box.png",
 		effect: function() {
 			player.combatRate -= 5;
+		}
+	},
+	{
+		id: 18,
+		name: "Bagpipes Playing",
+		description: "Your loud and off-tune toots are making everyone in the vicinity really mad.",
+		enchantment: "+20 Monster Level<br>+40 Experience from combats",
+		icon: "bagpipes.png",
+		effect: function() {
+			player.effMl += 20;
 		}
 	},
 ];

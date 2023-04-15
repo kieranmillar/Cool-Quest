@@ -1135,15 +1135,16 @@ var skills = [
 	},
 	{
 		id: 65,
-		name: "+20 monster stat buff",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Bagpipes Playing",
+		description: "This course teaches you how to play the most irritating instrument known to man. You deserve everything coming your way.",
+		enchantment: "10 turns of:<br>+20 Monster Level<br>+40 Experience from combats",
+		icon: "bagpipes.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 10,
 		onUse: function () {
-			
+			hint ("You toot on some bagpipes, gaining 10 turns of Bagpipes Playing!", "g");
+			return addBuff (18, 10);
 		}
 	},
 	{
@@ -1344,15 +1345,16 @@ var skills = [
 	},
 	{
 		id: 80,
-		name: "+10 Monster stats buff",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Writing",
+		description: "This course doesn't teach you how to write, but offers connections to the rich so you can write terrible and uninformed opinion columns in newspapers.",
+		enchantment: "10 turns of:<br>+10 Monster Level<br>+20 Experience from combats",
+		icon: "writing.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 5,
 		onUse: function () {
-			
+			hint ("You write a terrible opinion column, gaining 10 turns of Writing!", "g");
+			return addBuff (3, 10);
 		}
 	},
 	{

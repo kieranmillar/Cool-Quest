@@ -121,7 +121,8 @@ var noncombats = [
 				onChoosing: function () {
 					addNoncombatText ("You enter the armoury and find a whole heap of equipment in a messy pile. These orcs don't seem particularly well organised.");
 					addNoncombatText ("You go to sort through the pile, but hear whistling off in the distance, so decide to quickly grab the first random piece of equipment you get your hands on and run away.");
-					getNoncombatItem (Math.floor(Math.random() * 4) + 19, 1);//random item between ids 19 and 22
+					let rewards = [19, 20, 21, 22, 25];
+					getNoncombatItem (rewards[Math.floor(Math.random() * rewards.length)], 1);
 					return true;
 				}
 			},

@@ -19,7 +19,17 @@ function displayHappyvilleShop() {
     let foodContainer = document.createElement("div");
     foodContainer.classList.add("inv_container");
     foodContainer.appendChild(createHappyvilleShopItem(45)); // candy cane
+    foodContainer.appendChild(createHappyvilleShopItem(49)); // festive pudding
     happyvilleShopContainerDiv.appendChild(foodContainer);
+
+    let potionsHeader = document.createElement("h2");
+    potionsHeader.textContent = "Potions";
+    happyvilleShopContainerDiv.appendChild(potionsHeader);
+    let potionsContainer = document.createElement("div");
+    potionsContainer.classList.add("inv_container");
+    potionsContainer.appendChild(createHappyvilleShopItem(48)); // ritual candle
+    potionsContainer.appendChild(createHappyvilleShopItem(50)); // Happyville snowglobe
+    happyvilleShopContainerDiv.appendChild(potionsContainer);
 
     let miscHeader = document.createElement("h2");
     miscHeader.textContent = "Misc";

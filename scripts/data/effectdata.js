@@ -194,4 +194,24 @@ var effects = [
 			player.effMl += 20;
 		}
 	},
+	{
+		id: 19,
+		name: "Eternal Flame",
+		description: "Do you understand? Do you feel the same? Am I only dreaming? Is this burning an eternal flame?",
+		enchantment: "+5 Fire Damage",
+		icon: "candle.png",
+		effect: function() {
+			player.fireDamage += 5;
+		}
+	},
+	{
+		id: 20,
+		name: "Magnifying Globe",
+		description: "You can peer through the empty snowglobe to get a better look at things, until your clumsy self drops and breaks it.",
+		enchantment: "+10% item drop chance",
+		icon: "empty_snowglobe.png",
+		effect: function() {
+			player.effItemBoost += 10;
+		}
+	},
 ];

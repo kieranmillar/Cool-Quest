@@ -204,8 +204,13 @@ var items = [
 		category: itemType.MISC,
 		sell: 0,
 		onUse: function () {
-			hint ("You unlock various town hall doors and the key vanishes, like all good video game keys.", "g");
-			player.quests[questEnum.TOWNHALL] = 3;
+			if (player.quests[questEnum.TOWNHALL] < 3) {
+				hint ("You unlock various town hall doors and the key vanishes, like all good video game keys.", "g");
+				player.quests[questEnum.TOWNHALL] = 3;
+			}
+			else {
+				hint ("You've already unlocked the town hall, so you throw away the key.", "g");
+			}
 			return true;
 		}
 	},
@@ -391,14 +396,14 @@ var items = [
 		id: 21,
 		name: "orc calculator",
 		description: "An orc discovered that if you put 5318008 into this calculator and turn it upside down, it's hilarious. You can feel the smarts rubbing off on you by association from holding that same calculator.",
-		enchantment: "+3 Max MP<br>+5 Psychic Damage",
+		enchantment: "+3 Max MP<br>+4 Psychic Damage",
 		icon: "calculator.png",
 		type: "Accessory",
 		category: itemType.ACC,
 		sell: 20,
 		onWear: function () {
 			player.effMpMax += 3;
-			player.psychicDamage += 5;
+			player.psychicDamage += 4;
 		}
 	},
 	{
@@ -652,8 +657,10 @@ var items = [
 		onUse: function () {
 			let gifts = [
 				38, //lump of coal
-				4 // health potion
-				// TODO more gifts
+				45, //candy cane
+				48, //ritual candle
+				49, //festive pudding
+				50 //Happyville snowglobe
 			];
 			let choice = Math.floor(Math.random() * gifts.length);
 			let gift = gifts[choice];
@@ -817,6 +824,59 @@ var items = [
 		onUse: function () {
 			hint ("You crawl under the box and gain 10 turns of Box Disguise.", "g");
 			addBuff (17, 10);
+			return true;
+		}
+	},
+	{
+		id: 48,
+		name: "ritual candle",
+		description: "This candle is used during the festive cermonies in Happyville. Ancient traditions say it is used to ward off cold evil spirits. Pffft, yeah right.",
+		enchantment: "10 turns of +5 Fire Damage",
+		icon: "candle.png",
+		type: "Potion",
+		category: itemType.POTION,
+		cost: 8,
+		sell: 8,
+		onUse: function () {
+			hint ("You close your eyes, give your hand and gain 10 turns of Eternal Flame.", "g");
+			addBuff (19, 10);
+			return true;
+		}
+	},
+	{
+		id: 49,
+		name: "festive pudding",
+		description: "This stodgy cake is a traditional festive Happyville desert, but it's so dense and filling, you wonder if it really makes sense to be a desert.",
+		enchantment: "+3 Fullness<br>+8 Turns to midnight",
+		icon: "festive_pudding.png",
+		type: "Food",
+		category: itemType.FOOD,
+		fullness: 3,
+		turns: 8,
+		cost: 25,
+		sell: 25,
+		onUse: function () {
+			let success = eat(49);
+			if (success == true)
+			{
+				hint(eatMessage(49), "g");
+			}
+			return success;
+		}
+	},
+	{
+		id: 50,
+		name: "Happyville snowglobe",
+		description: "This snowglobe contains a tiny model of Happyville inside. The surrounding glass is magnifying so it looks bigger than it is.",
+		enchantment: "10 turns of +10% item drop chance",
+		icon: "snowglobe.png",
+		type: "Potion",
+		category: itemType.POTION,
+		cost: 20,
+		sell: 20,
+		onUse: function () {
+			hint ("You pour the snow out of the snowglobe and gain 10 turns of Magnifying Globe.", "g");
+			addBuff (20, 10);
 			return true;
 		}
 	},

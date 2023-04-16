@@ -465,11 +465,11 @@ var skills = [
 		id: 25,
 		name: "Hands-on Experience",
 		description: "The best way to learn is through hands-on experience, at least, that's your justification for making your minions do all the chores around the house.",
-		enchantment: "10 turns of +6 minion experience from combats",
+		enchantment: "10 turns of +4 minion experience from combats",
 		icon: "mop.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
-		cost: 8,
+		cost: 7,
 		price: 250,
 		level: 3,
 		onUse: function () {
@@ -479,22 +479,6 @@ var skills = [
 	},
 	{
 		id: 26,
-		name: "Crewmates",
-		description: "All good pirates know how to keep up morale with their fellow crewmates, if only to prevent a mutiny.",
-		enchantment: "10 turns of +4 minion level",
-		icon: "beer_mug.png",
-		source: skillSource.PIRATE,
-		category: skillType.NONCOMBAT,
-		cost: 10,
-		price: 500,
-		level: 4,
-		onUse: function () {
-			hint ("You pour out some grog for your minions, gaining 10 turns of Crewmates!", "g");
-			return addBuff (15, 10);
-		}
-	},
-	{
-		id: 27,
 		name: "Johnny Two Hats",
 		description: "The epitome of style is to wear the same hat twice. What if you come across someone wearing three hats you say? Don't be ridiculous, you've never even seen anyone wear two hats before.",
 		enchantment: "Doubles the bonuses on your hat",
@@ -512,14 +496,36 @@ var skills = [
 		}
 	},
 	{
-		id: 28,
-		name: "TODO: Cannon Blast",
-		description: "",
-		enchantment: "Deals physical damage equal to 200% of your POW next round<br>(Once per combat)",
-		icon: "no_image.png",
+		id: 27,
+		name: "Cannon Blast",
+		description: "Mowing down your opponents with giant cannonballs is a combat strategy only the most serious people dare to try.",
+		enchantment: "Deals physical damage equal to 160% of your POW next round<br>(Once per combat)",
+		icon: "cannon.png",
 		source: skillSource.PIRATE,
 		category: skillType.COMBAT,
 		cost: 4,
+		price: 500,
+		level: 4,
+		onUse: function () {
+			if (monster.castCannonBlast != 0)
+			{
+				hint ("You only have a single cannonball each fight!", "r");
+				return false;
+			}
+			addCombatText("You ask your opponent to stay right where they are and run off. You come back pushing in a giant cannon. While you load a cannonball, Crackers flies over with some matches and lights the fuse.");
+			monster.castCannonBlast = 1;
+			return true;
+		}
+	},
+	{
+		id: 28,
+		name: "TODO: Batten Down the Hatches",
+		description: "",
+		enchantment: "10 turns of:<br>+10 Fire Resistance<br>+10 Ice Resistance<br>+10 Psychic Resistance<br>+10 Emotional Resistance",
+		icon: "no_image.png",
+		source: skillSource.PIRATE,
+		category: skillType.NONCOMBAT,
+		cost: 8,
 		price: 1000,
 		level: 5,
 		onUse: function () {
@@ -554,9 +560,9 @@ var skills = [
 	},
 	{
 		id: 31,
-		name: "",
+		name: "TODO: Booty Plunder",
 		description: "",
-		enchantment: "",
+		enchantment: "10 turns of +40% Gold from combats",
 		icon: "no_image.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
@@ -569,17 +575,18 @@ var skills = [
 	},
 	{
 		id: 32,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Crewmates",
+		description: "All good pirates know how to keep up morale with their fellow crewmates, if only to prevent a mutiny.",
+		enchantment: "10 turns of +4 minion level",
+		icon: "beer_mug.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 10,
 		price: 100,
 		level: 7,
 		onUse: function () {
-			
+			hint ("You pour out some grog for your minions, gaining 10 turns of Crewmates!", "g");
+			return addBuff (15, 10);
 		}
 	},
 	{

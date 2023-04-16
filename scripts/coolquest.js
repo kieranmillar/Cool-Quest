@@ -104,11 +104,11 @@ function redrawCharPane() {
 			charPaneMinionContainerDiv.appendChild(newElement);
 			if (getMinionBaseLevel(thisMinion) < 20) {
 				newElement = document.createElement("p");
-				newElement.textContent = `Exp: ${player.minionExp[thisMinion]} / ${getMinionBaseLevel(thisMinion) * 10}`;
+				newElement.textContent = `Exp: ${player.minionExp[thisMinion]} / ${getMinionBaseLevel(thisMinion) * 6}`;
 				charPaneMinionContainerDiv.appendChild(newElement);
 				newElement = document.createElement("progress");
 				newElement.setAttribute("value", player.minionExp[thisMinion]);
-				newElement.setAttribute("max", getMinionBaseLevel(thisMinion) * 10);
+				newElement.setAttribute("max", getMinionBaseLevel(thisMinion) * 6);
 				charPaneMinionContainerDiv.appendChild(newElement);
 			}
 		}

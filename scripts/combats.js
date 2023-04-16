@@ -16,6 +16,7 @@ var monster = {
 	hitMessages: [""], //first message is for criticals
 	castPounce: 0,
 	castSpecialDelivery: 0,
+	castCannonBlast: 0,
 	castExposeSecrets: 0,
 	stunThisRound: false,
 	exposeSecretsRounds: 0,
@@ -132,6 +133,7 @@ function beginCombat(obj) {
 	monster.hitMessages = obj.hitMessages;
 	monster.castPounce = 0;
 	monster.castSpecialDelivery = 0;
+	monster.castCannonBlast = 0;
 	monster.castExposeSecrets = 0;
 	monster.stunThisRound = false;
 	monster.exposeSecretsRounds = 0;
@@ -336,6 +338,20 @@ function combatRound(action) {
 	}
 	if (action != -1) {
 		minionCombatRound();
+	}
+	if (monster.castCannonBlast == 2) {
+		addCombatText ("Fire in the hole! The ground shakes as the cannon fuse burns all the way down and the cannon blasts a giant cannonball at your opponent with an almighty <strong>KABOOM!</strong>");
+			let cannonDamage = Math.floor(player.effPow * 1.6) - monster.def;
+			if (cannonDamage <= 0)
+			{
+				cannonDamage = 1;
+			}
+			addCombatText ("Your opponent takes " + cannonDamage + " damage!");
+			monster.hp -= cannonDamage;
+		monster.castCannonBlast = 3;
+	}
+	if (monster.castCannonBlast == 1) {
+		monster.castCannonBlast = 2;
 	}
 	if (!checkEndOfCombat()) {
 		if (monster.stunThisRound) {

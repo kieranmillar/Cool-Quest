@@ -148,10 +148,10 @@ var effects = [
 		id: 14,
 		name: "Hands-on Experience",
 		description: "You set your minion to mop the mizzenmast, batten down the hatches, and many other tasks that sound pirate-y.",
-		enchantment: "+6 minion experience from combats",
+		enchantment: "+4 minion experience from combats",
 		icon: "mop.png",
 		effect: function() {
-			player.effMinionExpBonus += 6;
+			player.effMinionExpBonus += 4;
 		}
 	},
 	{

@@ -35,9 +35,9 @@ function gainMinionExp(id, amount) {
     }
     player.minionExp[id] += amount;
     let levelledUp = false;
-    while (player.minionExp[id] >= player.minionLevels[id] * 10) {
+    while (player.minionExp[id] >= player.minionLevels[id] * 6) {
         levelledUp = true;
-        player.minionExp[id] -= player.minionLevels[id] * 10;
+        player.minionExp[id] -= player.minionLevels[id] * 6;
         player.minionLevels[id]++;
     }
     if (player.minionLevels[id] >= 20) {
@@ -206,7 +206,7 @@ function displayPen() {
         innerWrapper.appendChild(newElement);
         if (getMinionBaseLevel(i) < 20) {
             newElement = document.createElement("p");
-            newElement.textContent = `Exp: ${player.minionExp[i]} / ${getMinionBaseLevel(i) * 10}`;
+            newElement.textContent = `Exp: ${player.minionExp[i]} / ${getMinionBaseLevel(i) * 6}`;
             innerWrapper.appendChild(newElement);
         }
         minionWrapper.appendChild(innerWrapper);

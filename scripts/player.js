@@ -15,14 +15,15 @@ var optionEnum = {
 	CIDQUESTLOG: 4,
 }
 
-var questEnumSize = 6;
+var questEnumSize = 7;
 var questEnum = {
 	TUTORIAL: 0,
 	TOWNHALL: 1,
 	ORCCAMP: 2,
 	YELLOWKEY: 3,
 	BADGER: 4,
-	HAPPYVILLE: 5
+	HAPPYVILLE: 5,
+	MUD: 6,
 }
 
 var zoneCounterEnum = {

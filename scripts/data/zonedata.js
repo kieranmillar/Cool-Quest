@@ -126,7 +126,7 @@ var zones = [
 		id: 7,
 		name: "Behind the Yellow Door",
 		parent: "dungeons",
-		parentName: "the Dungeons",
+		parentName: "the Deadly Dungeons of Death",
 		level: 3,
 		combatChance: 80,
 		combats: [17, 18, 19],

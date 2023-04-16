@@ -139,8 +139,9 @@ function goToLocation (l) {
 				link_equipment.classList.remove("hide");
 				inventory_tutorial2.classList.add("hide");
 				house_normal.classList.add("hide");
-				gainItem(1, 1);
 				player.quests[questEnum.TUTORIAL] = 2;
+				gainItem(1, 1);
+				save();
 			}
 			else if (player.quests[questEnum.TUTORIAL] == 3) {
 				equip_tutorial.classList.add("hide");
@@ -150,8 +151,9 @@ function goToLocation (l) {
 			else if (player.quests[questEnum.TUTORIAL] == 5) {
 				buff_tutorial.classList.add("hide");
 				link_town.classList.remove("hide");
-				gainItem(2, 1);
 				player.quests[questEnum.TUTORIAL] = 6;
+				gainItem(2, 1);
+				save();
 			}
 			if (player.turnsToMidnight <= 0) {
 				house_sleepButton.classList.remove("hide");
@@ -238,6 +240,8 @@ function goToLocation (l) {
 			if (player.quests[questEnum.ORCCAMP] == 1) {
 				orcCamp_intro.classList.remove("hide");
 				player.quests[questEnum.ORCCAMP] = 2;
+				redrawCharPane();
+				save();
 			}
 			else {
 				orcCamp_intro.classList.add("hide");
@@ -257,6 +261,8 @@ function goToLocation (l) {
 			if (player.quests[questEnum.HAPPYVILLE] == 1) {
 				happyville_intro.classList.remove("hide");
 				player.quests[questEnum.HAPPYVILLE] = 2;
+				redrawCharPane();
+				save();
 			}
 			else {
 				happyville_intro.classList.add("hide");

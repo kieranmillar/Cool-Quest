@@ -534,8 +534,8 @@ var items = [
 	{
 		id: 30,
 		name: "yellow key",
-		description: "This key unlocks the yellow door in the dungeons.",
-		enchantment: "Unlocks the Yellow Door in the Dungeons",
+		description: "This key unlocks the yellow door in the dungeons in the mountains.",
+		enchantment: "Unlocks the Yellow Door in the Deadly Dungeons of Death",
 		icon: "yellow_key.png",
 		type: "Useable",
 		category: itemType.MISC,
@@ -650,7 +650,7 @@ var items = [
 		description: "A friendly gift, but for who? It's missing a nametag, so finders-keepers.",
 		enchantment: "Contains a random gift<br>The citizens of Happyville really like collecting these",
 		icon: "present.png",
-		type: "Miscellaneous",
+		type: "Useable",
 		category: itemType.MISC,
 		cost: 10,
 		sell: 10,
@@ -801,7 +801,7 @@ var items = [
 	{
 		id: 46,
 		name: "icicle",
-		description: "This large sharp chunk of ice that clearly broke off of a roof is labelled as being made from \"all natural organic Happyville spring water\" and sold to gullible tourists such as yourself.",
+		description: "This large sharp chunk of ice that clearly broke off of a roof is labelled as being made from \"all natural organic Happyville rain water\" and sold to gullible tourists such as yourself.",
 		enchantment: "+10 Ice Damage",
 		icon: "icicle.png",
 		type: "Weapon",
@@ -878,6 +878,30 @@ var items = [
 			hint ("You pour the snow out of the snowglobe and gain 10 turns of Magnifying Globe.", "g");
 			addBuff (20, 10);
 			return true;
+		}
+	},
+	{
+		id: 51,
+		name: "small glob of mud",
+		description: "This small glob of mud is pulsating slightly. I'm sure it'll be fine, what's it going to do? Grow by itself?",
+		enchantment: "Somebody else might want this",
+		icon: "glob_of_mud.png",
+		type: "Miscellaneous",
+		category: itemType.MISC,
+		sell: 120
+	},
+	{
+		id: 52,
+		name: "Really Big Sword",
+		description: "Wow, this sword is enormous! It's about as big as you are. It's so heavy it takes a huge amount of time to swing it though.",
+		enchantment: "+15 POW</br>-25 INIT",
+		icon: "really_big_sword.png",
+		type: "Weapon",
+		category: itemType.WEAPON,
+		sell: 125,
+		onWear: function () {
+			player.effPow += 15;
+			player.effInit -= 25;
 		}
 	},
 ];

@@ -16,6 +16,8 @@ function displayCidText () {
         if (!player.quests[questEnum.ORCCAMP]) {
             newCidText("Oh, you don't know about the outskirts of town yet? I'm honored you came to visit me first, but in the future after you level up visiting the Mayor should be your first priority.");
         }
+        redrawCharPane();
+        save();
     }
     else if (player.quests[questEnum.BADGER] == 1 && getItemAmount(31) < 3) {
         newCidText("How goes the hunt for three Badger Badger badges? You can get them from the Badger Badger Sett. 400 Gold's waiting for you!");
@@ -25,15 +27,41 @@ function displayCidText () {
         let badgerButton = document.createElement("button");
 	    badgerButton.textContent = "Trade 3 Badger Badger badges for 400 Gold";
 	    cidTextDiv.appendChild(badgerButton);
-	    badgerButton.addEventListener ("click", function() {
+	    badgerButton.onclick = function() {
 		    loseItem (31, 3);
             giveGold(400, false);
             player.quests[questEnum.BADGER] = 2;
             goToLocation("cid");
             hint("You trade in 3 Badger Badger badges for 400 Gold.", "g");
             redrawCharPane();
-            return;
-	    });
+            save();
+	    };
+    }
+
+    //level 2
+    if (player.level >= 3 && !player.quests[questEnum.MUD]) {
+        newCidText("Someone who called himself a \"Mud Coordinator\", whatever that is, has asked for me to find someone to help them get a hold of some \"Awakened Mud\" from the Deadly Dungeons of Death in the mountains. They've handed me this huge sword I can give out as a reward, what do you say?");
+        player.quests[questEnum.MUD] = 1;
+        redrawCharPane();
+        save();
+    }
+    else if (player.quests[questEnum.MUD] == 1 && getItemAmount(51) == 0) {
+        newCidText("How's it going getting hold of some of that special mud? You might need to buy a key from the general store to gain access to the dungeons.");
+    }
+    if (player.quests[questEnum.MUD] == 1 && getItemAmount(51) >= 1) {
+		newCidText("Ah, you found some of that \"Awakened Mud\"? If you let me have that I can give you this large sword.");
+        let mudButton = document.createElement("button");
+	    mudButton.textContent = "Trade 1 small glob of mud for a Really Big Sword";
+	    cidTextDiv.appendChild(mudButton);
+	    mudButton.onclick = function() {
+		    loseItem(51, 1);
+            gainItem(52, 1);
+            player.quests[questEnum.MUD] = 2;
+            goToLocation("cid");
+            hint("You trade in a small glob of mud for a Really Big Sword.", "g");
+            redrawCharPane();
+            save();
+	    };
     }
 
     if (cidTextDiv.textContent === "") {

@@ -194,9 +194,17 @@ var noncombats = [
 		description: "One of the walls of this room is a made of a strange red substance. Most of it seems solid, but a large section is bulging out that seems quite gooey and could be separated off from the rest of the wall.</p><p>You get the feeling that might be a very dangerous idea though. This stuff feels like... it's almost alive...",
 		choices: [
 			{
-				buttonText: function () {return noncombatButton ("Cut the mud", 0, "fight a Mud Baby");},
+				buttonText: function () {return noncombatButton ("Cut off a large chunk of mud", 0, "fight a Mud Baby");},
 				onChoosing: function () {
 					beginCombat (combats[20]);
+					return true;
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("Cut off a small glob of mud", 0, "gain a small glob of mud");},
+				onChoosing: function () {
+					addNoncombatText ("You cut a small amount of mud off of the wall. It hits the floor with a wet splat and sits there shaking slightly. You cautiously put it into your bag.");
+					getNoncombatItem (51, 1);
 					return true;
 				}
 			},

@@ -60,7 +60,10 @@ function displayQuestLog() {
     }
     if (player.options[optionEnum.CIDQUESTLOG]) {
         if (player.quests[questEnum.BADGER] == 1) {
-            addQuestLogEntry("Collect 3 Badger Badger badges for Cid");
+            addQuestLogEntry("Collect 3 Badger Badger badges from the Badger Badger Sett for Cid");
+        }
+        if (player.quests[questEnum.MUD] == 1) {
+            addQuestLogEntry("Collect a small glob of mud from the Deadly Dungeons of Death for Cid");
         }
     }
 }

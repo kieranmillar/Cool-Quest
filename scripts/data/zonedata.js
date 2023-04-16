@@ -138,7 +138,7 @@ var zones = [
 		level: 2,
 		parent: "outskirts",
 		parentName: "the Outskirts of Town",
-		combatChance: 75,
+		combatChance: 70,
 		combats: [21, 21, 21, 22, 23, 24],
 		noncombats: [9, 10]
 	},

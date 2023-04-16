@@ -219,20 +219,44 @@ var noncombats = [
 	},
 	{
 		id: 9,
-		title: "(Magic Trevor or Narwhals reference?))",
-		description: "TODO",
+		title: "Going on a Magical Journey",
+		description: "As you stroll through the sett, you come across a large group of cows, all huddled around a makeshift stage. As you push your way through the crowd, you find a man in a white onsie with a ginger beard on the stage performing magic tricks.</p><p>He beckons you onto the stage. \"For my next trick, I wish to teleport a volunteer to a nearby place. You look like you're eager to go on a journey. Tell me, what do you desire most?\"</p><p>You ponder to yourself.",
 		choices: [
 			{
-				buttonText: function () {return noncombatButton ("Approach the Baby", 0, "fight a Mud Baby");},
+				buttonText: function () {return noncombatButton ("I want to dance", 0, "fight a Badger Badger");},
 				onChoosing: function () {
-					beginCombat (combats[20]);
+					beginCombat (combats[21], "With a flick of his leathery whip, the magical man teleports you to a nearby Badger Badger, who was dancing away, minding his own buiness, and has now been rudely interrupted.");
 					return true;
 				}
 			},
 			{
-				buttonText: function () {return noncombatButton ("Find another fight", 1, "fight a monster");},
+				buttonText: function () {return noncombatButton ("I want to be with nature", 1, "fight a Mushroom Mushroom");},
 				onChoosing: function () {
-					pickRandomCombat (8);
+					beginCombat (combats[22], "With a flick of his leathery whip, the magical man teleports you next to a Mushroom Mushroom, which immediately triggers a natural defensive response.");
+					return true;
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("I want to see the hidden world of animals", 2, "fight a snake");},
+				onChoosing: function () {
+					beginCombat (combats[23], "With a flick of his leathery whip, the magical man teleports you next to a warehouse filled with cardboard boxes. This doesn't seem like the place for animals, but your curiosity is abated when a snake slides out from a nearby box.");
+					return true;
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("I want to see something amazing", 3, "fight an amazing horse");},
+				onChoosing: function () {
+					beginCombat (combats[24], "With a flick of his leathery whip, the magical man teleports you next to a lake, where a young lady is looking around.</p><p>\"Are you also here to look at the amazing horse?\" she asks you.</p><p>What amazing horse? Oh, this one.");
+					return true;
+				}
+			},
+			{
+				buttonText: function () {return noncombatButton ("I want to go to a parallel dimension", 4, "gain lots of beans");},
+				onChoosing: function () {
+					addNoncombatText("With a flick of his leathery whip, Magical Trevor sends you off to a parallel dimension. The strange world you find yourself in is horrifying. All matter of strange animals surround you. A pigeon sawn in half. A chinchilla on fire. The Kraken. A beaver being fired out of a cannon. All inside of an endless shopping aisle filled with cans of beans.");
+					addNoncombatText("You grab a couple of cans of beans before Magical Trevor teleports you back to his stage.");
+					getNoncombatItem(53, 1);
+					addNoncombatText("You decide that's enough teleporting around for one day and walk off, shuddering.");
 					return true;
 				}
 			}

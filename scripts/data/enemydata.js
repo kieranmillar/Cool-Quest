@@ -612,7 +612,7 @@ var combats = [
 		hitMessages: [
 			"It slaps you around the face. You don't see what it hit you with, but it leaves a purple stain on your face.",
 			"It strikes you with its bullet-proof hooves.",
-			"You try to sneak up behind the horse but it kicks you in the head.",
+			"You try to sneak up behind the horse but it kicks you in the mouth. It tastes like raisins",
 			"A short man with a big mustache and top hat walks over and punches you."
 		]
 	},

@@ -56,8 +56,8 @@ function gainItemDrop(item, amount) {
 	$("#combatText").append(e);
 }
 
-// Starts a new combat
-function beginCombat(obj) {
+// Starts a new combat. Pass in the full monster object for the first argument, the second argument is optional and will replace the description text
+function beginCombat(obj, descriptionOverride = "") {
 	if (player.hp == 0 || busy == true) {
 		return;
 	}
@@ -71,7 +71,13 @@ function beginCombat(obj) {
 	player.combatQueue.push(obj.id);
 	monster.id = obj.id;
 	monster.name = obj.name;
-	monster.description = obj.description;
+	if (descriptionOverride == "") {
+		monster.description = obj.description;
+	}
+	else {
+		monster.description = descriptionOverride;
+	}
+	
 	$("#monsterImg").attr("src", "./images/big/" + obj.icon);
 	monster.hp = obj.hp + player.effMl;
 	if (!"fixedStats" in obj || !obj.fixedStats) {
@@ -587,64 +593,52 @@ function regularAttack (value, hitMessage, critMessage)
 }
 
 function calcFireDamage (fireDamage) {
-	if (fireDamage == 0)
-	{
+	if (fireDamage == 0) {
 		return 0;
 	}
-	if (monster.element == elementEnum.FIRE)
-	{
+	if (monster.element == elementEnum.FIRE) {
 		fireDamage = 1;
 	}
-	if (monster.element == elementEnum.ICE)
-	{
+	if (monster.element == elementEnum.ICE) {
 		fireDamage *= 2;
 	}
 	return fireDamage;
 }
 
 function calcIceDamage (iceDamage) {
-	if (iceDamage == 0)
-	{
+	if (iceDamage == 0) {
 		return 0;
 	}
-	if (monster.element == elementEnum.FIRE)
-	{
+	if (monster.element == elementEnum.FIRE) {
 		iceDamage *= 2;
 	}
-	if (monster.element == elementEnum.ICE)
-	{
+	if (monster.element == elementEnum.ICE) {
 		iceDamage = 1;
 	}
 	return iceDamage;
 }
 
 function calcPsychicDamage (psychicDamage) {
-	if (psychicDamage == 0)
-	{
+	if (psychicDamage == 0) {
 		return 0;
 	}
-	if (monster.element == elementEnum.PSYCHIC)
-	{
+	if (monster.element == elementEnum.PSYCHIC) {
 		psychicDamage = 1;
 	}
-	if (monster.element == elementEnum.EMOTIONAL)
-	{
+	if (monster.element == elementEnum.EMOTIONAL) {
 		psychicDamage *= 2;
 	}
 	return psychicDamage;
 }
 
 function calcEmotionalDamage (emotionalDamage) {
-	if (emotionalDamage == 0)
-	{
+	if (emotionalDamage == 0) {
 		return 0;
 	}
-	if (monster.element == elementEnum.PSYCHIC)
-	{
+	if (monster.element == elementEnum.PSYCHIC) {
 		emotionalDamage *= 2;
 	}
-	if (monster.element == elementEnum.EMOTIONAL)
-	{
+	if (monster.element == elementEnum.EMOTIONAL) {
 		emotionalDamage = 1;
 	}
 	return emotionalDamage;

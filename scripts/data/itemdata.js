@@ -904,4 +904,24 @@ var items = [
 			player.effInit -= 25;
 		}
 	},
+	{
+		id: 53,
+		name: "lots of beans",
+		description: "Beans, beans, the musical fruit. This is an entire orchestra of canned baked beans.",
+		enchantment: "+4 Fullness<br>+12 Turns to midnight",
+		icon: "cans_of_beans.png",
+		type: "Food",
+		category: itemType.FOOD,
+		fullness: 4,
+		turns: 12,
+		sell: 50,
+		onUse: function () {
+			let success = eat(53);
+			if (success == true)
+			{
+				hint(eatMessage(53), "g");
+			}
+			return success;
+		}
+	},
 ];

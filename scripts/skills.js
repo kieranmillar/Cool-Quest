@@ -1,148 +1,173 @@
-function displaySkills()
-{
-	let toggleDiv = $("#skill_toggle");
-	toggleDiv.empty();
-	let noncomDiv = $("#skill_noncom");
-	noncomDiv.empty();
-	let comDiv = $("#skill_com");
-	comDiv.empty();
-	let passiveDiv = $("#skill_passive");
-	passiveDiv.empty();
-	let toggleCount = 0;
+var skillNonComContainer = document.getElementById("skill_noncom");
+var skillComContainer = document.getElementById("skill_com");
+var skillPassiveContainer = document.getElementById("skill_passive");
+var skillNonComTitle = document.getElementById("skill_noncomTitle");
+var skillComTitle = document.getElementById("skill_comTitle");
+var skillPassiveTitle = document.getElementById("skill_passiveTitle");
+
+var trainerAllOwnedParagraph = document.getElementById("trainer_allOwned");
+var trainerListDiv = document.getElementById("trainer_list");
+
+// Cast a noncombat skill. Returns if successful.
+function useNoncombatSkill (x) {
+	if (x == -1) {
+		hint("That's not a valid skill!", "r");
+		return false;
+	}
+	if(!"onUse" in skills[x]) {
+		hint("That's not a useable skill!", "r");
+		return false;
+	}
+	let cost = skills[x].cost;
+	if (cost > player.mp) {
+		hint("You haven't got enough MP to cast that skill!", "r");
+		return false;
+	}
+	if (skills[x].onUse()) {
+		player.mp -= cost;
+	}
+	redrawCharPane();
+	save();
+	return true;
+}
+
+// Display the skills menu
+function displaySkills() {
+	skillNonComContainer.replaceChildren();
+	skillComContainer.replaceChildren();
+	skillPassiveContainer.replaceChildren();
 	let noncomCount = 0;
 	let comCount = 0;
 	let passiveCount = 0;
-	for (var i in skills)
-	{
-		if (!player.skills[i])
-		{
+	let sortedSkillIds = [];
+	for (let i in skills) {
+		if (!player.skills[i]) {
 			continue;
 		}
-		var newElement = $('<div></div>');
-		newElement.addClass("item");
-		var textImageDiv = $('<span></span>');
-		textImageDiv.addClass("item_Image");
-		textImageDiv.html("<image src='./images/" + skills[i].icon + "'><span>" + skills[i].name + "</span>");
-		textImageDiv.attr({"onClick" : "openDialog (dialogType.SKILL, " + i + ");"});
-		newElement.append(textImageDiv);
+		sortedSkillIds.push(i);
+	}
+	if (!player.options[optionEnum.SORTSKILLSBYSOURCE]) {
+		sortedSkillIds.sort(function(a, b) {
+			if (a === null || a === undefined || b === null || b === undefined) {
+				return 0;
+			}
+			let x = 0;
+			let y = 0;
+			if("cost" in skills[a]) {
+				x = skills[a].cost;
+			}
+			if("cost" in skills[b]) {
+				y = skills[b].cost;
+			}
+			if (x < y) {return -1;}
+			if (x > y) {return 1;}
+			return 0;
+		});
+	}
+	for (let i of sortedSkillIds) {
+		let newElement = document.createElement("div");
+		newElement.classList.add("item");
+		let textImageDiv = document.createElement("span");
+		textImageDiv.className = "item_Image";
+		textImageDiv.innerHTML = `<image src='./images/${skills[i].icon}'><span>${skills[i].name}</span>`;
+        textImageDiv.onclick = function() {
+            openDialog(dialogType.SKILL, i);
+        };
+		newElement.appendChild(textImageDiv);
 		switch (skills[i].category)
 		{
 			case skillType.NONCOMBAT:
 				let addButton = true;
-				if (skills[i].id == 66 && player.castTimeManagement) {
+				if (i == 66 && player.castTimeManagement) {
 					addButton = false;
 				}
 				if (addButton) {
-					var castLink = $('<span></span>');
-					castLink.html("<input type='button' value='Cast\n(" + skills[i].cost + " MP)' onClick = 'useNoncombatSkill(" + i + ")'>");
-					newElement.append(castLink);
+					let castLink = document.createElement("span");
+        			castLink.innerHTML = `<input type='button' value='Cast\n(${skills[i].cost} MP)' onClick='useNoncombatSkill(${i})'>`;
+        			newElement.appendChild(castLink);
 				}
-				noncomDiv.append(newElement);
+				skillNonComContainer.appendChild(newElement);
 				noncomCount ++;
 				break;
 			case skillType.COMBAT:
-				comDiv.append(newElement);
+				skillComContainer.appendChild(newElement);
 				comCount ++;
 				break;
 			case skillType.PASSIVE:
-				passiveDiv.append(newElement);
+				skillPassiveContainer.appendChild(newElement);
 				passiveCount ++;
-				break;
-			case skillType.TOGGLEABLE:
-				var castLink = $('<span></span>');
-				let text = "off";
-				if (player.toggleSkills[skills[i].toggleId] == 1) {
-					text = "on";
-				}
-				castLink.html("<input type = 'button' value = 'Toggle\n(Currently " +  text + ")' onClick = 'toggleSkill(" + i + ")'>");
-				newElement.append(castLink);
-				toggleDiv.append(newElement);
-				toggleCount ++;
-			
+				break;			
 		}
-		let toggleTitle = $("#skill_toggle_title");
-		if (toggleCount == 0)
-		{
-			toggleTitle.hide();
-			toggleDiv.hide();
+		if (noncomCount == 0) {
+			skillNonComTitle.classList.add("hide");
+			skillNonComContainer.classList.add("hide");
 		}
-		else
-		{
-			toggleTitle.show();
-			toggleDiv.show();
+		else {
+			skillNonComTitle.classList.remove("hide");
+			skillNonComContainer.classList.remove("hide");
 		}
-		let noncomTitle = $("#skill_noncom_title");
-		if (noncomCount == 0)
-		{
-			noncomTitle.hide();
-			noncomDiv.hide();
+		if (comCount == 0) {
+			skillComTitle.classList.add("hide");
+			skillComContainer.classList.add("hide");
 		}
-		else
-		{
-			noncomTitle.show();
-			noncomDiv.show();
+		else {
+			skillComTitle.classList.remove("hide");
+			skillComContainer.classList.remove("hide");
 		}
-		let comTitle = $("#skill_com_title");
-		if (comCount == 0)
-		{
-			comTitle.hide();
-			comDiv.hide();
+		if (passiveCount == 0) {
+			skillPassiveTitle.classList.add("hide");
+			skillPassiveContainer.classList.add("hide");
 		}
-		else
-		{
-			comTitle.show();
-			comDiv.show();
-		}
-		let passiveTitle = $("#skill_passive_title");
-		if (passiveCount == 0)
-		{
-			passiveTitle.hide();
-			passiveDiv.hide();
-		}
-		else
-		{
-			passiveTitle.show();
-			passiveDiv.show();
+		else {
+			skillPassiveTitle.classList.remove("hide");
+			skillPassiveContainer.classList.remove("hide");
 		}
 	}
 }
 
-function displayTrainer()
-{
-	let trainerDiv = $("#trainerList");
-	trainerDiv.empty();
+// Display the personal trainer
+function displayTrainer() {
+	trainerListDiv.replaceChildren();
 	let lastLevel = 0;
-	for (var i in skills)
-	{
-		if (player.skills[i])
-		{
+	let skillDisplayCount = 0;
+	for (let i in skills) {
+		if (player.skills[i]) {
 			continue; // already owned
 		}
-		if (skills[i].source != player.job)
-		{
+		if (skills[i].source != player.job) {
 			continue; // not a purchaseable skill for this class
 		}
-		if (skills[i].level != lastLevel)
-		{
+		if (skills[i].level != lastLevel) {
 			lastLevel = skills[i].level;
-			var newElement = $('<h2></h2>');
-			newElement.text("Level " + lastLevel);
-			trainerDiv.append(newElement);
+			let newElement = document.createElement("h2");
+        	newElement.textContent = `Level ${lastLevel}`;
+	    	trainerListDiv.appendChild(newElement);
 		}
-		var newElement = $('<div></div>');
-		newElement.addClass("item");
-		var textImageDiv = $('<span></span>');
-		textImageDiv.addClass("item_Image");
-		textImageDiv.html("<image src='./images/" + skills[i].icon + "'><span>" + skills[i].name + "</span>");
-		textImageDiv.attr({"onClick" : "openDialog (dialogType.SKILL, " + i + ");"});
-		newElement.append(textImageDiv);
-		var buyLink = $('<span></span>');
-		buyLink.html("<input type = 'button' value = 'Train\n(" + skills[i].price + " Gold)' onClick = 'buySkill(" + i + ")'>");
-		newElement.append(buyLink);
-		trainerDiv.append(newElement);
+		let newElement = document.createElement("div");
+		newElement.classList.add("item");
+		let textImageDiv = document.createElement("span");
+		textImageDiv.className = "item_Image";
+		textImageDiv.innerHTML = `<image src='./images/${skills[i].icon}'><span>${skills[i].name}</span>`;
+        textImageDiv.onclick = function() {
+            openDialog(dialogType.SKILL, i);
+        };
+		newElement.appendChild(textImageDiv);
+
+		let buyLink = document.createElement("span");
+        buyLink.innerHTML = `<input type='button' value='Train\n(${skills[i].price} Gold)' onClick='buySkill(${i})'>`;
+        newElement.appendChild(buyLink);
+        trainerListDiv.appendChild(newElement);
+		skillDisplayCount ++;
+	}
+	if (skillDisplayCount == 0) {
+		trainerAllOwnedParagraph.classList.remove("hide");
+	}
+	else {
+		trainerAllOwnedParagraph.classList.add("hide");
 	}
 }
 
+// Purchase a skill from the personal trainer
 function buySkill (id) {
 	if (player.skills[id] > 0) {
 		hint("You already own that skill!", "r");
@@ -156,61 +181,14 @@ function buySkill (id) {
 		hint("You aren't a high enough level to learn that!", "r");
 		return;
 	}
-	if (player.gold >= skills[id].price) {
-		player.gold -= skills[id].price;
-		player.skills[id] = 1;
-		displayTrainer();
-		hint("You learned the skill " + skills[id].name + "!", "g");
-		save();
-	}
-	else {
+	if (player.gold < skills[id].price) {
 		hint("You can't afford that!", "r");
+		return;
 	}
-	calculateStats();
-}
-
-function toggleSkill (x) {
-	x = parseInt(x);
-	if (x == -1)
-	{
-		hint ("That's not a valid skill!", "r");
-		return false;
-	}
-	if (player.toggleSkills[skills[x].toggleId] == 1) {
-		player.toggleSkills[skills[x].toggleId] = 0;
-	}
-	else {
-		player.toggleSkills[skills[x].toggleId] = 1;
-	}
-	displaySkills();
+	player.gold -= skills[id].price;
+	player.skills[id] = 1;
+	displayTrainer();
+	hint(`You learned the skill ${skills[id].name}!`, "g");
 	save();
-	return true;
-}
-
-function useNoncombatSkill (x)
-{
-	x = parseInt(x);
-	if (x == -1)
-	{
-		hint ("That's not a valid skill!", "r");
-		return false;
-	}
-	if(!"onUse" in skills[x])
-	{
-		hint ("That's not a useable skill!", "r");
-		return false;
-	}
-	let cost = skills[x].cost;
-	if (cost > player.mp)
-	{
-		hint ("You haven't got enough MP to cast that skill!", "r");
-		return false;
-	}
-	if (skills[x].onUse())
-	{
-		player.mp -= cost;
-	}
-	redrawCharPane();
-	save ();
-	return true;
+	calculateStats();
 }

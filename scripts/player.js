@@ -13,6 +13,7 @@ var optionEnum = {
 	ZONEWARNINGS: 2,
 	FOODQUALITY: 3,
 	CIDQUESTLOG: 4,
+	SORTSKILLSBYSOURCE: 5,
 }
 
 var questEnumSize = 7;
@@ -89,7 +90,6 @@ var player = {
 	buffs: [],
 	skills: [//0 = unowned, 1 = owned, 2 = permanent
 	],
-	toggleSkills: [],
 	minionExp: [],
 	minionLevels: [],
 	minionNames: [],
@@ -99,7 +99,7 @@ var player = {
 	castTimeManagement: false,
 	effFreeRests: 0,
 	freeRestsUsed: 0,
-	options: [0, 0, 1, 0, 1],
+	options: [0, 0, 1, 0, 1, 0],
 	drellaUDailyBigSkill: -1,
 	drellaUDailySmallSkills: [],
 	quests: [0],

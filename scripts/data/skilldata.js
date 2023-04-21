@@ -1,8 +1,7 @@
 const skillType = {
 	COMBAT: 0,
 	NONCOMBAT: 1,
-	PASSIVE: 2,
-	TOGGLEABLE: 3
+	PASSIVE: 2
 }
 
 const skillSource = {
@@ -1143,7 +1142,7 @@ var skills = [
 	},
 	{
 		id: 65,
-		name: "Bagpipes Playing",
+		name: "Bagpiping",
 		description: "This course teaches you how to play the most irritating instrument known to man. You deserve everything coming your way.",
 		enchantment: "10 turns of:<br>+20 Monster Level<br>+40 Experience from combats",
 		icon: "bagpipes.png",
@@ -1151,7 +1150,7 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 10,
 		onUse: function () {
-			hint ("You toot on some bagpipes, gaining 10 turns of Bagpipes Playing!", "g");
+			hint ("You toot on some bagpipes, gaining 10 turns of Bagpiping!", "g");
 			return addBuff (18, 10);
 		}
 	},

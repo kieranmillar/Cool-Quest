@@ -2,6 +2,8 @@ var drellaUVoucherCountSpan = document.getElementById("drellaU_voucherCount");
 var drellaUBigSkillContainerDiv = document.getElementById("drellaU_bigList");
 var drellaUSmallSkillContainerDiv = document.getElementById("drellaU_smallList");
 
+// Choose today's available Drella U courses
+// Will only pick from skills you do not already own
 function randomiseDrellaUSkills() {
     let unownedBigSkills = skills.filter(x => x.source == skillSource.DRELLAUBIG && !player.skills[x.id]);
     let unownedSmallSkills = skills.filter(x => x.source == skillSource.DRELLAUSMALL && !player.skills[x.id]);
@@ -21,6 +23,7 @@ function randomiseDrellaUSkills() {
     }
 }
 
+// Display the DrellaU screen
 function displayDrellaU() {
     let voucherCount = getItemAmount(35);
     if (voucherCount) {

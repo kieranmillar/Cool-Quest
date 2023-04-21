@@ -251,9 +251,6 @@ function openDialog (type, id)
 				case skillType.PASSIVE:
 					typeText = "Passive";
 					break;
-				case skillType.TOGGLEABLE:
-					typeText = "Toggleable passive";
-					break;
 			}
 			t += "<p>Type: " + typeText + "</p>";
 			if ("cost" in skills[id] && skills[id].cost > 0)
@@ -382,6 +379,12 @@ function load() {
 	else {
 		$("#option_cidQuestLog").prop("checked", false);
 	}
+	if (player.options[optionEnum.SORTSKILLSBYSOURCE]) {
+		$("#option_sortSkillsBySource").prop("checked", true);
+	}
+	else {
+		$("#option_sortSkillsBySource").prop("checked", false);
+	}
 }
 
 function toggleOption(option) {
@@ -431,6 +434,16 @@ function toggleOption(option) {
 			}
 			displayQuestLog();
 			break;
+		case 'sortSkillsBySource':
+			if (!player.options[optionEnum.SORTSKILLSBYSOURCE]) {
+				player.options[optionEnum.SORTSKILLSBYSOURCE] = 1;
+			}
+			else {
+				player.options[optionEnum.SORTSKILLSBYSOURCE] = 0;
+			}
+			break;
+		default:
+			console.error("That's not a valid option!");
 	}
 	save();
 }

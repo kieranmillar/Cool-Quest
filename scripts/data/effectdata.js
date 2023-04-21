@@ -186,7 +186,7 @@ var effects = [
 	},
 	{
 		id: 18,
-		name: "Bagpipes Playing",
+		name: "Bagpiping",
 		description: "Your loud and off-tune toots are making everyone in the vicinity really mad.",
 		enchantment: "+20 Monster Level<br>+40 Experience from combats",
 		icon: "bagpipes.png",

@@ -612,14 +612,14 @@ var combats = [
 		hitMessages: [
 			"It slaps you around the face. You don't see what it hit you with, but it leaves a purple stain on your face.",
 			"It strikes you with its bullet-proof hooves.",
-			"You try to sneak up behind the horse but it kicks you in the mouth. It tastes like raisins",
+			"You try to sneak up behind the horse but it kicks you in the mouth. It tastes like raisins.",
 			"A short man with a big mustache and top hat walks over and punches you."
 		]
 	},
 	{
 		id: 25,
 		name: "a present mimic",
-		description: "You find a present sitting out in the open. You go to pick it up, but the present is a mimic! Time to turn this guy into a past mimic.",
+		description: "You find a present sitting out in the open. You go to pick it up, but the present is a mimic! Time to turn this into a past mimic.",
 		icon: "empty.png",
 		hp: 40,
 		pow: 34,
@@ -635,10 +635,10 @@ var combats = [
 			{id: 36, chance: 20}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"You lift the lid and snakes on springs fly out and bite you in the head.",
+			"It pulls the ribbon off of itself and strangles you with it.",
+			"It lifts its own lid and invites you to reach inside for a gift, but it was a trick and it chomps your hand.",
+			"It gives you a gift. The gift is also a mimic and bites you."
 		]
 	},
 	{

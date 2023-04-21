@@ -214,4 +214,14 @@ var effects = [
 			player.effItemBoost += 10;
 		}
 	},
+	{
+		id: 21,
+		name: "Avoid Responsibility",
+		description: "You're currently away on an important business trip, if anybody calls and asks.",
+		enchantment: "-5% chance for a combat",
+		icon: "avoid_responsibility.png",
+		effect: function() {
+			player.combatRate -= 5;
+		}
+	},
 ];

@@ -20,7 +20,11 @@ function getMinionBaseLevel(id) {
 // Returns minion's current level + level boosts from buffs
 // Returns 0 if you don't own the minion yet
 function getMinionLevel(id) {
-    return getMinionBaseLevel(id) + player.effMinionLevelBonus;
+    let baseLevel = getMinionBaseLevel(id);
+    if (baseLevel == 0) {
+        return 0;
+    }
+    return baseLevel + player.effMinionLevelBonus;
 }
 
 // Give a minion exp

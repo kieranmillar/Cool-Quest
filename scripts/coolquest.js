@@ -515,3 +515,11 @@ function debug_giveAllEffects() {
 		addBuff(i, 10);
 	}
 }
+
+function debug_giveAllMinions() {
+	for (let i = 0; i < minions.length; i++) {
+		if (!getMinionOwned(i)) {
+			gainMinion(i);
+		}
+	}
+}

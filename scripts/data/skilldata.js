@@ -866,17 +866,18 @@ var skills = [
 	},
 	{
 		id: 46,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Avoid Responsibility",
+		description: "It's important as a mystic to avoid things that might harshen your vibes, like skeptics, journalists, tax collectors, the police...",
+		enchantment: "10 turns of -5% chance for a combat",
+		icon: "avoid_responsibility.png",
 		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 10,
 		price: 500,
 		level: 4,
 		onUse: function () {
-			
+			hint ("You hide under a desk, gaining 10 turns of Avoid Responsibility!", "g");
+			return addBuff (21, 10);
 		}
 	},
 	{

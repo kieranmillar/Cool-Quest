@@ -40,25 +40,25 @@ function displayCidText () {
 
     //level 2
     if (player.level >= 3 && !player.quests[questEnum.MUD]) {
-        newCidText("Someone who called himself a \"Mud Coordinator\", whatever that is, has asked for me to find someone to help them get a hold of some \"Awakened Mud\" from the Deadly Dungeons of Death in the mountains. They've handed me this huge sword I can give out as a reward, what do you say?");
+        newCidText("Someone who called himself a \"Mud Coordinator\", whatever that is, has asked for me to find someone to help them get a hold of 2 globs of \"Awakened Mud\" from the Deadly Dungeons of Death in the mountains. They've handed me this huge sword I can give out as a reward, what do you say?");
         player.quests[questEnum.MUD] = 1;
         redrawCharPane();
         save();
     }
-    else if (player.quests[questEnum.MUD] == 1 && getItemAmount(51) == 0) {
-        newCidText("How's it going getting hold of some of that special mud? You might need to buy a key from the general store to gain access to the dungeons.");
+    else if (player.quests[questEnum.MUD] == 1 && getItemAmount(51) < 2) {
+        newCidText("How's it going getting hold of a pair of globs of that special mud? You might need to buy a key from the general store to gain access to the dungeons.");
     }
-    if (player.quests[questEnum.MUD] == 1 && getItemAmount(51) >= 1) {
+    if (player.quests[questEnum.MUD] == 1 && getItemAmount(51) >= 2) {
 		newCidText("Ah, you found some of that \"Awakened Mud\"? If you let me have that I can give you this large sword.");
         let mudButton = document.createElement("button");
-	    mudButton.textContent = "Trade 1 small glob of mud for a Really Big Sword";
+	    mudButton.textContent = "Trade 2 small globs of mud for a Really Big Sword";
 	    cidTextDiv.appendChild(mudButton);
 	    mudButton.onclick = function() {
-		    loseItem(51, 1);
+		    loseItem(51, 2);
             gainItem(52, 1);
             player.quests[questEnum.MUD] = 2;
             goToLocation("cid");
-            hint("You trade in a small glob of mud for a Really Big Sword.", "g");
+            hint("You trade in 2 small globs of mud for a Really Big Sword.", "g");
             redrawCharPane();
             save();
 	    };

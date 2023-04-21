@@ -1,3 +1,5 @@
+var zoneBypassedWarnings = [];
+
 function adventure (z)
 {
 	if (player.turnsToMidnight <= 0)
@@ -94,10 +96,8 @@ function pickRandomCombat (zone) {
 	beginCombat (combats[combatId]);
 }
 
-var zoneBypassedWarnings = [];
-
-function bypassZoneLevelWarning()
-{
+// Bypasses the warning if your level is too low for a zone. Stops asking you for the rest of this session (not saved)
+function bypassZoneLevelWarning() {
 	zoneBypassedWarnings[lastZone] = 1;
-	adventure (lastZone);
+	adventure(lastZone);
 }

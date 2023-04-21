@@ -102,7 +102,7 @@ function displayDrellaU() {
 // returns if successful
 function learnDrellaUSkill(id) {
     if (id < 60 || id > 89) {
-        hint ("That's not a DrellaU skill!", "r");
+        hint("That's not a DrellaU skill!", "r");
 		return false;
     }
     let largeSkill = id >= 60 && id <= 69;

@@ -86,7 +86,7 @@ var lastZone = -1;
 // Returns if successful
 function goToLocation (l) {
 	if (busy == true) {
-		hint ("You're too busy to leave now!", "r");
+		hint("You're too busy to leave now!", "r");
 		return false;
 	}
 	resetHint();

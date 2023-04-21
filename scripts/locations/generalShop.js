@@ -125,7 +125,7 @@ function buyGeneralShopItem (id) {
 // buy a minion from the general shop
 function buyGeneralShopMinion (id, cost) {
     if (player.gold < cost) {
-        hint ("You can't afford that!", "r");
+        hint("You can't afford that!", "r");
         return;
     }
 	player.gold -= cost;

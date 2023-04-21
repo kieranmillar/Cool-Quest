@@ -898,6 +898,7 @@ var combats = [
 	},
 ];
 
+// A ice damage aura common to all enemies in Santa's Workshop
 function santasWorkshopAura() {
 	if (player.iceRes >= 5) {
 		addCombatText("Your ice resistance shields you completely from the chilling aura given off by this demon.");

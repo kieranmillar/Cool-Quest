@@ -44,7 +44,7 @@ var minions = [
                 `raps "If you're feeling crappy this paper makes you happy."`
             ];
 			addMinionCombatText(`${player.minionNames[1]} ${texts[r]}`, 1);
-			gainItemDrop(items[36], Math.ceil(getMinionLevel(1) / 2));
+			gainItemDrop(36, Math.ceil(getMinionLevel(1) / 2));
 		}
 	},
 	{

@@ -1,5 +1,7 @@
 var createNameInput = document.getElementById("create_name");
 var jobForm = document.getElementById("jobForm");
+var characterCreationDiv = document.getElementById("characterCreation");
+var mainGameDiv = document.getElementById("mainGame");
 
 var jobEnum = {
 	WRESTLER: 0,
@@ -203,12 +205,12 @@ function createCharacter() {
 	player.mayorQuestsCompleted = 0;
 	player.zoneCounters = [];
 	player.combatQueue = [];
-	$("#characterCreation").hide();
-	$("#mainGame").show();
-	link_inventory.classList.remove("hide");
-	link_settings.classList.remove("hide");
-	$("#adventureAgainButton").hide();
-	$("#returnToContainerButton").hide();
+	hide(characterCreationDiv);
+	show(mainGameDiv);
+	show(link_inventory);
+	show(link_settings);
+	hide(adventureAgainButton);
+	hide(returnToContainerButton);
 	calculateStats();
 	player.hp = player.effHpMax;
 	player.mp = player.effMpMax;
@@ -216,7 +218,7 @@ function createCharacter() {
 	redrawCharPane();
 	redrawInfoPanel();
 	randomiseDrellaUSkills();
-	goToLocation ("intro");
+	goToLocation("intro");
 }
 
 // recalculates the player's stats based off all equipment/skills/buffs etc.

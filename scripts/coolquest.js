@@ -195,12 +195,23 @@ function hint(txt, c)
 	}, 100)
 }
 
-function resolveProperty (input) {
+// Checks if a property of an object is a function, and executes it if so, otherwise returns its value
+function resolveProperty(input) {
 	if (typeof input === 'function'){
         return input();
     } else {
         return input;
     }
+}
+
+// Hide a DOM element
+function hide(e) {
+	e.classList.add("hide");
+}
+
+// Show a DOM element
+function show(e) {
+	e.classList.remove("hide");
 }
 
 const dialogType = {
@@ -295,56 +306,59 @@ function load() {
 	$.extend(true, player, JSON.parse(localStorage.getItem("playerStored")));
 	nonComHints = JSON.parse(localStorage.getItem("nonComHintsStored"));
 	$("#characterCreation").hide();
-	inventory_tutorial2.classList.add("hide");
-	equip_tutorial.classList.add("hide");
-	buff_tutorial.classList.add("hide");
-	house_tutorial2.classList.add("hide");
-	house_tutorial3.classList.add("hide");
+	hide(inventory_tutorial2);
+	hide(equip_tutorial);
+	hide(buff_tutorial);
+	hide(house_tutorial2);
+	hide(house_tutorial3);
+
+	// If we load mid-tutorial we may have to hide or display some stuff
 	if (player.quests[questEnum.TUTORIAL] < 7) {
-		linkElements.forEach(link => link.classList.add("hide"));
-		link_inventory.classList.remove("hide");
-		link_map.classList.remove("hide");
-		link_settings.classList.remove("hide");
-		house_normal.classList.add("hide");
+		linkElements.forEach(link => hide(link));
+		show(link_inventory);
+		show(link_map);
+		show(link_settings);
+		show(house_normal);
 		if (player.quests[questEnum.TUTORIAL] > 0) {
-			inventory_tutorial1.classList.add("hide");
-			inventory_tutorial2.classList.remove("hide");
-			link_house.classList.remove("hide");
+			hide(inventory_tutorial1);
+			show(inventory_tutorial2);
+			show(link_house);
 		}
 		if (player.quests[questEnum.TUTORIAL] > 1) {
-			link_equipment.classList.remove("hide");
-			inventory_tutorial2.classList.add("hide");
+			show(link_equipment);
+			hide(inventory_tutorial2);
 		}
 		if (player.quests[questEnum.TUTORIAL] > 2) {
-			equip_tutorial.classList.remove("hide");
-			house_tutorial1.classList.add("hide");
-			house_tutorial2.classList.remove("hide");
+			show(equip_tutorial);
+			hide(house_tutorial1);
+			show(house_tutorial2);
 		}
 		if (player.quests[questEnum.TUTORIAL] > 3) {
-			equip_tutorial.classList.add("hide");
-			link_skills.classList.remove("hide");
+			hide(equip_tutorial);
+			show(link_skills);
 		}
 		if (player.quests[questEnum.TUTORIAL] > 4) {
-			buff_tutorial.classList.remove("hide");
-			house_tutorial2.classList.add("hide");
-			house_tutorial3.classList.remove("hide");
+			show(buff_tutorial);
+			hide(house_tutorial2);
+			show(house_tutorial3);
 		}
 		if (player.quests[questEnum.TUTORIAL] > 5) {
-			buff_tutorial.classList.add("hide");
-			link_town.classList.remove("hide");
+			hide(buff_tutorial);
+			show(link_town);
 		}
 	}
 	else {
-		inventory_tutorial1.classList.add("hide");
-		house_tutorial1.classList.add("hide");
-		house_tutorial2.classList.add("hide");
-		house_tutorial3.classList.add("hide");
-		buff_tutorial.classList.add("hide");
-		equip_tutorial.classList.add("hide");
+		hide(inventory_tutorial1);
+		hide(house_tutorial1);
+		hide(house_tutorial2);
+		hide(house_tutorial3);
+		hide(buff_tutorial);
+		hide(equip_tutorial);
 	}
+
 	goToLocation("map");
-	$("#adventureAgainButton").hide();
-	$("#returnToContainerButton").hide();
+	hide(adventureAgainButton);
+	hide(returnToContainerButton);
 	calculateStats();
 	redrawInfoPanel();
 	if (player.options[optionEnum.COMPACTINFOPANEL]) {
@@ -491,19 +505,19 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	else {
 		$("#mainGame").hide();
-		linkElements.forEach(link => link.classList.add("hide"));
-		inventory_tutorial2.classList.add("hide");
-		equip_tutorial.classList.add("hide");
-		buff_tutorial.classList.add("hide");
-		house_tutorial2.classList.add("hide");
-		house_tutorial3.classList.add("hide");
+		linkElements.forEach(link => hide(link));
+		hide(inventory_tutorial2);
+		hide(equip_tutorial);
+		hide(buff_tutorial);
+		hide(house_tutorial2);
+		hide(house_tutorial3);
 		$("#quickHeal").hide();
 		$("#option_compactInfoPanel").prop("checked", false);
 		$("#option_quickHeal").prop("checked", false);
 		$("#option_zoneWarnings").prop("checked", true);
 		$("#option_foodQuality").prop("checked", false);
 	}
-	loadingDiv.classList.add("hide");
+	hide(loadingDiv);
 	gameDiv.classList.add("flex");
 
 	hint ("Welcome to Cool Quest!", "g");

@@ -90,78 +90,78 @@ function goToLocation (l) {
 		return false;
 	}
 	resetHint();
-	locationElements.forEach(location => location.classList.add("hide"));
+	locationElements.forEach(location => hide(location));
 	switch (l) {
 		case "combat":
-			location_combatDiv.classList.remove("hide");
+			show(location_combatDiv);
 			break;
 		case "noncombat":
-			location_noncombatDiv.classList.remove("hide");
+			show(location_noncombatDiv);
 			break;
 		case "intro":
 			gainItem(0, 1);
-			location_intro.classList.remove("hide");
+			show(location_intro);
 			break;
 		case "inventory":
-			location_inventory.classList.remove("hide");
+			show(location_inventory);
 			displayInventory();
 			break;
 		case "equipment":
-			location_equipment.classList.remove("hide");
+			show(location_equipment);
 			displayEquipment();
 			break;
 		case "skills":
-			location_skills.classList.remove("hide");
+			show(location_skills);
 			if (player.quests[questEnum.TUTORIAL] > 6) {
-				buff_tutorial.classList.add("hide");
+				hide(buff_tutorial);
 			}
 			displaySkills();
 			break;
 		default:
 		case "map":
-			location_map.classList.remove("hide");
-			map_townButton.classList.add("hide");
-			map_outskirtsButton.classList.add("hide");
-			map_mountainsButton.classList.add("hide");
+			show(location_map);
+			hide(map_townButton);
+			hide(map_outskirtsButton);
+			hide(map_mountainsButton);
 			if (player.quests[questEnum.TUTORIAL] >= 6) {
-				map_townButton.classList.remove("hide");
+				show(map_townButton);
 			}
 			if (player.quests[questEnum.ORCCAMP] >= 1) {
-				map_outskirtsButton.classList.remove("hide");
+				show(map_outskirtsButton);
 			}
 			if (player.quests[questEnum.HAPPYVILLE] >= 1) {
-				map_mountainsButton.classList.remove("hide");
+				show(map_mountainsButton);
 			}
 			break;
 		case "house":
-			location_house.classList.remove("hide");
+			show(location_house);
 			if (player.quests[questEnum.TUTORIAL] == 1) {
-				link_equipment.classList.remove("hide");
-				inventory_tutorial2.classList.add("hide");
-				house_normal.classList.add("hide");
+				show(link_equipment);
+				hide(inventory_tutorial2);
+				hide(house_normal);
 				player.quests[questEnum.TUTORIAL] = 2;
 				gainItem(1, 1);
 				save();
 			}
 			else if (player.quests[questEnum.TUTORIAL] == 3) {
-				equip_tutorial.classList.add("hide");
-				link_skills.classList.remove("hide");
+				hide(equip_tutorial);
+				show(link_skills);
 				player.quests[questEnum.TUTORIAL] = 4;
 			}
 			else if (player.quests[questEnum.TUTORIAL] == 5) {
-				buff_tutorial.classList.add("hide");
-				link_town.classList.remove("hide");
+				hide(buff_tutorial);
+				show(link_town);
 				player.quests[questEnum.TUTORIAL] = 6;
 				gainItem(2, 1);
 				save();
 			}
 			if (player.turnsToMidnight <= 0) {
-				house_sleepButton.classList.remove("hide");
-				house_restButton.classList.add("hide");
+				show(house_sleepButton);
+				hide(house_restButton);
 			}
 			else {
-				house_sleepButton.classList.add("hide");
-				house_restButton.classList.remove("hide");
+				hide(house_sleepButton);
+				show(house_restButton);
 			}
 			if (player.freeRestsUsed < player.effFreeRests) {
 				house_restButton.innerHTML = `Rest (${player.effFreeRests - player.freeRestsUsed} free rests remaining)`;
@@ -171,17 +171,17 @@ function goToLocation (l) {
 			}
 			break;
 		case "sleep":
-			location_sleep.classList.remove("hide");
+			show(location_sleep);
 			sleep();
 			break;
 		case "pen":
-			location_pen.classList.remove("hide");
+			show(location_pen);
 			displayPen();
 			break;
 		case "town":
-			location_town.classList.remove("hide");
-			house_tutorial3.classList.add("hide");
-			house_normal.classList.remove("hide");
+			show(location_town);
+			hide(house_tutorial3);
+			show(house_normal);
 			if (player.quests[questEnum.TUTORIAL] == 6) {
 				player.quests[questEnum.TUTORIAL] = 7;
 				displayQuestLog();
@@ -189,62 +189,62 @@ function goToLocation (l) {
 			}
 			break;
 		case "townHall":
-			location_townHall.classList.remove("hide");
+			show(location_townHall);
 			if (player.quests[questEnum.TOWNHALL] >= 1) {
-				townHall_basementButton.classList.remove("hide");
+				show(townHall_basementButton);
 			}
 			else {
-				townHall_basementButton.classList.add("hide");
+				hide(townHall_basementButton);
 			}
 			if (!player.quests[questEnum.TOWNHALL] || player.quests[questEnum.TOWNHALL] < 3) {
-				townHall_taxOfficeButton.classList.add("hide");
-				townHall_canteenButton.classList.add("hide");
+				hide(townHall_taxOfficeButton);
+				hide(townHall_canteenButton);
 			}
 			else {
-				townHall_taxOfficeButton.classList.remove("hide");
-				townHall_canteenButton.classList.remove("hide");
+				show(townHall_taxOfficeButton);
+				show(townHall_canteenButton);
 			}
 			break;
 		case "mayor":
-			location_mayor.classList.remove("hide");
+			show(location_mayor);
 			displayMayorText();
 			break;
 		case "cid":
-			location_cid.classList.remove("hide");
+			show(location_cid);
 			displayCidText();
 			break;
 		case "pawnShop":
-			location_pawnShop.classList.remove("hide");
+			show(location_pawnShop);
 			displayPawnShop();
 			break;
 		case "shopGeneral":
-			location_shopGeneral.classList.remove("hide");
+			show(location_shopGeneral);
 			displayGeneralShop();
 			break;
 		case "trainer":
-			location_trainer.classList.remove("hide");
+			show(location_trainer);
 			displayTrainer();
 			break;
 		case "drellaU":
-			location_drellaU.classList.remove("hide");
+			show(location_drellaU);
 			displayDrellaU();
 			break;
 		case "doctor":
-			location_doctor.classList.remove("hide");
+			show(location_doctor);
 			break;
 		case "outskirts":
-			location_outskirts.classList.remove("hide");
+			show(location_outskirts);
 			break;
 		case "orcCamp":
-			location_orcCamp.classList.remove("hide");
+			show(location_orcCamp);
 			if (player.quests[questEnum.ORCCAMP] == 1) {
-				orcCamp_intro.classList.remove("hide");
+				show(orcCamp_intro);
 				player.quests[questEnum.ORCCAMP] = 2;
 				redrawCharPane();
 				save();
 			}
 			else {
-				orcCamp_intro.classList.add("hide");
+				hide(orcCamp_intro);
 			}
 			if (player.quests[questEnum.ORCCAMP] < 6) {
 				orcCamp_leaderTentButton.innerHTML = "Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'>)";
@@ -254,26 +254,26 @@ function goToLocation (l) {
 			}
 			break;
 		case "mountains":
-			location_mountains.classList.remove("hide");
+			show(location_mountains);
 			break;
 		case "happyville":
-			location_happyville.classList.remove("hide");
+			show(location_happyville);
 			if (player.quests[questEnum.HAPPYVILLE] == 1) {
-				happyville_intro.classList.remove("hide");
+				show(happyville_intro);
 				player.quests[questEnum.HAPPYVILLE] = 2;
 				redrawCharPane();
 				save();
 			}
 			else {
-				happyville_intro.classList.add("hide");
+				hide(happyville_intro);
 			}
 			if (player.quests[questEnum.HAPPYVILLE] < 4) {
-				happyville_bigTreeButton.classList.remove("hide");
-				happyville_santasWorkshopButton.classList.add("hide");
+				show(happyville_bigTreeButton);
+				hide(happyville_santasWorkshopButton);
 			}
 			else {
-				happyville_bigTreeButton.classList.add("hide");
-				happyville_santasWorkshopButton.classList.remove("hide");
+				hide(happyville_bigTreeButton);
+				show(happyville_santasWorkshopButton);
 			}
 			if (player.quests[questEnum.HAPPYVILLE] < 5) {
 				happyville_santasWorkshopButton.innerHTML = "Adventure in Santa's Workshop (<img src='./images/adventure.png' title='(1 Adventure)'>)";
@@ -283,34 +283,34 @@ function goToLocation (l) {
 			}
 			break;
 		case "happyvilleTree":
-			location_happyvilleTree.classList.remove("hide");
+			show(location_happyvilleTree);
 			displayHappyvilleTree();
 			break;
 		case "happyvilleShop":
-			location_happyvilleShop.classList.remove("hide");
+			show(location_happyvilleShop);
 			displayHappyvilleShop();
 			break;
 		case "dungeons":
-			location_dungeons.classList.remove("hide");
-			dungeons_closedYellowDoorText.classList.add("hide");
+			show(location_dungeons);
+			hide(dungeons_closedYellowDoorText);
 			if (!player.quests[questEnum.YELLOWKEY]) {
-				dungeons_closedYellowDoorButton.classList.remove("hide");
-				dungeons_yellowDoorButton.classList.add("hide");
+				show(dungeons_closedYellowDoorButton);
+				hide(dungeons_yellowDoorButton);
 			}
 			else {
-				dungeons_closedYellowDoorButton.classList.add("hide");
-				dungeons_yellowDoorButton.classList.remove("hide");
+				hide(dungeons_closedYellowDoorButton);
+				show(dungeons_yellowDoorButton);
 			}
 			break;
 		case "toughZoneWarning":
-			location_toughZoneWarning.classList.remove("hide");
+			show(location_toughZoneWarning);
 			recommendedZoneLevel.textContent = parseInt(zones[lastZone].level);
 			break;
 		case "noAdventuresWarning":
-			location_noAdventuresWarning.classList.remove("hide");
+			show(location_noAdventuresWarning);
 			break;
 		case "settings":
-			location_settings.classList.remove("hide");
+			show(location_settings);
 			break;
 	}
 	return true;
@@ -318,5 +318,5 @@ function goToLocation (l) {
 
 // Show some text when you click on the closed yellow door in the dungeons
 function showClosedYellowDoorText() {
-	dungeons_closedYellowDoorText.classList.remove("hide");
+	show(dungeons_closedYellowDoorText);
 }

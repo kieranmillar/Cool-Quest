@@ -99,28 +99,28 @@ function displaySkills() {
 				break;			
 		}
 		if (noncomCount == 0) {
-			skillNonComTitle.classList.add("hide");
-			skillNonComContainer.classList.add("hide");
+			hide(skillNonComTitle);
+			hide(skillNonComContainer);
 		}
 		else {
-			skillNonComTitle.classList.remove("hide");
-			skillNonComContainer.classList.remove("hide");
+			show(skillNonComTitle);
+			show(skillNonComContainer);
 		}
 		if (comCount == 0) {
-			skillComTitle.classList.add("hide");
-			skillComContainer.classList.add("hide");
+			hide(skillComTitle);
+			hide(skillComContainer);
 		}
 		else {
-			skillComTitle.classList.remove("hide");
-			skillComContainer.classList.remove("hide");
+			show(skillComTitle);
+			show(skillComContainer);
 		}
 		if (passiveCount == 0) {
-			skillPassiveTitle.classList.add("hide");
-			skillPassiveContainer.classList.add("hide");
+			hide(skillPassiveTitle);
+			hide(skillPassiveContainer);
 		}
 		else {
-			skillPassiveTitle.classList.remove("hide");
-			skillPassiveContainer.classList.remove("hide");
+			show(skillPassiveTitle);
+			show(skillPassiveContainer);
 		}
 	}
 }
@@ -160,10 +160,10 @@ function displayTrainer() {
 		skillDisplayCount ++;
 	}
 	if (skillDisplayCount == 0) {
-		trainerAllOwnedParagraph.classList.remove("hide");
+		show(trainerAllOwnedParagraph);
 	}
 	else {
-		trainerAllOwnedParagraph.classList.add("hide");
+		hide(trainerAllOwnedParagraph);
 	}
 }
 

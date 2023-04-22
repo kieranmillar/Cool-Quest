@@ -1,4 +1,7 @@
 var combatTextDiv = document.getElementById("combatText");
+var monsterImage = document.getElementById("monsterImage");
+var monsterAttackImage = document.getElementById("monsterAttackImage");
+var combatButtons = document.getElementById("combatButtons");
 
 var monster = {
 	id: 0,
@@ -40,20 +43,19 @@ function addMinionCombatText(text, id) {
 }
 
 // Gain an item dropped from a combat
-function gainItemDrop(item, amount) {
-	gainItem(item.id, amount);
-	let e = $("<p></p>");
-	e.addClass("item_Image");
+function gainItemDrop(id, amount) {
+	gainItem(id, amount);
+	let e = document.createElement("p");
+	e.classList.add("item_Image");
 	let amountText = "a";
 	if (amount > 1) {
 		amountText = amount;
 	}
-	e.html("You found " + amountText + " <img src='./images/" + items[item.id].icon + "'> " + items[item.id].name);
-	e.css("cursor", "pointer");
-	e.attr({
-		"onClick" : "openDialog (dialogType.ITEM, " + item.id + ");"
-	});
-	$("#combatText").append(e);
+	e.innerHTML = `You found ${amountText} <img src='./images/${items[id].icon}'> ${items[id].name}`;
+	e.onclick = function() {
+		openDialog (dialogType.ITEM, id);
+	}
+	combatTextDiv.appendChild(e);
 }
 
 // Starts a new combat. Pass in the full monster object for the first argument, the second argument is optional and will replace the description text
@@ -78,7 +80,7 @@ function beginCombat(obj, descriptionOverride = "") {
 		monster.description = descriptionOverride;
 	}
 	
-	$("#monsterImg").attr("src", "./images/big/" + obj.icon);
+	monsterImage.src = `./images/big/${obj.icon}`;
 	monster.hp = obj.hp + player.effMl;
 	if (!"fixedStats" in obj || !obj.fixedStats) {
 		// Stats can vary by 10%, with triangular distrbution
@@ -110,22 +112,22 @@ function beginCombat(obj, descriptionOverride = "") {
 		monster.element = obj.element;
 		switch (obj.element) {
 			case elementEnum.FIRE:
-				$("#monsterAttackImage").attr("src", "./images/fire.png");
+				monsterAttackImage.src = "./images/fire.png";
 				break;
 			case elementEnum.ICE:
-				$("#monsterAttackImage").attr("src", "./images/ice.png");
+				monsterAttackImage.src = "./images/ice.png";
 				break;
 			case elementEnum.PSYCHIC:
-				$("#monsterAttackImage").attr("src", "./images/psychic_brain.png");
+				monsterAttackImage.src = "./images/psychic_brain.png";
 				break;
 			case elementEnum.EMOTIONAL:
-				$("#monsterAttackImage").attr("src", "./images/emotional.png");
+				monsterAttackImage.src = "./images/emotional.png";
 				break;
 		}
 	}
 	else {
 		monster.element = elementEnum.PHYSICAL;
-		$("#monsterAttackImage").attr("src", "./images/sword.png");
+		monsterAttackImage.src = "./images/sword.png";
 	}
 	if ("boss" in obj && obj.boss) {
 		monster.boss = true;
@@ -143,13 +145,12 @@ function beginCombat(obj, descriptionOverride = "") {
 	monster.castExposeSecrets = 0;
 	monster.stunThisRound = false;
 	monster.exposeSecretsRounds = 0;
-	$("#combatText").empty();
+	combatTextDiv.replaceChildren();
 	addCombatText(monster.description);
 	currentRound = 0;
-	$("#concentrationParagraph").show();
-	$("#combatButtons").show();
-	$("#adventureAgainButton").hide();
-	$("#returnToContainerButton").hide();
+	show(combatButtons);
+	hide(adventureAgainButton);
+	hide(returnToContainerButton);
 
 	if (player.buffs.find(x=> x.id == 10)) {
 		addCombatText("As you strut into combat, a camera crew surrounds you and bunches of fireworks set off. One of the fireworks falls over and heads straight for your opponent!");
@@ -279,7 +280,7 @@ function checkEndOfCombat() {
 				totalItemBoost += player.effItemBoostFood;
 			}
 			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + totalItemBoost) / 100)) {
-				gainItemDrop(monster.drops[i], 1);
+				gainItemDrop(monster.drops[i].id, 1);
 			}
 		}
 		let triggerEnd = true;

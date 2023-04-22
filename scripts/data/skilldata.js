@@ -1481,7 +1481,7 @@ function castTutorialSkill() {
 		return;
 	}
 	player.quests[questEnum.TUTORIAL] = 5;
-	buff_tutorial.classList.remove("hide");
-	house_tutorial2.classList.add("hide");
-	house_tutorial3.classList.remove("hide");
+	show(buff_tutorial);
+	hide(house_tutorial2);
+	show(house_tutorial3);
 }

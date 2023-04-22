@@ -51,10 +51,10 @@ function genericAdventure(id) {
 function endAdventure(costsTurn = true) {
 	busy = false;
 	if (lastZone != -1) {
-		adventureAgainButton.classList.remove("hide");
 		adventureAgainButton.innerHTML = `Adventure Again at ${zones[lastZone].name} (<img src='./images/adventure.png' title='(1 Adventure)'>)`;
-		returnToContainerButton.classList.remove("hide");
+		show(adventureAgainButton);
 		returnToContainerButton.innerHTML = `Return to ${zones[lastZone].parentName}`;
+		show(returnToContainerButton);
 	}
 	if (costsTurn) {
 		for (let i = player.buffs.length - 1; i >= 0; i --) {

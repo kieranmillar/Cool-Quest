@@ -60,8 +60,8 @@ function beginNoncombat (obj)
 	$("#noncombatText").empty();
 	$("#noncombatTitle").text(obj.title);
 	addNoncombatText (obj.description + "<br>");
-	$("#adventureAgainButton").hide();
-	$("#returnToContainerButton").hide();
+	hide(adventureAgainButton);
+	hide(returnToContainerButton);
 	if ("result" in obj)
 	{
 		obj.result();

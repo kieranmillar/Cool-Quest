@@ -40,11 +40,11 @@ var items = [
 				hint("You remind yourself of the location of your house, then throw away the letter.", "g");
 				return true;
 			}
-			hint ("You commit your house's address to memory, then throw away the letter.", "g");
-			inventory_tutorial1.classList.add("hide");
-			inventory_tutorial2.classList.remove("hide");
-			link_map.classList.remove("hide");
-			link_house.classList.remove("hide");
+			hint("You commit your house's address to memory, then throw away the letter.", "g");
+			hide(inventory_tutorial1);
+			show(inventory_tutorial2);
+			show(link_map);
+			show(link_house);
 			player.quests[questEnum.TUTORIAL] = 1;
 			return true;
 		}
@@ -62,9 +62,9 @@ var items = [
 			if (player.quests[questEnum.TUTORIAL] == 2)
 			{
 				player.quests[questEnum.TUTORIAL] = 3;
-				equip_tutorial.classList.remove("hide");
-				house_tutorial1.classList.add("hide");
-				house_tutorial2.classList.remove("hide");
+				show(equip_tutorial);
+				hide(house_tutorial1);
+				show(house_tutorial2);
 			}
 			player.effHpMax += 3;
 			player.effPow += 1;

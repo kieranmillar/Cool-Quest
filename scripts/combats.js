@@ -95,22 +95,19 @@ function beginCombat(obj, descriptionOverride = "") {
 		monster.hp += Math.floor(monster.hp * Math.random() * 0.1);
 		monster.hp -= Math.floor(monster.hp * Math.random() * 0.1);
 	}
-	if (monster.hp < 1)
-		monster.hp = 1;
+	monster.hp = Math.max(monster.hp, 1);
 	monster.pow = obj.pow + player.effMl;
 	if (!"fixedStats" in obj || !obj.fixedStats) {
 		monster.pow += Math.floor(monster.pow * Math.random() * 0.1);
 		monster.pow -= Math.floor(monster.pow * Math.random() * 0.1);
 	}
-	if (monster.pow < 1)
-		monster.pow = 1;
+	monster.pow = Math.max(monster.pow, 1);
 	monster.def = obj.def + player.effMl;
 	if ((!"fixedStats" in obj || !obj.fixedStats) && obj.def != 999) {
 		monster.def += Math.floor(monster.def * Math.random() * 0.1);
 		monster.def -= Math.floor(monster.def * Math.random() * 0.1);
 	}
-	if (monster.def < 0)
-		monster.def = 0;
+	monster.def = Math.max(monster.def, 0);
 	monster.init = obj.init + player.effMl;
 	if (!"fixedStats" in obj || !obj.fixedStats) {
 		monster.init += Math.floor(monster.init * Math.random() * 0.1);
@@ -328,7 +325,7 @@ function combatRound(action) {
 		return;
 	}
 	if (action != -1) {
-		$("#combatText").empty();
+		combatTextDiv.replaceChildren();
 	}
 	let damage = 0;
 	let usingSkill = -1;
@@ -382,13 +379,10 @@ function combatRound(action) {
 	}
 	if (monster.castCannonBlast == 2) {
 		addCombatText ("Fire in the hole! The ground shakes as the cannon fuse burns all the way down and the cannon blasts a giant cannonball at your opponent with an almighty <strong>KABOOM!</strong>");
-			let cannonDamage = Math.floor(player.effPow * 1.6) - monster.def;
-			if (cannonDamage <= 0)
-			{
-				cannonDamage = 1;
-			}
-			addCombatText ("Your opponent takes " + cannonDamage + " damage!");
-			monster.hp -= cannonDamage;
+		let cannonDamage = Math.floor(player.effPow * 1.6) - monster.def;
+		cannonDamage = Math.max(cannonDamage, 1);
+		addCombatText (`Your opponent takes ${cannonDamage} damage!`);
+		monster.hp -= cannonDamage;
 		monster.castCannonBlast = 3;
 	}
 	if (monster.castCannonBlast == 1) {
@@ -453,7 +447,7 @@ function combatRound(action) {
 			}
 			if (!overrideStandardAttack) {
 				if (isCrit) {
-					addCombatText("<strong>CRITICAL!</strong> " + monster.hitMessages[0]);
+					addCombatText(`<strong>CRITICAL!</strong> ${monster.hitMessages[0]}`);
 				}
 				else {
 					let r = Math.floor(Math.random() * (monster.hitMessages.length - 1)) + 1;
@@ -463,30 +457,28 @@ function combatRound(action) {
 			if (usingItem == 7) {
 				addCombatText ("The cardboard panel shatters into pieces, but at least it dampened the blow.");
 			}
-			if (damage <= 0) {
-				damage = 1;
-			}
+			damage = Math.max(damage, 1);
 			switch (monster.element) {
 				case elementEnum.PHYSICAL:
-					addCombatText ("You take " + damage + " damage!");
+					addCombatText (`You take ${damage} damage!`);
 					break;
 				case elementEnum.FIRE:
-					addCombatText ("You take <span class='fire'>" + damage + "</span> fire damage!");
+					addCombatText (`You take <span class='fire'>${damage}</span> fire damage!`);
 					break;
 				case elementEnum.ICE:
-					addCombatText ("You take <span class='ice'>" + damage + "</span> ice damage!");
+					addCombatText (`You take <span class='ice'>${damage}</span> ice damage!`);
 					break;
 				case elementEnum.PSYCHIC:
-					addCombatText ("You take <span class='psychic'>" + damage + "</span> psychic damage!");
+					addCombatText (`You take <span class='psychic'>${damage}</span> psychic damage!`);
 					break;
 				case elementEnum.EMOTIONAL:
-					addCombatText ("You take <span class='emotional'>" + damage + "</span> emotional damage!");
+					addCombatText (`You take <span class='emotional'>${damage}</span> emotional damage!`);
 					break;
 			}
 			player.hp -= damage;
 			if (haveBuff(7)) { // Storm of the Seas
 				damage = calcIceDamage(10 + player.iceDamage);
-				addCombatText("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
+				addCombatText(`The cold winds from the sea hit your opponent for <span class='ice'>${damage}</span> damage!`);
 				monster.hp -= damage;
 			}
 			if (!checkEndOfCombat()) {
@@ -536,59 +528,50 @@ function useCombatSkill(id) {
 	}
 }
 
-function useCombatItem (x)
-{
-	if (x == -1)
-	{
-		hint ("You didn't choose an item to use!", "r");
+// Use an item in combat. Returns if successful
+function useCombatItem(id) {
+	if (id == -1) {
+		hint("You didn't choose an item to use!", "r");
 		return false;
 	}
-	if(!"onCombat" in items[x])
-	{
+	if(!"onCombat" in items[x]) {
 		hint ("That item can't be used in combat!", "r");
 		return false;
 	}
-	let itemPosition = checkInInventory (x);
-	if (itemPosition == -1)
-	{
-		hint ("You don't own any of that item!", "r");
+	let itemPosition = checkInInventory(id);
+	if (itemPosition == -1) {
+		hint("You don't own any of that item!", "r");
 		return false;
 	}
-	items[x].onCombat();
+	items[id].onCombat();
 	loseItem(x, 1);
 	return true;
 }
 
-function pressedViewSkillbutton ()
-{
-	let e = $("#skillDropdown");
-	let value = parseInt(e.val());
-	if (value == -1)
-	{
-		hint ("You didn't choose a skill to view!", "r");
+// Pressing the view button next to the skill dropdown in combat
+function pressedViewSkillbutton() {
+	let value = parseInt(skillDropdown.value);
+	if (value == -1) {
+		hint("You didn't choose a skill to view!", "r");
 		return false;
 	}
-	openDialog (dialogType.SKILL, value);
+	openDialog(dialogType.SKILL, value);
 }
 
-function pressedViewItembutton ()
-{
-	let e = $("#itemDropdown");
-	let value = parseInt(e.val());
-	if (value == -1)
-	{
-		hint ("You didn't choose an item to view!", "r");
+// Pressing the view button next to the item dropdown in combat
+function pressedViewItembutton() {
+	let value = parseInt(itemDropdown.value);
+	if (value == -1) {
+		hint("You didn't choose an item to view!", "r");
 		return false;
 	}
-	openDialog (dialogType.ITEM, value);
+	openDialog(dialogType.ITEM, value);
 }
 
-function regularAttack (value, hitMessage, critMessage)
-{
-	// hitMessage == "" means guaranteed critical
+// Performs a regular attack. 1st argument is the POW value its based on. An empty string for a hit message guarantees a critical hit
+function regularAttack(value, hitMessage, critMessage) {
 	let crit = false;
-	if (hitMessage == "" || Math.random() * 100 < player.effCritChance)
-	{
+	if (hitMessage == "" || Math.random() * 100 < player.effCritChance) {
 		crit = true;
 	}
 	value -= monster.def;
@@ -597,37 +580,32 @@ function regularAttack (value, hitMessage, critMessage)
 	let iceDamage = calcIceDamage(player.iceDamage);
 	let psychicDamage = calcPsychicDamage(player.psychicDamage);
 	let emotionalDamage = calcIceDamage(player.emotionalDamage);
-	if (crit)
-	{
+	if (crit) {
 		value = Math.ceil(value * ((100 + player.effCritMultiplier) / 100));
-		addCombatText ("<strong>CRITICAL!</strong> " + critMessage);
+		addCombatText(`<strong>CRITICAL!</strong> ${critMessage}`);
 	}
-	else
-	{
-		addCombatText (hitMessage);
+	else {
+		addCombatText(hitMessage);
 	}
-	let t = "Your opponent takes " + value;
-	if (fireDamage > 0)
-	{
-		t += " <span class='fire'>+" + fireDamage + "</span>"
+	let t = `Your opponent takes ${value}`;
+	if (fireDamage > 0) {
+		t += ` <span class='fire'>+${fireDamage}</span>`
 	}
-	if (iceDamage > 0)
-	{
-		t += " <span class='ice'>+" + iceDamage + "</span>"
+	if (iceDamage > 0) {
+		t += ` <span class='ice'>+${iceDamage}</span>`
 	}
-	if (psychicDamage > 0)
-	{
-		t += " <span class='psychic'>+" + psychicDamage + "</span>"
+	if (psychicDamage > 0) {
+		t += ` <span class='psychic'>+${psychicDamage}</span>`
 	}
-	if (emotionalDamage > 0)
-	{
-		t += " <span class='emotional'>+" + emotionalDamage + "</span>"
+	if (emotionalDamage > 0) {
+		t += ` <span class='emotional'>+${emotionalDamage}</span>`
 	}
-	addCombatText (t + " damage!");
+	addCombatText(t + " damage!");
 	monster.hp -= (value + fireDamage + iceDamage + psychicDamage + emotionalDamage);
 }
 
-function calcFireDamage (fireDamage) {
+// Calculate fire damage taken by monster
+function calcFireDamage(fireDamage) {
 	if (fireDamage == 0) {
 		return 0;
 	}
@@ -640,7 +618,8 @@ function calcFireDamage (fireDamage) {
 	return fireDamage;
 }
 
-function calcIceDamage (iceDamage) {
+// Calculate ice damage taken by monster
+function calcIceDamage(iceDamage) {
 	if (iceDamage == 0) {
 		return 0;
 	}
@@ -653,7 +632,8 @@ function calcIceDamage (iceDamage) {
 	return iceDamage;
 }
 
-function calcPsychicDamage (psychicDamage) {
+// Calculate psychic damage taken by monster
+function calcPsychicDamage(psychicDamage) {
 	if (psychicDamage == 0) {
 		return 0;
 	}
@@ -666,7 +646,8 @@ function calcPsychicDamage (psychicDamage) {
 	return psychicDamage;
 }
 
-function calcEmotionalDamage (emotionalDamage) {
+// Calculate emotional damage taken by monster
+function calcEmotionalDamage(emotionalDamage) {
 	if (emotionalDamage == 0) {
 		return 0;
 	}

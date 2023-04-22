@@ -9,7 +9,7 @@ function addBuff(id, turns) {
 	}
 	player.buffs.sort(function(a,b){return a.turns - b.turns;});
 	calculateStats();
-	redrawInfoPanel();
+	redrawBuffPane();
 	return true;
 }
 

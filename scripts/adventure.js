@@ -66,7 +66,7 @@ function endAdventure(costsTurn = true) {
 		calculateStats();
 		giveHp(player.hpRegen);
 		giveMp(player.mpRegen);
-		redrawInfoPanel();
+		redrawBuffPane();
 	}
 	save();
 }

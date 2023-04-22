@@ -9,7 +9,7 @@ var jobEnum = {
 }
 
 var optionEnum = {
-	COMPACTINFOPANEL: 0,
+	COMPACTBUFFPANE: 0,
 	QUICKHEAL: 1,
 	ZONEWARNINGS: 2,
 	FOODQUALITY: 3,
@@ -215,7 +215,7 @@ function createCharacter() {
 	player.mp = player.effMpMax;
 	player.gold = 50;
 	redrawCharPane();
-	redrawInfoPanel();
+	redrawBuffPane();
 	randomiseDrellaUSkills();
 	goToLocation("intro");
 }

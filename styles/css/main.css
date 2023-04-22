@@ -281,6 +281,14 @@ h2:not(:last-child), h3:not(:last-child) {
   font-weight: bold;
 }
 
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
+
 #mainScreen {
   flex-grow: 1;
   display: block;

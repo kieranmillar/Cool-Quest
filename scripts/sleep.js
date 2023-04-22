@@ -18,7 +18,7 @@ function sleep() {
 	player.freeRestsUsed = 0;
 	randomiseDrellaUSkills();
 	redrawCharPane();
-	redrawInfoPanel();
+	redrawBuffPane();
 	save();
 }
 

@@ -1175,7 +1175,7 @@ var skills = [
 			for (let i =0; i < player.buffs.length; i++) {
 				player.buffs[i].turns += 10;
 			}
-			redrawInfoPanel();
+			redrawBuffPane();
 			player.castTimeManagement = true;
 			goToLocation("skills");
 			hint("You manage your time well, extending the length of all your effects by 10 turns!", "g");

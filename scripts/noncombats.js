@@ -1,57 +1,63 @@
-var nonComHints = [];
+var noncombatTitleDiv = document.getElementById("noncombatTitle");
+var noncombatTextDiv = document.getElementById("noncombatText");
+var noncombatButtonsContainer = document.getElementById("noncombatButtons");
 
-function noncombatButton (text, choice, hintText)
-{
+var nonComHints = [];
+var currentNoncom = 0;
+
+// Constructs the text to appear on a non-combat choice button
+function noncombatButton(text, choice, hintText) {
 	if (nonComHints[currentNoncom] === undefined || nonComHints[currentNoncom] === null) {
 		nonComHints[currentNoncom] = [];
 	}
-	if (nonComHints[currentNoncom][choice] == 1)
-	{
-		text += " (" + hintText + ")";
+	if (nonComHints[currentNoncom][choice] == 1) {
+		text += ` (${hintText})`;
 	}
 	return text;
 }
 
-function noncombatChoice (c)
-{
+// Execute a non-combat choice button
+function noncombatChoice(noncombatId, choiceId) {
 	resetHint();
-	if (busy == false)
+	if (!busy) {
 		return;
-	$("#noncombatText").empty();
+	}
+	noncombatTextDiv.replaceChildren();
 	busy = false;
-	let costsTurn = noncombats[currentNoncom].choices[c].onChoosing();
-	nonComHints[currentNoncom][c] = 1;
-	$("#noncombatButtons").empty();
-	if (busy == true)
+	let costsTurn = noncombats[noncombatId].choices[choiceId].onChoosing();
+	nonComHints[noncombatId][choiceId] = 1;
+	noncombatButtonsContainer.replaceChildren();
+	if (busy) {
 		return;
+	}
 	endAdventure(costsTurn);
 }
 
-function addNoncombatText (txt)
-{
-	let e = $("<p></p>");
-	e.html(txt);
-	$("#noncombatText").append(e);
+// Adds a paragraph of text to a non-combat
+function addNoncombatText(txt) {
+	let e = document.createElement("p");
+	e.innerHTML = txt;
+	noncombatTextDiv.appendChild(e);
 }
 
+// gain an item in a noncombat
 function getNoncombatItem(id, amount) {
-	gainItem (id, amount);
-	let e = $("<p></p>");
-	e.addClass("item_Image");
+	gainItem(id, amount);
+	let e = document.createElement("p");
+	e.classList.add("item_Image");
 	let amountText = "a";
 	if (amount > 1) {
 		amountText = amount;
 	}
-	e.html("You found " + amountText + " <img src='./images/" + items[id].icon + "'> " + items[id].name);
-	e.css("cursor", "pointer");
-	e.attr({
-		"onClick" : "openDialog (dialogType.ITEM, " + id + ");"
-	});
-	$("#noncombatText").append(e);
+	e.innerHTML = `You found ${amountText} <img src='./images/${items[id].icon}'> ${items[id].name}`;
+	e.onclick = function() {
+		openDialog (dialogType.ITEM, id);
+	}
+	noncombatTextDiv.appendChild(e);
 }
 
-function beginNoncombat (obj)
-{
+// Execute a non-combat adventure
+function beginNoncombat(id) {
 	if (player.hp == 0 || busy == true) {
 		return;
 	}
@@ -59,22 +65,23 @@ function beginNoncombat (obj)
 		return;
 	}
 	busy = true;
-	currentNoncom = obj.id;
-	$("#noncombatText").empty();
-	$("#noncombatTitle").text(obj.title);
-	addNoncombatText (obj.description + "<br>");
+	currentNoncom = id;
+	noncombatTextDiv.replaceChildren();
+	noncombatTitleDiv.textContent = noncombats[id].title;
+	addNoncombatText(noncombats[id].description + "<br>");
 	hide(adventureAgainButton);
 	hide(returnToContainerButton);
-	if ("result" in obj)
-	{
-		obj.result();
+	if ("result" in noncombats[id]) {
+		noncombats[id].result();
 	}
-	else
-	{
-		let buttonContainer = $("#noncombatButtons");
-		for (let i = 0; i < obj.choices.length; i ++)
-		{
-			buttonContainer.append("<button onClick = 'noncombatChoice(" + i + ")'>" + resolveProperty(obj.choices[i].buttonText) + "</button>");
+	else {
+		for (let i = 0; i < noncombats[id].choices.length; i ++) {
+			let e = document.createElement("button");
+			e.textContent = resolveProperty(noncombats[id].choices[i].buttonText);
+			e.onclick = function() {
+				noncombatChoice(id, i);
+			};
+			noncombatButtonsContainer.appendChild(e);
 		}
 	}
 }

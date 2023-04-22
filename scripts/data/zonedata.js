@@ -27,7 +27,7 @@ var zones = [
 			player.zoneCounters[zoneCounterEnum.BASEMENT] ++;
 			if (player.zoneCounters[zoneCounterEnum.BASEMENT] >= 5) {
 				player.zoneCounters[zoneCounterEnum.BASEMENT] = 0;
-				beginNoncombat (noncombats[0]);
+				beginNoncombat(0);
 			}
 			else {
 				genericAdventure(0);
@@ -87,10 +87,10 @@ var zones = [
 		{
 			if (player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] == 1 && player.quests[questEnum.ORCCAMP] < 6) {
 				player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 0;
-				beginCombat (combats[15]);
+				beginCombat(combats[15]);
 			}
 			else {
-				beginCombat (combats[14]);
+				beginCombat(combats[14]);
 			}
 		}
 	},
@@ -106,19 +106,19 @@ var zones = [
 		special: function ()
 		{
 			if (player.quests[questEnum.ORCCAMP] >= 6) {
-				beginNoncombat (noncombats[6]);
+				beginNoncombat(6);
 			}
 			else if (player.equipment[4] == 25 ||
 				player.equipment[5] == 25 ||
 				player.equipment[6] == 25 ||
 				player.equipment[7] == 25) {
-				beginNoncombat (noncombats[7]);
+				beginNoncombat(7);
 			}
 			else if (player.quests[questEnum.ORCCAMP] < 5) {
-				beginNoncombat (noncombats[4]);
+				beginNoncombat(4);
 			}
 			else if (player.quests[questEnum.ORCCAMP] == 5) {
-				beginNoncombat (noncombats[5]);
+				beginNoncombat(5);
 			}
 		}
 	},
@@ -173,7 +173,7 @@ var zones = [
 		noncombats: [12],
 		special: function () {
 			if (player.quests[questEnum.HAPPYVILLE] >= 5) {
-				beginNoncombat (noncombats[13]);
+				beginNoncombat(13);
 				return;
 			}
 			if (!player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP]) {
@@ -182,7 +182,7 @@ var zones = [
 			player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] ++;
 			if (player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] >= 6) {
 				player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] = 0;
-				beginNoncombat (noncombats[12]);
+				beginNoncombat(12);
 			}
 			else {
 				genericAdventure(11);

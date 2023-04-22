@@ -79,7 +79,6 @@ var dungeons_closedYellowDoorText = document.getElementById("dungeons_closedYell
 var recommendedZoneLevel = document.getElementById("recommendedZoneLevel");
 
 var busy = false;
-var currentNoncom = 0;
 var lastZone = -1;
 
 // Changes location i.e. the "page" you are looking at

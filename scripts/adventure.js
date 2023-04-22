@@ -43,7 +43,7 @@ function genericAdventure(id) {
 	}
 	else {
 		let r = Math.floor(Math.random() * zones[id].noncombats.length);
-		beginNoncombat(noncombats[zones[id].noncombats[r]]);
+		beginNoncombat(zones[id].noncombats[r]);
 	}
 }
 

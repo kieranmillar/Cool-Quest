@@ -81,15 +81,8 @@ function useItem (id)
 }
 
 // Gets the position of an item in your inventory. Returns its index in the inventory array, or -1 if not found
-function checkInInventory (id) {
-	let itemPosition = -1;
-	for (var i in player.inventory) {
-		if (player.inventory[i].id == id) {
-			itemPosition = i;
-			break;
-		}
-	}
-	return itemPosition;
+function checkInInventory(id) {
+	return player.inventory.findIndex(x => x.id == id);
 }
 
 function getItemAmount(id) {

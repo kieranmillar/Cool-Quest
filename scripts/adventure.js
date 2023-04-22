@@ -1,71 +1,65 @@
+var adventureAgainButton = document.getElementById("adventureAgainButton");
+var returnToContainerButton = document.getElementById("returnToContainerButton");
+
 var zoneBypassedWarnings = [];
 
-function adventure (z)
-{
-	if (player.turnsToMidnight <= 0)
-	{
-		goToLocation ("noAdventuresWarning");
+// Adventure in a zone
+function adventure(id) {
+	if (busy == true) {
+		hint("You're too busy to leave now!", "r");
 		return;
 	}
-	if (player.hp == 0)
-	{
-		hint ("You can't adventure with 0 HP! Go rest at your house or visit the doctor.", "r");
+	if (player.turnsToMidnight <= 0) {
+		goToLocation("noAdventuresWarning");
 		return;
 	}
-	if (busy == true)
-	{
-		hint ("You're too busy to leave now!", "r");
+	if (player.hp <= 0) {
+		hint("You can't adventure with 0 HP! Go rest at your house or visit the doctor.", "r");
 		return;
 	}
-	lastZone = z;
-	if (zones[z].level > player.level
+	lastZone = id;
+	if (zones[id].level > player.level
 		&& player.options[optionEnum.ZONEWARNINGS] == 1
-		&& !zoneBypassedWarnings[z])
-	{
-		goToLocation ("toughZoneWarning");
+		&& !zoneBypassedWarnings[id]) {
+		goToLocation("toughZoneWarning");
 		return;
 	}
-	if("special" in zones[z])
-	{
-		zones[z].special();
+	if("special" in zones[id]) {
+		zones[id].special();
 	}
-	else
-	{
-		genericAdventure(z);
+	else {
+		genericAdventure(id);
 	}
 }
 
-function genericAdventure (z)
-{
-	let combatRate = zones[z].combatChance;
+// Generic way to determine the result of adventuring in a zone
+function genericAdventure(id) {
+	let combatRate = zones[id].combatChance;
 	if (combatRate != 0 && combatRate != 100) {
 		combatRate += player.combatRate;
 	}
-	let r = Math.random();
-	if (r * 100 < combatRate) {
-		pickRandomCombat (z);
+	if (Math.random() * 100 < combatRate) {
+		pickRandomCombat(id);
 	}
 	else {
-		let r2 = Math.random();
-		r2 = Math.floor (r2 * zones[z].noncombats.length);
-		beginNoncombat (noncombats[zones[z].noncombats[r2]]);
+		let r = Math.floor(Math.random() * zones[id].noncombats.length);
+		beginNoncombat(noncombats[zones[id].noncombats[r]]);
 	}
 }
 
+// Ends an adventure, can optionally pass in false to make it not take a turn
 function endAdventure(costsTurn = true) {
 	busy = false;
-	if (lastZone != -1)
-	{
-		let adventureAgainButton = $("#adventureAgainButton");
-		adventureAgainButton.show();
-		adventureAgainButton.html(`Adventure Again at ${zones[lastZone].name} (<img src='./images/adventure.png' title='(1 Adventure)'>)`);
-		let returnToContainerButton = $("#returnToContainerButton");
-		returnToContainerButton.show();
-		returnToContainerButton.html(`Return to ${zones[lastZone].parentName}`);
+	if (lastZone != -1) {
+		adventureAgainButton.classList.remove("hide");
+		adventureAgainButton.innerHTML = `Adventure Again at ${zones[lastZone].name} (<img src='./images/adventure.png' title='(1 Adventure)'>)`;
+		returnToContainerButton.classList.remove("hide");
+		returnToContainerButton.innerHTML = `Return to ${zones[lastZone].parentName}`;
 	}
 	if (costsTurn) {
 		for (let i = player.buffs.length - 1; i >= 0; i --) {
-			decreaseBuff (player.buffs[i].id, 1);
+			// we loop through buffs in reverse order because if a buff runs out it removes it from the array
+			decreaseBuff(player.buffs[i].id, 1);
 		}
 		player.turns ++;
 		player.turnsToMidnight --;
@@ -78,7 +72,7 @@ function endAdventure(costsTurn = true) {
 }
 
 // Pick a random combat from a zone. Rejects and rerolls if that combat is in the queue
-function pickRandomCombat (zone) {
+function pickRandomCombat(zone) {
 	let queueCopy = player.combatQueue.map(x => x);
 	let working = true;
 	let combatId = 0;
@@ -86,7 +80,7 @@ function pickRandomCombat (zone) {
 		let r = Math.floor(Math.random() * zones[zone].combats.length);
 		combatId = zones[zone].combats[r];
 		let indexInQueueCopy = queueCopy.findIndex(x => x == combatId);
-		if (indexInQueueCopy == -1){
+		if (indexInQueueCopy == -1) {
 			working = false;
 		}
 		else {

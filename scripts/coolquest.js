@@ -1,6 +1,7 @@
 var mainGameDiv = document.getElementById("mainGame");
 
 // Doctor
+var quickHealDiv = document.getElementById("quickHeal");
 var doctor_hp_input = document.getElementById("doctor_hp_input");
 var doctor_hp_button = document.getElementById("doctor_hp_button");
 var doctor_mp_input = document.getElementById("doctor_mp_input");
@@ -10,6 +11,14 @@ var quickHeal_hp_button = document.getElementById("quickHeal_hp_button");
 var quickHeal_mp_input = document.getElementById("quickHeal_mp_input");
 var quickHeal_mp_button = document.getElementById("quickHeal_mp_button");
 const changeEvent = new CustomEvent("change");
+
+// Options checkboxes
+var option_compactBuffPaneCheckbox = document.getElementById("option_compactBuffPane");
+var option_quickHealCheckbox = document.getElementById("option_quickHeal");
+var option_zoneWarningsCheckbox = document.getElementById("option_zoneWarnings");
+var option_foodQualityCheckbox = document.getElementById("option_foodQuality");
+var option_cidQuestLogCheckbox = document.getElementById("option_cidQuestLog");
+var option_sortSkillsBySourceCheckbox = document.getElementById("option_sortSkillsBySource");
 
 // Checks if a property of an object is a function, and executes it if so, otherwise returns its value
 function resolveProperty(input) {
@@ -54,7 +63,7 @@ function extend() {
 function load() {
 	player = extend(player, JSON.parse(localStorage.getItem("playerStored")));
 	nonComHints = JSON.parse(localStorage.getItem("nonComHintsStored"));
-	$("#characterCreation").hide();
+	hide(characterCreationDiv);
 	hide(inventory_tutorial2);
 	hide(equip_tutorial);
 	hide(buff_tutorial);
@@ -110,44 +119,19 @@ function load() {
 	hide(returnToContainerButton);
 	calculateStats();
 	redrawBuffPane();
-	if (player.options[optionEnum.COMPACTBUFFPANE]) {
-		$("#option_compactBuffPane").prop("checked", true);
-	}
-	else {
-		$("#option_compactBuffPane").prop("checked", false);
-	}
+
+	option_compactBuffPaneCheckbox.checked = player.options[optionEnum.COMPACTBUFFPANE];
+	option_quickHealCheckbox.checked = player.options[optionEnum.QUICKHEAL];
 	if (player.options[optionEnum.QUICKHEAL]) {
-		$("#quickHeal").show();
-		$("#option_quickHeal").prop("checked", true);
+		show(quickHealDiv);
 	}
 	else {
-		$("#quickHeal").hide();
-		$("#option_quickHeal").prop("checked", false);
+		hide(quickHealDiv);
 	}
-	if (player.options[optionEnum.ZONEWARNINGS]) {
-		$("#option_zoneWarnings").prop("checked", true);
-	}
-	else {
-		$("#option_zoneWarnings").prop("checked", false);
-	}
-	if (player.options[optionEnum.FOODQUALITY]) {
-		$("#option_foodQuality").prop("checked", true);
-	}
-	else {
-		$("#option_foodQuality").prop("checked", false);
-	}
-	if (player.options[optionEnum.CIDQUESTLOG]) {
-		$("#option_cidQuestLog").prop("checked", true);
-	}
-	else {
-		$("#option_cidQuestLog").prop("checked", false);
-	}
-	if (player.options[optionEnum.SORTSKILLSBYSOURCE]) {
-		$("#option_sortSkillsBySource").prop("checked", true);
-	}
-	else {
-		$("#option_sortSkillsBySource").prop("checked", false);
-	}
+	option_zoneWarningsCheckbox.checked = player.options[optionEnum.ZONEWARNINGS];
+	option_foodQualityCheckbox.checked = player.options[optionEnum.FOODQUALITY];
+	option_cidQuestLogCheckbox.checked = player.options[optionEnum.CIDQUESTLOG];
+	option_sortSkillsBySourceCheckbox.checked = player.options[optionEnum.SORTSKILLSBYSOURCE];
 }
 
 function toggleOption(option) {
@@ -164,11 +148,11 @@ function toggleOption(option) {
 		case 'quickHeal':
 			if (!player.options[optionEnum.QUICKHEAL]) {
 				player.options[optionEnum.QUICKHEAL] = 1;
-				$("#quickHeal").show();
+				show(quickHealDiv);
 			}
 			else {
 				player.options[optionEnum.QUICKHEAL] = 0;
-				$("#quickHeal").hide();
+				hide(quickHealDiv);
 			}
 			redrawBuffPane();
 			break;
@@ -221,7 +205,7 @@ function wipe() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	$("#dialog").dialog({ autoOpen: false });
-	
+
 	doctor_hp_input.addEventListener("change", function() {
 		let hpCost = 2;
 		if (player.skills[62]) {
@@ -262,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		hide(buff_tutorial);
 		hide(house_tutorial2);
 		hide(house_tutorial3);
-		$("#quickHeal").hide();
+		hide(quickHealDiv);
 	}
 	hide(loadingDiv);
 	gameDiv.classList.add("flex");

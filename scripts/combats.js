@@ -2,6 +2,11 @@ var combatTextDiv = document.getElementById("combatText");
 var monsterImage = document.getElementById("monsterImage");
 var monsterAttackImage = document.getElementById("monsterAttackImage");
 var combatButtons = document.getElementById("combatButtons");
+var monsterNameSpan = document.getElementById("monsterName");
+var monsterHPSpan = document.getElementById("monsterHP");
+var monsterPowSpan = document.getElementById("monsterPow");
+var monsterDefSpan = document.getElementById("monsterDef");
+var combatRoundSpan = document.getElementById("combatRound");
 
 var monster = {
 	id: 0,
@@ -152,7 +157,7 @@ function beginCombat(obj, descriptionOverride = "") {
 	hide(adventureAgainButton);
 	hide(returnToContainerButton);
 
-	if (player.buffs.find(x=> x.id == 10)) {
+	if (haveBuff(10)) { // Dramatic Entrance
 		addCombatText("As you strut into combat, a camera crew surrounds you and bunches of fireworks set off. One of the fireworks falls over and heads straight for your opponent!");
 		let dramaticEntranceDamage = calcFireDamage(20 + player.fireDamage);
 		addCombatText("Your opponent takes <span class='fire'>" + dramaticEntranceDamage + "</span> fire damage!");
@@ -172,16 +177,16 @@ function beginCombat(obj, descriptionOverride = "") {
 	redrawCombat();
 }
 
-// redraw the combat screen ui
+// Redraw the combat screen ui
 function redrawCombat() {
 	redrawCharPane();
-	$("#combatRound").text(currentRound);
-	$("#monsterName").text(monster.name);
-	$("#monsterHP").text(monster.hp);
-	$("#monsterPow").text(monster.pow);
-	$("#monsterDef").text(monster.def);
-	if (busy == false) {
-		$("#combatButtons").hide();
+	combatRoundSpan.textContent = currentRound;
+	monsterNameSpan.textContent = monster.name;
+	monsterHPSpan.textContent = monster.hp;
+	monsterPowSpan.textContent = monster.pow;
+	monsterDefSpan.textContent = monster.def;
+	if (!busy) {
+		hide(combatButtons);
 	}
 	else {
 		constructCombatSkillDropdown();
@@ -450,21 +455,21 @@ function combatRound(action) {
 					break;
 			}
 			player.hp -= damage;
-			if (player.buffs.find(x => x.id == 7) != undefined) {
+			if (haveBuff(7)) { // Storm of the Seas
 				damage = calcIceDamage(10 + player.iceDamage);
-				addCombatText ("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
+				addCombatText("The cold winds from the sea hit your opponent for <span class='ice'>" + damage + "</span> damage!");
 				monster.hp -= damage;
 			}
 			if (!checkEndOfCombat()) {
 				if (currentRound == 8) {
-					addCombatText("Your opponent is growing impatient, they're about to get very mad. You should look to end this fight quickly.");
+					addCombatText("<strong>Your opponent is growing impatient, they're about to get very mad. You should look to end this fight quickly.</strong>");
 				}
 				if (currentRound == 9) {
-					addCombatText("Your opponent is tired of this combat, and completely flips out.");
+					addCombatText("<strong>Your opponent is tired of this combat, and completely flips out.</strong>");
 				}
 				if (currentRound >= 9) {
 					let powIncrease = Math.max(5, Math.floor(monster.pow * 0.1));
-					addCombatText(`Your opponent's attack grows by ${powIncrease} due to their rage.`);
+					addCombatText(`<strong>Your opponent's attack grows by ${powIncrease} due to their rage.</strong>`);
 					monster.pow += powIncrease;
 				}
 			}

@@ -1,5 +1,5 @@
 // Add some number of turns to a buff. Adds it to the list if currently inactive
-function addBuff (id, turns) {
+function addBuff(id, turns) {
 	let buffPosition = player.buffs.findIndex(x => x.id == id);
 	if (buffPosition == -1) {
 		player.buffs.push({id: id, turns: turns});
@@ -14,7 +14,7 @@ function addBuff (id, turns) {
 }
 
 // Decrease some number of turns from a buff. A turn value of -1 removes all turns. Removes the buff from the list when turns reduces to 0.
-function decreaseBuff (id, turns) {
+function decreaseBuff(id, turns) {
 	let buffPosition = player.buffs.findIndex(x => x.id == id);
 	if (buffPosition == -1) {
 		return false; // don't have the buff anyway
@@ -29,4 +29,9 @@ function decreaseBuff (id, turns) {
 		}
 		return true;
 	}
+}
+
+// Returns if the buff is currently active or not
+function haveBuff(id) {
+	return player.buffs.findIndex(x => x.id == id) != -1;
 }

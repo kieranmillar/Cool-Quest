@@ -1,6 +1,5 @@
 // Some elements are always present, just hidden, so save them into a variable on startup to avoid navigating the DOM each time
 
-// Character pane
 var charPaneNameSpan = document.getElementById("char_name");
 var charPaneJobSpan = document.getElementById("char_job");
 var charPaneLevelSpan = document.getElementById("char_level");
@@ -28,11 +27,12 @@ var charPaneTurnsToMidnightSpan = document.getElementById("char_turnsToMidnight"
 var charPaneTurnsSpan = document.getElementById("char_turns");
 var charPaneFullSpan = document.getElementById("char_full");
 var charPaneFullMaxSpan = document.getElementById("char_fullMax");
-
 var charPaneMinionContainerDiv = document.getElementById("char_minionContainer");
 
-// Buff pane
+var buffPane = document.getElementById("buffPane");
+var buffList = document.getElementById("buffList");
 
+var hintBar = document.getElementById("hintBar");
 
 // Hide a DOM element
 function hide(e) {
@@ -115,19 +115,6 @@ function redrawCharPane() {
     charPaneFullSpan.textContent = player.full;
 	charPaneFullMaxSpan.textContent = player.fullMax;
 
-	$("#doctor_hp_input").attr("max", player.effHpMax - player.hp);
-	$("#doctor_hp_input").val(player.effHpMax - player.hp);
-	$("#doctor_hp_input").trigger("change");
-	$("#doctor_mp_input").attr("max", player.effMpMax - player.mp);
-	$("#doctor_mp_input").val(player.effMpMax - player.mp);
-	$("#doctor_mp_input").trigger("change");
-	$("#quickHeal_hp_input").attr("max", player.effHpMax - player.hp);
-	$("#quickHeal_hp_input").val(player.effHpMax - player.hp);
-	$("#quickHeal_hp_input").trigger("change");
-	$("#quickHeal_mp_input").attr("max", player.effMpMax - player.mp);
-	$("#quickHeal_mp_input").val(player.effMpMax - player.mp);
-	$("#quickHeal_mp_input").trigger("change");
-
 	charPaneMinionContainerDiv.replaceChildren();
 	numberOfEquippedMinions = player.equippedMinions.filter(x => x != -1).length;
 	if (numberOfEquippedMinions > 0) {
@@ -160,6 +147,19 @@ function redrawCharPane() {
 	}
 
 	displayQuestLog();
+
+	doctor_hp_input.max = player.effHpMax - player.hp;
+	doctor_hp_input.value = player.effHpMax - player.hp;
+	doctor_hp_input.dispatchEvent(changeEvent);
+	doctor_mp_input.max = player.effMpMax - player.mp;
+	doctor_mp_input.value = player.effMpMax - player.mp;
+	doctor_mp_input.dispatchEvent(changeEvent);
+	quickHeal_hp_input.max = player.effHpMax - player.hp;
+	quickHeal_hp_input.value = player.effHpMax - player.hp;
+	quickHeal_hp_input.dispatchEvent(changeEvent);
+	quickHeal_mp_input.max = player.effMpMax - player.mp;
+	quickHeal_mp_input.value = player.effMpMax - player.mp;
+	quickHeal_mp_input.dispatchEvent(changeEvent);
 }
 
 // Display a char pane stat value and its buffed value. Pass in the values and the element references
@@ -183,56 +183,62 @@ function displayBuffedStat(baseStat, effStat, baseStatSpan, effStatSpan) {
 	}
 }
 
+// Redraws the buff pane
 function redrawBuffPane() {
-	let buffDiv = $("#buffList");
-	buffDiv.empty();
+	buffList.replaceChildren();
 	let buffCount = 0;
-	for (let i in player.buffs)
-	{
-		let t = "<div class='item item_Image' onClick='openDialog (dialogType.BUFF, " + player.buffs[i].id + ");'><img src=./images/" + effects[player.buffs[i].id].icon + ">";
+	for (let buff of player.buffs) {
+		let buffDiv = document.createElement("div");
+		buffDiv.classList.add("item", "item_Image");
+		buffDiv.onclick = function() {
+			openDialog(dialogType.BUFF, buff.id);
+		};
+		let imageElement = document.createElement("img");
+		imageElement.src = `./images/${effects[buff.id].icon}`;
+		buffDiv.appendChild(imageElement);
+		let text = "";
 		if (!player.options[optionEnum.COMPACTBUFFPANE]) {
-			t += effects[player.buffs[i].id].name + " ";
+			text += effects[buff.id].name + " ";
 		}
-		t += "(" + player.buffs[i].turns + ")</div>";
-		buffDiv.append(t);
+		text += `(${buff.turns})`;
+		let textNode = document.createTextNode(text);
+		buffDiv.appendChild(textNode);
+		buffList.appendChild(buffDiv);
 		buffCount ++;
 	}
-	if (buffCount == 0)
-	{
-		$("#infoPanel").hide();
+	if (buffCount == 0) {
+		hide(buffPane);
 	}
-	else
-	{
-		$("#infoPanel").show();
+	else {
+		show(buffPane);
 	}
-	$("#infoPanel").removeClass();
-	if (player.options[optionEnum.COMPACTBUFFPANE] == 1)
-	{
-		$("#infoPanel").addClass("smallInfoPanel");
+	if (player.options[optionEnum.COMPACTBUFFPANE] == 1) {
+		buffPane.classList.add("smallBuffPane");
+	}
+	else {
+		buffPane.classList.remove("smallBuffPane");
 	}
 }
 
-function resetHint()
-{
-	let hintDiv = $(".hintBar");
-	hintDiv.text("");
-	hintDiv.removeClass();
-	hintDiv.css("transition-duration", "0s");
-	hintDiv.addClass("hintBar g");
+// Clears the hint from the hint bar
+function resetHint() {
+	hintBar.textContent = "";
+	hintBar.className = "";
+	hintBar.style.transitionDuration = "0s";
+	hintBar.classList.add("hintBar", "g");
 }
 
-function hint(txt, c)
-{
-	let hintDiv = $(".hintBar");
-	hintDiv.text(txt);
-	hintDiv.removeClass();
-	hintDiv.css("transition-duration", "0s");
-	hintDiv.addClass("hintBar w");
-	setTimeout(function (){
-		hintDiv.css("transition-duration", "500ms");
-		hintDiv.toggleClass("w");
-		hintDiv.toggleClass(c);
-	}, 100)
+// Sets the hint bar text. Arguments are the text, and the single character class name for the colour, g or r (grey or red).
+function hint(txt, c) {
+	hintBar.textContent = txt;
+	hintBar.className = "";
+	hintBar.style.transitionDuration = "0s";
+	hintBar.classList.add("hintBar", "w");
+	setTimeout(function() {
+		hintBar.style.transitionDuration = "500ms";
+		hintBar.classList.remove("w");
+		hintBar.classList.add(c);
+	}, 100);
 }
 
 const dialogType = {

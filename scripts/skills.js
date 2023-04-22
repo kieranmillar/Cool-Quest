@@ -38,9 +38,8 @@ function createSkillElement(id) {
 	let imgElement = document.createElement("img");
 	imgElement.src = `./images/${skills[id].icon}`;
 	e.appendChild(imgElement);
-	let textSpan = document.createElement("span");
-	textSpan.textContent = skills[id].name;
-	e.appendChild(textSpan);
+	let textNode = document.createTextNode(skills[id].name);
+	e.appendChild(textNode);
 	e.onclick = function() {
 		openDialog (dialogType.SKILL, id);
 	};

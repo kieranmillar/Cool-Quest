@@ -143,12 +143,12 @@ function createItemElement(id, amount = 0) {
 	let imgElement = document.createElement("img");
 	imgElement.src = `./images/${items[id].icon}`;
 	e.appendChild(imgElement);
-	let textSpan = document.createElement("span");
-	textSpan.textContent = items[id].name;
+	let text = items[id].name;
 	if (amount > 0) {
-		textSpan.textContent += ` x${amount}`;
+		text += ` x${amount}`;
 	}
-	e.appendChild(textSpan);
+	let textNode = document.createTextNode(text);
+	e.appendChild(textNode);
 	e.onclick = function() {
 		openDialog (dialogType.ITEM, id);
 	};

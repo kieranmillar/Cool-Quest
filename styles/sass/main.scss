@@ -467,7 +467,7 @@ h2, h3 {
 	color: blue;
 }
 
-#infoPanel {
+#buffPane {
 	flex: 0 0 270px;
 	min-width: 270px;
 	background-color: #ccc;
@@ -476,7 +476,7 @@ h2, h3 {
 	overflow-y: auto;
 	max-height: calc(100vh - 150px);
 
-	&.smallInfoPanel {
+	&.smallBuffPane {
 		flex: 0 0 100px;
 		min-width: 100px;
 

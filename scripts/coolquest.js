@@ -1,5 +1,16 @@
 var mainGameDiv = document.getElementById("mainGame");
 
+// Doctor
+var doctor_hp_input = document.getElementById("doctor_hp_input");
+var doctor_hp_button = document.getElementById("doctor_hp_button");
+var doctor_mp_input = document.getElementById("doctor_mp_input");
+var doctor_mp_button = document.getElementById("doctor_mp_button");
+var quickHeal_hp_input = document.getElementById("quickHeal_hp_input");
+var quickHeal_hp_button = document.getElementById("quickHeal_hp_button");
+var quickHeal_mp_input = document.getElementById("quickHeal_mp_input");
+var quickHeal_mp_button = document.getElementById("quickHeal_mp_button");
+const changeEvent = new CustomEvent("change");
+
 // Checks if a property of an object is a function, and executes it if so, otherwise returns its value
 function resolveProperty(input) {
 	if (typeof input === 'function'){
@@ -210,34 +221,36 @@ function wipe() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	$("#dialog").dialog({ autoOpen: false });
-	$("#doctor_hp_input").change(function(){
+	
+	doctor_hp_input.addEventListener("change", function() {
 		let hpCost = 2;
 		if (player.skills[62]) {
 			hpCost = 1;
 		}
-		$("#doctor_hp_button").text("Restore (" + parseInt($('#doctor_hp_input').val()) * hpCost + " Gold)");
+		doctor_hp_button.textContent = `Restore (${parseInt(doctor_hp_input.value) * hpCost} Gold)`;
 	});
-	$("#doctor_mp_input").change(function(){
+	doctor_mp_input.addEventListener("change", function() {
 		let mpCost = 10;
 		if (player.skills[62]) {
 			mpCost = 8;
 		}
-		$("#doctor_mp_button").text("Restore (" + parseInt($('#doctor_mp_input').val()) * mpCost + " Gold)");
+		doctor_mp_button.textContent = `Restore (${parseInt(doctor_mp_input.value) * mpCost} Gold)`;
 	});
-	$("#quickHeal_hp_input").change(function(){
+	quickHeal_hp_input.addEventListener("change", function() {
 		let hpCost = 2;
 		if (player.skills[62]) {
 			hpCost = 1;
 		}
-		$("#quickHeal_hp_button").text("Restore (" + parseInt($('#quickHeal_hp_input').val()) * hpCost + " Gold)");
+		quickHeal_hp_button.textContent = `Restore (${parseInt(quickHeal_hp_input.value) * hpCost} Gold)`;
 	});
-	$("#quickHeal_mp_input").change(function(){
+	quickHeal_mp_input.addEventListener("change", function() {
 		let mpCost = 10;
 		if (player.skills[62]) {
 			mpCost = 8;
 		}
-		$("#quickHeal_mp_button").text("Restore (" + parseInt($('#quickHeal_mp_input').val()) * mpCost + " Gold)");
+		quickHeal_mp_button.textContent = `Restore (${parseInt(quickHeal_mp_input.value) * mpCost} Gold)`;
 	});
+
 	if (localStorage.getItem("playerStored") != null) {
 		load();
 	}

@@ -31,11 +31,11 @@
 				<div id="quickHeal" class="doctor">
 					<form onsubmit="return false">
 						<span class="left">HP: </span><input type="number" value="0" min="0" id="quickHeal_hp_input">
-						<span class="right"><button type="button" id="quickHeal_hp_button" onclick="buyHP(parseInt($('#quickHeal_hp_input').val()))">Restore (0 Gold)</button></span>
+						<span class="right"><button type="button" id="quickHeal_hp_button" onclick="buyHP(parseInt(quickHeal_hp_input.value))">Restore (0 Gold)</button></span>
 					</form>
 					<form onsubmit="return false">
 						<span class="left">MP: </span><input type="number" value="0" min="0" id="quickHeal_mp_input">
-						<span class="right"><button type="button" id="quickHeal_mp_button" onclick="buyMP(parseInt($('#quickHeal_mp_input').val()))">Restore (0 Gold)</button></span>
+						<span class="right"><button type="button" id="quickHeal_mp_button" onclick="buyMP(parseInt(quickHeal_mp_input.value))">Restore (0 Gold)</button></span>
 					</form>
 				</div>
 				<div id="quicklinks">
@@ -63,7 +63,7 @@
 					<p style="font-size: 12px">This game is currently in early development. Large, breaking changes may happen at any time. Going to the options and deleting your save file is recommended if you haven't played in a while.</p>
 				</div>
 			</div>
-			<div class="hintBar">
+			<div id="hintBar" class="hintBar">
 			</div>
 			<div id="mainArea">
 				<div id="characterCreation">
@@ -337,11 +337,11 @@
 							<div class="doctor">
 								<form onsubmit="return false">
 									<span class="left">HP: </span><input type="number" value="0" min="0" id="doctor_hp_input" onSubmit="return false;">
-									<span class="right"><button type="button" id="doctor_hp_button" onclick="buyHP(parseInt($('#doctor_hp_input').val()))">Restore (0 Gold)</button></span>
+									<span class="right"><button type="button" id="doctor_hp_button" onclick="buyHP(parseInt(doctor_hp_input.value))">Restore (0 Gold)</button></span>
 								</form>
 								<form onsubmit="return false">
 									<span class="left">MP: </span><input type="number" value="0" min="0" id="doctor_mp_input" onSubmit="return false;">
-									<span class="right"><button type="button" id="doctor_mp_button" onclick="buyMP(parseInt($('#doctor_mp_input').val()))">Restore (0 Gold)</button></span>
+									<span class="right"><button type="button" id="doctor_mp_button" onclick="buyMP(parseInt(doctor_mp_input.value))">Restore (0 Gold)</button></span>
 								</form>
 							</div>
 							<p>Coming here often? You can put the doctor on the top pane in the settings menu.</p>
@@ -445,7 +445,7 @@
 						<button id="adventureAgainButton" type="button" onclick="adventure(lastZone)">Adventure Again at the last place you adventured (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 						<button id="returnToContainerButton" type="button" onclick="goToLocation(zones[lastZone].parent)">Return to the previous area</button>
 					</div>
-					<div id="infoPanel">
+					<div id="buffPane">
 						<div id="buffList"></div>
 					</div>
 				</div>

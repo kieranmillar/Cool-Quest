@@ -428,7 +428,7 @@ h2:not(:last-child), h3:not(:last-child) {
   color: blue;
 }
 
-#infoPanel {
+#buffPane {
   flex: 0 0 270px;
   min-width: 270px;
   background-color: #ccc;
@@ -437,11 +437,11 @@ h2:not(:last-child), h3:not(:last-child) {
   overflow-y: auto;
   max-height: calc(100vh - 150px);
 }
-#infoPanel.smallInfoPanel {
+#buffPane.smallBuffPane {
   flex: 0 0 100px;
   min-width: 100px;
 }
-#infoPanel.smallInfoPanel .item {
+#buffPane.smallBuffPane .item {
   width: 80px;
 }
 

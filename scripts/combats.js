@@ -7,6 +7,9 @@ var monsterHPSpan = document.getElementById("monsterHP");
 var monsterPowSpan = document.getElementById("monsterPow");
 var monsterDefSpan = document.getElementById("monsterDef");
 var combatRoundSpan = document.getElementById("combatRound");
+var skillDropdown = document.getElementById("skillDropdown");
+var itemDropdown = document.getElementById("itemDropdown");
+var combatItemRow = document.getElementById("combatItemRow");
 
 var monster = {
 	id: 0,
@@ -194,65 +197,81 @@ function redrawCombat() {
 	}
 }
 
-// Constructs the skill picker used in combat
+// Constructs the skill dropdown used in combat
 function constructCombatSkillDropdown() {
-	let e = $("#skillDropdown");
-	e.empty();
-	let newElement = $('<option></option>');
-	newElement.val(-1);
-	newElement.text("- Choose a skill -");
-	e.append(newElement);
+	skillDropdown.replaceChildren();
+	let newOption = document.createElement("option");
+	newOption.value = -1;
+	newOption.textContent = "- Choose a skill -";
+	skillDropdown.appendChild(newOption);
+
+	let combatSkillIds = [];
 	for (let i = 0; i < skills.length; i++) {
-		if (skills[i].category == skillType.COMBAT && player.skills[i] > 0) {
-			if (i == 1 && monster.castPounce == 1) {
-				continue;
-			}
-			if (i == 24 && monster.castSpecialDelivery == 1) {
-				continue;
-			}
-			if (i == 43 && monster.castExposeSecrets == 1) {
-				continue;
-			}
-			let newElement = $('<option></option>');
-			newElement.val(skills[i].id);
-			let cost = Math.max(skills[i].cost - player.effCombatCostReduction, 0);
-			newElement.text(skills[i].name + " (" + cost + " MP)");
-			if (lastUsedCombatSkill == i) {
-				newElement.attr("selected", "selected");
-			}
-			
-			e.append(newElement);
+		if (skills[i].category != skillType.COMBAT || !player.skills[i]) {
+			continue;
 		}
+		if (i == 1 && monster.castPounce == 1) {
+			continue;
+		}
+		if (i == 24 && monster.castSpecialDelivery == 1) {
+			continue;
+		}
+		if (i == 43 && monster.castExposeSecrets == 1) {
+			continue;
+		}
+		combatSkillIds.push(i);
+	}
+	combatSkillIds.sort(function(a, b) {
+		if (a === null || a === undefined || b === null || b === undefined) {
+			return 0;
+		}
+		let x = 0;
+		let y = 0;
+		if("cost" in skills[a]) {
+			x = skills[a].cost;
+		}
+		if("cost" in skills[b]) {
+			y = skills[b].cost;
+		}
+		if (x < y) {return -1;}
+		if (x > y) {return 1;}
+		return 0;
+	});
+	for (let id of combatSkillIds) {
+		let newOption = document.createElement("option");
+		newOption.value = id;
+		let cost = Math.max(skills[id].cost - player.effCombatCostReduction, 0);
+		newOption.textContent = `${skills[id].name} (${cost} MP)`;
+		if (lastUsedCombatSkill == id) {
+			newOption.selected = "selected";
+		}
+		skillDropdown.appendChild(newOption);
 	}
 }
 
-function constructCombatItemDropdown ()
-{
-	let e = $("#itemDropdown");
-	e.empty();
-	let newElement = $('<option></option>');
-	newElement.val(-1);
-	newElement.text("- Choose an item -");
-	e.append(newElement);
+// Constructs the item dropdown used in combat
+function constructCombatItemDropdown() {
+	itemDropdown.replaceChildren();
+	let newOption = document.createElement("option");
+	newOption.value = -1;
+	newOption.textContent = "- Choose an item -";
+	itemDropdown.appendChild(newOption);
+
 	let itemCount = 0;
-	for (let i = 0; i < player.inventory.length; i++)
-	{
-		if ("onCombat" in items[player.inventory[i].id])
-		{
-			let newElement = $('<option></option>');
-			newElement.val(player.inventory[i].id);
-			newElement.text(items[player.inventory[i].id].name + " (" + player.inventory[i].amount + ")");
-			e.append(newElement);
+	for (let i = 0; i < player.inventory.length; i++) {
+		if ("onCombat" in items[player.inventory[i].id]) {
+			let newOption = document.createElement("option");
+			newOption.value = player.inventory[i].id;
+			newOption.textContent = `${items[player.inventory[i].id].name} (${player.inventory[i].amount})`;
+			itemDropdown.appendChild(newOption);
 			itemCount ++;
 		}
 	}
-	if (itemCount == 0)
-	{
-		$("combatItemRow").hide();
+	if (itemCount == 0) {
+		hide(combatItemRow);
 	}
-	else
-	{
-		$("combatItemRow").show();
+	else {
+		show(combatItemRow);
 	}
 }
 
@@ -345,6 +364,18 @@ function combatRound(action) {
 				return;
 			}
 			break;
+		case 3:
+			//run away
+			let texts = [
+				"You nope right out of there as fast as you can.",
+				"\"Look over there! A three-headed monkey!\" you shout. As your opponent is distracted you get out of there.",
+				"\"Those that fight and run away may live to fight another day\", you tell yourself, as you sprint off at high speed.",
+				"\"Ah, uh... sorry, I just remembered I have a dentist appointment right now\", you tell your opponent as you run off."
+			];
+			addCombatText(texts[Math.floor(Math.random() * texts.length)]);
+			endAdventure();
+			redrawCombat();
+			return;
 		default:
 			return;
 	}
@@ -482,7 +513,7 @@ function combatRound(action) {
 // Cast a combat skill in combat. Returns if successful
 function useCombatSkill(id) {
 	if (id == -1) {
-		hint ("You've got to actually choose a skill to cast!", "r");
+		hint ("You didn't choose a skill to cast!", "r");
 		return false;
 	}
 	if(!"onUse" in skills[id]) {
@@ -511,7 +542,7 @@ function useCombatItem (x)
 {
 	if (x == -1)
 	{
-		hint ("You've got to actually choose an item to use!", "r");
+		hint ("You didn't choose an item to use!", "r");
 		return false;
 	}
 	if(!"onCombat" in items[x])
@@ -536,7 +567,7 @@ function pressedViewSkillbutton ()
 	var value = parseInt(e.val());
 	if (value == -1)
 	{
-		hint ("You've got to actually choose a skill to view!", "r");
+		hint ("You didn't choose a skill to view!", "r");
 		return false;
 	}
 	openDialog (dialogType.SKILL, value);
@@ -548,7 +579,7 @@ function pressedViewItembutton ()
 	var value = parseInt(e.val());
 	if (value == -1)
 	{
-		hint ("You've got to actually choose an item to view!", "r");
+		hint ("You didn't choose an item to view!", "r");
 		return false;
 	}
 	openDialog (dialogType.ITEM, value);

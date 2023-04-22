@@ -1209,16 +1209,12 @@ var skills = [
 	},
 	{
 		id: 69,
-		name: "TODO: Large skill 69",
+		name: "TODO: Diplomacy",
 		description: "",
-		enchantment: "",
+		enchantment: "Your first 5 run aways from combat each day don't cost a turn",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
-		category: skillType.NONCOMBAT,
-		cost: 3,
-		onUse: function () {
-			
-		}
+		category: skillType.PASSIVE
 	},
 
 	/******

@@ -31,6 +31,22 @@ function useNoncombatSkill (x) {
 	return true;
 }
 
+// Creates an element displaying the skill image and name, and can be clicked to open its dialog. Returns the element
+function createSkillElement(id) {
+	let e = document.createElement("span");
+	e.classList.add("item_Image");
+	let imgElement = document.createElement("img");
+	imgElement.src = `./images/${skills[id].icon}`;
+	e.appendChild(imgElement);
+	let textSpan = document.createElement("span");
+	textSpan.textContent = skills[id].name;
+	e.appendChild(textSpan);
+	e.onclick = function() {
+		openDialog (dialogType.SKILL, id);
+	};
+	return e;
+}
+
 // Display the skills menu
 function displaySkills() {
 	skillNonComContainer.replaceChildren();
@@ -67,12 +83,7 @@ function displaySkills() {
 	for (let i of sortedSkillIds) {
 		let newElement = document.createElement("div");
 		newElement.classList.add("item");
-		let textImageDiv = document.createElement("span");
-		textImageDiv.className = "item_Image";
-		textImageDiv.innerHTML = `<image src='./images/${skills[i].icon}'><span>${skills[i].name}</span>`;
-        textImageDiv.onclick = function() {
-            openDialog(dialogType.SKILL, i);
-        };
+		let textImageDiv = createSkillElement(i);
 		newElement.appendChild(textImageDiv);
 		switch (skills[i].category)
 		{
@@ -82,9 +93,8 @@ function displaySkills() {
 					addButton = false;
 				}
 				if (addButton) {
-					let castLink = document.createElement("span");
-        			castLink.innerHTML = `<input type='button' value='Cast\n(${skills[i].cost} MP)' onClick='useNoncombatSkill(${i})'>`;
-        			newElement.appendChild(castLink);
+					let castButton = createItemElementButton(`Cast\n(${skills[i].cost} MP)`, function() {useNoncombatSkill(i)});
+        			newElement.appendChild(castButton);
 				}
 				skillNonComContainer.appendChild(newElement);
 				noncomCount ++;
@@ -145,17 +155,11 @@ function displayTrainer() {
 		}
 		let newElement = document.createElement("div");
 		newElement.classList.add("item");
-		let textImageDiv = document.createElement("span");
-		textImageDiv.className = "item_Image";
-		textImageDiv.innerHTML = `<image src='./images/${skills[i].icon}'><span>${skills[i].name}</span>`;
-        textImageDiv.onclick = function() {
-            openDialog(dialogType.SKILL, i);
-        };
+		let textImageDiv = createSkillElement(i);
 		newElement.appendChild(textImageDiv);
 
-		let buyLink = document.createElement("span");
-        buyLink.innerHTML = `<input type='button' value='Train\n(${skills[i].price} Gold)' onClick='buySkill(${i})'>`;
-        newElement.appendChild(buyLink);
+		let buyButton = createItemElementButton(`Train\n(${skills[i].price} Gold)`, function() {buySkill(i)});
+        newElement.appendChild(buyButton);
         trainerListDiv.appendChild(newElement);
 		skillDisplayCount ++;
 	}

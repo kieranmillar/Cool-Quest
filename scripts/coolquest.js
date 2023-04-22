@@ -1,4 +1,5 @@
 var charPaneMinionContainerDiv = document.getElementById("char_minionContainer");
+var mainGameDiv = document.getElementById("mainGame");
 
 function redrawCharPane() {
 	$("#char_day").text(player.day);
@@ -528,7 +529,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		load();
 	}
 	else {
-		$("#mainGame").hide();
+		hide(mainGameDiv);
 		linkElements.forEach(link => hide(link));
 		hide(inventory_tutorial2);
 		hide(equip_tutorial);

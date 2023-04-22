@@ -1,7 +1,6 @@
 var createNameInput = document.getElementById("create_name");
 var jobForm = document.getElementById("jobForm");
 var characterCreationDiv = document.getElementById("characterCreation");
-var mainGameDiv = document.getElementById("mainGame");
 
 var jobEnum = {
 	WRESTLER: 0,

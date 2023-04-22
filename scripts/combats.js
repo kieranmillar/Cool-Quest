@@ -538,8 +538,8 @@ function useCombatItem(id) {
 		hint ("That item can't be used in combat!", "r");
 		return false;
 	}
-	let itemPosition = checkInInventory(id);
-	if (itemPosition == -1) {
+	let amount = getItemAmount(id);
+	if (amount == 0) {
 		hint("You don't own any of that item!", "r");
 		return false;
 	}

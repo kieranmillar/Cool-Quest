@@ -372,7 +372,6 @@ h2:not(:last-child), h3:not(:last-child) {
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex-shrink: 1;
 }
 
 .item_Image {
@@ -386,6 +385,10 @@ h2:not(:last-child), h3:not(:last-child) {
   height: 40px;
   width: 40px;
   flex: 0 0 40px;
+}
+
+.item_button {
+  flex-shrink: 0;
 }
 
 .minion {
@@ -440,7 +443,7 @@ h2:not(:last-child), h3:not(:last-child) {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 /*# sourceMappingURL=main.css.map */

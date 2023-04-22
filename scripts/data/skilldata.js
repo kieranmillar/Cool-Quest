@@ -93,7 +93,7 @@ var skills = [
 		price: 50,
 		level: 2,
 		onUse: function () {
-			player.effCritMultiplier += 0.15;
+			player.effCritMultiplier += 15;
 		}
 	},
 	{
@@ -1433,7 +1433,7 @@ var skills = [
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			player.effCritChance += 0.2;
+			player.effCritChance += 20;
 		}
 	},
 	{

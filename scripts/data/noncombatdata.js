@@ -98,7 +98,6 @@ var noncombats = [
 				endAdventure();
 			}
 			else {
-				$("#noncombatText").empty();
 				busy = false;
 				pickRandomCombat (2);
 			}

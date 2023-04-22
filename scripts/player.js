@@ -62,8 +62,8 @@ var player = {
 	effPow: 0,
 	effDef: 0,
 	effInit: 0,
-	effCritChance: 0.1,
-	effCritMultiplier: 1.2,
+	effCritChance: 10,
+	effCritMultiplier: 20,
 	effDamageReduction: 0,
 	fireDamage: 0,
 	iceDamage: 0,
@@ -229,8 +229,8 @@ function calculateStats() {
 	player.effPow = player.basePow;
 	player.effDef = player.baseDef;
 	player.effInit = player.baseInit;
-	player.effCritChance = 0.1;
-	player.effCritMultiplier = 1.2;
+	player.effCritChance = 10;
+	player.effCritMultiplier = 20;
 	player.effDamageReduction = 0;
 	player.fireDamage = 0;
 	player.iceDamage = 0;

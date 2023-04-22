@@ -558,7 +558,7 @@ function regularAttack (value, hitMessage, critMessage)
 {
 	// hitMessage == "" means guaranteed critical
 	let crit = false;
-	if (hitMessage == "" || Math.random() < player.effCritChance)
+	if (hitMessage == "" || Math.random() * 100 < player.effCritChance)
 	{
 		crit = true;
 	}
@@ -570,7 +570,7 @@ function regularAttack (value, hitMessage, critMessage)
 	let emotionalDamage = calcIceDamage(player.emotionalDamage);
 	if (crit)
 	{
-		value = Math.ceil (value * player.effCritMultiplier);
+		value = Math.ceil(value * ((100 + player.effCritMultiplier) / 100));
 		addCombatText ("<strong>CRITICAL!</strong> " + critMessage);
 	}
 	else

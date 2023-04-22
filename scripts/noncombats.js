@@ -52,9 +52,12 @@ function getNoncombatItem(id, amount) {
 
 function beginNoncombat (obj)
 {
-	if (player.hp == 0 || busy == true)
+	if (player.hp == 0 || busy == true) {
 		return;
-	goToLocation ("noncombat");
+	}
+	if (!goToLocation("noncombat")) {
+		return;
+	}
 	busy = true;
 	currentNoncom = obj.id;
 	$("#noncombatText").empty();

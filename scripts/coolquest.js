@@ -301,9 +301,33 @@ function save() {
 	localStorage.setItem("nonComHintsStored", JSON.stringify(nonComHints));
 }
 
+// Equivalent to JQuery's extend function, does a deep copy merge of two objects.
+// Needed for merging in the loaded player as current player model may have been added to.
+// Taken from GeeWhizBang's answer to https://stackoverflow.com/questions/11197247/javascript-equivalent-of-jquerys-extend-method
+// Takes any number of objects as arguments, and merges them all, giving precedence to the values in objects provided in later arguments
+function extend() {
+	function forEachIn(obj, fn) {
+		var index = 0;
+		for (var key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				fn(obj[key], key, index++);
+			}
+		}
+	}
+
+    var result = {};
+    for (var i = 0; i < arguments.length; i++) {
+        forEachIn(arguments[i],
+            function(obj, key) {
+                result[key] = obj;
+            });
+    }
+    return result;
+}
+
 // Load the game
 function load() {
-	$.extend(true, player, JSON.parse(localStorage.getItem("playerStored")));
+	player = extend(player, JSON.parse(localStorage.getItem("playerStored")));
 	nonComHints = JSON.parse(localStorage.getItem("nonComHintsStored"));
 	$("#characterCreation").hide();
 	hide(inventory_tutorial2);

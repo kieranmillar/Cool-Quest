@@ -147,7 +147,7 @@ function redrawInfoPanel ()
 	let buffDiv = $("#buffList");
 	buffDiv.empty();
 	let buffCount = 0;
-	for (var i in player.buffs)
+	for (let i in player.buffs)
 	{
 		let t = "<div class='item item_Image' onClick='openDialog (dialogType.BUFF, " + player.buffs[i].id + ");'><img src=./images/" + effects[player.buffs[i].id].icon + ">";
 		if (!player.options[optionEnum.COMPACTINFOPANEL]) {
@@ -307,16 +307,16 @@ function save() {
 // Takes any number of objects as arguments, and merges them all, giving precedence to the values in objects provided in later arguments
 function extend() {
 	function forEachIn(obj, fn) {
-		var index = 0;
-		for (var key in obj) {
+		let index = 0;
+		for (let key in obj) {
 			if (obj.hasOwnProperty(key)) {
 				fn(obj[key], key, index++);
 			}
 		}
 	}
 
-    var result = {};
-    for (var i = 0; i < arguments.length; i++) {
+    let result = {};
+    for (let i = 0; i < arguments.length; i++) {
         forEachIn(arguments[i],
             function(obj, key) {
                 result[key] = obj;
@@ -487,7 +487,7 @@ function toggleOption(option) {
 }
 
 function wipe() {
-	var confirmation = confirm("Are you sure you want to permanently erase your savefile?");
+	let confirmation = confirm("Are you sure you want to permanently erase your savefile?");
 	if (confirmation === true) {
 		localStorage.clear();
 		location.reload(); 

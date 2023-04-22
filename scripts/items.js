@@ -147,15 +147,15 @@ function displayInventory()
 		$("#inv_" + i).empty();
 	}
 	
-	for (var i in player.inventory)
+	for (let i in player.inventory)
 	{
 		if (items[player.inventory[i].id].category < 5)
 		{
 			continue;
 		}
-		var newElement = $('<div></div>');
+		let newElement = $('<div></div>');
 		newElement.addClass("item");
-		var textImageDiv = $('<span></span>');
+		let textImageDiv = $('<span></span>');
 		textImageDiv.addClass("item_Image");
 		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
 		textImageDiv.attr({
@@ -164,14 +164,14 @@ function displayInventory()
 		newElement.append(textImageDiv);
 		if ("onUse" in items[player.inventory[i].id])
 		{
-			var useLink = $('<span></span>');
+			let useLink = $('<span></span>');
 			let buttonText = "Use";
 			if  (items[player.inventory[i].id].category == itemType.FOOD)
 			{
 				buttonText = "Eat";
 				if (player.options[optionEnum.FOODQUALITY] == 1)
 				{
-					var quality = Math.round((items[player.inventory[i].id].turns / items[player.inventory[i].id].fullness) * 100) / 100;
+					let quality = Math.round((items[player.inventory[i].id].turns / items[player.inventory[i].id].fullness) * 100) / 100;
 					buttonText += "\n(" + items[player.inventory[i].id].fullness + "F " + quality + "Q)";
 				}
 			}
@@ -241,22 +241,22 @@ function displayEquipment()
 		$("#equip_" + i).empty();
 	}
 
-	for (var i in player.inventory)
+	for (let i in player.inventory)
 	{
 		if (items[player.inventory[i].id].category >= 5)
 		{
 			continue;
 		}
-		var newElement = $('<div></div>');
+		let newElement = $('<div></div>');
 		newElement.addClass("item");
-		var textImageDiv = $('<span></span>');
+		let textImageDiv = $('<span></span>');
 		textImageDiv.addClass("item_Image");
 		textImageDiv.html("<image src='./images/" + items[player.inventory[i].id].icon + "'><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
 		textImageDiv.attr({
 			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");"
 		});
 		newElement.append(textImageDiv);
-		var equipLink = $('<span></span>');
+		let equipLink = $('<span></span>');
 		equipLink.html("<input type='button' value='Equip' onClick='equip(" + player.inventory[i].id + ")'>");
 		newElement.append(equipLink);
 		$("#equip_" + items[player.inventory[i].id].category).append(newElement);
@@ -295,22 +295,22 @@ function displayPawnShop()
 		$("#pawn_" + i).empty();
 	}
 	
-	for (var i in player.inventory)
+	for (let i in player.inventory)
 	{
 		if (items[player.inventory[i].id].sell == 0)
 		{
 			continue;
 		}
-		var newElement = $('<div></div>');
+		let newElement = $('<div></div>');
 		newElement.addClass("item");
-		var textImageDiv = $('<span></span>');
+		let textImageDiv = $('<span></span>');
 		textImageDiv.addClass("item_Image");
 		textImageDiv.html("<img src='./images/" + items[player.inventory[i].id].icon + "'><span>" + items[player.inventory[i].id].name + " x" + player.inventory[i].amount + "</span>");
 		textImageDiv.attr({
 			"onClick" : "openDialog (dialogType.ITEM, " + player.inventory[i].id + ");",
 		});
 		newElement.append(textImageDiv);
-		var sellLink = $('<span></span>');
+		let sellLink = $('<span></span>');
 		sellLink.html("<input type='button' value='Sell\n(" + items[player.inventory[i].id].sell + " Gold)' onClick = 'sellItem(" + player.inventory[i].id + ")'>");
 		newElement.append(sellLink);
 		$("#pawn_" + items[player.inventory[i].id].category).append(newElement);

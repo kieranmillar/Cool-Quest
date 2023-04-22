@@ -150,7 +150,7 @@ function createCharacter() {
 	player.inventory = [];
 	player.equipment = [-1, -1, -1, -1, -1, -1, -1, -1];
 	player.buffs = [];
-	for (var i in player.skills) {
+	for (let i in player.skills) {
 		if (player.skills[i] == 1) {
 			player.skills[i] = 0;
 		}
@@ -193,7 +193,7 @@ function createCharacter() {
 	player.basePow = player.powGain;
 	player.baseDef = player.defGain;
 	player.baseInit = 0;
-	for (var i in player.minionExp) {
+	for (let i in player.minionExp) {
 		if (player.minionExp[i] != undefined && player.minionExp[i] != null) {
 			player.minionExp[i] = 0;
 			player.minionLevels = 1;
@@ -253,7 +253,7 @@ function calculateStats() {
 	player.effFreeRests = 0;
 	
 	//apply equipment
-	for (var i in player.equipment) {
+	for (let i in player.equipment) {
 		if (player.equipment[i] != -1) {
 			if("onWear" in items[player.equipment[i]]) {
 				items[player.equipment[i]].onWear();
@@ -262,14 +262,14 @@ function calculateStats() {
 	}
 	
 	//apply buffs
-	for (var i in player.buffs) {
+	for (let i in player.buffs) {
 		if ("effect" in effects[player.buffs[i].id]) {
 			effects[player.buffs[i].id].effect();
 		}
 	}
 	
 	//apply passives
-	for (var i in player.skills) {
+	for (let i in player.skills) {
 		if (!player.skills[i]) {
 			continue;
 		}
@@ -282,7 +282,7 @@ function calculateStats() {
 	}
 
 	//apply minion passives
-	for (var i in player.equippedMinions) {
+	for (let i in player.equippedMinions) {
 		if (player.equippedMinions[i] == -1) {
 			continue;
 		}

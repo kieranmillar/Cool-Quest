@@ -1,6 +1,6 @@
 var penIntroContainerParagraph = document.getElementById("pen_introContainer");
 var penContainerDiv = document.getElementById("pen_container");
-let showMinionTutorialOneOff = false;
+var showMinionTutorialOneOff = false;
 
 // Returns true or false if you own the minion or not
 function getMinionOwned(id) {

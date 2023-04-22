@@ -59,7 +59,7 @@ function displayDrellaU() {
             openDialog(dialogType.SKILL, player.drellaUDailyBigSkill);
         });
 		newElement.appendChild(textImageDiv);
-        var learnLink = document.createElement("span");
+        let learnLink = document.createElement("span");
         learnLink.innerHTML = "<input type = 'button' value = 'Buy\n(2 vouchers)' onClick = 'learnDrellaUSkill(" + player.drellaUDailyBigSkill + ")'>";
         newElement.appendChild(learnLink);
         drellaUBigSkillContainerDiv.appendChild(newElement);
@@ -89,7 +89,7 @@ function displayDrellaU() {
                     openDialog(dialogType.SKILL, player.drellaUDailySmallSkills[i]);
                 });
                 newElement.appendChild(textImageDiv);
-                var learnLink = document.createElement("span");
+                let learnLink = document.createElement("span");
                 learnLink.innerHTML = "<input type = 'button' value = 'Buy\n(1 voucher)' onClick = 'learnDrellaUSkill(" + player.drellaUDailySmallSkills[i] + ")'>";
                 newElement.appendChild(learnLink);
                 drellaUSmallSkillContainerDiv.appendChild(newElement);

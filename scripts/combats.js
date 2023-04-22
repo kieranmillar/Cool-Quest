@@ -344,10 +344,9 @@ function combatRound(action) {
 			break;
 		case 1:
 			//use skill
-			var e = $("#skillDropdown");
-			var value = parseInt(e.val());
-			if (useCombatSkill(value)) {
-				usingSkill = value;
+			let selectedSkill = parseInt(skillDropdown.value);
+			if (useCombatSkill(selectedSkill)) {
+				usingSkill = selectedSkill;
 			}
 			else {
 				return;
@@ -355,10 +354,9 @@ function combatRound(action) {
 			break;
 		case 2:
 			//use item
-			var e = $("#itemDropdown");
-			var value = parseInt(e.val());
-			if (useCombatItem(value)) {
-				usingItem = value;
+			let selectedItem = parseInt(itemDropdown.value);
+			if (useCombatItem(selectedItem)) {
+				usingItem = selectedItem;
 			}
 			else {
 				return;
@@ -563,8 +561,8 @@ function useCombatItem (x)
 
 function pressedViewSkillbutton ()
 {
-	var e = $("#skillDropdown");
-	var value = parseInt(e.val());
+	let e = $("#skillDropdown");
+	let value = parseInt(e.val());
 	if (value == -1)
 	{
 		hint ("You didn't choose a skill to view!", "r");
@@ -575,8 +573,8 @@ function pressedViewSkillbutton ()
 
 function pressedViewItembutton ()
 {
-	var e = $("#itemDropdown");
-	var value = parseInt(e.val());
+	let e = $("#itemDropdown");
+	let value = parseInt(e.val());
 	if (value == -1)
 	{
 		hint ("You didn't choose an item to view!", "r");

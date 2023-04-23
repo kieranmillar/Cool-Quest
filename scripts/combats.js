@@ -227,6 +227,9 @@ function constructCombatSkillDropdown() {
 		if (i == 43 && monster.castExposeSecrets == 1) {
 			continue;
 		}
+		if (i == 60 && (monster.boss || player.lawTarget != -1)) {
+			continue;
+		}
 		if (i == 61 && (monster.boss || player.castLaserPhysics)) {
 			continue;
 		}
@@ -418,6 +421,11 @@ function combatRound(action) {
 	}
 	if (monster.castCannonBlast == 1) {
 		monster.castCannonBlast = 2;
+	}
+	if (usingSkill == 60) { // Law
+		endAdventure(false);
+		redrawCombat();
+		return;
 	}
 	if (!checkEndOfCombat()) {
 		if (monster.stunThisRound) {

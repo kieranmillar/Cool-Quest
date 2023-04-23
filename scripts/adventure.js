@@ -74,11 +74,17 @@ function endAdventure(costsTurn = true) {
 // Pick a random combat from a zone. Rejects and rerolls if that combat is in the queue
 function pickRandomCombat(zone) {
 	let queueCopy = player.combatQueue.map(x => x);
+	let combatsCopy = zones[zone].combats.map(x => x);
+	combatsCopy = combatsCopy.filter(x => x != player.lawTarget);
+	if (combatsCopy.length == 0) {
+		beginNoncombat(14);
+		return;
+	}
 	let working = true;
 	let combatId = 0;
 	while (working) {
-		let r = Math.floor(Math.random() * zones[zone].combats.length);
-		combatId = zones[zone].combats[r];
+		let r = Math.floor(Math.random() * combatsCopy.length);
+		combatId = combatsCopy[r];
 		let indexInQueueCopy = queueCopy.findIndex(x => x == combatId);
 		if (indexInQueueCopy == -1) {
 			working = false;

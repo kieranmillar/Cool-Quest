@@ -350,4 +350,14 @@ var noncombats = [
 			busy = false;
 		}
 	},
+	{
+		id: 14,
+		title: "But Nobody Came",
+		description: "You hang around for a while waiting for a fight, but nobody is to be found.",
+		result: function () {
+			addNoncombatText("Whoops, looks like you removed all the combats from this area.");
+			addNoncombatText("Well that was a waste of time.");
+			endAdventure();
+		}
+	},
 ];

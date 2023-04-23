@@ -1081,15 +1081,31 @@ var skills = [
 
 	{
 		id: 60,
-		name: "TODO: Law",
+		name: "Law",
 		description: "This course teaches you how to put people on house arrest. There's a module about corruption, but it's optional.",
-		enchantment: "Immediately abandon the fight at no turn cost\nEnemy will not appear for the rest of the day\n(Once per day)\n(Cannot be used against bosses)",
-		icon: "no_image.png",
+		enchantment: function() {
+			let text = "Immediately abandon the fight at no turn cost\nEnemy will not randomly appear for the rest of the day\n(Once per day)\n(Cannot be used against bosses)";
+			if (player.lawTarget != -1) {
+				text += `\n(You arrested ${combats[player.lawTarget].name} today)`;
+			}
+			return text;
+		},
+		icon: "gavel.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.COMBAT,
 		cost: 10,
 		onUse: function () {
-			
+			if (monster.boss) {
+				hint("You can't use this against bosses!", "r");
+				return false;
+			}
+			if (player.lawTarget != -1) {
+				hint("You have already used this today!", "r");
+				return false;
+			}
+			addCombatText("You pull out some legal texts and read your opponent an obscure 100 year old law that lets you arrest them. They leave for the rest of the day while they consult with their lawyer about this.");
+			player.lawTarget = monster.id;
+			return true;
 		}
 	},
 	{
@@ -1239,7 +1255,13 @@ var skills = [
 		id: 69,
 		name: "Diplomacy",
 		description: "This course teaches you how to solve problems through negotiation instead of fighting. Where's the fun in that?",
-		enchantment: "Your first 5 run aways from combat each day don't cost a turn",
+		enchantment: function() {
+			let timesText = "times";
+			if (player.freeRunAwaysUsed == 1) {
+				timesText = "time";
+			}
+			return `Your first 5 run aways from combat each day don't cost a turn\n(You have used this ${player.freeRunAwaysUsed} ${timesText} today)`;
+		},
 		icon: "handshake.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.PASSIVE,

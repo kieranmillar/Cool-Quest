@@ -139,7 +139,7 @@ var effects = [
 		name: "Yodelling",
 		description: "Everyone can hear you for miles around and are all heading to your location to do something about it.",
 		enchantment: "+5% chance for a combat",
-		icon: "no_image.png",
+		icon: "yodelling.png",
 		effect: function() {
 			player.combatRate += 5;
 		}

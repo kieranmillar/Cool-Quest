@@ -16,6 +16,7 @@ function sleep() {
 	player.full = 0;
 	player.castTimeManagement = false;
 	player.freeRestsUsed = 0;
+	player.freeRunAwaysUsed = 0;
 	randomiseDrellaUSkills();
 	redrawCharPane();
 	redrawBuffPane();

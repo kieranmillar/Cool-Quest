@@ -10,6 +10,7 @@ var combatRoundSpan = document.getElementById("combatRound");
 var skillDropdown = document.getElementById("skillDropdown");
 var itemDropdown = document.getElementById("itemDropdown");
 var combatItemRow = document.getElementById("combatItemRow");
+var combat_runAwayButton = document.getElementById("combat_runAwayButton");
 
 var monster = {
 	id: 0,
@@ -191,6 +192,13 @@ function redrawCombat() {
 	else {
 		constructCombatSkillDropdown();
 		constructCombatItemDropdown();
+		let freeRunAwaysRemaining = player.effFreeRunAways - player.freeRunAwaysUsed;
+		if (freeRunAwaysRemaining > 0) {
+			combat_runAwayButton.textContent = `Run Away (${freeRunAwaysRemaining} free remaining)`;
+		}
+		else {
+			combat_runAwayButton.textContent = "Run Away";
+		}
 	}
 }
 
@@ -277,24 +285,24 @@ function checkEndOfCombat() {
 	if (player.hp <= 0 && monster.hp <= 0) {
 		player.hp = 0;
 		monster.hp = 0;
-		addCombatText ("<strong>It's a tie! You and the enemy both got knocked out at the same time!</strong>");
-		addCombatText ("<strong>Quite frankly it's embarassing. You should both feel ashamed of yourselves.</strong>");
-		addCombatText ("<strong>No rewards for you. We're not going to give you anything for being joint loser. We're going to hold you to a higher standard than that.</strong>");
+		addCombatText("<strong>It's a tie! You and the enemy both got knocked out at the same time!</strong>");
+		addCombatText("<strong>Quite frankly it's embarassing. You should both feel ashamed of yourselves.</strong>");
+		addCombatText("<strong>No rewards for you. We're not going to give you anything for being joint loser. We're going to hold you to a higher standard than that.</strong>");
 		endAdventure();
 		return true;
 	}
 	else if (player.hp <= 0) {
 		player.hp = 0;
-		addCombatText ("<strong>You got knocked out! Heal up and try again!</strong>");
+		addCombatText("<strong>You got knocked out! Heal up and try again!</strong>");
 		endAdventure();
 		return true;
 	}
 	else if (monster.hp <= 0) {
 		monster.hp = 0;
-		addCombatText ("<strong>You win the fight!</strong>");
+		addCombatText("<strong>You win the fight!</strong>");
 		minionCombatWin();
-		addCombatText (giveExp (monster.exp));
-		addCombatText (giveGold (monster.gold, true));
+		addCombatText(giveExp(monster.exp));
+		addCombatText(giveGold(monster.gold, true));
 		for (let i = 0; i < monster.drops.length; i++) {
 			let totalItemBoost = player.effItemBoost;
 			if (items[monster.drops[i].id].category == itemType.FOOD) {
@@ -361,14 +369,31 @@ function combatRound(action) {
 			break;
 		case 3:
 			//run away
-			let texts = [
-				"You nope right out of there as fast as you can.",
-				"\"Look over there! A three-headed monkey!\" you shout. As your opponent is distracted you get out of there.",
-				"\"Those that fight and run away may live to fight another day\", you tell yourself, as you sprint off at high speed.",
-				"\"Ah, uh... sorry, I just remembered I have a dentist appointment right now\", you tell your opponent as you run off."
-			];
+			let freeRunAwaysRemaining = player.effFreeRunAways - player.freeRunAwaysUsed;
+			let runAwayCostsTurn = true;
+			if (freeRunAwaysRemaining > 0) {
+				runAwayCostsTurn = false;
+				player.freeRunAwaysUsed ++;
+			}
+			let texts = [];
+			if (runAwayCostsTurn) {
+				texts = [
+					"You nope right out of there as fast as you can.",
+					"\"Look over there! A three-headed monkey!\" you shout. As your opponent is distracted you get out of there.",
+					"\"Those that fight and run away may live to fight another day\", you tell yourself, as you sprint off at high speed.",
+					"\"Ah, uh... sorry, I just remembered I have a dentist appointment right now\", you tell your opponent as you run off."
+				];
+			}
+			else {
+				texts = [
+					"You talk things over with your opponent and you both agree to go your own seaprate ways.",
+					"You negotiate a peace treaty with your opponent and walk away in different directions.",
+					"You give your opponent a big hug and they hug you back. You both agree to let things be.",
+					"You share funny childhood memories with your opponent, and before you know it, you have made a good friend. You both agree to stop fighting."
+				];
+			}
 			addCombatText(texts[Math.floor(Math.random() * texts.length)]);
-			endAdventure();
+			endAdventure(runAwayCostsTurn);
 			redrawCombat();
 			return;
 		default:
@@ -378,10 +403,10 @@ function combatRound(action) {
 		minionCombatRound();
 	}
 	if (monster.castCannonBlast == 2) {
-		addCombatText ("Fire in the hole! The ground shakes as the cannon fuse burns all the way down and the cannon blasts a giant cannonball at your opponent with an almighty <strong>KABOOM!</strong>");
+		addCombatText("Fire in the hole! The ground shakes as the cannon fuse burns all the way down and the cannon blasts a giant cannonball at your opponent with an almighty <strong>KABOOM!</strong>");
 		let cannonDamage = Math.floor(player.effPow * 1.6) - monster.def;
 		cannonDamage = Math.max(cannonDamage, 1);
-		addCombatText (`Your opponent takes ${cannonDamage} damage!`);
+		addCombatText(`Your opponent takes ${cannonDamage} damage!`);
 		monster.hp -= cannonDamage;
 		monster.castCannonBlast = 3;
 	}
@@ -455,24 +480,24 @@ function combatRound(action) {
 				}
 			}
 			if (usingItem == 7) {
-				addCombatText ("The cardboard panel shatters into pieces, but at least it dampened the blow.");
+				addCombatText("The cardboard panel shatters into pieces, but at least it dampened the blow.");
 			}
 			damage = Math.max(damage, 1);
 			switch (monster.element) {
 				case elementEnum.PHYSICAL:
-					addCombatText (`You take ${damage} damage!`);
+					addCombatText(`You take ${damage} damage!`);
 					break;
 				case elementEnum.FIRE:
-					addCombatText (`You take <span class='fire'>${damage}</span> fire damage!`);
+					addCombatText(`You take <span class='fire'>${damage}</span> fire damage!`);
 					break;
 				case elementEnum.ICE:
-					addCombatText (`You take <span class='ice'>${damage}</span> ice damage!`);
+					addCombatText(`You take <span class='ice'>${damage}</span> ice damage!`);
 					break;
 				case elementEnum.PSYCHIC:
-					addCombatText (`You take <span class='psychic'>${damage}</span> psychic damage!`);
+					addCombatText(`You take <span class='psychic'>${damage}</span> psychic damage!`);
 					break;
 				case elementEnum.EMOTIONAL:
-					addCombatText (`You take <span class='emotional'>${damage}</span> emotional damage!`);
+					addCombatText(`You take <span class='emotional'>${damage}</span> emotional damage!`);
 					break;
 			}
 			player.hp -= damage;

@@ -100,6 +100,8 @@ var player = {
 	castTimeManagement: false,
 	effFreeRests: 0,
 	freeRestsUsed: 0,
+	effFreeRunAways: 0,
+	freeRunAwaysUsed: 0,
 	options: [0, 0, 1, 0, 1, 0],
 	drellaUDailyBigSkill: -1,
 	drellaUDailySmallSkills: [],
@@ -250,6 +252,7 @@ function calculateStats() {
 	player.effMinionLevelBonus = 0;
 	player.effMinionExpBonus = 0;
 	player.effFreeRests = 0;
+	player.effFreeRunAways = 0;
 	
 	//apply equipment
 	for (let i in player.equipment) {

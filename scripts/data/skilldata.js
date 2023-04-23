@@ -1081,7 +1081,7 @@ var skills = [
 
 	{
 		id: 60,
-		name: "Once per day monster banish (free combat, no rewards, not bosses)",
+		name: "TODO: Once per day monster banish (free combat, no rewards, not bosses)",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1094,7 +1094,7 @@ var skills = [
 	},
 	{
 		id: 61,
-		name: "Once per day yellow ray (wins fight, gets all drops, not bosses)",
+		name: "TODO: Once per day yellow ray (wins fight, gets all drops, not bosses)",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1110,26 +1110,26 @@ var skills = [
 		name: "Insurance Brokering",
 		description: "This course teaches you how to strike fear into the hearts of all doctors by arming you with the knowledge to go elsewhere for a better price.",
 		enchantment: "50% discount on HP restore and 20% discount on MP restore at the doctor",
-		icon: "handshake.png",
+		icon: "bill.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.PASSIVE
 	},
 	{
 		id: 63,
-		name: "Another 2 turn stun skill",
+		name: "TODO: Another 2 turn stun skill",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.COMBAT,
+		cost: 6,
 		onUse: function () {
 			
 		}
 	},
 	{
 		id: 64,
-		name: "Summon a non-boss enemy once per day",
+		name: "TODO: Summon a non-boss enemy once per day",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1184,7 +1184,7 @@ var skills = [
 	},
 	{
 		id: 67,
-		name: "monster copy some number of times per day",
+		name: "TODO: monster copy some number of times per day",
 		description: "",
 		enchantment: "",
 		icon: "no_image.png",
@@ -1200,7 +1200,7 @@ var skills = [
 		name: "Pilates",
 		description: "This course makes you more flexible so it takes less effort to perform special moves in combat. The course is frequented by many pirates with reading difficulties.",
 		enchantment: "-1 MP to cast combat skills",
-		icon: "no_image.png",
+		icon: "pilates.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.PASSIVE,
 		onUse: function () {
@@ -1209,12 +1209,15 @@ var skills = [
 	},
 	{
 		id: 69,
-		name: "TODO: Diplomacy",
-		description: "",
+		name: "Diplomacy",
+		description: "This course teaches you how to solve problems through negotiation instead of fighting. Where's the fun in that?",
 		enchantment: "Your first 5 run aways from combat each day don't cost a turn",
-		icon: "no_image.png",
+		icon: "handshake.png",
 		source: skillSource.DRELLAUBIG,
-		category: skillType.PASSIVE
+		category: skillType.PASSIVE,
+		onUse: function () {
+			player.effFreeRunAways += 5;
+		}
 	},
 
 	/******
@@ -1264,13 +1267,13 @@ var skills = [
 		name: "Yodelling",
 		description: "This course teaches you how to sing at the top of your lungs to be heard for miles around you. Being a good singer is entirely optional.",
 		enchantment: "10 turns of +5% chance for a combat",
-		icon: "no_image.png",
+		icon: "yodelling.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.NONCOMBAT,
 		cost: 15,
 		onUse: function () {
-			hint ("You put on a dirndl, gaining 10 turns of Yodelling!", "g");
-			return addBuff (13, 10);
+			hint ("You put on some lederhosen, gaining 10 turns of Yodelling!", "g");
+			return addBuff(13, 10);
 		}
 	},
 	{

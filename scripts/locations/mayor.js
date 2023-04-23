@@ -8,76 +8,72 @@ function displayMayorText() {
     }
 
     // tutorial
-    if (player.quests[questEnum.TUTORIAL] < 8) {
+    if (getQuestState(questEnum.TUTORIAL) < 8) {
         newMayorText("\"Ah hello, new to this town and looking for work are you? Are you on your own? Where is your sidekick?\"");
         newMayorText("\"Excuse me?\", you reply. \"I work on my own.\"");
         newMayorText("\"You're an adventurer right? You can't work on your own, every adventurer has someone with them. Sidekick, minion, familiar, companion, buddy, whatever you want to call it. I take it you're new to this whole adventuring business?\"");
         newMayorText("\"Well... uh... I was just on my way to get one now actually\", you lie.");
         newMayorText("\"Well I hear the general store in town has some bargains right now on minions. That might be a good place to go.\"");
         newMayorText("You thank the mayor, and set out with a new action plan: 1) Buy a minion from the general store. 2) Head to the pen at your house. 3) Select that minion to travel with you.");
-        save();
         return;
     }
 
     // level 1
-    if (!player.quests[questEnum.TOWNHALL] && player.quests[questEnum.TUTORIAL] == 8) {
+    if (getQuestState(questEnum.TOWNHALL) == 0 && getQuestState(questEnum.TUTORIAL) == 8) {
         newMayorText("\"Perfect timing, I have some work for you. I have lost the Town Hall's master key. I know I have a spare in the Town Hall basement, which you can reach through the hatch round the back. I'd go get it myself, but the basement has unfortunately been taken over by a band of marauding spider adventurers!\"");
         newMayorText("\"Sounds scary\", you reply. \"How big and dangerous are these spiders? 1 foot tall? 3 feet? Worse?\"");
         newMayorText("\"Oh, ahem, well, actually they are just normal house spiders, but I have a serious case of arachnophobia.\"");
         newMayorText("That doesn't sound to bad, this quest should be a piece of cake!");
-        player.quests[questEnum.TOWNHALL] = 1;
-        save();
+        setQuestState(questEnum.TOWNHALL, 1);
     }
-    else if (player.quests[questEnum.TOWNHALL] == 1) {
+    else if (getQuestState(questEnum.TOWNHALL) == 1) {
         newMayorText("\"Any luck finding the key in the Town Hall Basement? Not yet? Please take a look when you next have a chance.\"");
     }
-    else if (player.quests[questEnum.TOWNHALL] == 2) {
+    else if (getQuestState(questEnum.TOWNHALL) == 2) {
         newMayorText("\"Good job finding the key! Just use it from your inventory and access to the rest of the Town Hall is all yours!\"");
     }
-    else if (player.quests[questEnum.TOWNHALL] == 3) {
+    else if (getQuestState(questEnum.TOWNHALL) == 3) {
         newMayorText("\"Well done on opening the Town Hall. You are free to explore it if you wish.\"");
-        player.quests[questEnum.TOWNHALL] = 4;
         finishMayorQuest();
+        setQuestState(questEnum.TOWNHALL, 4);
 		if (player.level <= 1) {
 			newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 2.\"");
 		}
     }
 
     //level 2
-    if (player.level >= 2 && !player.quests[questEnum.ORCCAMP]) {
+    if (player.level >= 2 && getQuestState(questEnum.ORCCAMP) == 0) {
         newMayorText("\"A small army of orcs have gathered on the outskirts of town. We're worried that this could be an attack. Please can you find and talk to their leader.\"");
-        player.quests[questEnum.ORCCAMP] = 1;
-        save();
+        setQuestState(questEnum.ORCCAMP, 1);
     }
-    else if (player.quests[questEnum.ORCCAMP] >= 1 && player.quests[questEnum.ORCCAMP] <= 5) {
+    else if (getQuestState(questEnum.ORCCAMP) >= 1 && getQuestState(questEnum.ORCCAMP) <= 5) {
         newMayorText("\"Have you spoken to the leader of the orc camp on the outskirts of town yet? Maybe you can convince one of the majors to let you see the leader.\"");
     }
-    else if (player.quests[questEnum.ORCCAMP] == 6) {
+    else if (getQuestState(questEnum.ORCCAMP) == 6) {
 		newMayorText("\"So the orcs aren't planning an attack? Well that's good news! I wonder what they are here for? I hope we can trust them.\"");
-        player.quests[questEnum.ORCCAMP] = 7;
         finishMayorQuest();
+        setQuestState(questEnum.ORCCAMP, 7);
 		if (player.level <= 2) {
 			newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 3.\"");
 		}
     }
 
     //level 3
-    if (player.level >= 3 && !player.quests[questEnum.HAPPYVILLE]) {
+    if (player.level >= 3 && getQuestState(questEnum.HAPPYVILLE) == 0) {
         newMayorText("\"I've had a distress call from a village far off in the mountains to the West called Happyville.\"");
         newMayorText("\"They sound like a friendly bunch.\" you reply.");
         newMayorText("\"Ugh. You'd think so, but they're all so weird. The endless smiling, it's creepy. I think they're part of a strange demon-summoning cult.\"");
         newMayorText("You take a step back. \"Wow, OK, this went a direction I wasn't expecting. I take it you want me to help them? Are you sure they should be helped?\"");
         newMayorText("\"Well I'm certainly not going myself. If you could get them to do whatever you need to do to get them to stop calling me I'd be grateful.\"");
-        player.quests[questEnum.HAPPYVILLE] = 1;
-        save();
+        setQuestState(questEnum.HAPPYVILLE, 1);
     }
-    else if (player.quests[questEnum.HAPPYVILLE] >= 1  && player.quests[questEnum.HAPPYVILLE] <= 4) {
+    else if (getQuestState(questEnum.HAPPYVILLE) >= 1  && getQuestState(questEnum.HAPPYVILLE) <= 4) {
         newMayorText("\"Hey get a move on solving the problem those crazy Happyville people in the mountains are having! I really don't want them to phone me again, they give me the creeps!\"");
     }
-    else if (player.quests[questEnum.HAPPYVILLE] == 5) {
+    else if (getQuestState(questEnum.HAPPYVILLE) == 5) {
 		newMayorText("\"So they were a bunch of demon-summoning cultists after all, and you helped them summon the demon but defeated it anyway? Nice going, that should shut them up for a while.\"");
-        player.quests[questEnum.HAPPYVILLE] = 6;
         finishMayorQuest();
+        setQuestState(questEnum.HAPPYVILLE, 6);
 		if (player.level <= 3) {
 			newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 4.\"");
 		}
@@ -86,8 +82,6 @@ function displayMayorText() {
     if (mayorTextDiv.textContent === "") {
         newMayorText("\"I have nothing for you right now. Please come back later when you are stronger.\"");
     }
-
-    displayQuestLog();
 }
 
 // Adds a new paragraph of text on the Mayor screen
@@ -97,6 +91,7 @@ function newMayorText(t) {
 	mayorTextDiv.appendChild(newElement);
 }
 
+// Finishes a mayor quest. Rewards are not tied to a specific quest, but the number completed
 function finishMayorQuest() {
     player.mayorQuestsCompleted ++;
     switch (player.mayorQuestsCompleted) {
@@ -124,16 +119,16 @@ function finishMayorQuest() {
             newMayorText("\"I'm glad I could provide you with the reward that you really wanted. Here's hoping the next work I have for you will go this well!\"");
             break;
     }
-    save();
 }
 
+// Gains a Drella U course voucher and appends the item gain paragraph
 function gainMayorVoucher() {
-	gainItem (35, 1);
-	let newElement = document.createElement("p");
-	newElement.classList.add("item_Image");
-	newElement.innerHTML = `You receive a <img src='./images/${items[35].icon}'> ${items[35].name}!`;
-	newElement.addEventListener("click", function() {
-        openModal(modalType.ITEM, 35);
-    });
-	mayorTextDiv.appendChild(newElement);
+	gainItem(35, 1);
+	let e = document.createElement("p");
+	e.classList.add("item_Image");
+	e.innerHTML = `You receive a <img src='./images/${items[35].icon}'> ${items[35].name}`;
+	e.onclick = function() {
+		openModal (modalType.ITEM, 35);
+	}
+	mayorTextDiv.appendChild(e);
 }

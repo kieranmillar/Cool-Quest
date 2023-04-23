@@ -111,7 +111,7 @@ function goToLocation (l) {
 			break;
 		case "skills":
 			show(location_skills);
-			if (player.quests[questEnum.TUTORIAL] > 6) {
+			if (getQuestState(questEnum.TUTORIAL) > 6) {
 				hide(buff_tutorial);
 			}
 			displaySkills();
@@ -122,37 +122,35 @@ function goToLocation (l) {
 			hide(map_townButton);
 			hide(map_outskirtsButton);
 			hide(map_mountainsButton);
-			if (player.quests[questEnum.TUTORIAL] >= 6) {
+			if (getQuestState(questEnum.TUTORIAL) >= 6) {
 				show(map_townButton);
 			}
-			if (player.quests[questEnum.ORCCAMP] >= 1) {
+			if (getQuestState(questEnum.ORCCAMP) >= 1) {
 				show(map_outskirtsButton);
 			}
-			if (player.quests[questEnum.HAPPYVILLE] >= 1) {
+			if (getQuestState(questEnum.HAPPYVILLE) >= 1) {
 				show(map_mountainsButton);
 			}
 			break;
 		case "house":
 			show(location_house);
-			if (player.quests[questEnum.TUTORIAL] == 1) {
+			if (getQuestState(questEnum.TUTORIAL) == 1) {
 				show(link_equipment);
 				hide(inventory_tutorial2);
 				hide(house_normal);
-				player.quests[questEnum.TUTORIAL] = 2;
 				gainItem(1, 1);
-				save();
+				setQuestState(questEnum.TUTORIAL, 2);
 			}
-			else if (player.quests[questEnum.TUTORIAL] == 3) {
+			else if (getQuestState(questEnum.TUTORIAL) == 3) {
 				hide(equip_tutorial);
 				show(link_skills);
-				player.quests[questEnum.TUTORIAL] = 4;
+				setQuestState(questEnum.TUTORIAL, 4);
 			}
-			else if (player.quests[questEnum.TUTORIAL] == 5) {
+			else if (getQuestState(questEnum.TUTORIAL) == 5) {
 				hide(buff_tutorial);
 				show(link_town);
-				player.quests[questEnum.TUTORIAL] = 6;
 				gainItem(2, 1);
-				save();
+				setQuestState(questEnum.TUTORIAL, 6);
 			}
 			if (player.turnsToMidnight <= 0) {
 				show(house_sleepButton);
@@ -181,21 +179,19 @@ function goToLocation (l) {
 			show(location_town);
 			hide(house_tutorial3);
 			show(house_normal);
-			if (player.quests[questEnum.TUTORIAL] == 6) {
-				player.quests[questEnum.TUTORIAL] = 7;
-				displayQuestLog();
-				save();
+			if (getQuestState(questEnum.TUTORIAL) == 6) {
+				setQuestState(questEnum.TUTORIAL, 7);
 			}
 			break;
 		case "townHall":
 			show(location_townHall);
-			if (player.quests[questEnum.TOWNHALL] >= 1) {
+			if (getQuestState(questEnum.TOWNHALL) >= 1) {
 				show(townHall_basementButton);
 			}
 			else {
 				hide(townHall_basementButton);
 			}
-			if (!player.quests[questEnum.TOWNHALL] || player.quests[questEnum.TOWNHALL] < 3) {
+			if (getQuestState(questEnum.TOWNHALL) < 3) {
 				hide(townHall_taxOfficeButton);
 				hide(townHall_canteenButton);
 			}
@@ -236,16 +232,14 @@ function goToLocation (l) {
 			break;
 		case "orcCamp":
 			show(location_orcCamp);
-			if (player.quests[questEnum.ORCCAMP] == 1) {
+			if (getQuestState(questEnum.ORCCAMP) == 1) {
 				show(orcCamp_intro);
-				player.quests[questEnum.ORCCAMP] = 2;
-				redrawCharPane();
-				save();
+				setQuestState(questEnum.ORCCAMP, 2);
 			}
 			else {
 				hide(orcCamp_intro);
 			}
-			if (player.quests[questEnum.ORCCAMP] < 6) {
+			if (getQuestState(questEnum.ORCCAMP) < 6) {
 				orcCamp_leaderTentButton.innerHTML = "Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'>)";
 			}
 			else {
@@ -257,16 +251,14 @@ function goToLocation (l) {
 			break;
 		case "happyville":
 			show(location_happyville);
-			if (player.quests[questEnum.HAPPYVILLE] == 1) {
+			if (getQuestState(questEnum.HAPPYVILLE) == 1) {
 				show(happyville_intro);
-				player.quests[questEnum.HAPPYVILLE] = 2;
-				redrawCharPane();
-				save();
+				setQuestState(questEnum.HAPPYVILLE, 2);
 			}
 			else {
 				hide(happyville_intro);
 			}
-			if (player.quests[questEnum.HAPPYVILLE] < 4) {
+			if (getQuestState(questEnum.HAPPYVILLE) < 4) {
 				show(happyville_bigTreeButton);
 				hide(happyville_santasWorkshopButton);
 			}
@@ -274,7 +266,7 @@ function goToLocation (l) {
 				hide(happyville_bigTreeButton);
 				show(happyville_santasWorkshopButton);
 			}
-			if (player.quests[questEnum.HAPPYVILLE] < 5) {
+			if (getQuestState(questEnum.HAPPYVILLE) < 5) {
 				happyville_santasWorkshopButton.innerHTML = "Adventure in Santa's Workshop (<img src='./images/adventure.png' title='(1 Adventure)'>)";
 			}
 			else {
@@ -292,7 +284,7 @@ function goToLocation (l) {
 		case "dungeons":
 			show(location_dungeons);
 			hide(dungeons_closedYellowDoorText);
-			if (!player.quests[questEnum.YELLOWKEY]) {
+			if (getQuestState(questEnum.YELLOWKEY) == 0) {
 				show(dungeons_closedYellowDoorButton);
 				hide(dungeons_yellowDoorButton);
 			}

@@ -48,13 +48,13 @@ function displayGeneralShop() {
     accessoryContainer.appendChild(createGeneralShopItem(5)); // nihilistic running shoes
     generalShopContainerDiv.appendChild(accessoryContainer);
 
-    if (!player.quests[questEnum.YELLOWKEY]) {
+    if (getQuestState(questEnum.YELLOWKEY) == 0) {
         let dungeonKeysHeader = document.createElement("h2");
         dungeonKeysHeader.textContent = "Dungeon Keys";
         generalShopContainerDiv.appendChild(dungeonKeysHeader);
         let dungeonKeysContainer = document.createElement("div");
         dungeonKeysContainer.classList.add("inv_container");
-        if (!player.quests[questEnum.YELLOWKEY]) {
+        if (getQuestState(questEnum.YELLOWKEY) == 0) {
             dungeonKeysContainer.appendChild(createGeneralShopItem(30)); // yellow key
         }
         generalShopContainerDiv.appendChild(dungeonKeysContainer);
@@ -114,7 +114,7 @@ function createGeneralShopMinion(id, cost) {
 
 // buy an item from the general shop
 function buyGeneralShopItem (id) {
-    if (player.quests[questEnum.TUTORIAL] < 8) {
+    if (getQuestState(questEnum.TUTORIAL) < 8) {
         hint("Buy a minion first, wouldn't want to run out of money!", "r");
         return;
     }

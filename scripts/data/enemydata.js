@@ -221,30 +221,28 @@ var combats = [
 			"He angles his medals towards the sun and the reflection dazzles you. While stunned, he punches you."
 		],
 		afterCombat: function () {
-			if (player.quests[questEnum.ORCCAMP] < 5)
-			{
-				switch (player.quests[questEnum.ORCCAMP])
-				{
+			if (getQuestState(questEnum.ORCCAMP) < 5) {
+				switch (getQuestState(questEnum.ORCCAMP)) {
 					case 2:
-						addCombatText ("You stand over the Major who is lying dazed on the floor.");
-						addCombatText ("\"Hey, I'm looking to speak to your leader, any chance you could let me have a word with them?\" you ask politely.");
-						addCombatText ("\"GET LOST HUMAN! NOBODY IS ALLOWED TO SPEAK TO THE LEADER WITHOUT PERMISSION FROM ÓLAFUR!\"");
-						addCombatText ("You don't know who Ólafur is, could he be one of the other Majors? You walk off to look for another Major. There should be another one around here somewhere...");
+						addCombatText("You stand over the Major who is lying dazed on the floor.");
+						addCombatText("\"Hey, I'm looking to speak to your leader, any chance you could let me have a word with them?\" you ask politely.");
+						addCombatText("\"GET LOST HUMAN! NOBODY IS ALLOWED TO SPEAK TO THE LEADER WITHOUT PERMISSION FROM ÓLAFUR!\"");
+						addCombatText("You don't know who Ólafur is, could he be one of the other Majors? You walk off to look for another Major. There should be another one around here somewhere...");
 						break;
 					case 3:
-						addCombatText ("You try a new ruse on this next Major.");
-						addCombatText ("\"I just spoke to Ólafur and he told me I need to speak to the leader, I need you to take me to them.\"");
-						addCombatText ("\"HAH! HOW IS THAT POSSIBLE? ÓLAFUR IS BACK IN HEADQUARTERS, YOU COULD NOT HAVE SPOKEN TO HIM! YOU CAN'T FOOL ME!\"");
-						addCombatText ("Rats, you'll get it right next time...");
+						addCombatText("You try a new ruse on this next Major.");
+						addCombatText("\"I just spoke to Ólafur and he told me I need to speak to the leader, I need you to take me to them.\"");
+						addCombatText("\"HAH! HOW IS THAT POSSIBLE? ÓLAFUR IS BACK IN HEADQUARTERS, YOU COULD NOT HAVE SPOKEN TO HIM! YOU CAN'T FOOL ME!\"");
+						addCombatText("Rats, you'll get it right next time...");
 						break;
 					case 4:
-						addCombatText ("You clear your throat and try to sound as professional as possible.");
-						addCombatText ("\"Now that you will listen to me instead of fight me, I am a messenger. I have been sent by Ólafur to deliver important news. Please take me to the leader.\"");
-						addCombatText ("\"OH I AM SORRY! MEET ME AT THE TENT AND I WILL LET YOU IN!\"");
-						addCombatText ("Success! Time to talk to the leader.");
+						addCombatText("You clear your throat and try to sound as professional as possible.");
+						addCombatText("\"Now that you will listen to me instead of fight me, I am a messenger. I have been sent by Ólafur to deliver important news. Please take me to the leader.\"");
+						addCombatText("\"OH I AM SORRY! MEET ME AT THE TENT AND I WILL LET YOU IN!\"");
+						addCombatText("Success! Time to talk to the leader.");
 						break;
 				}
-				player.quests[questEnum.ORCCAMP] ++;
+				setQuestState(questEnum.ORCCAMP, getQuestState(questEnum.ORCCAMP) ++);
 			}	
 			return true;
 		}
@@ -432,13 +430,13 @@ var combats = [
 			"As the queen of provocation, fighting her makes you mad. You'd complain, but before you she's humble. Besides, she told you that if you complain once more, you'll meet an entire army of her."
 		],
 		afterCombat: function () {
-			addCombatText ('Björc falls to the ground. "You have beaten me. What did you want from me?"');
-			addCombatText ('"I only came here to ask you what you were doing setting up camp. We are worried you are planning an attack on the town."');
-			addCombatText ('"What?! Hahaha of course not! We don\'t care about your puny town! We have much bigger enemies to fight! Why didn\'t you ask earlier?"');
-			addCombatText ('You sigh. "Well, if you leave us alone, we\'re happy to leave you alone."');
-			addCombatText ('"You have a deal!"');
-			addCombatText ('With that issue resolved, it might be a good idea to retrn to the Mayor and relay the news.');
-			player.quests[questEnum.ORCCAMP] = 6;
+			addCombatText('Björc falls to the ground. "You have beaten me. What did you want from me?"');
+			addCombatText('"I only came here to ask you what you were doing setting up camp. We are worried you are planning an attack on the town."');
+			addCombatText('"What?! Hahaha of course not! We don\'t care about your puny town! We have much bigger enemies to fight! Why didn\'t you ask earlier?"');
+			addCombatText('You sigh. "Well, if you leave us alone, we\'re happy to leave you alone."');
+			addCombatText('"You have a deal!"');
+			addCombatText('With that issue resolved, it might be a good idea to retrn to the Mayor and relay the news.');
+			setQuestState(questEnum.ORCCAMP, 6);
 			return true;
 		}
 	},
@@ -892,7 +890,7 @@ var combats = [
 		afterCombat: function () {
 			addCombatText ('TODO: After combat text');
 			addCombatText ("Looks like Happyville's problems are all solved now, best to return the Mayor for your reward.");
-			player.quests[questEnum.HAPPYVILLE] = 5;
+			setQuestState(questEnum.HAPPYVILLE, 5);
 			return true;
 		}
 	},

@@ -85,7 +85,7 @@ var zones = [
 		noncombats: [],
 		special: function ()
 		{
-			if (player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] == 1 && player.quests[questEnum.ORCCAMP] < 6) {
+			if (player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] == 1 && getQuestState(questEnum.ORCCAMP) < 6) {
 				player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 0;
 				beginCombat(combats[15]);
 			}
@@ -105,7 +105,7 @@ var zones = [
 		noncombats: [],
 		special: function ()
 		{
-			if (player.quests[questEnum.ORCCAMP] >= 6) {
+			if (getQuestState(questEnum.ORCCAMP) >= 6) {
 				beginNoncombat(6);
 			}
 			else if (player.equipment[4] == 25 ||
@@ -114,10 +114,10 @@ var zones = [
 				player.equipment[7] == 25) {
 				beginNoncombat(7);
 			}
-			else if (player.quests[questEnum.ORCCAMP] < 5) {
+			else if (getQuestState(questEnum.ORCCAMP) < 5) {
 				beginNoncombat(4);
 			}
-			else if (player.quests[questEnum.ORCCAMP] == 5) {
+			else if (getQuestState(questEnum.ORCCAMP) == 5) {
 				beginNoncombat(5);
 			}
 		}
@@ -172,7 +172,7 @@ var zones = [
 		combats: [32, 33, 34],
 		noncombats: [12],
 		special: function () {
-			if (player.quests[questEnum.HAPPYVILLE] >= 5) {
+			if (getQuestState(questEnum.HAPPYVILLE) >= 5) {
 				beginNoncombat(13);
 				return;
 			}

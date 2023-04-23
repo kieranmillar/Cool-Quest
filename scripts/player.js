@@ -451,3 +451,18 @@ function buyMP(amount) {
 	hint(`${gainMp(amount)} It cost ${cost} Gold.`, "g");
 	save();
 }
+
+// Returns the current value for a quest tracker. Argument is a value of questEnum
+function getQuestState(quest) {
+	if (!player.quests[quest]) {
+		return 0;
+	}
+	return player.quests[quest];
+}
+
+// Set the value for a quest tracker. Arguments are a value of questEnum and the value to set the tracker to
+function setQuestState(quest, value) {
+	player.quests[quest] = value;
+	displayQuestLog();
+	save();
+}

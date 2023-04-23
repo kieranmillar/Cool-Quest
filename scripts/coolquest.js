@@ -71,36 +71,36 @@ function load() {
 	hide(house_tutorial3);
 
 	// If we load mid-tutorial we may have to hide or display some stuff
-	if (player.quests[questEnum.TUTORIAL] < 7) {
+	if (getQuestState(questEnum.TUTORIAL) < 7) {
 		linkElements.forEach(link => hide(link));
 		show(link_inventory);
 		show(link_map);
 		show(link_settings);
 		show(house_normal);
-		if (player.quests[questEnum.TUTORIAL] > 0) {
+		if (getQuestState(questEnum.TUTORIAL) > 0) {
 			hide(inventory_tutorial1);
 			show(inventory_tutorial2);
 			show(link_house);
 		}
-		if (player.quests[questEnum.TUTORIAL] > 1) {
+		if (getQuestState(questEnum.TUTORIAL) > 1) {
 			show(link_equipment);
 			hide(inventory_tutorial2);
 		}
-		if (player.quests[questEnum.TUTORIAL] > 2) {
+		if (getQuestState(questEnum.TUTORIAL) > 2) {
 			show(equip_tutorial);
 			hide(house_tutorial1);
 			show(house_tutorial2);
 		}
-		if (player.quests[questEnum.TUTORIAL] > 3) {
+		if (getQuestState(questEnum.TUTORIAL) > 3) {
 			hide(equip_tutorial);
 			show(link_skills);
 		}
-		if (player.quests[questEnum.TUTORIAL] > 4) {
+		if (getQuestState(questEnum.TUTORIAL) > 4) {
 			show(buff_tutorial);
 			hide(house_tutorial2);
 			show(house_tutorial3);
 		}
-		if (player.quests[questEnum.TUTORIAL] > 5) {
+		if (getQuestState(questEnum.TUTORIAL) > 5) {
 			hide(buff_tutorial);
 			show(link_town);
 		}
@@ -248,6 +248,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	hide(loadingDiv);
 	gameDiv.classList.add("flex");
+
+	displayQuestLog();
 
 	hint ("Welcome to Cool Quest!", "g");
 });

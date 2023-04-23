@@ -123,15 +123,15 @@ function buyHappyvilleShopMinion (id, cost) {
 function displayHappyvilleTree() {
     happyvilleTreeContainerDiv.replaceChildren();
     let presentCount = getItemAmount(37);
-    if (player.quests[questEnum.HAPPYVILLE] > 3) {
+    if (getQuestState(questEnum.HAPPYVILLE) > 3) {
         addHappyvilleTreeText("The tree has been destroyed, and in its place is Santa's Workshop.");
     }
     else if (presentCount >= 20) {
         addHappyvilleTreeText("TODO: Summoning text");
         loseItem(37, 20);
-        player.quests[questEnum.HAPPYVILLE] = 4;
+        setQuestState(questEnum.HAPPYVILLE, 4);
     }
-    else if(player.quests[questEnum.HAPPYVILLE] == 2) {
+    else if(getQuestState(questEnum.HAPPYVILLE) == 2) {
         addHappyvilleTreeText("You head towards the large tree in the centre of the village square. A large crowd is gathered there, and everyone looks glum. You push your way to the front of the crowd, and spot who appears to be the person most in charge here.");
         addHappyvilleTreeText("\"Oh, are you from Drella? Thank you! They normally never answer us, but I knew they'd understand the gravity of the situation this time!\"");
         addHappyvilleTreeText("\"What's the problem?\" you ask.");
@@ -143,7 +143,7 @@ function displayHappyvilleTree() {
         addHappyvilleTreeText("Just then another person walks up to you both. \"Hey boss, it's almost time for the summoning, we got the presents yet?\"");
         addHappyvilleTreeText("\"Hahaha please ignore him... he means summoning... everybody in town, to here, for the ritual... festivities! The festivities!\"");
         addHappyvilleTreeText("Whatever. You head off to look for presents.");
-        player.quests[questEnum.HAPPYVILLE] = 3;
+        setQuestState(questEnum.HAPPYVILLE, 3);
     }
     else {
         let presentText = presentCount + " presents";
@@ -156,9 +156,6 @@ function displayHappyvilleTree() {
         addHappyvilleTreeText(`"We still need enough presents to go under the tree. You currently have ${presentText}. Please could you bring us 20 of them."`);
         addHappyvilleTreeText("\"You should be able to find plenty of presents in the present factory, or by trading in wrapping paper at the gift shop. There are reports of a thief who hides in the nearby forest who has been stealing presents too.\"");
     }
-
-    displayQuestLog();
-    save();
 }
 
 // adds a paragraph of text to the happyville tree location

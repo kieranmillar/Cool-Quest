@@ -1526,10 +1526,10 @@ var skills = [
 
 // Casting your class basic buff skill is part of the tutorial
 function castTutorialSkill() {
-	if (player.quests[questEnum.TUTORIAL] != 4)	{
+	if (getQuestState(questEnum.TUTORIAL) != 4)	{
 		return;
 	}
-	player.quests[questEnum.TUTORIAL] = 5;
+	setQuestState(questEnum.TUTORIAL, 5);
 	show(buff_tutorial);
 	hide(house_tutorial2);
 	show(house_tutorial3);

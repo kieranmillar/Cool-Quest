@@ -139,8 +139,8 @@ function unequipMinion(id) {
 
 // Equips a minion, unequipping if necessary
 function equipMinion(id) {
-    if (player.quests[questEnum.TUTORIAL] == 7) {
-        player.quests[questEnum.TUTORIAL] = 8;
+    if (getQuestState(questEnum.TUTORIAL) == 7) {
+        setQuestState(questEnum.TUTORIAL, 8);
         showMinionTutorialOneOff = true;
     }
     if (!getMinionOwned(id)) {

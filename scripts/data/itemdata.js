@@ -36,7 +36,7 @@ var items = [
 		category: itemType.MISC,
 		sell: 0,
 		onUse: function () {
-			if (player.quests[questEnum.TUTORIAL]) {
+			if (getQuestState(questEnum.TUTORIAL)) {
 				hint("You remind yourself of the location of your house, then throw away the letter.", "g");
 				return true;
 			}
@@ -45,7 +45,7 @@ var items = [
 			show(inventory_tutorial2);
 			show(link_map);
 			show(link_house);
-			player.quests[questEnum.TUTORIAL] = 1;
+			setQuestState(questEnum.TUTORIAL, 1);
 			return true;
 		}
 	},
@@ -59,9 +59,8 @@ var items = [
 		category: itemType.ACC,
 		sell: 5,
 		onWear: function () {
-			if (player.quests[questEnum.TUTORIAL] == 2)
-			{
-				player.quests[questEnum.TUTORIAL] = 3;
+			if (getQuestState(questEnum.TUTORIAL) == 2) {
+				setQuestState(questEnum.TUTORIAL, 3);
 				show(equip_tutorial);
 				hide(house_tutorial1);
 				show(house_tutorial2);
@@ -83,10 +82,9 @@ var items = [
 		cost: 5,
 		sell: 2,
 		onUse: function () {
-			let success = eat (2);
-			if (success == true)
-			{
-				hint (eatMessage (2) + " " + gainMp(5), "g");
+			let success = eat(2);
+			if (success) {
+				hint(`${eatMessage(2)} ${gainMp(5)}`, "g");
 			}
 			return success;
 		}
@@ -117,13 +115,13 @@ var items = [
 		sell: 20,
 		onUse: function () {
 			let x = Math.floor(Math.random() * 5) + 20;
-			hint ("You drink the health potion. " + gainHp (x), "g");
+			hint(`You drink the health potion. ${gainHp(x)}`, "g");
 			return true;
 		},
 		onCombat: function () {
 			let x = Math.floor(Math.random() * 5) + 20;
-			addCombatText ("You drink the health potion.");
-			addCombatText (gainHp (x));
+			addCombatText("You drink the health potion.");
+			addCombatText(gainHp(x));
 		}
 	},
 	{
@@ -154,13 +152,10 @@ var items = [
 			player.effPow += 2;
 		},
 		onCombat: function () {
-			addCombatText ("You hurl the paperclip at your enemy like a spear.");
+			addCombatText("You hurl the paperclip at your enemy like a spear.");
 			let damage = 40 - monster.def;
-			if (damage <= 0)
-			{
-				damage = 1;
-			}
-			addCombatText ("Your opponent takes " + damage + " damage!");
+			damage = Math.max(damage, 1);
+			addCombatText(`Your opponent takes ${damage} damage!`);
 			monster.hp -= damage;
 		}
 	},
@@ -178,7 +173,7 @@ var items = [
 			player.effDef += 1;
 		},
 		onCombat: function () {
-			addCombatText ("You hold the cardboard panel out in front of yourself and brace for impact.");
+			addCombatText("You hold the cardboard panel out in front of yourself and brace for impact.");
 		}
 	},
 	{
@@ -204,12 +199,12 @@ var items = [
 		category: itemType.MISC,
 		sell: 0,
 		onUse: function () {
-			if (player.quests[questEnum.TOWNHALL] < 3) {
-				hint ("You unlock various town hall doors and the key vanishes, like all good video game keys.", "g");
-				player.quests[questEnum.TOWNHALL] = 3;
+			if (getQuestState(questEnum.TOWNHALL) < 3) {
+				hint("You unlock various town hall doors and the key vanishes, like all good video game keys.", "g");
+				setQuestState(questEnum.TOWNHALL, 3);
 			}
 			else {
-				hint ("You've already unlocked the town hall, so you throw away the key.", "g");
+				hint("You've already unlocked the town hall, so you throw away the key.", "g");
 			}
 			return true;
 		}
@@ -266,10 +261,9 @@ var items = [
 		turns: 12,
 		sell: 200,
 		onUse: function () {
-			let success = eat (13);
-			if (success == true)
-			{
-				hint (eatMessage (13), "g");
+			let success = eat(13);
+			if (success) {
+				hint(eatMessage(13), "g");
 			}
 			return success;
 		}
@@ -286,10 +280,9 @@ var items = [
 		turns: 10,
 		sell: 10,
 		onUse: function () {
-			let success = eat (14);
-			if (success == true)
-			{
-				hint (eatMessage (14), "g");
+			let success = eat(14);
+			if (success) {
+				hint(eatMessage(14), "g");
 			}
 			return success;
 		}
@@ -306,11 +299,10 @@ var items = [
 		turns: 2,
 		sell: 10,
 		onUse: function () {
-			let success = eat (15);
-			if (success == true)
-			{
-				hint (eatMessage (15) + " You gain 10 turns of Crème Casing.", "g");
-				addBuff (4, 10);
+			let success = eat(15);
+			if (success) {
+				hint(`${eatMessage(15)} You gain 10 turns of Crème Casing.`, "g");
+				addBuff(4, 10);
 			}
 			return success;
 		}
@@ -353,11 +345,10 @@ var items = [
 		turns: 6,
 		sell: 10,
 		onUse: function () {
-			let success = eat (18);
-			if (success == true)
-			{
-				hint (eatMessage (18) + " You gain 20 turns of Orcine Porcine Power.", "g");
-				addBuff (6, 20);
+			let success = eat(18);
+			if (success) {
+				hint(`${eatMessage(18)} You gain 20 turns of Orcine Porcine Power.`, "g");
+				addBuff(6, 20);
 			}
 			return success;
 		}
@@ -487,10 +478,9 @@ var items = [
 		sell: 30,
 		onUse: function () {
 			let success = eat(27);
-			if (success == true)
-			{
+			if (success) {
 				player.basePow += 2;
-				hint (eatMessage(27) + " Your POW increased by 2!", "g");
+				hint(`${eatMessage(27)} Your POW increased by 2!`, "g");
 			}
 			return success;
 		}
@@ -508,10 +498,9 @@ var items = [
 		sell: 30,
 		onUse: function () {
 			let success = eat(28);
-			if (success == true)
-			{
+			if (success) {
 				player.baseDef += 2;
-				hint (eatMessage(28) + " Your DEF increased by 2!", "g");
+				hint(`${eatMessage(28)} Your DEF increased by 2!`, "g");
 			}
 			return success;
 		}
@@ -526,8 +515,8 @@ var items = [
 		category: itemType.POTION,
 		sell: 100,
 		onUse: function () {
-			hint ("You gain 10 turns of Your Invisible Now.", "g");
-			addBuff (8, 10);
+			hint("You gain 10 turns of Your Invisible Now.", "g");
+			addBuff(8, 10);
 			return true;
 		}
 	},
@@ -542,17 +531,17 @@ var items = [
 		cost: 200,
 		sell: 100,
 		onUse: function () {
-			if (!player.quests[questEnum.HAPPYVILLE]) {
-				hint ("You don't have access to the dungeons currently.", "r");
+			if (getQuestState(questEnum.HAPPYVILLE) == 0) {
+				hint("You don't have access to the dungeons currently.", "r");
 				return false;
 			}
-			if (!player.quests[questEnum.YELLOWKEY]) {
-				hint ("You unlock the yellow door in the dungeons and the key vanishes, like all good video game keys.", "g");
-				player.quests[questEnum.YELLOWKEY] = 1;
+			if (getQuestState(questEnum.YELLOWKEY) == 0) {
+				hint("You unlock the yellow door in the dungeons and the key vanishes, like all good video game keys.", "g");
+				setQuestState(questEnum.YELLOWKEY, 1);
 				return true;
 			}
 			else {
-				hint ("You've already unlocked this dungeon, you should sell this useless key.", "r");
+				hint("You've already unlocked this dungeon, you should sell this useless key.", "r");
 				return false;
 			}
 		}
@@ -582,8 +571,8 @@ var items = [
 		sell: 10,
 		onUse: function () {
 			let x = Math.floor(Math.random() * 3) + 4;
-			hint ("You drink the lemonade. " + gainMp(x) + " You gain 10 turns of Lemony Fizz.", "g");
-			addBuff (9, 10);
+			hint(`You drink the lemonade. ${gainMp(x)} You gain 10 turns of Lemony Fizz.`, "g");
+			addBuff(9, 10);
 			return true;
 		}
 	},
@@ -600,10 +589,9 @@ var items = [
 		sell: 30,
 		onUse: function () {
 			let success = eat(33);
-			if (success == true)
-			{
+			if (success) {
 				player.baseInit += 2;
-				hint (eatMessage(33) + " Your INIT increased by 2!", "g");
+				hint(`${eatMessage(33)} Your INIT increased by 2!`, "g");
 			}
 			return success;
 		}
@@ -618,9 +606,9 @@ var items = [
 		category: itemType.MISC,
 		sell: 20,
 		onCombat: function () {
-			addCombatText ("You throw the spores at the enemy. They get distracted trying to figure out if these are poisonous or not.");
+			addCombatText("You throw the spores at the enemy. They get distracted trying to figure out if these are poisonous or not.");
 			monster.def = 0;
-			addCombatText ("Their DEF drops to 0.");
+			addCombatText("Their DEF drops to 0.");
 			monster.stunThisRound = true;
 		}
 	},
@@ -665,7 +653,7 @@ var items = [
 			let choice = Math.floor(Math.random() * gifts.length);
 			let gift = gifts[choice];
 			gainItem(gift, 1);
-			hint (`The present contained a ${items[gift].name}!`, "g");
+			hint(`The present contained a ${items[gift].name}!`, "g");
 			return true;
 		}
 	},
@@ -680,8 +668,8 @@ var items = [
 		sell: 1,
 		onCombat: function () {
 			let damage = calcFireDamage(50);
-			addCombatText ("You set fire to the lump of coal and throw it at your opponent. It burns really well.");
-			addCombatText ("Your opponent takes <span class='fire'>" + damage + "</span> fire damage!");
+			addCombatText("You set fire to the lump of coal and throw it at your opponent. It burns really well.");
+			addCombatText(`Your opponent takes <span class='fire'>${damage}</span> fire damage!`);
 			monster.hp -= damage;
 		}
 	},
@@ -790,9 +778,8 @@ var items = [
 		sell: 5,
 		onUse: function () {
 			let success = eat(45);
-			if (success == true)
-			{
-				hint(eatMessage(45) + " You gain 10 turns of Candy Casing.", "g");
+			if (success) {
+				hint(`${eatMessage(45)} You gain 10 turns of Candy Casing.`, "g");
 				addBuff(16, 10);
 			}
 			return success;
@@ -822,8 +809,8 @@ var items = [
 		category: itemType.POTION,
 		sell: 50,
 		onUse: function () {
-			hint ("You crawl under the box and gain 10 turns of Box Disguise.", "g");
-			addBuff (17, 10);
+			hint("You crawl under the box and gain 10 turns of Box Disguise.", "g");
+			addBuff(17, 10);
 			return true;
 		}
 	},
@@ -838,8 +825,8 @@ var items = [
 		cost: 8,
 		sell: 8,
 		onUse: function () {
-			hint ("You close your eyes, give your hand and gain 10 turns of Eternal Flame.", "g");
-			addBuff (19, 10);
+			hint("You close your eyes, give your hand and gain 10 turns of Eternal Flame.", "g");
+			addBuff(19, 10);
 			return true;
 		}
 	},
@@ -857,8 +844,7 @@ var items = [
 		sell: 25,
 		onUse: function () {
 			let success = eat(49);
-			if (success == true)
-			{
+			if (success) {
 				hint(eatMessage(49), "g");
 			}
 			return success;
@@ -875,8 +861,8 @@ var items = [
 		cost: 20,
 		sell: 20,
 		onUse: function () {
-			hint ("You pour the snow out of the snowglobe and gain 10 turns of Magnifying Globe.", "g");
-			addBuff (20, 10);
+			hint("You pour the snow out of the snowglobe and gain 10 turns of Magnifying Globe.", "g");
+			addBuff(20, 10);
 			return true;
 		}
 	},
@@ -917,8 +903,7 @@ var items = [
 		sell: 50,
 		onUse: function () {
 			let success = eat(53);
-			if (success == true)
-			{
+			if (success) {
 				hint(eatMessage(53), "g");
 			}
 			return success;

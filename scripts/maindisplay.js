@@ -152,8 +152,6 @@ function redrawCharPane() {
 		}
 	}
 
-	displayQuestLog();
-
 	doctor_hp_input.max = player.effHpMax - player.hp;
 	doctor_hp_input.value = player.effHpMax - player.hp;
 	doctor_hp_input.dispatchEvent(changeEvent);

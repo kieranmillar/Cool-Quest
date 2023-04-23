@@ -224,6 +224,9 @@ function constructCombatSkillDropdown() {
 		if (i == 24 && monster.castSpecialDelivery == 1) {
 			continue;
 		}
+		if (i == 27 && monster.castCannonBlast != 0) {
+			continue;
+		}
 		if (i == 43 && monster.castExposeSecrets == 1) {
 			continue;
 		}
@@ -314,7 +317,7 @@ function checkEndOfCombat() {
 		let goldGain = monster.gold;
 		goldGain += Math.floor(monster.gold * Math.random() * 0.25);
 		goldGain -= Math.floor(monster.gold * Math.random() * 0.25);//monster drops between +25% and -25%, weighted heavily to the middle
-		goldGain = Math.floor(x * ((100 + player.effGoldBoost) / 100));
+		goldGain = Math.floor(goldGain * ((100 + player.effGoldBoost) / 100));
 		addCombatText(gainGold(goldGain));
 		for (let i = 0; i < monster.drops.length; i++) {
 			let totalItemBoost = player.effItemBoost;

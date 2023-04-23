@@ -83,9 +83,9 @@ function createGeneralShopItem(id) {
     let newElement = document.createElement("span");
     newElement.classList.add("item_Image");
     newElement.innerHTML = `<img src="./images/${items[id].icon}"><span class="wrappableText">${items[id].name}</span>`;
-    newElement.addEventListener("click", function() {
+    newElement.onclick = function() {
         openModal(modalType.ITEM, id);
-    });
+    };
     itemWrapper.appendChild(newElement);
 
     let buyButton = document.createElement("span");
@@ -101,9 +101,9 @@ function createGeneralShopMinion(id, cost) {
     let newElement = document.createElement("span");
     newElement.classList.add("item_Image");
     newElement.innerHTML = `<img src="./images/${minions[id].icon}"><span class="wrappableText">${minions[id].name}</span>`;
-    newElement.addEventListener("click", function() {
+    newElement.onclick = function() {
         openModal(modalType.MINION, id);
-    });
+    };
     minionWrapper.appendChild(newElement);
 
     let buyButton = document.createElement("span");

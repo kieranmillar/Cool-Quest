@@ -67,8 +67,11 @@ function displayMayorText() {
         newMayorText("\"Well I'm certainly not going myself. If you could get them to do whatever you need to do to get them to stop calling me I'd be grateful.\"");
         setQuestState(questEnum.HAPPYVILLE, 1);
     }
-    else if (getQuestState(questEnum.HAPPYVILLE) >= 1  && getQuestState(questEnum.HAPPYVILLE) <= 4) {
+    else if (getQuestState(questEnum.HAPPYVILLE) >= 1  && getQuestState(questEnum.HAPPYVILLE) <= 3) {
         newMayorText("\"Hey get a move on solving the problem those crazy Happyville people in the mountains are having! I really don't want them to phone me again, they give me the creeps!\"");
+    }
+    else if (getQuestState(questEnum.HAPPYVILLE) == 4) {
+        newMayorText("\"What have you done? The phone is ringing off the hook now from those Happyville crazies! I wanted the calls reduced, not increased! You'd better solve this as soon as possible!\"");
     }
     else if (getQuestState(questEnum.HAPPYVILLE) == 5) {
 		newMayorText("\"So they were a bunch of demon-summoning cultists after all, and you helped them summon the demon but defeated it anyway? Nice going, that should shut them up for a while.\"");

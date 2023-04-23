@@ -201,9 +201,9 @@ function displayPen() {
         let newElement = document.createElement("span");
         newElement.classList.add("item_Image");
         newElement.innerHTML = `<img src="./images/${minions[i].icon}"><span class="wrappableText">${player.minionNames[i]} the ${minions[i].name}</span>`;
-        newElement.addEventListener("click", function() {
+        newElement.onclick = function() {
             openModal(modalType.MINION, i);
-        });
+        };
         innerWrapper.appendChild(newElement);
         newElement = document.createElement("p");
         newElement.textContent = `Level: ${getMinionBaseLevel(i)}`;

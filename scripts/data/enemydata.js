@@ -888,8 +888,12 @@ var combats = [
 			return false;
 		},
 		afterCombat: function () {
-			addCombatText ('TODO: After combat text');
-			addCombatText ("Looks like Happyville's problems are all solved now, best to return the Mayor for your reward.");
+			addCombatText("Santa falls to the floor. \"Ho... ho... hooooooo...\"");
+			addCombatText("\"Looks like it's time for you to return to the underworld. What do you say?\" you ask Santa.");
+			addCombatText("Santa glances at you and says nothing. Come to think of it, you're not even sure he understands your language. You kind of just assumed that things would conveniently work out that way.");
+			addCombatText("Santa stands up, and starts to cast a spell. You brace yourself, there is a large flash of light, and then silence. Santa is gone, and so are his elves.");
+			addCombatText("Was that it? Did you really defeat the demon king of the underworld so soon in your adventuring career? It all feels so... anticlimactic.");
+			addCombatText("Looks like Happyville's problems are all solved now, best to return the Mayor for your reward.");
 			setQuestState(questEnum.HAPPYVILLE, 5);
 			return true;
 		}

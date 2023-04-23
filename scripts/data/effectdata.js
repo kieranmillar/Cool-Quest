@@ -44,7 +44,7 @@ var effects = [
 		id: 3,
 		name: "Writing",
 		description: "Your latest terrible opinion column on how the latest generation can't afford a house because they eat too many avocados has directed a lot of justifiable anger in your direction.",
-		enchantment: "+10 Monster Level\n+20 Experience from combats",
+		enchantment: "+10 to all enemy stats\n+20 Experience from combats",
 		icon: "writing.png",
 		effect: function() {
 			player.effMl += 10;
@@ -188,7 +188,7 @@ var effects = [
 		id: 18,
 		name: "Bagpiping",
 		description: "Your loud and off-tune toots are making everyone in the vicinity really mad.",
-		enchantment: "+20 Monster Level\n+40 Experience from combats",
+		enchantment: "+20 to all enemy stats\n+40 Experience from combats",
 		icon: "bagpipes.png",
 		effect: function() {
 			player.effMl += 20;

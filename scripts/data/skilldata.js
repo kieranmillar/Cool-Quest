@@ -1081,28 +1081,50 @@ var skills = [
 
 	{
 		id: 60,
-		name: "TODO: Once per day monster banish (free combat, no rewards, not bosses)",
-		description: "",
-		enchantment: "",
+		name: "TODO: Law",
+		description: "This course teaches you how to put people on house arrest. There's a module about corruption, but it's optional.",
+		enchantment: "Immediately abandon the fight at no turn cost\nEnemy will not appear for the rest of the day\n(Once per day)\n(Cannot be used against bosses)",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.COMBAT,
+		cost: 10,
 		onUse: function () {
 			
 		}
 	},
 	{
 		id: 61,
-		name: "TODO: Once per day yellow ray (wins fight, gets all drops, not bosses)",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Laser Physics",
+		description: "This course teaches you all about laser beams and how to attach them to the heads of sharks.",
+		enchantment: function() {
+			let text = "Immediately win the fight and guarantee all item drops\n(Once per day)\n(Cannot be used against bosses)";
+			if (player.castLaserPhysics) {
+				text += "\n(You have already used this skill today)";
+			}
+			return text;
+		},
+		icon: "laser_beam.png",
 		source: skillSource.DRELLAUBIG,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.COMBAT,
+		cost: 15,
 		onUse: function () {
-			
+			if (monster.boss) {
+				hint("You can't use this against bosses!", "r");
+				return false;
+			}
+			if (player.castLaserPhysics) {
+				hint("You have already used this today!", "r");
+				return false;
+			}
+			addCombatText("You run off to the Drella U laboratory to \"borrow\" a giant laser beam, which you push back to the fight.");
+			addCombatText("You push a button, and after a large WHIRRR sound starts up, followed shortly by a brilliant blast of energy.");
+			addCombatText("You push the button again and look over at your opponent who is nowhere to be found. But they did leave all of their stuff behind. A shame they left it all covered in a thick ash, how inconsiderate of them!");
+			for (let drop of monster.drops) {
+				drop.chance = 100;
+			}
+			monster.hp = 0;
+			player.castLaserPhysics = true;
+			return true;
 		}
 	},
 	{
@@ -1118,7 +1140,7 @@ var skills = [
 		id: 63,
 		name: "TODO: Another 2 turn stun skill",
 		description: "",
-		enchantment: "",
+		enchantment: "Stuns the enemy for 2 rounds\n(Once per combat)",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.COMBAT,
@@ -1158,7 +1180,13 @@ var skills = [
 		id: 66,
 		name: "Effective Time Management",
 		description: "This course teaches you how to speed through small tasks so you have more time to spend when it really matters.",
-		enchantment: "Extend all active effects by 10 turns\n(Once per day)",
+		enchantment: function() {
+			let text = "Extend all active effects by 10 turns\n(Once per day)";
+			if (player.castTimeManagement) {
+				text += "\n(You have already used this skill today)";
+			}
+			return text;
+		},
 		icon: "stopwatch.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.NONCOMBAT,

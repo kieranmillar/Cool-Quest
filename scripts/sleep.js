@@ -15,6 +15,7 @@ function sleep() {
 	player.day++;
 	player.full = 0;
 	player.castTimeManagement = false;
+	player.castLaserPhysics = false;
 	player.freeRestsUsed = 0;
 	player.freeRunAwaysUsed = 0;
 	randomiseDrellaUSkills();

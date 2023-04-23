@@ -143,7 +143,10 @@ function beginCombat(obj, descriptionOverride = "") {
 	}
 	monster.exp = obj.exp + (player.effMl * 2);
 	monster.gold = obj.gold;
-	monster.drops = obj.drops;
+	monster.drops = [];
+	for (let drop of obj.drops) {
+		monster.drops.push({id: drop.id, chance: drop.chance});
+	}
 	monster.hitMessages = obj.hitMessages;
 	monster.castPounce = 0;
 	monster.castSpecialDelivery = 0;
@@ -222,6 +225,9 @@ function constructCombatSkillDropdown() {
 			continue;
 		}
 		if (i == 43 && monster.castExposeSecrets == 1) {
+			continue;
+		}
+		if (i == 61 && (monster.boss || player.castLaserPhysics)) {
 			continue;
 		}
 		combatSkillIds.push(i);

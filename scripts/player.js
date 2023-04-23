@@ -98,6 +98,7 @@ var player = {
 	effMinionLevelBonus: 0,
 	effMinionExpBonus: 0,
 	castTimeManagement: false,
+	castLaserPhysics: false,
 	effFreeRests: 0,
 	freeRestsUsed: 0,
 	effFreeRunAways: 0,
@@ -157,6 +158,7 @@ function createCharacter() {
 		}
 	}
 	player.castTimeManagement = false;
+	player.castLaserPhysics = false;
 	switch (job) {
 		case jobEnum.WRESTLER:
 			player.powGain = 5;

@@ -204,8 +204,6 @@ function wipe() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	$("#dialog").dialog({ autoOpen: false });
-
 	doctor_hp_input.addEventListener("change", function() {
 		let hpCost = 2;
 		if (player.skills[62]) {

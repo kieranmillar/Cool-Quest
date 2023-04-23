@@ -31,7 +31,7 @@ function useNoncombatSkill (x) {
 	return true;
 }
 
-// Creates an element displaying the skill image and name, and can be clicked to open its dialog. Returns the element
+// Creates an element displaying the skill image and name, and can be clicked to open its description. Returns the element
 function createSkillElement(id) {
 	let e = document.createElement("span");
 	e.classList.add("item_Image");
@@ -41,7 +41,7 @@ function createSkillElement(id) {
 	let textNode = document.createTextNode(skills[id].name);
 	e.appendChild(textNode);
 	e.onclick = function() {
-		openDialog (dialogType.SKILL, id);
+		openModal(modalType.SKILL, id);
 	};
 	return e;
 }

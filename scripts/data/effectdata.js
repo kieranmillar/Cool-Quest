@@ -11,7 +11,7 @@ var effects = [
 		id: 0,
 		name: "Wrestling With Your Thoughts",
 		description: "You are at peace with wrestling.",
-		enchantment: "+10 Max HP<br>+3 POW",
+		enchantment: "+10 Max HP\n+3 POW",
 		icon: "wrestle_thought.png",
 		effect: function() {
 			player.effHpMax += 10;
@@ -22,7 +22,7 @@ var effects = [
 		id: 1,
 		name: "Pirate Might",
 		description: "Might makes right.",
-		enchantment: "+2 Max MP<br>+3 POW",
+		enchantment: "+2 Max MP\n+3 POW",
 		icon: "pirate_face.png",
 		effect: function() {
 			player.effMpMax += 2;
@@ -33,7 +33,7 @@ var effects = [
 		id: 2,
 		name: "Ancestral Motivation",
 		description: "You've received reassurances from your ancestors and are feeling motivated.",
-		enchantment: "+3 POW<br>+10 INIT",
+		enchantment: "+3 POW\n+10 INIT",
 		icon: "ghost_talk.png",
 		effect: function() {
 			player.effPow += 3;
@@ -44,7 +44,7 @@ var effects = [
 		id: 3,
 		name: "Writing",
 		description: "Your latest terrible opinion column on how the latest generation can't afford a house because they eat too many avocados has directed a lot of justifiable anger in your direction.",
-		enchantment: "+10 Monster Level<br>+20 Experience from combats",
+		enchantment: "+10 Monster Level\n+20 Experience from combats",
 		icon: "writing.png",
 		effect: function() {
 			player.effMl += 10;
@@ -188,7 +188,7 @@ var effects = [
 		id: 18,
 		name: "Bagpiping",
 		description: "Your loud and off-tune toots are making everyone in the vicinity really mad.",
-		enchantment: "+20 Monster Level<br>+40 Experience from combats",
+		enchantment: "+20 Monster Level\n+40 Experience from combats",
 		icon: "bagpipes.png",
 		effect: function() {
 			player.effMl += 20;

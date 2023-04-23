@@ -51,7 +51,7 @@ function getNoncombatItem(id, amount) {
 	}
 	e.innerHTML = `You found ${amountText} <img src='./images/${items[id].icon}'> ${items[id].name}`;
 	e.onclick = function() {
-		openDialog (dialogType.ITEM, id);
+		openModal (modalType.ITEM, id);
 	}
 	noncombatTextDiv.appendChild(e);
 }

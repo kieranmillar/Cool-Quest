@@ -9,16 +9,11 @@
 		
 		<meta name="author" content="Kieran Millar">
 		
-		<meta name="revised" content="Kieran Millar, 22/04/2023">
+		<meta name="revised" content="Kieran Millar, 23/04/2023">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
 		<link rel="icon" type="image/png" href="../favicon.png">
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-		
 	</head>
 	<body>
 		<div id="loading">Cool Quest is loading! Be cool!</div>
@@ -240,7 +235,7 @@
 								<p>This must be the house. You pull the keys out of your pocket and turn it in the lock. The door creaks open. You hear a scurrying as some mice run out view.</p>
 								<p>It's not the fanciest place but it was all you could afford the rent for.</p>
 								<p>You look over at the table and find a postcard, faintly glowing with mystical energy.</p>
-								<p class="item_Image" onClick="openDialog (dialogType.ITEM, 1)">You pick up the <img src="./images/mystical_postcard.png">mystical postcard.</p>
+								<p class="item_Image" onClick="openModal (modalType.ITEM, 1)">You pick up the <img src="./images/mystical_postcard.png">mystical postcard.</p>
 								<p>Use the <img src='./images/equipment.png'> icon at the top of the page to go to your equipment and equip the postcard. Equippable items you own are displayed on the equipment page instead of your inventory.</p>
 							</div>
 							<div id="house_tutorial2">
@@ -251,7 +246,7 @@
 							<div id="house_tutorial3">
 								<p>You go to bed, but are too aching from the journey to get a good rest.</p>
 								<p>The next morning you're starving. You hunt through your backpack but unfrotunately you only have one food item left from your travels, a single cookie.</p>
-								<p class="item_Image" onClick="openDialog (dialogType.ITEM, 2)">You get a <img src="./images/cookie.png">cookie.</p>
+								<p class="item_Image" onClick="openModal (modalType.ITEM, 2)">You get a <img src="./images/cookie.png">cookie.</p>
 								<p>You know it's best not to work on an empty stomach, you can get more done in the day by eating, but there will be plenty of time to find or buy some food throughout the day.</p>
 								<p>You head out the door and off to town, where your new adventure awaits!</p>
 								<p>Use the <img src='./images/fountain.png'> icon above to visit town and see if anybody has any jobs for you. The town Mayor might have some ideas.</p>
@@ -451,7 +446,16 @@
 				</div>
 			</div>
 		</div>
-		<div id="dialog" title="Dialog Title"></div>
+		<div id="modal" class="hide">
+			<div id="modal_content">
+				<div id="modal_titleDiv">
+					<h2 id="modal_titleText"></h2><button id="modal_closeButton" type="button" onclick="closeModal()">X</button>
+				</div>
+				<img id="modal_image">
+				<div id="modal_text"></div>
+				<p id="modal_enchantment" class="enchantment"></p>
+			</div>
+		</div>
 		
 		<script src="./scripts/player.js"></script>
 		<script src="./scripts/maindisplay.js"></script>

@@ -34,6 +34,12 @@ var buffList = document.getElementById("buffList");
 
 var hintBar = document.getElementById("hintBar");
 
+var modal = document.getElementById("modal");
+var modal_titleText = document.getElementById("modal_titleText");
+var modal_image = document.getElementById("modal_image");
+var modal_text = document.getElementById("modal_text");
+var modal_enchantment = document.getElementById("modal_enchantment");
+
 // Hide a DOM element
 function hide(e) {
 	e.classList.add("hide");
@@ -128,7 +134,7 @@ function redrawCharPane() {
 			newElement.classList.add("item_Image");	
 			newElement.innerHTML = `<img src="./images/${minions[thisMinion].icon}"><span class="wrappableText">${player.minionNames[thisMinion]} the ${minions[thisMinion].name}</span>`;
 			newElement.onclick = function() {
-				openDialog(dialogType.MINION, thisMinion);
+				openModal(modalType.MINION, thisMinion);
 			};
 			charPaneMinionContainerDiv.appendChild(newElement);
 			newElement = document.createElement("p");
@@ -191,7 +197,7 @@ function redrawBuffPane() {
 		let buffDiv = document.createElement("div");
 		buffDiv.classList.add("item", "item_Image");
 		buffDiv.onclick = function() {
-			openDialog(dialogType.BUFF, buff.id);
+			openModal(modalType.BUFF, buff.id);
 		};
 		let imageElement = document.createElement("img");
 		imageElement.src = `./images/${effects[buff.id].icon}`;
@@ -241,83 +247,106 @@ function hint(txt, c) {
 	}, 100);
 }
 
-const dialogType = {
+const modalType = {
 	ITEM: 0,
 	SKILL: 1,
 	BUFF: 2,
 	MINION: 3
 }
 
-function openDialog (type, id)
-{
-	if (id < 0)
-	{
+// Opens the modal which displays info about items/skills etc.
+// Arguments are a member of modalType and the id (id context depends on modalType value)
+function openModal(type, id) {
+	if (id < 0) {
 		return;
 	}
-	let d = $("#dialog");
-	d.dialog("open");
-	switch (type)
-	{
-		case dialogType.ITEM:
-			d.dialog( "option", "title", items[id].name );
-			t = "<img src='./images/" + items[id].icon + "'>";
-			t += "<p>" + resolveProperty (items[id].description) + "</p>";
-			t += "<p>Type: " + items[id].type + "</p>";
-			if(items[id].sell == 0)
-			{
-				t += "<p>Cannot be sold</p>";
-			}
-			else
-			{
-				t += "<p>Sell price: " + items[id].sell +" gold</p>";
-			}
-			t += "<p class='enchantment'>" + items[id].enchantment + "</p>";
-			d.html(t);
-			break;
-		case dialogType.SKILL:
-			d.dialog( "option", "title", skills[id].name );
-			t = "<img src='./images/" + skills[id].icon + "'>";
-			t += "<p>" + resolveProperty (skills[id].description) + "</p>";
-			let typeText = "";
-			switch (skills[id].category) {
-				case skillType.COMBAT:
-					typeText = "Combat";
-					break;
-				case skillType.NONCOMBAT:
-					typeText = "Non-combat";
-					break;
-				case skillType.PASSIVE:
-					typeText = "Passive";
-					break;
-			}
-			t += "<p>Type: " + typeText + "</p>";
-			if ("cost" in skills[id] && skills[id].cost > 0)
-			{
-				t += "<p>Cost: " + skills[id].cost + " MP</p>";
-			}
-			t += "<p class='enchantment'>" + resolveProperty (skills[id].enchantment) + "</p>";
-			d.html(t);
-			break;
-		case dialogType.BUFF:
-			d.dialog( "option", "title", effects[id].name );
-			t = "<img src='./images/" + effects[id].icon + "'>";
-			t += "<p>" + resolveProperty (effects[id].description) + "</p>";
-			t += "<p class='enchantment'>" + effects[id].enchantment + "</p>";
-			d.html(t);
-			break;
-		case dialogType.MINION:
-			let title = "";
-			if (getMinionOwned(id)) {
-				title = player.minionNames[id] + " the " + minions[id].name;
-			}
-			else {
-				title = minions[id].name;
-			}
-			d.dialog( "option", "title", title);
-			t = "<img src='./images/" + minions[id].icon + "'>";
-			t += "<p>" + resolveProperty (minions[id].description) + "</p>";
-			t += "<p class='enchantment'>" + minions[id].enchantment + "</p>";
-			d.html(t);
-			break;
+	if (type == modalType.ITEM) {
+		modal_titleText.textContent = items[id].name;
+		modal_image.src = `./images/${items[id].icon}`;
+
+		modal_text.replaceChildren();
+		let desc = document.createElement("p");
+		desc.innerHTML = resolveProperty(items[id].description);
+		modal_text.appendChild(desc);
+		let itemType = document.createElement("p");
+		itemType.textContent = `Type: ${items[id].type}`;
+		modal_text.appendChild(itemType);
+		let sell = document.createElement("p");
+		if(items[id].sell == 0) {
+			sell.textContent = "Cannot be sold";
+		}
+		else {
+			sell.textContent = `Sell price: ${items[id].sell} Gold`;
+		}
+		modal_text.appendChild(sell);
+
+		modal_enchantment.innerText = resolveProperty(items[id].enchantment);
 	}
+	else if (type == modalType.SKILL) {
+		modal_titleText.textContent = skills[id].name;
+		modal_image.src = `./images/${skills[id].icon}`;
+
+		modal_text.replaceChildren();
+		let desc = document.createElement("p");
+		desc.innerHTML = resolveProperty(skills[id].description);
+		modal_text.appendChild(desc);
+		let skillTypeName = "";
+		switch (skills[id].category) {
+			case skillType.COMBAT:
+				skillTypeName = "Combat";
+				break;
+			case skillType.NONCOMBAT:
+				skillTypeName = "Non-combat";
+				break;
+			case skillType.PASSIVE:
+				skillTypeName = "Passive";
+				break;
+		}
+		let skillTypeParagraph = document.createElement("p");
+		skillTypeParagraph.textContent = `Type: ${skillTypeName}`;
+		modal_text.appendChild(skillTypeParagraph);
+		if ("cost" in skills[id] && skills[id].cost > 0) {
+			let cost = document.createElement("p");
+			cost.textContent = `Cost: ${skills[id].cost} MP`;
+			modal_text.appendChild(cost);
+		}
+
+		modal_enchantment.innerText = resolveProperty(skills[id].enchantment);
+	}
+	else if (type == modalType.BUFF) {
+		modal_titleText.textContent = effects[id].name;
+		modal_image.src = `./images/${effects[id].icon}`;
+
+		modal_text.replaceChildren();
+		let desc = document.createElement("p");
+		desc.innerHTML = resolveProperty(effects[id].description);
+		modal_text.appendChild(desc);
+
+		modal_enchantment.innerText = resolveProperty(effects[id].enchantment);
+	}
+	else if (type == modalType.MINION) {
+		let title = "";
+		if (getMinionOwned(id)) {
+			title = `${player.minionNames[id]} the ${minions[id].name}`;
+		}
+		else {
+			title = minions[id].name;
+		}
+		modal_titleText.textContent = title;
+
+		modal_image.src = `./images/${minions[id].icon}`;
+
+		modal_text.replaceChildren();
+		let desc = document.createElement("p");
+		desc.innerHTML = resolveProperty(minions[id].description);
+		modal_text.appendChild(desc);
+
+		modal_enchantment.innerText = resolveProperty(minions[id].enchantment);
+	}
+	show(modal);
+}
+
+// Close the modal
+function closeModal() {
+	hide(modal);
 }

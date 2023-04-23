@@ -84,7 +84,7 @@ function createGeneralShopItem(id) {
     newElement.classList.add("item_Image");
     newElement.innerHTML = `<img src="./images/${items[id].icon}"><span class="wrappableText">${items[id].name}</span>`;
     newElement.addEventListener("click", function() {
-        openDialog(dialogType.ITEM, id);
+        openModal(modalType.ITEM, id);
     });
     itemWrapper.appendChild(newElement);
 
@@ -102,7 +102,7 @@ function createGeneralShopMinion(id, cost) {
     newElement.classList.add("item_Image");
     newElement.innerHTML = `<img src="./images/${minions[id].icon}"><span class="wrappableText">${minions[id].name}</span>`;
     newElement.addEventListener("click", function() {
-        openDialog(dialogType.MINION, id);
+        openModal(modalType.MINION, id);
     });
     minionWrapper.appendChild(newElement);
 

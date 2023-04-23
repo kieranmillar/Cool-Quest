@@ -163,7 +163,7 @@ function equipMinion(id) {
     displayPen();
 }
 
-// Pops up a dialog to rename a minion
+// Pops up a prompt to rename a minion
 function renameMinion(id) {
     let newName = prompt(`Rename ${player.minionNames[id]} the ${minions[id].name}`, player.minionNames[id]);
     if (!newName) {
@@ -202,7 +202,7 @@ function displayPen() {
         newElement.classList.add("item_Image");
         newElement.innerHTML = `<img src="./images/${minions[i].icon}"><span class="wrappableText">${player.minionNames[i]} the ${minions[i].name}</span>`;
         newElement.addEventListener("click", function() {
-            openDialog(dialogType.MINION, i);
+            openModal(modalType.MINION, i);
         });
         innerWrapper.appendChild(newElement);
         newElement = document.createElement("p");

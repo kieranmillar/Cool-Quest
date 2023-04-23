@@ -133,7 +133,7 @@ function gainMayorVoucher() {
 	newElement.classList.add("item_Image");
 	newElement.innerHTML = `You receive a <img src='./images/${items[35].icon}'> ${items[35].name}!`;
 	newElement.addEventListener("click", function() {
-        openDialog(dialogType.ITEM, 35);
+        openModal(modalType.ITEM, 35);
     });
 	mayorTextDiv.appendChild(newElement);
 }

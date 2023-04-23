@@ -135,7 +135,7 @@ function loseItem(id, amount) {
 	}
 }
 
-// Creates an element displaying the item image and name, and can be clicked to open its dialog. Returns the element
+// Creates an element displaying the item image and name, and can be clicked to open its description. Returns the element
 // Arguments are the item id and optionally the amount (shown only if you pass in a number greater than zero)
 function createItemElement(id, amount = 0) {
 	let e = document.createElement("span");
@@ -150,7 +150,7 @@ function createItemElement(id, amount = 0) {
 	let textNode = document.createTextNode(text);
 	e.appendChild(textNode);
 	e.onclick = function() {
-		openDialog (dialogType.ITEM, id);
+		openModal(modalType.ITEM, id);
 	};
 	return e;
 }

@@ -56,7 +56,7 @@ function displayDrellaU() {
 		textImageDiv.className = "item_Image";
 		textImageDiv.innerHTML = "<image src='./images/" + skills[player.drellaUDailyBigSkill].icon + "'><span>" + skills[player.drellaUDailyBigSkill].name + "</span>";
         textImageDiv.addEventListener("click", function() {
-            openDialog(dialogType.SKILL, player.drellaUDailyBigSkill);
+            openModal(modalType.SKILL, player.drellaUDailyBigSkill);
         });
 		newElement.appendChild(textImageDiv);
         let learnLink = document.createElement("span");
@@ -86,7 +86,7 @@ function displayDrellaU() {
                 textImageDiv.className = "item_Image";
                 textImageDiv.innerHTML = "<image src='./images/" + skills[player.drellaUDailySmallSkills[i]].icon + "'><span>" + skills[player.drellaUDailySmallSkills[i]].name + "</span>";
                 textImageDiv.addEventListener("click", function() {
-                    openDialog(dialogType.SKILL, player.drellaUDailySmallSkills[i]);
+                    openModal(modalType.SKILL, player.drellaUDailySmallSkills[i]);
                 });
                 newElement.appendChild(textImageDiv);
                 let learnLink = document.createElement("span");

@@ -61,7 +61,7 @@ function gainItemDrop(id, amount) {
 	}
 	e.innerHTML = `You found ${amountText} <img src='./images/${items[id].icon}'> ${items[id].name}`;
 	e.onclick = function() {
-		openDialog (dialogType.ITEM, id);
+		openModal (modalType.ITEM, id);
 	}
 	combatTextDiv.appendChild(e);
 }
@@ -555,7 +555,7 @@ function pressedViewSkillbutton() {
 		hint("You didn't choose a skill to view!", "r");
 		return false;
 	}
-	openDialog(dialogType.SKILL, value);
+	openModal(modalType.SKILL, value);
 }
 
 // Pressing the view button next to the item dropdown in combat
@@ -565,7 +565,7 @@ function pressedViewItembutton() {
 		hint("You didn't choose an item to view!", "r");
 		return false;
 	}
-	openDialog(dialogType.ITEM, value);
+	openModal(modalType.ITEM, value);
 }
 
 // Performs a regular attack. 1st argument is the POW value its based on. An empty string for a hit message guarantees a critical hit

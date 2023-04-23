@@ -534,7 +534,7 @@ function useCombatItem(id) {
 		hint("You didn't choose an item to use!", "r");
 		return false;
 	}
-	if(!"onCombat" in items[x]) {
+	if(!"onCombat" in items[id]) {
 		hint ("That item can't be used in combat!", "r");
 		return false;
 	}
@@ -544,7 +544,7 @@ function useCombatItem(id) {
 		return false;
 	}
 	items[id].onCombat();
-	loseItem(x, 1);
+	loseItem(id, 1);
 	return true;
 }
 

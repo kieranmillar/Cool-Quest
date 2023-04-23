@@ -56,5 +56,5 @@ function rest() {
 function restRecovery() {
 	let hp = Math.floor(Math.random()*10) + 30;
 	let mp = Math.floor(Math.random()*3) + 5;
-	return giveHp(hp) + " " + giveMp(mp);
+	return `${gainHp(hp)} ${gainMp(mp)}`;
 }

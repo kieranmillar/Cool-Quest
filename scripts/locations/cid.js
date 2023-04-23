@@ -29,7 +29,7 @@ function displayCidText () {
 	    cidTextDiv.appendChild(badgerButton);
 	    badgerButton.onclick = function() {
 		    loseItem (31, 3);
-            giveGold(400, false);
+            gainGold(400);
             player.quests[questEnum.BADGER] = 2;
             goToLocation("cid");
             hint("You trade in 3 Badger Badger badges for 400 Gold.", "g");

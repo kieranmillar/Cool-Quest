@@ -351,7 +351,7 @@ function sellItem(id) {
 		return;
 	}
 	else {
-		hint(`You sold a ${items[id].name}. ${giveGold(items[id].sell, false)}`, "g");
+		hint(`You sold a ${items[id].name}. ${gainGold(items[id].sell)}`, "g");
 		save();
 		redrawCharPane();
 		displayPawnShop();

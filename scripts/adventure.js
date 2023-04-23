@@ -64,8 +64,8 @@ function endAdventure(costsTurn = true) {
 		player.turns ++;
 		player.turnsToMidnight --;
 		calculateStats();
-		giveHp(player.hpRegen);
-		giveMp(player.mpRegen);
+		gainHp(player.hpRegen);
+		gainMp(player.mpRegen);
 		redrawBuffPane();
 	}
 	save();

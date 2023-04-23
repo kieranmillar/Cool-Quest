@@ -310,8 +310,12 @@ function checkEndOfCombat() {
 		monster.hp = 0;
 		addCombatText("<strong>You win the fight!</strong>");
 		minionCombatWin();
-		addCombatText(giveExp(monster.exp));
-		addCombatText(giveGold(monster.gold, true));
+		addCombatText(gainExp(monster.exp));
+		let goldGain = monster.gold;
+		goldGain += Math.floor(monster.gold * Math.random() * 0.25);
+		goldGain -= Math.floor(monster.gold * Math.random() * 0.25);//monster drops between +25% and -25%, weighted heavily to the middle
+		goldGain = Math.floor(x * ((100 + player.effGoldBoost) / 100));
+		addCombatText(gainGold(goldGain));
 		for (let i = 0; i < monster.drops.length; i++) {
 			let totalItemBoost = player.effItemBoost;
 			if (items[monster.drops[i].id].category == itemType.FOOD) {

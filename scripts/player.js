@@ -320,17 +320,17 @@ function calculateStats() {
 	redrawCharPane();
 }
 
-function giveExp (e)
-{
-	if (e <= 0)
+// Use this to gain experience. Returns html that can be displayed that shows if you levelled up etc.
+function gainExp(amount) {
+	if (amount <= 0) {
 		return;
-	player.expLev += e;
-	player.exp += e;
-	let t = "You gained " + e + " experience points!";
-	while (player.expLev >= statLevelDeltas[player.statLev-1])
-	{
+	}
+	player.expLev += amount;
+	player.exp += amount;
+	let t = `You gained ${amount} experience points!`;
+	while (player.expLev >= statLevelDeltas[player.statLev-1]) {
 		player.expLev -= statLevelDeltas[player.statLev-1];
-		player.statLev++;
+		player.statLev ++;
 		player.baseHpMax += 5;
 		player.baseMpMax += 1;
 		player.basePow += player.powGain;
@@ -339,146 +339,115 @@ function giveExp (e)
 		t += "<br><strong>You grew your stats!</strong>";
 		calculateStats();
 	}
-	while (player.exp >= levelDeltas[player.level-1])
-	{
+	while (player.exp >= levelDeltas[player.level-1]) {
 		player.exp -= levelDeltas[player.level-1];
-		player.level++;
+		player.level ++;
 		t += "<br><strong>You levelled up!</strong>";
 	}
 	return t;
 }
 
-function giveGold (g, inCombat)
-{
-	if (g <= 0)
+// Use this to gain Gold. Returns a string of text you can display.
+function gainGold(amount) {
+	if (amount <= 0) {
 		return;
-	if (inCombat == true)
-	{
-		let x = g;
-		x += Math.floor(g * Math.random() * 0.25);
-		x -= Math.floor(g * Math.random() * 0.25);//monster drops between +25% and -25%, weighted heavily to the middle
-		g = Math.floor(x * ((100 + player.effGoldBoost) / 100));
 	}
-	player.gold += g;
-	return "You gained " + g + " gold!";
+	player.gold += amount;
+	return `You gained ${amount} gold!`;
 }
 
-function giveHp (h)
-{
-	if (h <= 0)
-	{
+// Use this to gain HP. Returns a string of text you can display.
+function gainHp(amount) {
+	if (amount <= 0) {
 		return;
 	}
-	player.hp += h;
-	if (player.hp > player.effHpMax)
-	{
-		player.hp = player.effHpMax;
-	}
+	player.hp += amount;
+	player.hp = Math.min(player.hp, player.effHpMax);
 	redrawCharPane();
-	return "You gained " + h + " HP!";
+	return `You gained ${amount} HP!`;
 }
 
-function giveMp (m)
-{
-	if (m <= 0)
-	{
+// Use this to gain MP. Returns a string of text you can display.
+function gainMp(amount) {
+	if (amount <= 0) {
 		return;
 	}
-	player.mp += m;
-	if (player.mp > player.effMpMax)
-	{
-		player.mp = player.effMpMax
-	}
+	player.mp += amount;
+	player.mp = Math.min(player.mp, player.effMpMax);
 	redrawCharPane();
-	return "You gained " + m + " MP!";
+	return `You gained ${amount} MP!`;
 }
 
-function eat (itemId)
-{
+// Eat a food item. Returns if successful
+function eat(itemId) {
 	let turns = items[itemId].turns;
 	let fullness = items[itemId].fullness;
 
-	if (player.full + fullness > player.fullMax)
-	{
-		hint ("You're too full to eat that!", "r");
+	if (player.full + fullness > player.fullMax) {
+		hint("You're too full to eat that!", "r");
 		return false;
 	}
-	else
-	{
+	else {
 		player.full += fullness;
 		player.turnsToMidnight += turns;
-		if (player.skills[22])
-		{
+		if (player.skills[22]) { // Hearrrty meal
 			player.hp = player.effHpMax;
 		}
 		return true;
 	}
 }
 
-function eatMessage (itemId)
-{
-	let t = "You eat the ";
-	t += items[itemId].name;
-	t += ", delaying midnight by ";
-	t += items[itemId].turns;
-	if (items[itemId].turns > 1)
-	{
-		t += " turns";
+// Returns a string of text to be displayed in the hint bar when you eat something
+function eatMessage(itemId) {
+	let turnsText = "turns";
+	if (items[itemId].turns == 1) {
+		turnsText = "turn";
 	}
-	else
-	{
-		t += " turn";
-	}
-	t += " and gaining ";
-	t += items[itemId].fullness;
-	t += " fullness.";
-	return t;
+	return `You eat the ${items[itemId].name}, delaying midnight by ${items[itemId].turns} ${turnsText} and gaining ${items[itemId].fullness} fullness.`;
 }
 
-function buyHP (x) {
-	if (x > player.effHpMax - player.hp) {
-		x = player.effHpMax - player.hp;
-	}
-	if (x <= 0) {
+// Purchase HP from the doctor
+function buyHP(amount) {
+	amount = Math.min(amount, player.effHpMax - player.hp);
+	if (amount <= 0) {
 		return;
 	}
 	if (busy == true) {
 		hint("You're too busy to do that right now!", "r");
 		return;
 	}
-	let cost = x * 2;
-	if (player.skills[62]) {
-		cost = x;
+	let cost = amount * 2;
+	if (player.skills[62]) { // Insurance brokering
+		cost = amount;
 	}
 	if (player.gold < cost) {
 		hint("You can't afford that!", "r");
 		return;
 	}
 	player.gold -= cost;
-	hint(giveHp(x) + " It cost " + cost + " Gold.", "g");
+	hint(`${gainHp(amount)} It cost ${cost} Gold.`, "g");
 	save();
 }
 
-function buyMP (x) {
-	if (x > player.effMpMax - player.mp) {
-		x = player.effMpMax - player.mp;
-	}
-	if (x <= 0) {
+// Purchase MP from the doctor
+function buyMP(amount) {
+	amount = Math.min(amount, player.effMpMax - player.mp);
+	if (amount <= 0) {
 		return;
 	}
 	if (busy == true) {
 		hint("You're too busy to do that right now!", "r");
 		return;
 	}
-	let cost = x * 10;
-	if (player.skills[62]) {
-		cost = x * 8;
+	let cost = amount * 10;
+	if (player.skills[62]) { // Insurance brokering
+		cost = amount * 8;
 	}
 	if (player.gold < cost) {
 		hint("You can't afford that!", "r");
 		return;
 	}
 	player.gold -= cost;
-	hint(giveMp(x) + " It cost " + cost + " Gold.", "g");
+	hint(`${gainMp(amount)} It cost ${cost} Gold.`, "g");
 	save();
 }

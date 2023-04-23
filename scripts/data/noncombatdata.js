@@ -57,7 +57,7 @@ var noncombats = [
 				onChoosing: function () {
 					addNoncombatText ("You open the brown box and find an unmarked envelope. Unable to contain yourself from the excitement of finding another sealed container inside the first one, you tear it open, and gold goes flying everywhere! Looks like somebody tried to pay their taxes with cash.");
 					addNoncombatText ("You scramble around to pick up as much gold as you can, and only manage to pick up a small amount before boredom settles back in. You quickly leave before you go mad.");
-					addNoncombatText (giveGold(30, false));
+					addNoncombatText (gainGold(30));
 					return true;
 				}
 			},
@@ -66,7 +66,7 @@ var noncombats = [
 				onChoosing: function () {
 					addNoncombatText ("You go to open the grey box, and find it to be sealed shut! Well, this is certainly not going to stop you and you decide to open it with brute force. You struggle to pick up the box, and slowly raise it over your head, before throwing it down again onto the ground, right onto your toe!");
 					addNoncombatText ("Muttering under your breath, you hobble out of the room, but at least you got a workout.");
-					addNoncombatText (giveExp(15));
+					addNoncombatText (gainExp(15));
 					addNoncombatText ("You lose 1 HP!");
 					player.hp -= 1;
 					return true;
@@ -280,8 +280,7 @@ var noncombats = [
 						addNoncombatText("\"Thank you for your help, we've seen great returns on your investment!\"");
 						addNoncombatText("The cat hands you your returns.");
 						if (getMinionOwned(2)) {
-							addNoncombatText("<strong>You gain 500 gold!</strong>");
-							player.gold += 500;
+							addNoncombatText(`<strong>${gainGold(500)}</strong>`);
 						}
 						else {
 							addNoncombatText("It's an egg with eyes, wobbling back and forth. It mumbles to you about pie.");

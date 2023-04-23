@@ -86,7 +86,7 @@ var items = [
 			let success = eat (2);
 			if (success == true)
 			{
-				hint (eatMessage (2) + " " + giveMp(5), "g");
+				hint (eatMessage (2) + " " + gainMp(5), "g");
 			}
 			return success;
 		}
@@ -117,13 +117,13 @@ var items = [
 		sell: 20,
 		onUse: function () {
 			let x = Math.floor(Math.random() * 5) + 20;
-			hint ("You drink the health potion. " + giveHp (x), "g");
+			hint ("You drink the health potion. " + gainHp (x), "g");
 			return true;
 		},
 		onCombat: function () {
 			let x = Math.floor(Math.random() * 5) + 20;
 			addCombatText ("You drink the health potion.");
-			addCombatText (giveHp (x));
+			addCombatText (gainHp (x));
 		}
 	},
 	{
@@ -582,7 +582,7 @@ var items = [
 		sell: 10,
 		onUse: function () {
 			let x = Math.floor(Math.random() * 3) + 4;
-			hint ("You drink the lemonade. " + giveMp(x) + " You gain 10 turns of Lemony Fizz.", "g");
+			hint ("You drink the lemonade. " + gainMp(x) + " You gain 10 turns of Lemony Fizz.", "g");
 			addBuff (9, 10);
 			return true;
 		}

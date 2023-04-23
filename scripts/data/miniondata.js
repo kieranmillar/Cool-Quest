@@ -25,7 +25,7 @@ var minions = [
                 `mops up your bleeding wound with their nurse hat.`
             ];
 			addMinionCombatText(`${player.minionNames[0]} ${texts[r]}`, 0);
-			addCombatText(giveHp(getMinionLevel(0)), 0);
+			addCombatText(gainHp(getMinionLevel(0)), 0);
 		}
 	},
 	{

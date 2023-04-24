@@ -17,6 +17,7 @@ function sleep() {
 	player.castTimeManagement = false;
 	player.castLaserPhysics = false;
 	player.lawTarget = -1;
+	player.journalismTarget = -1;
 	player.freeRestsUsed = 0;
 	player.freeRunAwaysUsed = 0;
 	randomiseDrellaUSkills();

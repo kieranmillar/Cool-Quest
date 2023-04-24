@@ -329,6 +329,10 @@ h2:not(:last-child), h3:not(:last-child) {
   flex-flow: column;
 }
 
+.disabled {
+  color: gray;
+}
+
 .combatRow {
   flex-flow: row;
 }

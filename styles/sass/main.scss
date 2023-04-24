@@ -363,6 +363,10 @@ h2, h3 {
 	flex-flow: column;
 }
 
+.disabled {
+	color: gray;
+}
+
 .combatRow {
 	flex-flow: row;
 }

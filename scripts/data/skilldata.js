@@ -508,7 +508,7 @@ var skills = [
 		onUse: function () {
 			if (monster.castCannonBlast != 0)
 			{
-				hint ("You only have a single cannonball each fight!", "r");
+				hint ("You only have a single cannonball for each fight!", "r");
 				return false;
 			}
 			addCombatText("You ask your opponent to stay right where they are and run off. You come back pushing in a giant cannon. While you load a cannonball, Crackers flies over with some matches and lights the fuse.");
@@ -1095,12 +1095,12 @@ var skills = [
 		category: skillType.COMBAT,
 		cost: 10,
 		onUse: function () {
-			if (monster.boss) {
-				hint("You can't use this against bosses!", "r");
+			if (player.lawTarget != -1) {
+				hint("You've already arrested somebody today!", "r");
 				return false;
 			}
-			if (player.lawTarget != -1) {
-				hint("You have already used this today!", "r");
+			if (monster.boss) {
+				hint("You can't use this against bosses!", "r");
 				return false;
 			}
 			addCombatText("You pull out some legal texts and read your opponent an obscure 100 year old law that lets you arrest them. They leave for the rest of the day while they consult with their lawyer about this.");
@@ -1124,12 +1124,12 @@ var skills = [
 		category: skillType.COMBAT,
 		cost: 15,
 		onUse: function () {
-			if (monster.boss) {
-				hint("You can't use this against bosses!", "r");
+			if (player.castLaserPhysics) {
+				hint("You've already fired a laser today, you need to let it cool down!", "r");
 				return false;
 			}
-			if (player.castLaserPhysics) {
-				hint("You have already used this today!", "r");
+			if (monster.boss) {
+				hint("You can't use this against bosses!", "r");
 				return false;
 			}
 			addCombatText("You run off to the Drella U laboratory to \"borrow\" a giant laser beam, which you push back to the fight.");
@@ -1154,15 +1154,31 @@ var skills = [
 	},
 	{
 		id: 63,
-		name: "TODO: Another 2 turn stun skill",
-		description: "",
-		enchantment: "Stuns the enemy for 2 rounds\n(Once per combat)",
-		icon: "no_image.png",
+		name: "Journalism",
+		description: "This course teaches you how to engage in the profitable parts of journalism that tabloids will hire you to do: hunt down specific celebrities so you can report on the cellulite in their legs.",
+		enchantment: function() {
+			let text = "Enemy will randomly appear much more often for the rest of the day\n(Once per day)\n(Cannot be used against bosses)";
+			if (player.journalismTarget != -1) {
+				text += `\n(You're tracking ${combats[player.journalismTarget].name} today)`;
+			}
+			return text;
+		},
+		icon: "journalism.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.COMBAT,
-		cost: 6,
+		cost: 12,
 		onUse: function () {
-			
+			if (player.journalismTarget != -1) {
+				hint("You're already tracking somebody today!", "r");
+				return false;
+			}
+			if (monster.boss) {
+				hint("You can't use this against bosses!", "r");
+				return false;
+			}
+			addCombatText("You distract your opponent so you can hack their phone. Now you can follow their every movement!");
+			player.journalismTarget = monster.id;
+			return true;
 		}
 	},
 	{
@@ -1306,7 +1322,7 @@ var skills = [
 		icon: "bird_watching.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.NONCOMBAT,
-		cost: 15,
+		cost: 12,
 		onUse: function () {
 			hint ("You dive into a nearby bush, gaining 10 turns of Bird Watching!", "g");
 			return addBuff (12, 10);
@@ -1320,7 +1336,7 @@ var skills = [
 		icon: "yodelling.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.NONCOMBAT,
-		cost: 15,
+		cost: 12,
 		onUse: function () {
 			hint ("You put on some lederhosen, gaining 10 turns of Yodelling!", "g");
 			return addBuff(13, 10);

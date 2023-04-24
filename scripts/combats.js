@@ -218,24 +218,6 @@ function constructCombatSkillDropdown() {
 		if (skills[i].category != skillType.COMBAT || !player.skills[i]) {
 			continue;
 		}
-		if (i == 1 && monster.castPounce == 1) {
-			continue;
-		}
-		if (i == 24 && monster.castSpecialDelivery == 1) {
-			continue;
-		}
-		if (i == 27 && monster.castCannonBlast != 0) {
-			continue;
-		}
-		if (i == 43 && monster.castExposeSecrets == 1) {
-			continue;
-		}
-		if (i == 60 && (monster.boss || player.lawTarget != -1)) {
-			continue;
-		}
-		if (i == 61 && (monster.boss || player.castLaserPhysics)) {
-			continue;
-		}
 		combatSkillIds.push(i);
 	}
 	combatSkillIds.sort(function(a, b) {
@@ -261,6 +243,31 @@ function constructCombatSkillDropdown() {
 		newOption.textContent = `${skills[id].name} (${cost} MP)`;
 		if (lastUsedCombatSkill == id) {
 			newOption.selected = "selected";
+		}
+		let disabledStyling = false;
+		if (id == 1 && monster.castPounce == 1) {
+			disabledStyling = true;
+		}
+		if (id == 24 && monster.castSpecialDelivery == 1) {
+			disabledStyling = true;
+		}
+		if (id == 27 && monster.castCannonBlast != 0) {
+			disabledStyling = true;
+		}
+		if (id == 43 && monster.castExposeSecrets == 1) {
+			disabledStyling = true;
+		}
+		if (id == 60 && (monster.boss || player.lawTarget != -1)) {
+			disabledStyling = true;
+		}
+		if (id == 61 && (monster.boss || player.castLaserPhysics)) {
+			disabledStyling = true;
+		}
+		if (id == 63 && (monster.boss || player.journalismTarget != -1)) {
+			disabledStyling = true;
+		}
+		if (disabledStyling) {
+			newOption.classList.add("disabled");
 		}
 		skillDropdown.appendChild(newOption);
 	}

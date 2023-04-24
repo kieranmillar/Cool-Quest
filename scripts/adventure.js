@@ -75,7 +75,10 @@ function endAdventure(costsTurn = true) {
 function pickRandomCombat(zone) {
 	let queueCopy = player.combatQueue.map(x => x);
 	let combatsCopy = zones[zone].combats.map(x => x);
-	combatsCopy = combatsCopy.filter(x => x != player.lawTarget);
+	if (combatsCopy.includes(player.journalismTarget)) {
+		combatsCopy.push(player.journalismTarget); // Add an extra copy of the journalism target, if present in this zone
+	}
+	combatsCopy = combatsCopy.filter(x => x != player.lawTarget); // Remove all copies of the law target
 	if (combatsCopy.length == 0) {
 		beginNoncombat(14);
 		return;
@@ -85,6 +88,10 @@ function pickRandomCombat(zone) {
 	while (working) {
 		let r = Math.floor(Math.random() * combatsCopy.length);
 		combatId = combatsCopy[r];
+		if (combatId == player.journalismTarget) { // Journalism target ignores queue rejection
+			working = false;
+			break;
+		}
 		let indexInQueueCopy = queueCopy.findIndex(x => x == combatId);
 		if (indexInQueueCopy == -1) {
 			working = false;
@@ -93,7 +100,7 @@ function pickRandomCombat(zone) {
 			queueCopy.splice(indexInQueueCopy, 1);
 		}
 	}
-	beginCombat (combats[combatId]);
+	beginCombat(combats[combatId]);
 }
 
 // Bypasses the warning if your level is too low for a zone. Stops asking you for the rest of this session (not saved)

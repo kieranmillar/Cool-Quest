@@ -29,9 +29,10 @@ function displayCidText () {
 		    loseItem (31, 3);
             gainGold(400);
             redrawCharPane();
+		    setQuestState(questEnum.BADGER, 2);
             goToLocation("cid");
             hint("You trade in 3 Badger Badger badges for 400 Gold.", "g");
-            setQuestState(questEnum.BADGER, 2);
+
 	    };
     }
 
@@ -51,9 +52,9 @@ function displayCidText () {
 	    mudButton.onclick = function() {
 		    loseItem(51, 2);
             gainItem(52, 1);
+			setQuestState(questEnum.MUD, 2);
             goToLocation("cid");
             hint("You trade in 2 small globs of mud for a Really Big Sword.", "g");
-            setQuestState(questEnum.MUD, 2);
 	    };
     }
 

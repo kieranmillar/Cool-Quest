@@ -128,7 +128,7 @@ function displayHappyvilleTree() {
     }
     else if (presentCount >= 20) {
         addHappyvilleTreeText("You dump 20 presents in front of the crowd by the large tree.");
-        addHappyvilleTreeText("\"Oh thank you! It's finally time to begin the ceremony! You're welocme to stay and watch.\"");
+        addHappyvilleTreeText("\"Oh thank you! It's finally time to begin the ceremony! You're welcome to stay and watch.\"");
         addHappyvilleTreeText("Against your better judgement, you hang around and watch the ceremony. Presents are placed in a circle at regular intervals around the tree alongside some lit candles. Somebody brings out a ladder, and climbs to the top of the tree, placing a 5-sided star at the top.");
         addHappyvilleTreeText("Everyone in the crowd drops to their knees and puts their hands on the floor, bowing their head. One lady, dressed in a red coat with fluffy white edges, carries a plate of cookies and glass of milk to the tree, and places it by the roots.");
         addHappyvilleTreeText("Suddenly a strong wind blows, and you can hear a faint voice in the wind, getting louder.");

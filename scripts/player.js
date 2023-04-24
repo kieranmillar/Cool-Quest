@@ -343,6 +343,7 @@ function gainExp(amount) {
 		player.exp -= levelDeltas[player.level-1];
 		player.level ++;
 		t += "<br><strong>You levelled up!</strong>";
+		displayQuestLog();
 	}
 	return t;
 }

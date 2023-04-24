@@ -242,7 +242,7 @@ var combats = [
 						addCombatText("Success! Time to talk to the leader.");
 						break;
 				}
-				setQuestState(questEnum.ORCCAMP, getQuestState(questEnum.ORCCAMP) ++);
+				setQuestState(questEnum.ORCCAMP, getQuestState(questEnum.ORCCAMP) + 1);
 			}	
 			return true;
 		}

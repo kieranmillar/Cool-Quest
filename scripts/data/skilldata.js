@@ -1185,7 +1185,13 @@ var skills = [
 		id: 64,
 		name: "TODO: Sculpting",
 		description: "TODO: Implement this skill",
-		enchantment: "Fight any non-boss enemy of your choice\n(Once per day)",
+		enchantment: function() {
+			let text = "Fight any non-boss enemy of your choice\n(Once per day)";
+			if (true) {
+				text += "\n(You have already used this skill today)";
+			}
+			return text;
+		},
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.NONCOMBAT,

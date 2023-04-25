@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	displayQuestLog();
 
-	hint ("Welcome to Cool Quest!", "g");
+	hint("Welcome to Cool Quest!", "g");
 });
 
 function debug_giveAllItems() {

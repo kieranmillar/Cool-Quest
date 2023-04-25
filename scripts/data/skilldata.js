@@ -1183,13 +1183,13 @@ var skills = [
 	},
 	{
 		id: 64,
-		name: "TODO: Summon a non-boss enemy once per day",
-		description: "",
-		enchantment: "",
+		name: "TODO: Sculpting",
+		description: "TODO: Implement this skill",
+		enchantment: "Fight any non-boss enemy of your choice\n(Once per day)",
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 20,
 		onUse: function () {
 			
 		}
@@ -1244,13 +1244,19 @@ var skills = [
 	},
 	{
 		id: 67,
-		name: "TODO: monster copy some number of times per day",
-		description: "",
-		enchantment: "",
+		name: "TODO: Photography",
+		description: "TODO: Implement this skill",
+		enchantment: function() {
+			let text = "Create an enchanted polaroid containing a copy of this enemy to fight later\n(Three times per day)\n(Cannot be used against bosses)\n(Cannot be used if you have an enchanted polaroid in your inventory)";
+			if (true) {
+				text += `\n(You've taken 0 photographs today)`;
+			}
+			return text;
+		},
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.COMBAT,
+		cost: 5,
 		onUse: function () {
 			
 		}
@@ -1371,7 +1377,7 @@ var skills = [
 		name: "Psychoanalysis",
 		description: "This course teaches you how to prepare your mind for listening to all kinds of nonsense after learning about the Oedipus complex.",
 		enchantment: "+15 Psychic Resistance",
-		icon: "no_image.png",
+		icon: "brain.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {

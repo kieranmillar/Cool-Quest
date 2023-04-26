@@ -73,10 +73,11 @@ var noncombats = [
 				}
 			},
 			{
-				buttonText: function () {return noncombatButton ("Open the dull, brown box", 2, "get cardboard panel");},
+				buttonText: function () {return noncombatButton ("Open the dull, brown box", 2, "get straightened paperclip and cardboard panel");},
 				onChoosing: function () {
 					addNoncombatText ("You try to open the brown box, but it's sealed shut with tape. Given that it's only cardboard, you give it a big tug, and end up ripping a big chunk off of the box.");
-					addNoncombatText ("Turns out the box was empty, but hey, you got some sweet free cardboard! There's treasure everywhere!");
+					addNoncombatText ("Turns out the box was mostly empty, containing only a single paperclip, but hey, you got some sweet free cardboard! There's treasure everywhere!");
+					getNoncombatItem (6, 1);
 					getNoncombatItem (7, 1);
 					return true;
 				}

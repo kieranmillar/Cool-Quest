@@ -162,18 +162,15 @@ var items = [
 	{
 		id: 7,
 		name: "cardboard panel",
-		description: "A dry piece of cardboard box. Provides barely any defense, but also max HP for some reason.",
-		enchantment: "+3 Max HP\n+1 DEF\nCan be used in combat to reduce incoming damage by 80%",
+		description: "A dry piece of cardboard box. Provides barely any defense.",
+		enchantment: "+3 Max HP\n+1 DEF",
 		icon: "cardboard_panel.png",
-		type: "Shield, Combat Item",
+		type: "Shield",
 		category: itemType.SHIELD,
 		sell: 5,
 		onWear: function () {
 			player.effHpMax += 3;
 			player.effDef += 1;
-		},
-		onCombat: function () {
-			addCombatText("You hold the cardboard panel out in front of yourself and brace for impact.");
 		}
 	},
 	{
@@ -907,6 +904,61 @@ var items = [
 				hint(eatMessage(53), "g");
 			}
 			return success;
+		}
+	},
+	{
+		id: 54,
+		name: "shiny red nose",
+		description: "This shiny fake plastic nose is glowing red, lighting up your surroundings.",
+		enchantment: "+5% item drop chance",
+		icon: "red_nose.png",
+		type: "Accessory",
+		category: itemType.ACC,
+		sell: 20,
+		onWear: function () {
+			player.effItemBoost += 5;
+		}
+	},
+	{
+		id: 55,
+		name: "antler headband",
+		description: "These fake antlers are only worn by fake reindeer fakers, not true patriot real reindeer like... the one you got these from... wait a minute...",
+		enchantment: "+5 POW",
+		icon: "antler_headband.png",
+		type: "Hat",
+		category: itemType.HAT,
+		sell: 20,
+		onWear: function () {
+			player.effPow += 5;
+		}
+	},
+	{
+		id: 56,
+		name: "cool shades",
+		description: "It's easier to deal with it if you can't see anything.",
+		enchantment: "+5 Emotional Resistance",
+		icon: "cool_shades.png",
+		type: "Accessory",
+		category: itemType.ACC,
+		sell: 20,
+		onWear: function () {
+			player.emotionalRes += 5;
+		}
+	},
+	{
+		id: 57,
+		name: "rein drops",
+		description: "These are small droplets of rain, that fall from the sky when-<br>Sorry, rein not rain?<br>Wait... these are... eeeuuughghghgh!",
+		enchantment: "Reduces enemy POW by 5\nStuns the enemy this round",
+		icon: "rein_drops.png",
+		type: "Combat Item",
+		category: itemType.MISC,
+		sell: 5,
+		onCombat: function () {
+			addCombatText("You throw the rein drops at your opponent. They pick them up out of curiosity, and then recoil in horror.");
+			monster.pow = Math.max(1, monster.pow - 5);
+			addCombatText("Their POW drops by 5.");
+			monster.stunThisRound = true;
 		}
 	},
 ];

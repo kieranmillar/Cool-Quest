@@ -487,8 +487,8 @@ function combatRound(action) {
 			}
 			if (usingItem != -1) {
 				switch (usingItem) {
-					case 7:
-						damage = Math.floor(damage * 0.2);
+					// placeholder for special overrides when using an item, if needed
+					default:
 						break;
 				}
 			}
@@ -506,9 +506,6 @@ function combatRound(action) {
 					let r = Math.floor(Math.random() * (monster.hitMessages.length - 1)) + 1;
 					addCombatText(monster.hitMessages[r]);
 				}
-			}
-			if (usingItem == 7) {
-				addCombatText("The cardboard panel shatters into pieces, but at least it dampened the blow.");
 			}
 			damage = Math.max(damage, 1);
 			switch (monster.element) {

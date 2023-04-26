@@ -733,7 +733,8 @@ var combats = [
 		exp: 40,
 		gold: 35,
 		drops: [
-			
+			{id: 54, chance: 20},
+			{id: 56, chance: 20}
 		],
 		hitMessages: [
 			"crit",
@@ -754,7 +755,7 @@ var combats = [
 		exp: 41,
 		gold: 32,
 		drops: [
-			
+			{id: 57, chance: 35}
 		],
 		hitMessages: [
 			"You ask her if there's a hurricane on the way. She says there isn't, then the wind suddenly picks up and a large fish hits you.",
@@ -775,7 +776,7 @@ var combats = [
 		exp: 39,
 		gold: 38,
 		drops: [
-			
+			{id: 55, chance: 20}
 		],
 		hitMessages: [
 			"You get sniped in the head. Boom! Headshot!",

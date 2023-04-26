@@ -737,16 +737,16 @@ var combats = [
 			{id: 56, chance: 20}
 		],
 		hitMessages: [
-			"crit",
-			"\"You'd have been able to dodge this hit if you weren't so fat!\" Ouch, right in the feels.",
-			"hit2",
-			"hit3"
+			"He says something so terribly rude we don't dare put it in the game.",
+			"\"You'd have been able to dodge this hit if you weren't so fat!\" Mr. Dolph shouts. Ouch, right in the feels.",
+			"\"My grandma can fight better than you\", Mr. Dolph shouts. \"She's got a black belt.\" You feel simultaneously impressed and inadequate.",
+			"Mr. Dolph offers a rare compliment. \"Not bad for someone who's level 1!\" Even his compliments hurt."
 		]
 	},
 	{
 		id: 30,
 		name: "a reindeer meteorologist",
-		description: "As she charges towards you, you know what the weather forcast will be. It looks like rain, dear.",
+		description: "As she charges towards you, you know what the weather forecast will be. It looks like rain, dear.",
 		icon: "empty.png",
 		hp: 65,
 		pow: 41,

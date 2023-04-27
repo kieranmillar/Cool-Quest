@@ -297,7 +297,7 @@ var combats = [
 		id: 11,
 		name: "a stalk orc",
 		description: "A weird feeling comes over you, like you're being watched. You suddenly stop and quickly spin around. An orc in a trenchcoat and sunglasses quickly tries to duck behind a table. Looks like you were being followed by a spy! Not a very good one, fortunately.",
-		icon: "empty.png",
+		icon: "stalk_orc.png",
 		hp: 18,
 		pow: 18,
 		def: 0,

@@ -224,4 +224,15 @@ var effects = [
 			player.combatRate -= 5;
 		}
 	},
+	{
+		id: 22,
+		name: "Concentration",
+		description: "You're thinking really hard about what you're doing so you don't make any mistakes.",
+		enchantment: "+5 Max MP\n+10 POW",
+		icon: "concentration.png",
+		effect: function() {
+			player.effMpMax += 5;
+			player.effPow += 10;
+		}
+	},
 ];

@@ -536,7 +536,7 @@ var skills = [
 		name: "Extra Crew",
 		description: "A good pirate knows that a motley crew is an essential part of pirating.",
 		enchantment: "Can use two minions but experience gain is split between them",
-		icon: "no_image.png",
+		icon: "extra_crew.png",
 		source: skillSource.PIRATE,
 		category: skillType.PASSIVE,
 		price: 1000,
@@ -875,23 +875,24 @@ var skills = [
 		price: 500,
 		level: 4,
 		onUse: function () {
-			hint ("You hide under a desk, gaining 10 turns of Avoid Responsibility!", "g");
-			return addBuff (21, 10);
+			hint("You hide under a desk, gaining 10 turns of Avoid Responsibility!", "g");
+			return addBuff(21, 10);
 		}
 	},
 	{
 		id: 47,
-		name: "",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "Concentration",
+		description: "It takes a lot of concentration to liaise with those that have passed, there's a lot of details you need to quickly make up, sorry, I meant to say, carefully listen out for.",
+		enchantment: "10 turns of:\n+5 Max MP\n+10 POW",
+		icon: "concentration.png",
 		source: skillSource.MYSTIC,
 		category: skillType.NONCOMBAT,
-		cost: 3,
+		cost: 6,
 		price: 500,
 		level: 4,
 		onUse: function () {
-			
+			hint("You close your eyes and focus, gaining 10 turns of Concentration!", "g");
+			return addBuff(22, 10);
 		}
 	},
 	{

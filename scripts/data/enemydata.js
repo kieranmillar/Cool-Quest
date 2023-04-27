@@ -206,7 +206,7 @@ var combats = [
 		id: 8,
 		name: "an orc Major",
 		description: "This highly decorated orc looks like a high ranking official around here. If anybody can help you get a talk with the leader, then this orc can.",
-		icon: "empty.png",
+		icon: "orc_major.png",
 		hp: 18,
 		pow: 18,
 		def: 4,

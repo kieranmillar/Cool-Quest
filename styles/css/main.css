@@ -427,6 +427,10 @@ h2:not(:last-child), h3:not(:last-child) {
   height: 40px;
 }
 
+.equip_row_title {
+  width: 110px;
+}
+
 .enchantment {
   font-weight: bold;
   color: blue;

@@ -82,6 +82,15 @@ function displayMayorText() {
 		}
     }
 
+    //level 4
+    if (player.level >= 4 && getQuestState(questEnum.FARM) == 0) {
+        newMayorText("\"I've had reports that there's a crowd gathering at Eaty Farm on the outskirts of town. We're normally grateful for some tourism, but I hear these people are, how shall I say this, not a good look. See if you can scare them off.\"");
+        setQuestState(questEnum.FARM, 1);
+    }
+    else if (getQuestState(questEnum.FARM) >= 1  && getQuestState(questEnum.FARM) <= 3) {
+        newMayorText("\"How are things at the funny farm? Also, how are things going at Eaty Farm? Haha! Wait, why aren't you laughing?\"");
+    }
+
     if (mayorTextDiv.textContent === "") {
         newMayorText("\"I have nothing for you right now. Please come back later when you are stronger.\"");
     }

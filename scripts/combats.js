@@ -442,6 +442,17 @@ function combatRound(action) {
 		return;
 	}
 	if (!checkEndOfCombat()) {
+		if (currentRound == 9) {
+			addCombatText("<strong>Your opponent is growing impatient, they're about to get very mad. You should look to end this fight quickly.</strong>");
+		}
+		if (currentRound == 10) {
+			addCombatText("<strong>Your opponent is tired of this combat, and completely flips out.</strong>");
+		}
+		if (currentRound >= 10) {
+			let powIncrease = Math.max(5, Math.floor(monster.pow * 0.1));
+			addCombatText(`<strong>Your opponent's attack grows by ${powIncrease} due to their rage.</strong>`);
+			monster.pow += powIncrease;
+		}
 		if (monster.stunThisRound) {
 			// It is the responsibility of the stun source to provide the combat text
 		}
@@ -530,19 +541,6 @@ function combatRound(action) {
 				damage = calcIceDamage(10 + player.iceDamage);
 				addCombatText(`The cold winds from the sea hit your opponent for <span class='ice'>${damage}</span> damage!`);
 				monster.hp -= damage;
-			}
-			if (!checkEndOfCombat()) {
-				if (currentRound == 8) {
-					addCombatText("<strong>Your opponent is growing impatient, they're about to get very mad. You should look to end this fight quickly.</strong>");
-				}
-				if (currentRound == 9) {
-					addCombatText("<strong>Your opponent is tired of this combat, and completely flips out.</strong>");
-				}
-				if (currentRound >= 9) {
-					let powIncrease = Math.max(5, Math.floor(monster.pow * 0.1));
-					addCombatText(`<strong>Your opponent's attack grows by ${powIncrease} due to their rage.</strong>`);
-					monster.pow += powIncrease;
-				}
 			}
 		}
 	}

@@ -17,7 +17,7 @@ var optionEnum = {
 	SORTSKILLSBYSOURCE: 5,
 }
 
-var questEnumSize = 7;
+var questEnumSize = 8;
 var questEnum = {
 	TUTORIAL: 0,
 	TOWNHALL: 1,
@@ -26,6 +26,7 @@ var questEnum = {
 	BADGER: 4,
 	HAPPYVILLE: 5,
 	MUD: 6,
+	FARM: 7
 }
 
 var zoneCounterEnum = {

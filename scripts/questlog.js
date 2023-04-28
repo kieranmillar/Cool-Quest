@@ -58,6 +58,12 @@ function displayQuestLog() {
     if (getQuestState(questEnum.HAPPYVILLE) == 6 && player.level == 3) {
         addQuestLogEntry("Reach level 4");
     }
+    if (getQuestState(questEnum.FARM) == 0 && player.level >= 4) {
+        addQuestLogEntry("Visit the mayor");
+    }
+    if (getQuestState(questEnum.FARM) == 1 || getQuestState(questEnum.FARM) == 2) {
+        addQuestLogEntry("Investigate Eaty Farm in the outskirts of town");
+    }
     if (player.options[optionEnum.CIDQUESTLOG]) {
         if (getQuestState(questEnum.BADGER) == 1) {
             addQuestLogEntry("Collect 3 Badger Badger badges from the Badger Badger Sett for Cid");

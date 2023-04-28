@@ -356,6 +356,7 @@
 						<div id="loc_outskirts" class="location">
 							<button type="button" onclick="goToLocation('orcCamp')">Visit the Orc Camp</button>
 							<button type="button" onclick="adventure(8)">Adventure in the Badger Badger Sett (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+							<button id="outskirts_farmButton" type="button" onclick="goToLocation('farm')">Visit Eaty Farm</button>
 							<button type="button" onclick="goToLocation('map')">Back to Map</button>
 						</div>
 						<div id="loc_orcCamp" class="location">
@@ -368,6 +369,24 @@
 							<button type="button" onclick="adventure(5)">Adventure in the Orc Camp Munitions Store (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button id="orcCamp_leaderTentButton" type="button" onclick="adventure(6)">Adventure in the Orc Camp Leader's Tent (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button type="button" onclick="goToLocation('outskirts')">Back to the Outskirts of Town</button>
+						</div>
+						<div id="loc_farm" class="location">
+							<div id="farm_intro">
+								<p>TODO: Intro text</p>
+							</div>
+							<button type="button" onclick="goToLocation('farmHouse')">Visit the Farmhouse</button>
+							<button id="farm_cropCircleButton" type="button" onclick="goToLocation('farmCropCircle')">Visit the Giant Crop Circle</button>
+							<button type="button" onclick="goToLocation('outskirts')">Back to the Outskirts of Town</button>
+						</div>
+						<div id="loc_farmHouse" class="location">
+							<div id="farmHouse_container"></div>
+							<button type="button" onclick="goToLocation('farm')">Back to Eaty Farm</button>
+						</div>
+						<div id="loc_farmCropCircle" class="location">
+							<p>One of Eaty Farm's fields is a giant corn field. It's hard to make out from ground level, but there are giant circular shapes flattened in the corn.</p>
+							<p>It's likely just a prank, but it sure seems to have drawn a lot of attention from the kind of person who'll believe anything.</p>
+							<p>Regardless, there's nothing to really see here.</p>
+							<button type="button" onclick="goToLocation('farm')">Back to Eaty Farm</button>
 						</div>
 						<div id="loc_mountains" class="location">
 							<button type="button" onclick="goToLocation('happyville')">Visit Happyville</button>
@@ -472,6 +491,7 @@
 		<script src="./scripts/locations/drellaU.js"></script>
 		<script src="./scripts/locations/generalShop.js"></script>
 		<script src="./scripts/locations/happyville.js"></script>
+		<script src="./scripts/locations/eatyfarm.js"></script>
 		<script src="./scripts/adventure.js"></script>
 		<script src="./scripts/combats.js"></script>
 		<script src="./scripts/minions.js"></script>

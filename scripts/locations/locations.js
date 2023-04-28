@@ -36,6 +36,9 @@ var location_doctor = document.getElementById("loc_doctor");
 var location_townHall = document.getElementById("loc_townHall");
 var location_outskirts = document.getElementById("loc_outskirts");
 var location_orcCamp = document.getElementById("loc_orcCamp");
+var location_farm = document.getElementById("loc_farm");
+var location_farmHouse = document.getElementById("loc_farmHouse");
+var location_farmCropCircle = document.getElementById("loc_farmCropCircle");
 var location_mountains = document.getElementById("loc_mountains");
 var location_happyville = document.getElementById("loc_happyville");
 var location_happyvilleTree = document.getElementById("loc_happyvilleTree");
@@ -55,7 +58,9 @@ var town_townHallButton = document.getElementById("town_townHallButton");
 var townHall_basementButton = document.getElementById("townHall_basementButton");
 var townHall_taxOfficeButton = document.getElementById("townHall_taxOfficeButton");
 var townHall_canteenButton = document.getElementById("townHall_canteenButton");
+var outskirts_farmButton = document.getElementById("outskirts_farmButton");
 var orcCamp_leaderTentButton = document.getElementById("orcCamp_leaderTentButton");
+var farm_cropCircleButton = document.getElementById("farm_cropCircleButton");
 var happyville_bigTreeButton = document.getElementById("happyville_bigTreeButton");
 var happyville_santasWorkshopButton = document.getElementById("happyville_santasWorkshopButton");
 var dungeons_closedYellowDoorButton = document.getElementById("dungeons_closedYellowDoorButton");
@@ -72,6 +77,7 @@ var house_tutorial2 = document.getElementById("house_tutorial2");
 var house_tutorial3 = document.getElementById("house_tutorial3");
 var house_normal = document.getElementById("house_normal");
 var orcCamp_intro = document.getElementById("orcCamp_intro");
+var farm_intro = document.getElementById("farm_intro");
 var happyville_intro = document.getElementById("happyville_intro");
 
 // Other misc things
@@ -229,6 +235,12 @@ function goToLocation (l) {
 			break;
 		case "outskirts":
 			show(location_outskirts);
+			if (getQuestState(questEnum.FARM) >= 1) {
+				show(outskirts_farmButton);
+			}
+			else {
+				hide(outskirts_farmButton);
+			}
 			break;
 		case "orcCamp":
 			show(location_orcCamp);
@@ -245,6 +257,23 @@ function goToLocation (l) {
 			else {
 				orcCamp_leaderTentButton.innerHTML = "Visit the Orc Camp Leader's Tent";
 			}
+			break;
+		case "farm":
+			show(location_farm);
+			if (getQuestState(questEnum.FARM) == 1) {
+				show(farm_intro);
+				setQuestState(questEnum.FARM, 2);
+			}
+			else {
+				hide(farm_intro);
+			}
+			break;
+		case "farmHouse":
+			show(location_farmHouse);
+			displayFarmHouse();
+			break;
+		case "farmCropCircle":
+			show(location_farmCropCircle);
 			break;
 		case "mountains":
 			show(location_mountains);

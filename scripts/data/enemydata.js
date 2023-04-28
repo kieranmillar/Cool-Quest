@@ -402,7 +402,7 @@ var combats = [
 			"The General knows more of tactics than a novice in a nunnery, and applies a tactical punch to your face."
 		],
 		afterCombat: function () {
-			addCombatText ("The General runs away. Guess you didn't get to ask any questions, but they did drop their medal. If you wear it, you could prove to the guards outside the leader's tent that you mean business.");
+			addCombatText("The General runs away. Guess you didn't get to ask any questions, but they did drop their medal. If you wear it, you could prove to the guards outside the leader's tent that you mean business.");
 			player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 2;
 			return true;
 		}
@@ -641,7 +641,7 @@ var combats = [
 	},
 	{
 		id: 26,
-		name: "the ghost of Christmas presents",
+		name: "the ghost of Happyville present",
 		description: "This factory is haunted by a ghost that tries to teach you moral lessons. Ugh, the worst kind of ghost. It's non-corporeal form makes it hard to deal damage with physical attacks.",
 		icon: "empty.png",
 		hp: 15,
@@ -657,10 +657,10 @@ var combats = [
 			{id: 36, chance: 33}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"His 2 other buddies come along and show you visions of events throughout the timeline. You try to knock yourself out just to make it all stop.",
+			"He shows you visions of what happens if you hoard too much money. You see yourself getting crushed by a giant sack of coins. You can feel the pain your alternative self must have gone through.",
+			"He lectures you about the importance of charitable giving. He then charitably gives you a beating.",
+			"He shows you visions of a duck named Scrooge being mean. A lawyer comes running in and SLAPPs you both with mountains of copyright infringement lawsuit paperwork."
 		]
 	},
 	{
@@ -681,16 +681,16 @@ var combats = [
 			{id: 36, chance: 25}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"A nearby forklift driver named Klaus accidentally drives into you while distracted. The chaos that ensues is extremely gory, and also hilarious.",
+			"She knocks over a nearby shelving unit, and a heap of boxes falls on top of you both. She's OK though as she's wearing a hard hat.",
+			"She strikes you around the head with an On Strike sign.",
+			"She spits out some gum and throws it at you. While you're tied up in a gooey mess, she lays down some blows."
 		]
 	},
 	{
 		id: 28,
 		name: "The Pinch",
-		description: "There he is, the thief that's stealing all the presents! He must have them all in the giant swag bag!",
+		description: "There he is, the thief that's stealing all the presents! He must have them all in the giant swag bag! Quick, he's getting away!",
 		icon: "empty.png",
 		hp: 80,
 		pow: 45,
@@ -709,13 +709,13 @@ var combats = [
 			{id: 37, chance: 20}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"A large sleigh brimming with presents suddenly rolls down a nearby hill at top speed and smacks into you!",
+			"He throws some hard boiled peppermint candies onto the ground behind him, and you lose your balance. Bah humbug!",
+			"As you chase after The Pinch, a dog wearing some fake antlers runs after you and bites your leg.",
+			"You try to grab the swag bag but The Pinch holds on and pulls back. You lose the ensuing tug of war, and fall face first onto a sharp rock."
 		],
 		afterCombat: function () {
-			addCombatText ('Hey, a bunch of presents spilled out from his swag bag!');
+			addCombatText('Hey, a bunch of presents spilled out from his swag bag!');
 			return true;
 		}
 	},
@@ -851,10 +851,10 @@ var combats = [
 			{id: 4, chance: 60}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"It gives you a CBT session. The T stands for torture, don't ask about the other 2 letters.",
+			"It gives you a quick health checkup. The stethoscope is so cold!",
+			"It slaps an icepack onto your head. You didn't have a headache, but it sure hurts now.",
+			"It forces you take some icy cold medicine. It wouldn't be so bad, but this was a suppository."
 		],
 		special: function () {
 			santasWorkshopAura();
@@ -879,10 +879,10 @@ var combats = [
 			{id: 44, chance: 100}
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"He opens up a portal to the underworld that sucks you in. You emerge moments later frozen to the bone, and with memories that will haunt you forever.",
+			"He calls over one of his elf minions, then picks it up and hurls it at you. Its pointy red hat slams into you like a giant icicle javelin.",
+			"He charges at you. You rebound off of his giant belly and straight through a block of ice.",
+			"He howls a hearty \"Ho ho ho\" as he heaves a heavy hailstone at your head."
 		],
 		special: function () {
 			santasWorkshopAura();

@@ -240,7 +240,7 @@ var effects = [
 		name: "Brain Food",
 		description: "You ate a strange nut and you feel like you finally have an understanding of what's really going on in the world. It all makes sense now.",
 		enchantment: "+5 psychic resistance",
-		icon: "no_image.png",
+		icon: "totally_nut.png",
 		effect: function() {
 			player.psychicRes += 5;
 		}

@@ -618,7 +618,7 @@ var combats = [
 		id: 25,
 		name: "a present mimic",
 		description: "You find a present sitting out in the open. You go to pick it up, but the present is a mimic! Time to turn this into a past mimic.",
-		icon: "empty.png",
+		icon: "present_mimic.png",
 		hp: 40,
 		pow: 34,
 		def: 8,

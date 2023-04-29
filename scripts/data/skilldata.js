@@ -520,7 +520,7 @@ var skills = [
 		id: 28,
 		name: "TODO: Batten Down the Hatches",
 		description: "",
-		enchantment: "10 turns of:\n+10 Fire Resistance\n+10 Ice Resistance\n+10 Psychic Resistance\n+10 Emotional Resistance",
+		enchantment: "10 turns of:\n+10 fire resistance\n+10 ice resistance\n+10 psychic resistance\n+10 emotional resistance",
 		icon: "no_image.png",
 		source: skillSource.PIRATE,
 		category: skillType.NONCOMBAT,
@@ -1196,7 +1196,7 @@ var skills = [
 		icon: "no_image.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.NONCOMBAT,
-		cost: 20,
+		cost: 15,
 		onUse: function () {
 			
 		}
@@ -1205,7 +1205,7 @@ var skills = [
 		id: 65,
 		name: "Bagpiping",
 		description: "This course teaches you how to play the most irritating instrument known to man. You deserve everything coming your way.",
-		enchantment: "10 turns of:\n+20 to all enemy stats\n+40 Experience from combats",
+		enchantment: "10 turns of:\n+20 to all enemy stats\n+40 experience from combats",
 		icon: "bagpipes.png",
 		source: skillSource.DRELLAUBIG,
 		category: skillType.NONCOMBAT,
@@ -1359,7 +1359,7 @@ var skills = [
 		id: 74,
 		name: "Glass Blowing",
 		description: "This course teaches you how to make your own vases and beakers, and as an extra bonus, how to get used to burning yourself.",
-		enchantment: "+15 Fire Resistance",
+		enchantment: "+15 fire resistance",
 		icon: "glass_blowing.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
@@ -1371,7 +1371,7 @@ var skills = [
 		id: 75,
 		name: "Outdoor Survival",
 		description: "This course teaches you how to survive in harsh conditions in the great outdoors. The course consists of a single advertising pamphlet for tents on sale at the local camping store.",
-		enchantment: "+15 Ice Resistance",
+		enchantment: "+15 ice resistance",
 		icon: "tent.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
@@ -1383,7 +1383,7 @@ var skills = [
 		id: 76,
 		name: "Psychoanalysis",
 		description: "This course teaches you how to prepare your mind for listening to all kinds of nonsense after learning about the Oedipus complex.",
-		enchantment: "+15 Psychic Resistance",
+		enchantment: "+15 psychic resistance",
 		icon: "brain.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
@@ -1395,7 +1395,7 @@ var skills = [
 		id: 77,
 		name: "Business Studies",
 		description: "This course teaches you how to get into the mindset of a cold, calculated, ruthless manager. Also there's a bit about accounting.",
-		enchantment: "+15 Emotional Resistance",
+		enchantment: "+15 emotional resistance",
 		icon: "briefcase.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
@@ -1407,13 +1407,13 @@ var skills = [
 		id: 78,
 		name: "Cooking",
 		description: "This course teaches you how to make delicious food. You can't help but sample your products, and it really bulks you up.",
-		enchantment: "+25 Max HP\n+5 Max MP",
+		enchantment: "+15 Max HP\n+3 Max MP",
 		icon: "cooking.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.PASSIVE,
 		onUse: function () {
-			player.effHpMax += 25;
-			player.effMpMax += 5;
+			player.effHpMax += 15;
+			player.effMpMax += 3;
 		}
 	},
 	{
@@ -1432,7 +1432,7 @@ var skills = [
 		id: 80,
 		name: "Writing",
 		description: "This course doesn't teach you how to write, but offers connections to the rich so you can write terrible and uninformed opinion columns in newspapers.",
-		enchantment: "10 turns of:\n+10 to all enemy stats\n+20 Experience from combats",
+		enchantment: "10 turns of:\n+10 to all enemy stats\n+20 experience from combats",
 		icon: "writing.png",
 		source: skillSource.DRELLAUSMALL,
 		category: skillType.NONCOMBAT,

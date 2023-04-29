@@ -108,7 +108,7 @@ function beginCombat(obj, descriptionOverride = "") {
 		monster.def += Math.floor(monster.def * Math.random() * 0.1);
 		monster.def -= Math.floor(monster.def * Math.random() * 0.1);
 	}
-	monster.def = Math.max(monster.def, 0);
+	monster.def = Math.min(Math.max(monster.def, 0), 999);
 	monster.init = obj.init + player.effMl;
 	if (!"fixedStats" in obj || !obj.fixedStats) {
 		monster.init += Math.floor(monster.init * Math.random() * 0.1);

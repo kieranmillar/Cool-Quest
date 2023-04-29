@@ -899,6 +899,106 @@ var combats = [
 			return true;
 		}
 	},
+	{
+		id: 36,
+		name: "a republican lizardman",
+		description: "\"Have you heard about the great coverup?\" the lizardman asks you. \"The lizard King and Queen, I think they're secretly humans. Think about it. Why else would they hold so much power and privelege?\"</p><p>\"Historical power struggles combined with longstanding institutional inertia?\" you reply.</p><p>\"Oh you think you're so much smarter than me with your stupid facts!\" the lizardman screams, before lunging at you.",
+		icon: "empty.png",
+		hp: 75,
+		pow: 18,
+		def: 10,
+		init: 30,
+		element: elementEnum.PSYCHIC,
+		exp: 40,
+		gold: 31,
+		drops: [
+			{id: 58, chance: 100},
+			{id: 58, chance: 50},
+			{id: 58, chance: 20},
+			{id: 58, chance: 10}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 37,
+		name: "an on-edge astronomer",
+		description: "An old man taps you on the shoulder. \"Hey, maybe you'll believe me. I was looking through my telescope and I saw this flat planet shaped like a disc!\"</p><p>\"Planets are round, not flat\", you reply.</p><p>\"Yes I know! But not this one! And that's not all, it was travelling through space on the back of a giant turtle!\"</p><p>\"OK, now you're definitely making this up.\"</p><p>\"I'm not, I'm not, I'm a respected astronomer! Aaaarg! I can't take this any more!\" He completely flips out and lashes out at you.",
+		icon: "empty.png",
+		hp: 80,
+		pow: 20,
+		def: 5,
+		init: 50,
+		element: elementEnum.PSYCHIC,
+		exp: 42,
+		gold: 29,
+		drops: [
+			{id: 59, chance: 100},
+			{id: 59, chance: 50},
+			{id: 59, chance: 20},
+			{id: 59, chance: 10}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 38,
+		name: "a man with a cold",
+		description: "\"ACHOO!\" A nearby man sneezes loudly.</p><p>\"Bless you\", you reply.</p><p>\"Thanks mate, these phones will be the death of us all.\"</p><p>You pull out your phone and look puzzled. \"What harm is this doing?\"</p><p>The man leaps back.\"You idiot! That's a vector for dangerous bilogical weapons. The phone masts send out illnesses to demotivate us and keep us under control! Get away from here with that thing!\" He charges at you.",
+		icon: "empty.png",
+		hp: 68,
+		pow: 17,
+		def: 15,
+		init: 25,
+		element: elementEnum.PSYCHIC,
+		exp: 38,
+		gold: 32,
+		drops: [
+			{id: 58, chance: 100},
+			{id: 59, chance: 50},
+			{id: 58, chance: 20},
+			{id: 59, chance: 10}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
+	{
+		id: 39,
+		name: "a paranoid protestor",
+		description: "You see a lady holding up a sign saying \"It's all fake!\"</p><p>\"It's all fake!\" she shouts at you. \"This government is fake, the media is fake, you're fake!\"</p><p>\"If everything is fake, are you also fake?\" you ask.</p><p>The lady sits there in silence for a moment, and then starts screaming. \"No! No! It can't be! Aaaaarrrrgggggghhhhh!\" She starts flailing around uncontrollably.",
+		icon: "empty.png",
+		hp: 50,
+		pow: 24,
+		def: 25,
+		init: 35,
+		element: elementEnum.PSYCHIC,
+		exp: 43,
+		gold: 28,
+		drops: [
+			{id: 59, chance: 100},
+			{id: 58, chance: 50},
+			{id: 59, chance: 20},
+			{id: 58, chance: 10}
+		],
+		hitMessages: [
+			"crit",
+			"hit1",
+			"hit2",
+			"hit3"
+		]
+	},
 ];
 
 // A ice damage aura common to all enemies in Santa's Workshop

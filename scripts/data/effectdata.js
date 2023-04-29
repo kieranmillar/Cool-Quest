@@ -44,7 +44,7 @@ var effects = [
 		id: 3,
 		name: "Writing",
 		description: "Your latest terrible opinion column on how the latest generation can't afford a house because they eat too many avocados has directed a lot of justifiable anger in your direction.",
-		enchantment: "+10 to all enemy stats\n+20 Experience from combats",
+		enchantment: "+10 to all enemy stats\n+20 experience from combats",
 		icon: "writing.png",
 		effect: function() {
 			player.effMl += 10;
@@ -168,7 +168,7 @@ var effects = [
 		id: 16,
 		name: "Candy Casing",
 		description: "The sugary shell of this stripy sweet shields you from snowy strikes.",
-		enchantment: "+5 Ice Resistance",
+		enchantment: "+5 ice resistance",
 		icon: "candy_cane.png",
 		effect: function() {
 			player.iceRes += 5;
@@ -188,7 +188,7 @@ var effects = [
 		id: 18,
 		name: "Bagpiping",
 		description: "Your loud and off-tune toots are making everyone in the vicinity really mad.",
-		enchantment: "+20 to all enemy stats\n+40 Experience from combats",
+		enchantment: "+20 to all enemy stats\n+40 experience from combats",
 		icon: "bagpipes.png",
 		effect: function() {
 			player.effMl += 20;
@@ -233,6 +233,16 @@ var effects = [
 		effect: function() {
 			player.effMpMax += 5;
 			player.effPow += 10;
+		}
+	},
+	{
+		id: 23,
+		name: "Brain Food",
+		description: "You ate a strange nut and you feel like you finally have an understanding of what's really going on in the world. It all makes sense now.",
+		enchantment: "+5 psychic resistance",
+		icon: "no_image.png",
+		effect: function() {
+			player.psychicRes += 5;
 		}
 	},
 ];

@@ -308,7 +308,7 @@ var items = [
 		id: 16,
 		name: "oven mitt",
 		description: "This mitt will protect your hands from heat. Well, it'll protect one of them.",
-		enchantment: "+5 Fire Resistance",
+		enchantment: "+5 fire resistance",
 		icon: "oven_mitt.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -367,7 +367,7 @@ var items = [
 		id: 20,
 		name: "orc pocket protector",
 		description: "This small leather wallet that fits onto your breast pocket provides incredible defense to a really small area.",
-		enchantment: "+2 DEF\n+2 Fire Resistance\n+2 Ice Resistance\n+2 Psychic Resistance\n+2 Emotional Resistance",
+		enchantment: "+2 DEF\n+2 fire resistance\n+2 ice resistance\n+2 psychic resistance\n+2 emotional resistance",
 		icon: "pocket_protector.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -440,7 +440,7 @@ var items = [
 		id: 25,
 		name: "shiny orc medal",
 		description: "This medal makes you look important. So important, that monsters will work extra hard to take you out. But it might also help you get into the orc leader's tent.",
-		enchantment: "+7 to all enemy stats\n+14 Experience from combats\nMakes you look like a high-ranking orc official",
+		enchantment: "+7 to all enemy stats\n+14 experience from combats\nMakes you look like a high-ranking orc official",
 		icon: "orc_medal.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -547,7 +547,7 @@ var items = [
 		id: 31,
 		name: "Badger Badger badge",
 		description: "This badge makes you feel like doing the Badger Badger dance. It annoys everyone around you. Stop living in the Noughties!",
-		enchantment: "+7 INIT\n+2 to all enemy stats\n+4 Experience from combats",
+		enchantment: "+7 INIT\n+2 to all enemy stats\n+4 experience from combats",
 		icon: "badger_badge.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -688,7 +688,7 @@ var items = [
 		id: 40,
 		name: "gaudy tropical shirt",
 		description: "This brightly coloured shirt with a palm tree pattern is magically enchanted so you can't feel the heat, both from the environment and radiating from your embarassment.",
-		enchantment: "+10% physical damage reduction\n+10 Fire Resistance",
+		enchantment: "+10% physical damage reduction\n+10 fire resistance",
 		icon: "tropical_shirt.png",
 		type: "Armour",
 		category: itemType.ARMOUR,
@@ -703,7 +703,7 @@ var items = [
 		id: 41,
 		name: "fleecing fleece",
 		description: "This shoddily crafted jumper may be warm, but you can't help but feel like you're being ripped off.",
-		enchantment: "+10% physical damage reduction\n+10 Ice Resistance",
+		enchantment: "+10% physical damage reduction\n+10 ice resistance",
 		icon: "fleecing_fleece.png",
 		type: "Armour",
 		category: itemType.ARMOUR,
@@ -718,7 +718,7 @@ var items = [
 		id: 42,
 		name: "tinfoil-lined jacket",
 		description: "Lining this jacket with tinfoil helps protect you from those secret government mind control rays. If you want to know more, I know this guy who does these internet videos ... wait, come back!",
-		enchantment: "+10% physical damage reduction\n+10 Psychic Resistance",
+		enchantment: "+10% physical damage reduction\n+10 psychic resistance",
 		icon: "tinfoil_jacket.png",
 		type: "Armour",
 		category: itemType.ARMOUR,
@@ -733,7 +733,7 @@ var items = [
 		id: 43,
 		name: "business suit",
 		description: "Wearing this suit makes you feel like you're a real manager and more able to fire people with no remorse.",
-		enchantment: "+10% physical damage reduction\n+10 Emotional Resistance",
+		enchantment: "+10% physical damage reduction\n+10 emotional resistance",
 		icon: "suit.png",
 		type: "Armour",
 		category: itemType.ARMOUR,
@@ -765,7 +765,7 @@ var items = [
 		id: 45,
 		name: "candy cane",
 		description: "This tasty treat is shaped like an ancient symbol used to ward off icy demons. Scholars are unable to tell if this is a coincidence, but you can't argue with results.",
-		enchantment: "+1 Fullness\n+2 Turns to midnight\n10 turns of +5 Ice Resistance",
+		enchantment: "+1 Fullness\n+2 Turns to midnight\n10 turns of +5 ice resistance",
 		icon: "candy_cane.png",
 		type: "Food",
 		category: itemType.FOOD,
@@ -936,7 +936,7 @@ var items = [
 		id: 56,
 		name: "cool shades",
 		description: "It's easier to deal with it if you can't see anything.",
-		enchantment: "+5 Emotional Resistance",
+		enchantment: "+5 emotional resistance",
 		icon: "cool_shades.png",
 		type: "Accessory",
 		category: itemType.ACC,
@@ -959,6 +959,42 @@ var items = [
 			monster.pow = Math.max(1, monster.pow - 5);
 			addCombatText("Their POW drops by 5.");
 			monster.stunThisRound = true;
+		}
+	},
+	{
+		id: 58,
+		name: "loose screw",
+		description: "This is a screw that was so loose it fell off. L + ratio.",
+		enchantment: "Deals 40 psychic damage\nEaty Farm's farmer is interested in this",
+		icon: "no_image.png",
+		type: "Combat Item",
+		category: itemType.MISC,
+		sell: 5,
+		onCombat: function () {
+			let damage = calcPsychicDamage(40);
+			addCombatText("You hurl the screw at your opponent, and it lodges into their head. The resulting hole lets in all sorts of bad information.");
+			addCombatText(`Your opponent takes <span class='psychic'>${damage}</span> psychic damage!`);
+			monster.hp -= damage;
+		}
+	},
+	{
+		id: 59,
+		name: "totally nut",
+		description: "This small individually-wrapped nut is labelled as high in vitamin E so good for brain health, and wrapped for freshness. Clearly the people who buy this need better brain health, given that the nut was already naturally covered in a protective casing.",
+		enchantment: "+1 Fullness\n+1 Turn to midnight\n20 turns of +5 psychic resistance\nEaty Farm's farmer is interested in this",
+		icon: "no_image.png",
+		type: "Food",
+		category: itemType.FOOD,
+		fullness: 1,
+		turns: 1,
+		sell: 5,
+		onUse: function () {
+			let success = eat(59);
+			if (success) {
+				hint(`${eatMessage(59)} You gain 20 turns of Brain Food.`, "g");
+				addBuff(23, 20);
+			}
+			return success;
 		}
 	},
 ];

@@ -189,4 +189,24 @@ var zones = [
 			}
 		}
 	},
+	{
+		id: 12,
+		name: "A Gathering of Conspiracy Theorists",
+		level: 4,
+		parent: "farm",
+		parentName: "Eaty Farm",
+		combatChance: 100,
+		combats: [36, 37, 38, 39],
+		noncombats: []
+	},
+	{
+		id: 13,
+		name: "The Stonemason's Guild",
+		level: 4,
+		parent: "farm",
+		parentName: "Eaty Farm",
+		combatChance: 100,
+		combats: [31],
+		noncombats: []
+	},
 ];

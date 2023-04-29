@@ -9,7 +9,7 @@
 		
 		<meta name="author" content="Kieran Millar">
 		
-		<meta name="revised" content="Kieran Millar, 28/04/2023">
+		<meta name="revised" content="Kieran Millar, 29/04/2023">
 		
 		<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 		
@@ -372,10 +372,14 @@
 						</div>
 						<div id="loc_farm" class="location">
 							<div id="farm_intro">
-								<p>TODO: Intro text</p>
+								<p>As you approach Eaty Farm you see a large crowd congregating at the gates. They seem to be protestors? They are hold up signs with slogans like "Get a brain moran" and "They are hiding the truth".</p>
+								<p>One of the protestors is screaming "Wake up sheeple!" at the sheep grazing in one of the fields. Another group is investigating a cornfield.</p>
+								<p>Looks like things are starting to get a little out of hand. Maybe the farmer knows what's up.</p>
 							</div>
 							<button type="button" onclick="goToLocation('farmHouse')">Visit the Farmhouse</button>
 							<button id="farm_cropCircleButton" type="button" onclick="goToLocation('farmCropCircle')">Visit the Giant Crop Circle</button>
+							<button type="button" onclick="adventure(12)">Adventure in a Gathering of Conspiracy Theorists (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
+							<button type="button" onclick="adventure(13)">Adventure in the Stonemason's Guild (<img src='./images/adventure.png' title='(1 Adventure)'>)</button>
 							<button type="button" onclick="goToLocation('outskirts')">Back to the Outskirts of Town</button>
 						</div>
 						<div id="loc_farmHouse" class="location">

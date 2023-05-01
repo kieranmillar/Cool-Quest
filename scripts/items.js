@@ -66,7 +66,7 @@ function unequip(slot) {
 
 // Use an item
 function useItem(id) {
-	if(!"onUse" in items[id]) {
+	if (!"onUse" in items[id]) {
 		hint("That's not a useable item!", "r");
 		return;
 	}
@@ -97,15 +97,15 @@ function gainItem(id, amount) {
 	player.ownedItems[id] = 1;
 	const itemPosition = checkInInventory(id);
 	if (itemPosition == -1) {
-		player.inventory.push({id: id, amount: amount});
-		player.inventory.sort(function(a,b){
+		player.inventory.push({ id: id, amount: amount });
+		player.inventory.sort(function (a, b) {
 			if (a === null || a === undefined || b === null || b === undefined) {
 				return 0;
 			}
 			let x = items[a.id].name.toLowerCase();
 			let y = items[b.id].name.toLowerCase();
-			if (x < y) {return -1;}
-			if (x > y) {return 1;}
+			if (x < y) { return -1; }
+			if (x > y) { return 1; }
 			return 0;
 		});
 	}
@@ -149,7 +149,7 @@ function createItemElement(id, amount = 0) {
 	}
 	let textNode = document.createTextNode(text);
 	e.appendChild(textNode);
-	e.onclick = function() {
+	e.onclick = function () {
 		openModal(modalType.ITEM, id);
 	};
 	return e;
@@ -170,7 +170,7 @@ function displayInventory() {
 	for (let i = 5; i < 8; i++) {
 		document.getElementById(`inv_${i}`).replaceChildren();
 	}
-	
+
 	for (let invItem of player.inventory) {
 		let type = items[invItem.id].category;
 		if (type < 5) {
@@ -189,7 +189,7 @@ function displayInventory() {
 					buttonText += `\n(${items[invItem.id].fullness}F ${quality}Q)`;
 				}
 			}
-			let button = createItemElementButton(buttonText, function() {useItem(invItem.id);});
+			let button = createItemElementButton(buttonText, function () { useItem(invItem.id); });
 			itemDiv.appendChild(button);
 		}
 		document.getElementById(`inv_${type}`).appendChild(itemDiv);
@@ -226,7 +226,7 @@ function displayEquipment() {
 			show(equippedDiv);
 			let e = createItemElement(player.equipment[i], 0);
 			equippedDiv.append(e);
-			let button = createItemElementButton("Unequip", function() {unequip(i);});
+			let button = createItemElementButton("Unequip", function () { unequip(i); });
 			equippedDiv.appendChild(button);
 		}
 		else {
@@ -256,7 +256,7 @@ function displayEquipment() {
 		let e = createItemElement(invItem.id, invItem.amount);
 		itemDiv.append(e);
 
-		let button = createItemElementButton("Equip", function() {equip(invItem.id);});
+		let button = createItemElementButton("Equip", function () { equip(invItem.id); });
 		itemDiv.appendChild(button);
 		document.getElementById(`equip_${type}`).appendChild(itemDiv);
 	}
@@ -288,7 +288,7 @@ function displayPawnShop() {
 	for (i = 0; i < 8; i++) {
 		document.getElementById(`pawn_${i}`).replaceChildren();
 	}
-	
+
 	for (let invItem of player.inventory) {
 		if (items[invItem.id].sell == 0) {
 			continue;
@@ -299,7 +299,7 @@ function displayPawnShop() {
 		let e = createItemElement(invItem.id, invItem.amount);
 		itemDiv.append(e);
 
-		let button = createItemElementButton(`Sell\n(${items[invItem.id].sell} Gold)`, function() {sellItem(invItem.id);});
+		let button = createItemElementButton(`Sell\n(${items[invItem.id].sell} Gold)`, function () { sellItem(invItem.id); });
 		itemDiv.appendChild(button);
 		document.getElementById(`pawn_${items[invItem.id].category}`).appendChild(itemDiv);
 	}

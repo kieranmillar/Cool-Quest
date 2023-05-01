@@ -67,7 +67,7 @@ function redrawCharPane() {
 	charPaneLevelSpan.textContent = player.level;
 	charPaneGoldSpan.textContent = player.gold;
 
-    charPaneHPSpan.textContent = player.hp;
+	charPaneHPSpan.textContent = player.hp;
 	displayBuffedStat(
 		player.baseHpMax,
 		player.effHpMax,
@@ -75,7 +75,7 @@ function redrawCharPane() {
 		charPaneEffHPMaxSpan
 	);
 	charPaneHPProgress.value = player.hp;
-    charPaneHPProgress.max = player.effHpMax;
+	charPaneHPProgress.max = player.effHpMax;
 
 	charPaneMPSpan.textContent = player.mp;
 	displayBuffedStat(
@@ -85,7 +85,7 @@ function redrawCharPane() {
 		charPaneEffMPMaxSpan
 	);
 	charPaneMPProgress.value = player.mp;
-    charPaneMPProgress.max = player.effMpMax;
+	charPaneMPProgress.max = player.effMpMax;
 
 	displayBuffedStat(
 		player.basePow,
@@ -108,32 +108,32 @@ function redrawCharPane() {
 		charPaneEffInitSpan
 	);
 
-    charPaneExpSpan.textContent = `${player.exp}/${levelDeltas[player.level-1]}`;
-    charPaneExpProgress.value = player.exp;
-    charPaneExpProgress.max = levelDeltas[player.level-1];
-	charPaneStatExpSpan.textContent = `${player.expLev}/${statLevelDeltas[player.statLev-1]}`;
-    charPaneStatExpProgress.value = player.expLev;
-    charPaneStatExpProgress.max = statLevelDeltas[player.statLev-1];
+	charPaneExpSpan.textContent = `${player.exp}/${levelDeltas[player.level - 1]}`;
+	charPaneExpProgress.value = player.exp;
+	charPaneExpProgress.max = levelDeltas[player.level - 1];
+	charPaneStatExpSpan.textContent = `${player.expLev}/${statLevelDeltas[player.statLev - 1]}`;
+	charPaneStatExpProgress.value = player.expLev;
+	charPaneStatExpProgress.max = statLevelDeltas[player.statLev - 1];
 
 	charPaneDaySpan.textContent = player.day;
 	charPaneTurnsToMidnightSpan.textContent = player.turnsToMidnight;
 	charPaneTurnsSpan.textContent = player.turns;
-    charPaneFullSpan.textContent = player.full;
+	charPaneFullSpan.textContent = player.full;
 	charPaneFullMaxSpan.textContent = player.fullMax;
 
 	charPaneMinionContainerDiv.replaceChildren();
 	numberOfEquippedMinions = player.equippedMinions.filter(x => x != -1).length;
 	if (numberOfEquippedMinions > 0) {
-	    charPaneMinionContainerDiv.appendChild(document.createElement("hr"));
+		charPaneMinionContainerDiv.appendChild(document.createElement("hr"));
 		for (let i = 0; i < 2; i++) {
 			let thisMinion = player.equippedMinions[i];
 			if (thisMinion == -1) {
 				continue;
 			}
 			let newElement = document.createElement("p");
-			newElement.classList.add("item_Image");	
+			newElement.classList.add("item_Image");
 			newElement.innerHTML = `<img src="./images/${minions[thisMinion].icon}"><span class="wrappableText">${player.minionNames[thisMinion]} the ${minions[thisMinion].name}</span>`;
-			newElement.onclick = function() {
+			newElement.onclick = function () {
 				openModal(modalType.MINION, thisMinion);
 			};
 			charPaneMinionContainerDiv.appendChild(newElement);
@@ -177,11 +177,11 @@ function displayBuffedStat(baseStat, effStat, baseStatSpan, effStatSpan) {
 		show(effStatSpan);
 		if (effStat > baseStat) {
 			effStatSpan.classList.add("blue");
-            effStatSpan.classList.remove("red");
+			effStatSpan.classList.remove("red");
 		}
 		else {
 			effStatSpan.classList.add("red");
-            effStatSpan.classList.remove("blue");
+			effStatSpan.classList.remove("blue");
 		}
 		baseStatSpan.textContent = ` (${baseStat})`;
 	}
@@ -194,7 +194,7 @@ function redrawBuffPane() {
 	for (let buff of player.buffs) {
 		let buffDiv = document.createElement("div");
 		buffDiv.classList.add("item", "item_Image");
-		buffDiv.onclick = function() {
+		buffDiv.onclick = function () {
 			openModal(modalType.BUFF, buff.id);
 		};
 		let imageElement = document.createElement("img");
@@ -208,7 +208,7 @@ function redrawBuffPane() {
 		let textNode = document.createTextNode(text);
 		buffDiv.appendChild(textNode);
 		buffList.appendChild(buffDiv);
-		buffCount ++;
+		buffCount++;
 	}
 	if (buffCount == 0) {
 		hide(buffPane);
@@ -238,7 +238,7 @@ function hint(txt, c) {
 	hintBar.className = "";
 	hintBar.style.transitionDuration = "0s";
 	hintBar.classList.add("hintBar", "w");
-	setTimeout(function() {
+	setTimeout(function () {
 		hintBar.style.transitionDuration = "500ms";
 		hintBar.classList.remove("w");
 		hintBar.classList.add(c);
@@ -270,7 +270,7 @@ function openModal(type, id) {
 		itemType.textContent = `Type: ${items[id].type}`;
 		modal_text.appendChild(itemType);
 		let sell = document.createElement("p");
-		if(items[id].sell == 0) {
+		if (items[id].sell == 0) {
 			sell.textContent = "Cannot be sold";
 		}
 		else {

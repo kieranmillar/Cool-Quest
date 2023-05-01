@@ -9,12 +9,12 @@ var trainerAllOwnedParagraph = document.getElementById("trainer_allOwned");
 var trainerListDiv = document.getElementById("trainer_list");
 
 // Cast a noncombat skill. Returns if successful.
-function useNoncombatSkill (x) {
+function useNoncombatSkill(x) {
 	if (x == -1) {
 		hint("That's not a valid skill!", "r");
 		return false;
 	}
-	if(!"onUse" in skills[x]) {
+	if (!"onUse" in skills[x]) {
 		hint("That's not a useable skill!", "r");
 		return false;
 	}
@@ -40,7 +40,7 @@ function createSkillElement(id) {
 	e.appendChild(imgElement);
 	let textNode = document.createTextNode(skills[id].name);
 	e.appendChild(textNode);
-	e.onclick = function() {
+	e.onclick = function () {
 		openModal(modalType.SKILL, id);
 	};
 	return e;
@@ -62,20 +62,20 @@ function displaySkills() {
 		sortedSkillIds.push(i);
 	}
 	if (!player.options[optionEnum.SORTSKILLSBYSOURCE]) {
-		sortedSkillIds.sort(function(a, b) {
+		sortedSkillIds.sort(function (a, b) {
 			if (a === null || a === undefined || b === null || b === undefined) {
 				return 0;
 			}
 			let x = 0;
 			let y = 0;
-			if("cost" in skills[a]) {
+			if ("cost" in skills[a]) {
 				x = skills[a].cost;
 			}
-			if("cost" in skills[b]) {
+			if ("cost" in skills[b]) {
 				y = skills[b].cost;
 			}
-			if (x < y) {return -1;}
-			if (x > y) {return 1;}
+			if (x < y) { return -1; }
+			if (x > y) { return 1; }
 			return 0;
 		});
 	}
@@ -84,28 +84,27 @@ function displaySkills() {
 		newElement.classList.add("item");
 		let textImageDiv = createSkillElement(i);
 		newElement.appendChild(textImageDiv);
-		switch (skills[i].category)
-		{
+		switch (skills[i].category) {
 			case skillType.NONCOMBAT:
 				let addButton = true;
 				if (i == 66 && player.castTimeManagement) {
 					addButton = false;
 				}
 				if (addButton) {
-					let castButton = createItemElementButton(`Cast\n(${skills[i].cost} MP)`, function() {useNoncombatSkill(i)});
-        			newElement.appendChild(castButton);
+					let castButton = createItemElementButton(`Cast\n(${skills[i].cost} MP)`, function () { useNoncombatSkill(i) });
+					newElement.appendChild(castButton);
 				}
 				skillNonComContainer.appendChild(newElement);
-				noncomCount ++;
+				noncomCount++;
 				break;
 			case skillType.COMBAT:
 				skillComContainer.appendChild(newElement);
-				comCount ++;
+				comCount++;
 				break;
 			case skillType.PASSIVE:
 				skillPassiveContainer.appendChild(newElement);
-				passiveCount ++;
-				break;			
+				passiveCount++;
+				break;
 		}
 		if (noncomCount == 0) {
 			hide(skillNonComTitle);
@@ -149,18 +148,18 @@ function displayTrainer() {
 		if (skills[i].level != lastLevel) {
 			lastLevel = skills[i].level;
 			let newElement = document.createElement("h2");
-        	newElement.textContent = `Level ${lastLevel}`;
-	    	trainerListDiv.appendChild(newElement);
+			newElement.textContent = `Level ${lastLevel}`;
+			trainerListDiv.appendChild(newElement);
 		}
 		let newElement = document.createElement("div");
 		newElement.classList.add("item");
 		let textImageDiv = createSkillElement(i);
 		newElement.appendChild(textImageDiv);
 
-		let buyButton = createItemElementButton(`Train\n(${skills[i].price} Gold)`, function() {buySkill(i)});
-        newElement.appendChild(buyButton);
-        trainerListDiv.appendChild(newElement);
-		skillDisplayCount ++;
+		let buyButton = createItemElementButton(`Train\n(${skills[i].price} Gold)`, function () { buySkill(i) });
+		newElement.appendChild(buyButton);
+		trainerListDiv.appendChild(newElement);
+		skillDisplayCount++;
 	}
 	if (skillDisplayCount == 0) {
 		show(trainerAllOwnedParagraph);
@@ -171,7 +170,7 @@ function displayTrainer() {
 }
 
 // Purchase a skill from the personal trainer
-function buySkill (id) {
+function buySkill(id) {
 	if (player.skills[id] > 0) {
 		hint("You already own that skill!", "r");
 		return;

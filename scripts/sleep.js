@@ -3,13 +3,13 @@ var sleepTextDiv = document.getElementById("sleep_text");
 // What happens when you sleep in your house at the end of the day
 function sleep() {
 	sleepTextDiv.textContent = "";
-	
+
 	newSleepText("You lie down on your bed and get some well needed rest, so you're ready for the day ahead.");
-	
+
 	let newElement = document.createElement("h2");
 	newElement.textContent = "A new day has begun!";
 	sleepTextDiv.appendChild(newElement);
-	
+
 	hint(restRecovery(), "g");
 	player.turnsToMidnight = 40;
 	player.day++;
@@ -38,7 +38,7 @@ function rest() {
 	let hintText = "";
 	if (player.freeRestsUsed < player.effFreeRests) {
 		hintText = restRecovery();
-		player.freeRestsUsed ++;
+		player.freeRestsUsed++;
 		save();
 	}
 	else {
@@ -55,7 +55,7 @@ function rest() {
 
 // Recovery granted by resting and sleeping. Returns the hint text
 function restRecovery() {
-	let hp = Math.floor(Math.random()*10) + 30;
-	let mp = Math.floor(Math.random()*3) + 5;
+	let hp = Math.floor(Math.random() * 10) + 30;
+	let mp = Math.floor(Math.random() * 3) + 5;
 	return `${gainHp(hp)} ${gainMp(mp)}`;
 }

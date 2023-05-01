@@ -61,8 +61,8 @@ function gainItemDrop(id, amount) {
 		amountText = amount;
 	}
 	e.innerHTML = `You found ${amountText} <img src='./images/${items[id].icon}'> ${items[id].name}`;
-	e.onclick = function() {
-		openModal (modalType.ITEM, id);
+	e.onclick = function () {
+		openModal(modalType.ITEM, id);
 	}
 	combatTextDiv.appendChild(e);
 }
@@ -88,7 +88,7 @@ function beginCombat(obj, descriptionOverride = "") {
 	else {
 		monster.description = descriptionOverride;
 	}
-	
+
 	monsterImage.src = `./images/big/${obj.icon}`;
 	monster.hp = obj.hp + player.effMl;
 	if (!"fixedStats" in obj || !obj.fixedStats) {
@@ -145,7 +145,7 @@ function beginCombat(obj, descriptionOverride = "") {
 	monster.gold = obj.gold;
 	monster.drops = [];
 	for (let drop of obj.drops) {
-		monster.drops.push({id: drop.id, chance: drop.chance});
+		monster.drops.push({ id: drop.id, chance: drop.chance });
 	}
 	monster.hitMessages = obj.hitMessages;
 	monster.castPounce = 0;
@@ -175,7 +175,7 @@ function beginCombat(obj, descriptionOverride = "") {
 			combatRound(-1);
 		}
 		else {
-			currentRound ++;
+			currentRound++;
 		}
 	}
 	redrawCombat();
@@ -220,20 +220,20 @@ function constructCombatSkillDropdown() {
 		}
 		combatSkillIds.push(i);
 	}
-	combatSkillIds.sort(function(a, b) {
+	combatSkillIds.sort(function (a, b) {
 		if (a === null || a === undefined || b === null || b === undefined) {
 			return 0;
 		}
 		let x = 0;
 		let y = 0;
-		if("cost" in skills[a]) {
+		if ("cost" in skills[a]) {
 			x = skills[a].cost;
 		}
-		if("cost" in skills[b]) {
+		if ("cost" in skills[b]) {
 			y = skills[b].cost;
 		}
-		if (x < y) {return -1;}
-		if (x > y) {return 1;}
+		if (x < y) { return -1; }
+		if (x > y) { return 1; }
 		return 0;
 	});
 	for (let id of combatSkillIds) {
@@ -288,7 +288,7 @@ function constructCombatItemDropdown() {
 			newOption.value = player.inventory[i].id;
 			newOption.textContent = `${items[player.inventory[i].id].name} (${player.inventory[i].amount})`;
 			itemDropdown.appendChild(newOption);
-			itemCount ++;
+			itemCount++;
 		}
 	}
 	if (itemCount == 0) {
@@ -331,7 +331,7 @@ function checkEndOfCombat() {
 			if (items[monster.drops[i].id].category == itemType.FOOD) {
 				totalItemBoost += player.effItemBoostFood;
 			}
-			if (Math.random() * 100 < monster.drops[i].chance  * ((100 + totalItemBoost) / 100)) {
+			if (Math.random() * 100 < monster.drops[i].chance * ((100 + totalItemBoost) / 100)) {
 				gainItemDrop(monster.drops[i].id, 1);
 			}
 		}
@@ -368,7 +368,7 @@ function combatRound(action) {
 			break;
 		case 0:
 			//basic attack
-			regularAttack (player.effPow, "You hit the monster.", "You deliver a critical blow!");
+			regularAttack(player.effPow, "You hit the monster.", "You deliver a critical blow!");
 			break;
 		case 1:
 			//use skill
@@ -396,7 +396,7 @@ function combatRound(action) {
 			let runAwayCostsTurn = true;
 			if (freeRunAwaysRemaining > 0) {
 				runAwayCostsTurn = false;
-				player.freeRunAwaysUsed ++;
+				player.freeRunAwaysUsed++;
 			}
 			let texts = [];
 			if (runAwayCostsTurn) {
@@ -457,7 +457,7 @@ function combatRound(action) {
 			// It is the responsibility of the stun source to provide the combat text
 		}
 		else if (monster.exposeSecretsRounds > 0) {
-			monster.exposeSecretsRounds --;
+			monster.exposeSecretsRounds--;
 			if (monster.exposeSecretsRounds > 0) {
 				addCombatText("Your opponent stands there panicing, with a terrified expression on their face.");
 			}
@@ -544,23 +544,23 @@ function combatRound(action) {
 			}
 		}
 	}
-	currentRound ++;
+	currentRound++;
 	redrawCombat();
 }
 
 // Cast a combat skill in combat. Returns if successful
 function useCombatSkill(id) {
 	if (id == -1) {
-		hint ("You didn't choose a skill to cast!", "r");
+		hint("You didn't choose a skill to cast!", "r");
 		return false;
 	}
-	if(!"onUse" in skills[id]) {
-		hint ("That's not a useable skill!", "r");
+	if (!"onUse" in skills[id]) {
+		hint("That's not a useable skill!", "r");
 		return false;
 	}
 	let cost = Math.max(skills[id].cost - player.effCombatCostReduction, 0);
 	if (cost > player.mp) {
-		hint ("You haven't got enough MP to cast that skill!", "r");
+		hint("You haven't got enough MP to cast that skill!", "r");
 		return false;
 	}
 	else {
@@ -582,8 +582,8 @@ function useCombatItem(id) {
 		hint("You didn't choose an item to use!", "r");
 		return false;
 	}
-	if(!"onCombat" in items[id]) {
-		hint ("That item can't be used in combat!", "r");
+	if (!"onCombat" in items[id]) {
+		hint("That item can't be used in combat!", "r");
 		return false;
 	}
 	let amount = getItemAmount(id);

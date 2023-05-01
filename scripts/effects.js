@@ -2,12 +2,12 @@
 function addBuff(id, turns) {
 	let buffPosition = player.buffs.findIndex(x => x.id == id);
 	if (buffPosition == -1) {
-		player.buffs.push({id: id, turns: turns});
+		player.buffs.push({ id: id, turns: turns });
 	}
 	else {
 		player.buffs[buffPosition].turns += turns;
 	}
-	player.buffs.sort(function(a,b){return a.turns - b.turns;});
+	player.buffs.sort(function (a, b) { return a.turns - b.turns; });
 	calculateStats();
 	redrawBuffPane();
 	return true;

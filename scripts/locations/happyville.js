@@ -67,7 +67,7 @@ function createHappyvilleShopItem(id) {
     let newElement = document.createElement("span");
     newElement.classList.add("item_Image");
     newElement.innerHTML = `<img src="./images/${items[id].icon}"><span class="wrappableText">${items[id].name}</span>`;
-    newElement.onclick = function() {
+    newElement.onclick = function () {
         openModal(modalType.ITEM, id);
     };
     itemWrapper.appendChild(newElement);
@@ -85,7 +85,7 @@ function createHappyvilleShopMinion(id, cost) {
     let newElement = document.createElement("span");
     newElement.classList.add("item_Image");
     newElement.innerHTML = `<img src="./images/${minions[id].icon}"><span class="wrappableText">${minions[id].name}</span>`;
-    newElement.onclick = function() {
+    newElement.onclick = function () {
         openModal(modalType.MINION, id);
     };
     minionWrapper.appendChild(newElement);
@@ -103,7 +103,7 @@ function buyHappyvilleShopItem(id) {
         return;
     }
     gainItem(id, 1);
-	hint(`You purchased a ${items[id].name}!`, "g");
+    hint(`You purchased a ${items[id].name}!`, "g");
     save();
     displayHappyvilleShop();
 }
@@ -142,7 +142,7 @@ function displayHappyvilleTree() {
         loseItem(37, 20);
         setQuestState(questEnum.HAPPYVILLE, 4);
     }
-    else if(getQuestState(questEnum.HAPPYVILLE) == 2) {
+    else if (getQuestState(questEnum.HAPPYVILLE) == 2) {
         addHappyvilleTreeText("You head towards the large tree in the centre of the village square. A large crowd is gathered there, and everyone looks glum. You push your way to the front of the crowd, and spot who appears to be the person most in charge here.");
         addHappyvilleTreeText("\"Oh, are you from Drella? Thank you! They normally never answer us, but I knew they'd understand the gravity of the situation this time!\"");
         addHappyvilleTreeText("\"What's the problem?\" you ask.");

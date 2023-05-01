@@ -24,7 +24,7 @@ var zones = [
 			if (!player.zoneCounters[zoneCounterEnum.BASEMENT]) {
 				player.zoneCounters[zoneCounterEnum.BASEMENT] = 0;
 			}
-			player.zoneCounters[zoneCounterEnum.BASEMENT] ++;
+			player.zoneCounters[zoneCounterEnum.BASEMENT]++;
 			if (player.zoneCounters[zoneCounterEnum.BASEMENT] >= 5) {
 				player.zoneCounters[zoneCounterEnum.BASEMENT] = 0;
 				beginNoncombat(0);
@@ -83,8 +83,7 @@ var zones = [
 		combatChance: 100,
 		combats: [14],
 		noncombats: [],
-		special: function ()
-		{
+		special: function () {
 			if (player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] == 1 && getQuestState(questEnum.ORCCAMP) < 6) {
 				player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 0;
 				beginCombat(combats[15]);
@@ -103,8 +102,7 @@ var zones = [
 		combatChance: 0,
 		combats: [],
 		noncombats: [],
-		special: function ()
-		{
+		special: function () {
 			if (getQuestState(questEnum.ORCCAMP) >= 6) {
 				beginNoncombat(6);
 			}
@@ -179,7 +177,7 @@ var zones = [
 			if (!player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP]) {
 				player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] = 0;
 			}
-			player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] ++;
+			player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP]++;
 			if (player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] >= 6) {
 				player.zoneCounters[zoneCounterEnum.SANTASWORKSHOP] = 0;
 				beginNoncombat(12);

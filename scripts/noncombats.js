@@ -50,8 +50,8 @@ function getNoncombatItem(id, amount) {
 		amountText = amount;
 	}
 	e.innerHTML = `You found ${amountText} <img src='./images/${items[id].icon}'> ${items[id].name}`;
-	e.onclick = function() {
-		openModal (modalType.ITEM, id);
+	e.onclick = function () {
+		openModal(modalType.ITEM, id);
 	}
 	noncombatTextDiv.appendChild(e);
 }
@@ -75,10 +75,10 @@ function beginNoncombat(id) {
 		noncombats[id].result();
 	}
 	else {
-		for (let i = 0; i < noncombats[id].choices.length; i ++) {
+		for (let i = 0; i < noncombats[id].choices.length; i++) {
 			let e = document.createElement("button");
 			e.textContent = resolveProperty(noncombats[id].choices[i].buttonText);
-			e.onclick = function() {
+			e.onclick = function () {
 				noncombatChoice(id, i);
 			};
 			noncombatButtonsContainer.appendChild(e);

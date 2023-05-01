@@ -144,7 +144,7 @@ var statLevelDeltas = [
 function createCharacter() {
 	let name = createNameInput.value.trim();
 	if (name == "") {
-		hint ("You need to input a name!", "r");
+		hint("You need to input a name!", "r");
 		return;
 	}
 	let job = parseInt(jobForm.job.value);
@@ -260,23 +260,23 @@ function calculateStats() {
 	player.effMinionExpBonus = 0;
 	player.effFreeRests = 0;
 	player.effFreeRunAways = 0;
-	
+
 	//apply equipment
 	for (let i in player.equipment) {
 		if (player.equipment[i] != -1) {
-			if("onWear" in items[player.equipment[i]]) {
+			if ("onWear" in items[player.equipment[i]]) {
 				items[player.equipment[i]].onWear();
 			}
 		}
 	}
-	
+
 	//apply buffs
 	for (let i in player.buffs) {
 		if ("effect" in effects[player.buffs[i].id]) {
 			effects[player.buffs[i].id].effect();
 		}
 	}
-	
+
 	//apply passives
 	for (let i in player.skills) {
 		if (!player.skills[i]) {
@@ -331,9 +331,9 @@ function gainExp(amount) {
 	player.expLev += amount;
 	player.exp += amount;
 	let t = `You gained ${amount} experience points!`;
-	while (player.expLev >= statLevelDeltas[player.statLev-1]) {
-		player.expLev -= statLevelDeltas[player.statLev-1];
-		player.statLev ++;
+	while (player.expLev >= statLevelDeltas[player.statLev - 1]) {
+		player.expLev -= statLevelDeltas[player.statLev - 1];
+		player.statLev++;
 		player.baseHpMax += 5;
 		player.baseMpMax += 1;
 		player.basePow += player.powGain;
@@ -342,9 +342,9 @@ function gainExp(amount) {
 		t += "<br><strong>You grew your stats!</strong>";
 		calculateStats();
 	}
-	while (player.exp >= levelDeltas[player.level-1]) {
-		player.exp -= levelDeltas[player.level-1];
-		player.level ++;
+	while (player.exp >= levelDeltas[player.level - 1]) {
+		player.exp -= levelDeltas[player.level - 1];
+		player.level++;
 		t += "<br><strong>You levelled up!</strong>";
 		displayQuestLog();
 	}

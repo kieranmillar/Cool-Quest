@@ -201,7 +201,7 @@ function displayPen() {
         let newElement = document.createElement("span");
         newElement.classList.add("item_Image");
         newElement.innerHTML = `<img src="./images/${minions[i].icon}"><span class="wrappableText">${player.minionNames[i]} the ${minions[i].name}</span>`;
-        newElement.onclick = function() {
+        newElement.onclick = function () {
             openModal(modalType.MINION, i);
         };
         innerWrapper.appendChild(newElement);
@@ -226,16 +226,16 @@ function displayPen() {
         }
 
         let renameButton = document.createElement("span");
-            renameButton.innerHTML = `<input type = 'button' value = 'Rename' onClick = 'renameMinion(${i})'>`;
-            minionWrapper.appendChild(renameButton);
+        renameButton.innerHTML = `<input type = 'button' value = 'Rename' onClick = 'renameMinion(${i})'>`;
+        minionWrapper.appendChild(renameButton);
 
         penContainerDiv.appendChild(minionWrapper);
-        minionCount ++;
+        minionCount++;
     }
 
     if (minionCount == 0) {
         let newElement = document.createElement("p");
         newElement.textContent = "You don't have any minions.";
-	    penContainerDiv.appendChild(newElement);
+        penContainerDiv.appendChild(newElement);
     }
 }

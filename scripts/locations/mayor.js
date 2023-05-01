@@ -36,9 +36,9 @@ function displayMayorText() {
         newMayorText("\"Well done on opening the Town Hall. You are free to explore it if you wish.\"");
         finishMayorQuest();
         setQuestState(questEnum.TOWNHALL, 4);
-		if (player.level <= 1) {
-			newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 2.\"");
-		}
+        if (player.level <= 1) {
+            newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 2.\"");
+        }
     }
 
     //level 2
@@ -50,12 +50,12 @@ function displayMayorText() {
         newMayorText("\"Have you spoken to the leader of the orc camp on the outskirts of town yet? Maybe you can convince one of the majors to let you see the leader.\"");
     }
     else if (getQuestState(questEnum.ORCCAMP) == 6) {
-		newMayorText("\"So the orcs aren't planning an attack? Well that's good news! I wonder what they are here for? I hope we can trust them.\"");
+        newMayorText("\"So the orcs aren't planning an attack? Well that's good news! I wonder what they are here for? I hope we can trust them.\"");
         finishMayorQuest();
         setQuestState(questEnum.ORCCAMP, 7);
-		if (player.level <= 2) {
-			newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 3.\"");
-		}
+        if (player.level <= 2) {
+            newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 3.\"");
+        }
     }
 
     //level 3
@@ -67,19 +67,19 @@ function displayMayorText() {
         newMayorText("\"Well I'm certainly not going myself. If you could get them to do whatever you need to do to get them to stop calling me I'd be grateful.\"");
         setQuestState(questEnum.HAPPYVILLE, 1);
     }
-    else if (getQuestState(questEnum.HAPPYVILLE) >= 1  && getQuestState(questEnum.HAPPYVILLE) <= 3) {
+    else if (getQuestState(questEnum.HAPPYVILLE) >= 1 && getQuestState(questEnum.HAPPYVILLE) <= 3) {
         newMayorText("\"Hey get a move on solving the problem those crazy Happyville people in the mountains are having! I really don't want them to phone me again, they give me the creeps!\"");
     }
     else if (getQuestState(questEnum.HAPPYVILLE) == 4) {
         newMayorText("\"What have you done? The phone is ringing off the hook now from those Happyville crazies! I wanted the calls reduced, not increased! You'd better solve this as soon as possible!\"");
     }
     else if (getQuestState(questEnum.HAPPYVILLE) == 5) {
-		newMayorText("\"So they were a bunch of demon-summoning cultists after all, and you helped them summon the demon but defeated it anyway? Nice going, that should shut them up for a while.\"");
+        newMayorText("\"So they were a bunch of demon-summoning cultists after all, and you helped them summon the demon but defeated it anyway? Nice going, that should shut them up for a while.\"");
         finishMayorQuest();
         setQuestState(questEnum.HAPPYVILLE, 6);
-		if (player.level <= 3) {
-			newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 4.\"");
-		}
+        if (player.level <= 3) {
+            newMayorText("\"You aren't strong enough yet for my next task, come back when you reach level 4.\"");
+        }
     }
 
     //level 4
@@ -87,7 +87,7 @@ function displayMayorText() {
         newMayorText("\"I've had reports that there's a crowd gathering at Eaty Farm on the outskirts of town. We're normally grateful for some tourism, but I hear these people are, how shall I say this, not a good look. See if you can scare them off.\"");
         setQuestState(questEnum.FARM, 1);
     }
-    else if (getQuestState(questEnum.FARM) >= 1  && getQuestState(questEnum.FARM) <= 3) {
+    else if (getQuestState(questEnum.FARM) >= 1 && getQuestState(questEnum.FARM) <= 3) {
         newMayorText("\"How are things at the funny farm? Also, how are things going at Eaty Farm? Haha! Wait, why aren't you laughing?\"");
     }
 
@@ -100,12 +100,12 @@ function displayMayorText() {
 function newMayorText(t) {
     let newElement = document.createElement("p");
     newElement.textContent = t;
-	mayorTextDiv.appendChild(newElement);
+    mayorTextDiv.appendChild(newElement);
 }
 
 // Finishes a mayor quest. Rewards are not tied to a specific quest, but the number completed
 function finishMayorQuest() {
-    player.mayorQuestsCompleted ++;
+    player.mayorQuestsCompleted++;
     switch (player.mayorQuestsCompleted) {
         case 1:
             newMayorText("\"Sorry, while I'm happy to help out, I don't work for free. I hope you understand\" you reply.");
@@ -135,12 +135,12 @@ function finishMayorQuest() {
 
 // Gains a Drella U course voucher and appends the item gain paragraph
 function gainMayorVoucher() {
-	gainItem(35, 1);
-	let e = document.createElement("p");
-	e.classList.add("item_Image");
-	e.innerHTML = `You receive a <img src='./images/${items[35].icon}'> ${items[35].name}`;
-	e.onclick = function() {
-		openModal (modalType.ITEM, 35);
-	}
-	mayorTextDiv.appendChild(e);
+    gainItem(35, 1);
+    let e = document.createElement("p");
+    e.classList.add("item_Image");
+    e.innerHTML = `You receive a <img src='./images/${items[35].icon}'> ${items[35].name}`;
+    e.onclick = function () {
+        openModal(modalType.ITEM, 35);
+    }
+    mayorTextDiv.appendChild(e);
 }

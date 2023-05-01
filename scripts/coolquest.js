@@ -22,11 +22,11 @@ var option_sortSkillsBySourceCheckbox = document.getElementById("option_sortSkil
 
 // Checks if a property of an object is a function, and executes it if so, otherwise returns its value
 function resolveProperty(input) {
-	if (typeof input === 'function'){
-        return input();
-    } else {
-        return input;
-    }
+	if (typeof input === 'function') {
+		return input();
+	} else {
+		return input;
+	}
 }
 
 // Save the game
@@ -49,14 +49,14 @@ function extend() {
 		}
 	}
 
-    let result = {};
-    for (let i = 0; i < arguments.length; i++) {
-        forEachIn(arguments[i],
-            function(obj, key) {
-                result[key] = obj;
-            });
-    }
-    return result;
+	let result = {};
+	for (let i = 0; i < arguments.length; i++) {
+		forEachIn(arguments[i],
+			function (obj, key) {
+				result[key] = obj;
+			});
+	}
+	return result;
 }
 
 // Load the game
@@ -135,7 +135,7 @@ function load() {
 }
 
 function toggleOption(option) {
-	switch (option)	{
+	switch (option) {
 		case 'compactBuffPane':
 			if (!player.options[optionEnum.COMPACTBUFFPANE]) {
 				player.options[optionEnum.COMPACTBUFFPANE] = 1;
@@ -199,33 +199,33 @@ function wipe() {
 	let confirmation = confirm("Are you sure you want to permanently erase your savefile?");
 	if (confirmation === true) {
 		localStorage.clear();
-		location.reload(); 
+		location.reload();
 	}
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-	doctor_hp_input.addEventListener("change", function() {
+document.addEventListener('DOMContentLoaded', function () {
+	doctor_hp_input.addEventListener("change", function () {
 		let hpCost = 2;
 		if (player.skills[62]) {
 			hpCost = 1;
 		}
 		doctor_hp_button.textContent = `Restore (${parseInt(doctor_hp_input.value) * hpCost} Gold)`;
 	});
-	doctor_mp_input.addEventListener("change", function() {
+	doctor_mp_input.addEventListener("change", function () {
 		let mpCost = 10;
 		if (player.skills[62]) {
 			mpCost = 8;
 		}
 		doctor_mp_button.textContent = `Restore (${parseInt(doctor_mp_input.value) * mpCost} Gold)`;
 	});
-	quickHeal_hp_input.addEventListener("change", function() {
+	quickHeal_hp_input.addEventListener("change", function () {
 		let hpCost = 2;
 		if (player.skills[62]) {
 			hpCost = 1;
 		}
 		quickHeal_hp_button.textContent = `Restore (${parseInt(quickHeal_hp_input.value) * hpCost} Gold)`;
 	});
-	quickHeal_mp_input.addEventListener("change", function() {
+	quickHeal_mp_input.addEventListener("change", function () {
 		let mpCost = 10;
 		if (player.skills[62]) {
 			mpCost = 8;

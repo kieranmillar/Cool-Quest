@@ -40,7 +40,7 @@ var combats = [
 		exp: 9,
 		gold: 6,
 		drops: [
-			{id: 11, chance: 30}
+			{ id: 11, chance: 30 }
 		],
 		hitMessages: [
 			"It goes berzerk and tries to rip your head off! It fails, but still pulled out some hair.",
@@ -62,7 +62,7 @@ var combats = [
 		exp: 11,
 		gold: 5,
 		drops: [
-			{id: 8, chance: 30}
+			{ id: 8, chance: 30 }
 		],
 		hitMessages: [
 			"It casts the ultimate spell, Meteor! A pebble falls on your head, but with enough speed that it really hurts.",
@@ -83,7 +83,7 @@ var combats = [
 		exp: 8,
 		gold: 8,
 		drops: [
-			{id: 12, chance: 30}
+			{ id: 12, chance: 30 }
 		],
 		hitMessages: [
 			"It performs a spinning leap, slashing you across the face like a shuriken!",
@@ -104,7 +104,7 @@ var combats = [
 		exp: 14,
 		gold: 23,
 		drops: [
-			{id: 6, chance: 70},
+			{ id: 6, chance: 70 },
 		],
 		hitMessages: [
 			"It audits your arse, asking probing questions about your internal affairs.",
@@ -125,7 +125,7 @@ var combats = [
 		exp: 15,
 		gold: 22,
 		drops: [
-			{id: 7, chance: 30}
+			{ id: 7, chance: 30 }
 		],
 		hitMessages: [
 			"A nearby box flings open, and out springs an angry bobcat, which snarls and slashes you repeatedly in the face!",
@@ -146,9 +146,9 @@ var combats = [
 		exp: 18,
 		gold: 15,
 		drops: [
-			{id: 2, chance: 80},
-			{id: 2, chance: 40},
-			{id: 2, chance: 10}
+			{ id: 2, chance: 80 },
+			{ id: 2, chance: 40 },
+			{ id: 2, chance: 10 }
 		],
 		hitMessages: [
 			"He throws a soggy, limp biscuit at you. It keeps Rollin' Rollin' Rollin' until it smacks into you.",
@@ -169,7 +169,7 @@ var combats = [
 		exp: 21,
 		gold: 12,
 		drops: [
-			{id: 14, chance: 70}
+			{ id: 14, chance: 70 }
 		],
 		hitMessages: [
 			"It microwaves a cup of hot soup for 40 seconds, and when finished, throws it over you.",
@@ -191,9 +191,9 @@ var combats = [
 		exp: 20,
 		gold: 18,
 		drops: [
-			{id: 15, chance: 60},
-			{id: 16, chance: 30},
-			{id: 17, chance: 30}
+			{ id: 15, chance: 60 },
+			{ id: 16, chance: 30 },
+			{ id: 17, chance: 30 }
 		],
 		hitMessages: [
 			"He tackles you to the ground and sets fire to your clothes. You roll around to put it out.",
@@ -243,7 +243,7 @@ var combats = [
 						break;
 				}
 				setQuestState(questEnum.ORCCAMP, getQuestState(questEnum.ORCCAMP) + 1);
-			}	
+			}
 			return true;
 		}
 	},
@@ -260,8 +260,8 @@ var combats = [
 		exp: 15,
 		gold: 15,
 		drops: [
-			{id: 18, chance: 25},
-			{id: 19, chance: 50}
+			{ id: 18, chance: 25 },
+			{ id: 19, chance: 50 }
 		],
 		hitMessages: [
 			"He takes off his chef's hat, puts it onto your head, then pulls it down over your eyes. In the struggle to pull it off you trip and fall onto the grill.",
@@ -283,8 +283,8 @@ var combats = [
 		exp: 12,
 		gold: 12,
 		drops: [
-			{id: 20, chance: 25},
-			{id: 21, chance: 25}
+			{ id: 20, chance: 25 },
+			{ id: 21, chance: 25 }
 		],
 		hitMessages: [
 			"He calculates the optimal place to hit you, which is anywhere but with more force.",
@@ -305,7 +305,7 @@ var combats = [
 		exp: 14,
 		gold: 13,
 		drops: [
-			{id: 22, chance: 25},
+			{ id: 22, chance: 25 },
 		],
 		hitMessages: [
 			"She pulls out a walkie talkie. 'The buzzard is in the nest!' she whispers down it. A group of orcs in suits suddenly surround you and beat you up.",
@@ -364,8 +364,8 @@ var combats = [
 		exp: 26,
 		gold: 20,
 		drops: [
-			{id: 23, chance: 30},
-			{id: 24, chance: 30}
+			{ id: 23, chance: 30 },
+			{ id: 24, chance: 30 }
 		],
 		hitMessages: [
 			"He fires a bazooka which hits you directly in the chest, exploding and turning you into a shower of gibs! Fortunately this is a video game so you respawn a few seconds later, but it seriously hurts.",
@@ -374,8 +374,7 @@ var combats = [
 			"He throws a grenade at you, which lands at your feet. You kick it away, but when it detonates, some shrapnel flies back and hits you in the leg."
 		],
 		afterCombat: function () {
-			if (!player.zoneCounters[zoneCounterEnum.ORCMUNITIONS])
-			{
+			if (!player.zoneCounters[zoneCounterEnum.ORCMUNITIONS]) {
 				player.zoneCounters[zoneCounterEnum.ORCMUNITIONS] = 1;
 			}
 			return true;
@@ -393,7 +392,7 @@ var combats = [
 		exp: 35,
 		gold: 50,
 		drops: [
-			{id: 25, chance: 100}
+			{ id: 25, chance: 100 }
 		],
 		hitMessages: [
 			"The General knows the kings of England, and quotes the fights Historical. He uses this vast array of military history knowledge to apply some serious damage.",
@@ -421,7 +420,7 @@ var combats = [
 		exp: 125,
 		gold: 100,
 		drops: [
-			{id: 26, chance: 100}
+			{ id: 26, chance: 100 }
 		],
 		hitMessages: [
 			"If you ever imagined what your body would sound like, slamming against rocks, Björc helps you solve that mystery.",
@@ -453,7 +452,7 @@ var combats = [
 		exp: 45,
 		gold: 6,
 		drops: [
-			{id: 27, chance: 50}
+			{ id: 27, chance: 50 }
 		],
 		hitMessages: [
 			"A set of eggs behind you suddenly hatch into a group of Roaches, all of which waste no time feasting on a nearby snack. It's you. You're the snack.",
@@ -475,7 +474,7 @@ var combats = [
 		exp: 38,
 		gold: 5,
 		drops: [
-			{id: 28, chance: 50}
+			{ id: 28, chance: 50 }
 		],
 		hitMessages: [
 			"It rolls over you. Being crushed was bad enough, but the acid layer it's coated in really stings.",
@@ -496,7 +495,7 @@ var combats = [
 		fixedStats: true,
 		exp: 32,
 		gold: 3,
-		drops: [{id: 33, chance: 50}],
+		drops: [{ id: 33, chance: 50 }],
 		hitMessages: [
 			"Another wraithwing appears directly behind you, the one place where something dangerous will actually happen.",
 			"You jump up while trying to strike the wraithwing and land awkwardly, spraining your ankle.",
@@ -517,7 +516,7 @@ var combats = [
 		exp: 80,
 		gold: 8,
 		drops: [
-			{id: 29, chance: 100}
+			{ id: 29, chance: 100 }
 		],
 		hitMessages: [
 			"As you back up against the wall, the red mud grows and restricts your movement. The mud baby pounces on you.",
@@ -538,9 +537,9 @@ var combats = [
 		exp: 28,
 		gold: 18,
 		drops: [
-			{id: 31, chance: 50},
-			{id: 31, chance: 20},
-			{id: 31, chance: 10}
+			{ id: 31, chance: 50 },
+			{ id: 31, chance: 20 },
+			{ id: 31, chance: 10 }
 		],
 		hitMessages: [
 			"Other Badger Badgers suddenly appear from all directions, and they all dance on top of you.",
@@ -561,8 +560,8 @@ var combats = [
 		exp: 26,
 		gold: 19,
 		drops: [
-			{id: 34, chance: 40},
-			{id: 34, chance: 10}
+			{ id: 34, chance: 40 },
+			{ id: 34, chance: 10 }
 		],
 		hitMessages: [
 			"A wild boar runs over thinking you are going to steal its food, and headbutts you.",
@@ -583,7 +582,7 @@ var combats = [
 		exp: 29,
 		gold: 16,
 		drops: [
-			{id: 47, chance: 20}
+			{ id: 47, chance: 20 }
 		],
 		hitMessages: [
 			"The snake sneaks up on you and knocks you off your feet.",
@@ -604,8 +603,8 @@ var combats = [
 		exp: 29,
 		gold: 16,
 		drops: [
-			{id: 32, chance: 50},
-			{id: 32, chance: 25}
+			{ id: 32, chance: 50 },
+			{ id: 32, chance: 25 }
 		],
 		hitMessages: [
 			"It slaps you around the face. You don't see what it hit you with, but it leaves a purple stain on your face.",
@@ -626,11 +625,11 @@ var combats = [
 		exp: 32,
 		gold: 28,
 		drops: [
-			{id: 36, chance: 100},
-			{id: 36, chance: 80},
-			{id: 36, chance: 60},
-			{id: 36, chance: 40},
-			{id: 36, chance: 20}
+			{ id: 36, chance: 100 },
+			{ id: 36, chance: 80 },
+			{ id: 36, chance: 60 },
+			{ id: 36, chance: 40 },
+			{ id: 36, chance: 20 }
 		],
 		hitMessages: [
 			"You lift the lid and snakes on springs fly out and bite you in the head.",
@@ -652,9 +651,9 @@ var combats = [
 		exp: 34,
 		gold: 30,
 		drops: [
-			{id: 36, chance: 100},
-			{id: 36, chance: 66},
-			{id: 36, chance: 33}
+			{ id: 36, chance: 100 },
+			{ id: 36, chance: 66 },
+			{ id: 36, chance: 33 }
 		],
 		hitMessages: [
 			"His 2 other buddies come along and show you visions of events throughout the timeline. You try to knock yourself out just to make it all stop.",
@@ -675,10 +674,10 @@ var combats = [
 		exp: 36,
 		gold: 12,
 		drops: [
-			{id: 36, chance: 100},
-			{id: 36, chance: 75},
-			{id: 36, chance: 50},
-			{id: 36, chance: 25}
+			{ id: 36, chance: 100 },
+			{ id: 36, chance: 75 },
+			{ id: 36, chance: 50 },
+			{ id: 36, chance: 25 }
 		],
 		hitMessages: [
 			"A nearby forklift driver named Klaus accidentally drives into you while distracted. The chaos that ensues is extremely gory, and also hilarious.",
@@ -700,13 +699,13 @@ var combats = [
 		exp: 60,
 		gold: 45,
 		drops: [
-			{id: 37, chance: 100},
-			{id: 37, chance: 100},
-			{id: 37, chance: 100},
-			{id: 37, chance: 80},
-			{id: 37, chance: 60},
-			{id: 37, chance: 40},
-			{id: 37, chance: 20}
+			{ id: 37, chance: 100 },
+			{ id: 37, chance: 100 },
+			{ id: 37, chance: 100 },
+			{ id: 37, chance: 80 },
+			{ id: 37, chance: 60 },
+			{ id: 37, chance: 40 },
+			{ id: 37, chance: 20 }
 		],
 		hitMessages: [
 			"A large sleigh brimming with presents suddenly rolls down a nearby hill at top speed and smacks into you!",
@@ -733,8 +732,8 @@ var combats = [
 		exp: 40,
 		gold: 35,
 		drops: [
-			{id: 54, chance: 20},
-			{id: 56, chance: 20}
+			{ id: 54, chance: 20 },
+			{ id: 56, chance: 20 }
 		],
 		hitMessages: [
 			"He says something so terribly rude we don't dare put it in the game.",
@@ -755,7 +754,7 @@ var combats = [
 		exp: 41,
 		gold: 32,
 		drops: [
-			{id: 57, chance: 35}
+			{ id: 57, chance: 35 }
 		],
 		hitMessages: [
 			"You ask her if there's a hurricane on the way. She says there isn't, then the wind suddenly picks up and a large fish hits you.",
@@ -776,7 +775,7 @@ var combats = [
 		exp: 39,
 		gold: 38,
 		drops: [
-			{id: 55, chance: 20}
+			{ id: 55, chance: 20 }
 		],
 		hitMessages: [
 			"You get sniped in the head. Boom! Headshot!",
@@ -798,7 +797,7 @@ var combats = [
 		exp: 45,
 		gold: 45,
 		drops: [
-			{id: 47, chance: 35}
+			{ id: 47, chance: 35 }
 		],
 		hitMessages: [
 			"crit",
@@ -848,7 +847,7 @@ var combats = [
 		exp: 44,
 		gold: 43,
 		drops: [
-			{id: 4, chance: 60}
+			{ id: 4, chance: 60 }
 		],
 		hitMessages: [
 			"It gives you a CBT session. The T stands for torture, don't ask about the other 2 letters.",
@@ -876,7 +875,7 @@ var combats = [
 		exp: 250,
 		gold: 180,
 		drops: [
-			{id: 44, chance: 100}
+			{ id: 44, chance: 100 }
 		],
 		hitMessages: [
 			"He opens up a portal to the underworld that sucks you in. You emerge moments later frozen to the bone, and with memories that will haunt you forever.",
@@ -912,10 +911,10 @@ var combats = [
 		exp: 40,
 		gold: 31,
 		drops: [
-			{id: 58, chance: 100},
-			{id: 58, chance: 50},
-			{id: 58, chance: 20},
-			{id: 58, chance: 10}
+			{ id: 58, chance: 100 },
+			{ id: 58, chance: 50 },
+			{ id: 58, chance: 20 },
+			{ id: 58, chance: 10 }
 		],
 		hitMessages: [
 			"crit",
@@ -937,10 +936,10 @@ var combats = [
 		exp: 42,
 		gold: 29,
 		drops: [
-			{id: 59, chance: 100},
-			{id: 59, chance: 50},
-			{id: 59, chance: 20},
-			{id: 59, chance: 10}
+			{ id: 59, chance: 100 },
+			{ id: 59, chance: 50 },
+			{ id: 59, chance: 20 },
+			{ id: 59, chance: 10 }
 		],
 		hitMessages: [
 			"crit",
@@ -962,10 +961,10 @@ var combats = [
 		exp: 38,
 		gold: 32,
 		drops: [
-			{id: 58, chance: 100},
-			{id: 59, chance: 50},
-			{id: 58, chance: 20},
-			{id: 59, chance: 10}
+			{ id: 58, chance: 100 },
+			{ id: 59, chance: 50 },
+			{ id: 58, chance: 20 },
+			{ id: 59, chance: 10 }
 		],
 		hitMessages: [
 			"crit",
@@ -987,10 +986,10 @@ var combats = [
 		exp: 43,
 		gold: 28,
 		drops: [
-			{id: 59, chance: 100},
-			{id: 58, chance: 50},
-			{id: 59, chance: 20},
-			{id: 58, chance: 10}
+			{ id: 59, chance: 100 },
+			{ id: 58, chance: 50 },
+			{ id: 59, chance: 20 },
+			{ id: 58, chance: 10 }
 		],
 		hitMessages: [
 			"crit",

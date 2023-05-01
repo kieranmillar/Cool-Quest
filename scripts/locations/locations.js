@@ -89,7 +89,7 @@ var lastZone = -1;
 
 // Changes location i.e. the "page" you are looking at
 // Returns if successful
-function goToLocation (l) {
+function goToLocation(l) {
 	if (busy == true) {
 		hint("You're too busy to leave now!", "r");
 		return false;

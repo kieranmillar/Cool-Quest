@@ -83,7 +83,7 @@ function createGeneralShopItem(id) {
     let newElement = document.createElement("span");
     newElement.classList.add("item_Image");
     newElement.innerHTML = `<img src="./images/${items[id].icon}"><span class="wrappableText">${items[id].name}</span>`;
-    newElement.onclick = function() {
+    newElement.onclick = function () {
         openModal(modalType.ITEM, id);
     };
     itemWrapper.appendChild(newElement);
@@ -101,7 +101,7 @@ function createGeneralShopMinion(id, cost) {
     let newElement = document.createElement("span");
     newElement.classList.add("item_Image");
     newElement.innerHTML = `<img src="./images/${minions[id].icon}"><span class="wrappableText">${minions[id].name}</span>`;
-    newElement.onclick = function() {
+    newElement.onclick = function () {
         openModal(modalType.MINION, id);
     };
     minionWrapper.appendChild(newElement);
@@ -113,7 +113,7 @@ function createGeneralShopMinion(id, cost) {
 }
 
 // buy an item from the general shop
-function buyGeneralShopItem (id) {
+function buyGeneralShopItem(id) {
     if (getQuestState(questEnum.TUTORIAL) < 8) {
         hint("Buy a minion first, wouldn't want to run out of money!", "r");
         return;
@@ -123,12 +123,12 @@ function buyGeneralShopItem (id) {
 }
 
 // buy a minion from the general shop
-function buyGeneralShopMinion (id, cost) {
+function buyGeneralShopMinion(id, cost) {
     if (player.gold < cost) {
         hint("You can't afford that!", "r");
         return;
     }
-	player.gold -= cost;
+    player.gold -= cost;
     gainMinion(id);
     save();
     redrawCharPane();

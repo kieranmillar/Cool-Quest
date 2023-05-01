@@ -46,11 +46,12 @@ p {
 	margin: 0;
 }
 
-p:not(:last-child){
-    margin-bottom: 10px;
+p:not(:last-child) {
+	margin-bottom: 10px;
 }
 
-h2, h3 {
+h2,
+h3 {
 	margin: 0;
 	margin-top: 5px;
 
@@ -70,7 +71,7 @@ h2, h3 {
 
 	li {
 		float: left;
-		border-right:1px solid #bbb;
+		border-right: 1px solid #bbb;
 
 		&:last-child {
 			border-right: none;
@@ -108,7 +109,7 @@ h2, h3 {
 
 #title {
 	float: left;
-    width: auto;
+	width: auto;
 	padding-left: 2px;
 	padding-right: 2px;
 	padding-top: 0px;
@@ -150,7 +151,7 @@ h2, h3 {
 
 .doctor {
 	width: 280px;
-	
+
 	input {
 		width: 50px;
 	}
@@ -169,7 +170,7 @@ h2, h3 {
 	width: 40px;
 	height: 40px;
 	margin: 5px;
-	cursor:pointer;
+	cursor: pointer;
 }
 
 .hintBar {
@@ -185,7 +186,7 @@ h2, h3 {
 	border-right: 0px none black;
 	background-color: white;
 	transition-property: background-color;
-	transition-duration:  1000ms;
+	transition-duration: 1000ms;
 	transition-timing-function: ease;
 
 	&.w {
@@ -209,8 +210,7 @@ h2, h3 {
 	max-height: calc(100vh - 150px);
 }
 
-.centred
-{
+.centred {
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -281,7 +281,7 @@ h2, h3 {
 			&::-webkit-progress-value {
 				background-color: red;
 			}
-	
+
 			&::-moz-progress-bar {
 				background-color: red;
 			}
@@ -291,7 +291,7 @@ h2, h3 {
 			&::-webkit-progress-value {
 				background-color: blue;
 			}
-	
+
 			&::-moz-progress-bar {
 				background-color: blue;
 			}
@@ -447,7 +447,7 @@ h2, h3 {
 }
 
 .clickable {
-	cursor:pointer;
+	cursor: pointer;
 }
 
 #loc_equipment {

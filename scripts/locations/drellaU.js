@@ -14,7 +14,7 @@ function randomiseDrellaUSkills() {
         player.drellaUDailyBigSkill = unownedBigSkills[Math.floor(Math.random() * unownedBigSkills.length)].id;
     }
     player.drellaUDailySmallSkills = [];
-    for (let i = 0; i < 2; i ++) {
+    for (let i = 0; i < 2; i++) {
         if (unownedSmallSkills.length > 0) {
             let randomSkillPosition = Math.floor(Math.random() * unownedSmallSkills.length);
             player.drellaUDailySmallSkills.push(unownedSmallSkills[randomSkillPosition].id);
@@ -38,27 +38,27 @@ function displayDrellaU() {
         drellaUVoucherCountSpan.textContent = "no vouchers";
     }
 
-	drellaUBigSkillContainerDiv.replaceChildren();
+    drellaUBigSkillContainerDiv.replaceChildren();
     if (player.drellaUDailyBigSkill == -1) {
         let newElement = document.createElement("p");
         newElement.textContent = "You've learned everything the large courses have to offer.";
-	    drellaUBigSkillContainerDiv.appendChild(newElement);
+        drellaUBigSkillContainerDiv.appendChild(newElement);
     }
     else if (player.skills[player.drellaUDailyBigSkill]) {
         let newElement = document.createElement("p");
         newElement.textContent = "You've already taken this course.";
-	    drellaUBigSkillContainerDiv.appendChild(newElement);
+        drellaUBigSkillContainerDiv.appendChild(newElement);
     }
     else {
         let newElement = document.createElement("div");
         newElement.className = "item";
-		let textImageDiv = document.createElement("span");
-		textImageDiv.className = "item_Image";
-		textImageDiv.innerHTML = "<image src='./images/" + skills[player.drellaUDailyBigSkill].icon + "'><span>" + skills[player.drellaUDailyBigSkill].name + "</span>";
-        textImageDiv.onclick = function() {
+        let textImageDiv = document.createElement("span");
+        textImageDiv.className = "item_Image";
+        textImageDiv.innerHTML = "<image src='./images/" + skills[player.drellaUDailyBigSkill].icon + "'><span>" + skills[player.drellaUDailyBigSkill].name + "</span>";
+        textImageDiv.onclick = function () {
             openModal(modalType.SKILL, player.drellaUDailyBigSkill);
         };
-		newElement.appendChild(textImageDiv);
+        newElement.appendChild(textImageDiv);
         let learnLink = document.createElement("span");
         learnLink.innerHTML = "<input type = 'button' value = 'Buy\n(2 vouchers)' onClick = 'learnDrellaUSkill(" + player.drellaUDailyBigSkill + ")'>";
         newElement.appendChild(learnLink);
@@ -69,15 +69,15 @@ function displayDrellaU() {
     if (player.drellaUDailySmallSkills.length == 0) {
         let newElement = document.createElement("p");
         newElement.textContent = "You've learned everything the small courses have to offer.";
-	    drellaUSmallSkillContainerDiv.appendChild(newElement);
+        drellaUSmallSkillContainerDiv.appendChild(newElement);
     }
     else {
-        for (let i = 0; i < player.drellaUDailySmallSkills.length; i ++) {
+        for (let i = 0; i < player.drellaUDailySmallSkills.length; i++) {
             if (player.skills[player.drellaUDailySmallSkills[i]]) {
                 let newElement = document.createElement("div");
                 newElement.className = "item";
                 newElement.textContent = "You've already taken this course.";
-	            drellaUSmallSkillContainerDiv.appendChild(newElement);
+                drellaUSmallSkillContainerDiv.appendChild(newElement);
             }
             else {
                 let newElement = document.createElement("div");
@@ -85,7 +85,7 @@ function displayDrellaU() {
                 let textImageDiv = document.createElement("span");
                 textImageDiv.className = "item_Image";
                 textImageDiv.innerHTML = "<image src='./images/" + skills[player.drellaUDailySmallSkills[i]].icon + "'><span>" + skills[player.drellaUDailySmallSkills[i]].name + "</span>";
-                textImageDiv.onclick = function() {
+                textImageDiv.onclick = function () {
                     openModal(modalType.SKILL, player.drellaUDailySmallSkills[i]);
                 };
                 newElement.appendChild(textImageDiv);
@@ -103,7 +103,7 @@ function displayDrellaU() {
 function learnDrellaUSkill(id) {
     if (id < 60 || id > 89) {
         hint("That's not a DrellaU skill!", "r");
-		return false;
+        return false;
     }
     let largeSkill = id >= 60 && id <= 69;
     let success = false;

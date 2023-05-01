@@ -43,8 +43,8 @@ var skills = [
 		cost: 1,
 		onUse: function () {
 			castTutorialSkill();
-			hint ("You think deeply about wrestling, gaining 10 turns of Wrestling Your Thoughts!", "g");
-			return addBuff (0, 10);
+			hint("You think deeply about wrestling, gaining 10 turns of Wrestling Your Thoughts!", "g");
+			return addBuff(0, 10);
 		}
 	},
 	{
@@ -58,10 +58,10 @@ var skills = [
 		cost: 1,
 		onUse: function () {
 			if (monster.castPounce == 1) {
-				hint ("You've already pounced this combat!", "r");
+				hint("You've already pounced this combat!", "r");
 				return false;
 			}
-			regularAttack (player.effPow, "", "You leap forward at your opponent with sheer ferocity!");
+			regularAttack(player.effPow, "", "You leap forward at your opponent with sheer ferocity!");
 			monster.castPounce = 1;
 			return true;
 		}
@@ -78,8 +78,8 @@ var skills = [
 		price: 50,
 		level: 2,
 		onUse: function () {
-			hint ("You summon a big jar of grease from the ether and pour it over yourself, gaining 10 turns of Greased Up!", "g");
-			return addBuff (5, 10);
+			hint("You summon a big jar of grease from the ether and pour it over yourself, gaining 10 turns of Greased Up!", "g");
+			return addBuff(5, 10);
 		}
 	},
 	{
@@ -108,8 +108,8 @@ var skills = [
 		price: 250,
 		level: 3,
 		onUse: function () {
-			hint ("You summon a pyrotecnics team, gaining 10 turns of Dramatic Entrance!", "g");
-			return addBuff (10, 10);
+			hint("You summon a pyrotecnics team, gaining 10 turns of Dramatic Entrance!", "g");
+			return addBuff(10, 10);
 		}
 	},
 	{
@@ -165,8 +165,8 @@ var skills = [
 		price: 500,
 		level: 4,
 		onUse: function () {
-			hint ("You throw away the script, gaining 10 turns of Wrestlemania!", "g");
-			return addBuff (11, 10);
+			hint("You throw away the script, gaining 10 turns of Wrestlemania!", "g");
+			return addBuff(11, 10);
 		}
 	},
 	{
@@ -208,7 +208,7 @@ var skills = [
 		price: 1000,
 		level: 5,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -223,7 +223,7 @@ var skills = [
 		price: 100,
 		level: 6,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -238,7 +238,7 @@ var skills = [
 		price: 100,
 		level: 6,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -253,7 +253,7 @@ var skills = [
 		price: 100,
 		level: 7,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -268,7 +268,7 @@ var skills = [
 		price: 100,
 		level: 7,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -283,7 +283,7 @@ var skills = [
 		price: 100,
 		level: 8,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -298,7 +298,7 @@ var skills = [
 		price: 100,
 		level: 8,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -313,7 +313,7 @@ var skills = [
 		price: 100,
 		level: 9,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -328,7 +328,7 @@ var skills = [
 		price: 100,
 		level: 9,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -343,7 +343,7 @@ var skills = [
 		price: 100,
 		level: 10,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -358,7 +358,7 @@ var skills = [
 		price: 100,
 		level: 10,
 		onUse: function () {
-			
+
 		}
 	},
 
@@ -369,7 +369,7 @@ var skills = [
 	{
 		id: 20,
 		name: "Mighty Pirate",
-		description: function () {return "You're " + player.name + " and you're a mighty pirate!";},
+		description: function () { return "You're " + player.name + " and you're a mighty pirate!"; },
 		enchantment: "10 turns of:\n+2 Max MP\n+3 POW",
 		icon: "pirate_face.png",
 		source: skillSource.STARTER,
@@ -377,8 +377,8 @@ var skills = [
 		cost: 1,
 		onUse: function () {
 			castTutorialSkill();
-			hint ("You take sight of your might, gaining 10 turns of Pirate Might!", "g");
-			return addBuff (1, 10);
+			hint("You take sight of your might, gaining 10 turns of Pirate Might!", "g");
+			return addBuff(1, 10);
 		}
 	},
 	{
@@ -391,13 +391,12 @@ var skills = [
 		category: skillType.COMBAT,
 		cost: 1,
 		onUse: function () {
-			addCombatText ("Crackers flaps over to your opponent and digs his beak into their head.");
+			addCombatText("Crackers flaps over to your opponent and digs his beak into their head.");
 			let damage = 35 - monster.def;
-			if (damage <= 0)
-			{
+			if (damage <= 0) {
 				damage = 1;
 			}
-			addCombatText ("Your opponent takes " + damage + " damage!");
+			addCombatText("Your opponent takes " + damage + " damage!");
 			monster.hp -= damage;
 			return true;
 		}
@@ -425,8 +424,8 @@ var skills = [
 		price: 50,
 		level: 2,
 		onUse: function () {
-			hint ("You bellow at the gods of the sea for their help, gaining 10 turns of Storm of the Sea!", "g");
-			return addBuff (7, 10);
+			hint("You bellow at the gods of the sea for their help, gaining 10 turns of Storm of the Sea!", "g");
+			return addBuff(7, 10);
 		}
 	},
 	{
@@ -441,9 +440,8 @@ var skills = [
 		price: 250,
 		level: 3,
 		onUse: function () {
-			if (monster.castSpecialDelivery == 1)
-			{
-				hint ("I think your enemy has been delivered enough gifts this fight!", "r");
+			if (monster.castSpecialDelivery == 1) {
+				hint("I think your enemy has been delivered enough gifts this fight!", "r");
 				return false;
 			}
 			regularAttack(
@@ -472,8 +470,8 @@ var skills = [
 		price: 250,
 		level: 3,
 		onUse: function () {
-			hint ("You put your minions to work, gaining 10 turns of Hands-on Experience!", "g");
-			return addBuff (14, 10);
+			hint("You put your minions to work, gaining 10 turns of Hands-on Experience!", "g");
+			return addBuff(14, 10);
 		}
 	},
 	{
@@ -486,9 +484,9 @@ var skills = [
 		category: skillType.PASSIVE,
 		price: 500,
 		level: 4,
-		onUse: function() {
+		onUse: function () {
 			if (player.equipment[0] != -1) {
-				if("onWear" in items[player.equipment[0]]) {
+				if ("onWear" in items[player.equipment[0]]) {
 					items[player.equipment[0]].onWear();
 				}
 			}
@@ -506,9 +504,8 @@ var skills = [
 		price: 500,
 		level: 4,
 		onUse: function () {
-			if (monster.castCannonBlast != 0)
-			{
-				hint ("You only have a single cannonball for each fight!", "r");
+			if (monster.castCannonBlast != 0) {
+				hint("You only have a single cannonball for each fight!", "r");
 				return false;
 			}
 			addCombatText("You ask your opponent to stay right where they are and run off. You come back pushing in a giant cannon. While you load a cannonball, Crackers flies over with some matches and lights the fuse.");
@@ -528,7 +525,7 @@ var skills = [
 		price: 1000,
 		level: 5,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -554,7 +551,7 @@ var skills = [
 		price: 100,
 		level: 6,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -569,7 +566,7 @@ var skills = [
 		price: 100,
 		level: 6,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -584,8 +581,8 @@ var skills = [
 		price: 100,
 		level: 7,
 		onUse: function () {
-			hint ("You pour out some grog for your minions, gaining 10 turns of Crewmates!", "g");
-			return addBuff (15, 10);
+			hint("You pour out some grog for your minions, gaining 10 turns of Crewmates!", "g");
+			return addBuff(15, 10);
 		}
 	},
 	{
@@ -600,7 +597,7 @@ var skills = [
 		price: 100,
 		level: 7,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -615,7 +612,7 @@ var skills = [
 		price: 100,
 		level: 8,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -630,7 +627,7 @@ var skills = [
 		price: 100,
 		level: 8,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -645,7 +642,7 @@ var skills = [
 		price: 100,
 		level: 9,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -660,7 +657,7 @@ var skills = [
 		price: 100,
 		level: 9,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -675,7 +672,7 @@ var skills = [
 		price: 100,
 		level: 10,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -690,14 +687,14 @@ var skills = [
 		price: 100,
 		level: 10,
 		onUse: function () {
-			
+
 		}
 	},
-	
+
 	/******
 	MYSTIC
 	******/
-	
+
 	{
 		id: 40,
 		name: "Ancestral Pep Talk",
@@ -709,8 +706,8 @@ var skills = [
 		cost: 1,
 		onUse: function () {
 			castTutorialSkill();
-			hint ("You talk to your ancestors, gaining 10 turns of Ancestral Motivation!", "g");
-			return addBuff (2, 10);
+			hint("You talk to your ancestors, gaining 10 turns of Ancestral Motivation!", "g");
+			return addBuff(2, 10);
 		}
 	},
 	{
@@ -731,9 +728,9 @@ var skills = [
 				"the next joke they tell will cause offense"
 			];
 			let chosenProphecy = Math.floor(Math.random() * prophecies.length);
-			addCombatText ("You warn your opponent that " + prophecies[chosenProphecy] + ". They are stressed out by this information.");
+			addCombatText("You warn your opponent that " + prophecies[chosenProphecy] + ". They are stressed out by this information.");
 			let damage = calcEmotionalDamage(15 + player.emotionalDamage);
-			addCombatText ("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
+			addCombatText("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
 			monster.hp -= damage;
 			return true;
 		}
@@ -764,12 +761,11 @@ var skills = [
 		price: 50,
 		level: 2,
 		onUse: function () {
-			if (monster.castExposeSecrets == 1)
-			{
-				hint ("You've already exposed this monster's secrets!", "r");
+			if (monster.castExposeSecrets == 1) {
+				hint("You've already exposed this monster's secrets!", "r");
 				return false;
 			}
-			addCombatText ("You walk up to your opponent and whisper their darkest secrets into their ear.");
+			addCombatText("You walk up to your opponent and whisper their darkest secrets into their ear.");
 			monster.castExposeSecrets = 1;
 			monster.exposeSecretsRounds = 2;
 			return true;
@@ -815,9 +811,9 @@ var skills = [
 						"the ghost of an arsonist"
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
-					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They sweat with horror.");
+					addCombatText("You tell your opponent about " + stories[chosenStory] + ". They sweat with horror.");
 					damage = calcFireDamage(Math.floor(player.effPow * 1.2) + player.fireDamage);
-					addCombatText ("Your opponent takes <span class='fire'>" + damage + "</span> fire damage!");
+					addCombatText("Your opponent takes <span class='fire'>" + damage + "</span> fire damage!");
 					break;
 				case elementEnum.ICE:
 					stories = [
@@ -828,9 +824,9 @@ var skills = [
 						"the abominable snowman"
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
-					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They shiver with horror.");
+					addCombatText("You tell your opponent about " + stories[chosenStory] + ". They shiver with horror.");
 					damage = calcIceDamage(Math.floor(player.effPow * 1.2) + player.iceDamage);
-					addCombatText ("Your opponent takes <span class='ice'>" + damage + "</span> ice damage!");
+					addCombatText("Your opponent takes <span class='ice'>" + damage + "</span> ice damage!");
 					break;
 				case elementEnum.PSYCHIC:
 					stories = [
@@ -841,9 +837,9 @@ var skills = [
 						"a possessed pistol that fires mind bullets"
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
-					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They cover their ears with horror.");
+					addCombatText("You tell your opponent about " + stories[chosenStory] + ". They cover their ears with horror.");
 					damage = calcPsychicDamage(Math.floor(player.effPow * 1.2) + player.psychicDamage);
-					addCombatText ("Your opponent takes <span class='psychic'>" + damage + "</span> psychic damage!");
+					addCombatText("Your opponent takes <span class='psychic'>" + damage + "</span> psychic damage!");
 					break;
 				case elementEnum.EMOTIONAL:
 					stories = [
@@ -854,9 +850,9 @@ var skills = [
 						"a love story between two ghosts who are unable to hold hands"
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
-					addCombatText ("You tell your opponent about " + stories[chosenStory] + ". They weep with horror.");
+					addCombatText("You tell your opponent about " + stories[chosenStory] + ". They weep with horror.");
 					damage = calcEmotionalDamage(Math.floor(player.effPow * 1.2) + player.emotionalDamage);
-					addCombatText ("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
+					addCombatText("Your opponent takes <span class='emotional'>" + damage + "</span> emotional damage!");
 					break;
 			}
 			monster.hp -= damage;
@@ -907,7 +903,7 @@ var skills = [
 		price: 1000,
 		level: 5,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -922,7 +918,7 @@ var skills = [
 		price: 1000,
 		level: 5,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -937,7 +933,7 @@ var skills = [
 		price: 100,
 		level: 6,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -952,7 +948,7 @@ var skills = [
 		price: 100,
 		level: 6,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -967,7 +963,7 @@ var skills = [
 		price: 100,
 		level: 7,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -982,7 +978,7 @@ var skills = [
 		price: 100,
 		level: 7,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -997,7 +993,7 @@ var skills = [
 		price: 100,
 		level: 8,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -1012,7 +1008,7 @@ var skills = [
 		price: 100,
 		level: 8,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -1027,7 +1023,7 @@ var skills = [
 		price: 100,
 		level: 9,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -1042,7 +1038,7 @@ var skills = [
 		price: 100,
 		level: 9,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -1057,7 +1053,7 @@ var skills = [
 		price: 100,
 		level: 10,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -1072,7 +1068,7 @@ var skills = [
 		price: 100,
 		level: 10,
 		onUse: function () {
-			
+
 		}
 	},
 
@@ -1084,7 +1080,7 @@ var skills = [
 		id: 60,
 		name: "Law",
 		description: "This course teaches you how to put people on house arrest. There's a module about corruption, but it's optional.",
-		enchantment: function() {
+		enchantment: function () {
 			let text = "Immediately abandon the fight at no turn cost\nEnemy will not randomly appear for the rest of the day\n(Once per day)\n(Cannot be used against bosses)";
 			if (player.lawTarget != -1) {
 				text += `\n(You arrested ${combats[player.lawTarget].name} today)`;
@@ -1113,7 +1109,7 @@ var skills = [
 		id: 61,
 		name: "Laser Physics",
 		description: "This course teaches you all about laser beams and how to attach them to the heads of sharks.",
-		enchantment: function() {
+		enchantment: function () {
 			let text = "Immediately win the fight and guarantee all item drops\n(Once per day)\n(Cannot be used against bosses)";
 			if (player.castLaserPhysics) {
 				text += "\n(You have already used this skill today)";
@@ -1157,7 +1153,7 @@ var skills = [
 		id: 63,
 		name: "Journalism",
 		description: "This course teaches you how to engage in the profitable parts of journalism that tabloids will hire you to do: hunt down specific celebrities so you can report on the cellulite in their legs.",
-		enchantment: function() {
+		enchantment: function () {
 			let text = "Enemy will randomly appear much more often for the rest of the day\n(Once per day)\n(Cannot be used against bosses)";
 			if (player.journalismTarget != -1) {
 				text += `\n(You're tracking ${combats[player.journalismTarget].name} today)`;
@@ -1186,7 +1182,7 @@ var skills = [
 		id: 64,
 		name: "TODO: Sculpting",
 		description: "TODO: Implement this skill",
-		enchantment: function() {
+		enchantment: function () {
 			let text = "Fight any non-boss enemy of your choice\n(Once per day)";
 			if (true) {
 				text += "\n(You have already used this skill today)";
@@ -1198,7 +1194,7 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 15,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -1211,15 +1207,15 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 10,
 		onUse: function () {
-			hint ("You toot on some bagpipes, gaining 10 turns of Bagpiping!", "g");
-			return addBuff (18, 10);
+			hint("You toot on some bagpipes, gaining 10 turns of Bagpiping!", "g");
+			return addBuff(18, 10);
 		}
 	},
 	{
 		id: 66,
 		name: "Effective Time Management",
 		description: "This course teaches you how to speed through small tasks so you have more time to spend when it really matters.",
-		enchantment: function() {
+		enchantment: function () {
 			let text = "Extend all active effects by 10 turns\n(Once per day)";
 			if (player.castTimeManagement) {
 				text += "\n(You have already used this skill today)";
@@ -1239,7 +1235,7 @@ var skills = [
 				hint("You don't have any active effects. Did you intend to use this?", "r");
 				return false;
 			}
-			for (let i =0; i < player.buffs.length; i++) {
+			for (let i = 0; i < player.buffs.length; i++) {
 				player.buffs[i].turns += 10;
 			}
 			redrawBuffPane();
@@ -1253,7 +1249,7 @@ var skills = [
 		id: 67,
 		name: "TODO: Photography",
 		description: "TODO: Implement this skill",
-		enchantment: function() {
+		enchantment: function () {
 			let text = "Create an enchanted polaroid containing a copy of this enemy to fight later\n(Three times per day)\n(Cannot be used against bosses)\n(Cannot be used if you have an enchanted polaroid in your inventory)";
 			if (true) {
 				text += `\n(You've taken 0 photographs today)`;
@@ -1265,7 +1261,7 @@ var skills = [
 		category: skillType.COMBAT,
 		cost: 5,
 		onUse: function () {
-			
+
 		}
 	},
 	{
@@ -1284,7 +1280,7 @@ var skills = [
 		id: 69,
 		name: "Diplomacy",
 		description: "This course teaches you how to solve problems through negotiation instead of fighting. Where's the fun in that?",
-		enchantment: function() {
+		enchantment: function () {
 			let timesText = "times";
 			if (player.freeRunAwaysUsed == 1) {
 				timesText = "time";
@@ -1337,8 +1333,8 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 12,
 		onUse: function () {
-			hint ("You dive into a nearby bush, gaining 10 turns of Bird Watching!", "g");
-			return addBuff (12, 10);
+			hint("You dive into a nearby bush, gaining 10 turns of Bird Watching!", "g");
+			return addBuff(12, 10);
 		}
 	},
 	{
@@ -1351,7 +1347,7 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 12,
 		onUse: function () {
-			hint ("You put on some lederhosen, gaining 10 turns of Yodelling!", "g");
+			hint("You put on some lederhosen, gaining 10 turns of Yodelling!", "g");
 			return addBuff(13, 10);
 		}
 	},
@@ -1438,8 +1434,8 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 5,
 		onUse: function () {
-			hint ("You write a terrible opinion column, gaining 10 turns of Writing!", "g");
-			return addBuff (3, 10);
+			hint("You write a terrible opinion column, gaining 10 turns of Writing!", "g");
+			return addBuff(3, 10);
 		}
 	},
 	{
@@ -1548,14 +1544,14 @@ var skills = [
 		category: skillType.NONCOMBAT,
 		cost: 3,
 		onUse: function () {
-			
+
 		}
 	}
 ];
 
 // Casting your class basic buff skill is part of the tutorial
 function castTutorialSkill() {
-	if (getQuestState(questEnum.TUTORIAL) != 4)	{
+	if (getQuestState(questEnum.TUTORIAL) != 4) {
 		return;
 	}
 	setQuestState(questEnum.TUTORIAL, 5);

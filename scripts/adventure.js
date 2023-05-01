@@ -24,7 +24,7 @@ function adventure(id) {
 		goToLocation("toughZoneWarning");
 		return;
 	}
-	if("special" in zones[id]) {
+	if ("special" in zones[id]) {
 		zones[id].special();
 	}
 	else {
@@ -57,12 +57,12 @@ function endAdventure(costsTurn = true) {
 		show(returnToContainerButton);
 	}
 	if (costsTurn) {
-		for (let i = player.buffs.length - 1; i >= 0; i --) {
+		for (let i = player.buffs.length - 1; i >= 0; i--) {
 			// we loop through buffs in reverse order because if a buff runs out it removes it from the array
 			decreaseBuff(player.buffs[i].id, 1);
 		}
-		player.turns ++;
-		player.turnsToMidnight --;
+		player.turns++;
+		player.turnsToMidnight--;
 		calculateStats();
 		gainHp(player.hpRegen);
 		gainMp(player.mpRegen);

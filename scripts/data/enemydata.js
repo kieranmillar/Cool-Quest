@@ -787,12 +787,12 @@ var combats = [
 	{
 		id: 32,
 		name: "a stealth elf",
-		description: "TODO",
+		description: "You enter a room that appears to be empty. Suddenly an elf jumps out at you from underneath a nearby cardboard box. This is the worst surprise gift you've ever received.",
 		icon: "empty.png",
 		hp: 45,
 		pow: 12,
 		def: 10,
-		init: 80,
+		init: 90,
 		element: elementEnum.ICE,
 		exp: 45,
 		gold: 45,
@@ -800,10 +800,10 @@ var combats = [
 			{ id: 47, chance: 35 }
 		],
 		hitMessages: [
-			"crit",
-			"hit1",
-			"hit2",
-			"hit3"
+			"It fires a tranquiliser dart into your neck. You let your guard down due to the drowsiness and receive quite the beating.",
+			"You lose track of the elf, and then it drops down from the ceiling upside down on a rope and slaps you in the head.",
+			"You walk into a laser trip mine it prepared earlier.",
+			"You don't see how it attacked you, but it sure hurt."
 		],
 		special: function () {
 			santasWorkshopAura();
@@ -837,7 +837,7 @@ var combats = [
 	{
 		id: 34,
 		name: "a health elf",
-		description: "TODO",
+		description: "You walk into the first aid room of the workshop and a doctor elf greets you and gets you to lie down on a bench. Maybe these elves aren't so dangerous after all! Then it pulls out a surgical knife...",
 		icon: "empty.png",
 		hp: 80,
 		pow: 13,

@@ -543,6 +543,7 @@ function combatRound(action) {
 				monster.hp -= damage;
 			}
 		}
+		checkEndOfCombat();
 	}
 	currentRound++;
 	redrawCombat();

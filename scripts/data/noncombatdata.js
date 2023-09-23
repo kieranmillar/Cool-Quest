@@ -201,7 +201,7 @@ var noncombats = [
 				}
 			},
 			{
-				buttonText: function () { return noncombatButton("Cut off a small glob of mud", 0, "gain a small glob of mud"); },
+				buttonText: function () { return noncombatButton("Cut off a small glob of mud", 1, "gain a small glob of mud"); },
 				onChoosing: function () {
 					addNoncombatText("You cut a small amount of mud off of the wall. It hits the floor with a wet splat and sits there shaking slightly. You cautiously put it into your bag.");
 					getNoncombatItem(51, 1);

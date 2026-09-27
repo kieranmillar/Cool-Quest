@@ -209,7 +209,7 @@ var noncombats = [
 				}
 			},
 			{
-				buttonText: function () { return noncombatButton("Find another fight", 1, "fight a random monster"); },
+				buttonText: function () { return noncombatButton("Find another fight", 2, "fight a random monster"); },
 				onChoosing: function () {
 					pickRandomCombat(7);
 					return true;

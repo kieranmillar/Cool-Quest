@@ -837,7 +837,7 @@ var combats = [
 	{
 		id: 34,
 		name: "a health elf",
-		description: "You walk into the first aid room of the workshop and a doctor elf greets you and gets you to lie down on a bench. Maybe these elves aren't so dangerous after all! Then it pulls out a surgical knife...",
+		description: "You walk into the first aid room of the workshop. A doctor elf greets you and gets you to lie down on a bench. Maybe these elves aren't so dangerous after all! Then it pulls out a surgical knife...",
 		icon: "empty.png",
 		hp: 80,
 		pow: 13,

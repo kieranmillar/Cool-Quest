@@ -725,7 +725,8 @@ var skills = [
 				"they will stub their toe tomorrow morning",
 				"they will pass gas at an important social gathering",
 				"they will get stuck in a queue the next time they go shopping",
-				"the next joke they tell will cause offense"
+				"the next joke they tell will cause offense",
+				"they will lose this fight"
 			];
 			let chosenProphecy = Math.floor(Math.random() * prophecies.length);
 			addCombatText("You warn your opponent that " + prophecies[chosenProphecy] + ". They are stressed out by this information.");
@@ -833,7 +834,7 @@ var skills = [
 						"an eldritch horror",
 						"a group of dumb teenagers acting carelessly while being hunted by a serial killer",
 						"a lame story you read on the internet about Lavender Town",
-						"deep FNAF lore",
+						"deep Five Nights at Freddy's lore",
 						"a possessed pistol that fires mind bullets"
 					];
 					chosenStory = Math.floor(Math.random() * stories.length);
@@ -1130,7 +1131,7 @@ var skills = [
 				return false;
 			}
 			addCombatText("You run off to the Drella U laboratory to \"borrow\" a giant laser beam, which you push back to the fight.");
-			addCombatText("You push a button, and after a large WHIRRR sound starts up, followed shortly by a brilliant blast of energy.");
+			addCombatText("You push a button, and after a large WHIRRR sound it starts up, followed shortly by a brilliant blast of energy.");
 			addCombatText("You push the button again and look over at your opponent who is nowhere to be found. But they did leave all of their stuff behind. A shame they left it all covered in a thick ash, how inconsiderate of them!");
 			for (let drop of monster.drops) {
 				drop.chance = 100;
@@ -1143,7 +1144,7 @@ var skills = [
 	{
 		id: 62,
 		name: "Insurance Brokering",
-		description: "This course teaches you how to strike fear into the hearts of all doctors by arming you with the knowledge to go elsewhere for a better price.",
+		description: "This course teaches you how to strike fear into the hearts of all doctors by arming you with the knowledge of how to go elsewhere for a better price.",
 		enchantment: "50% discount on HP restore and 20% discount on MP restore at the doctor",
 		icon: "bill.png",
 		source: skillSource.DRELLAUBIG,
@@ -1536,15 +1537,14 @@ var skills = [
 	},
 	{
 		id: 89,
-		name: "TODO: Small skill 89",
-		description: "",
-		enchantment: "",
-		icon: "no_image.png",
+		name: "First Aid",
+		description: "This course teaches you the basics of patching up small grazes and bruises. It won't help you when your arm gets severed off, but every little helps.",
+		enchantment: "Restore 5 HP each turn",
+		icon: "bandage.png",
 		source: skillSource.DRELLAUSMALL,
-		category: skillType.NONCOMBAT,
-		cost: 3,
+		category: skillType.PASSIVE,
 		onUse: function () {
-
+			player.hpRegen += 5;
 		}
 	}
 ];
